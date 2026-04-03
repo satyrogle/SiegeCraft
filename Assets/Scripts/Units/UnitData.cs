@@ -73,8 +73,26 @@ namespace KindredSiege.Battle
         public int MaxSanityPenalty = 0;
 
         [Header("Trauma — Phobia (GDD §5.5)")]
-        [Tooltip("Phobia gained when this unit was saved from 0 sanity by a Mercy Token. Persists between battles.")]
-        public PhobiaType ActivePhobia = PhobiaType.None;
+        [Tooltip("Phobias gained when this unit was saved from death. Persists between battles. 3+ = Traumatised.")]
+        public List<PhobiaType> ActivePhobias = new List<PhobiaType>();
+
+        /// <summary>Backwards-compatible accessor. Returns first phobia or None.</summary>
+        public PhobiaType ActivePhobia
+        {
+            get => ActivePhobias.Count > 0 ? ActivePhobias[0] : PhobiaType.None;
+            set
+            {
+                // Legacy setter: clears and sets a single phobia, or clears all if None.
+                ActivePhobias.Clear();
+                if (value != PhobiaType.None) ActivePhobias.Add(value);
+            }
+        }
+
+        /// <summary>True if the unit has 3+ phobias — should be retired or treated.</summary>
+        public bool IsTraumatised => ActivePhobias.Count >= 3;
+
+        /// <summary>Check if the unit has a specific phobia (for combat checks).</summary>
+        public bool HasPhobia(PhobiaType type) => ActivePhobias.Contains(type);
 
         [Header("Fatigue (GDD §11.4)")]
         [Range(0, 100)]

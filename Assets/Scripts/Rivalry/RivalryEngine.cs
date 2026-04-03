@@ -97,26 +97,50 @@ namespace KindredSiege.Rivalry
         };
 
         /// <summary>
-        /// Procedurally generate a new Grunt-rank rival and add it to the active pool.
+        /// Procedurally generate a rival and add it to the active pool.
+        /// Starting rank, HP, and trait count scale with Mythos Exposure (GDD §13.2).
         /// </summary>
         public RivalData GenerateRival()
         {
+            var mythos = KindredSiege.City.MythosExposure.Instance;
+
+            // Determine starting rank based on Mythos Escalation
+            RivalRank startRank = RivalRank.Grunt;
+            if (mythos != null)
+            {
+                if (mythos.RivalsStartOverlord)        startRank = RivalRank.Overlord;
+                else if (mythos.RivalsStartLieutenant) startRank = RivalRank.Lieutenant;
+            }
+
+            int baseHP = Random.Range(80, 130);
+            // Acolyte+: Grunts get +10% HP
+            if (mythos != null && mythos.GruntHPBonus > 0f && startRank == RivalRank.Grunt)
+                baseHP = Mathf.RoundToInt(baseHP * (1f + mythos.GruntHPBonus));
+
             var rival = new RivalData
             {
                 RivalId        = System.Guid.NewGuid().ToString(),
                 FirstName      = GenerateFirstName(),
                 Epithet        = GenerateEpithet(),
-                Rank           = RivalRank.Grunt,
+                Rank           = startRank,
                 Weakness       = WeaknessPool[Random.Range(0, WeaknessPool.Length)],
-                BaseHP         = Random.Range(80, 130),
+                BaseHP         = baseHP,
                 BaseDamage     = Random.Range(8, 16),
                 SizeMultiplier = 1f
             };
 
-            // Assign 2–4 random starting traits + Danger scaling (Adept tier)
+            // Apply rank scaling for non-Grunt starts
+            if (startRank >= RivalRank.Lieutenant)
+            {
+                rival.BaseHP         = Mathf.RoundToInt(rival.BaseHP * 1.2f);
+                rival.BaseDamage     = Mathf.RoundToInt(rival.BaseDamage * 1.1f);
+                rival.SizeMultiplier = 1f + ((int)startRank * 0.15f);
+            }
+
+            // Assign traits — Acolyte+ adds +1 extra trait
             int traitCount = Random.Range(2, 5);
-            if (KindredSiege.City.MythosExposure.Instance != null)
-                traitCount += KindredSiege.City.MythosExposure.Instance.ExtraRivalTraits;
+            if (mythos != null)
+                traitCount += mythos.ExtraRivalTraits;
 
             var selected = BaseTraitPool
                 .OrderBy(_ => Random.value)
@@ -125,8 +149,8 @@ namespace KindredSiege.Rivalry
 
             _activeRivals.Add(rival);
 
-            rival.Memory.EncounterLog.Add($"Spawned as Grunt with traits: {string.Join(", ", rival.Traits)}.");
-            Debug.Log($"[Rivalry] Spawned: {rival.FullName} | Traits: {string.Join(", ", rival.Traits)} | Weakness: {rival.Weakness}");
+            rival.Memory.EncounterLog.Add($"Spawned as {startRank} with traits: {string.Join(", ", rival.Traits)}.");
+            Debug.Log($"[Rivalry] Spawned: {rival.FullName} | Rank: {startRank} | Traits: {string.Join(", ", rival.Traits)} | Weakness: {rival.Weakness}");
 
             return rival;
         }
@@ -146,7 +170,14 @@ namespace KindredSiege.Rivalry
             }
 
             // Chance to resurrect a fallen rival as an Undying horror
-            if (_defeatedRivals.Count > 0 && Random.value < undyingReturnChance)
+            // Adept+ Mythos: Undying chance is doubled (GDD §13.2)
+            float effectiveUndyingChance = undyingReturnChance;
+            if (KindredSiege.City.MythosExposure.Instance != null &&
+                KindredSiege.City.MythosExposure.Instance.DoubleUndyingChance)
+            {
+                effectiveUndyingChance *= 2f;
+            }
+            if (_defeatedRivals.Count > 0 && Random.value < effectiveUndyingChance)
             {
                 var candidate = _defeatedRivals[Random.Range(0, _defeatedRivals.Count)];
                 ReturnAsUndying(candidate);

@@ -155,11 +155,12 @@ namespace KindredSiege.AI.BehaviourTree
 
         public override NodeState Tick(BattleContext context)
         {
-            // Tactical logic: Prioritise low HP ratio, then ranged attackers, then distance.
+            // GDD §11.2: Tactical rivals prioritise low-sanity player units.
+            // They know the broken ones will flee or attack allies.
             var tactical = context.Enemies
                 .Where(e => e != null && e.IsTargetable)
-                .OrderBy(e => (float)e.CurrentHP / e.MaxHP)
-                .ThenBy(e => e.Data != null && e.Data.IsRanged ? 0 : 1)
+                .OrderBy(e => e.CurrentSanity)                     // Target lowest sanity first
+                .ThenBy(e => (float)e.CurrentHP / e.MaxHP)         // Then lowest HP ratio
                 .ThenBy(e => UnityEngine.Vector3.Distance(context.Owner.transform.position, e.transform.position))
                 .FirstOrDefault();
 

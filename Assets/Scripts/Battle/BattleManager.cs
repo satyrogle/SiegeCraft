@@ -657,6 +657,26 @@ namespace KindredSiege.Battle
                     unit.OnWitnessAllyDeath(null);
             }
 
+            // --- MUTATION: DEATH IS UNDONE (GDD §7.2 Void) ---
+            // Defeated ENEMY units have a 25% chance to respawn at 50% HP
+            if (evt.TeamId == 2 &&
+                KindredSiege.Modifiers.MutationEngine.Instance != null &&
+                KindredSiege.Modifiers.MutationEngine.Instance.HasMutation(KindredSiege.Modifiers.MutationType.DeathIsUndone))
+            {
+                if (Random.value < 0.25f)
+                {
+                    var respawnUnit = GetUnitById(evt.UnitId);
+                    if (respawnUnit != null)
+                    {
+                        int respawnHP = Mathf.Max(1, respawnUnit.MaxHP / 2);
+                        respawnUnit.CurrentHP = respawnHP;
+                        if (!respawnUnit.gameObject.activeSelf)
+                            respawnUnit.gameObject.SetActive(true);
+                        Debug.Log($"[Mutation] DEATH IS UNDONE: {respawnUnit.UnitName} defies death! Respawned at {respawnHP} HP.");
+                    }
+                }
+            }
+
             // --- GRUDGE SYSTEM HOOKS ---
             if (evt.DefeatedByUnitId != -1)
             {

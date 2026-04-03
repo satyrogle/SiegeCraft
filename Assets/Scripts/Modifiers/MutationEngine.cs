@@ -16,27 +16,31 @@ namespace KindredSiege.Modifiers
     {
         None,
 
-        // --- TIDE MUTATIONS ---
+        // --- TIDE MUTATIONS (GDD §7.2) ---
         TheDeepCalls,    // All units pulled toward grid center (1 unit/sec)
         CurrentsShift,   // Grid positions shuffle every 15s
         DrownedGround,   // Bottom 2 rows deal sanity damage
-        Riptide,         // Movement speed halved
+        Riptide,         // Movement speed halved (GDD: "Rising Waters" — grid shrink variant kept as speed penalty)
 
-        // --- MIND MUTATIONS ---
+        // --- MIND MUTATIONS (GDD §7.2) ---
         FearIsPower,     // Sanity damage converts to physical damage bonus for 5s
         ClarityInPain,   // Units below 25 sanity have 0% hesitation
-        EchoesOfMadness, // Afflictions applied to one unit jump to an ally
-        WhisperingShadows, // Passive sanity drain doubled
+        EchoesOfMadness, // Afflictions applied to one unit jump to an ally (GDD: "Madness Spreads")
+        WhisperingShadows, // Passive sanity drain doubled (GDD: "Memories Bleed" variant)
 
-        // --- FLESH MUTATIONS ---
+        // --- FLESH MUTATIONS (GDD §7.2) ---
         PainIsShared,    // 30% of damage dealt splashes to nearest ally
         IronBlood,       // Armour doubled, healing halved
-        BrittleBones,    // All physical damage taken increased by 25%
-        FleshWeave,      // Units regenerate 2 HP per second when below 50% HP
+        BrittleBones,    // All physical damage taken increased by 25% (GDD: "The Wounded Strike Harder" variant)
+        FleshWeave,      // Units regenerate 2 HP per second when below 50% HP (GDD: "Death Feeds Life" variant)
 
-        // --- VOID MUTATIONS ---
+        // --- VOID MUTATIONS (GDD §7.2) ---
         TheRivalKnows,   // The first Gambit used fails
         TheWatcherSees,  // Directives cost double
+        NamesHavePower,  // Units with phobias matching rival traits take 3× sanity damage
+        DeathIsUndone,   // Defeated enemies have 25% chance to respawn at 50% HP
+
+        // --- EXPANSION MUTATIONS (beyond GDD, kept as creative additions) ---
         ExistentialDread,// Unused Directive Points drain max sanity
         TemporalAnomaly  // Battle timer runs 2x faster
     }
@@ -53,6 +57,13 @@ namespace KindredSiege.Modifiers
         private readonly List<MutationType> _activeMutations = new();
         public IReadOnlyList<MutationType> ActiveMutations => _activeMutations;
 
+        // ─── Domain Expansion (GDD §7.5) ─────────────────────────────────
+        // When Mythos Exposure ≥ 100, the Arch-Rival projects a mutation globally.
+        // This mutation persists across ALL battles until the Arch-Rival is killed.
+        private MutationType _domainMutation = MutationType.None;
+        public MutationType DomainMutation => _domainMutation;
+        public bool IsDomainActive => _domainMutation != MutationType.None;
+
         private void Awake()
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -62,7 +73,6 @@ namespace KindredSiege.Modifiers
 
         /// <summary>
         /// Rolls 1-3 random mutations based on the player's Mythos Exposure level.
-        /// (Currently defaults to 1 since Mythos Exposure isn't fully implemented yet).
         /// </summary>
         public List<MutationType> GenerateMutationsForPath(bool isDomainExpansion = false, MutationFamily? domainFamily = null)
         {
@@ -98,7 +108,7 @@ namespace KindredSiege.Modifiers
                 MutationFamily.Tide  => new List<MutationType> { MutationType.TheDeepCalls, MutationType.CurrentsShift, MutationType.DrownedGround, MutationType.Riptide },
                 MutationFamily.Mind  => new List<MutationType> { MutationType.FearIsPower, MutationType.ClarityInPain, MutationType.EchoesOfMadness, MutationType.WhisperingShadows },
                 MutationFamily.Flesh => new List<MutationType> { MutationType.PainIsShared, MutationType.IronBlood, MutationType.BrittleBones, MutationType.FleshWeave },
-                MutationFamily.Void  => new List<MutationType> { MutationType.TheRivalKnows, MutationType.TheWatcherSees, MutationType.ExistentialDread, MutationType.TemporalAnomaly },
+                MutationFamily.Void  => new List<MutationType> { MutationType.TheRivalKnows, MutationType.TheWatcherSees, MutationType.NamesHavePower, MutationType.DeathIsUndone },
                 _ => new List<MutationType>()
             };
         }
@@ -109,6 +119,10 @@ namespace KindredSiege.Modifiers
             if (mutations != null)
                 _activeMutations.AddRange(mutations);
 
+            // Always inject the Domain Expansion mutation if active (GDD §7.5)
+            if (IsDomainActive && !_activeMutations.Contains(_domainMutation))
+                _activeMutations.Add(_domainMutation);
+
             if (_activeMutations.Count > 0)
             {
                 Debug.Log($"[MutationEngine] Reality altered! Active Mutations: {string.Join(", ", _activeMutations)}");
@@ -118,9 +132,41 @@ namespace KindredSiege.Modifiers
         public void ClearMutations()
         {
             _activeMutations.Clear();
+            // Domain mutations persist even when normal mutations are cleared
+            if (IsDomainActive)
+                _activeMutations.Add(_domainMutation);
         }
 
         public bool HasMutation(MutationType type) => _activeMutations.Contains(type);
+
+        // ════════════════════════════════════════════
+        // DOMAIN EXPANSION (GDD §7.5)
+        // ════════════════════════════════════════════
+
+        /// <summary>
+        /// Activate Domain Expansion — a single mutation that persists across ALL battles
+        /// until the Arch-Rival is killed. Called by RivalEncounterSystem when Mythos >= 100.
+        /// </summary>
+        public void ActivateDomainExpansion(MutationType mutation, string archRivalName)
+        {
+            _domainMutation = mutation;
+            if (!_activeMutations.Contains(mutation))
+                _activeMutations.Add(mutation);
+            Debug.Log($"[MutationEngine] DOMAIN EXPANSION: {archRivalName} projects {mutation} across ALL battles!");
+        }
+
+        /// <summary>
+        /// Break Domain Expansion — called when the Arch-Rival is defeated.
+        /// </summary>
+        public void BreakDomainExpansion()
+        {
+            if (IsDomainActive)
+            {
+                Debug.Log($"[MutationEngine] Domain Expansion BROKEN! {_domainMutation} is no longer global.");
+                _activeMutations.Remove(_domainMutation);
+                _domainMutation = MutationType.None;
+            }
+        }
 
         // ════════════════════════════════════════════
         // FRONTEND HELPERS (For UI)
@@ -145,9 +191,12 @@ namespace KindredSiege.Modifiers
                 MutationType.IronBlood     => (MutationFamily.Flesh, "IRON BLOOD", "All armour values are doubled, but healing is halved."),
                 MutationType.BrittleBones  => (MutationFamily.Flesh, "BRITTLE BONES", "All physical damage taken by any unit is increased by 25%."),
                 MutationType.FleshWeave    => (MutationFamily.Flesh, "FLESH WEAVE", "Units natively regenerate 2 HP per second when below 50% HP."),
-                // VOID
+                // VOID (GDD Core)
                 MutationType.TheRivalKnows => (MutationFamily.Void, "THE RIVAL KNOWS", "The first Gambit slotted in combat will automatically fail."),
                 MutationType.TheWatcherSees=> (MutationFamily.Void, "THE WATCHER SEES", "All Tactical Directives cost double the Directive Points."),
+                MutationType.NamesHavePower=> (MutationFamily.Void, "NAMES HAVE POWER", "Units with phobias matching rival traits take 3× sanity damage."),
+                MutationType.DeathIsUndone => (MutationFamily.Void, "DEATH IS UNDONE", "Defeated enemies have a 25% chance to respawn at 50% HP."),
+                // VOID (Expansion)
                 MutationType.ExistentialDread=>(MutationFamily.Void, "EXISTENTIAL DREAD", "Unspent Directive Points rapidly drain max sanity."),
                 MutationType.TemporalAnomaly=>(MutationFamily.Void, "TEMPORAL ANOMALY", "The battle timer runs 2x faster, accelerating sanity drains and hazard ticks."),
 
@@ -156,3 +205,4 @@ namespace KindredSiege.Modifiers
         }
     }
 }
+

@@ -71,6 +71,7 @@ namespace KindredSiege.Battle
 
         // ─── Phobia (GDD §5.5) ───
         public PhobiaType ActivePhobia => unitData != null ? unitData.ActivePhobia : PhobiaType.None;
+        public bool HasPhobia(PhobiaType type) => unitData != null && unitData.HasPhobia(type);
 
         // SolitudePhobia + DarkPhobia: interval timers tracked per unit at runtime
         private float _solitudePhobiaTimer = 0f;
@@ -663,7 +664,7 @@ namespace KindredSiege.Battle
             {
                 float comp = Comprehension;
                 // EldritchPhobia: +0.5 to effective Comprehension for all eldritch hits
-                if (ActivePhobia == PhobiaType.EldritchPhobia)
+                if (HasPhobia(PhobiaType.EldritchPhobia))
                     comp += 0.5f;
                 // EldritchGround (GDD §12): standing on corrupted earth doubles comp multiplier
                 if (_currentHazard == HazardType.EldritchGround)
@@ -680,6 +681,26 @@ namespace KindredSiege.Battle
             }
 
             int oldSanity = CurrentSanity;
+
+            // Mutation: Names Have Power (GDD §7.2 Void)
+            // Units with phobias matching rival traits take 3× sanity damage
+            if (delta < 0 && KindredSiege.Modifiers.MutationEngine.Instance != null &&
+                KindredSiege.Modifiers.MutationEngine.Instance.HasMutation(KindredSiege.Modifiers.MutationType.NamesHavePower))
+            {
+                var activeRival = BattleManager.Instance?.GetActiveRival();
+                if (activeRival != null && unitData != null && unitData.ActivePhobias.Count > 0)
+                {
+                    bool phobiaMatchesTrait = NamesHavePowerMatch(unitData, activeRival);
+                    if (phobiaMatchesTrait)
+                    {
+                        delta *= 3;
+                        // Log only occasionally to avoid spam
+                        if (Random.value < 0.05f)
+                            Debug.Log($"[Mutation] NAMES HAVE POWER: {UnitName}'s phobia amplifies horror! (3× sanity damage)");
+                    }
+                }
+            }
+
             CurrentSanity = Mathf.Clamp(CurrentSanity + delta, 0, MaxSanity);
 
             // Mutation: Fear Is Power (Mind)
@@ -787,7 +808,7 @@ namespace KindredSiege.Battle
             ModifySanity(TalentAllyDeathSanityAmount, "AllyDied");
 
             // BloodPhobia: witnessing any death deals an extra -8 sanity
-            if (ActivePhobia == PhobiaType.BloodPhobia)
+            if (HasPhobia(PhobiaType.BloodPhobia))
                 ModifySanity(-8, "BloodPhobia");
         }
 
@@ -912,7 +933,7 @@ namespace KindredSiege.Battle
             attackTimer = attackCooldown;
 
             // ViolencePhobia: every attack costs -2 sanity
-            if (ActivePhobia == PhobiaType.ViolencePhobia)
+            if (HasPhobia(PhobiaType.ViolencePhobia))
                 ModifySanity(-2, "ViolencePhobia");
 
             RecordAction("Attack", target.UnitId);
@@ -951,7 +972,7 @@ namespace KindredSiege.Battle
             if (TalentHitIgnoreChance > 0f && Random.value < TalentHitIgnoreChance)
             {
                 // Check if attacker has FailurePhobia
-                if (attacker != null && attacker.ActivePhobia == PhobiaType.FailurePhobia)
+                if (attacker != null && attacker.HasPhobia(PhobiaType.FailurePhobia))
                     attacker.ModifySanity(-2, "FailurePhobia");
 
                 return;
@@ -1102,7 +1123,7 @@ namespace KindredSiege.Battle
             if (unitData != null && unitData.CannotBeHealed) return;
 
             // Enforce Phobia Healing Prevention (GDD §5.5)
-            if (ActivePhobia != PhobiaType.None) return;
+            if (unitData != null && unitData.ActivePhobias.Count > 0) return;
 
             // Mutation: Iron Blood (Flesh) - healing is halved
             if (KindredSiege.Modifiers.MutationEngine.Instance != null &&
@@ -1244,13 +1265,11 @@ namespace KindredSiege.Battle
                     if (rend != null) StartCoroutine(StunVisualCoroutine(rend));
                 }
 
-                // Damage > 35: phobia check
+                // Damage > 35: phobia check (stacks with existing phobias per GDD §5.5)
                 if (sanityDamage > 35)
                 {
                     phobiaTriggered = true;
-                    if (ActivePhobia == PhobiaType.None)
-                        TraumaPhobiaSystem.ForceRollPhobia(this);
-                    // Existing phobia is already ticking — no extra action needed
+                    TraumaPhobiaSystem.ForceRollPhobia(this);
                 }
 
                 Debug.Log($"[Dread] {UnitName} FAILED vs {rivalName} — Res:{resistance:F1} Pwr:{dreadPower} Dmg:{sanityDamage}" +
@@ -1356,49 +1375,51 @@ namespace KindredSiege.Battle
         /// </summary>
         private void TickPhobiaEffects(float dt)
         {
-            switch (ActivePhobia)
+            if (unitData == null || unitData.ActivePhobias.Count == 0) return;
+
+            // Each phobia ticks independently — stacked phobias all apply
+            if (HasPhobia(PhobiaType.SolitudePhobia))
             {
-                case PhobiaType.SolitudePhobia:
-                    _solitudePhobiaTimer += dt;
-                    if (_solitudePhobiaTimer >= SolitudePhobiaInterval)
-                    {
-                        _solitudePhobiaTimer = 0f;
-                        // Check if any ally is within 4 units
-                        bool allyNearby = battleContext != null && battleContext.Allies != null &&
-                            battleContext.Allies.Exists(a =>
-                                a != null && a.IsAlive && a != this &&
-                                Vector3.Distance(transform.position, a.transform.position) <= 4f);
+                _solitudePhobiaTimer += dt;
+                if (_solitudePhobiaTimer >= SolitudePhobiaInterval)
+                {
+                    _solitudePhobiaTimer = 0f;
+                    bool allyNearby = battleContext != null && battleContext.Allies != null &&
+                        battleContext.Allies.Exists(a =>
+                            a != null && a.IsAlive && a != this &&
+                            Vector3.Distance(transform.position, a.transform.position) <= 4f);
 
-                        if (!allyNearby)
-                            ModifySanity(-3, "SolitudePhobia");
-                    }
-                    break;
+                    if (!allyNearby)
+                        ModifySanity(-3, "SolitudePhobia");
+                }
+            }
 
-                case PhobiaType.DarkPhobia:
-                    _darkPhobiaTimer += dt;
-                    if (_darkPhobiaTimer >= DarkPhobiaInterval)
+            if (HasPhobia(PhobiaType.DarkPhobia))
+            {
+                _darkPhobiaTimer += dt;
+                if (_darkPhobiaTimer >= DarkPhobiaInterval)
+                {
+                    _darkPhobiaTimer = 0f;
+                    ModifySanity(-4, "DarkPhobia");
+                }
+            }
+
+            if (HasPhobia(PhobiaType.Claustrophobia))
+            {
+                _claustrophobiaTimer += dt;
+                if (_claustrophobiaTimer >= ClaustrophobiaInterval)
+                {
+                    _claustrophobiaTimer = 0f;
+                    if (battleContext != null && battleContext.Enemies != null)
                     {
-                        _darkPhobiaTimer = 0f;
-                        ModifySanity(-4, "DarkPhobia");
+                        int nearbyEnemies = battleContext.Enemies.Count(e =>
+                            e != null && e.IsAlive &&
+                            Vector3.Distance(transform.position, e.transform.position) <= 3f);
+
+                        if (nearbyEnemies >= 2)
+                            ModifySanity(-1, "Claustrophobia");
                     }
-                    break;
-                    
-                case PhobiaType.Claustrophobia:
-                    _claustrophobiaTimer += dt;
-                    if (_claustrophobiaTimer >= ClaustrophobiaInterval)
-                    {
-                        _claustrophobiaTimer = 0f;
-                        if (battleContext != null && battleContext.Enemies != null)
-                        {
-                            int nearbyEnemies = battleContext.Enemies.Count(e =>
-                                e != null && e.IsAlive &&
-                                Vector3.Distance(transform.position, e.transform.position) <= 3f); // 3 units max melee distance
-                                
-                            if (nearbyEnemies >= 2)
-                                ModifySanity(-1, "Claustrophobia");
-                        }
-                    }
-                    break;
+                }
             }
         }
 
@@ -1418,6 +1439,45 @@ namespace KindredSiege.Battle
                          or "ForbiddenKnowledge"
                          or "PassiveDrain"
                          or "RitualGambit";
+        }
+
+        /// <summary>
+        /// NamesHavePower (GDD §7.2 Void): Returns true if any of the unit's phobias
+        /// thematically matches one of the active rival's traits.
+        /// Mapping: PhobiaType → the RivalTraitType(s) it resonates with.
+        /// </summary>
+        private static bool NamesHavePowerMatch(KindredSiege.Units.UnitData data, KindredSiege.Rivalry.RivalData rival)
+        {
+            foreach (var phobia in data.ActivePhobias)
+            {
+                switch (phobia)
+                {
+                    case PhobiaType.BloodPhobia:      // "Broken by rival with Rage trait"
+                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Rage)) return true;
+                        break;
+                    case PhobiaType.EldritchPhobia:    // "Broken by Horror Rating aura"
+                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.EldritchResistant)) return true;
+                        break;
+                    case PhobiaType.SolitudePhobia:    // "Broken by prolonged combat / isolation"
+                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Ambusher)) return true;
+                        break;
+                    case PhobiaType.ViolencePhobia:    // "Broken by witnessing ally die / grudge"
+                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Grudge) ||
+                            rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Vendetta)) return true;
+                        break;
+                    case PhobiaType.DarkPhobia:        // "Broken by witnessing unit go Lost"
+                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Fearful)) return true;
+                        break;
+                    case PhobiaType.FailurePhobia:     // "Broken by rival's taunt"
+                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Tactical) ||
+                            rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Bold)) return true;
+                        break;
+                    case PhobiaType.Claustrophobia:    // Surroundings → resilient enemies
+                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Resilient)) return true;
+                        break;
+                }
+            }
+            return false;
         }
 
         /// <summary>

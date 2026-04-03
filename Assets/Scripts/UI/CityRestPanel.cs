@@ -189,9 +189,14 @@ namespace KindredSiege.UI
                     $"FK penalty: −{data.MaxSanityPenalty}", _warnStyle);
             }
 
-            if (data.ActivePhobia != PhobiaType.None)
+            if (data.ActivePhobias.Count > 0)
+            {
+                string phobiaText = data.IsTraumatised
+                    ? $"TRAUMATISED ({data.ActivePhobias.Count} phobias)"
+                    : $"Phobia: {string.Join(", ", data.ActivePhobias)}";
                 GUI.Label(new Rect(infoX, rowY + 44, infoW, 16),
-                    $"Phobia: {data.ActivePhobia}", _warnStyle);
+                    phobiaText, _warnStyle);
+            }
 
             // Broken warning (fatigue 100) — no rest buttons, just warning
             if (FatigueSystem.IsUndeployable(data))
@@ -201,18 +206,18 @@ namespace KindredSiege.UI
             }
 
             // Rest & Treat buttons
-            int buttonsNeeded = data.ActivePhobia != PhobiaType.None ? 3 : 2;
+            int buttonsNeeded = data.ActivePhobias.Count > 0 ? 3 : 2;
             int btnX = ix + PanelW - Margin * 2 - BtnW * buttonsNeeded - 8 * (buttonsNeeded - 1);
 
             // Treatment button (if phobia exists)
-            if (data.ActivePhobia != PhobiaType.None)
+            if (data.ActivePhobias.Count > 0)
             {
                 if (apothecaryLvl >= 3)
                 {
                     int currentKP = ResourceManager.Instance?.GetAmount(ResourceType.KindnessPoints) ?? 0;
                     bool canTreat = currentGold >= TreatmentCost && currentKP >= TreatmentKPCost;
                     GUI.enabled = canTreat;
-                    if (GUI.Button(new Rect(btnX, rowY + 10, BtnW, BtnH + 10), $"Treat Phobia\n({TreatmentCost}G, {TreatmentKPCost}KP)", _buttonStyle))
+                    if (GUI.Button(new Rect(btnX, rowY + 10, BtnW, BtnH + 10), $"Treat All\n({TreatmentCost}G, {TreatmentKPCost}KP)", _buttonStyle))
                     {
                         if (ResourceManager.Instance != null &&
                             ResourceManager.Instance.GetAmount(ResourceType.Gold) >= TreatmentCost &&
@@ -220,7 +225,7 @@ namespace KindredSiege.UI
                         {
                             ResourceManager.Instance.Spend(ResourceType.Gold, TreatmentCost);
                             ResourceManager.Instance.Spend(ResourceType.KindnessPoints, TreatmentKPCost);
-                            TraumaPhobiaSystem.CurePhobia(data);
+                            TraumaPhobiaSystem.CureAllPhobias(data);
                         }
                     }
                     GUI.enabled = true;
@@ -233,7 +238,7 @@ namespace KindredSiege.UI
             }
 
             // Light Rest button
-            bool canLight = currentGold >= LightRestCost && data.FatigueLevel > 0 && data.ActivePhobia == PhobiaType.None;
+            bool canLight = currentGold >= LightRestCost && data.FatigueLevel > 0 && data.ActivePhobias.Count == 0;
             GUI.enabled = canLight;
             if (GUI.Button(new Rect(btnX, rowY + 20, BtnW, BtnH),
                 $"Light Rest\n({LightRestCost}G)", _buttonStyle))
@@ -249,7 +254,7 @@ namespace KindredSiege.UI
             GUI.enabled = true;
 
             // Full Rest button
-            bool canFull = currentGold >= FullRestCost && (data.FatigueLevel > 0 || data.MaxSanityPenalty > 0) && data.ActivePhobia == PhobiaType.None;
+            bool canFull = currentGold >= FullRestCost && (data.FatigueLevel > 0 || data.MaxSanityPenalty > 0) && data.ActivePhobias.Count == 0;
             GUI.enabled = canFull;
             if (GUI.Button(new Rect(btnX + BtnW + 8, rowY + 20, BtnW, BtnH),
                 $"Full Rest\n({FullRestCost}G)", _buttonStyle))

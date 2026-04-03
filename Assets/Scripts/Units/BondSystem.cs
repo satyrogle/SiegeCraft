@@ -25,7 +25,7 @@ namespace KindredSiege.Units
         public const int    BondThreshold         = 2;     // Shared expeditions needed
         public const float  BondDamageBonus       = 0.08f; // +8% damage
         public const int    BondStartingSanity    = 5;     // +5 sanity at battle start
-        public const int    ForThemSanityAmount   = 15;    // Sanity gained when partner dies
+        public const int    BondDeathSanityPenalty = 25;    // Sanity LOST when bonded partner dies (GDD §11.1)
 
         // ════════════════════════════════════════════
         // RECORD CO-SURVIVAL (call after battle ends)
@@ -119,10 +119,10 @@ namespace KindredSiege.Units
             if (survivor.ActiveBondPartners.Count == 0) return false;
             if (!survivor.ActiveBondPartners.Contains(deadUnitName)) return false;
 
-            survivor.ModifySanity(ForThemSanityAmount, "ForThem");
+            survivor.ModifySanity(-BondDeathSanityPenalty, "BondPartnerDied");
             survivor.ActiveBondDamageBonus = Mathf.Max(0f, survivor.ActiveBondDamageBonus - BondDamageBonus); // Remove just this bonded partner's bonus
             survivor.ActiveBondPartners.Remove(deadUnitName);
-            Debug.Log($"[Bond] {survivor.UnitName}: \"For them.\" (+{ForThemSanityAmount} sanity)");
+            Debug.Log($"[Bond] {survivor.UnitName}: Bonded partner died. (-{BondDeathSanityPenalty} sanity)");
             return true;
         }
 

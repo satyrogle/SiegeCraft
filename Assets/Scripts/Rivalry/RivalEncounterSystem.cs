@@ -119,7 +119,20 @@ namespace KindredSiege.Rivalry
                     _lastPlayerUnitTypes);
 
                 if (playerWon)
+                {
+                    // Check if the defeated rival was the Arch-Rival projecting a Domain
+                    var archRival = RivalryEngine.Instance.GetArchRival();
+                    bool wasArchRival = archRival != null && archRival.RivalId == _battleRival.RivalId;
+
                     RivalryEngine.Instance.MarkRivalDefeated(_battleRival.RivalId);
+
+                    // Break Domain Expansion if the Arch-Rival was killed (GDD §7.5)
+                    if (wasArchRival && KindredSiege.Modifiers.MutationEngine.Instance != null &&
+                        KindredSiege.Modifiers.MutationEngine.Instance.IsDomainActive)
+                    {
+                        KindredSiege.Modifiers.MutationEngine.Instance.BreakDomainExpansion();
+                    }
+                }
             }
 
             _battleRival = null;
@@ -127,8 +140,39 @@ namespace KindredSiege.Rivalry
             // Refresh the rival pool (generate new rivals, maybe resurrect Undying)
             RivalryEngine.Instance?.RefreshRivalPool();
 
+            // Domain Expansion check (GDD §7.5): At Mythos >= 100, the Arch-Rival
+            // projects a signature mutation globally across ALL battles.
+            CheckDomainExpansion();
+
             // Roll for who appears in the next battle
             RollForNextEncounter();
+        }
+
+        /// <summary>
+        /// GDD §7.5: If Mythos Exposure >= 100 and an Overlord-rank Arch-Rival exists,
+        /// activate their Domain Expansion — a single mutation that persists across all battles.
+        /// </summary>
+        private void CheckDomainExpansion()
+        {
+            var mythos = KindredSiege.City.MythosExposure.Instance;
+            var mutEngine = KindredSiege.Modifiers.MutationEngine.Instance;
+            if (mythos == null || mutEngine == null) return;
+            if (mythos.Exposure < 100) return;
+            if (mutEngine.IsDomainActive) return; // Already active
+
+            var archRival = RivalryEngine.Instance?.GetArchRival();
+            if (archRival == null || archRival.Rank < RivalRank.Overlord) return;
+
+            // Pick a deterministic mutation from the rival's hashed family
+            int familyPick = Mathf.Abs(archRival.FullName.GetHashCode()) % 4;
+            var family = (KindredSiege.Modifiers.MutationFamily)familyPick;
+            var familyMutations = mutEngine.GenerateMutationsForPath(true, family);
+
+            // Use the first mutation of the family as the domain signature
+            if (familyMutations.Count > 0)
+            {
+                mutEngine.ActivateDomainExpansion(familyMutations[0], archRival.FullName);
+            }
         }
 
         // ════════════════════════════════════════════

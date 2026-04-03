@@ -365,6 +365,7 @@ namespace KindredSiege.Battle
 
             MercyTokens--;
             targetUnit.OnSavedByMercy();
+            MercyLedger.RecordSaved();
 
             // Re-activate the unit's GameObject if it was deactivated on death
             if (!targetUnit.gameObject.activeSelf)
@@ -432,6 +433,7 @@ namespace KindredSiege.Battle
                 DefeatReason = _pendingMercyReason
             });
 
+            MercyLedger.RecordLetDie();
             ResolveMercyPause(tokenSpent: false);
         }
 

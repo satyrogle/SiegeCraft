@@ -45,13 +45,14 @@ namespace KindredSiege.Battle
         {
             if (!evt.TokenSpent) return; // Unit died — no phobia needed
 
-            // Find the saved unit and assign a phobia if it doesn't already have one
+            // Phobias stack (GDD §5.5) — a unit broken twice carries two phobias.
             var unit = FindUnitById(evt.UnitId);
             if (unit == null || unit.Data == null) return;
-            if (unit.Data.ActivePhobia != PhobiaType.None) return; // Already scarred
 
             PhobiaType phobia = RollPhobia(unit, evt.DefeatReason);
-            unit.Data.ActivePhobia = phobia;
+            // Avoid exact duplicate phobias from same cause
+            if (!unit.Data.HasPhobia(phobia))
+                unit.Data.ActivePhobias.Add(phobia);
 
             EventBus.Publish(new PhobiaGainedEvent
             {
@@ -60,19 +61,34 @@ namespace KindredSiege.Battle
                 PhobiaName = phobia.ToString()
             });
 
-            Debug.Log($"[Phobia] {unit.UnitName} gained trauma phobia: {phobia} — the cost of surviving the abyss.");
+            string traumaTag = unit.Data.IsTraumatised ? " [TRAUMATISED]" : "";
+            Debug.Log($"[Phobia] {unit.UnitName} gained trauma phobia: {phobia} (total: {unit.Data.ActivePhobias.Count}){traumaTag}");
         }
 
         // ════════════════════════════════════════════
         // STATIC HELPERS
         // ════════════════════════════════════════════
 
+        /// <summary>
+        /// Cure one phobia from the unit. Call multiple times to cure stacked phobias.
+        /// </summary>
         public static void CurePhobia(UnitData unit)
         {
-            if (unit != null && unit.ActivePhobia != PhobiaType.None)
+            if (unit != null && unit.ActivePhobias.Count > 0)
             {
-                Debug.Log($"[Sanatorium] {unit.UnitName} has been treated. {unit.ActivePhobia} cured.");
-                unit.ActivePhobia = PhobiaType.None;
+                var cured = unit.ActivePhobias[0];
+                unit.ActivePhobias.RemoveAt(0);
+                Debug.Log($"[Sanatorium] {unit.UnitName} treated: {cured} cured. Remaining: {unit.ActivePhobias.Count}");
+            }
+        }
+
+        /// <summary>Cure ALL phobias (full treatment).</summary>
+        public static void CureAllPhobias(UnitData unit)
+        {
+            if (unit != null && unit.ActivePhobias.Count > 0)
+            {
+                Debug.Log($"[Sanatorium] {unit.UnitName} fully treated. {unit.ActivePhobias.Count} phobia(s) cured.");
+                unit.ActivePhobias.Clear();
             }
         }
 
@@ -168,15 +184,15 @@ namespace KindredSiege.Battle
 
         /// <summary>
         /// Force-assign a phobia from a Dread Contest (GDD §6.2 — damage > 35).
-        /// Only fires if the unit has no phobia yet. Publishes PhobiaGainedEvent.
+        /// Phobias stack — this can add a second or third phobia.
         /// </summary>
         public static void ForceRollPhobia(UnitController unit, string triggerReason = "dread")
         {
             if (unit == null || unit.Data == null) return;
-            if (unit.Data.ActivePhobia != PhobiaType.None) return;
 
             PhobiaType phobia = RollPhobia(unit, triggerReason);
-            unit.Data.ActivePhobia = phobia;
+            if (!unit.Data.HasPhobia(phobia))
+                unit.Data.ActivePhobias.Add(phobia);
 
             EventBus.Publish(new PhobiaGainedEvent
             {
@@ -185,7 +201,8 @@ namespace KindredSiege.Battle
                 PhobiaName = phobia.ToString()
             });
 
-            Debug.Log($"[Phobia] {unit.UnitName} gained phobia from Dread Contest: {phobia}");
+            string traumaTag = unit.Data.IsTraumatised ? " [TRAUMATISED]" : "";
+            Debug.Log($"[Phobia] {unit.UnitName} gained phobia from Dread Contest: {phobia} (total: {unit.Data.ActivePhobias.Count}){traumaTag}");
         }
 
         // ════════════════════════════════════════════

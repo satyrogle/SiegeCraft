@@ -197,14 +197,36 @@ namespace KindredSiege.City
         /// </summary>
         public int DreadContestBonus => _exposure >= ThresholdScholar ? 2 : 0;
 
-        /// <summary>
-        /// Danger Scaling: Extra traits awarded to rivals at Adept+ tier.
-        /// </summary>
-        public int ExtraRivalTraits => _exposure >= ThresholdAdept ? 1 : 0;
+        // ════════════════════════════════════════════
+        // MYTHOS ESCALATION COSTS (GDD §13.2)
+        // Each tier adds danger alongside power. Queried by RivalryEngine and BattleManager.
+        // ════════════════════════════════════════════
 
-        /// <summary>
-        /// Power Scaling: Investigation analyses are free at Scholar+ tier.
-        /// </summary>
+        /// <summary>Acolyte+: Rivals spawn with +1 extra trait.</summary>
+        public int ExtraRivalTraits => _exposure >= ThresholdAcolyte ? 1 : 0;
+
+        /// <summary>Acolyte+: Grunts spawn with +10% bonus HP.</summary>
+        public float GruntHPBonus => _exposure >= ThresholdAcolyte ? 0.10f : 0f;
+
+        /// <summary>Scholar+: New rivals start at Lieutenant rank instead of Grunt.</summary>
+        public bool RivalsStartLieutenant => _exposure >= ThresholdScholar;
+
+        /// <summary>Adept+: Undying return chance is doubled.</summary>
+        public bool DoubleUndyingChance => _exposure >= ThresholdAdept;
+
+        /// <summary>Adept+: Rivals adapt faster (gain traits after 1 encounter instead of 2).</summary>
+        public bool FasterAdaptation => _exposure >= ThresholdAdept;
+
+        /// <summary>Seer+: ALL rivals have Horror Rating (minimum 1).</summary>
+        public bool AllRivalsHaveHorrorRating => _exposure >= ThresholdSeer;
+
+        /// <summary>Seer+: Newly recruited units suffer -10 max sanity.</summary>
+        public int RecruitSanityPenalty => _exposure >= ThresholdSeer ? 10 : 0;
+
+        /// <summary>Beyond 100+: Rivals spawn as Overlord.</summary>
+        public bool RivalsStartOverlord => _exposure >= 100;
+
+        /// <summary>Scholar+: Investigation analyses are free.</summary>
         public bool FreeAnalyses => _exposure >= ThresholdScholar;
 
         // ════════════════════════════════════════════

@@ -32,7 +32,14 @@ namespace KindredSiege.Rivalry
                     RivalRank.Overlord    => 4,
                     _                     => 0
                 };
-                return IsUndying ? baseRating + 2 : baseRating;
+                int rating = IsUndying ? baseRating + 2 : baseRating;
+                // Seer+ Mythos (GDD §13.2): ALL rivals have minimum Horror Rating 1
+                if (rating == 0 && KindredSiege.City.MythosExposure.Instance != null &&
+                    KindredSiege.City.MythosExposure.Instance.AllRivalsHaveHorrorRating)
+                {
+                    rating = 1;
+                }
+                return rating;
             }
         }
 

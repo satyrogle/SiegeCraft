@@ -62,7 +62,8 @@ namespace KindredSiege.Core
     {
         public string       AssetName;          // UnitData.name (Unity asset file name)
         public int          FatigueLevel;
-        public int          ActivePhobia;       // PhobiaType cast to int
+        public int          ActivePhobia;       // DEPRECATED — kept for backwards compatibility with old saves
+        public List<int>    ActivePhobiaList;   // PhobiaType cast to int — supports stacking (GDD §5.5)
         public int          MaxSanityPenalty;
         public int          ExpeditionCount;
         public List<int>    UnlockedTalentIds;  // TalentNodeId cast to int (JsonUtility-safe)

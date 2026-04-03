@@ -139,11 +139,16 @@ namespace KindredSiege.Battle
                 if (unit.UnlockedTalents != null)
                     foreach (var t in unit.UnlockedTalents) talentIds.Add((int)t);
 
+                var phobiaInts = new List<int>();
+                if (unit.ActivePhobias != null)
+                    foreach (var p in unit.ActivePhobias) phobiaInts.Add((int)p);
+
                 list.Add(new UnitSaveEntry
                 {
                     AssetName         = unit.name,
                     FatigueLevel      = unit.FatigueLevel,
-                    ActivePhobia      = (int)unit.ActivePhobia,
+                    ActivePhobia      = (int)unit.ActivePhobia, // Backwards compat
+                    ActivePhobiaList  = phobiaInts,
                     MaxSanityPenalty  = unit.MaxSanityPenalty,
                     ExpeditionCount   = unit.ExpeditionCount,
                     UnlockedTalentIds = talentIds,
@@ -177,7 +182,17 @@ namespace KindredSiege.Battle
                     var unit = System.Array.Find(recruitCatalog, u => u != null && u.name == entry.AssetName);
                     if (unit == null) continue;
                     unit.FatigueLevel     = entry.FatigueLevel;
-                    unit.ActivePhobia     = (PhobiaType)entry.ActivePhobia;
+                    // Load phobias — prefer new list format, fall back to legacy single-phobia
+                    unit.ActivePhobias.Clear();
+                    if (entry.ActivePhobiaList != null && entry.ActivePhobiaList.Count > 0)
+                    {
+                        foreach (int id in entry.ActivePhobiaList)
+                            unit.ActivePhobias.Add((PhobiaType)id);
+                    }
+                    else if (entry.ActivePhobia != 0)
+                    {
+                        unit.ActivePhobias.Add((PhobiaType)entry.ActivePhobia);
+                    }
                     unit.MaxSanityPenalty = entry.MaxSanityPenalty;
                     unit.ExpeditionCount  = entry.ExpeditionCount;
 

@@ -22,8 +22,34 @@ namespace KindredSiege.Battle
         /// <summary>
         /// Return the BTNode branch for a given gambit type.
         /// Returns null for GambitType.None (no injection).
+        /// When the "TheRivalKnows" mutation is active, the first Gambit
+        /// executed in the battle is countered and fails silently.
         /// </summary>
         public static BTNode GetGambit(GambitType type)
+        {
+            BTNode raw = GetGambitRaw(type);
+            if (raw == null) return null;
+
+            // Mutation: TheRivalKnows (Void) — rival reads your first Gambit and counters it.
+            if (KindredSiege.Modifiers.MutationEngine.Instance != null &&
+                KindredSiege.Modifiers.MutationEngine.Instance.HasMutation(KindredSiege.Modifiers.MutationType.TheRivalKnows))
+            {
+                return new ActionNode($"RivalKnows_{raw.Name}", ctx =>
+                {
+                    if (!ctx.Has("TheRivalKnowsTriggered"))
+                    {
+                        ctx.Set("TheRivalKnowsTriggered", true);
+                        UnityEngine.Debug.Log($"[Mutation] THE RIVAL KNOWS: {raw.Name} was countered!");
+                        return NodeState.Failure;
+                    }
+                    return raw.Tick(ctx);
+                });
+            }
+
+            return raw;
+        }
+
+        private static BTNode GetGambitRaw(GambitType type)
         {
             return type switch
             {

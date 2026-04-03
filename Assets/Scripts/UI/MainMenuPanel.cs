@@ -1,5 +1,6 @@
 using UnityEngine;
 using KindredSiege.Core;
+using KindredSiege.Battle;
 
 namespace KindredSiege.UI
 {
@@ -27,7 +28,7 @@ namespace KindredSiege.UI
         private GUIStyle _labelStyle;
 
         private const int PanelW = 480;
-        private const int PanelH = 440;
+        private const int PanelH = 520;
 
         private void Awake()
         {
@@ -122,10 +123,27 @@ namespace KindredSiege.UI
 #endif
             }
             GUI.color = Color.white;
+            iy += 12;
+
+            // ── Mercy Ledger (cross-run stats) ──
+            if (MercyLedger.TotalDecisions > 0)
+            {
+                GUI.color = new Color(0.25f, 0.40f, 0.55f, 0.5f);
+                GUI.DrawTexture(new Rect(ix, iy, lw, 1), Texture2D.whiteTexture);
+                GUI.color = Color.white;
+                iy += 10;
+
+                GUI.Label(new Rect(px, iy, PanelW, 16), "— The Mercy Ledger —", _subtitleStyle);
+                iy += 22;
+
+                string ledgerText = $"Saved: {MercyLedger.UnitsSaved}   |   Lost: {MercyLedger.UnitsLetDie}   |   {MercyLedger.Disposition}";
+                GUI.Label(new Rect(px, iy, PanelW, 16), ledgerText, _labelStyle);
+                iy += 20;
+            }
 
             // Version / flavour at the bottom
             iy = py + PanelH - 32;
-            GUI.Label(new Rect(px, iy, PanelW, 20), "v0.3  —  Phase 3", _labelStyle);
+            GUI.Label(new Rect(px, iy, PanelW, 20), "v0.4  —  Phase 6", _labelStyle);
         }
 
         private void EnsureStyles()
