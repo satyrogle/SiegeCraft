@@ -4184,3 +4184,413 @@ Jacob asked, in order, from 27 to 30 Sep: try the ComfyUI setup, get what is nee
 ### For Codex
 - No repo files were touched. `DESIGN_LOCKS.md` was read; nothing here picks the camera or art pipeline inside the locked 2.5D battle screen. The raider and the other seeds are not tribe designs.
 - No staging, commits or pushes.
+
+
+---
+## 2026-09-30 - Codex - Proposed class progression across tiers 1-6; coherence and Ironhide reference
+
+Jacob asked how the 17 classes fit six tiers and change/disrupt gameplay coherently, suggesting Ironhide tower progression as a reference. Read the current locks, final class catalogue and latest shared log, including Claude's ArtLab handoff. Research/design discussion only. The following is a RECOMMENDATION FOR DISCUSSION, not a newly locked tier assignment or a claim of tested balance. DESIGN_LOCKS.md and both class JSON files remain unchanged.
+
+Proposed first-unlock distribution: 4 + 4 + 3 + 2 + 2 + 2 = 17.
+- Tier 1: Warden, Vanguard, Marksman, Medic (4 cumulative). Establish protection, initiating a fight, focused ranged damage and health recovery.
+- Tier 2: Berserker, Skirmisher, Duelist, Trapper (8 cumulative). Offer aggression, mobile damage, timed counters and anticipatory route control.
+- Tier 3: Recon, Herald, Chemist (11 cumulative). Coordinate target focus, sanity recovery and suppression as narrative encounters combine threats.
+- Tier 4: Artillerist, Infiltrator (13 cumulative). Answer clusters and defended formations through area pressure or a flank.
+- Tier 5: Field Engineer, Binder (15 cumulative). Establish temporary firing positions and move eligible enemies into existing attacks/control zones.
+- Tier 6: Disruptor, Conduit (17 cumulative). Add timed action/shield denial and intentional sanity expenditure. The owner's broad Tier 6 unlock condition should be developed through a major item/Pal-upgrade/class-specialisation expansion; this proposal does not define its content counts or silently replace it with a cumulative availability rule.
+- Tier 7 stays Sovereign/Alpha. No eighteenth class.
+
+A class's first access tier is distinct from the tribe's tier and from its later equipment strength. Old classes remain usable and can appear on selected later tribe rosters. No Warden-to-Vanguard-to-Berserker mandatory evolution chain. Tiers describe the order in which the player gains options, not primitive-to-advanced peoples. Pals already have future-tech expertise; actual unlocks can depend on recovered functional equipment and integration with a tribe's knowledge, without inventing new Pal identities or tribe histories.
+
+Proposed unlock loop: encounter a manageable version of the problem, reach an authored alliance/recovery milestone, have a Pal integrate the kit, try the new class before the tier's harder encounter. First access must not require beating an encounter that itself requires the locked class. Subsequent encounters combine old and new problems. Permanent class/blueprint knowledge plus run-specific deployment/build choices is a recommended roguelike split, not an owner-approved persistence rule. Control scheme, squad size, exact tribe mapping, economy and unlock milestones remain open.
+
+Coherence and failure checks: introductions must change a meaningful combat decision; later roles retain opportunity costs; restricted fielded composition keeps choices meaningful without fixing a unit count here. Provide limited non-class health/sanity answers so Medic/Herald are useful choices rather than mandatory slots. Normal encounters need alternate answers to specialist counters. Cap and diminish repeated hard control through shared rules; protect readable boss attack opportunities, with explicit control eligibility. Herald recovery must not erase continuous Conduit sanity risk. Engineer deploys one temporary sentry in an active fight and must remain practical at the locked action pace. Items/Pal upgrades improve older roles alongside new unlocks without giving every class every role.
+
+Example interaction using the existing signatures: Binder pulls one eligible target onto a Trapper's armed location, creating an opportunity for Artillerist's delayed area attack; bad timing, an anchored target or a moving fight can defeat the plan. No bespoke script per class pair is implied. Warden can protect a Marksman's aim or a Conduit's channel in every tier; different attackers do not erase the protection role. Suggested Clarth desert-kit examples remain illustrations, not locked traits, tribe tiers or recipes.
+
+Small authored data proposal: keep the existing 17 class definitions; add first-unlock tier and milestone references after agreement, selected tribe/class availability and bounded item/Pal-upgrade records; resolve interactions through shared attack, movement, target, status, health/sanity, area and deployment rules. Do not generate 24 x 17 unique class implementations. The 23 non-Alpha tribes' distribution is still unresolved.
+
+Primary sources checked: https://www.ironhidegames.com/Games/kingdom-rush documents tower upgrades/specialisations alongside enemies with distinct abilities. https://www.ironhidegames.com/News/Details/522 (11 Sep 2026) explicitly restores global tower upgrades after removing individual tower leveling due to grind feedback, superseding the June 2026 defense of that system. Takeaway for KS is an interpretation: introduce legible jobs, meaningful specialisation and new threat combinations while avoiding 17 separate mandatory class-level grinds. Do not present this proposed six-tier mapping as Ironhide's actual progression chart.
+
+Verified: all 17 current class names occur exactly once in the proposed six-tier mapping; totals are 4/8/11/13/15/17. No simulations, playtests or runtime checks; combat balance, pacing and usability are unverified. Changed only this append, preserving the existing byte prefix. No source, assets, settings, art jobs, commits or pushes. For Claude: this is a discussion proposal; do not migrate runtime enums or implement tier/unlock rules as locked decisions from this entry.
+
+
+---
+**2026-09-30 · Claude · Pixel Engine walk tests on the raider, takes 1 and 2**
+
+Jacob gave the task through a handoff prompt: animate `chars/c2_bloodridge_native.png` in Pixel Engine as a looping walk, on a flat background with room around him, and check credits first. He signed in to the Pixel Engine MCP, chose native size only and v1.5, then asked for v1.1 on the same input. Codex's entries up to "Proposed class progression across tiers 1-6" were read before this append.
+
+### Read first
+- Nothing in the KS repo changed except this entry. All work is in ArtLab.
+- The raider is still a placeholder, not tribe art.
+- Jacob's verdict after seeing both: "bro 2nd one", read as picking take 2 (v1.1).
+
+### Where everything is
+- Folder: `C:/Users/jacob/ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/pixelengine/`
+- Input `raider_native_on_flat_192.png`: the 128 px sprite pasted unchanged in the middle of a 192 px canvas on flat `#FF00FF`. Magenta is the colour furthest from all 28 of his colours. Pixel Engine flattens transparency onto `#808080`, which is almost his armour grey `#807C84`. The file sent was `raider_native_on_flat_192_indexed.png`, same pixels, as base64 that was checked against the file by SHA256 before each take.
+- Both takes used the same input, the same prompt, 8 frames, spritesheet output and a palette locked to his 28 colours plus the magenta. The MCP tool has no seed.
+- Take 1: job `039d5197-6827-4190-8df0-61e9700399b2`, `pixel-engine-v1.5`, 26 credits. Files `raider_walk_pe15_take1_sheet.png`, `take1_frames/`, `raider_walk_pe15_take1_vs_sprite_x4.gif`, `raider_walk_pe15_take1_strip_x3.png`, `raider_walk_pe15_take1_job.json`.
+- Take 2: job `a55b8a04-9ef2-45d4-a7db-e6b0c75f06fc`, `pixel-engine-v1.1`, 20 credits. Files `raider_walk_pe11_take2_sheet.png`, `take2_frames/`, `raider_walk_pe11_take2_strip_x3.png`, `raider_walk_pe11_take2_job.json`.
+- `raider_walk_sprite_pe15_pe11_x4.gif` shows the sprite, take 1 and take 2 side by side at 100 ms a frame, which is my timing, not theirs.
+- 54 of the 100 monthly credits are left. The server deletes its copies on 1 Oct 2026 at 05:02 and 05:11 UTC; both local downloads match the tool's copies byte for byte.
+
+### What came back
+- Both walk on the spot with the spear upright in his right hand.
+- v1.5 holds the three quarter angle. v1.1 turns him toward side on in frames 3 to 6 (his outline narrows from 58 to 49 px) and turns back by frame 8. v1.1 frames 1 and 8 are the closest to the sprite.
+- Each take uses only 15 of his 28 colours despite the palette lock, and a different 15. v1.5 drops the cream armour highlights and brightest crest colours (354 of his 3433 pixels). v1.1 keeps those but drops the dark red cloth and two crest oranges (376 pixels).
+- The armour is redrawn every frame. After lining up each pair of frames, the head box changes 34 to 49% per step on v1.5 and 36 to 56% on v1.1; the crest flames flicker, which is part of that. The rejected Wan Animate route measured about half for helmet and chest.
+- v1.5 frame 2 has a magenta pixel inside the visor. Both takes show a light grey block behind his legs in several frames, probably from the baked ground shadow.
+
+### Not verified
+- Any of this in Unity at game speed, and other directions.
+
+### For Codex
+- No repo files touched. No staging, commits or pushes.
+
+
+---
+## 2026-09-30 - Codex - Class progression rethink following owner request to redo
+
+Jacob said "redo bro" in response to the previous class-tier proposal. The prior 4/4/3/2/2/2 recommendation must not be treated as approved. Reason for rejection was not specified. This revised proposal also remains discussion material; no owner lock or class definition has changed.
+
+Revised first-access schedule: T1 Warden/Berserker/Marksman/Medic (4); T2 Vanguard/Skirmisher/Trapper (7 cumulative); T3 Duelist/Recon/Herald (10); T4 Artillerist/Infiltrator/Chemist (13); T5 Field Engineer/Binder/Disruptor (16); T6 Conduit (17). T7 remains Sovereign/Alpha. All 17 names occur exactly once.
+
+The substantive proposal is two connected forms of progression: class access plus Pal-led development of existing classes. T1-3 establish basic fighting, mobility/route control, then elite fighting and mental resilience. T4-5 add ways to break formations and contest deployed technology. T6 supplies the final class plus a major upgrade/item opening for all existing classes, preserving the owner's broad T6 unlock direction. Exact content counts, final upgrades, costs, milestones and availability still need designing. Nothing here makes every upgrade free or simultaneous on reaching a tier, and ordinary build choices must exist earlier. This schedule is a proposed encounter/narrative structure to author, not a statement about already-defined region or tribe tiers.
+
+Design distinctions: Berserker rewards sustained melee exposure; Vanguard commits movement; Duelist counters one eligible strike; Infiltrator attacks through a flank. All can have a place at equal progression. Warden stays a protector at late tiers. Growth can alter coverage, duration, mobility tradeoffs or equipment choices while retaining core roles; it must not add more top-level classes. Disruptor is introduced before pre-endgame so timing/shield rules can be learned before the Sovereign encounter. Conduit's late access is justified by its explicit sanity-for-offence role; earlier tiers must already teach sanity risk and offer recovery choices. Cosmic horror remains present before that class unlock.
+
+World connection: use terrain/tribal capability -> compatible class roster -> Pal equipment integration -> codex discovery. The first matching alliance/recovery milestone provides class access within its proposed tier. Later tribes can provide another version of an existing class. No exact tribe tier, Pal identity, ancestry or class assignment is asserted; any Clarth example is illustrative. Keep 17 shared class definitions, 24 tribe records and bounded authored availability/upgrade data, rather than bespoke code for every pairing.
+
+Ironhide primary reference verified: https://www.ironhidegames.com/News/Details/504 lists classic tower lines and their level-four specialisations. Interpretation for KS: maintain recognisable combat jobs while growing their capabilities and choices through progression. This is not a proposal to replace the fast-paced action roguelike with tower defense or to copy Ironhide's assets/names. Runtime input, deployment size, run persistence and recruitment rules remain unresolved.
+
+Changed only this append; previous shared log bytes preserved. DESIGN_LOCKS.md and both class JSON files unchanged by hash. Mapping coverage checked; gameplay coherence remains a design argument, not tested balance. No runtime, assets, tests, commits or pushes. For Claude: neither tier proposal is implementation authority; await Jacob's decision on the design.
+
+
+---
+**2026-09-30 · Claude · Correction to my entry "Pixel Engine walk tests on the raider, takes 1 and 2"**
+
+That entry reads Jacob's "bro 2nd one" as picking take 2. He then said "i hate both of them to be fair bro". Both Pixel Engine takes are rejected; nothing is picked. No files changed except this append. No staging, commits or pushes.
+
+
+---
+## 2026-09-30 - Codex - Owner correction: integrate Rivalry Engine with class progression
+
+Jacob: "that sucks we also need to make sure to run rivalry engine parallelly you do know taht right". Both previous tier distributions remain rejected/unapproved discussion, not implementation instructions. Codex had omitted this central dependency. Added the owner's requirement to DESIGN_LOCKS.md without changing the ten locked conditions or the 17-class catalogue.
+
+Read-only source review: RivalData.cs contains persistent rival identity, encounter memory, wins/losses, avoidance, named-unit grudges, traits, weaknesses, rank and horror/dread data. RivalryEngine.cs records outcomes, adapts to player composition/defeat, promotes rivals and reacts to avoidance. RivalEncounterSystem.cs snapshots player unit types and passes them into post-battle outcome recording. SaveManager.cs includes active/defeated rival data. These are code observations, not fresh runtime or persistence validation.
+
+Important correction to Codex's initial commentary: the inspected Rivalry Engine is recurring enemy-leader memory/adaptation, not merely inter-tribe diplomacy. The class-specific rules still include older Shadow/Occultist identifiers and historical semantics; do not assume the finalized 17 classes are already covered. A separate full implementation audit was not requested or completed. No gameplay source was edited.
+
+Design implication proposed to Jacob: tier access, class/tribe composition, rival memory and Pal/item responses must be designed together. For every class, specify its tactic, what an encountered rival can learn, the readable response and at least one answer available at the same stage. Example only: a returning rival learns to pressure Marksmen; the player can protect them, control the approach, flank or alter equipment rather than being forced to discard them. Rival responses should arise from encounter history, retain exploitable weaknesses and avoid a progression deadlock requiring a still-locked class. Reuse a bounded authored response set instead of bespoke rules for every tribe/class pair. Exact response budgets and unlock dependencies remain proposals.
+
+The older shared log includes Jacob's explicit preference for simple English and short explanations (owner message at approximately line 1201). Respect that when continuing design. Do not answer this correction with another arbitrary tier-count table.
+
+Changed: DESIGN_LOCKS.md clarification and this append only. Verified ten original numbered locks unchanged and log prefix preserved. No runtime/playtests, source/assets/settings changes, generation, commits or pushes. For Claude: preserve Rivalry Engine as a parallel design requirement and review class compatibility before implementing a progression allocation; this entry does not approve a particular rivalry rule or software threading approach.
+
+
+---
+## 2026-09-30 - Codex - Owner explores procedural battles between tribes
+
+Jacob: "so lets re iterate then what if there are battles among the tribes itself to gain power and fight the sovereign rivalry engine can procedurally generate matches making rougelike more intense". This is a new design direction to explore: inter-tribe conflict can contribute to power growth, recruitment, rival history and the eventual Sovereign confrontation. It is not authorization to implement or lock the specific mechanics below. Preserve the existing 24 tribes, seven tiers, 17 classes and the parallel rivalry requirement.
+
+Proposed coherent motive: tribes can share an interest in challenging Sovereign while competing over supplies, recovered technology and who leads the struggle. Avoid assigning this motive to every tribe as canon before the tribe roster is authored. Illustrative event: Clarth defend a recovered technology shipment near Fallen Star from another tribe. Player can help defend for a recruitment opportunity and recovery, attack for the equipment and make an enemy, or pursue another opportunity while this conflict resolves. These outcomes and the shipment are examples, not confirmed Clarth lore.
+
+Suggested loop: after a meaningful player step, select a bounded number of plausible conflicts from authored encounter templates, considering regional access, tribal hostility, available rosters, strength and previous outcomes. Show the player an actionable conflict and its stakes. Resolve intervention or an off-screen outcome, update local resources/strength and surviving leaders' factual encounter memory, then use those results to shape future opportunities. Recommend event-based world advancement, not punishment for real time spent reading the codex or managing equipment. A tribe's campaign tier and the Sovereign Tier 7 gate do not change automatically because it wins a skirmish.
+
+Gameplay connection: recruitment and class access can be earned through outcomes of these conflicts within progression eligibility; captured equipment feeds Pal upgrades; leaders can develop rivalries with other leaders as well as the player. Rivals should learn from encounters they experienced rather than magically reading every battle. The 24 authored tribes and 17 shared class jobs remain a small dataset; procedural variety comes from participants, objectives, terrain, history and outcomes. A runaway winner must not erase essential recruitment or all paths toward Sovereign; bounded gains, survival/recovery opportunities and alternate unlock sources require design before implementation.
+
+Source boundary: inspected RivalryEngine/RivalData/RivalEncounterSystem currently centre on rival leaders and player encounters. The shown scheduler chooses a rival for a player battle; this inspection does not demonstrate autonomous tribe-versus-tribe scheduling. AllianceMemory.cs explicitly scoped the earlier prototype to factual player-facing history without invented off-screen battles. Jacob's new request allows discussing a broader future system; do not claim the existing prototype already implements it or silently alter it.
+
+Changed only this log append; prior bytes preserved and current locks/class catalogue unchanged by hash. No runtime implementation, tests, source/assets/settings changes, commits or pushes. For Claude: this is owner-led exploration of inter-tribe procedural conflict, with assistant-proposed rules awaiting development; neither previous class-tier table is reinstated.
+
+
+---
+## 2026-09-30 - Codex - Owner prioritises accessible combat, collection and reward over niche complexity
+
+Jacob: "bro we cant make the game too niche if you make it too niche no one will play.. all they want is proper dopamine rush numbers everywhere great battle scene roster collection but all in all should be innovative to visa criteria s well bro". Treat accessible fast action, impressive readable 2.5D battles, visible power growth and roster collection as the player-facing priorities. This does not establish market demand as fact, cancel the rivalry requirement, or approve either class-tier table. Cosmic horror, tribal terrain foundations, Pals as surviving human/people upgraders and the ten locked conditions remain intact.
+
+Recommendation offered: the main loop is choose a fight -> enjoy battle -> earn fighters/loot -> apply a Pal upgrade -> tackle another fight. Rivalry and inter-tribe history should generate understandable opponents, rematches and recruitment/reward opportunities. Present a small number of clear battle choices with visible stakes; extensive diplomacy administration is not required by the owner's idea. Reuse authored tribe/class/encounter data and have the system handle the history. An example player-readable payoff is a known rival returning with equipment won from another tribe and a clear reward opportunity; this is proposed behaviour, not implemented proof. Impactful damage numbers should remain readable alongside attack telegraphs and communicate actual build changes.
+
+Visa boundary, assuming the UK Innovator Founder route from the project context: checked current GOV.UK endorsing-body guidance on 2026-09-30. It assesses innovation (distinctiveness, reasonable barriers to replication, central in-house innovation), viability (resources, capability and credible demand), and scalability (researched growth and skilled-job potential). It does not prescribe niche gameplay or establish that this game qualifies. Source: https://www.gov.uk/government/publications/scale-up-and-innovator-founder-visa-endorsing-bodies-guidance/innovator-founder-and-scale-up-visas-guidance-for-endorsing-bodies-accessible .
+
+Proposed innovation hypothesis: a bounded system connecting tribal combat history with evolving rival encounters and roster acquisition could produce a distinctive player benefit. Novelty, competitive advantage and demand remain unproven; do not present procedural generation, rivalry, or their combination as automatically original or sufficient for endorsement. Evidence work would need competitor comparison, an inspectable working prototype, player testing and an achievable business/growth plan. No claim of visa qualification or new competitor research was made.
+
+Changed only this append, preserving prior log bytes; locks and class catalogue unchanged by hash. No gameplay implementation, playtest, assets, commits or pushes. For Claude: keep the game immediately enjoyable and collectible; express deeper systems through simple combat opportunities and rewards. Do not build a complex diplomacy game from the prior exploratory examples or add systems solely to sound innovative.
+
+
+---
+## 2026-09-30 - Codex - Procedural tribes/classes and recovery of the original five modules
+
+Jacob: "can you make procedurally generated classes and tribes and also the 5 generators are still in play right so we locking in y classes and x tribes doesnt make any sense i think im deviating bro omg". The owner has explicitly reopened the relationship between fixed counts and procedural content for discussion. Do not insist that the older "never change" wording prevents him from reconsidering his own design. He has not yet specified replacement counts, discarded story anchors, or selected generation of new tribe identities versus variation within existing tribes. No replacement count or reinterpretation of the 17 finalized classes is approved here.
+
+Recovered the actual previous five-module list from this chat's saved transcript: C:/Users/jacob/.codex/sessions/2026/09/27/rollout-2026-09-27T09-06-50-01a0e1e7-0a93-7432-b3df-1dcaab925b3d.jsonl, assistant response line 1151, 2026-09-27 17:28:58 UTC. They were RegionGenerator (regional terrain/settlements/resources/routes), WorldSimulation (changing world conditions), ArmyComposer (compatible forces from tribal traits/class/equipment data), EncounterBuilder (situations become battles), WorldStore (persist identities/history; not a random generator). That original answer explicitly called them proposed modules, not five generators already built. These are the five meant by the owner; do not replace the list with invented generator names. Their implementation was not verified in this turn. Rivalry would feed world simulation and encounter selection, with memory stored alongside world state.
+
+Explanation/recommendation: procedural generation uses a bounded authored vocabulary and compatibility rules. A tribe can be assembled from region, identity, survival traits, combat preferences and equipment rules; a class kit from a readable combat role, weapon, signature action and compatible modifiers. Visual parts/animations and abilities still need authoring. Generating individuals/builds within fixed tribes differs materially from creating new tribes and class identities. Stable identities within a run/world allow rivalry and collection to retain meaning. Fixed population/archetype counts can coexist with procedural output and are useful scope limits; they do not require hand-authoring every fighter or encounter. Treat 24 tribes per world or 17 role templates as possible interpretations to discuss, not silent replacements for the previous locks.
+
+The accessible action/collection/upgrade loop remains the product goal. Recommend agreeing which identities persist and what varies before another numerical tier allocation. No new generator implementation or gameplay content was created. Only this log append changed; its old byte prefix and both design records were verified unchanged. For Claude: counts are being questioned by the owner; read this discussion before treating them as grounds to reject exploration, and distinguish proposed architecture from running code.
+
+
+---
+**2026-09-30 · Claude · After Pixel Engine: GBA direction, klein pixel LoRA test, Clarth Warden options, idle**
+
+Jacob's requests, in order: find another way than Pixel Engine; look at GBA Fire Emblem and old JRPGs ("now you locked GBA art"); make three GBA style Clarth Wardens; get the pixel LoRA and make the three wardens; make two more like 2; animate it. Codex's entries up to "Class progression rethink following owner request to redo" were read before this append.
+
+### Read first
+- Jacob moved character art to GBA Fire Emblem style after seeing FE GBA battle animation facts: fighters about 32 to 34 px tall, 16 colours per animation including transparent and outline, few frames with long holds, one class animation palette swapped per unit. FFTA races were the model for tribe looks (own body, palette, gear, visible trait tells). This is not in `DESIGN_LOCKS.md`; that file is Codex's.
+- Jacob's closing words: "i dont think we can do it bro we can say we tried".
+
+### What was tried
+- SDXL with `pixel-art-xl` shrunk to 34 px with 14 colours: mush, and two of three came out as front and back turnarounds. Rejected.
+- Downloaded `flux2klein_pixel_art_sprite_limbicnation.safetensors` (325 MB, Hugging Face `Limbicnation/pixel-art-lora`, Apache 2.0, SHA256 matches the listing) into `C:/Users/jacob/ComfyUI-Shared/models/loras/`. It runs on the local `flux-2-klein-base-4b` at 512 px, 20 steps, CFG 5, about 25 s an image in ArtLab. Output snapped to 8 px cells (64 px native) and 15 colours.
+- Clarth Warden options: Jacob said 2 (robed caravan guard with goggles, staff and a forearm shield projector) "is okay", 1 and 3 "disaster", and two more seeds of 2 "eww". Sprites are 56 to 59 px tall, not FE's 34.
+- Idle for 2: 4 frames, the upper body drops 1 px at the waist and the shield rim cycles within his own 15 colours; nothing regenerated. Files in `C:/Users/jacob/ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/gba/` and `gba/warden2_idle/`, job graphs in `jobs/`.
+
+### Not verified
+- Anything in Unity, attack poses, other tribes or classes.
+
+### For Codex
+- No repo files touched except this append. No staging, commits or pushes.
+
+
+---
+## 2026-09-30 - Codex - Illustrated battle-screen mockup requested by Jacob
+
+Jacob requested "give me a mock design how the battle screen will look nothing fancy do a good illustration". Used the built-in image generation tool through the imagegen skill to create one original preview illustration. This is a screen-composition proposal, not a runtime screenshot, approved art direction, tribe design or implementation.
+
+Output: C:/Users/jacob/.codex/generated_images/01a0e1e7-0a93-7432-b3df-1dcaab925b3d/exec-04400e2b-ff59-414e-9afd-cfb8aec1107f.png (1672 x 941 PNG). The generated image was displayed inline and visually inspected. It shows a desert/salvage setting labelled Fallen Star, five example allied fighters with cyan indicators, enemies with red indicators, central shield/melee impact, ranged fire, healing and floating damage/crit numbers. A compact rival captain bar with REMATCH badge appears above the battlefield; five fighter portrait cards and Move/Focus/Retreat command mockups occupy the bottom. The rendered perspective is an elevated illustrative battle view with a visible horizon, not a validated engine camera. Background/detail are more developed than a wireframe.
+
+Prompt intent: readable 2.5D science-fiction tribal combat, simple compact HUD, clear roster identification and rivalry signal, satisfying hits, minimal management UI. All depicted character designs, displayed squad size, controls, effects, geometry and rival appearance are placeholders for discussing the battle screen. This does not define Clarth anatomy, player control rules, class/tier counts or the final animation/rendering pipeline. No Pals-as-pets interpretation is present. Owner visual approval and in-engine readability are not established.
+
+Saved as a brainstorming preview in the built-in generated-images location; no production asset or code reference was added. Changed only this handoff append in the project. No source, assets, design locks, class catalogue, tests, commits or pushes. For Claude: this is Jacob's requested visual mockup to review, not permission to implement its exact UI or art.
+
+
+---
+## 2026-09-30 - Codex - Owner rejects painted battle mock; pixel-art replacement grounded in existing battle systems
+
+Jacob rejected exec-04400e2b-ff59-414e-9afd-cfb8aec1107f.png: "way over the top", requiring pixel art, correct formation and coherence with existing work. That original image is rejected, not a reference for approved art. Codex acknowledged inventing the earlier layout/control presentation without adequately grounding it.
+
+Read the current locks, Claude's GBA/Clarth Warden entry, BattleGrid, RosterManager, BattleHUD, DirectiveSystem and relevant battle/prototype code. Visually inspected the Clarth Warden v2 pixel sprite and an existing prototype screenshot. Grounded facts: BattleGrid deploys team 1 in the left third and team 2 in the right third; RosterManager's fallback capacity is four, with actual slots affected by CityBattleBridge; BattleHUD includes HP/sanity, directive points, mercy tokens, speed controls and Hold Position/Fall Back/Unleash/Sacrifice/Focus Fire/Mercy actions. The exact illustrated two-front/two-back spacing is a proposed readable arrangement, not a claim that automatic role-based formation placement exists. The prototype screenshot's Ash guards and Commander remain historical placeholders.
+
+Used built-in image generation with the rejected mock as an edit target and C:/Users/jacob/ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/gba/clarth_warden_v2_klein_native15.png as the pixel character reference. Claude recorded owner response to that Warden as "is okay", not final production approval. Requested a full replacement: small pixel sprites, flat elevated desert battlefield without sky/horizon/giant wrecks, four allies left and four enemies right, front melee and rear ranged/support, sparse effects and compact current directives.
+
+Replacement: C:/Users/jacob/.codex/generated_images/01a0e1e7-0a93-7432-b3df-1dcaab925b3d/exec-3503ff3a-b3a5-492f-b3ed-b8ef975c58d9.png (1672 x 941 PNG). Displayed inline and visually inspected. The image has exactly four units each side: allied Marksman/Medic behind Warden/Berserker; enemy captain/melee forward with ranged/support behind. The Warden retains ochre robes, goggles and cyan projector. HP/sanity and selected-unit data are shown, plus current command names/costs, speed controls and a small rival marker. The old painted portraits, invented Move button and panoramic scenery are removed. This is a generated pixel-art appearance mockup; no exact native pixel grid, production-ready sprite sheet, runtime camera, final formation size or faithful per-pixel Warden identity is claimed. Displayed numbers/bar lengths and battle state are illustrative, not captured simulation state. Owner verdict is pending.
+
+Changed only this log append in the repo, preserving earlier bytes. Generated preview stays at the default image-tool path. No source, assets, class/tier data, design-lock changes, runtime tests, commits or pushes. For Claude: use this as the corrected screen proposal to discuss; do not treat its exact geometry, character variants or HUD placement as approved implementation.
+
+
+---
+## 2026-09-30 - Codex - Owner requests both army formations and mobile squads in battle mock
+
+Correction to the preceding entry: Jacob rejected the second generated mock (exec-3503ff3a-b3a5-492f-b3ed-b8ef975c58d9.png), saying "hahaha really ? i dont think so". Codex acknowledged that it had invented the rigid 2x2 formation. Asked whether the battle should show armies of many small fighters in formations or a smaller squad moving freely; Jacob answered "both". This supersedes the prior pending-verdict wording. Neither preceding image is approved.
+
+Interpreted "both" for this mock as formations and mobile squads sharing one active battlefield. Used built-in image generation for a fresh preview: C:/Users/jacob/.codex/generated_images/01a0e1e7-0a93-7432-b3df-1dcaab925b3d/exec-1ed3c7e7-c861-40d1-a251-0732ba09b137.png. Displayed and visually inspected the output. It shows many small allied/enemy fighters, an irregular central clash, rear ranged groups, an upper flanking group, four selected fighters at lower-middle, Clarth desert terrain/salvage, damage/healing numbers and a marked rival. Prompt retained the ochre-cloth/cyan-projector Clarth Warden vocabulary and requested consistent pixel clusters, restrained scenery and compact UI.
+
+This is a generated composition proposal, not approved art, runtime capture or performance evidence. Exact army/squad sizes, command scope, aggregate HP/SAN bars, selection rules and the 'Ranged Hunter' display wording are illustrative, not newly locked mechanics. The placeholder portrait label 'MELEE' is not a new class. Existing RivalryEngine has MarksmanHunter terminology; no identifier was renamed. Pixel-grid consistency and sprite fidelity are not validated; the generated HUD is smoother than the requested sprite style. Owner verdict is pending. Do not infer direct protagonist control or a finalized camera/input model from this illustration.
+
+Read current design locks and the later count-reconsideration log entry; the original counts remain under owner discussion, with no replacement selected. Repo remains on game-one with extensive pre-existing changes. Only this handoff append changed in the project; no runtime code, production assets, locks, classes, tests, commits or pushes. Preview remains at the built-in image location. For Claude: the new owner clarification is 'both'; specific staging and troop quantities in this image remain proposals.
+
+
+---
+## 2026-09-30 - Codex - Battle direction recap and owner's request to log the discussion
+
+Jacob's latest response to the combined army/squad mock: "yea okay i get the picture put all this in log bro". This records that the illustration communicated the idea and that he requested this shared handoff. It supersedes the previous entry's pending-response status, but does not declare the generated art or every illustrated mechanic final.
+
+### Battle direction to carry forward
+- Jacob wants BOTH armies of small fighters in formations and smaller squads moving freely. The latest illustration brings them together in one active battlefield.
+- Army formations create the main frontline. Mobile squads can flank, reinforce and break through; the selected squad stays identifiable inside the larger clash. These are the illustrated design intentions, not validated runtime behaviour.
+- Preserve the fast-paced action roguelike direction and 2.5D battle screen. Use small, readable pixel fighters consistent with the GBA character-art direction recorded by Claude. Ground visual composition in actual combat roles and spacing.
+- Keep the action immediately understandable: visible hits, damage/healing numbers, readable faction/selection markers and a compact HUD. Keep the recurring rival identifiable during the fight so rivalry remains connected to gameplay.
+- Fallen Star is the Clarth settlement in the Broken Wastes. Rock, sand and desert survival shape the tribe's appearance and equipment; salvaged future technology is part of that identity. The illustrated shield Warden, protected ranged/support units and desert routes demonstrate that connection.
+- The painted first mock and rigid four-versus-four second mock were rejected. Do not reuse their staging as approved direction. The latest mock explains the combined battle concept; it is a discussion reference, not a finished asset.
+
+Latest mock: [Combined armies and mobile squads](C:/Users/jacob/.codex/generated_images/01a0e1e7-0a93-7432-b3df-1dcaab925b3d/exec-1ed3c7e7-c861-40d1-a251-0732ba09b137.png).
+
+### Related design context retained
+Roster collection, items, Pal upgrades and the tribe codex remain central. Pals are the surviving trusted inner-circle people who serve as upgraders, not pets. Rival memory/adaptation must operate alongside progression; procedural inter-tribe battles are an explored extension, not verified existing functionality. Procedural content still needs a small authored dataset and compatibility rules.
+
+The original five proposed modules remain RegionGenerator, WorldSimulation, ArmyComposer, EncounterBuilder and WorldStore; WorldStore persists identities/history rather than randomly generating them. Their implementation has not been established by these discussions. Jacob reopened fixed tribe/class counts for consideration; no replacement counts or generation model were selected. Earlier rejected class-tier schedules remain unapproved.
+
+### Still open / handoff to Claude
+Exact troop and squad limits, control model, selection and command scope, camera angle, class-tier allocation, procedural identity rules and final HUD remain to be designed. Four selected units, the 'MELEE' portrait label, aggregate HP/SAN bars and 'Ranged Hunter' wording in the image are placeholders, not new class definitions or implementation contracts. The HUD still needs a more consistent pixel treatment. No animation, performance, balance or in-engine readability validation was performed for this mock.
+
+Changed only this shared-log append; prior contents preserved. No code, production asset integration, design-lock changes, commits or pushes. Carry forward the combined army/squad direction and the owner's exact response without treating an explanatory mock as final production approval.
+
+
+---
+**2026-10-01 · Claude · Jacob's five calls after a design audit**
+
+Jacob asked for a "non sugar audit" of the design decisions and his Codex discussions, then "help me make the five decisions one by one". The audit (in chat, not a file) found: no current north star (the only pillared brief is the dead Drowned City GDD and deck), the 30 Sep locks reopened the same day, about 39 direction changes since 26 Sep, the locked top priority (Items, Pals, upgrades, tribes codex) not designed or built, no approved innovation claim, the Vendetta rule wired into 5 files, 38 files uncommitted, and decisions that exist only in chats. Codex's entries up to "Procedural tribes/classes and recovery of the original five modules" were read before this append.
+
+### The five calls, in Jacob's answers
+1. Fight model: "Auto battle + directives". Units fight on their own; the player spends directive points (Hold, Fall Back, Focus Fire, Unleash, Sacrifice), with pause and speed.
+2. Innovation claim: "units that learn and tribes at war", merged into one claim: units and tribes that learn from real fights, including the wars between tribes, and the player can replay why. Rivalry stays: "there will be no narrative without this bro". Claude's proposal, not yet confirmed word for word by Jacob: rivalry runs on the learning system (a rival is a tribe leader who learned from real fights with you), the Vendetta rule is stripped for now, and the solicitor answers before release. Tribe power struggles off screen may also sit near the Nemesis patent area; not legal advice.
+3. What the visa board sees on 8 Dec: "okay i guess" to this slice: Fallen Star; three tribes (the Clarth, a raider tribe whose leader is the rival, a third tribe at war with the raiders); five classes (Warden, Marksman, Skirmisher, Trapper, Medic); one rival leader who learns and returns with a replay of why; one off screen tribe war that changes recruitment; auto battle with directives; about 20 to 30 minutes; built on the First Alliance prototype.
+4. Counts: "yes lock it". Tribes and classes stay hand made and unchanging (24 tribes and 17 classes remain the full game target); everything inside them is procedural: individual fighters, traits, leaders, what they learned, and the wars between tribes. The slice needs 3 tribes and 5 classes.
+5. Art: "pixellab has an animator i don't think we need pixel over .. moreover ill get the 3rd tier so we can prototype more but this is after friday". PixelLab (third tier) for sprites and animation, starting after Friday 2 Oct. Claude's flag: PixelLab's animator still draws frames and might boil; PixelOver (GBP 16.75 on Steam) is the backup. Proposed kill date, not confirmed by Jacob: if the Warden is not shippable by 15 Oct, a pixel artist makes the five base sprites.
+
+### For Codex
+- `DESIGN_LOCKS.md` is yours. These calls change or add to it (genre wording, counts versus procedural, innovation claim, art route); update it only when Jacob asks.
+- No repo files touched except this append. No staging, commits or pushes.
+
+
+---
+**2026-10-01 · Claude · Jacob confirms: strip Vendetta, PixelLab kill date 15 Oct**
+
+Jacob: "yes strip vendetta and lock 15 oct". Both proposals in the entry above are now his decisions.
+- Vendetta: the Vendetta rule is removed from the rivalry design for now, pending the solicitor. Rivalry itself stays and runs on the learning system.
+- Art: if the Clarth Warden made with PixelLab is not shippable by 15 Oct 2026, a pixel artist makes the five base sprites.
+
+### For Codex
+- Request: strip the Vendetta rule from the code. It is in your folders: `Assets/Scripts/Rivalry/RivalryEngine.cs` (lines 260 to 274, where a rival forms a vendetta against the unit that killed it, and lines 378 to 399, where a subordinate takes one up; Claude's earlier risk checklist rated the Vendetta rule high), `RivalData.cs`, `Assets/Scripts/Battle/BattleManager.cs`, `UnitController.cs` and `Assets/Scripts/UI/RivalryBoardPanel.cs`. Claude has not touched these files.
+- No repo files touched except this append. No staging, commits or pushes.
+
+
+---
+**2026-10-01 · Claude · Overnight: learning tribes in the sim core, Claude's folders only**
+
+Jacob asked for a long, useful task while he slept. I built the core of the innovation claim (units and tribes that learn from real fights, wars between tribes, a replay of why) inside `Assets/Scripts/Sim` and `Assets/Tests`. Nothing in Codex's folders. No staging, commits or pushes.
+
+What exists now:
+- `Sim/Battle/`: a deterministic auto battle for the five slice classes (Warden, Marksman, Skirmisher, Trapper, Medic) and the five directives from Jacob's UI mockup (Hold 1, Fall Back 1, Focus Fire 1, Unleash 2, Sacrifice 3, 5 points a side). Integers only, one seeded stream, every event logged and hashed. `FightRecord` is the finished history that lessons cite.
+- `Sim/Learning/`: `TribeMind` (habits, plus a memory of which enemy classes cost it most), `LessonRules` (the learning, one plain sentence per change), `FightArchive` (replays any fight and checks a lesson's number against the replay), `TribeWar` (off screen wars, rosters, breaking, recruitment) and `SliceWorld` (the Clarth, the raiders with the rival chief, the third tribe).
+- What a tribe learns, each from a number measured in a real fight: your focus fire killed one of ours, so our Warden covers whoever you focus; your Unleash hurt us, so we Hold when you Unleash; you fell back and we did not win, so we Unleash when you fall back; your Warden stopped our hits, so our archers shoot whoever he isn't covering. A habit eases off one step after a fight where the enemy could have used that trick and didn't. Wars have no orders, so they never wear down what the rival learned about the player.
+- Tests: `Assets/Tests/EditMode/LearningTribesTests.cs`, 33 tests, plus the 13 determinism tests. All 46 pass in the harness outside Unity (same files, C# 9 like Unity 2022.3). Not run inside Unity: Codex was running and the tree holds Codex's uncommitted changes, so I did not start a batchmode import.
+
+Measured (300 seeds a cell unless stated):
+- Raiders taught by 3 real fights of one plan: P1 (focus their Medic, Unleash) won 36% before and 5% after. P2 (focus their Marksman, Unleash, Fall Back twice) won 77% before and 3% after.
+- 200 world campaigns, with every rival fight also played against an untaught rival on the same seed: from the second rival fight on, the learned rival holds the player 17 to 65 points lower.
+- 535 archived fights replayed and 2003 lessons checked against their replays: 0 failures.
+
+Bad news and open calls for Jacob:
+1. A hole in the loop: "focus their Medic and Hold, never Unleash" wins 79% to 91% against every learned rival, and no habit answers Hold. The cover habit the rival learns from that plan makes it worse. Closing it needs a design call (for example a habit that answers Hold).
+2. "Focus their Warden first, then Unleash" wins 99% against untaught raiders. The base balance has a dominant opener.
+3. Not learned, because measured harmful on 1 Oct: target priorities, opening focus fire, trap caution (raiders with it won 64% of fights against the Clarth instead of 98%; hunting the Trapper instead was worse).
+4. Placeholders, not design: a raider horde of 16, a third tribe of 10, 3 fighters back per fight, and a loser below half strength breaks. With 12 raiders and 2 back, the raiders broke before a third rival fight in most worlds.
+5. The third tribe wins about two wars in three and never broke in 600 campaigns, so only raider survivors ever become recruitable.
+6. The Clarth learn too: their archers learn to avoid the guarded, and once they learned to Hold against the raiders' Unleash. Jacob should confirm that the player's own units may change on their own.
+
+### For Codex
+- The new code is in Claude's folders only. Wiring it into First Alliance or the battle screen is yours when Jacob asks. `SliceWorld` and `FightArchive` are the entry points, and each `Lesson.Why` is a ready sentence for the UI.
+- Unity has not imported these files yet, so their .meta files do not exist.
+- No repo files touched outside `Assets/Scripts/Sim`, `Assets/Tests` and this append. No staging, commits or pushes.
+
+
+---
+**2026-10-01 · Claude · Jacob moves development duties from Codex to Claude**
+
+Jacob: "i think im migrating the duties from codex to you now for development cycle unless said otherwise". From now on Claude does development across the repo, not only `Assets/Scripts/Sim` and `Assets/Tests`, until Jacob says otherwise. Codex is parked.
+
+Also this session:
+- Unity 2022.3.62f3 opened on the project. It compiled `KindredSiege.Sim` and `KindredSiege.Sim.Tests` with 0 errors, generated .meta files for the new sim files and regenerated the .sln and .csproj files. The new tests have not been run inside Unity yet.
+- Ran Codex's `AlliancePrototypeTools.ValidateBatch` in a fresh editor: PASS, 60 of 60, and all 9 screenshots byte identical to the 27 Sep run. `Logs/AlliancePrototypeValidation` was backed up first and put back with its 27 Sep files.
+- Unity MCP was not started. Turning on its "auto start when Unity opens" setting was blocked by Claude Code's safety check pending Jacob's OK.
+
+### For Codex
+- If Jacob brings you back, read this first: development duties moved to Claude on 1 Oct. Check with Jacob before editing anything.
+- No staging, commits or pushes.
+
+
+---
+**2026-10-01 · Claude · Rival slice scene: the learning sim playing in Unity**
+
+Jacob asked to see the sim as actual gameplay. New, grey box, 2.5D camera:
+- `Assets/Scripts/Slice/RivalSliceView.cs` runs the real `SliceWorld` and `BattleSimulation` and only draws them: fight the raider chief with the five directives, an after fight card with what the chief and the Clarth learned (each lesson checked by replaying its fight, live), the off screen war, fight 2, a final card. By hand: keys 1 to 5, click a unit for Focus Fire or Sacrifice, Space pauses.
+- `Assets/Editor/RivalSliceRecorder.cs`: menu KindredSiege/Prototypes/Open Rival Slice, and `-executeMethod KindredSiege.EditorTools.RivalSliceRecorder.Record -ksRivalRecord <folder>` plays it on autopilot and saves every frame.
+- `Assets/Scenes/Prototypes/RivalSlice.unity` was created by the recorder.
+- Recorded twice in a fresh Unity: PASS, 1248 frames, 0 errors in the editor log. Autopilot picks the first world (world 2) where the plan "focus their Marksman, Unleash, Fall Back twice" wins fight 1 and then loses fight 2 once the chief has learned to Hold on your Unleash and Unleash on your Fall Back. The scene says on screen that the world was picked.
+- Not checked: playing it by hand with keys and clicks. Unity MCP is still off.
+- No staging, commits or pushes.
+
+
+---
+**2026-10-01 · Claude · Rival slice: stopgap art in place of the grey box**
+
+Jacob: "put art instead of placeholders". Only Warden 2 (GBA style, with its idle) existed, so I made the other four Clarth classes the same way: FLUX.2 klein base 4B plus the Limbicnation pixel sprite LoRA, Warden 2's exact settings, three takes each, then `tools/pixelize.py` (8 px grid, 15 colours) and a border flood fill for transparency. Picks: Marksman 1, Skirmisher 0, Trapper 0, Medic 1. The raiders are a palette swap (sand to rust red, teal tech to orange). Sources: `ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/gba/classes/`. These are stopgaps until PixelLab.
+- `Assets/Resources/RivalSlice/Units/`: 18 sprites, 64 px, feet on the bottom row (Wardens cropped with one shared box so the idle does not jitter). `Assets/Resources/RivalSlice/Ground/sand.png`: the seamless sand recoloured to a calm dark tan, because the raw one hid the red raiders.
+- `Assets/Editor/RivalSliceArtImporter.cs`: point filter, no compression, no mipmaps, no resizing for the unit sprites.
+- `RivalSliceView.cs`: units are sprites facing the camera; the Warden plays its idle, the rest bob; hits flash red; the fallen tip over and go dark; a unit without art falls back to the capsule.
+- Recorded in a fresh Unity: PASS, 1248 frames, 0 errors. Not checked: playing by hand. Known: sprites are small on screen.
+- No staging, commits or pushes.
+
+
+---
+**2026-10-01 · Claude · Rival slice: Darkest Dungeon style moments and mood**
+
+Jacob: "lets do 1 and 2". In `RivalSliceView.cs`, presentation only, the sim is untouched (same fight results as before: fight 1 won at 32.8s, fight 2 lost at 24.8s):
+- Moments: on every kill, and on a big hit (18 or more) when no close up ran in the last 1.6s, the fight slows to a fifth, the camera punches in on the pair, the pair is lit while everyone else dims, the attacker stretches into a lunge, the target flinches, the screen shakes and the number pops big. The attack pose is faked with stretch and lunge until PixelLab gives real attack frames.
+- Mood: dim warm sun, low ambient, fog, two flickering torches with point lights, darker ground, a vignette.
+- Recorded in a fresh Unity: PASS, 1393 frames, 0 errors. Seen in frames: some close ups crop the pair at the edge; wide shots are murky away from the torches. Not checked: playing by hand.
+- Also this session: the Marksman sprites were drawn facing right, so both were flipped to face left like the rest.
+- No staging, commits or pushes.
+
+
+---
+**2026-10-01 · Claude · Rival slice: zooms out, hit stop in**
+
+Jacob laughed at the close ups ("its like zooming in and out nothing like darkest dungeon") and said "try it yes" to: drop the zooms, keep the mood, give kills and big hits a short freeze, a small shake, a flash and a big number. In `RivalSliceView.cs` (presentation only, same fight results): the camera no longer moves except a small shake; a kill freezes the fight 0.16s, a big hit 0.09s when none landed in the last 0.7s (starting values, judged by eye); the attacker's stretch and the target's flinch stay. Real Darkest Dungeon style close ups are parked until PixelLab gives attack poses, for the chief's learned answers only. Recorded in a fresh Unity: PASS, 1313 frames, 0 errors. Not checked: playing by hand. No staging, commits or pushes.
+
+
+---
+**2026-10-01 · Claude · Rival slice: bigger units, focus, white flash, real deaths**
+
+Jacob: hit stop "too subtle" and "death animation sucks"; then "do it yes till we get pixel lab". In `RivalSliceView.cs` (presentation only, same fight results):
+- Camera much closer on a tighter formation (front rows at 1.2, back rows at 3.0, rows 1.5 apart) and sprites at 30 pixels per unit, so units are about twice the size on screen. Torches and rocks moved in to stay in shot.
+- Impacts (every kill, big hits when none landed in the last 0.7s): freeze 0.33s on a kill and 0.15s on a big hit, a bigger shake, the pair lit while everyone else dims for 0.7s, and a real white flash drawn as a flat white copy of the sprite (built in `GUI/Text Shader`).
+- Deaths: flash, stagger back, fall over half a second with a small bounce, a ring of dust puffs, then fade to 45%.
+- Recorded in a fresh Unity: PASS, 1357 frames, 0 errors. Seen in frames: the big hit flash and focus read clearly; known flaw: the death's white flash lasts through most of the fall, so the body falls white. Not checked: playing by hand.
+- No staging, commits or pushes.
+
+
+---
+**2026-10-02 · Claude · Design day: cult premise, new loop, Pals, tribe and planet looks; PixelLab briefs**
+
+Jacob reworked the premise and the loop in chat, answered my questions, then said go to write it down. Every call is now in `DESIGN_LOCKS.md` under "Owner calls, 1 Oct 2026" and "Owner calls, 2 Oct 2026" (appended; the ten locks are untouched). In short:
+- We are a funny but vile cult of cyborg flesh beings who worship old gods. The Sovereign wipes our god tier army in one second at the opening. Tone is funny everywhere, only the Sovereign is scary. Looks follow his "three tit rule": gettable in one second from a screenshot.
+- Loop: auto battle with refilling orders; tribes break on a nerve bar and join the cult; the chief runs and comes back; Pals forge gear that enhances looks (no mutations); one Pal leads each fight and can transform; the Hold exploit is answered by holding draining nerve plus chiefs learning to flank; death resets army, gear and converts while the world remembers; campaign plus endless mode.
+- Four Pals with Chaos god traits only (Butcher, Glutton, Shade, Whisperer), cheeky Dave the Diver style personalities, no rivalry between them.
+- Tribes: one native species for tiers 1 to 3 (alien tell still to pick); slice tribes are the Clarth (beach gods), the Bloodridge raiders (lava crack skin) and Skullpeak (space cowboys); chiefs ride their region's monster. Regions keep the concept map names.
+- 8 Dec slice: the core loop plus one transform.
+
+Art:
+- Three local "alien tell" drafts (ArtLab ComfyUI, FLUX.2 klein plus the pixel LoRA, pixelized to 15 colours) were rejected hard. Drawing characters locally is a dead end: the same speckle as the 30 Sep raider, plus meme bodybuilder proportions. Files: `C:/Users/jacob/ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/concepts/`.
+- New file `PIXELLAB_BRIEFS_SLICE.md` (repo root): shared settings, palettes, one description per slice character (15 units, 3 chiefs on mounts, the Butcher and his transform) and a spend order. Nothing generated in PixelLab yet.
+- Jacob installed Aseprite on Steam with the PixelLab extension. His rule: go easy on generations, make each one count.
+
+Changed: `DESIGN_LOCKS.md` (two sections appended), `PIXELLAB_BRIEFS_SLICE.md` (new), this log, Claude's memory. Not built: no sim or Unity changes today. Next, in Jacob's order: the PixelLab briefs (this), then the new loop with placeholders. No staging, commits or pushes.
+
+- Later the same evening: Jacob picked small horns as the natives' alien tell (recorded in `PIXELLAB_BRIEFS_SLICE.md`; `DESIGN_LOCKS.md` still says "to be picked" until its next edit). Claude will drive the PixelLab MCP once Jacob connects it with his own key.
+
+
+---
+**2026-10-03 · Claude · PixelLab connected; the Clarth squad drawn in the approved war hunter look**
+
+Jacob connected the PixelLab MCP (Tier 2, 5000 generations a month) and installed Aseprite with the PixelLab extension. His standing rule: go easy on generations, make every one count.
+
+What happened, in order:
+- Rejected: a horned surfer kid (v1), a hooded chibi nomad (v2 hybrid), three "menacing" natives that read as Dek's species, an old god and a World of Warcraft character, and three cute fantasy races. Causes: the wording "classic handheld tactics battle sprite" draws chibi, and naming a famous monster's traits draws that monster.
+- Approved: the "war hunter" Warden (crested bone mask, red cloak, toned, curved blade, shark jaw shield) at 96 px, and Jacob's rules: lean and toned, "hot and menacing", light gear, one signature piece, each tribe a mix of several entertainment races and never one source, the three tit rule always.
+- The full Clarth squad is drawn from the Warden as style reference: Warden, Marksman (spine rifle), Skirmisher (fin blades), Trapper (tooth net), Medic (tooth totem). All five are turned into 8 directions. The pure side views drop the Marksman's rifle and the Trapper's knife even after a second turn, so battle uses the three quarter views (south-east and south-west).
+- First animation: the Warden's fight idle (skeleton-v3, west, 8 frames at 128 px). The big shapes hold every frame; small texture in the shield and cloak flickers a little. Not checked inside the Unity scene.
+
+Recorded: `DESIGN_LOCKS.md` 2 Oct section updated to the 3 Oct look (the ten locks untouched); `PIXELLAB_BRIEFS_SLICE.md` rewritten with the rules, the recipe, every asset ID and what is left. Files: `C:/Users/jacob/ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/pixellab/clarth_redo/`. About 100 generations used so far. No game code changed, no staging, commits or pushes. Next: Bloodridge and Skullpeak redesigns in words, then three front views each to pick from.
+
+
+---
+**2026-10-03 (later) · Claude · Bloodridge approved as Medjai guardians; size ladder; both squads battle ready**
+
+- Bloodridge took three rounds. Jacob asked for "full Zdzisław Beksiński": shrouded faceless figures were liked, but the crab part weapons were "weird", then the bulkier shrouds with forged weapons were still not final. He then asked for the Medjai as reference and more menace. Approved: Egyptian desert guardians in black and indigo robes with bronze collars and lava glow; faceless hoods with ember eyes for the Warden and Trapper, lava tattooed faces under headwraps for the Marksman, Skirmisher and Medic.
+- New rule from Jacob: tanks are drawn bigger and more brutal than the squad, and every squad steps down in size: tank 128 px, melee damage dealers (Skirmisher, Trapper) 112 px, ranged and support (Marksman, Medic) 96 px. Both Wardens were redrawn at 128 px and both Skirmishers and Trappers at 112 px.
+- All ten slice units (Clarth and Bloodridge) are turned into 8 directions and checked: every unit keeps its signature piece in both three quarter facings, and the size ladder reads at real size. Sheets: `C:/Users/jacob/ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/pixellab/battle_ready/`.
+- Records: `DESIGN_LOCKS.md` (Bloodridge, size ladder, art line) and `PIXELLAB_BRIEFS_SLICE.md` (full rewrite with every asset ID) updated. An Aseprite batch script for colour reduction is at `KS_PixelLocalV01/tools/aseprite_reduce.lua`; nothing has been run through it yet.
+- PixelLab: 272 of 5000 generations used this cycle. No game code changed, no staging, commits or pushes. Next: settle the colour budget in Aseprite, then Skullpeak in words first.
+- Note for the next session: a "go" Jacob sends while a turn is still running does not open the route gate; it needs a fresh message.
+
+
+---
+**2026-10-03 (evening) · Claude · Bloodridge locked with the Beksiński mood back; 32 colours; Skullpeak still open**
+
+- 32 colours (Jacob: "32 colours, do it for all of them"): all ten slice units were cut to 32 colours in Aseprite, one palette per unit shared across its eight directions; every outline matches the source. Files: `KS_PixelLocalV01/aseprite/battle_32/`.
+- Bloodridge: Jacob said the Medjai had lost the Beksiński vibe. The Medjai prompt had dropped the decay, dread, bone, rust, ash and sepia words for clean navy and gold. Fix: edit the approved drawings rather than redraw them. He picked option 2 of three (rotted rags, burial bandages, corroded bronze, dusty sepia); it went onto all five units, which were turned and cut to 32 colours, and he locked it ("the blood ridge is fine lock it"). IDs and files are in `PIXELLAB_BRIEFS_SLICE.md`; the old navy set is kept, not deleted.
+- Skullpeak: four Giger rounds rejected (armoured brutes, black biomech creatures, a human in a Giger suit, other peoples with a Giger finish; "wasting credits"). Jacob's direction: Giger is the reference for scope only; humanoid beings with machine parts grown into their bodies, never alien looking. Round 5 (scope eye, steel bones, piston muscles) is drawn after this entry.
+- Records: `DESIGN_LOCKS.md` Bloodridge and Skullpeak lines updated. The 32 colour rule is only in `PIXELLAB_BRIEFS_SLICE.md` for now, because the two strikes hook blocked a second edit to the locks file. The briefs also carry the new Bloodridge IDs and every Skullpeak round.
+- PixelLab: 394 of 5000 generations used before round 5. No game code changed, no staging, commits or pushes.

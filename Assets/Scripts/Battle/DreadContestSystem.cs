@@ -69,7 +69,8 @@ namespace KindredSiege.Battle
 
         private void Update()
         {
-            if (!_active) return;
+            if (!_active || Time.timeScale <= 0f ||
+                (DirectiveSystem.Instance != null && DirectiveSystem.Instance.MercyPauseActive)) return;
 
             _tauntTimer -= Time.deltaTime;
             if (_tauntTimer > 0f) return;

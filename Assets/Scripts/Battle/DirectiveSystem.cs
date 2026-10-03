@@ -35,8 +35,13 @@ namespace KindredSiege.Battle
         private const float   FocusFireDuration  = 8f;
 
         // Mercy pause state — raised when a unit hits 0 HP
-        public bool          MercyPauseActive   { get; private set; }
-        public UnitController MercyPauseUnit    { get; private set; }
+        private struct MercyDecision { public UnitController Unit; public string Reason; }
+        private readonly Queue<MercyDecision> _mercyQueue = new();
+        private bool _resolvingMercy;
+        private float _speedBeforeMercy = 1f;
+        public bool MercyPauseActive => _mercyQueue.Count > 0 || _resolvingMercy;
+        public int PendingMercyCount => _mercyQueue.Count;
+        public UnitController MercyPauseUnit => _mercyQueue.Count > 0 ? _mercyQueue.Peek().Unit : null;
 
         // Unleash active units (for UI feedback)
         private readonly HashSet<int> _unleashActiveIds = new();
@@ -55,24 +60,23 @@ namespace KindredSiege.Battle
         {
             EventBus.Subscribe<BattleStartEvent>(OnBattleStart);
             EventBus.Subscribe<UnitDefeatedEvent>(OnUnitDefeated);
-            EventBus.Subscribe<MercyDecisionResolvedEvent>(OnMercyResolved);
         }
 
         private void OnDisable()
         {
             EventBus.Unsubscribe<BattleStartEvent>(OnBattleStart);
             EventBus.Unsubscribe<UnitDefeatedEvent>(OnUnitDefeated);
-            EventBus.Unsubscribe<MercyDecisionResolvedEvent>(OnMercyResolved);
         }
 
         private void OnBattleStart(BattleStartEvent evt)
         {
+            StopAllCoroutines();
             DirectivePoints   = startingDirectivePoints;
             MercyTokens       = startingMercyTokens;
             FocusFireTarget   = null;
             FocusFireTimer    = 0f;
-            MercyPauseActive  = false;
-            MercyPauseUnit    = null;
+            _mercyQueue.Clear();
+            _resolvingMercy = false;
             _unleashActiveIds.Clear();
 
             // City building bonuses: War Table → +Directive Points, Shrine → +Mercy Tokens
@@ -118,6 +122,8 @@ namespace KindredSiege.Battle
                 }
                 return ApplyInvokeMercy(targetUnit);
             }
+
+            if (MercyPauseActive) return false;
 
             if (DirectivePoints < cost)
             {
@@ -191,12 +197,15 @@ namespace KindredSiege.Battle
 
         private IEnumerator HoldPositionCoroutine(UnitController unit, float duration)
         {
+            int defeatCount = unit.DefeatCount;
             unit.DirectiveOverrideActive = true;
             Vector3 holdPos = unit.transform.position;
             float elapsed   = 0f;
 
-            while (elapsed < duration && unit != null && unit.IsAlive)
+            while (elapsed < duration && unit != null && unit.IsAlive && unit.DefeatCount == defeatCount &&
+                   BattleManager.Instance != null && BattleManager.Instance.IsBattleActive)
             {
+                if (MercyPauseActive || Time.timeScale <= 0f) { yield return null; continue; }
                 // Force unit back to hold position each frame
                 unit.transform.position = holdPos;
                 elapsed += Time.deltaTime;
@@ -224,10 +233,13 @@ namespace KindredSiege.Battle
 
         private IEnumerator FallBackCoroutine(UnitController unit, float duration)
         {
+            int defeatCount = unit.DefeatCount;
             float elapsed = 0f;
 
-            while (elapsed < duration && unit != null && unit.IsAlive)
+            while (elapsed < duration && unit != null && unit.IsAlive && unit.DefeatCount == defeatCount &&
+                   BattleManager.Instance != null && BattleManager.Instance.IsBattleActive)
             {
+                if (MercyPauseActive || Time.timeScale <= 0f) { yield return null; continue; }
                 // Move toward spawn position at full speed
                 Vector3 home = unit.SpawnPosition;
                 float dist   = Vector3.Distance(unit.transform.position, home);
@@ -258,6 +270,7 @@ namespace KindredSiege.Battle
             }
 
             targetUnit.ModifySanity(-5, "EldritchHit"); // Sanity cost of unleashing
+            if (!targetUnit.IsAlive) return true;
             _unleashActiveIds.Add(targetUnit.UnitId);
             // Visual feedback — turn the unit yellow during Unleash
             var renderer = targetUnit.GetComponent<Renderer>();
@@ -311,6 +324,7 @@ namespace KindredSiege.Battle
 
         private IEnumerator SacrificeCoroutine(UnitController unit)
         {
+            int defeatCount = unit.DefeatCount;
             unit.DirectiveOverrideActive = true;
             unit.GambitDamageMultiplier = 2.0f;
             unit.GambitIgnoreRetreat    = true;
@@ -319,8 +333,10 @@ namespace KindredSiege.Battle
             float elapsed = 0f;
             float maxDuration = 8f; // Safety cap — sacrifice charge lasts up to 8 seconds
 
-            while (elapsed < maxDuration && unit != null && unit.IsAlive)
+            while (elapsed < maxDuration && unit != null && unit.IsAlive && unit.DefeatCount == defeatCount &&
+                   BattleManager.Instance != null && BattleManager.Instance.IsBattleActive)
             {
+                if (MercyPauseActive || Time.timeScale <= 0f) { yield return null; continue; }
                 // Find the strongest enemy each frame (in case it changes)
                 var strongest = FindStrongestEnemy(unit);
                 if (strongest == null) break;
@@ -343,7 +359,15 @@ namespace KindredSiege.Battle
             }
 
             // Unit dies at the end of the charge
-            if (unit != null && unit.IsAlive)
+            // Timeout can leave the loop during a pause. Do not create a new casualty
+            // until that pause resolves, or after results have already been awarded.
+            while (unit != null && unit.IsAlive && unit.DefeatCount == defeatCount &&
+                   BattleManager.Instance != null && BattleManager.Instance.IsBattleActive &&
+                   (MercyPauseActive || Time.timeScale <= 0f))
+                yield return null;
+            if (unit != null) unit.DirectiveOverrideActive = false;
+            if (unit != null && unit.IsAlive && unit.DefeatCount == defeatCount &&
+                BattleManager.Instance != null && BattleManager.Instance.IsBattleActive)
             {
                 unit.DirectiveOverrideActive = false;
                 unit.TakeDamage(unit.CurrentHP, null); // Instant death
@@ -353,44 +377,19 @@ namespace KindredSiege.Battle
 
         /// <summary>
         /// Invoke Mercy (Token): Revive a fallen unit at 30% HP + 15 sanity.
-        /// Can only be used during the Mercy Pause or immediately after a unit falls.
+        /// Can only be used for the current queued Mercy decision.
         /// </summary>
         private bool ApplyInvokeMercy(UnitController targetUnit)
         {
-            if (targetUnit == null)
-            {
-                Debug.LogWarning("[Directives] Invoke Mercy requires a target unit.");
+            if (_resolvingMercy || targetUnit == null || targetUnit != MercyPauseUnit ||
+                targetUnit.TeamId != 1 || targetUnit.State != UnitController.LifeState.AwaitingMercy)
                 return false;
-            }
-
-            MercyTokens--;
-            targetUnit.OnSavedByMercy();
-            MercyLedger.RecordSaved();
-
-            // Re-activate the unit's GameObject if it was deactivated on death
-            if (!targetUnit.gameObject.activeSelf)
-                targetUnit.gameObject.SetActive(true);
-
-            // Clear mercy pause
-            if (MercyPauseActive && MercyPauseUnit == targetUnit)
-                ResolveMercyPause(tokenSpent: true);
-
-            EventBus.Publish(new MercyDecisionResolvedEvent
-            {
-                UnitId       = targetUnit.UnitId,
-                TokenSpent   = true,
-                DefeatReason = _pendingMercyReason
-            });
-
-            Debug.Log($"[Directives] Mercy Token used on {targetUnit.UnitName}. Tokens remaining: {MercyTokens}");
-            return true;
+            return ResolveMercyPause(tokenSpent: true);
         }
 
         // ════════════════════════════════════════════
         // MERCY DECISION PAUSE
         // ════════════════════════════════════════════
-
-        private string _pendingMercyReason = "";
 
         /// <summary>
         /// Called by BattleManager when a unit hits 0 HP.
@@ -398,16 +397,22 @@ namespace KindredSiege.Battle
         /// </summary>
         public void RaiseMercyDecision(UnitController unit, string reason)
         {
-            if (unit == null) return;
+            if (unit == null || unit.TeamId != 1 || unit.State != UnitController.LifeState.AwaitingMercy ||
+                _mercyQueue.Any(d => d.Unit == unit)) return;
+            bool first = !MercyPauseActive;
+            _mercyQueue.Enqueue(new MercyDecision { Unit = unit, Reason = reason });
+            if (first)
+            {
+                _speedBeforeMercy = BattleManager.Instance?.BattleSpeed ?? 1f;
+                BattleManager.Instance?.PauseBattle();
+                ShowMercyDecision();
+            }
+        }
 
-            _pendingMercyReason = reason;
-
-            MercyPauseActive = true;
-            MercyPauseUnit   = unit;
-
-            if (BattleManager.Instance != null)
-                BattleManager.Instance.PauseBattle();
-
+        private void ShowMercyDecision()
+        {
+            var decision = _mercyQueue.Peek();
+            var unit = decision.Unit;
             EventBus.Publish(new MercyDecisionRequiredEvent
             {
                 UnitId                 = unit.UnitId,
@@ -415,7 +420,7 @@ namespace KindredSiege.Battle
                 UnitType               = unit.UnitType,
                 ExpeditionCount        = unit.Data != null ? unit.Data.ExpeditionCount : 0,
                 MercyTokensAvailable   = MercyTokens,
-                DefeatReason           = reason
+                DefeatReason           = decision.Reason
             });
 
             Debug.Log($"[Mercy] Decision required for {unit.UnitName}. Tokens: {MercyTokens}");
@@ -424,26 +429,39 @@ namespace KindredSiege.Battle
         /// <summary>Let the unit die permanently and resume battle.</summary>
         public void LetUnitDie()
         {
-            if (!MercyPauseActive || MercyPauseUnit == null) return;
-
-            EventBus.Publish(new MercyDecisionResolvedEvent
-            {
-                UnitId       = MercyPauseUnit.UnitId,
-                TokenSpent   = false,
-                DefeatReason = _pendingMercyReason
-            });
-
-            MercyLedger.RecordLetDie();
             ResolveMercyPause(tokenSpent: false);
         }
 
-        private void ResolveMercyPause(bool tokenSpent)
+        private bool ResolveMercyPause(bool tokenSpent)
         {
-            MercyPauseActive = false;
-            MercyPauseUnit   = null;
-
-            if (BattleManager.Instance != null)
-                BattleManager.Instance.ResumeBattle();
+            if (_resolvingMercy || _mercyQueue.Count == 0) return false;
+            var decision = _mercyQueue.Peek();
+            var unit = decision.Unit;
+            if (unit == null || unit.State != UnitController.LifeState.AwaitingMercy ||
+                (tokenSpent && MercyTokens <= 0)) return false;
+            _resolvingMercy = true;
+            if (tokenSpent)
+            {
+                MercyTokens--;
+                unit.OnSavedByMercy();
+                MercyLedger.RecordSaved();
+            }
+            else
+            {
+                unit.FinalizeDeath();
+                RosterManager.Instance?.RemoveFallenUnit(unit.Data);
+                MercyLedger.RecordLetDie();
+            }
+            _mercyQueue.Dequeue();
+            // Resolve the old HUD first; only then publish the next queued prompt.
+            EventBus.Publish(new MercyDecisionResolvedEvent
+            {
+                UnitId = unit.UnitId, TokenSpent = tokenSpent, DefeatReason = decision.Reason
+            });
+            _resolvingMercy = false;
+            if (_mercyQueue.Count > 0) ShowMercyDecision();
+            else if (_speedBeforeMercy > 0f) BattleManager.Instance?.SetBattleSpeed(_speedBeforeMercy);
+            return true;
         }
 
         // ════════════════════════════════════════════
@@ -488,15 +506,9 @@ namespace KindredSiege.Battle
             if (evt.TeamId != 1) return;
 
             var unit = FindUnitById(evt.UnitId);
+            _unleashActiveIds.Remove(evt.UnitId);
             if (unit != null)
                 RaiseMercyDecision(unit, evt.DefeatReason);
-        }
-
-        private void OnMercyResolved(MercyDecisionResolvedEvent evt)
-        {
-            // If resolved externally, clear pause state
-            if (MercyPauseActive)
-                ResolveMercyPause(evt.TokenSpent);
         }
 
         // ════════════════════════════════════════════

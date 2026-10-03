@@ -1,0 +1,350 @@
+{
+  "schema_version": 1,
+  "status": "SUPERSEDED",
+  "superseded_by": "CLASS_ROSTER.json",
+  "superseded_on": "2026-09-30",
+  "created": "2026-09-30",
+  "authority": "DESIGN_LOCKS.md fixes 17 classes, 24 tribes, 7 tiers, progression-based unlocks, fast-paced action roguelike, top priorities and 2.5D battle presentation.",
+  "locked_class_count": 17,
+  "scope": "Historical draft only. Its sixteen provisional definitions and pending C15 slot are superseded by the complete seventeen-class catalogue in CLASS_ROSTER.json. Do not implement or treat this historical draft as the current roster.",
+  "boundaries": [
+    "Tribe identity includes terrain adaptations and combat traditions. Class defines a combat job. How future technology builds on tribal capabilities must be designed explicitly.",
+    "No tier assignments or unlock costs are assigned here. Progression requirements are still to be designed.",
+    "Sovereign is the locked Tier 7 identity; this draft does not turn it into an eighteenth class.",
+    "Pals are surviving trusted inner-circle people and upgraders; they are not a creature-command system. Combat participation remains undecided.",
+    "The shared-system labels below describe implementation opportunities, not proof that those systems already work.",
+    "The existing eight enum names are retained as candidates to reduce unnecessary migration; new signatures still require implementation review.",
+    "Basic locomotion may be shared within compatible body plans. Each signature has animation, effects and readability work.",
+    "Exact values, cooldowns, targeting rules, input control and balance are not fixed by this dataset."
+  ],
+  "shared_system_vocabulary": [
+    "attacks",
+    "movement",
+    "timed_effects",
+    "health_sanity",
+    "target_selection",
+    "area_effects",
+    "deployed_units"
+  ],
+  "classes": [
+    {
+      "id": "C01",
+      "name": "Warden",
+      "family": "frontline",
+      "range": "melee",
+      "job": "Keep a vulnerable ally alive and hold contested ground.",
+      "signature": {
+        "name": "Guard",
+        "description": "Temporarily reduce incoming damage for a nearby chosen ally while staying close enough to protect them."
+      },
+      "weakness": "Limited reach and pursuit; guarding ties the Warden to the protected ally.",
+      "systems": [
+        "timed_effects",
+        "target_selection"
+      ],
+      "existing_class_id": "Warden"
+    },
+    {
+      "id": "C02",
+      "name": "Vanguard",
+      "family": "frontline",
+      "range": "melee",
+      "job": "Start an engagement and open a route through enemy pressure.",
+      "signature": {
+        "name": "Breakthrough",
+        "description": "Make a short committed charge and stagger the first enemy struck."
+      },
+      "weakness": "A missed or poorly aimed charge leaves the Vanguard exposed.",
+      "systems": [
+        "movement",
+        "attacks",
+        "timed_effects"
+      ],
+      "existing_class_id": null
+    },
+    {
+      "id": "C03",
+      "name": "Duelist",
+      "family": "frontline",
+      "range": "melee",
+      "job": "Win a sustained one-on-one fight through timing.",
+      "signature": {
+        "name": "Riposte",
+        "description": "Use a brief guard window to counter one incoming strike."
+      },
+      "weakness": "Multiple attackers overwhelm the single-strike defence.",
+      "systems": [
+        "attacks",
+        "timed_effects"
+      ],
+      "existing_class_id": null
+    },
+    {
+      "id": "C04",
+      "name": "Berserker",
+      "family": "frontline",
+      "range": "melee",
+      "job": "Maintain heavy close-range pressure.",
+      "signature": {
+        "name": "Bloodrush",
+        "description": "Temporarily increase melee damage at the cost of reduced defence."
+      },
+      "weakness": "Taking punishment to maintain pressure can quickly become fatal.",
+      "systems": [
+        "attacks",
+        "timed_effects"
+      ],
+      "existing_class_id": "Berserker"
+    },
+    {
+      "id": "C05",
+      "name": "Marksman",
+      "family": "ranged",
+      "range": "long",
+      "job": "Remove a dangerous single target from a safe distance.",
+      "signature": {
+        "name": "Aimed Shot",
+        "description": "Commit to a brief aim before delivering a powerful single-target shot."
+      },
+      "weakness": "Close pressure interrupts the opportunity to aim.",
+      "systems": [
+        "attacks",
+        "timed_effects"
+      ],
+      "existing_class_id": "Marksman"
+    },
+    {
+      "id": "C06",
+      "name": "Skirmisher",
+      "family": "ranged",
+      "range": "short",
+      "job": "Deal damage while repeatedly repositioning.",
+      "signature": {
+        "name": "Running Shot",
+        "description": "Pair a light ranged attack with a short reposition."
+      },
+      "weakness": "Lower single-hit damage and a need for open escape space.",
+      "systems": [
+        "attacks",
+        "movement"
+      ],
+      "existing_class_id": null
+    },
+    {
+      "id": "C07",
+      "name": "Artillerist",
+      "family": "ranged",
+      "range": "long",
+      "job": "Punish tightly grouped enemies.",
+      "signature": {
+        "name": "Bombard",
+        "description": "Launch a delayed explosive at a chosen ground position."
+      },
+      "weakness": "Slow attacks are easy for mobile enemies to leave behind.",
+      "systems": [
+        "attacks",
+        "area_effects"
+      ],
+      "existing_class_id": null
+    },
+    {
+      "id": "C08",
+      "name": "Shadow",
+      "family": "tactical",
+      "range": "melee",
+      "job": "Reach a priority target through flanking.",
+      "signature": {
+        "name": "Ambush",
+        "description": "Deliver a stronger opening strike from a flank, then seek an exit."
+      },
+      "weakness": "Low staying power if caught in a prolonged frontal fight.",
+      "systems": [
+        "movement",
+        "attacks",
+        "target_selection"
+      ],
+      "existing_class_id": "Shadow"
+    },
+    {
+      "id": "C09",
+      "name": "Trapper",
+      "family": "tactical",
+      "range": "placed",
+      "job": "Control the route an enemy is about to use.",
+      "signature": {
+        "name": "Snare",
+        "description": "Place a trap that arms briefly and restrains the next enemy entering it."
+      },
+      "weakness": "Needs anticipation; a trap on an unused route contributes nothing.",
+      "systems": [
+        "area_effects",
+        "timed_effects"
+      ],
+      "existing_class_id": null
+    },
+    {
+      "id": "C10",
+      "name": "Investigator",
+      "family": "tactical",
+      "range": "medium",
+      "job": "Help the squad defeat a particularly dangerous enemy.",
+      "signature": {
+        "name": "Expose",
+        "description": "Study one target, reveal a relevant defence and temporarily make that target more vulnerable to allied attacks."
+      },
+      "weakness": "Analysis costs time and contributes little against enemies that die immediately.",
+      "systems": [
+        "target_selection",
+        "timed_effects"
+      ],
+      "existing_class_id": "Investigator"
+    },
+    {
+      "id": "C11",
+      "name": "Occultist",
+      "family": "support",
+      "range": "medium",
+      "job": "Recover an ally's health during combat.",
+      "signature": {
+        "name": "Mend",
+        "description": "Channel a short heal into one ally at a personal sanity cost."
+      },
+      "weakness": "Interruption and repeated healing put the Occultist at risk.",
+      "systems": [
+        "health_sanity",
+        "timed_effects",
+        "target_selection"
+      ],
+      "existing_class_id": "Occultist"
+    },
+    {
+      "id": "C12",
+      "name": "Herald",
+      "family": "support",
+      "range": "nearby_area",
+      "job": "Keep nearby allies mentally functional.",
+      "signature": {
+        "name": "Rally",
+        "description": "Restore sanity to allies within a short radius."
+      },
+      "weakness": "Low damage contribution and limited reach when the squad splits apart.",
+      "systems": [
+        "health_sanity",
+        "area_effects"
+      ],
+      "existing_class_id": "Herald"
+    },
+    {
+      "id": "C13",
+      "name": "Alchemist",
+      "family": "support",
+      "range": "medium",
+      "job": "Reduce pressure by weakening enemies in a small area.",
+      "signature": {
+        "name": "Reagent",
+        "description": "Throw a limited-charge vial that creates a short-lived cloud reducing enemy damage."
+      },
+      "weakness": "Charges are limited and mobile enemies can leave the cloud.",
+      "systems": [
+        "area_effects",
+        "timed_effects"
+      ],
+      "existing_class_id": null
+    },
+    {
+      "id": "C14",
+      "name": "Engineer",
+      "family": "specialist",
+      "range": "deployed",
+      "job": "Establish sustained pressure at a chosen position.",
+      "signature": {
+        "name": "Sentry",
+        "description": "Deploy one short-lived stationary sentry that attacks nearby enemies."
+      },
+      "weakness": "Loses value when the fight moves away; the sentry can be destroyed.",
+      "systems": [
+        "deployed_units",
+        "attacks",
+        "target_selection"
+      ],
+      "existing_class_id": null
+    },
+    {
+      "id": "C15",
+      "name": null,
+      "status": "AWAITING_REPLACEMENT",
+      "family": null,
+      "range": null,
+      "job": null,
+      "signature": null,
+      "weakness": null,
+      "systems": [],
+      "existing_class_id": null,
+      "change_note": "The Beastwarden definition was withdrawn after the owner clarified Pals are surviving trusted people and upgraders. No replacement class is invented by this correction; the total of 17 class slots remains fixed."
+    },
+    {
+      "id": "C16",
+      "name": "Binder",
+      "family": "specialist",
+      "range": "medium",
+      "job": "Break enemy positioning by pulling a target out of place.",
+      "signature": {
+        "name": "Tether",
+        "description": "Use a visible tether to pull one eligible enemy toward the Binder."
+      },
+      "weakness": "Short effective reach; anchored or resistant enemies may resist displacement.",
+      "systems": [
+        "movement",
+        "target_selection",
+        "timed_effects"
+      ],
+      "existing_class_id": null
+    },
+    {
+      "id": "C17",
+      "name": "Vessel",
+      "family": "specialist",
+      "range": "medium",
+      "job": "Trade mental stability for a short burst of offensive power.",
+      "signature": {
+        "name": "Overload",
+        "description": "Spend personal sanity to empower attacks for a short duration."
+      },
+      "weakness": "Repeated use approaches a mental break and requires a recovery window.",
+      "systems": [
+        "health_sanity",
+        "attacks",
+        "timed_effects"
+      ],
+      "existing_class_id": "Vessel",
+      "change_note": "Proposed active redesign of the earlier survival/Mercy class. Retaining or replacing the old Mercy behaviour is not approved by this draft."
+    }
+  ],
+  "unresolved_rules": [
+    "Guard damage reduction and stacking; who can be protected and within what range.",
+    "Movement collision and charge interruption; no movement skill may leave the valid battlefield.",
+    "Parryable attacks, riposte timing and outcomes for simultaneous hits.",
+    "Friendly-fire policy for explosives, traps and reagent clouds.",
+    "Trap arming time and placement limits; summon/sentry lifespan and replacement rules.",
+    "Expose information available in the codex versus combat-only vulnerability effects.",
+    "Healing, sanity costs, zero-resource behaviour and interruption refunds.",
+    "Alchemist charge replenishment and its relationship to shared consumable items.",
+    "Displacement resistance for bosses and anchored enemies, including a readable failed-tether outcome.",
+    "Unlock persistence, progression triggers, connections to tiers and which tribes field which classes.",
+    "Replace the withdrawn C15 definition with a distinct combat role grounded in the tribal science-fiction premise.",
+    "Define how Pal-led technology upgrades interact with tribal traits, class roles and items without assuming each Pal is a recruitable combat class.",
+    "Review the remaining sixteen provisional class definitions for science-fiction fit; none became approved through this correction."
+  ],
+  "review_criteria": [
+    "Each class must offer a combat decision or preferred situation distinct from the others.",
+    "An early-unlocked class must remain useful in later tiers; later unlocks should broaden choices rather than automatically replace it.",
+    "A defining action must be readable at the intended 2.5D battle scale before expanding its upgrades.",
+    "The final approved dataset must contain exactly 17 unique class IDs."
+  ],
+  "verification": "Seventeen unique reserved IDs; sixteen provisional definitions and one explicit pending replacement. No gameplay, balance, animation or runtime validation.",
+  "owner_context": {
+    "pals": "Trusted people in the main character's inner circle who survive the opening defeat with the protagonist and serve as upgraders.",
+    "technology": "Class and tribe development must account for advanced science-fiction technology and the Pals' upgrader role.",
+    "undecided": "Pal names, specialties, count, location, participation in combat and detailed upgrade rules are not defined here."
+  }
+}

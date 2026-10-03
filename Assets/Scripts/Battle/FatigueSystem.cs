@@ -60,6 +60,7 @@ namespace KindredSiege.Battle
         private void OnBattleStart(BattleStartEvent evt)
         {
             _startingHP.Clear();
+            _mercyRecipients.Clear();
             _battleDuration = 0f;
 
             // Snapshot starting HP for all living player units
@@ -82,7 +83,7 @@ namespace KindredSiege.Battle
 
             foreach (var unit in team1)
             {
-                if (unit == null || unit.Data == null) continue;
+                if (unit == null || unit.Data == null || !unit.IsAlive) continue;
                 ApplyPostBattleFatigue(unit);
             }
         }

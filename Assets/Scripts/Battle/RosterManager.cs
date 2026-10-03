@@ -29,6 +29,7 @@ namespace KindredSiege.Battle
 
         // ─── Runtime state ───
         private readonly List<UnitData> _activeRoster = new();
+        private readonly HashSet<UnitData> _fallenUnits = new();
 
         // ─── Public read ───
         public IReadOnlyList<UnitData> ActiveRoster  => _activeRoster;
@@ -72,7 +73,7 @@ namespace KindredSiege.Battle
             if (unit == null) return false;
             if (IsInRoster(unit)) return false;               // Already present
             if (_activeRoster.Count >= MaxSlots) return false; // Roster full
-            if (FatigueSystem.IsUndeployable(unit)) return false; // Fatigue 100 blocks deploy
+            if (!_fallenUnits.Contains(unit) && FatigueSystem.IsUndeployable(unit)) return false;
             return CanAffordRecruit(unit);
         }
 
@@ -93,6 +94,8 @@ namespace KindredSiege.Battle
             if (unit.FoodCost > 0)     res.Spend(ResourceType.Food,      unit.FoodCost);
             if (unit.MaterialCost > 0) res.Spend(ResourceType.Materials, unit.MaterialCost);
 
+            // Hiring this archetype again is a new soldier, not resurrection of the veteran.
+            if (_fallenUnits.Remove(unit)) ResetFallenProgress(unit);
             _activeRoster.Add(unit);
             Debug.Log($"[Roster] Hired: {unit.UnitName} ({unit.UnitType}). " +
                       $"Roster: {_activeRoster.Count}/{MaxSlots}");
@@ -111,6 +114,34 @@ namespace KindredSiege.Battle
             Debug.Log($"[Roster] Dismissed: {name}. Roster: {_activeRoster.Count}/{MaxSlots}");
         }
 
+        /// <summary>Finalize the current soldier's loss; replacement hires start fresh.</summary>
+        public bool RemoveFallenUnit(UnitData unit)
+        {
+            if (unit == null || !_activeRoster.Remove(unit)) return false;
+            _fallenUnits.Add(unit);
+            Debug.Log($"[Roster] Permanently lost: {unit.UnitName}.");
+            return true;
+        }
+
+        private void ResetFallenProgress(UnitData unit)
+        {
+            unit.FatigueLevel = 0;
+            unit.ActivePhobias.Clear();
+            unit.MaxSanityPenalty = 0;
+            unit.ExpeditionCount = 0;
+            unit.UnlockedTalents.Clear();
+            unit.CoSurvivedWith.Clear();
+            unit.BondedWith.Clear();
+            // Catalog identity is currently archetype-based. Do not transfer old bonds
+            // from other soldiers to the replacement bearing the same asset name.
+            foreach (var other in recruitCatalog)
+            {
+                if (other == null) continue;
+                other.CoSurvivedWith?.RemoveAll(name => name == unit.name);
+                other.BondedWith?.RemoveAll(name => name == unit.name);
+            }
+        }
+
         /// <summary>Snapshot the roster as a plain array for BattleManager.</summary>
         public UnitData[] GetRosterAsArray() => _activeRoster.ToArray();
 
@@ -118,6 +149,8 @@ namespace KindredSiege.Battle
         public void ClearRoster()
         {
             _activeRoster.Clear();
+            foreach (var unit in _fallenUnits) ResetFallenProgress(unit);
+            _fallenUnits.Clear();
             Debug.Log("[Roster] Cleared.");
         }
 
@@ -146,6 +179,7 @@ namespace KindredSiege.Battle
                 list.Add(new UnitSaveEntry
                 {
                     AssetName         = unit.name,
+                    Fallen            = _fallenUnits.Contains(unit),
                     FatigueLevel      = unit.FatigueLevel,
                     ActivePhobia      = (int)unit.ActivePhobia, // Backwards compat
                     ActivePhobiaList  = phobiaInts,
@@ -174,6 +208,7 @@ namespace KindredSiege.Battle
         /// </summary>
         public void LoadRoster(List<UnitSaveEntry> unitStates, List<string> rosterNames)
         {
+            _fallenUnits.Clear();
             // Restore mutable fields on every catalog unit
             if (unitStates != null)
             {
@@ -181,6 +216,7 @@ namespace KindredSiege.Battle
                 {
                     var unit = System.Array.Find(recruitCatalog, u => u != null && u.name == entry.AssetName);
                     if (unit == null) continue;
+                    if (entry.Fallen) _fallenUnits.Add(unit);
                     unit.FatigueLevel     = entry.FatigueLevel;
                     // Load phobias — prefer new list format, fall back to legacy single-phobia
                     unit.ActivePhobias.Clear();
@@ -215,7 +251,7 @@ namespace KindredSiege.Battle
                 foreach (var assetName in rosterNames)
                 {
                     var unit = System.Array.Find(recruitCatalog, u => u != null && u.name == assetName);
-                    if (unit != null && !_activeRoster.Contains(unit))
+                    if (unit != null && !_fallenUnits.Contains(unit) && !_activeRoster.Contains(unit))
                         _activeRoster.Add(unit);
                 }
             }

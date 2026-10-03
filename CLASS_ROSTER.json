@@ -1,0 +1,509 @@
+{
+  "schema_version": 1,
+  "status": "FINALIZED_CLASS_DEFINITIONS",
+  "version": 1,
+  "finalized": "2026-09-30",
+  "provenance": {
+    "request": "lets finalise the classes",
+    "author": "Codex",
+    "scope": "Finalized class catalogue prepared at the owner's request. Role definitions are complete; tier mapping, numerical balance and implementation remain separate work."
+  },
+  "authority": "DESIGN_LOCKS.md",
+  "class_count": 17,
+  "premise": {
+    "tribes": "The 24 tribes provide their terrain adaptations, practical knowledge, fighting traditions and material constraints.",
+    "pals": "Trusted inner-circle people who survive the opening defeat with the protagonist and serve as upgraders.",
+    "technology": "Pals adapt future technology to tribal capabilities. Technology kits below establish each class's combat identity; exact equipment and upgrades vary within that identity.",
+    "classes": "A class is a combat job, independent of a particular tribe or named Pal.",
+    "foundation_scope": "Foundation descriptions identify skills a tribe could contribute. They do not establish any tribe's ancestry, canon profession list, inherent primitiveness or recruitment prerequisites.",
+    "pal_scope": "Pal identities, number, location and combat participation remain undecided. Field Engineer is a battlefield deployment role, not a replacement for Pals as upgraders."
+  },
+  "rules": [
+    "Exactly 17 distinct classes; Sovereign remains the Tier 7 identity and is not an eighteenth class.",
+    "Tribes field selected classes; the catalogue does not require every tribe/class combination.",
+    "Shared class logic and authored tribe/equipment data express variation. Distinct body plans and equipment still need compatibility and animation review.",
+    "Items and upgrades develop each class's core role. They do not create extra top-level classes by default.",
+    "Progression-based class unlocks are required; exact requirements and tier links are not assigned here.",
+    "Earlier-unlocked roles should remain useful as new roles unlock; class unlock order alone does not imply a replacement hierarchy."
+  ],
+  "shared_system_vocabulary": [
+    "attacks",
+    "movement",
+    "timed_effects",
+    "health_sanity",
+    "target_selection",
+    "area_effects",
+    "deployed_units"
+  ],
+  "classes": [
+    {
+      "id": "C01",
+      "name": "Warden",
+      "family": "frontline",
+      "role": "Protect an ally and hold ground.",
+      "tribal_foundation": "Settlement and caravan protector.",
+      "technology_kit": "Armour-mounted shield projector.",
+      "signature": {
+        "name": "Guard",
+        "description": "Project short-lived protection onto a nearby ally while remaining within guarding distance."
+      },
+      "weakness": "Poor pursuit; guarding commits the Warden to the ally.",
+      "range": "melee",
+      "shared_systems": [
+        "timed_effects",
+        "target_selection"
+      ],
+      "legacy_enum_reference": "Warden"
+    },
+    {
+      "id": "C02",
+      "name": "Vanguard",
+      "family": "frontline",
+      "role": "Open an engagement and create room for allies.",
+      "tribal_foundation": "Raider or breach fighter.",
+      "technology_kit": "Powered impact harness and shock weapon.",
+      "signature": {
+        "name": "Breakthrough",
+        "description": "Charge a short path and stagger the first eligible enemy hit."
+      },
+      "weakness": "A committed charge can leave the Vanguard isolated.",
+      "range": "melee",
+      "shared_systems": [
+        "movement",
+        "attacks",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C03",
+      "name": "Duelist",
+      "family": "frontline",
+      "role": "Defeat a single opponent through timing.",
+      "tribal_foundation": "Champion or trained single-combat fighter.",
+      "technology_kit": "Powered blade and reactive guard bracer.",
+      "signature": {
+        "name": "Riposte",
+        "description": "Briefly guard against one eligible strike and deliver a counterattack."
+      },
+      "weakness": "Multiple attackers overwhelm the single-strike defence.",
+      "range": "melee",
+      "shared_systems": [
+        "attacks",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C04",
+      "name": "Berserker",
+      "family": "frontline",
+      "role": "Maintain heavy close-range pressure.",
+      "tribal_foundation": "Shock fighter accustomed to physical risk.",
+      "technology_kit": "Combat stim regulator and powered melee weapon.",
+      "signature": {
+        "name": "Bloodrush",
+        "description": "Increase melee damage for a short period while reducing personal defence."
+      },
+      "weakness": "The damage advantage makes sustained punishment more dangerous.",
+      "range": "melee",
+      "shared_systems": [
+        "attacks",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": "Berserker"
+    },
+    {
+      "id": "C05",
+      "name": "Marksman",
+      "family": "ranged",
+      "role": "Remove a dangerous single target at distance.",
+      "tribal_foundation": "Hunter or precision shooter.",
+      "technology_kit": "Smart optics and a precision ranged weapon.",
+      "signature": {
+        "name": "Aimed Shot",
+        "description": "Aim briefly before firing a powerful shot into a chosen target."
+      },
+      "weakness": "Close pressure and interruption deny the aiming window.",
+      "range": "long",
+      "shared_systems": [
+        "attacks",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": "Marksman"
+    },
+    {
+      "id": "C06",
+      "name": "Skirmisher",
+      "family": "ranged",
+      "role": "Maintain ranged pressure while repositioning.",
+      "tribal_foundation": "Mobile scout or outrider.",
+      "technology_kit": "Light ranged weapon and a mobility harness.",
+      "signature": {
+        "name": "Running Shot",
+        "description": "Combine a light shot with a short reposition along a valid route."
+      },
+      "weakness": "Lower burst damage; needs space to escape.",
+      "range": "short",
+      "shared_systems": [
+        "attacks",
+        "movement"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C07",
+      "name": "Artillerist",
+      "family": "ranged",
+      "role": "Punish clustered enemies and defended positions.",
+      "tribal_foundation": "Siege crew or heavy-weapon fighter.",
+      "technology_kit": "Portable explosive launcher and targeting display.",
+      "signature": {
+        "name": "Bombard",
+        "description": "Launch a delayed explosive into a marked ground area."
+      },
+      "weakness": "A slow firing cycle lets mobile enemies escape the impact.",
+      "range": "long",
+      "shared_systems": [
+        "attacks",
+        "area_effects"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C08",
+      "name": "Infiltrator",
+      "family": "tactical",
+      "role": "Reach a priority target through a flank.",
+      "tribal_foundation": "Stalker or covert fighter.",
+      "technology_kit": "Signature-masking equipment and a compact powered blade.",
+      "signature": {
+        "name": "Ambush",
+        "description": "Use the equipment to approach a flank and deliver an opening burst against a priority target."
+      },
+      "weakness": "Fragile when exposed in a sustained frontal fight.",
+      "range": "melee",
+      "shared_systems": [
+        "movement",
+        "attacks",
+        "target_selection",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": "Shadow"
+    },
+    {
+      "id": "C09",
+      "name": "Trapper",
+      "family": "tactical",
+      "role": "Deny an approaching route.",
+      "tribal_foundation": "Hunter familiar with routes and ambush sites.",
+      "technology_kit": "Compact sensor-triggered restraint traps.",
+      "signature": {
+        "name": "Snare",
+        "description": "Place a trap that arms, triggers on an eligible enemy and briefly restrains it."
+      },
+      "weakness": "Requires anticipation; unused placements contribute nothing.",
+      "range": "placed",
+      "shared_systems": [
+        "area_effects",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C10",
+      "name": "Recon",
+      "family": "tactical",
+      "role": "Expose the defences of a dangerous enemy for the squad.",
+      "tribal_foundation": "Tracker, observer or scout.",
+      "technology_kit": "Portable scanner and target-designation visor.",
+      "signature": {
+        "name": "Expose",
+        "description": "Complete a short scan, reveal relevant target information and apply a temporary vulnerability mark."
+      },
+      "weakness": "Time spent scanning is inefficient against short-lived enemies.",
+      "range": "medium",
+      "shared_systems": [
+        "target_selection",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": "Investigator"
+    },
+    {
+      "id": "C11",
+      "name": "Medic",
+      "family": "support",
+      "role": "Restore an ally's health during a fight.",
+      "tribal_foundation": "Healer with practical knowledge of their people's bodies.",
+      "technology_kit": "Compatible medical applicator and regenerative treatment kit.",
+      "signature": {
+        "name": "Field Treatment",
+        "description": "Deliver a short targeted treatment that restores health."
+      },
+      "weakness": "Vulnerable while treating; cannot answer every wound at once.",
+      "range": "medium",
+      "shared_systems": [
+        "health_sanity",
+        "timed_effects",
+        "target_selection"
+      ],
+      "legacy_enum_reference": "Occultist"
+    },
+    {
+      "id": "C12",
+      "name": "Herald",
+      "family": "support",
+      "role": "Keep nearby allies mentally functional.",
+      "tribal_foundation": "War caller or trusted rallying figure.",
+      "technology_kit": "Communications beacon and neural-stabilisation equipment.",
+      "signature": {
+        "name": "Rally",
+        "description": "Send a short-range stabilising pulse that restores nearby allies' sanity."
+      },
+      "weakness": "Low personal damage; loses reach when allies split apart.",
+      "range": "nearby_area",
+      "shared_systems": [
+        "health_sanity",
+        "area_effects"
+      ],
+      "legacy_enum_reference": "Herald"
+    },
+    {
+      "id": "C13",
+      "name": "Chemist",
+      "family": "support",
+      "role": "Weaken enemies occupying a small area.",
+      "tribal_foundation": "Compound maker with knowledge of local reagents.",
+      "technology_kit": "Portable synthesiser and delivery canisters.",
+      "signature": {
+        "name": "Suppressant",
+        "description": "Throw a limited-charge canister that briefly reduces affected enemies' damage within its cloud."
+      },
+      "weakness": "Finite charges; enemies can move out of the affected area.",
+      "range": "medium",
+      "shared_systems": [
+        "area_effects",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C14",
+      "name": "Field Engineer",
+      "family": "specialist",
+      "role": "Establish sustained pressure at a selected position.",
+      "tribal_foundation": "Builder, rigger or device operator.",
+      "technology_kit": "Compact deployable sentry kit.",
+      "signature": {
+        "name": "Sentry",
+        "description": "Deploy one temporary stationary sentry that attacks eligible nearby enemies."
+      },
+      "weakness": "The sentry is destructible and loses value when the fight moves away.",
+      "range": "deployed",
+      "shared_systems": [
+        "deployed_units",
+        "attacks",
+        "target_selection"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C15",
+      "name": "Disruptor",
+      "family": "specialist",
+      "role": "Interrupt an enemy's dangerous action or disable compatible protection.",
+      "tribal_foundation": "Saboteur or fighter skilled at timing an interruption.",
+      "technology_kit": "Tuned disruption emitter.",
+      "signature": {
+        "name": "Disruption Pulse",
+        "description": "Interrupt an interruptible active ability and briefly suppress a compatible technology shield."
+      },
+      "weakness": "Limited direct damage; a target with no eligible action or shield provides little value.",
+      "range": "medium",
+      "shared_systems": [
+        "target_selection",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C16",
+      "name": "Binder",
+      "family": "specialist",
+      "role": "Pull an enemy out of its intended position.",
+      "tribal_foundation": "Hunter or restraint specialist.",
+      "technology_kit": "Powered tether and anchoring harness.",
+      "signature": {
+        "name": "Tether",
+        "description": "Attach a visible tether and pull one displacement-eligible enemy toward the Binder within valid terrain."
+      },
+      "weakness": "Limited range; anchored targets resist the pull.",
+      "range": "medium",
+      "shared_systems": [
+        "movement",
+        "target_selection",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": null
+    },
+    {
+      "id": "C17",
+      "name": "Conduit",
+      "family": "specialist",
+      "role": "Deliver sustained relic-powered damage at personal mental risk.",
+      "tribal_foundation": "Fighter trained to endure a dangerous relic interface.",
+      "technology_kit": "Recovered relic emitter with a neural interface.",
+      "signature": {
+        "name": "Channel",
+        "description": "Sustain an offensive relic beam while consuming personal sanity; releasing the channel ends the drain."
+      },
+      "weakness": "Exposed while channeling; repeated use approaches a mental break.",
+      "range": "medium",
+      "shared_systems": [
+        "health_sanity",
+        "attacks",
+        "timed_effects"
+      ],
+      "legacy_enum_reference": "Vessel"
+    }
+  ],
+  "class_boundaries": [
+    {
+      "classes": [
+        "C01",
+        "C02"
+      ],
+      "distinction": "Warden sustains protection near an ally; Vanguard commits movement to start an engagement."
+    },
+    {
+      "classes": [
+        "C03",
+        "C04",
+        "C08"
+      ],
+      "distinction": "Duelist times counters; Berserker trades defence for pressure; Infiltrator uses a flank for opening burst."
+    },
+    {
+      "classes": [
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "distinction": "Marksman aims at one target; Skirmisher attacks and repositions; Artillerist threatens a delayed ground area."
+    },
+    {
+      "classes": [
+        "C09",
+        "C16"
+      ],
+      "distinction": "Trapper anticipates a future route; Binder immediately changes one eligible enemy's position."
+    },
+    {
+      "classes": [
+        "C10",
+        "C15"
+      ],
+      "distinction": "Recon exposes information and vulnerability; Disruptor stops eligible actions or suppresses compatible shields."
+    },
+    {
+      "classes": [
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "distinction": "Medic restores health; Herald restores sanity; Chemist weakens enemies with delivered compounds."
+    },
+    {
+      "classes": [
+        "C14",
+        "C17"
+      ],
+      "distinction": "Field Engineer deploys a separate stationary attacker; Conduit personally sustains an attack while spending sanity."
+    }
+  ],
+  "shared_rule_baseline": [
+    "Targets must be alive and eligible when an action resolves; invalid targets receive no effect.",
+    "Moves, charges and pulls must remain on valid battlefield terrain. They stop at blocking geometry.",
+    "Damage mitigation, status duration and stacking caps must be specified before implementation; the same effect must use one shared resolution rule.",
+    "Interrupt, parry, restraint, displacement and shield suppression use explicit eligibility flags. Bosses and cosmic threats are not automatically controllable or hackable.",
+    "A resisted control action must give readable feedback; immunity must not depend on a hidden random exception.",
+    "Medical treatment must respect the fighter's compatibility data. The class is not a universal cure for every body or a resurrection mechanic.",
+    "Conduit uses the existing sanity concept rather than introducing a separate class resource. Exact drain, break interaction and cancellation timing require balancing.",
+    "Allies and enemies must be visually distinguishable around shields, clouds, traps, tethers and beams at the intended 2.5D battle scale."
+  ],
+  "scope_changes": [
+    {
+      "slot": "C08",
+      "from": "Shadow",
+      "to": "Infiltrator",
+      "reason": "Ground the flanking role in signature-masking equipment and a compact weapon."
+    },
+    {
+      "slot": "C10",
+      "from": "Investigator",
+      "to": "Recon",
+      "reason": "Make scanning and target designation immediately legible as a combat role."
+    },
+    {
+      "slot": "C11",
+      "from": "Occultist",
+      "to": "Medic",
+      "reason": "Medical technology provides health recovery; the draft's sanity-cost healing is removed."
+    },
+    {
+      "slot": "C13",
+      "from": "Alchemist",
+      "to": "Chemist",
+      "reason": "Local reagent knowledge combined with synthesis and delivery technology."
+    },
+    {
+      "slot": "C14",
+      "from": "Engineer",
+      "to": "Field Engineer",
+      "reason": "Distinguish battlefield deployment from the Pals' upgrade function."
+    },
+    {
+      "slot": "C15",
+      "from": "Withdrawn Beastwarden",
+      "to": "Disruptor",
+      "reason": "Replace the erroneous creature-Pal assumption with counter-ability and compatible shield suppression."
+    },
+    {
+      "slot": "C16",
+      "from": "Binder with unexplained tether",
+      "to": "Binder with powered tether",
+      "reason": "Explicit technological basis for displacement."
+    },
+    {
+      "slot": "C17",
+      "from": "Vessel",
+      "to": "Conduit",
+      "reason": "Active relic channeling with sanity risk; passive Mercy generation is not this class's defining role."
+    }
+  ],
+  "implementation_handoff": {
+    "runtime_changed": false,
+    "legacy_enum_reference_meaning": "Historical source pointers only. These do not rename runtime enums or establish safe save-data aliases.",
+    "affected_followup": [
+      "UnitClass enum and migration strategy",
+      "UnitData definitions and assets",
+      "behaviour/action presets and targeting rules",
+      "gambits and talent trees",
+      "save compatibility and roster UI",
+      "items and Pal upgrade integration",
+      "tribes/class availability and codex entries",
+      "animation, effects and 2.5D readability",
+      "balance and runtime validation"
+    ],
+    "next_design_decisions": [
+      "Class unlock requirements and connections to tiers 1-7",
+      "Which classes each tribe fields",
+      "Pal specialties and upgrade recipes",
+      "Item catalogue and class equipment compatibility",
+      "Numerical tuning, resource costs and edge-case timing",
+      "Control/input scheme and AI use of class actions"
+    ],
+    "not_implemented": "This is design data. No new runtime classes, combat abilities, animations, item assets or upgrade systems were implemented in this pass."
+  },
+  "validation": "JSON and catalogue consistency only; gameplay balance and runtime/art performance are untested."
+}

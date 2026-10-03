@@ -355,7 +355,6 @@ namespace KindredSiege.UI
                     if (unit != null)
                         _directives.SpendDirective(DirectiveType.InvokeMercy, unit);
                 }
-                _mercyPopupActive = false;
             }
             GUI.enabled = true;
 
@@ -364,7 +363,6 @@ namespace KindredSiege.UI
                 "Let Them Die\n(Permanent)", _buttonStyle))
             {
                 _directives?.LetUnitDie();
-                _mercyPopupActive = false;
             }
         }
 
@@ -409,7 +407,7 @@ namespace KindredSiege.UI
 
         private void OnMercyResolved(MercyDecisionResolvedEvent evt)
         {
-            _mercyPopupActive = false;
+            if (evt.UnitId == _mercyUnitId) _mercyPopupActive = false;
             string msg = evt.TokenSpent
                 ? $"{FindUnitName(evt.UnitId)} was saved by Mercy."
                 : $"{FindUnitName(evt.UnitId)} is gone forever.";

@@ -52,7 +52,12 @@ namespace KindredSiege.Battle
         private const float CourageousAuraInterval  = 8f;
 
         // ─── Identity ───
-        public bool   IsAlive   => CurrentHP > 0;
+        public enum LifeState { Alive, AwaitingMercy, Dead }
+        public LifeState State { get; private set; } = LifeState.Alive;
+        internal int DefeatCount { get; private set; }
+        private bool CanContinueAction => IsAlive &&
+            (DirectiveSystem.Instance == null || !DirectiveSystem.Instance.MercyPauseActive);
+        public bool   IsAlive   => State == LifeState.Alive && CurrentHP > 0;
         public bool   IsVeteran => unitData != null && unitData.ExpeditionCount >= 5;
         public string    UnitType  => unitData != null ? unitData.UnitType : "warden";
         public string    UnitName  => unitData != null ? unitData.UnitName : "Unit";
@@ -222,6 +227,9 @@ namespace KindredSiege.Battle
             unitData = data;
             TeamId   = teamId;
             UnitId   = unitId;
+            State = LifeState.Alive;
+            LastDefeatReason = "";
+            DefeatCount = 0;
 
             // Combat stats
             MaxHP         = data.MaxHP;
@@ -368,6 +376,16 @@ namespace KindredSiege.Battle
         /// <summary>Set the shared battle context. Called by BattleManager each frame.</summary>
         public void SetContext(BattleContext context) => battleContext = context;
 
+        // Units stay on the ground they were placed on. Behaviour tree actions, gambits, directives and retreats
+        // all steer in 3D, so a taller or shorter neighbour would otherwise lift or sink them.
+        // SpawnPosition is set after grid placement, and nothing in the game moves a unit up or down on purpose.
+        private void LateUpdate()
+        {
+            if (unitData == null) return;   // not spawned through Initialise, so it has no ground height yet
+            var position = transform.position;
+            if (position.y != SpawnPosition.y) transform.position = new Vector3(position.x, SpawnPosition.y, position.z);
+        }
+
         // ════════════════════════════════════════════
         // AI TICK — runs every frame during battle
         // ════════════════════════════════════════════
@@ -379,7 +397,7 @@ namespace KindredSiege.Battle
         /// </summary>
         public void TickAI()
         {
-            if (!IsAlive || battleContext == null) return;
+            if (!CanContinueAction || battleContext == null) return;
 
             float dt = Time.deltaTime;
 
@@ -415,6 +433,7 @@ namespace KindredSiege.Battle
             }
 
             // ── Prolonged combat drain (GDD §5.2: -3 per round after round 5) ──
+            if (!CanContinueAction) return;
             int currentRound = Mathf.FloorToInt(_combatTimer / SecondsPerRound);
             if (currentRound > RoundsBeforeDrain && currentRound > _drainRound)
             {
@@ -423,7 +442,9 @@ namespace KindredSiege.Battle
             }
 
             // ── Phobia tick effects (GDD §5.5) ──
+            if (!CanContinueAction) return;
             TickPhobiaEffects(dt);
+            if (!CanContinueAction) return;
 
             // ── Virtue timers ──
             if (_resoluteTimer > 0f)
@@ -511,6 +532,7 @@ namespace KindredSiege.Battle
             }
 
             // ── Marksman Snap Shot ──
+            if (!CanContinueAction) return;
             if (UnitClass == UnitClass.Marksman && CanAttack() && battleContext.Enemies != null)
             {
                 var snapTarget = battleContext.Enemies.FirstOrDefault(e => e != null && e.IsTargetable && e != this &&
@@ -521,6 +543,7 @@ namespace KindredSiege.Battle
                 }
             }
 
+            if (!CanContinueAction) return;
             if (ActiveVirtue == VirtueType.Courageous)
             {
                 _courageousAuraCooldown -= dt;
@@ -575,8 +598,10 @@ namespace KindredSiege.Battle
 
                 if (nearestEnemy != null)
                 {
-                    Vector3 awayDir = (transform.position - nearestEnemy.transform.position).normalized;
-                    transform.position += awayDir * MoveSpeed * dt;
+                    // Retreat along the ground: an enemy standing taller or shorter must not push the unit through the floor.
+                    Vector3 awayDir = transform.position - nearestEnemy.transform.position;
+                    awayDir.y = 0f;
+                    transform.position += awayDir.normalized * MoveSpeed * dt;
                 }
                 return;
             }
@@ -620,6 +645,7 @@ namespace KindredSiege.Battle
             if (DirectiveOverrideActive) return;
 
             // ── Normal BT execution ──
+            if (!CanContinueAction) return;
             behaviourTree.Tick(battleContext);
         }
 
@@ -633,6 +659,7 @@ namespace KindredSiege.Battle
         /// </summary>
         public void ModifySanity(int delta, string reason)
         {
+            if (!IsAlive) return;
             if (delta < 0) LastDefeatReason = reason;
 
             // Talent: Armour Sanity Absorb (Warden F3) — first 5 sanity damage blocked by armour, once
@@ -831,23 +858,39 @@ namespace KindredSiege.Battle
         }
 
         /// <summary>Called after being saved by a Mercy Token.</summary>
-        public void OnSavedByMercy()
+        internal bool OnSavedByMercy()
         {
+            if (State != LifeState.AwaitingMercy) return false;
+            State = LifeState.Alive;
+            CurrentHP = Mathf.Max(1, Mathf.RoundToInt(MaxHP * 0.30f));
+            DirectiveOverrideActive = false;
+            GambitDamageMultiplier = 1f;
+            GambitIgnoreRetreat = false;
             ModifySanity(15, "MercySaved");
-            CurrentHP = Mathf.RoundToInt(MaxHP * 0.30f);
+            gameObject.SetActive(true);
+            return true;
         }
 
         private void OnLost()
         {
-            EventBus.Publish(new UnitLostEvent
-            {
-                UnitId   = UnitId,
-                UnitName = UnitName,
-                UnitType = UnitType
-            });
+            OnDeath(null, lost: true);
+        }
 
-            Debug.Log($"[Sanity] {UnitName} is LOST — consumed by madness.");
-            OnDeath(null); // Treat as permanent death
+        internal void FinalizeDeath()
+        {
+            if (State != LifeState.AwaitingMercy) return;
+            State = LifeState.Dead;
+            CurrentHP = 0;
+            gameObject.SetActive(false);
+        }
+
+        internal void ReviveEnemy(int hp)
+        {
+            if (TeamId != 2 || State != LifeState.Dead) return;
+            State = LifeState.Alive;
+            CurrentHP = Mathf.Clamp(hp, 1, MaxHP);
+            CurrentSanity = Mathf.Max(1, CurrentSanity);
+            gameObject.SetActive(true);
         }
 
         private void BoostNearbyAllySanity(int amount, float range)
@@ -865,7 +908,7 @@ namespace KindredSiege.Battle
         // COMBAT METHODS (called by BT action nodes)
         // ════════════════════════════════════════════
 
-        public bool CanAttack() => attackTimer <= 0f;
+        public bool CanAttack() => CanContinueAction && attackTimer <= 0f;
 
         public void PerformAttack(UnitController target)
         {
@@ -1135,8 +1178,21 @@ namespace KindredSiege.Battle
             CurrentHP = Mathf.Min(MaxHP, CurrentHP + amount);
         }
 
-        private void OnDeath(UnitController killedBy)
+        private void OnDeath(UnitController killedBy, bool lost = false)
         {
+            // Commit before synchronous events: witness cascades can re-enter this unit.
+            if (State != LifeState.Alive) return;
+            DefeatCount++;
+            State = TeamId == 1 ? LifeState.AwaitingMercy : LifeState.Dead;
+            CurrentHP = 0;
+            gameObject.SetActive(false);
+            if (killedBy != null) LastDefeatReason = "Violence";
+            else if (string.IsNullOrEmpty(LastDefeatReason)) LastDefeatReason = "Unknown";
+            if (lost)
+            {
+                EventBus.Publish(new UnitLostEvent { UnitId = UnitId, UnitName = UnitName, UnitType = UnitType });
+                Debug.Log($"[Sanity] {UnitName} is LOST — consumed by madness.");
+            }
             RecordAction("Defeated", killedBy?.UnitId ?? -1);
 
             // Talent: Heroic Sacrifice — allies gain +10 sanity instead of losing −15
@@ -1165,9 +1221,6 @@ namespace KindredSiege.Battle
                     .FirstOrDefault();
                 nearest?.TakeDamage(30, this);
             }
-            if (killedBy != null) LastDefeatReason = "Violence";
-            else if (string.IsNullOrEmpty(LastDefeatReason)) LastDefeatReason = "Unknown";
-
             EventBus.Publish(new UnitDefeatedEvent
             {
                 UnitId           = UnitId,
@@ -1177,7 +1230,6 @@ namespace KindredSiege.Battle
                 DefeatedByUnitId = killedBy?.UnitId ?? -1,
                 DefeatReason     = LastDefeatReason
             });
-            gameObject.SetActive(false);
         }
 
         private void RecordAction(string action, int targetId)
@@ -1262,7 +1314,8 @@ namespace KindredSiege.Battle
                     hesitationLock = true;
                     _hesitationLockTimer = 3f;
                     var rend = GetComponent<Renderer>();
-                    if (rend != null) StartCoroutine(StunVisualCoroutine(rend));
+                    if (rend != null && IsAlive && gameObject.activeInHierarchy)
+                        StartCoroutine(StunVisualCoroutine(rend));
                 }
 
                 // Damage > 35: phobia check (stacks with existing phobias per GDD §5.5)
@@ -1446,7 +1499,7 @@ namespace KindredSiege.Battle
         /// thematically matches one of the active rival's traits.
         /// Mapping: PhobiaType → the RivalTraitType(s) it resonates with.
         /// </summary>
-        private static bool NamesHavePowerMatch(KindredSiege.Units.UnitData data, KindredSiege.Rivalry.RivalData rival)
+        private static bool NamesHavePowerMatch(KindredSiege.Battle.UnitData data, KindredSiege.Rivalry.RivalData rival)
         {
             foreach (var phobia in data.ActivePhobias)
             {

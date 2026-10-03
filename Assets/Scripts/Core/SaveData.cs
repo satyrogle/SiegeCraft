@@ -61,6 +61,7 @@ namespace KindredSiege.Core
     public class UnitSaveEntry
     {
         public string       AssetName;          // UnitData.name (Unity asset file name)
+        public bool         Fallen;             // Optional in v1 saves; absent defaults to false.
         public int          FatigueLevel;
         public int          ActivePhobia;       // DEPRECATED — kept for backwards compatibility with old saves
         public List<int>    ActivePhobiaList;   // PhobiaType cast to int — supports stacking (GDD §5.5)

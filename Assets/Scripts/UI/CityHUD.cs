@@ -109,6 +109,9 @@ namespace KindredSiege.UI
 
         private void OnGUI()
         {
+            // Background HUD must stay behind the existing modal panels.
+            GUI.depth = 10;
+
             // Show during city phase, or during PostBattle to display the popup
             if (_game == null || (_game.CurrentState != GameManager.GameState.CityPhase && _game.CurrentState != GameManager.GameState.PostBattle)) return;
 

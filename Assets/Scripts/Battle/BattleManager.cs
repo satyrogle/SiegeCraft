@@ -44,6 +44,8 @@ namespace KindredSiege.Battle
         // Results
         public float BattleDuration => battleTimer;
         public bool IsBattleActive => battleActive;
+        public float BattleSpeed => battleSpeed;
+        private bool MercyPending => DirectiveSystem.Instance != null && DirectiveSystem.Instance.MercyPauseActive;
 
         // ─── Team accessors (for GambitSetupPanel + FatigueSystem) ───
         /// <summary>Returns the UnitData asset array for team 1 (used by GambitSetupPanel).</summary>
@@ -125,7 +127,7 @@ namespace KindredSiege.Battle
 
         private void Update()
         {
-            if (!battleActive) return;
+            if (!battleActive || MercyPending || battleSpeed <= 0f) return;
 
             battleTimer += Time.deltaTime * battleSpeed;
 
@@ -153,6 +155,7 @@ namespace KindredSiege.Battle
             // Tick all living units
             foreach (var unit in allUnits)
             {
+                if (MercyPending) return;
                 if (unit.IsAlive)
                 {
                     unit.TickAI();
@@ -160,10 +163,12 @@ namespace KindredSiege.Battle
             }
 
             // Encounter-specific timer (Survival countdown, Ritual deadline)
+            if (MercyPending) return;
             TickEncounterTimer();
 
             // Horror Rating drain — every 5 seconds, active rival drains all player unit sanity
             TickHorrorRating();
+            if (MercyPending) return;
 
             // Apply continuous Reality Mutations (GDD §7)
             TickMutations();
@@ -279,7 +284,7 @@ namespace KindredSiege.Battle
         public void PrepareRoster()
         {
             var rosterMgr = RosterManager.Instance;
-            if (rosterMgr != null && rosterMgr.RosterCount > 0)
+            if (rosterMgr != null)
                 team1Units = rosterMgr.GetRosterAsArray();
         }
 
@@ -359,15 +364,6 @@ namespace KindredSiege.Battle
             // Apply bond buffs to any bonded pairs present on team1
             KindredSiege.Units.BondSystem.ApplyBondEffects(team1);
 
-            // Apply Mythos Exposure battle-start sanity penalty
-            int mythospenalty = KindredSiege.City.MythosExposure.Instance?.BattleStartSanityPenalty ?? 0;
-            if (mythospenalty < 0)
-            {
-                foreach (var unit in team1)
-                    if (unit != null && unit.IsAlive)
-                        unit.ModifySanity(mythospenalty, "MythosExposure");
-            }
-
             // Apply Void Gate Comprehension bonus (negative mod = less horror damage)
             float voidBonus = CityBattleBridge.Instance?.VoidGateComprehensionBonus ?? 0f;
             if (voidBonus > 0f)
@@ -382,12 +378,21 @@ namespace KindredSiege.Battle
 
             battleTimer = 0f;
             battleActive = true;
+            battleSpeed = 1f;
+            Time.timeScale = 1f;
 
             EventBus.Publish(new BattleStartEvent
             {
                 BattleNumber = GameManager.Instance?.BattlesCompleted + 1 ?? 1,
                 Season = GameManager.Instance?.CurrentSeason ?? 1
             });
+
+            // Initialize all battle listeners before setup can produce casualties.
+            int mythospenalty = KindredSiege.City.MythosExposure.Instance?.BattleStartSanityPenalty ?? 0;
+            if (mythospenalty < 0)
+                foreach (var unit in team1)
+                    if (unit != null && unit.IsAlive)
+                        unit.ModifySanity(mythospenalty, "MythosExposure");
 
             Debug.Log($"[Battle] Started! Team 1: {team1.Count} units | Team 2: {team2.Count} units");
         }
@@ -561,6 +566,7 @@ namespace KindredSiege.Battle
 
         private void CheckBattleEnd()
         {
+            if (!battleActive || MercyPending) return;
             bool team1Alive = team1.Any(u => u != null && u.IsAlive && u != _rescueTarget);
             bool team2Alive = team2.Any(u => u != null && u.IsAlive);
 
@@ -669,9 +675,7 @@ namespace KindredSiege.Battle
                     if (respawnUnit != null)
                     {
                         int respawnHP = Mathf.Max(1, respawnUnit.MaxHP / 2);
-                        respawnUnit.CurrentHP = respawnHP;
-                        if (!respawnUnit.gameObject.activeSelf)
-                            respawnUnit.gameObject.SetActive(true);
+                        respawnUnit.ReviveEnemy(respawnHP);
                         Debug.Log($"[Mutation] DEATH IS UNDONE: {respawnUnit.UnitName} defies death! Respawned at {respawnHP} HP.");
                     }
                 }
@@ -829,6 +833,7 @@ namespace KindredSiege.Battle
 
         public void SetBattleSpeed(float speed)
         {
+            if (MercyPending) return;
             battleSpeed = Mathf.Clamp(speed, 0.5f, 4f);
             Time.timeScale = battleSpeed;
         }
@@ -839,8 +844,7 @@ namespace KindredSiege.Battle
         }
         public void ResumeBattle()
         {
-            battleSpeed = 1f;
-            Time.timeScale = 1f;
+            SetBattleSpeed(1f);
         }
         // ─── Procedural Enemy Composition ───
 
