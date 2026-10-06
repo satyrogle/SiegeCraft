@@ -212,6 +212,12 @@ namespace KindredSiege.Sim.Learning
                 _threatMemory[i] = (_threatMemory[i] + fightThreat[i]) / 2;
         }
 
+        /// Puts remembered threat back exactly as it was saved. Only RunSave does this.
+        internal void SetThreatMemory(UnitClass unitClass, int value)
+        {
+            _threatMemory[(int)unitClass] = value;
+        }
+
         internal void SetHabit(Habit habit, int value)
         {
             switch (habit)

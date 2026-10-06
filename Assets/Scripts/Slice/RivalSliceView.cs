@@ -8,18 +8,18 @@ using KindredSiege.Sim.Learning;
 
 namespace KindredSiege.Slice
 {
-    /// View of the 8 December slice loop on the deterministic sim: fight the raider chief with
-    /// directives, see what he learned and why (each lesson is checked by replaying its fight), an
-    /// off screen war, then fight him again. The sim decides every hit; this class only draws it and
-    /// passes your orders in. Units are pixel sprites from Resources/RivalSlice/Units (stopgap art
-    /// until PixelLab), facing the camera on a 2.5D field; a unit without art falls back to a capsule.
+    /// View of the 8 December slice loop on the deterministic sim, under the slice rules (nerve,
+    /// refilling orders, tougher units): fight the raider chief with orders that refill, watch both
+    /// courage bars, and break the raiders so their survivors walk over and join you. The sim decides
+    /// every hit; this class only draws it and passes your orders in. Units are the approved PixelLab
+    /// sprites from Resources/RivalSlice/Sheets with their breathing idles, facing each other on a
+    /// 2.5D field; a unit without art falls back to a capsule.
     ///
-    /// Impact, until PixelLab gives real frames: on a kill, or a big hit when none landed lately, the
-    /// fight freezes, the screen shakes, the pair is lit while everyone else dims, the target flashes
-    /// white and flinches, and the attacker stretches into its lunge. The dead stagger back, fall with
-    /// a bounce, kick up dust and fade low. Torchlight, warm dim light and a vignette set the mood.
-    /// None of it touches the sim. Timings are starting values, judged by eye in the recorded clip.
-    public sealed class RivalSliceView : MonoBehaviour
+    /// Impact: on a kill, or a big hit when none landed lately, the fight freezes, the screen shakes,
+    /// the pair is lit while everyone else dims, the target flashes white and flinches, and the
+    /// attacker stretches into its lunge. The dead stagger back, fall with a bounce, kick up dust and
+    /// fade low. None of it touches the sim. Timings are starting values, judged by eye.
+    public sealed partial class RivalSliceView : MonoBehaviour
     {
         public enum Stage { Intro, Fight, AfterFight, War, BeforeFight, Final }
 
@@ -28,20 +28,25 @@ namespace KindredSiege.Slice
 
         const float RefWidth = 1280f;
         const float RefHeight = 720f;
-        const int FightsToPlay = 2;
+        // Run progression is owned by SliceRun.
         const float CardSeconds = 8f;
         const float ShortCardSeconds = 5f;
         const float EndHoldSeconds = 2f;
+        const float BreakHoldSeconds = 4f;
         const float FlashTime = 0.14f;
         const float LungeTime = 0.18f;
         const float ShotTime = 0.16f;
         const float PixelsPerUnit = 30f;
-        const float IdleFrameSeconds = 0.28f;
+        const float SheetPixelsPerUnit = 88f;
+        const int SheetFrames = 4;
+        const float IdleFrameSeconds = 0.22f;
+        const float WalkOverSpeed = 1.6f;
 
         const float HitFreeze = 0.15f;
         const float KillFreeze = 0.33f;
         const float HitShake = 0.14f;
         const float KillShake = 0.26f;
+        const float BreakShake = 0.4f;
         const float ImpactCooldown = 0.7f;
         const float ImpactFlash = 0.3f;
         const float FocusTime = 0.7f;
@@ -50,20 +55,19 @@ namespace KindredSiege.Slice
         const float KnockTime = 0.3f;
         const float DeathTime = 0.5f;
         const float DustTime = 0.6f;
-        const int BigHit = 18;
+        const int BigHit = 40;
 
-        // Closer than the first pass, on a tighter formation, so a unit is about twice the size on screen.
-        // Aimed right of the formation so the panels on the right cover empty ground, not fighters.
-        static readonly Vector3 CameraLook = new Vector3(1.45f, 0.7f, 1.2f);
-        static readonly Vector3 CameraHome = CameraLook + new Vector3(0f, 5.05f, -8.63f);
+        // Center both formations in the clear space between the courage bars and order buttons.
+        static readonly Vector3 CameraLook = new Vector3(0f, 0.9f, 1.2f);
+        static readonly Vector3 CameraHome = CameraLook + new Vector3(0f, 8f, -8f);
 
-        [Tooltip("Plays a scripted plan instead of waiting for your orders: focus their Marksman, Unleash, Fall Back twice.")]
+        [Tooltip("Plays the simulation's Smart autopilot for validation instead of waiting for orders.")]
         public bool autopilot;
 
         [Tooltip("Fight playback speed. 1 is real time.")]
         public float fightSpeed = 1f;
 
-        [Tooltip("World seed for manual play. Autopilot picks the first world where the rival visibly learns.")]
+        [Tooltip("Run seed for both manual play and autopilot. No search for a winning seed.")]
         public int worldSeed = 7;
 
         public Stage CurrentStage { get; private set; }
@@ -86,12 +90,15 @@ namespace KindredSiege.Slice
         static readonly Color TorchColor = new Color(1f, 0.6f, 0.3f);
         static readonly Color DustColor = new Color(0.62f, 0.55f, 0.45f);
 
-        SliceWorld _world;
+        SliceRun _run;
+        readonly RunMemory _memory = new RunMemory();
+        Tribe _battleEnemy;
+        SliceAutopilot _pilot;
         BattleSetup _setup;
         BattleSimulation _sim;
         SimSession _session;
-        WarResult _lastWar;
-        readonly List<PlayerFightResult> _fights = new List<PlayerFightResult>();
+        RunWarResult _lastWar;
+        readonly List<RunFightResult> _fights = new List<RunFightResult>();
         int _eventCursor;
         float _tickAccumulator;
         float _stageClock;
@@ -115,6 +122,7 @@ namespace KindredSiege.Slice
         readonly Dictionary<string, UnitView> _views = new Dictionary<string, UnitView>();
         readonly List<UnitView> _viewOrder = new List<UnitView>();
         readonly Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
+        readonly Dictionary<string, Sprite[]> _sheets = new Dictionary<string, Sprite[]>();
         readonly List<FloatText> _floats = new List<FloatText>();
         readonly List<Shot> _shots = new List<Shot>();
         readonly List<Dust> _dust = new List<Dust>();
@@ -134,7 +142,7 @@ namespace KindredSiege.Slice
         string _cardTitle = string.Empty;
         readonly List<CardLine> _card = new List<CardLine>();
 
-        GUIStyle _title, _body, _small, _tag, _banner, _bannerSub, _button, _cardTitleStyle, _notice;
+        GUIStyle _title, _body, _small, _tag, _banner, _bannerSub, _button, _cardTitleStyle, _notice, _barLabel;
 
         sealed class UnitView
         {
@@ -145,6 +153,7 @@ namespace KindredSiege.Slice
             public SpriteRenderer Art;
             public SpriteRenderer Silhouette;
             public Sprite[] Idle;
+            public Sprite[] IdleTurned;
             public float Phase;
             public Color BaseColor;
             public Vector3 Home;
@@ -163,6 +172,10 @@ namespace KindredSiege.Slice
             public GameObject Disc;
             public Renderer DiscRenderer;
             public GameObject Tether;
+            public bool WalkOver;
+            public bool Fleeing;
+            public bool Arrived;
+            public Vector3 WalkGoal;
         }
 
         sealed class FloatText { public Vector3 Pos; public string Text; public Color Color; public float Age; public float Life; public bool Big; }
@@ -171,6 +184,7 @@ namespace KindredSiege.Slice
         sealed class Banner { public string Text; public string Sub; public Color Color; public float Age; public float Life; }
         sealed class CardLine { public string Text; public Color Color; public bool Heading; }
         sealed class SideFx { public int Hold; public int FallBack; public int Unleash; public int Focus; public string FocusId = string.Empty; }
+
 
         // ------------------------------------------------------------ lifecycle
 
@@ -198,9 +212,7 @@ namespace KindredSiege.Slice
             _dot = MakeDot();
             Shader flat = Shader.Find("GUI/Text Shader");
             if (flat != null) _silhouetteMaterial = new Material(flat);
-            int seed = autopilot ? FindStorySeed() : worldSeed;
-            _world = SliceWorld.Create((ulong)seed);
-            ShowIntro(seed);
+            StartRun();
         }
 
         void OnDestroy()
@@ -254,23 +266,19 @@ namespace KindredSiege.Slice
         {
             switch (CurrentStage)
             {
-                case Stage.Intro:
-                    StartFight();
+                case Stage.Intro: ShowBeforeFight(); break;
+                case Stage.BeforeFight:
+                    if (_squad.Count == Mathf.Min(SliceRun.SquadSize, _run.Reserve.Count)) StartFight();
                     break;
                 case Stage.AfterFight:
-                    if (_fights.Count >= FightsToPlay || _world.Raiders.Broken) ShowFinal();
-                    else if (!_world.WarOver) ShowWar();
+                    if (_run.Over) ShowFinal();
+                    else if (_run.WarPending) ShowWar();
                     else ShowBeforeFight();
                     break;
-                case Stage.War:
-                    if (_world.Raiders.Broken) ShowFinal();
-                    else ShowBeforeFight();
-                    break;
-                case Stage.BeforeFight:
-                    StartFight();
-                    break;
+                case Stage.War: ShowBeforeFight(); break;
                 case Stage.Final:
-                    Finished = true;
+                    if (autopilot) Finished = true;
+                    else { worldSeed++; StartRun(); }
                     break;
             }
         }
@@ -284,27 +292,21 @@ namespace KindredSiege.Slice
         void ShowIntro(int seed)
         {
             SetStage(Stage.Intro);
-            _cardTitle = "FALLEN STAR: the raider chief has come for the Clarth";
+            _cardTitle = "FALLEN STAR";
             _card.Clear();
-            Line("Your fighters fight on their own. You give orders: Hold, Fall Back, Focus Fire, Unleash, Sacrifice. 5 points a fight.", Ink);
-            Line("Whatever beats the chief, he learns from. Every lesson cites the fight it came from, and replaying that fight must give the same numbers.", Ink);
-            Line(string.Empty, Ink);
-            if (autopilot)
-            {
-                Line("Autopilot plays the same plan in both fights: focus their Marksman, Unleash, then Fall Back twice.", Amber);
-                Line("World " + seed + " is the first world where this plan wins fight 1, the chief learns from it, and then beats the same plan in fight 2. " +
-                    "It was picked to show the loop, not drawn at random. Fights play at " + fightSpeed.ToString("0.#", CultureInfo.InvariantCulture) + "x speed.", Dim);
-            }
-            else
-            {
-                Line("Keys: 1 Hold, 2 Fall Back, 3 Focus Fire then click an enemy, 4 Unleash, 5 Sacrifice then click your unit. Space pauses.", Amber);
-            }
+            Line("The Butcher leads. You choose five fighters and give the orders.", Ink);
+            Line("Break a tribe's courage to recruit its surviving fighters. Your new recruits can join the next squad.", Ink);
+            Line("Win a chief's recipe, steal Eclipse, and face the raider chief when he returns with what he learned.", Amber);
+            Line("Fight one: Bloodridge. Next: Skullpeak. Then the chief's rematch.", Dim);
+            Line("The Butcher's art is a placeholder while Jacob draws the Pal.", Dim);
+            if (autopilot) Line("AUTOPILOT / seed " + seed + ". Scripted controls; the seed is not searched for a win.", Dim);
         }
 
         void StartFight()
         {
             ClearFight();
-            _setup = _world.NextPlayerFight();
+            _battleEnemy = _run.NextEnemy;
+            _setup = _run.NextFight(_squad);
             _sim = new BattleSimulation(_setup);
             _session = new SimSession(_sim);
             _eventCursor = 0;
@@ -315,6 +317,9 @@ namespace KindredSiege.Slice
             _freeze = 0f;
             _impactCooldown = 0f;
             _focusTime = 0f;
+            _pilot = new SliceAutopilot(SliceAutopilot.Style.Smart);
+            _feed.Clear();
+            _showRival = false;
             SpawnUnits();
             SetStage(Stage.Fight);
             Feed("Fight " + (_fights.Count + 1) + " begins.");
@@ -322,7 +327,7 @@ namespace KindredSiege.Slice
 
         void UpdateFight(float dt)
         {
-            if (_paused || _sim == null) return;
+            if (_paused || _showCodex || _showRival || _sim == null) return;
             if (!_sim.IsFinished)
             {
                 // Hit stop: the fight holds after a kill or a big hit.
@@ -335,123 +340,138 @@ namespace KindredSiege.Slice
                 while (_tickAccumulator >= 1f && !_sim.IsFinished && _freeze <= 0f)
                 {
                     _tickAccumulator -= 1f;
-                    if (autopilot) PlanOrders(_session, _sim);
+                    if (autopilot) _pilot.Step(_session, _sim);
                     _session.Tick();
                     CountDownFx();
                     DrainEvents();
                 }
                 if (_sim.IsFinished)
                 {
-                    bool won = _sim.Winner == SliceWorld.PlayerSide;
-                    AddBanner(won ? "VICTORY" : _sim.Winner < 0 ? "DRAW" : "DEFEAT", string.Empty, won ? Amber : Rival, EndHoldSeconds + 1f);
+                    bool won = _sim.Winner == SliceRun.PlayerSide;
+                    if (_sim.BrokenSide < 0)
+                        AddBanner(won ? "VICTORY" : _sim.Winner < 0 ? "DRAW" : "DEFEAT", string.Empty, won ? Amber : Rival, EndHoldSeconds + 1f);
                 }
                 return;
             }
 
             _endHold += dt;
-            if (_endHold > EndHoldSeconds) ShowAfterFight();
+            if (_endHold > (_sim.BrokenSide >= 0 ? BreakHoldSeconds : EndHoldSeconds)) ShowAfterFight();
         }
 
         void ShowAfterFight()
         {
-            PlayerFightResult fight = _world.FinishPlayerFight(_setup, _session);
+            RunFightResult fight = _run.FinishFight(_setup, _session);
             _fights.Add(fight);
             SetStage(Stage.AfterFight);
-            bool won = fight.Record.Winner == SliceWorld.PlayerSide;
-            _cardTitle = "Fight " + _fights.Count + ": " + (won ? "you won" : fight.Record.Winner < 0 ? "a draw" : "the raider chief won") +
-                " after " + Seconds(fight.Record.EndTick);
+            _cardTitle = fight.Won ? "VICTORY  /  " + EnemyName : "YOUR RUN ENDS";
             _card.Clear();
-            Line("Raiders lost " + fight.RaiderDead + (fight.RaidersBroke
-                ? " and broke."
-                : ". After regrouping they have " + _world.Raiders.Strength + " of " + _world.Raiders.HomeStrength + "."), Ink);
-            Heading("WHAT THE RAIDER CHIEF LEARNED", Rival);
-            AddLessons(fight.RaiderLessons, Ink, 6);
-            Heading("WHAT YOUR CLARTH LEARNED", Teal);
-            AddLessons(fight.ClarthLessons, Ink, 2);
+            Line("Fight " + _fights.Count + " finished in " + Seconds(fight.Record.EndTick) + ".", Dim);
+            if (!fight.Won)
+            {
+                Line(fight.ButcherDown ? "The Butcher fell and your line broke." : "Your line could not hold this fight.", Rival);
+                Line("The next run starts with a fresh squad. The chiefs and your discoveries remember this session.", Ink);
+            }
+            else
+            {
+                Heading(fight.Joined.Count + " JOINED YOUR RESERVE", Amber);
+                var names = new List<string>();
+                foreach (RunFighter fighter in fight.Joined) names.Add(fighter.DisplayName);
+                Line(string.Join(", ", names), Ink);
+                if (fight.ChiefEscaped) Line("The raider chief escaped with his home crew. He will return.", Rival);
+                if (fight.ChiefCaught) Line("The chief is caught and joins your reserve.", Teal);
+                if (fight.StolenGrade > 0) Line("STOLEN: Eclipse, grade " + fight.StolenGrade + ". It is now on your order bar.", Amber);
+                if (fight.LearnedRecipe != GearKind.None) Line("THE BUTCHER LEARNED: " + Gear.Name(fight.LearnedRecipe) + ".", Amber);
+                if (fight.Forged != GearKind.None)
+                    Line("FORGED: " + Gear.Name(fight.Forged) + ". " + Gear.Describe(fight.Forged) + ". Choose its wearer below.", Teal);
+            }
+            if (fight.Fallen.Count > 0)
+            {
+                var fallen = new List<string>();
+                foreach (RunFighter f in fight.Fallen) fallen.Add(f.DisplayName);
+                Line("LOST THIS RUN: " + string.Join(", ", fallen) + ".", Rival);
+            }
+            Heading("THE CHIEF'S CHANGED TACTICS", Rival);
+            AddLessons(fight.EnemyLessons, Ink, 3);
+            _cardScroll = Vector2.zero;
         }
 
         void ShowWar()
         {
-            _lastWar = _world.RunRaiderWar();
+            _lastWar = _run.RunWar();
             SetStage(Stage.War);
-            _cardTitle = "Off screen: the raiders fought the third tribe";
+            _cardTitle = "WHILE YOU REGROUP";
             _card.Clear();
-            string result = _lastWar.WinnerId.Length == 0 ? "A draw." :
-                (_lastWar.WinnerId == SliceWorld.RaidersId ? "The raiders won." : "The third tribe won.");
-            Line(result + " Raiders lost " + _lastWar.DeadA + ", the third tribe lost " + _lastWar.DeadB + ".", Ink);
-            Line("After regrouping: raiders " + _world.Raiders.Strength + " of " + _world.Raiders.HomeStrength + ", third tribe " +
-                _world.ThirdTribe.Strength + " of " + _world.ThirdTribe.HomeStrength + "." +
-                (_lastWar.LoserBroke ? " The " + (_lastWar.LoserId == SliceWorld.RaidersId ? "raiders" : "third tribe") + " broke." : string.Empty), Ink);
-            List<Tribe> recruitable = _world.RecruitableTribes();
-            if (recruitable.Count > 0) Line("Now open to your recruiters: " + recruitable[0].DisplayName + ", " + recruitable[0].Strength + " fighters.", Amber);
-            Heading("WHAT THE RAIDER CHIEF TOOK FROM THE WAR", Rival);
-            AddLessons(_lastWar.LessonsA, Ink, 3);
+            Line("The escaped chief's splinter crew has raided Skullpeak.", Ink);
+            if (_lastWar.Fought)
+                Line((_lastWar.Winner == 0 ? "The splinter crew won." : _lastWar.Winner == 1 ? "Skullpeak won." : "Neither side won.") +
+                    " Splinter losses: " + _lastWar.SplinterDead + ". Skullpeak losses: " + _lastWar.SkullpeakDead + ".", Ink);
+            Line("Skullpeak now has " + _run.Skullpeak.Strength + " fighters and " + Percent(_run.Skullpeak.Nerve) + " courage after regrouping.", Amber);
+            Heading("WHAT THE CHIEF TOOK FROM THE WAR", Rival);
+            AddLessons(_lastWar.SplinterLessons, Ink, 3);
+            _cardScroll = Vector2.zero;
         }
 
         void ShowBeforeFight()
         {
             SetStage(Stage.BeforeFight);
-            _cardTitle = "Fight " + (_fights.Count + 1) + ": the raider chief is back";
-            _card.Clear();
-            Heading("HE NOW ANSWERS YOU", Rival);
-            int shown = 0;
-            for (int i = 0; i < TribeMind.HabitCount; i++)
-            {
-                var habit = (Habit)i;
-                if (!_world.Raiders.Mind.HasHabit(habit)) continue;
-                Line("- " + Meaning(habit), Ink);
-                shown++;
-            }
-            if (shown == 0) Line("Nothing new. He has not learned anything he can use against you yet.", Ink);
-            if (autopilot) Line("Autopilot keeps the same plan as fight 1.", Amber);
+            _cardTitle = "PICK YOUR FIVE";
+            _reserveScroll = Vector2.zero;
+            _squad.Clear();
+            _squad.AddRange(_run.DefaultSquad());
         }
 
         void ShowFinal()
         {
             SetStage(Stage.Final);
-            _cardTitle = "Same plan, different rival";
+            _cardTitle = _run.Stage == RunStage.Won ? "THE RAIDER CHIEF IS YOURS" : "REGROUP AT FALLEN STAR";
             _card.Clear();
             var summary = new System.Text.StringBuilder();
-            for (int i = 0; i < _fights.Count; i++)
+            foreach (RunFightResult fight in _fights)
             {
-                FightRecord r = _fights[i].Record;
-                string outcome = r.Winner == SliceWorld.PlayerSide ? "you won" : r.Winner < 0 ? "a draw" : "the raider chief won";
-                string line = "Fight " + (i + 1) + ": " + outcome + " after " + Seconds(r.EndTick) + ".";
-                string answers = AutoAnswers(r);
-                if (answers.Length > 0) line += " He answered your orders with " + answers + ".";
+                string line = fight.Fought + ": " + (fight.Won ? "victory" : "defeat") + " in " + Seconds(fight.Record.EndTick) +
+                    "; " + fight.Joined.Count + " recruits.";
                 Line(line, Ink);
                 summary.AppendLine(line);
             }
-            Line(string.Empty, Ink);
-            Line("Every lesson shown was replayed from its fight and gave the same numbers.", Teal);
-            Line("Stopgap art until PixelLab. Provisional numbers. Next: your orders by hand.", Dim);
+            Line("Reserve: " + _run.Reserve.Count + " fighters. Discoveries this session: " + _memory.Codex.Count + ".", Amber);
+            Line("A new run resets the squad and gear. Chief memories and discoveries remain for this session.", Dim);
             Summary = summary.ToString();
+            _cardScroll = Vector2.zero;
         }
 
         // ------------------------------------------------------------ orders
 
         void HandleInput()
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (_showCodex) { _showCodex = false; return; }
+                if (_showGear) { _showGear = false; return; }
+                if (_showRival) { _showRival = false; return; }
+            }
             if (Input.GetKeyDown(KeyCode.Space) && CurrentStage == Stage.Fight) _paused = !_paused;
-            if (CurrentStage != Stage.Fight || autopilot || _sim == null || _sim.IsFinished) return;
+            if (CurrentStage != Stage.Fight || autopilot || _showCodex || _showRival || _sim == null || _sim.IsFinished) return;
             if (Input.GetKeyDown(KeyCode.Alpha1)) PickOrder(Directive.Hold);
             if (Input.GetKeyDown(KeyCode.Alpha2)) PickOrder(Directive.FallBack);
             if (Input.GetKeyDown(KeyCode.Alpha3)) PickOrder(Directive.FocusFire);
             if (Input.GetKeyDown(KeyCode.Alpha4)) PickOrder(Directive.Unleash);
             if (Input.GetKeyDown(KeyCode.Alpha5)) PickOrder(Directive.Sacrifice);
+            if (Input.GetKeyDown(KeyCode.Alpha6)) PickOrder(Directive.Eclipse);
+            if (Input.GetKeyDown(KeyCode.Alpha7)) PickOrder(Directive.Frenzy);
             if (Input.GetKeyDown(KeyCode.Escape)) _targeting = null;
-            if (_targeting.HasValue && Input.GetMouseButtonDown(0) && _camera != null)
+            if (_targeting.HasValue && Input.GetMouseButtonDown(0) && _camera != null && PointerInBattle())
             {
                 if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100f) && hit.collider.transform.parent != null)
                 {
                     IssueOrder(_targeting.Value, hit.collider.transform.parent.name);
-                    _targeting = null;
+                    // Retain targeting after an invalid target; Esc cancels it.
                 }
             }
         }
 
         void PickOrder(Directive directive)
         {
+            if (_sim == null || !_sim.CanUse(0, directive, out _)) return;
             if (directive == Directive.FocusFire || directive == Directive.Sacrifice)
             {
                 _targeting = directive;
@@ -465,87 +485,8 @@ namespace KindredSiege.Slice
             if (_session == null || _sim.IsFinished) return;
             if (!_session.TryIssue(Directives.CommandKind, "0", targetId, 0, 0, Directives.Name(directive), out string failure))
                 AddBanner("Can't: " + failure, string.Empty, Dim, 1.6f);
+            else _targeting = null;
             DrainEvents();
-        }
-
-        /// The autopilot plan: focus their Marksman, Unleash, then Fall Back twice.
-        static void PlanOrders(SimSession session, BattleSimulation sim)
-        {
-            long t = sim.CurrentTick;
-            if (t == 20)
-            {
-                BattleUnit marksman = FirstAlive(sim, 1, UnitClass.Marksman);
-                if (marksman != null) session.TryIssue(Directives.CommandKind, "0", marksman.Id, 0, 0, Directives.Name(Directive.FocusFire), out _);
-            }
-            if (t == 40) session.TryIssue(Directives.CommandKind, "0", string.Empty, 0, 0, Directives.Name(Directive.Unleash), out _);
-            if (t == 130 || t == 250) session.TryIssue(Directives.CommandKind, "0", string.Empty, 0, 0, Directives.Name(Directive.FallBack), out _);
-        }
-
-        static BattleUnit FirstAlive(BattleSimulation sim, int side, UnitClass unitClass)
-        {
-            for (int i = 0; i < sim.Units.Count; i++)
-            {
-                BattleUnit u = sim.Units[i];
-                if (u.Side == side && u.Alive && u.Class == unitClass) return u;
-            }
-            return null;
-        }
-
-        /// First world where the autopilot plan wins fight 1, the chief learns answers to Unleash and
-        /// Fall Back, and then uses both to win fight 2. Played headless; the shown run is the same world.
-        static int FindStorySeed()
-        {
-            for (int seed = 1; seed <= 500; seed++)
-            {
-                SliceWorld world = SliceWorld.Create((ulong)seed);
-                BattleSetup first = world.NextPlayerFight();
-                PlayerFightResult r1 = world.FinishPlayerFight(first, PlayHeadless(first));
-                if (r1.Record.Winner != SliceWorld.PlayerSide || world.Raiders.Broken || world.WarOver) continue;
-                if (!world.Raiders.Mind.HasHabit(Habit.HoldOnUnleash) || !world.Raiders.Mind.HasHabit(Habit.PressOnFallBack)) continue;
-                world.RunRaiderWar();
-                if (world.Raiders.Broken) continue;
-                BattleSetup second = world.NextPlayerFight();
-                PlayerFightResult r2 = world.FinishPlayerFight(second, PlayHeadless(second));
-                if (r2.Record.Winner == 1 && CountAuto(r2.Record, "Hold") > 0 && CountAuto(r2.Record, "Unleash") > 0) return seed;
-            }
-            return 7;
-        }
-
-        static SimSession PlayHeadless(BattleSetup setup)
-        {
-            var sim = new BattleSimulation(setup);
-            var session = new SimSession(sim);
-            while (!sim.IsFinished && sim.CurrentTick < setup.TickLimit)
-            {
-                PlanOrders(session, sim);
-                session.Tick();
-            }
-            return session;
-        }
-
-        static int CountAuto(FightRecord record, string detail)
-        {
-            int count = 0;
-            for (int i = 0; i < record.Events.Count; i++)
-            {
-                BattleEvent e = record.Events[i];
-                if (e.Kind == BattleEventKind.Directive && e.ActorSide == 1 &&
-                    e.ActorId.StartsWith(BattleSimulation.AutoActorPrefix, System.StringComparison.Ordinal) && e.Detail == detail)
-                    count++;
-            }
-            return count;
-        }
-
-        static string AutoAnswers(FightRecord record)
-        {
-            var parts = new List<string>();
-            string[] details = { "Hold", "Unleash", BattleSimulation.CoverDetail };
-            for (int i = 0; i < details.Length; i++)
-            {
-                int n = CountAuto(record, details[i]);
-                if (n > 0) parts.Add(Pretty(details[i]) + (n > 1 ? " x" + n : string.Empty));
-            }
-            return string.Join(", ", parts);
         }
 
         // ------------------------------------------------------------ events
@@ -570,6 +511,7 @@ namespace KindredSiege.Slice
 
         void OnEvent(BattleEvent e)
         {
+            if (PresentRunEvent(e)) return;
             switch (e.Kind)
             {
                 case BattleEventKind.Hit:
@@ -600,6 +542,42 @@ namespace KindredSiege.Slice
                 case BattleEventKind.Directive:
                     OnDirective(e);
                     break;
+                case BattleEventKind.Break:
+                    OnBreak(e.ActorSide);
+                    break;
+            }
+        }
+
+        /// A side's courage ran out. Raiders who break walk over to the Clarth; Clarth who break flee.
+        void OnBreak(int side)
+        {
+            _shake = Mathf.Max(_shake, BreakShake);
+            if (side == SliceRun.PlayerSide)
+            {
+                AddBanner("YOUR LINE BREAKS", "Your fighters retreat. The enemy wins this one.", Rival, BreakHoldSeconds + 1f);
+                Feed("Your line breaks.");
+            }
+            else
+            {
+                AddBanner(EnemyName.ToUpperInvariant() + " BREAKS", "Survivors join you. The fight is won.", Amber, BreakHoldSeconds + 1f);
+                Feed(EnemyName + " breaks. The survivors are yours.");
+            }
+            int walking = 0;
+            for (int i = 0; i < _viewOrder.Count; i++)
+            {
+                UnitView v = _viewOrder[i];
+                if (v.Unit.Side != side || !v.Unit.Alive) continue;
+                if (side == SliceRun.PlayerSide || (v.Unit.Role == UnitRole.Chief && _run.Stage == RunStage.Raiders))
+                {
+                    v.Fleeing = true;
+                    v.WalkGoal = new Vector3(side == 0 ? -9f : 9f, 0f, v.Home.z);
+                }
+                else
+                {
+                    v.WalkOver = true;
+                    v.WalkGoal = new Vector3(-3.8f - 1.0f * (walking % 2), 0f, 3.4f - 1.3f * (walking / 2));
+                    walking++;
+                }
             }
         }
 
@@ -639,7 +617,7 @@ namespace KindredSiege.Slice
 
             bool auto = e.ActorId.StartsWith(BattleSimulation.AutoActorPrefix, System.StringComparison.Ordinal);
             string target = e.TargetId.Length > 0 ? " on " + Name(e.TargetId) : string.Empty;
-            if (!auto && side == SliceWorld.PlayerSide)
+            if (!auto && side == SliceRun.PlayerSide)
             {
                 _lastOrder = detail;
                 _lastOrderAge = 0f;
@@ -647,12 +625,12 @@ namespace KindredSiege.Slice
                 Feed("You order " + Pretty(detail) + target + ".");
                 return;
             }
-            if (!auto) return;
+            if (!auto || detail == Directives.Name(Directive.Eclipse)) return;
 
-            TribeMind mind = side == SliceWorld.PlayerSide ? _world.Clarth.Mind : _world.Raiders.Mind;
+            TribeMind mind = side == SliceRun.PlayerSide ? _memory.ClarthMind : _battleEnemy.Mind;
             Lesson taught = LessonFor(mind, detail);
-            string sub = taught == null ? string.Empty : "Learned in " + taught.FightId + ": " + taught.Why;
-            if (side == SliceWorld.PlayerSide)
+            string sub = taught == null ? string.Empty : "Learned in an earlier fight.";
+            if (side == SliceRun.PlayerSide)
             {
                 AddBanner("YOUR FIGHTERS ANSWER: " + Pretty(detail).ToUpperInvariant(), sub, Teal, 3.2f);
                 Feed("Your fighters answer with " + Pretty(detail) + " (learned).");
@@ -770,7 +748,8 @@ namespace KindredSiege.Slice
             _camera = cameraObject.AddComponent<Camera>();
             _camera.clearFlags = CameraClearFlags.SolidColor;
             _camera.backgroundColor = new Color(0.035f, 0.03f, 0.028f);
-            _camera.fieldOfView = 38f;
+            _camera.orthographic = true;
+            _camera.orthographicSize = 5.2f;
             cameraObject.transform.position = CameraHome;
             cameraObject.transform.LookAt(CameraLook);
 
@@ -835,6 +814,14 @@ namespace KindredSiege.Slice
             _unitsRoot.SetParent(_stageRoot);
         }
 
+        static void Surface(GameObject go, Color color)
+        {
+            var renderer = go.GetComponent<Renderer>();
+            Material source = Resources.Load<Material>("RivalSlice/StageSurface");
+            if (source != null) renderer.sharedMaterial = source;
+            renderer.material.color = color;
+        }
+
         GameObject Block(string name, PrimitiveType type, Vector3 position, Vector3 scale, Color color)
         {
             GameObject go = GameObject.CreatePrimitive(type);
@@ -843,7 +830,7 @@ namespace KindredSiege.Slice
             go.transform.position = position;
             go.transform.localScale = scale;
             Destroy(go.GetComponent<Collider>());
-            go.GetComponent<Renderer>().material.color = color;
+            Surface(go, color);
             return go;
         }
 
@@ -887,8 +874,14 @@ namespace KindredSiege.Slice
                     for (int i = 0; i < members.Count; i++)
                     {
                         float sign = side == 0 ? -1f : 1f;
-                        float x = sign * (row == (int)Row.Front ? 1.2f : 3.0f);
-                        float z = 1.2f + (i - (members.Count - 1) * 0.5f) * 1.5f;
+                        int frontCount = 0;
+                        foreach (BattleUnit u in _sim.Units) if (u.Side == side && u.Row == Row.Front) frontCount++;
+                        // Fan a crowded row into columns of three without changing its combat row.
+                        int column = i / 3;
+                        int inColumn = Mathf.Min(3, members.Count - column * 3);
+                        float rowX = row == (int)Row.Front ? 1.6f : frontCount > 3 ? 5.2f : 4.0f;
+                        float x = sign * (rowX + column * 1.6f);
+                        float z = 1.2f + (i % 3 - (inColumn - 1) * 0.5f) * 2.2f;
                         UnitView view = MakeView(members[i], new Vector3(x, 0f, z));
                         _views[members[i].Id] = view;
                         _viewOrder.Add(view);
@@ -897,16 +890,27 @@ namespace KindredSiege.Slice
             }
         }
 
-        /// Art file names: clarth_warden, raider_medic, and so on; Wardens may add _idle1 to _idle4.
-        static string ArtName(BattleUnit unit)
+        /// Sprite sheet prefix per side: the Clarth (player) and the Bloodridge raiders.
+        string ArtPrefix(BattleUnit unit)
         {
-            return (unit.Side == 0 ? "clarth_" : "raider_") + SliceClasses.Name(unit.Class).ToLowerInvariant();
+            if (unit.Role == UnitRole.Pal) return string.Empty;
+            RunFighter recruit = unit.Side == 0 ? _run.FindFighter(unit.Id) : null;
+            string tribe = recruit != null ? recruit.TribeId : _battleEnemy.Id;
+            return tribe == SliceRun.ClarthId ? "clarth" : tribe == SliceRun.SkullpeakId ? "skull" : "blood_rot";
+        }
+
+        /// Old single stills, kept as a fallback: clarth_warden, raider_medic, and so on.
+        string ArtName(BattleUnit unit)
+        {
+            string prefix = ArtPrefix(unit);
+            if (prefix.Length == 0) return string.Empty;
+            return (prefix == "blood_rot" ? "raider" : prefix) + "_" + ArtPiece(unit);
         }
 
         Sprite LoadSprite(string name)
         {
             if (_sprites.TryGetValue(name, out Sprite cached)) return cached;
-            var texture = Resources.Load<Texture2D>("RivalSlice/Units/" + name);
+            var texture = string.IsNullOrEmpty(name) ? null : Resources.Load<Texture2D>("RivalSlice/Units/" + name);
             Sprite sprite = null;
             if (texture != null)
             {
@@ -918,6 +922,27 @@ namespace KindredSiege.Slice
             return sprite;
         }
 
+        /// A breathing idle: four frames side by side, feet on the bottom edge. Facing "se" looks
+        /// right, "sw" looks left. Returns null when the sheet is missing.
+        Sprite[] LoadSheet(string prefix, string piece, string facing)
+        {
+            string name = prefix + "_" + piece + "_idle_" + facing;
+            if (_sheets.TryGetValue(name, out Sprite[] cached)) return cached;
+            var texture = string.IsNullOrEmpty(prefix) ? null : Resources.Load<Texture2D>("RivalSlice/Sheets/" + name);
+            Sprite[] frames = null;
+            if (texture != null)
+            {
+                texture.filterMode = FilterMode.Point;
+                texture.wrapMode = TextureWrapMode.Clamp;
+                int w = texture.width / SheetFrames;
+                frames = new Sprite[SheetFrames];
+                for (int i = 0; i < SheetFrames; i++)
+                    frames[i] = Sprite.Create(texture, new Rect(i * w, 0f, w, texture.height), new Vector2(0.5f, 0f), SheetPixelsPerUnit);
+            }
+            _sheets[name] = frames;
+            return frames;
+        }
+
         UnitView MakeView(BattleUnit unit, Vector3 home)
         {
             var root = new GameObject(unit.Id);
@@ -927,21 +952,27 @@ namespace KindredSiege.Slice
 
             Part(root.transform, PrimitiveType.Cylinder, new Vector3(0f, 0.012f, 0f), new Vector3(1.05f, 0.004f, 0.55f), new Color(0.08f, 0.07f, 0.06f));
 
-            Sprite still = LoadSprite(ArtName(unit));
+            // The Clarth stand on the left and face right; the raiders face left. Converts turn when they arrive.
+            string facing = unit.Side == 0 ? "se" : "sw";
+            Sprite[] idle = LoadSheet(ArtPrefix(unit), ArtPiece(unit), facing);
+            Sprite still = idle != null ? idle[0] : LoadSprite(ArtName(unit));
             if (still != null)
             {
                 var art = new GameObject("Art");
                 art.transform.SetParent(root.transform, false);
                 SpriteRenderer renderer = art.AddComponent<SpriteRenderer>();
                 renderer.sprite = still;
-                renderer.flipX = unit.Side == 0; // the art faces left; the Clarth stand on the left facing right
+                renderer.flipX = idle == null && unit.Side == 0; // the old stills face left
+                float height = still.rect.height / still.pixelsPerUnit;
                 BoxCollider clickArea = art.AddComponent<BoxCollider>();
-                clickArea.center = new Vector3(0f, 1f, 0f);
-                clickArea.size = new Vector3(1.3f, 2f, 0.2f);
+                clickArea.center = new Vector3(0f, height * 0.45f, 0f);
+                clickArea.size = new Vector3(1.3f, height * 0.9f, 0.2f);
                 view.Art = renderer;
                 view.Body = art.transform;
                 view.BaseColor = Color.white;
-                view.Height = 1.95f;
+                view.Height = idle != null ? height * 0.82f : 1.95f;
+                view.Idle = idle;
+                view.IdleTurned = idle != null ? LoadSheet(ArtPrefix(unit), ArtPiece(unit), unit.Side == 0 ? "sw" : "se") : null;
                 if (_silhouetteMaterial != null)
                 {
                     // The same shape in flat white, drawn just in front: a real white flash.
@@ -955,16 +986,6 @@ namespace KindredSiege.Slice
                     silhouette.color = new Color(1f, 1f, 1f, 0f);
                     view.Silhouette = silhouette;
                 }
-                if (unit.Class == UnitClass.Warden)
-                {
-                    var frames = new List<Sprite>();
-                    for (int i = 1; i <= 4; i++)
-                    {
-                        Sprite frame = LoadSprite(ArtName(unit) + "_idle" + i.ToString(CultureInfo.InvariantCulture));
-                        if (frame != null) frames.Add(frame);
-                    }
-                    if (frames.Count > 1) view.Idle = frames.ToArray();
-                }
             }
             else
             {
@@ -976,7 +997,7 @@ namespace KindredSiege.Slice
                 body.transform.localPosition = new Vector3(0f, size, 0f);
                 Color baseColor = unit.Side == 0 ? ClarthBody : RaiderBody;
                 Renderer bodyRenderer = body.GetComponent<Renderer>();
-                bodyRenderer.material.color = baseColor;
+                Surface(body, baseColor);
                 Part(body.transform, PrimitiveType.Cube, new Vector3(0f, 1.05f, 0f), new Vector3(0.6f, 0.3f, 0.6f), ClassColor(unit.Class));
                 view.Body = body.transform;
                 view.BodyRenderer = bodyRenderer;
@@ -998,7 +1019,7 @@ namespace KindredSiege.Slice
             go.transform.localPosition = localPosition;
             go.transform.localScale = localScale;
             Destroy(go.GetComponent<Collider>());
-            go.GetComponent<Renderer>().material.color = color;
+            Surface(go, color);
             return go;
         }
 
@@ -1011,7 +1032,25 @@ namespace KindredSiege.Slice
                 BattleUnit u = v.Unit;
                 Vector3 goal = v.Home;
                 if (u.Alive && u.Row == Row.Front && _fx[u.Side].FallBack > 0) goal.x += u.Side == 0 ? -1.1f : 1.1f;
-                v.Pos = Vector3.Lerp(v.Pos, goal, 1f - Mathf.Exp(-dt * 7f));
+
+                // A broken side's survivors walk: raiders cross over to join the Clarth, Clarth flee.
+                if (u.Alive && (v.WalkOver || v.Fleeing))
+                {
+                    Vector3 to = v.WalkGoal - v.Pos;
+                    to.y = 0f;
+                    float step = WalkOverSpeed * dt;
+                    if (to.magnitude <= step)
+                    {
+                        v.Pos = v.WalkGoal;
+                        if (v.WalkOver && !v.Arrived)
+                        {
+                            v.Arrived = true;
+                            AddFloat(v, "JOINS YOU", Amber, false);
+                        }
+                    }
+                    else v.Pos += to.normalized * step;
+                }
+                else v.Pos = Vector3.Lerp(v.Pos, goal, 1f - Mathf.Exp(-dt * 7f));
 
                 Vector3 offset = Vector3.zero;
                 if (v.Lunge > 0f)
@@ -1046,6 +1085,7 @@ namespace KindredSiege.Slice
                     offset += (u.Side == 0 ? Vector3.left : Vector3.right) * 0.45f * (1f - (1f - k) * (1f - k));
                     fade = Mathf.Lerp(1f, 0.45f, Mathf.Clamp01((v.DeathAge - DeathTime) / 0.5f));
                 }
+                if (v.Fleeing && u.Alive) fade = Mathf.Clamp01(1f - Mathf.Abs(v.Home.x - v.Pos.x) / 6f);
                 v.Root.transform.position = v.Pos + offset;
 
                 // During an impact the pair is lit and everyone else sinks into the dark.
@@ -1061,7 +1101,7 @@ namespace KindredSiege.Slice
 
                 if (v.Art != null)
                 {
-                    // Sprites face the camera; still art bobs a little, the Warden plays its idle.
+                    // Sprites face the camera and breathe; old stills bob a little instead.
                     float bob = u.Alive && v.Idle == null ? Mathf.Sin(_animClock * 3.2f + v.Phase) * 0.04f : 0f;
                     v.Body.localPosition = new Vector3(0f, bob, 0f);
                     v.Body.localScale = new Vector3(1f + 0.22f * pose, (1f - 0.1f * pose) * (1f - 0.12f * Mathf.Clamp01(fall)), 1f);
@@ -1069,8 +1109,9 @@ namespace KindredSiege.Slice
                     float side = u.Side == 0 ? 1f : -1f;
                     float tilt = u.Alive ? side * 12f * knock : side * 86f * fall;
                     v.Body.rotation = face * Quaternion.Euler(0f, 0f, tilt);
-                    if (u.Alive && v.Idle != null)
-                        v.Art.sprite = v.Idle[(int)((_animClock + v.Phase) / IdleFrameSeconds) % v.Idle.Length];
+                    Sprite[] frames = v.Arrived && v.IdleTurned != null ? v.IdleTurned : v.Idle;
+                    if (u.Alive && frames != null)
+                        v.Art.sprite = frames[(int)((_animClock + v.Phase) / IdleFrameSeconds) % frames.Length];
                     v.Art.color = color;
                     if (v.Silhouette != null)
                     {
@@ -1091,8 +1132,9 @@ namespace KindredSiege.Slice
                 }
 
                 SideFx fx = _fx[u.Side];
-                bool unleashed = u.Alive && fx.Unleash > 0;
-                bool holding = u.Alive && fx.Hold > 0 && u.Row == Row.Front;
+                bool walking = v.WalkOver || v.Fleeing;
+                bool unleashed = u.Alive && !walking && fx.Unleash > 0;
+                bool holding = u.Alive && !walking && fx.Hold > 0 && u.Row == Row.Front;
                 v.Disc.SetActive(unleashed || holding);
                 if (unleashed) v.DiscRenderer.material.color = new Color(0.9f, 0.25f, 0.2f);
                 else if (holding) v.DiscRenderer.material.color = new Color(0.3f, 0.55f, 0.95f);
@@ -1104,7 +1146,7 @@ namespace KindredSiege.Slice
             {
                 SideFx fx = _fx[s];
                 UnitView focused = fx.Focus > 0 ? View(fx.FocusId) : null;
-                bool show = focused != null && focused.Unit.Alive;
+                bool show = focused != null && focused.Unit.Alive && !focused.WalkOver;
                 _focusRings[s].SetActive(show);
                 if (show) _focusRings[s].transform.position = focused.Root.transform.position + new Vector3(0f, 0.03f, 0f);
             }
@@ -1150,7 +1192,7 @@ namespace KindredSiege.Slice
         void UpdateTether(UnitView v)
         {
             BattleUnit u = v.Unit;
-            UnitView ward = u.Class == UnitClass.Warden && u.Alive && u.GuardTargetId.Length > 0 ? View(u.GuardTargetId) : null;
+            UnitView ward = u.Class == UnitClass.Warden && u.Alive && !v.WalkOver && !v.Fleeing && u.GuardTargetId.Length > 0 ? View(u.GuardTargetId) : null;
             if (ward == null || !ward.Unit.Alive)
             {
                 if (v.Tether != null) v.Tether.SetActive(false);
@@ -1162,7 +1204,7 @@ namespace KindredSiege.Slice
                 v.Tether.name = "Guard";
                 v.Tether.transform.SetParent(_unitsRoot);
                 Destroy(v.Tether.GetComponent<Collider>());
-                v.Tether.GetComponent<Renderer>().material.color = Teal;
+                Surface(v.Tether, Teal);
             }
             Vector3 a = v.Root.transform.position + Vector3.up * 0.15f;
             Vector3 b = ward.Root.transform.position + Vector3.up * 0.15f;
@@ -1235,7 +1277,7 @@ namespace KindredSiege.Slice
             ball.transform.SetParent(_unitsRoot);
             ball.transform.localScale = Vector3.one * 0.2f;
             Destroy(ball.GetComponent<Collider>());
-            ball.GetComponent<Renderer>().material.color = color;
+            Surface(ball, color);
             Vector3 a = from.Root.transform.position + Vector3.up * from.Height * 0.6f;
             Vector3 b = to.Root.transform.position + Vector3.up * to.Height * 0.5f;
             ball.transform.position = a;
@@ -1276,8 +1318,10 @@ namespace KindredSiege.Slice
         {
             UnitView view = View(id);
             if (view == null) return "a fighter";
-            string cls = SliceClasses.Name(view.Unit.Class);
-            return view.Unit.Side == SliceWorld.PlayerSide ? "your " + cls : "the raider " + cls;
+            if (view.Unit.Role == UnitRole.Pal) return "the Butcher";
+            if (view.Unit.Role == UnitRole.Chief) return EnemyName + " chief";
+            RunFighter recruit = view.Unit.Side == 0 ? _run.FindFighter(id) : null;
+            return recruit != null ? recruit.DisplayName : EnemyName + " " + SliceClasses.Name(view.Unit.Class);
         }
 
         static Color ClassColor(UnitClass unitClass)
@@ -1319,6 +1363,11 @@ namespace KindredSiege.Slice
             return (ticks / (float)SimClock.TicksPerSecond).ToString("0.0", CultureInfo.InvariantCulture) + "s";
         }
 
+        static string Percent(int nerve)
+        {
+            return (nerve * 100 / NerveRules.Full).ToString(CultureInfo.InvariantCulture) + "%";
+        }
+
         void Line(string text, Color color)
         {
             _card.Add(new CardLine { Text = text, Color = color });
@@ -1335,8 +1384,7 @@ namespace KindredSiege.Slice
             for (int i = 0; i < lessons.Count && shown < max; i++)
             {
                 Lesson lesson = lessons[i];
-                bool checkedOk = _world.Archive.TryVerifyLesson(lesson, out _);
-                Line("- " + lesson.Why + (checkedOk ? "  [replay checked]" : "  [REPLAY MISMATCH]"), checkedOk ? color : Rival);
+                Line("- " + LessonSummary(lesson), color);
                 shown++;
             }
             if (shown == 0) Line("- Nothing this time.", Dim);
@@ -1365,16 +1413,22 @@ namespace KindredSiege.Slice
                 DrawFloats(scale, offset);
             }
             DrawHeader();
-            DrawRivalPanel();
-            if (CurrentStage == Stage.Fight)
+            if (_run != null && GUI.Button(new Rect(1110f, 12f, 146f, 30f), "CODEX  " + _memory.Codex.Count, _button))
+            { _showCodex = !_showCodex; _targeting = null; }
+            if (_showCodex) DrawCodex();
+            else if (_showGear) DrawGearChooser();
+            else if (CurrentStage == Stage.Fight)
             {
+                DrawCourage();
+                DrawRivalPanel();
                 DrawOrders();
                 DrawFeed();
                 DrawBanners();
             }
+            else if (CurrentStage == Stage.BeforeFight) DrawReserve();
             else DrawCard();
             GUI.Label(new Rect(20f, RefHeight - 24f, 900f, 20f),
-                "Stopgap art until PixelLab. Provisional numbers. The deterministic sim decides every hit; this scene only draws it.", _small);
+                "Prototype  /  1-7 orders  /  Space pauses  /  Esc cancels targeting", _small);
         }
 
         void EnsureStyles()
@@ -1394,106 +1448,43 @@ namespace KindredSiege.Slice
             _banner = new GUIStyle(_body) { fontSize = 24, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleCenter, wordWrap = false };
             _bannerSub = new GUIStyle(_body) { fontSize = 13, alignment = TextAnchor.UpperCenter };
             _button = new GUIStyle(GUI.skin.button) { fontSize = 13, fontStyle = FontStyle.Bold, richText = true };
+            _barLabel = new GUIStyle(_body) { fontSize = 15, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleLeft, wordWrap = false };
         }
 
         void DrawHeader()
         {
             Fill(new Rect(0f, 0f, RefWidth, 54f), new Color(0f, 0f, 0f, 0.55f));
             GUI.Label(new Rect(20f, 8f, 520f, 26f), "KINDRED SIEGE  /  FALLEN STAR SLICE", _title);
-            GUI.Label(new Rect(20f, 32f, 620f, 20f), "The Clarth against a raider chief who learns from every fight.", _small);
+            GUI.Label(new Rect(20f, 32f, 620f, 20f), "Break their courage and their survivors join you.", _small);
             if (CurrentStage == Stage.Fight && _sim != null)
             {
-                string info = "FIGHT " + (_fights.Count + 1) + " OF " + FightsToPlay + "   " + Seconds(_sim.CurrentTick) +
+                string info = "FIGHT " + (_fights.Count + 1) + "   " + Seconds(_sim.CurrentTick) +
                     (fightSpeed > 1.01f ? "   (" + fightSpeed.ToString("0.#", CultureInfo.InvariantCulture) + "x speed)" : string.Empty) +
                     (_paused ? "   PAUSED" : string.Empty);
-                GUI.Label(new Rect(560f, 14f, 420f, 26f), info, _title);
+                GUI.Label(new Rect(640f, 14f, 420f, 26f), info, _title);
             }
         }
 
-        void DrawRivalPanel()
+        /// The two courage bars, the biggest thing on screen: that is what you are attacking.
+        void DrawCourage()
         {
-            var box = new Rect(RefWidth - 320f, 66f, 304f, 236f);
-            Fill(box, new Color(0f, 0f, 0f, 0.55f));
-            var style = new GUIStyle(_title) { fontSize = 15 };
-            style.normal.textColor = Rival;
-            GUI.Label(new Rect(box.x + 12f, box.y + 8f, box.width - 24f, 22f), "WHAT THE RAIDER CHIEF ANSWERS", style);
-            float y = box.y + 36f;
-            TribeMind mind = _world == null ? null : _world.Raiders.Mind;
-            int shown = 0;
-            if (mind != null)
-            {
-                for (int i = 0; i < TribeMind.HabitCount; i++)
-                {
-                    var habit = (Habit)i;
-                    if (!mind.HasHabit(habit)) continue;
-                    string text = "- " + Meaning(habit);
-                    float h = _small.CalcHeight(new GUIContent(text), box.width - 24f);
-                    GUI.Label(new Rect(box.x + 12f, y, box.width - 24f, h), "<color=#e8e8e0>" + text + "</color>", _small);
-                    y += h + 4f;
-                    shown++;
-                }
-            }
-            if (shown == 0) GUI.Label(new Rect(box.x + 12f, y, box.width - 24f, 40f), "Nothing yet. He learns from every fight.", _small);
-            if (mind != null)
-                GUI.Label(new Rect(box.x + 12f, box.yMax - 26f, box.width - 24f, 20f), "Fights he has learned from: " + mind.FightsLearned.Count, _small);
+            if (_sim == null) return;
+            DrawCourageBar(new Rect(20f, 62f, 600f, 34f), "YOUR COURAGE", _sim.Nerve(0), Amber, false);
+            DrawCourageBar(new Rect(660f, 62f, 600f, 34f), EnemyName.ToUpperInvariant() + " COURAGE", _sim.Nerve(1), Rival, true);
         }
 
-        void DrawOrders()
+        void DrawCourageBar(Rect bar, string label, int nerve, Color color, bool fromRight)
         {
-            var bar = new Rect(20f, RefHeight - 96f, 900f, 66f);
-            Fill(bar, new Color(0f, 0f, 0f, 0.55f));
-            string points = "YOUR ORDERS  " + Dots(_sim.DirectivePoints(0)) + "      CHIEF  " + Dots(_sim.DirectivePoints(1));
-            GUI.Label(new Rect(bar.x + 12f, bar.y + 4f, 600f, 20f), points, _small);
-            Directive[] all = { Directive.Hold, Directive.FallBack, Directive.FocusFire, Directive.Unleash, Directive.Sacrifice };
-            for (int i = 0; i < all.Length; i++)
-            {
-                Directive d = all[i];
-                string label = (i + 1) + "  " + Pretty(Directives.Name(d)).ToUpperInvariant() + "  (" + Directives.Cost(d) + ")";
-                if (_lastOrderAge < 1.2f && _lastOrder == Directives.Name(d)) label = "<color=#ffb04c>" + label + "</color>";
-                GUI.enabled = !autopilot && !_sim.IsFinished;
-                if (GUI.Button(new Rect(bar.x + 12f + i * 176f, bar.y + 26f, 168f, 32f), label, _button)) PickOrder(d);
-                GUI.enabled = true;
-            }
-            string mode = autopilot ? "AUTOPILOT: focus their Marksman at 0.7s, Unleash at 1.3s, Fall Back at 4.3s and 8.3s." :
-                _targeting.HasValue ? "Click a unit for " + Pretty(Directives.Name(_targeting.Value)) + ". Esc cancels." :
-                "Your fighters act on their own. Orders cost points.";
-            GUI.Label(new Rect(bar.x, bar.y - 22f, 900f, 20f), mode, autopilot || _targeting.HasValue ? _notice : _small);
-        }
-
-        void DrawFeed()
-        {
-            var box = new Rect(RefWidth - 320f, 314f, 304f, 150f);
-            Fill(box, new Color(0f, 0f, 0f, 0.45f));
-            float y = box.y + 8f;
-            for (int i = 0; i < _feed.Count; i++)
-            {
-                GUI.Label(new Rect(box.x + 12f, y, box.width - 24f, 22f), _feed[i], _small);
-                y += 23f;
-            }
-        }
-
-        void DrawBanners()
-        {
-            float y = 70f;
-            for (int i = _banners.Count - 1; i >= 0; i--)
-            {
-                Banner b = _banners[i];
-                float alpha = Mathf.Clamp01((b.Life - b.Age) / 0.4f);
-                var main = new GUIStyle(_banner);
-                main.normal.textColor = new Color(b.Color.r, b.Color.g, b.Color.b, alpha);
-                float width = 860f;
-                float subHeight = b.Sub.Length > 0 ? _bannerSub.CalcHeight(new GUIContent(b.Sub), width - 40f) : 0f;
-                var area = new Rect(20f + (900f - width) * 0.5f, y, width, 40f + subHeight + 8f);
-                Fill(area, new Color(0f, 0f, 0f, 0.6f * alpha));
-                GUI.Label(new Rect(area.x, area.y + 4f, area.width, 34f), b.Text, main);
-                if (subHeight > 0f)
-                {
-                    var sub = new GUIStyle(_bannerSub);
-                    sub.normal.textColor = new Color(Ink.r, Ink.g, Ink.b, alpha);
-                    GUI.Label(new Rect(area.x + 20f, area.y + 38f, area.width - 40f, subHeight), b.Sub, sub);
-                }
-                y += area.height + 6f;
-            }
+            Fill(bar, new Color(0f, 0f, 0f, 0.7f));
+            float frac = Mathf.Clamp01(nerve / (float)NerveRules.Full);
+            float w = (bar.width - 4f) * frac;
+            var fill = new Rect(fromRight ? bar.xMax - 2f - w : bar.x + 2f, bar.y + 2f, w, bar.height - 4f);
+            Fill(fill, new Color(color.r, color.g, color.b, 0.85f));
+            string text = nerve <= 0 ? label + "   BROKEN" : label + "   " + Percent(nerve);
+            var style = new GUIStyle(_barLabel);
+            style.alignment = fromRight ? TextAnchor.MiddleRight : TextAnchor.MiddleLeft;
+            style.normal.textColor = Color.white;
+            GUI.Label(new Rect(bar.x + 12f, bar.y, bar.width - 24f, bar.height), text, style);
         }
 
         void DrawUnitTags(float scale, Vector2 offset)
@@ -1502,11 +1493,12 @@ namespace KindredSiege.Slice
             {
                 UnitView v = _viewOrder[i];
                 BattleUnit u = v.Unit;
+                if (!u.Alive || v.Fleeing) continue;
                 Vector2 p = ToGui(v.Root.transform.position + Vector3.up * (v.Height + 0.3f), scale, offset);
                 if (p.x < -100f || p.x > RefWidth + 100f) continue;
-                string cls = SliceClasses.Name(u.Class);
-                if (!u.Alive) continue;
-                GUI.Label(new Rect(p.x - 60f, p.y - 28f, 120f, 18f), cls, _tag);
+                string cls = u.Role == UnitRole.Pal ? "BUTCHER" : u.Role == UnitRole.Chief ? "CHIEF" : SliceClasses.Name(u.Class);
+                GUI.Label(new Rect(p.x - 60f, p.y - 28f, 120f, 18f), v.WalkOver ? cls + " (joining)" : cls, _tag);
+                if (v.WalkOver) continue;
                 var bar = new Rect(p.x - 34f, p.y - 8f, 68f, 8f);
                 Fill(bar, new Color(0f, 0f, 0f, 0.7f));
                 float frac = Mathf.Clamp01(u.Hp / (float)u.MaxHp);
@@ -1528,43 +1520,6 @@ namespace KindredSiege.Slice
                 GUIStyle s = f.Big ? bigStyle : style;
                 s.normal.textColor = new Color(f.Color.r, f.Color.g, f.Color.b, 1f - k);
                 GUI.Label(new Rect(p.x - 60f, p.y - 16f, 120f, 32f), f.Text, s);
-            }
-        }
-
-        void DrawCard()
-        {
-            var box = new Rect(150f, 80f, 790f, 560f);
-            Fill(box, new Color(0.04f, 0.045f, 0.05f, 0.92f));
-            float width = box.width - 48f;
-            float y = box.y + 22f;
-            float titleHeight = _cardTitleStyle.CalcHeight(new GUIContent(_cardTitle), width);
-            GUI.Label(new Rect(box.x + 24f, y, width, titleHeight), _cardTitle, _cardTitleStyle);
-            y += titleHeight + 14f;
-            for (int i = 0; i < _card.Count; i++)
-            {
-                CardLine line = _card[i];
-                var style = new GUIStyle(_body);
-                if (line.Heading)
-                {
-                    style.fontStyle = FontStyle.Bold;
-                    style.fontSize = 14;
-                    y += 8f;
-                }
-                style.normal.textColor = line.Color;
-                string text = line.Text.Length == 0 ? " " : line.Text;
-                float h = style.CalcHeight(new GUIContent(text), width);
-                if (y + h > box.yMax - 50f) break;
-                GUI.Label(new Rect(box.x + 24f, y, width, h), text, style);
-                y += h + 6f;
-            }
-            if (autopilot)
-            {
-                float hold = CurrentStage == Stage.AfterFight ? CardSeconds + 2f : CurrentStage == Stage.BeforeFight ? ShortCardSeconds + 1f : CardSeconds;
-                Fill(new Rect(box.x, box.yMax - 4f, box.width * Mathf.Clamp01(_stageClock / hold), 4f), Amber);
-            }
-            else if (!Finished && GUI.Button(new Rect(box.xMax - 200f, box.yMax - 48f, 176f, 34f), CurrentStage == Stage.Final ? "FINISH" : "CONTINUE", _button))
-            {
-                Continue();
             }
         }
 

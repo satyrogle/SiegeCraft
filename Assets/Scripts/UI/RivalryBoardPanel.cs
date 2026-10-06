@@ -105,7 +105,7 @@ namespace KindredSiege.UI
                 if (rival.Memory.HasGrudge)
                 {
                     GUI.Label(new Rect(ix, ry + 85, contentRect.width - 20, 20), 
-                        $"VENDETTA TARGET: {rival.Memory.GrudgeTargetUnitName.ToUpper()} (will focus attack)", _grudgeStyle);
+                        $"GRUDGE TARGET: {rival.Memory.GrudgeTargetUnitName.ToUpper()} (will focus attack)", _grudgeStyle);
                 }
                 else
                 {

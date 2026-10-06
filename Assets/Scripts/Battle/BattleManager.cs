@@ -696,12 +696,8 @@ namespace KindredSiege.Battle
                             _activeRival.RivalId, deadUnit.UnitName, deadUnit.UnitType);
                     }
 
-                    // 2. If Player kills Rival, Rival forms Grudge against the killer!
-                    if (killer.TeamId == 1 && deadUnit.TeamId == 2 && _activeRival != null && deadUnit.UnitName == _activeRival.FullName)
-                    {
-                        KindredSiege.Rivalry.RivalryEngine.Instance?.RecordRivalDefeatedByUnit(
-                            _activeRival.RivalId, killer.UnitName, killer.UnitType);
-                    }
+                    // The Vendetta rule (a rival killed by the player hunts its killer) was removed
+                    // on 1 Oct 2026 by Jacob, pending the solicitor.
                 }
             }
         }
@@ -725,21 +721,10 @@ namespace KindredSiege.Battle
         {
             battleActive = false;
 
-            // Victory sanity boost for surviving player units (GDD §5.2: +10 on win)
-            // AND Vendetta formation (if Rival was present)
+            // Victory sanity boost for surviving player units (GDD §5.2: +10 on win).
+            // The Vendetta step that used to run here was removed on 1 Oct 2026, pending the solicitor.
             if (result == BattleEndEvent.Result.Victory)
             {
-                if (_activeRival != null)
-                {
-                    // Pick a surviving unit to bear the vendetta (fallback to any deployed unit if all died simultaneously)
-                    var vendettaTarget = team1.FirstOrDefault(u => u != null && u.IsAlive) ?? team1.FirstOrDefault();
-                    if (vendettaTarget != null)
-                    {
-                        KindredSiege.Rivalry.RivalryEngine.Instance?.RecordRivalDefeatedByUnit(
-                            _activeRival.RivalId, vendettaTarget.UnitName, vendettaTarget.UnitType);
-                    }
-                }
-
                 foreach (var unit in team1)
                 {
                     if (unit != null && unit.IsAlive)

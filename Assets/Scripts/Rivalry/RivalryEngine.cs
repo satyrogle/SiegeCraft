@@ -255,25 +255,6 @@ namespace KindredSiege.Rivalry
             }
         }
 
-        /// <summary>
-        /// Record that a rival was killed by a specific player unit.
-        /// They form a vendetta against that unit for the next encounter.
-        /// </summary>
-        public void RecordRivalDefeatedByUnit(string rivalId, string playerUnitName, string playerUnitType)
-        {
-            var rival = GetRival(rivalId);
-            if (rival == null) return;
-
-            // Update grudge to the unit that killed them (revenge focus)
-            rival.Memory.GrudgeTargetUnitName = playerUnitName;
-            
-            if (!rival.Traits.Contains(RivalTraitType.Grudge))
-                rival.Traits.Add(RivalTraitType.Grudge);
-
-            rival.Memory.EncounterLog.Add($"Formed vendetta against their killer: \"{playerUnitName}\" ({playerUnitType}).");
-            Debug.Log($"[Rivalry] {rival.FullName} formed a vendetta against {playerUnitName}!");
-        }
-
         /// <summary>Track when the player avoids a rival entirely.</summary>
         public void RecordRivalAvoided(string rivalId)
         {
@@ -375,7 +356,8 @@ namespace KindredSiege.Rivalry
 
         /// <summary>
         /// Mark a rival as defeated (drops loot, removed from active pool).
-        /// May trigger a Vendetta from a subordinate rival.
+        /// The Vendetta rule (a defeated rival's subordinate swears revenge, and a beaten rival
+        /// hunts the unit that killed it) was removed on 1 Oct 2026 by Jacob, pending the solicitor.
         /// </summary>
         public void MarkRivalDefeated(string rivalId)
         {
@@ -385,19 +367,6 @@ namespace KindredSiege.Rivalry
             rival.IsDefeated = true;
             _activeRivals.Remove(rival);
             _defeatedRivals.Add(rival);
-
-            // Chance that a subordinate (another active rival) develops a Vendetta
-            var subordinate = _activeRivals
-                .Where(r => !r.IsDefeated && !r.Traits.Contains(RivalTraitType.Vendetta))
-                .OrderBy(_ => Random.value)
-                .FirstOrDefault();
-
-            if (subordinate != null && Random.value < 0.5f)
-            {
-                subordinate.Traits.Add(RivalTraitType.Vendetta);
-                subordinate.Memory.EncounterLog.Add($"Developed Vendetta after {rival.FullName} was slain.");
-                Debug.Log($"[Rivalry] {subordinate.FullName} swears Vendetta for {rival.FullName}!");
-            }
 
             Debug.Log($"[Rivalry] {rival.FullName} defeated and archived.");
         }

@@ -156,7 +156,7 @@ namespace KindredSiege.Rivalry
         // Adaptive traits — earned through memory
         MarksmanHunter,    // Gained after being scarred by a Marksman — hunts Marksmen first
         EldritchResistant, // Gained after being defeated by Ritual cards
-        Vendetta,          // Gained when one of their allies is killed — more aggressive
+        Vendetta,          // Never assigned now: the Vendetta rule was removed on 1 Oct 2026 (Jacob), pending the solicitor. Kept so saved trait numbers still load.
         Grudge,            // Gained when they kill a player unit — taunts that unit type
         Bold,              // Gained when player avoids them repeatedly — starts ambushing
 

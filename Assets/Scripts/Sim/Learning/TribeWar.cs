@@ -9,6 +9,9 @@ namespace KindredSiege.Sim.Learning
     /// and where it stands with the player.
     public sealed class Tribe
     {
+        /// Nerve rules: how much nerve a tribe gets back each time it regroups. Placeholder.
+        public const int NerveRecoveryPerRegroup = 200;
+
         private readonly List<UnitClass> _home = new List<UnitClass>();
         private readonly List<UnitClass> _fighters = new List<UnitClass>();
 
@@ -40,15 +43,25 @@ namespace KindredSiege.Sim.Learning
         public int Wins { get; internal set; }
         public int Losses { get; internal set; }
 
-        /// Lost a fight with fewer than half its home strength left. A broken tribe no longer
-        /// fights or regroups.
+        /// Old rules: lost a fight with fewer than half its home strength left. Nerve rules: its
+        /// nerve ran out. A broken tribe no longer fights or regroups.
         public bool Broken { get; internal set; }
+
+        /// Nerve rules: what the tribe has left, carried from one fight into the next, in
+        /// thousandths of a full bar. Stays full under the old rules.
+        public int Nerve { get; internal set; } = NerveRules.Full;
+
+        /// Nerve rules: the player broke this tribe and every survivor left to join the player.
+        public bool JoinedPlayer { get; internal set; }
+
+        /// Set once the tribe lives under the nerve rules, so its snapshot carries its nerve.
+        internal bool NerveTracked { get; set; }
 
         /// Broken with survivors: they will now listen to a recruitment offer from the player.
         public bool RecruitableByPlayer => Broken && _fighters.Count > 0;
 
-        /// Broken with nobody left.
-        public bool Destroyed => Broken && _fighters.Count == 0;
+        /// Broken with nobody left. A tribe whose survivors joined the player is not destroyed.
+        public bool Destroyed => Broken && _fighters.Count == 0 && !JoinedPlayer;
 
         /// The first fighters in roster order, up to max, with stable ids.
         public List<UnitSpec> Deploy(int max, string idPrefix)
@@ -61,7 +74,8 @@ namespace KindredSiege.Sim.Learning
         }
 
         /// Takes this fight's dead off the roster. The side must have been deployed from the
-        /// current roster, so the n-th unit on that side is the n-th fighter.
+        /// current roster, so the n-th fighter on that side is the n-th fighter. A Pal or Chief
+        /// fighting alongside is not on the roster and is skipped.
         internal int RemoveDead(BattleSimulation sim, int side)
         {
             var dead = new List<int>();
@@ -69,7 +83,7 @@ namespace KindredSiege.Sim.Learning
             for (int i = 0; i < sim.Units.Count; i++)
             {
                 BattleUnit u = sim.Units[i];
-                if (u.Side != side) continue;
+                if (u.Side != side || u.IsLeader) continue;
                 if (k >= _fighters.Count || _fighters[k] != u.Class)
                     throw new InvalidOperationException("Side " + side + " was not deployed from " + Id + "'s current roster.");
                 if (!u.Alive) dead.Add(k);
@@ -115,6 +129,32 @@ namespace KindredSiege.Sim.Learning
             return true;
         }
 
+        /// Nerve rules: a regroup also steadies the tribe a little. Broken tribes do not recover.
+        internal void RecoverNerve(int amount)
+        {
+            if (Broken || amount <= 0) return;
+            Nerve = Math.Min(NerveRules.Full, Nerve + amount);
+        }
+
+        /// Nerve rules: breaks the tribe once its nerve has run out.
+        internal bool CheckNerveBreak()
+        {
+            if (Broken || Nerve > 0) return false;
+            Broken = true;
+            return true;
+        }
+
+        /// Nerve rules: the player broke this tribe, so every survivor, in the field and at home,
+        /// leaves to join the player. Returns who left, in roster order.
+        internal List<UnitClass> LeaveToJoinPlayer()
+        {
+            var leaving = new List<UnitClass>(_fighters);
+            _fighters.Clear();
+            Broken = true;
+            JoinedPlayer = true;
+            return leaving;
+        }
+
         public string Snapshot()
         {
             var b = new SnapshotBuilder();
@@ -126,6 +166,11 @@ namespace KindredSiege.Sim.Learning
             b.Field("wins", Wins);
             b.Field("losses", Losses);
             b.Field("broken", Broken);
+            if (NerveTracked)
+            {
+                b.Field("nerve", Nerve);
+                b.Field("joined", JoinedPlayer);
+            }
             return b.ToString() + Mind.Snapshot();
         }
     }
@@ -160,12 +205,28 @@ namespace KindredSiege.Sim.Learning
     /// Wars between tribes, fought off screen with the same battle rules the player fights under,
     /// but with no orders. Both tribes learn from the fight, the dead leave the rosters, and a
     /// loser left with fewer than half its home strength breaks and opens to the player's
-    /// recruiters. Provisional rules.
+    /// recruiters. Under the nerve rules a tribe breaks when its nerve runs out instead, and each
+    /// tribe brings the nerve it has left into the fight. A tribe broken in a war between tribes
+    /// stays recruitable. Provisional rules.
     public static class TribeWar
     {
         public const int DeployLimit = 5;
 
         public static WarResult Resolve(Tribe a, Tribe b, ulong seed, string fightId, FightArchive archive)
+        {
+            return Resolve(a, b, seed, fightId, archive, false);
+        }
+
+        /// The same, with the nerve rules on or off.
+        public static WarResult Resolve(Tribe a, Tribe b, ulong seed, string fightId, FightArchive archive, bool nerve)
+        {
+            return Resolve(a, b, seed, fightId, archive, nerve, BattleSetup.NormalHealthPercent);
+        }
+
+        /// The same, with unit health in percent (the slice's slower pace). Wars have no orders,
+        /// so refilling orders change nothing here.
+        public static WarResult Resolve(Tribe a, Tribe b, ulong seed, string fightId, FightArchive archive, bool nerve,
+            int healthPercent)
         {
             if (a == null) throw new ArgumentNullException(nameof(a));
             if (b == null) throw new ArgumentNullException(nameof(b));
@@ -173,7 +234,8 @@ namespace KindredSiege.Sim.Learning
             if (a.Strength == 0 || b.Strength == 0) throw new InvalidOperationException("Both tribes need fighters.");
 
             var setup = new BattleSetup(fightId, seed, a.Deploy(DeployLimit, fightId), b.Deploy(DeployLimit, fightId),
-                a.Mind.CopyTactics(), b.Mind.CopyTactics(), BattleSetup.DefaultTickLimit, 0);
+                a.Mind.CopyTactics(), b.Mind.CopyTactics(), BattleSetup.DefaultTickLimit, 0,
+                nerve ? NerveRules.On(a.Nerve, b.Nerve) : NerveRules.Off, 0, healthPercent);
             var sim = new BattleSimulation(setup);
             sim.RunUntilFinished();
             if (archive != null) archive.Add(setup, null, sim);
@@ -186,11 +248,25 @@ namespace KindredSiege.Sim.Learning
 
             Tribe winner = record.Winner == 0 ? a : (record.Winner == 1 ? b : null);
             Tribe loser = record.Winner == 0 ? b : (record.Winner == 1 ? a : null);
-            bool broke = false;
             if (winner != null)
             {
                 winner.Wins++;
                 loser.Losses++;
+            }
+
+            bool broke = false;
+            if (nerve)
+            {
+                a.Nerve = sim.Nerve(0);
+                b.Nerve = sim.Nerve(1);
+                a.NerveTracked = true;
+                b.NerveTracked = true;
+                bool aBroke = a.CheckNerveBreak();
+                bool bBroke = b.CheckNerveBreak();
+                if (loser != null) broke = ReferenceEquals(loser, a) ? aBroke : bBroke;
+            }
+            else if (loser != null)
+            {
                 broke = loser.CheckBreak();
             }
 

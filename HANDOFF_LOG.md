@@ -4594,3 +4594,214 @@ Recorded: `DESIGN_LOCKS.md` 2 Oct section updated to the 3 Oct look (the ten loc
 - Skullpeak: four Giger rounds rejected (armoured brutes, black biomech creatures, a human in a Giger suit, other peoples with a Giger finish; "wasting credits"). Jacob's direction: Giger is the reference for scope only; humanoid beings with machine parts grown into their bodies, never alien looking. Round 5 (scope eye, steel bones, piston muscles) is drawn after this entry.
 - Records: `DESIGN_LOCKS.md` Bloodridge and Skullpeak lines updated. The 32 colour rule is only in `PIXELLAB_BRIEFS_SLICE.md` for now, because the two strikes hook blocked a second edit to the locks file. The briefs also carry the new Bloodridge IDs and every Skullpeak round.
 - PixelLab: 394 of 5000 generations used before round 5. No game code changed, no staging, commits or pushes.
+
+
+---
+**2026-10-03 (night) · Claude · Skullpeak approved with idles and Unity sheets; checkpoint, Vendetta stripped, old work parked, nerve bar behind a switch**
+
+Art
+- Skullpeak approved ("Okay these are good now next step"): warm skin with steel bones showing through, a steel crest that stops at the hairline, slate wraps, a turquoise glow, and one bionic arm per unit after Bionic Commando as its signature piece (Warden claw arm and tower shield, Skirmisher blade arm, Trapper grapple arm with a hook on a chain, Marksman rifle arm, Medic injector arm). Picked in two rounds: round 5 option 2 (steel bones), then round 6 option 1 (claw arm), refined in Aseprite before turning with `KS_PixelLocalV01/tools/aseprite_refine.lua`. The squad was drawn from a 96 by 96 crop of the Warden as the style image. Flag: the Trapper's hook on a chain can call to mind Scorpion's spear.
+- Jacob draws the three chiefs and the four Pals himself ("I'm making the chiefs by myself", "Leave the pals to me too"). Drafts made before that call are set aside in `pixellab/chiefs/` and `pixellab/butcher/`.
+- All 15 slice units have a breathing idle in both battle facings (the fight stance idle squashed the Skullpeak claw arm), cut to 32 colours with one palette per unit across its turns and idles, and exported for Unity as horizontal sheets with Aseprite json in `KS_PixelLocalV01/unity_export/`. Not imported into the project yet.
+- Records: `PIXELLAB_BRIEFS_SLICE.md` rewritten (Skullpeak IDs, rounds 5 and 6, the idle, refine and export recipe, chiefs and Pals are Jacob's). `DESIGN_LOCKS.md`: the Skullpeak line replaced, plus two new lines for the chiefs and Pals call and the 32 colour rule. PixelLab: 627 of 5000 generations used.
+
+Cleanup before gameplay (Jacob: "Do all four then gameplay step one", then "Go")
+1. Checkpoint: commit `faf6316` on `game-one`, "checkpoint: save all KS work since April before gameplay changes", 132 files by explicit path, local only, not pushed. `build_log.txt` and `KindredSiege_Design_Brief.pptx` stay untracked.
+2. Vendetta stripped (Jacob's 1 Oct call, pending the solicitor): `RivalryEngine.RecordRivalDefeatedByUnit` and the subordinate vendetta in `MarkRivalDefeated` are gone, both calls in `BattleManager` are gone, `UnitController` checks Grudge only, the board says "GRUDGE TARGET", and the `Vendetta` enum value stays, never assigned, so saved trait numbers still load.
+3. Base checked: the 46 old tests pass inside Unity in batch mode, no editor needed. New `Assets/Editor/RivalSliceBuild.cs` builds the Rival Slice for Windows (`-executeMethod KindredSiege.EditorTools.RivalSliceBuild.Build`, output `Builds/RivalSlice/`, ignored by git): 0 errors, and the player ran 40 seconds windowed with no errors or exceptions in its log. Not checked: what it showed on screen.
+4. Parked, nothing deleted: the old campaign (city, Lighthouse, Mythos, Mercy) and its bug list (chosen rival overwritten, timers sped up twice, save gaps), and First Alliance with its open issues. No fixes on them until Jacob reopens them. The overlapping bodies, drifting labels and unseen interceptions get solved in the Rival Slice in gameplay step 4.
+
+Gameplay step 1: the nerve bar (Jacob's calls, then "Go")
+- `Sim/Battle`: `NerveRules` on `BattleSetup`, off by default, so every old fight and test keeps its numbers. Hits drain a side by its share of the side's starting health (losing all of it costs 70% of a full bar), each death costs 200 of 1000 more, the enemy's Unleash costs 100 and Sacrifice 150 (your own sacrificed unit costs you nothing), Hold drains the holder 1 a tick (150 for a full Hold), and gear can add a fear bonus percent to the nerve damage a side deals. At zero the side breaks: a `Break` event, the fight ends on the spot, the other side wins and the survivors live. All numbers are placeholders. No randomness, so replays hold.
+- `Sim/Learning`: `SliceWorld.Create(seed, true)` turns it on. A tribe's nerve carries between fights and recovers 200 at each regroup, replacing the half strength break. A tribe the player breaks sends every survivor, in the field and at home, to join the player (`SliceWorld.Converts`). A tribe broken in a war between tribes stays recruitable. The Rival Slice scene still runs the old rules.
+- Tests: `Assets/Tests/EditMode/NerveTests.cs`, 15 tests. 61 of 61 pass inside Unity.
+- Measured, 300 fights a cell from seed 40000: "focus their Medic and Hold back to back" won 248 under the old rules and 25 under nerve against untaught raiders, and 22 to 26 against every taught rival tried. Giving no orders at all wins 26. In 300 fights without orders the losers kept 900 fighters under nerve and 0 under the old rules.
+
+Bad news and open calls for Jacob
+1. Under nerve the raiders break the first time the player beats them, so the rival lasts one fight. In 200 worlds every rivalry ended after the first rival fight: 167 broken by the player, 33 broken in the war after a player loss. Under the old rules a world saw 3.7 rival fights on average. Claude's proposal: a fight break is a rout that costs the tribe part of its standing nerve, and the tribe breaks only when that runs out. Needs Jacob's call.
+2. "Focus their Warden, then Unleash" wins 300 of 300 under nerve, even against taught rivals (147 under the old rules). The dominant opener got stronger.
+3. Fights run about half as long under nerve: about 8 to 16 seconds against 18 to 36.
+4. The third tribe never broke in any of the 400 worlds measured.
+
+No staging, commits or pushes after the checkpoint; the new work is uncommitted.
+
+## 4 Oct 2026 (Claude): chiefs, refill orders, and the run for steps 2 to 8
+
+Chiefs locked (3 Oct, drawn in PixelLab from Jacob's own placeholders)
+- Clarth: round 1. Bloodridge: option 1, the rot edit. Skullpeak: the three breasts edit. Approved copies in `KS_PixelLocalV01/pixellab/chiefs_jacob/approved/`, in the game under `Assets/Resources/RivalSlice/Chiefs/`. Descriptions in `DESIGN_LOCKS.md`, image ids in `PIXELLAB_BRIEFS_SLICE.md`.
+
+Refill orders and a slower pace (3 Oct)
+- `BattleSetup` takes `refillTicks` (one point back every that many ticks, up to the starting points) and `healthPercent`. Both off by default, so old fights keep their numbers. `SliceRules`: a point every 120 ticks (4 s), unit health 400%.
+- Measured: fights run 29 to 58 s with 16 to 25 orders a minute. `SliceRulesTests.cs`, 6 tests.
+
+Jacob, 4 Oct: "Kingdom Rush with Pokemon", nothing cut. Eight steps in build order.
+1. Fight screen: big courage bars, orders that refill with a timer, the PixelLab sprites, raiders walking over when they break. Recorded on autopilot; 12 frames looked at. Bad: the side panels cover the raider back row and the bigger sprites crowd and get cut off at the left edge.
+2 to 8 are in the sim, with no screen yet:
+- `Sim/Battle/BattleTypes.cs`: `UnitRole` (Fighter, Pal, Chief); power and health percent per `UnitSpec`; orders Eclipse (3 points) and Frenzy (free); events Windup, Interrupt, Combo, Transform, Empowered, Release. `NerveRules.WithOrderCosts` prices Unleash and the Hold drain per fight.
+- `Sim/Battle/Moves.cs` (new): Eclipse winds up for 3 s, then hits the enemy front row for 15, 20 or 25% of each unit's health by grade and 200 courage. Hold halves it, Fall Back dodges it, and a caster who loses 4% of his health during the windup is interrupted, which doubles the other side's next order. Frenzy: the Pal hits twice as hard and allies 30% harder for 8 s, once a fight. Ambush: Fall Back then Unleash within 3 s hits their back row. Pyre: Focus Fire, Unleash, then Eclipse within 6 s also burns the focused target. A side whose Pal or Chief drops breaks on the spot. `SideRules` say who has Eclipse, its grade, how often a chief casts it, and who makes combos.
+- `BattleSimulation.cs`: all of the above. The checksum now holds every unit's class, row, role, power and health (Codex audit finding 8). No random draws were added, so old fights replay the same.
+- `Sim/Learning/SliceRun.cs` (new): the run. The Butcher plus a squad of 5 picked from your reserve. Raiders (tier 1), then the raider chief's splinter crew raids Skullpeak off screen, then Skullpeak (tier 2), then the rematch (tier 3). Break a tribe and its survivors join you at their tier's strength. The raider chief escapes the first break with the 5 who stayed home and you steal his Eclipse (grade 3 for a win under 40 s with nobody lost, 2 under 60 s with one lost at most, else 1); the second break catches him. After each win the Butcher forges one gear piece for whoever did the most damage. Lose a fight and the run ends; the chiefs' minds and the codex carry over (`RunMemory`). Numbers live in `RunTuning`.
+- `Sim/Learning/SliceAutopilot.cs` (new): a scripted player (Smart, Showcase, Passive) for the demo, the story seed search, the tests and the balance runs.
+- `TribeWar.cs`: `RemoveDead` skips leaders.
+- Tests: `MovesTests.cs` (15) and `SliceRunTests.cs` (11). 93 of 93 pass in a scratch dotnet harness outside Unity. Inside Unity: not checked.
+
+Measured on the way (150 to 300 runs a cell)
+- First pass: a player who never answered the Eclipse won about 98% of runs. Unleash spam was the strongest courage weapon, and Hold's drain (150 for a full Hold) made the chief's learned "Hold when you Unleash" burn his own courage, so the rival got weaker by learning.
+- Changed: Eclipse courage 100 to 200; interrupt at 4% (at 10 and at 6 it never happened); in the run's fights Hold drains 1 every 3 ticks (50 for a full Hold); tiers 110, 130, 140; Butcher 175%.
+- Now: answering every Eclipse wins 100% of raider fights, 96% of Skullpeak fights and 65% of rematches; never answering wins 93%, 100% and 0%. Fights average 33 to 51 s.
+- Not checked: whether holding all the time is now too strong for a human player with the cheaper drain.
+
+Open
+- The screen for steps 2 to 8 is not written. The full write of `RivalSliceView.cs` was blocked by the route gate (an image had been opened just before), then the reply was stopped by a safety classifier. The scene still shows step 1 on the `SliceWorld` rules. Waiting for Jacob's go.
+- Gap against the locks: "the Pal who broke a chief learns that chief's gear recipe" is not in. The forge gives a generic piece (Ember Collar, Steel Rib Plate, Chief's Fang).
+- Jacob, 4 Oct: the UI looks AI made, the scene is bad, there are no real animations (breathing idles only; lunges and deaths are code moves), and the chief's retreat needs a reward you can see.
+
+No staging, commits or pushes; everything since checkpoint `faf6316` is uncommitted.
+
+
+---
+**2026-10-06 · Codex · Jacob appoints Codex the frontend wirer; first SliceRun integration**
+
+Owner assignment: Jacob asked Codex to take over the frontend and wire what Claude makes. `AGENTS.md` and `CLAUDE.md` now assign simulation/rules/balance/tests to Claude and `Assets/Scripts/Slice/` plus the necessary presentation/scene/editor wiring to Codex. This supersedes the earlier parked-Codex assignment. No messages were sent to Claude and his editor/processes were not interrupted.
+
+Delivered in the existing Rival Slice scene (original script GUID and scene fields preserved):
+- `RivalSliceView.cs` now uses `SliceRun`, `RunMemory`, `NextFight`, `FinishFight`, `RunWar`, and the core Smart autopilot. Removed the old frontend policy and winning-seed search. Manual play uses the configured seed too.
+- `RivalSliceRunUI.cs` supplies reserve/squad selection, actual recruits and casualties, chief escape/capture and Eclipse/recipe/gear rewards, the intervening war, Skullpeak, rematch, run results and restart. Converts use their origin tribe's approved sheets; chiefs use chief art. The Butcher remains a clearly identified placeholder for Jacob's art.
+- All seven orders are exposed with affordability/availability from `CanUse`, refilling points, cast countdown, Frenzy/interrupt/combo signals, pause/speed controls, and a tactics panel. Invalid target clicks keep targeting active. Codex and tactics pause the simulation.
+- Claude landed `Fallen`, `GearCandidates`, and `GiveForgedGear` during this pass; integrated those actual APIs. Gear selection happens on the reward screen, before the war closes the choice. No gear/balance/death rules are duplicated in the frontend.
+- The camera and formation leave the order area clear; crowded front/back rows fan into columns of three while retaining the simulation's combat row. Added `Resources/RivalSlice/StageSurface.mat`, explicitly referenced by runtime primitives, after the isolated Windows render exposed a stripped default material (pink ground and placeholder geometry).
+
+Validation:
+- Built an isolated copy using Unity 2022.3.62f3: Windows build succeeded, 0 errors. Claude's live Unity project was never opened by this validation.
+- Latest scratch runtime passed **87 assertions across three fights**, covering scene binding, squad-size gate, directives, invalid/valid target handling, pause/modal guards, recruited sprite identity, gear transfer via the API, permanent casualties, actual battle checksums, end-of-run and session-memory restart. The scripted run exercised wins followed by a rematch defeat, not a human playtest or a balance verdict.
+- Inspected actual in-engine world renders for the normal and crowded mixed-tribe formations. The stage material renders; all six dense-front-row units fit in the inspected formation. These are world-only RenderTexture captures, NOT full HUD screenshots.
+- Hidden-window screen captures were black, and that environment did not run IMGUI repaint. Full HUD layout, real mouse/keyboard interaction, scrolling and window-size coverage therefore remain **not visually/manually verified**. The scratch helper and manifests are outside the repository at `C:/Users/jacob/.codex/visualizations/2026/09/27/01a0e1e7-0a93-7432-b3df-1dcaab925b3d/ks-frontend-wire-20261006/`; final results are in `DeliveryEvidence/`, build log `unity-delivery-build.log`.
+
+Remaining integration/art boundaries:
+- Claude's newly added `RunSave` serializer is present in the core snapshot but disk load/save is not connected in this frontend pass. The UI accurately says discoveries/memories last for this session. No existing saves were read or changed.
+- Real attack/death/retreat animation, Pal/gear art, an owner-approved UI style and a playable explanation/replay of learned tactics still need work. Tactics currently describe what changed; the frontend does not claim the displayed causal explanation was replay-verified.
+- Core files and tests were read/copied only; Claude's concurrent changes were preserved. No project settings, packages, scene contents, commits or pushes changed in the live checkout.
+
+---
+**2026-10-06 · Claude · rules from Codex's audit: Hold blocks Unleash, the dead stay dead, gear choice, honest lessons, a memory save**
+
+Jacob, 6 Oct: "i just want to play a good game lets use this feedback". Split: Codex owns `Assets/Scripts/Slice/` and the scene, Claude owns `Assets/Scripts/Sim/` and the tests.
+
+Changed (sim and tests only)
+- `BattleSimulation.cs`: an Unleash into a raised Hold drains no courage. The holder gets a Directive event with detail `BattleSimulation.BlockedDetail` ("blocked"), actor side the holder, amount the courage it kept. A chief who learned Hold on Unleash raises his shields before the scare lands, so he blocks while he has a point. New public `HoldTicksLeft(side)` and `UnleashTicksLeft(side)`.
+- `SliceRun.cs`: a fighter who dies leaves the reserve for good, Sacrifice included. This is Claude's call; Jacob said go without changing it, not confirmed word for word. `RunFightResult.Fallen` lists them, and forged gear only goes to the living. Gear choice: `ForgedGear`, `ForgedWearer`, `GearCandidates()`, `GiveForgedGear(id, out failure)`, open from `FinishFight` until `RunWar` or `NextFight`. `RunTuning.AutoEclipseTicks` 450 to 540.
+- `SliceAutopilot.cs`: Smart and Showcase no longer Unleash in their plain loop while `SliceAutopilot.EnemyCanBlock(sim)` (new public helper). Their combo and interrupt Unleashes are unchanged.
+- `LessonRules.cs`: the Fall Back sentence no longer says "our melee could not reach you"; it says "and we did not win". Verification now fails a Fall Back lesson when the learner won, and a focus lesson when the killed class differs (audit finding 5).
+- `TribeMind.cs`: internal `SetThreatMemory`, for loading.
+- `RunSave.cs` (new): `RunSave.Write(memory)`, `RunSave.TryRead(text, out memory, out failure)`, `RunSave.Read(text)`. Versioned text, version 1. Saves runs, codex, and each mind's habits, threat memory, fights learned and lessons. Lessons from before a reload can be read but not replayed, because fights are not saved.
+- `RunRulesTests.cs` (new): 8 tests for the above, plus Codex's one button baseline.
+
+For the screen (Codex)
+- Saving: on start `RunSave.TryRead(File.ReadAllText(path), out memory, out failure)`, a fresh `RunMemory` when the file is missing or refused (keep the refused file). After each finished run and on quit `File.WriteAllText(path, RunSave.Write(memory))`, for example under `Application.persistentDataPath`.
+- New things worth showing: the chief's shields (`sim.HoldTicksLeft(1) > 0`), his order points (`sim.DirectivePoints(1)`) and BLOCKED on `blocked` events. The current feed may print the raw detail.
+- `RunSave.cs` and `RunRulesTests.cs` need Unity to make their .meta files.
+
+Measured (audit seeds 41000 to 41299, fresh memory each run, the real rules, a scratch harness compiled with the .NET 10 Roslyn compiler and run on Unity's MonoBleedingEdge)
+- Before: Unleash whenever affordable won 300 of 300 runs (Codex's number, reproduced).
+- Now, Eclipse every 540: Unleash only 67; Unleash plus Frenzy 278; Unleash plus Frenzy plus a dodge of every Eclipse 300; dodge plus waiting for the shields plus Frenzy 267; Hold always plus Unleash plus Frenzy 23; Smart 107; Passive 0.
+- So pure spam is beaten, but ignoring the chief with Unleash plus Frenzy still wins 93%. Not fixed.
+- Sweep of run numbers: Eclipse every 480 gives Unleash only 0, Unleash plus Frenzy 15, plus dodge 300, dodge plus waiting 298, Hold always 98, Smart 98, Passive 0. That is the candidate. Not applied this pass, because `SliceRun.cs` already had its one edit (two strikes hook). Tier 3 at 130 or 135 let every plan but Passive win; at 150 or 160 almost nothing won.
+- Tests: 101 of 102 pass, with the sim and the tests built as two assemblies like the asmdefs. Failing: `SliceRunTests.AnsweringTheChief_BeatsIgnoringHim`, Smart wins 39% of rematches against a bar of 40%. Its combos hold it back (Pyre saves 5 points, Ambush hands a chief who learned to press a free Unleash).
+- Inside Unity: not checked. The scene: not touched by Claude.
+
+Open
+- Apply Eclipse every 480, rewrite RunTuning's measured comment, and add a test that ignoring the chief loses the rematch.
+- Make the Smart autopilot play like the reader (dodge, keep pressure, combos only when they pay), then `AnsweringTheChief` should pass.
+- Not touched: snapshot identity gaps (audit finding 6), tribe traits (7), codex use and the final Chief's Fang payoff (8), the fixed route (9).
+
+No staging, commits or pushes.
+
+---
+**2026-10-06 · Claude · the chief must be answered: Eclipse every 480, Smart autopilot rebuilt**
+
+Jacob said go to the two open items from the entry above.
+
+Changed (sim and tests only)
+- `SliceRun.cs`: `RunTuning.AutoEclipseTicks` 540 to 480 (16 seconds), with the measurement in RunTuning's comment.
+- `SliceAutopilot.cs`: Smart and Showcase now dodge every Eclipse with Fall Back and no longer focus fire on the chief to try to break his cast, no longer keep their Medic focused (Passive still does), and keep Unleashing even into the chief's shields. Pyre, Ambush and Frenzy stay. `EnemyCanBlock(sim)` stays public for the screen. For Codex: the autoplay no longer makes interrupts, so a recording will show none.
+- `RunRulesTests.cs`: one more test, ignoring the chief loses the run and dodging him wins.
+
+Measured (audit seeds 41000 to 41299, fresh memory, the real code)
+- Full runs won: dodge plus Unleash plus Frenzy 300; dodge plus waiting for the shields 298; Smart 284 (98 before this change); Hold always plus Unleash plus Frenzy 98; ignoring the chief with Unleash plus Frenzy 15; Unleash only 0; Passive 0.
+- Test seeds (k times 7919, 60 runs): ignoring him won 4, dodging won 60.
+- Tests: 103 of 103 pass, sim and tests built as two assemblies like the asmdefs. Inside Unity: not checked.
+- Watch: a bot that dodges perfectly wins every run, so the rematch may now be too easy for a player who has learned the dodge. Only people playing it can say.
+
+No staging, commits or pushes.
+
+
+---
+**2026-10-06 · Codex · PixelLab animation takeover, MCP setup, recovered Claude experiments**
+
+Jacob asked Codex to take over sprite animation using PixelLab and check what Claude had made. `AGENTS.md` and `CLAUDE.md` now record that assignment alongside frontend ownership. Claude keeps Sim/Tests. Existing approved character IDs, size ladder, SE/SW facings and 32-colour palettes remain the basis; Pals remain Jacob's art.
+
+Connection verified and configured locally:
+- Claude already had a working PixelLab HTTP MCP entry. Codex did not. Added only `[mcp_servers.pixellab]` to `C:/Users/jacob/.codex/config.toml`, URL `https://api.pixellab.ai/mcp`, 30 s startup / 300 s tool timeout. All prior config settings were retained; a private config backup is under `.codex/backups/mcp/`.
+- `C:/Users/jacob/.codex/mcp/pixellab_headers.py` reads the existing PixelLab Authorization header from `.claude.json` for the local Codex client. No credential was printed, added to this repository, or copied into the new config section.
+- The installed Codex CLI recognizes the enabled streamable-HTTP server and header helper. PixelLab initialization/tool discovery succeeded (server 0.2.0, 98 tools), and live queries through the configured helper succeeded. The running chat's native tool roster has not reloaded; this session used direct HTTP MCP requests. No app or Claude session was restarted.
+
+What actually exists (checked against PixelLab and files, not just the older art brief):
+- All 15 approved fighters and 3 chiefs have SE/SW four-frame breathing idles: 36 PNG sheets already in `Assets/Resources/RivalSlice/Sheets/`. All three chiefs also have eight rotations. Added a dated current-status note above the historical 3 Oct art brief.
+- Clarth Warden `d917de88-8dfc-4de2-97f0-4dc46e06cb7d` also has Claude's `attack_thrust_skeleton`, `attack_slash_v3`, and `attack_bash_stab_v3` in both facings (4 Oct), plus `fight_stance_test`, `idle_8s_option2_a`, and `idle_8s_option2_b` in SE (5 Oct). No walk or death clips were found on the 18 approved characters. Available-template names are not generated animations.
+- Recovered 96 original Clarth Warden PNG frames across 11 direction-clips, with source IDs/URLs, native contact sheets and GIF previews, under `C:/Users/jacob/ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/pixellab/codex_animation_6oct/recovered_clarth/`. Earlier local attack previews remain at `pixellab/options_4oct/`. The recovered manifest explicitly labels preview timing as a review choice; MCP metadata did not provide the original timing.
+- Inspected the actual attack contact sheet and the later long-idle/fight-stance frames. The skeleton thrust/fight stance deform the shield and silhouette. Custom attacks retain identity better, but the slash bakes in large trails and the bash does not communicate a strong shield impact. Long idle A is the most restrained candidate. None of these findings implies Jacob approved the clips. Raw generated clips exceed the locked palette and are not ready to replace the shipped 32-colour assets.
+
+One bounded new animation test:
+- Generated SE only, using the existing Warden and its original pose as the end target: `codex_shield_bash_6oct_v1`, group `f48615d9-1e7b-4e98-8508-74662d977c3f`, v3, 8 generated frames plus reference, 192x180 canvas. Cost reported by PixelLab: **4 generations**. Balance checked before/after: 3940 -> 3936 remaining. No other generation, purchase or full-roster batch was launched.
+- Downloaded and inspected all 9 frames. The mask/blade/cloak are steadier, but this reads as raising a guard rather than landing a bash. Kept as a reviewed experimental take, not a production animation. Original PNGs, hashes, manifest, contact sheet and native/2x GIFs are in `.../codex_animation_6oct/shield_bash_v1/`.
+- Next work is a readable anticipation/contact/recovery pose sequence on this one approved unit; only a successful sequence should expand to SW and other units. Accepted clips still require the existing palette, shared foot pivot/canvas, variable frame-count playback and combat-event timing. Current `RivalSliceView.cs` still loads only four-frame idle sheets and uses code-driven attack/death motion. No animation loader or live game asset was changed in this pass.
+
+Validation limits: service authentication, read queries, one actual animation job, all downloaded frames and CLI config recognition were checked. Native tool reload, complete animation sets, animation playback inside Unity, and owner art approval remain unverified. Evidence JSON is under `C:/Users/jacob/.codex/visualizations/2026/09/27/01a0e1e7-0a93-7432-b3df-1dcaab925b3d/ks-animation-takeover-20261006/`. Sim/Tests and Claude's editor were untouched. No staging, commits or pushes.
+
+
+---
+**2026-10-06 · Codex · Warden idle following Jacob's positive response to the guard clip**
+
+Jacob viewed the phone player with the Codex shield-bash test selected, asked whether it was a block and how it was so fluid, praised the result and asked for an idle. Explained that it reads as a guard/block; PixelLab generated the poses from the approved Warden, with the existing pose supplied as the end target, and the preview uses deliberate frame holds. This is positive visual feedback on that clip, not a new combat rule or evidence of in-game integration. Claude's contribution of the approved source character remains the foundation.
+
+Generated one SE idle with the same approved character `d917de88-8dfc-4de2-97f0-4dc46e06cb7d` and original rotation as the end target. PixelLab v3, `codex_calm_idle_6oct_v1`, group `b33b073a-8dd1-48e9-8809-905cdd767f42`, 16 generated frames plus reference (17 total), 168x188 canvas. Prompt requested restrained breathing, a slight weight shift, planted feet, small cloak/hair movement, and rigid resting shield/blade. One job cost 8 generations; balance checked 3936 -> 3928. No full-roster or opposite-facing batch.
+
+Original frames, exact-pixel indexed review strip, GIF, contact sheet and provenance manifest: `C:/Users/jacob/ComfyUI-Shared/output/ArtLab/KS_PixelLocalV01/pixellab/codex_animation_6oct/idle_v1/`. Review timing is 180 ms per frame, 3.06 seconds per loop. Inspected every frame: the guard silhouette and mask/weapons remain recognisable. Feet stay on y=156 throughout; the left foot's extreme varies by one pixel in three frames. Raw generated colours and minor details vary, so this is a review candidate rather than a locked-palette production export.
+
+Phone delivery: updated the existing in-chat `warden-animation-player.html` with the new idle first and the earlier clip labelled guard/block. All nine clips are embedded; no local-image links or external downloads are needed by the viewer. A shared 192x192 canvas keeps display scale consistent. The first reference frame of the new idle and prior block is pixel-identical on that canvas. Tested playback, pause, scrubbing and loop wrap; no overflow at 320, 360 or 736 px. Opened the actual 360 px screenshot. Request/response JSON, recovery script and browser checks are in `C:/Users/jacob/.codex/visualizations/2026/09/27/01a0e1e7-0a93-7432-b3df-1dcaab925b3d/ks-animation-takeover-20261006/`.
+
+Not yet done: Aseprite conversion to the existing shared 32-colour palette, runtime idle/block state wiring, Unity playback validation, or Jacob's assessment of this new idle. No simulation files, live game assets or running Claude session were changed. No staging, commits or pushes.
+
+---
+**2026-10-06 · Claude · Jacob's first playtest of the run slice, why each problem happened, the next rules pass, checkpoint**
+
+Jacob played the Windows build Claude made at 16:12 from the live project (`RivalSliceBuild.Build`, 0 errors). His verdict: "I really like the loop", "I got to know the loop just by playing it like once", "it's like Darkest Dungeon but an auto battler", "once the art kicks in and the sound and design... we have a very good viable product". Then the problems, in his order:
+1. The first screen is informative but lacks detail. He knows it is a placeholder.
+2. On the squad screen every fighter shows the same power and health.
+3. In battle everyone is stacked together; he wants them loosely spread, with the area giving advantages. He cannot see what anything does: what the Medic heals, how much the Warden hits for, what a trap or a cover is, where a heal comes from (spell or item). Popup numbers cover the fighters. He did not see what Hold, Fall Back, Focus Fire, Unleash or Eclipse did. Everyone hits the Butcher; his side mostly pounded their Warden while the chief's health barely moved. In the rematch his Eclipse was interrupted twice, the Butcher nearly died, and the chief was "too powerful". He asked how gear is earned and said it "was never a design decision".
+4. The UI "sucks to the core". Jacob is asking Codex to do the UI and the idle animations.
+5. There is no feedback for what he does.
+6. Claude's design calls need review, the game needs a premise for why all this happens, the auto battle needs variations to be fun, and "those buttons... not making any sense" yet.
+
+Why, from the rules (answered in chat)
+- Cards: they show the tier percent (110 for every tier 1 fighter), not stats. Base stats differ: Warden 160 health and 8 a hit every 1.2 s, Marksman 90 and 18 every 1.5 s, Skirmisher 100 and 10 every 1 s, Trapper 95 and 9, Medic 85 and heals 16 every 1.4 s; slice health is 400% of these.
+- The Butcher: a front row Warden; enemies hit the most hurt front row fighter; the chief's Eclipse hits the front row; the fight is lost when he drops (Claude's detail of 2 Oct).
+- Pounding their Warden: the chief's learned habit, his Warden steps in front of whoever you focus.
+- Eclipse interrupted: the Butcher casts it, and 4% of his health lost in the 3 s windup breaks it (`Moves.InterruptPercent`), so the player's best move fails while he is the main target.
+- Eclipse itself: 3 points, 3 s windup, the enemy front row loses 15 to 25% of each fighter's health by grade, plus 20% courage; Hold halves it.
+- The rematch chief: tier 3 (140%) times chief health 300%, about 4 times a tier 1 Marksman's health, in the back row where only Skirmishers and ranged reach.
+- Hold does not stop attacks in the sim: front row damage taken 70%, blocks the Unleash scare, halves Eclipse, drains the holder. If the screen made it look like a pause, that is presentation (not checked).
+- Gear is Jacob's lock of 2 Oct ("Pals forge gear from what you won, and the Pal who broke a chief learns that chief's gear recipe"). Today: break a chief, the Butcher forges his piece, the player picks the wearer. Any progression past that is undesigned.
+- The premise is locked (2 Oct: the Sovereign wiped out the cult's army in one second; the survivors rebuild by breaking the planet's tribes). The game does not tell it yet.
+
+Owners
+- Codex: UI, idle animations, all feedback (sources of heals, traps, covers, damage numbers that do not hide fighters, real stats on cards, spreading fighters on screen).
+- Claude: why things happen, variety, buttons that make sense.
+
+Claude's proposed next rules pass, waiting for Jacob's yes
+1. Stop the Butcher being everyone's only target, and stop normal hits breaking his Eclipse; only a Focus Fire on him breaks it.
+2. Give the rematch chief a weak spot: worn out for a few seconds after his Eclipse, taking double damage, so dodge then punish.
+3. One visible trait per tribe so the cards differ.
+Area advantages need positions; the sim has front and back rows only. Bigger change, after these three.
+
+Checkpoint: at Jacob's instruction, everything that went into the build he played is committed and pushed on `game-one` and tagged `checkpoint-2026-10-06-playable-run`. Left out on purpose: Codex's in-progress `Assets/Scripts/Slice/RivalSliceArena.cs` and `Assets/Resources/RivalSlice/ArenaFlat.shader` (created at 16:34, after the build, not referenced yet), `build_log.txt` and `KindredSiege_Design_Brief.pptx`.

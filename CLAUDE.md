@@ -10,9 +10,12 @@ Two assistants work in this repo: Claude and Codex. Jacob decides everything. Re
 - Never `git add -A`. Commit only the paths you own.
 
 ## Who owns what
-- Claude owns `Assets/Scripts/Sim/` and `Assets/Tests/`. The deterministic core and its tests.
-- Codex owns everything else, unless Jacob says otherwise for a task.
-- Never edit a file in the other agent's folders. If you need a change there, write the request in `HANDOFF_LOG.md`.
+- Owner assignment, 2026-10-06: Jacob appointed Codex the frontend "wirer" for what Claude builds. This supersedes the earlier instruction parking Codex while all development moved to Claude.
+- Claude owns `Assets/Scripts/Sim/`, `Assets/Tests/`, game rules, balance, and authoritative gameplay-state APIs.
+- Codex owns the player-facing integration: `Assets/Scripts/Slice/`, slice UI/HUD/input, squad and reward presentation, approved-art binding, and the scene/editor wiring needed to play that frontend.
+- Animation assignment, 2026-10-06: Jacob also asked Codex to take over sprite animation through PixelLab. Continue from the approved character IDs and Claude's existing clips; preserve the size ladder, shared 32-colour palettes and SE/SW battle facings. Keep experimental takes separate from production assets and record their review status. Pals remain Jacob's drawings.
+- The frontend reads Claude's state/results and sends commands through the existing simulation APIs. It must not duplicate combat rules, invent rewards, alter balance, or silently repair backend behaviour in the UI.
+- Each agent preserves the other's active files. Backend API needs and frontend handoffs go in `HANDOFF_LOG.md`; do not interrupt the other agent or change their running Unity session. Other folders and asset generation remain task-scoped; Jacob's art/design approvals still apply.
 
 ## How we talk
 - `HANDOFF_LOG.md` at the repo root. Read it first. Append one entry at the end of every session: date, agent, what changed, what is not verified, what the other agent needs to know. Newest at the bottom.

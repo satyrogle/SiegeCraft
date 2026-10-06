@@ -1515,8 +1515,7 @@ namespace KindredSiege.Battle
                         if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Ambusher)) return true;
                         break;
                     case PhobiaType.ViolencePhobia:    // "Broken by witnessing ally die / grudge"
-                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Grudge) ||
-                            rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Vendetta)) return true;
+                        if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Grudge)) return true;
                         break;
                     case PhobiaType.DarkPhobia:        // "Broken by witnessing unit go Lost"
                         if (rival.Traits.Contains(KindredSiege.Rivalry.RivalTraitType.Fearful)) return true;

@@ -17,6 +17,10 @@ namespace KindredSiege.Sim.Learning
     /// they never wear down what a tribe learned about the player.
     /// Not learned, because on 1 Oct 2026 each made the learner lose more: target priorities,
     /// opening focus fire and trap caution. Thresholds are provisional.
+    ///
+    /// Every sentence says only what its fight record measured, and a replay checks each claim it
+    /// makes (Codex audit, 6 Oct 2026: a tribe with no melee fighters was told its melee could
+    /// not reach you, and the check still passed because it only counted the Fall Backs).
     public static class LessonRules
     {
         public const string Focus = "focus";
@@ -71,7 +75,7 @@ namespace KindredSiege.Sim.Learning
                 Raise(made, mind, record, learnerSide, Habit.PressOnFallBack, UnitClass.Warden, fallBacks,
                     fallTick, fallTick + BattleSimulation.FallBackTicks,
                     "You fell back " + N(fallBacks) + (fallBacks == 1 ? " time" : " times") + ", first at " + Seconds(fallTick) +
-                    ", and our melee could not reach you. Now we Unleash the moment you fall back.");
+                    ", and we did not win. Now we Unleash the moment you fall back.");
             }
 
             int prevented = record.GuardPrevented(enemy, out int guards, out long guardFrom, out long guardTo);
@@ -115,7 +119,9 @@ namespace KindredSiege.Sim.Learning
 
         /// Recomputes the number a rule measured, from a record. A replay of the lesson's fight must
         /// give the same number. Fade lessons measure how often the enemy did the thing: always 0.
-        /// Unknown rules give -1, so they never verify.
+        /// A claim the replay does not bear out gives -1, so the lesson fails: a focus lesson names
+        /// the class that was killed, and a fall back lesson says the learner did not win. Unknown
+        /// rules give -1 too, so they never verify.
         public static int Evidence(string rule, FightRecord record, int learnerSide, UnitClass subject)
         {
             if (rule == null || record == null) return -1;
@@ -131,11 +137,14 @@ namespace KindredSiege.Sim.Learning
                 return -1;
             }
             if (string.Equals(rule, Focus, StringComparison.Ordinal))
-                return record.FocusKills(enemy, true, out _, out _, out _, out _);
+            {
+                int kills = record.FocusKills(enemy, true, out _, out _, out int victimClass, out _);
+                return kills > 0 && victimClass != (int)subject ? -1 : kills;
+            }
             if (string.Equals(rule, Unleash, StringComparison.Ordinal))
                 return record.UnleashDamage(enemy, out _, out _);
             if (string.Equals(rule, FallBack, StringComparison.Ordinal))
-                return record.FallBacksUsed(enemy, out _);
+                return record.Winner == learnerSide ? -1 : record.FallBacksUsed(enemy, out _);
             if (string.Equals(rule, Guard, StringComparison.Ordinal))
                 return record.GuardPrevented(enemy, out _, out _, out _);
             if (string.Equals(rule, Threat, StringComparison.Ordinal))
