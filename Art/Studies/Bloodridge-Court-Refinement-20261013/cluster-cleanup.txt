@@ -1,0 +1,1 @@
+Merged 361241 pixels in small low-contrast connected components. Preserved geometry at native scale; scenery-only floor contrast x0.67.

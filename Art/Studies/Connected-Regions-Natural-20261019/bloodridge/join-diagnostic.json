@@ -1,0 +1,5 @@
+{
+  "court_join_mean_channel_step": 1.95,
+  "nearby_edge_95th_percentile": 2.5,
+  "note": "Diagnostic only, not visual approval."
+}

@@ -1,0 +1,28 @@
+{
+  "region": "bloodridge",
+  "source": "extend-2/joined.png",
+  "dimensions": [
+    4128,
+    768
+  ],
+  "viewport": [
+    1376,
+    768
+  ],
+  "review_viewports": [
+    0,
+    917,
+    1835,
+    2752
+  ],
+  "final_court_x": 2752,
+  "final_court_pixels_preserved": true,
+  "scale": 1,
+  "resampled": false,
+  "new_scenery_palette_colors": 32,
+  "native_floor_quilting": false,
+  "majority_replacements": 385193,
+  "static_recomposition_matches": true,
+  "sha256": "c16651e3db4260f021fd66681fd240a3f4a7aac759f78f49a0bcdae13adeda6d",
+  "status": "Art review. No runtime binding or new animation. Viewports are not new encounters."
+}

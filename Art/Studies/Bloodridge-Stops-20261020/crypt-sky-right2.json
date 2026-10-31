@@ -1,0 +1,38 @@
+{
+ "in": "c3sky3L",
+ "out": "c3sky3",
+ "mode": "repaint",
+ "win": [
+  2864,
+  0,
+  3696,
+  768
+ ],
+ "zone": [
+  3290,
+  0,
+  3690,
+  170
+ ],
+ "split": 3,
+ "seed": 2026102196,
+ "prompt": {
+  "high_level_description": "Repair the top part of an existing pixel art background of a ruined burial courtyard in front of a sunken crypt, keeping its exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters. On this side of the crypt the ruined walls and stairs now end much lower, broken off just above the height of the crypt doorway's stone lintel, with chipped uneven tops and a few dry roots; above them there is only open sky, one plain flat light dusty grey-mauve colour, completely empty.",
+  "compositional_deconstruction": {
+   "background": "Open sky of one flat pale colour above the low broken tops of the ruins.",
+   "elements": [
+    {
+     "type": "obj",
+     "bbox": [
+      0,
+      0,
+      200,
+      1000
+     ],
+     "desc": "Plain flat empty pale sky above low broken wall tops."
+    }
+   ]
+  }
+ },
+ "negative": "pillars, columns, towers, tall walls, arches, buildings, mountains, hills, ridge, clouds, sun, moon, birds, trees, gradient sky, texture in the sky, people, text, watermark, thick black outline, black ink, comic book, voxel, toy model, giant pixels, chunky pixels, cartoon, photograph, 3D render"
+}

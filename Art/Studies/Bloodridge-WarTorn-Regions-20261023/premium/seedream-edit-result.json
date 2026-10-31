@@ -1,0 +1,51 @@
+{
+ "status": "COMPLETED",
+ "waited_seconds": 4,
+ "request_id": "01a16ce8-4614-7b41-8958-88279ec3dcd1",
+ "status_url": "https://queue.fal.run/bytedance/seedream/requests/01a16ce8-4614-7b41-8958-88279ec3dcd1/status",
+ "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16ce8-4614-7b41-8958-88279ec3dcd1",
+ "cancel_url": "https://queue.fal.run/bytedance/seedream/requests/01a16ce8-4614-7b41-8958-88279ec3dcd1/cancel",
+ "hint": "The job is COMPLETED and its result is included. You don't need to call get_job_result.",
+ "endpoint_id": "bytedance/seedream/v5/pro/edit",
+ "result": {
+  "images": [
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa3b0/LzifUasIPuM90wTuXdpZZ_7052d64af49b4217a5f895c5f8694ddb.png",
+    "content_type": "image/png",
+    "file_name": "7052d64af49b4217a5f895c5f8694ddb.png",
+    "file_size": 6304028,
+    "width": null,
+    "height": null
+   }
+  ]
+ },
+ "media": [
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa3b0/LzifUasIPuM90wTuXdpZZ_7052d64af49b4217a5f895c5f8694ddb.png",
+   "json_path": "result.images[0].url",
+   "output_path": "/images/0/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "7052d64af49b4217a5f895c5f8694ddb.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/edit",
+     "request_id": "01a16ce8-4614-7b41-8958-88279ec3dcd1",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16ce8-4614-7b41-8958-88279ec3dcd1",
+     "output_path": "/images/0/url"
+    }
+   }
+  }
+ ],
+ "display_hint": "Present completed media to the user. Forward attached image content blocks to the host's image display helper (for example, image(block)); do not stringify image blocks as text. For Markdown previews use previews[].preview_url, and separately link original_url as the full-resolution file. If no preview is available, show a clearly labeled original-file link. Do not claim a preview rendered unless it is visible. Video, audio and 3D URLs are original result files, not queue URLs.",
+ "next_steps": "Show it to the user: where the host renders MCP app UI, call show_media with this result, endpoint_id, request_id and recipe; otherwise present the media URLs. Then offer a next generation: variations (copy recipe.input and change the seed or prompt), an edit of this image, animating it into a video, or an upscale. Submit several variations together in one submit_jobs call. For a new operation on this output, call recommend_model with its URL as the source.",
+ "previews": [
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa3b0/LzifUasIPuM90wTuXdpZZ_7052d64af49b4217a5f895c5f8694ddb.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa3b0%2FLzifUasIPuM90wTuXdpZZ_7052d64af49b4217a5f895c5f8694ddb.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  }
+ ]
+}

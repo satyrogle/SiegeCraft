@@ -1,0 +1,441 @@
+New campaign, seed 21
+PASS new campaign button raycast
+PASS tutorial start button raycast
+PASS pause button raycast
+PASS pause freezes simulation
+PASS key 5 is gated chief assist before recruitment
+PASS Focus Fire button raycast
+PASS enemy target button raycast
+PASS Focus Fire goes through campaign order API
+PASS resume button raycast
+PASS the damage chip holds while paused and when captured
+PASS tutorial completes
+The raid on your jailers: Won, materials +0, JOINED
+PASS result button raycast
+PASS tutorial earned alliance
+PASS result continue button raycast
+Run 1 leaves camp for Bloodridge, materials at camp 0
+PASS choose Bloodridge
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+War party: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+Hold the line: You held the line, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+War party: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+the Bloodridge chief calls you out: Won, materials +30, JOINED, on to Skullpeak
+PASS encounter result opens
+PASS a beaten chief gives his order and the run goes on to the next tribe
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+Precision trial: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+Hold the line: You held the line, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+War party: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+the Skullpeak chief calls you out: Won, materials +30, JOINED, on to Alpha
+PASS encounter result opens
+PASS a beaten chief gives his order and the run goes on to the next tribe
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+The Sovereign's hunters: Lost, materials +0
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+The Sovereign's hunters: Lost, materials +0
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+The Sovereign's hunters: Won, materials +30, RUN WON
+PASS encounter result opens
+PASS continue after encounter
+Run 2 leaves camp for Bloodridge, materials at camp 150
+PASS choose Bloodridge
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+War party: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+Champion duel: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+Hold the line: You held the line, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+the Bloodridge chief calls you out: Won, materials +30, JOINED, on to Skullpeak
+PASS encounter result opens
+PASS a beaten chief gives his order and the run goes on to the next tribe
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+War party: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+War party: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+Precision trial: Won, materials +10
+PASS encounter result opens
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+the Skullpeak chief calls you out: Won, materials +30, JOINED, on to Alpha
+PASS encounter result opens
+PASS a beaten chief gives his order and the run goes on to the next tribe
+PASS continue after encounter
+PASS encounter card raycast
+PASS squad fight button raycast
+PASS the fight is on its own region's stage at 1x
+PASS encounter completes
+The Sovereign's hunters: Won, materials +30, RUN WON
+PASS encounter result opens
+PASS continue after encounter
+PASS two whole runs end back at camp
+PASS a run carried on past a beaten chief
+PASS camp keeps the materials; chief orders and joined tribes reset with the run
+PASS between-run save matches live campaign
+PASS a second save keeps the first as a backup
+PASS the title says the backup was opened
+Reopened the save: Seed 21. Tribes with you: Clarth. Runs started 2, won 2. Materials 300. Bloodridge: 35 lessons about you. Skullpeak: 36 lessons about you.
+PASS CONTINUE opens the backup when the save is damaged
+PASS the backup holds the campaign as it was
+Reopened the save: Seed 21. Tribes with you: Clarth. Runs started 2, won 2. Materials 300. Bloodridge: 35 lessons about you. Skullpeak: 36 lessons about you.
+PASS CONTINUE opens the backup when the save is missing
+New campaign, seed 21
+PASS new campaign for the resume check
+PASS start a fight to leave half played
+PASS the fight is half played when saved
+Reopened the save: Seed 21. Tribes with you: none (the tutorial is next). Runs started 0, won 0. Materials 0. Bloodridge: 0 lessons about you. Skullpeak: 0 lessons about you.
+PASS continue into the half played fight
+PASS reopens inside the fight, paused
+PASS the fight comes back at the same tick, unchanged
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: camp.2.raiders.duel.raiders.champion
+COVERAGE Duel art=clarth_warden_se,labelled-placeholder
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.2.raiders.trial.raiders.0
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.2.raiders.trial.raiders.1
+PASS formation stays on stage: camp.2.raiders.trial.raiders.2
+PASS formation stays on stage: leader
+PASS formation stays on stage: camp.2.raiders.trial.raiders.shaman
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.2.raiders.trial.raiders.3
+COVERAGE raiders-Trial art=clarth_warden_se,clarth_medic_se,blood_rot_skirmisher_sw,clarth_marksman_se,blood_rot_warden_sw,blood_rot_marksman_sw,labelled-placeholder,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,blood_rot_skirmisher_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.2.raiders.warparty.raiders.0
+PASS formation stays on stage: camp.2.raiders.warparty.raiders.2
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.2.raiders.warparty.raiders.1
+PASS formation stays on stage: camp.2.raiders.warparty.raiders.4
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.2.raiders.warparty.raiders.3
+PASS formation stays on stage: camp.2.raiders.warparty.raiders.5
+COVERAGE WarParty art=clarth_warden_se,clarth_medic_se,blood_rot_skirmisher_sw,blood_rot_marksman_sw,clarth_marksman_se,blood_rot_warden_sw,blood_rot_medic_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,blood_rot_skirmisher_sw,blood_rot_marksman_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.5.raiders.chief.raiders.0
+PASS formation stays on stage: camp.5.raiders.chief.raiders.2
+PASS formation stays on stage: camp.5.raiders.chief.raiders.1
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.5.raiders.chief.raiders.3
+PASS formation stays on stage: camp.5.raiders.chief.raiders.chief
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.5.raiders.chief.raiders.4
+COVERAGE raiders-Chief art=clarth_warden_se,clarth_medic_se,blood_rot_medic_sw,blood_rot_skirmisher_sw,blood_rot_marksman_sw,clarth_marksman_se,blood_rot_warden_sw,bloodridge_chief_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,blood_rot_skirmisher_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.0
+PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.3
+PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.1
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.2
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.4
+PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.5
+PASS earned chief assist button raycast
+PASS assist is once per fight
+COVERAGE WarParty art=clarth_warden_se,clarth_medic_se,skull_medic_sw,skull_warden_sw,skull_trapper_sw,clarth_marksman_se,skull_marksman_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_warden_sw,skull_trapper_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.0
+PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.2
+PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.1
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.3
+PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.4
+COVERAGE skullpeak-Trial art=clarth_warden_se,clarth_medic_se,skull_trapper_sw,skull_warden_sw,skull_marksman_sw,labelled-placeholder,clarth_skirmisher_se,clarth_marksman_se,skull_warden_sw,skull_trapper_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.0
+PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.1
+PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.2
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.5
+PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.3
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.4
+PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.6
+PASS hold-line disables Fall Back in UI and API
+COVERAGE HoldTheLine art=clarth_warden_se,clarth_medic_se,skull_marksman_sw,skull_skirmisher_sw,skull_medic_sw,clarth_marksman_se,skull_warden_sw,skull_trapper_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_marksman_sw,skull_warden_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.0
+PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.1
+PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.2
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.5
+PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.3
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.4
+PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.6
+PASS hold-line disables Fall Back in UI and API
+COVERAGE HoldTheLine art=clarth_warden_se,clarth_medic_se,skull_marksman_sw,skull_skirmisher_sw,skull_medic_sw,clarth_marksman_se,skull_warden_sw,skull_trapper_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_marksman_sw,skull_warden_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.0
+PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.3
+PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.1
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.2
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.4
+PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.5
+COVERAGE WarParty art=clarth_warden_se,clarth_medic_se,skull_medic_sw,skull_warden_sw,skull_trapper_sw,clarth_marksman_se,skull_marksman_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_warden_sw,skull_trapper_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.0
+PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.1
+PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.2
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.5
+PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.3
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.4
+PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.6
+PASS hold-line disables Fall Back in UI and API
+COVERAGE HoldTheLine art=clarth_warden_se,clarth_medic_se,skull_marksman_sw,skull_skirmisher_sw,skull_medic_sw,clarth_marksman_se,skull_warden_sw,skull_trapper_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_marksman_sw,skull_warden_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.0
+PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.3
+PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.1
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.chief
+PASS formation stays on stage: leader
+PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.2
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.4
+COVERAGE skullpeak-Chief art=clarth_warden_se,clarth_medic_se,skull_medic_sw,skull_warden_sw,skull_trapper_sw,clarth_marksman_se,skullpeak_chief_sw,labelled-placeholder,skull_marksman_sw,clarth_skirmisher_se,clarth_trapper_se,skull_warden_sw
+PASS read fixture seed 1
+PASS formation stays on stage: clarth.warden.1
+PASS formation stays on stage: clarth.medic.5
+PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.0
+PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.1
+PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.5
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.2
+PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.3
+PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.captain
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.4
+COVERAGE AlphaHunt art=clarth_warden_se,clarth_medic_se,labelled-placeholder,labelled-placeholder,labelled-placeholder,clarth_marksman_se,labelled-placeholder,labelled-placeholder,labelled-placeholder,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,labelled-placeholder
+PASS read fixture seed 1
+PASS formation stays on stage: raiders.warden.9
+PASS formation stays on stage: raiders.medic.6
+PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.0
+PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.1
+PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.5
+PASS formation stays on stage: clarth.marksman.2
+PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.2
+PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.3
+PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.captain
+PASS formation stays on stage: leader
+PASS formation stays on stage: clarth.skirmisher.3
+PASS formation stays on stage: clarth.trapper.4
+PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.4
+COVERAGE AlphaHunt art=blood_rot_warden_se,blood_rot_medic_se,labelled-placeholder,labelled-placeholder,labelled-placeholder,clarth_marksman_se,labelled-placeholder,labelled-placeholder,labelled-placeholder,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,labelled-placeholder
+PASS war party, hold line, duel, both trials and both chiefs rendered
+PASS earned assist exercised through UI
+PASS recruited tribe uses its own art in player squad
+PASS a whole slice run won and shown back at camp
+PASS the squad page's front or back button
+PASS front or back moves the fighter through Campaign
+PASS the squad starts the fight
+PASS the easy path fight ends
+Eclipse trial: Won, materials +10
+PASS the easy fight's result opens
+PASS TAKE THE PIECE on the result
+PASS taking the piece gives its materials back
+PASS the piece is taken once
+PASS on from the spoils
+PASS the squad page's GEAR button
+PASS the gear picker opens
+PASS a piece chosen in the gear picker
+PASS the piece is on the fighter and the squad page is back
+PASS front or back, the spoils and the gear picker exercised
+PASS the chief fight starts
+PASS the chief fight ends
+the Bloodridge chief calls you out: Won, materials +30, JOINED, on to Skullpeak
+PASS the chief's result opens
+PASS the result says captured or killed
+PASS a captured chief's whole band joins
+PASS a captured chief's result shown
+PASS the chief fight starts
+PASS the chief fight ends
+the Bloodridge chief calls you out: Won, materials +30, on to Skullpeak
+PASS the chief's result opens
+PASS the result says captured or killed
+PASS a killed chief's result shows his Princess piece
+PASS a killed chief's result shown
+PASS passive validation encounter ends
+Champion duel: Lost, materials +0
+PASS loss scenario result control
+PASS the fallen count and the fallen names agree
+PASS the result names who they captured
+PASS a loss ends the run only under 3 fighters
+PASS defeat saves
+PASS the result returns to the campaign
+PASS passive validation encounter ends
+Champion duel: Lost, materials +0
+PASS loss scenario result control
+PASS the fallen count and the fallen names agree
+PASS the result names who they captured
+PASS a loss ends the run only under 3 fighters
+PASS defeat saves
+PASS the result returns to the campaign
+PASS passive validation encounter ends
+Champion duel: Lost, materials +0, RUN OVER
+PASS loss scenario result control
+PASS the fallen count and the fallen names agree
+PASS the result names who they captured
+PASS a loss ends the run only under 3 fighters
+PASS defeat saves
+PASS the result returns to the campaign
+PASS a loss captures one of yours and the run ends on its lives
+PASS all 28 results show their text without scrolling
+PASS art placeholders open from the title
+PASS a popup closes
+PASS the popup is gone
+PASS codex opens from camp
+PASS codex closes
+Run 2 leaves camp for Bloodridge, materials at camp 0
+PASS a run starts for the tactics check
+PASS a fight is chosen
+PASS the fight starts
+PASS tactics opens in the fight
+PASS tactics closes
+PASS tutorial starts for the walkthrough check
+PASS the tutorial stops and asks for Hold first
+PASS Hold given through the walkthrough
+PASS Hold moves the tutorial on and the fight carries on
+PASS Focus Fire on their back row
+PASS the fight says who cannot reach a back row target
+PASS the end of the fight says why it went that way
+PASS the stage and the fighters share one 1x pixel size, the menus stay on the 2x kit
+144 approved clips available; no generation calls. Death holds final frame; names show when you point at a fighter.

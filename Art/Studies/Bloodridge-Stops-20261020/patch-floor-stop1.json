@@ -1,0 +1,19 @@
+{
+  "in": "s3floor2",
+  "out": "bp1",
+  "mode": "repaint",
+  "win": [300, 0, 1388, 768],
+  "zone": [520, 300, 960, 412],
+  "split": 3,
+  "seed": 2026102111,
+  "prompt": {
+    "high_level_description": "Repair one part of an existing pixel art battle background, keeping its exact palette, light, scale and oblique 2.5D camera. The low mound of stones under the leaning burial marker is gone: the marker stands on the ground right at the foot of the old wall, and the open cracked ash ground of the fighting floor runs flat right up to the wall's foot. Only flat details on the ground: thin cracks, small flat pebbles, a bone, dry flat roots. Calm and readable, because fighters stand here. Fine controlled dusty hand-painted pixel clusters like the rest of the image.",
+    "compositional_deconstruction": {
+      "background": "The same fieldstone wall and leaning bronze-banded marker as the surrounding image, their bases meeting the ground in one clean line.",
+      "elements": [
+        {"type": "obj", "bbox": [338, 200, 537, 610], "desc": "Open flat cracked ash floor with tiny flat pebbles, continuous with the floor around it; the marker's foot sits in the ground at the top edge."}
+      ]
+    }
+  },
+  "negative": "mound, cairn, pile of stones, rocks on the ground, boulders, bushes, reeds, tall plants, rubble heap, thick black outline, black ink, comic book, voxel, clean rectangular bricks, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render, text, watermark, people"
+}

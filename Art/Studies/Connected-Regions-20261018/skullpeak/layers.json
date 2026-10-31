@@ -1,0 +1,28 @@
+{
+  "region": "skullpeak",
+  "source": "extend-2b/joined.png",
+  "dimensions": [
+    4128,
+    768
+  ],
+  "viewport": [
+    1376,
+    768
+  ],
+  "review_viewports": [
+    0,
+    917,
+    1835,
+    2752
+  ],
+  "final_court_x": 2752,
+  "final_court_pixels_preserved": true,
+  "scale": 1,
+  "resampled": false,
+  "new_scenery_palette_colors": 32,
+  "native_floor_quilting": true,
+  "majority_replacements": 263703,
+  "static_recomposition_matches": true,
+  "sha256": "8b36e63b490c001a8b1b81f155ecbb947c9572ec927e1f921c9fea48d79694da",
+  "status": "Art review. No runtime binding or new animation. Viewports are not new encounters."
+}

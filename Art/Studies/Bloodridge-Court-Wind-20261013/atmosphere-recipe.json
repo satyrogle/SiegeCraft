@@ -1,0 +1,117 @@
+{
+  "name": "Bloodridge burial court — wind-carried ash",
+  "canvas": {
+    "w": 632,
+    "h": 424
+  },
+  "frames": 32,
+  "fps": 8,
+  "loop": true,
+  "origin": [
+    316,
+    212
+  ],
+  "ramps": {
+    "main": [
+      "#706e68",
+      "#929081",
+      "#b7b09a"
+    ],
+    "ember": [
+      "#653b29",
+      "#a15b31",
+      "#c68848"
+    ]
+  },
+  "outline": {
+    "mode": "none"
+  },
+  "dither": 0,
+  "tones": 3,
+  "detail": 0,
+  "seed": 47,
+  "layers": [
+    {
+      "id": "far_ash",
+      "type": "particles",
+      "z": "back",
+      "mode": "travel",
+      "x": 334,
+      "y": 143,
+      "line": 440,
+      "line_angle": 0,
+      "count": 22,
+      "radius": 30,
+      "speed": 62,
+      "direction": 174,
+      "spread": 12,
+      "size": [
+        1,
+        2
+      ],
+      "shrink": 0.4,
+      "shape": "dot",
+      "cycles": 1,
+      "fade_in": 0.12,
+      "fade_out": 0.3,
+      "wobble": 3,
+      "outline": false
+    },
+    {
+      "id": "ground_dust",
+      "type": "particles",
+      "z": "back",
+      "mode": "travel",
+      "x": 390,
+      "y": 376,
+      "line": 420,
+      "line_angle": -2,
+      "count": 24,
+      "radius": 22,
+      "speed": 136,
+      "direction": 180,
+      "spread": 9,
+      "size": [
+        1,
+        3
+      ],
+      "shrink": 0.5,
+      "shape": "dot",
+      "cycles": 1,
+      "fade_in": 0.2,
+      "fade_out": 0.35,
+      "wobble": 4,
+      "outline": false
+    },
+    {
+      "id": "tomb_embers",
+      "type": "particles",
+      "z": "back",
+      "ramp": "ember",
+      "mode": "rise",
+      "x": 126,
+      "y": 215,
+      "count": 5,
+      "radius": 9,
+      "speed": 46,
+      "drift": -19,
+      "spread": 14,
+      "size": [
+        1,
+        2
+      ],
+      "shrink": 0.6,
+      "shape": "dot",
+      "cycles": 1,
+      "fade_in": 0.12,
+      "fade_out": 0.35,
+      "wobble": 3,
+      "outline": false
+    }
+  ],
+  "effectId": "755cc451-cdab-4b10-af12-44431f235534",
+  "finalEmberOrigin": [
+    107,
+    242
+  ]
+}

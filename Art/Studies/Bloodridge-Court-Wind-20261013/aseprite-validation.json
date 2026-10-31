@@ -1,0 +1,33 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Clean.\n[note] palette: 120 palette entries. Most sprites read better under 32 — a large palette usually means ramps that were never merged.\n[note] animation: Every frame has the same duration. Uniform timing reads mechanical; hold contact poses longer than pass poses.\n[note] layers: 1 hidden layer(s) were not scanned for strays, outline, banding or antialiasing — those checks describe what the sprite shows. Make a layer visible to include it."
+    }
+  ],
+  "structuredContent": {
+    "findings": [
+      {
+        "severity": "note",
+        "count": 120,
+        "check": "palette",
+        "message": "120 palette entries. Most sprites read better under 32 — a large palette usually means ramps that were never merged."
+      },
+      {
+        "severity": "note",
+        "check": "animation",
+        "message": "Every frame has the same duration. Uniform timing reads mechanical; hold contact poses longer than pass poses."
+      },
+      {
+        "severity": "note",
+        "count": 1,
+        "check": "layers",
+        "message": "1 hidden layer(s) were not scanned for strays, outline, banding or antialiasing — those checks describe what the sprite shows. Make a layer visible to include it."
+      }
+    ],
+    "sprite": "bloodridge-court-layered.aseprite",
+    "passed": true,
+    "score": 100,
+    "summary": "Clean."
+  }
+}

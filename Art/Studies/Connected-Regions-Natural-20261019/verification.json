@@ -1,0 +1,26 @@
+[
+  {
+    "region": "bloodridge",
+    "native_dimensions": true,
+    "original_source_matches_prior_review": true,
+    "court_core_pixel_exact": true,
+    "static_recomposition_exact": true,
+    "reopened_master_export_exact": true
+  },
+  {
+    "region": "skullpeak",
+    "native_dimensions": true,
+    "original_source_matches_prior_review": true,
+    "court_core_pixel_exact": true,
+    "static_recomposition_exact": true,
+    "reopened_master_export_exact": true
+  },
+  {
+    "region": "hunters",
+    "native_dimensions": true,
+    "original_source_matches_prior_review": true,
+    "court_core_pixel_exact": true,
+    "static_recomposition_exact": true,
+    "reopened_master_export_exact": true
+  }
+]

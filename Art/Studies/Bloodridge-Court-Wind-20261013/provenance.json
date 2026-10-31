@@ -1,0 +1,16 @@
+{
+  "status": "owner review required",
+  "jobId": "143a0588-b963-499d-b5b2-ab7a3b044b16",
+  "costGenerations": 25,
+  "model": "PixelLab Pro",
+  "width": 632,
+  "height": 424,
+  "maxColors": 48,
+  "prompt": "Native pixel-art environment, 632x424. BLOODRIDGE ROOT-BOUND BURIAL COURT. CLOSE SECTION of a larger tactical arena, not a miniature complete level. Low oblique battle camera, gently looking downward, scaled for 150px-tall fighters.\n\nLeft quarter: colossal basalt burial portal cropped by top and left borders. Deep sealed bronze door, worn funerary relief, rotted binding cloth, massive angular roots gripping and splitting masonry. A torn linen strip hangs at upper-left. Tomb architecture recedes across UPPER THIRD through ash haze, staggered ledges and an arched opening. RIGHT TWO THIRDS and LOWER HALF: one broad level horizontal fighting terrace, quiet medium-light ash-grey paving, sparse wide slab seams. No road receding to a vanishing point. Near-black stone lip frames bottom corners only.\n\nEerie ancient guardianship: rotted sepia cloth, corroded bronze, warm ash limestone, brown-violet basalt shadows. Cold daylight from upper-right catches chiselled edges and large floor planes. Convincing cast shadows, strong overlap, faded distant detail. Dark fighters must read against quiet floor, no spotlight. Tiny rust-orange traces in sealed tomb, no neon.\n\nExcellent pixel craft: sculpted chipped stone, deliberate substantial clusters, crisp staircase contours, economical intricate materials, hue-shifted shadows. Irregular faceted woody roots, not striped pipes. No random speckle or dense dithering on floor, no smooth airbrush. Reference 1 guides desert world/material craft, reference 2 architectural enclosure/depth, reference 3 solemn monumental eeriness. Adapt to this close arena camera. EMPTY SCENERY: no people, statues of people, fighters, creatures, UI, text, borders, logos or palette swatches.",
+  "referenceRoles": [
+    "Children of Morta desert world",
+    "Deaths Gambit architectural depth",
+    "Blasphemous eeriness"
+  ],
+  "integration": false
+}

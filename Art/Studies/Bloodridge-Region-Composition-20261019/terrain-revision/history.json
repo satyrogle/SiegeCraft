@@ -1,0 +1,329 @@
+{
+  "prompt": [
+    166,
+    "e50ea898-95ba-460f-9fcd-0c00206641bd",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "flux-2-klein-base-4b.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+          "strength_model": 0.7
+        }
+      },
+      "3": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_3_4b.safetensors",
+          "type": "flux2",
+          "device": "default"
+        }
+      },
+      "4": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "flux2-vae.safetensors"
+        }
+      },
+      "5": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "Detailed pixel art panoramic 2.5D battle environment, native fine pixel clusters, muted dusty sepia, corroded warm bronze, violet-brown crevice shadows, calcified pale roots. Same art, light and oblique camera as the supplied root grove. The second reference is an exact GEOGRAPHY PLAN: follow its different silhouettes and land masses. Render one physically continuous long Bloodridge region. Important: only the FAR RIGHT is an Egyptian burial court. Most of the new region is wild wind-eroded natural terrain, with NO courtyard paving or walls.\n\nLEFT QUARTER: spacious bare ash BADLANDS beneath open sky, low weathered sandstone mesas with rounded eroded profiles, a shallow dry wash curving down into the preserved hollow root grove. An exposed tilted rock shelf and a few dry thorn clumps with rust-red pods. Sparse and natural. No buildings, pillars, gates, stairs or brickwork in the left half. The hollow tree and its dark pool stay as the sheltered landmark.\n\nMIDDLE: after the grove the land opens onto a DEEP WIND-CARVED RAVINE with layered cliff faces dropping into violet dust, distant broken mesas visible across the gap. A broad solid fighting shelf curves along the near lip and visibly RISES towards the right. An imposing leaning split sandstone blade on the far lip, roots hanging over the dark cut. The rear cliff has large irregular heights and gaps, no line of buildings. Foreground bottom-edge broken bedrock shows the thickness of the shelf and a steep drop. Alternating enclosure: open desert, sheltered grove, open high ravine, then enclosed court.\n\nRIGHT APPROACH: the ravine shelf becomes an uneven burial terrace. ONE half-buried small tomb cut into the rock, a collapsed stair following the incline, roots crawling through the bank and into the EXISTING ORIGINAL COURT at the far right. Only there should carved Egyptian stone and paving take over. The continuous shallow silt wash becomes worn court paving gradually. Keep the actual final court gate and paving intact.\n\nPhysical connections must be visible: ash bank descending into the grove, the same roots gripping the near ravine lip, the same broad bedrock shelf climbing into the court. Ground material changes from loose ash to exposed layered rock to irregular old stone. No evenly repeating floor slabs, rows of tombs, same-height walls, tiled backdrop, panels, collage joins or mirrored rocks. Detailed weathered forms with calm fighter clearings, not noisy photorealism, not smooth painted concept art, not 3D models. No new people, no text or UI. Regional flora is grouped into small pale thorn fans, dull rust seedpods and reeds near the existing dark pool, not evenly scattered. Keep the real root grove and original right court unchanged; replace the repetitive architecture between them with this natural ravine."
+        }
+      },
+      "6": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "repeating courtyard walls, rows of tombs, endless paving, seamless wallpaper tile, equal-height architecture, generic sand, realistic photograph, shiny 3D scene, cutout panels"
+        }
+      },
+      "7": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-bloodridge-terrain-20261019/grove-style.png"
+        }
+      },
+      "9": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "7",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "5",
+            0
+          ],
+          "latent": [
+            "9",
+            0
+          ]
+        }
+      },
+      "11": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "6",
+            0
+          ],
+          "latent": [
+            "9",
+            0
+          ]
+        }
+      },
+      "13": {
+        "class_type": "CFGGuider",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "positive": [
+            "23",
+            0
+          ],
+          "negative": [
+            "24",
+            0
+          ],
+          "cfg": 4.0
+        }
+      },
+      "14": {
+        "class_type": "KSamplerSelect",
+        "inputs": {
+          "sampler_name": "euler"
+        }
+      },
+      "15": {
+        "class_type": "Flux2Scheduler",
+        "inputs": {
+          "steps": 20,
+          "width": 4128,
+          "height": 768
+        }
+      },
+      "16": {
+        "class_type": "RandomNoise",
+        "inputs": {
+          "noise_seed": 20261019143
+        }
+      },
+      "17": {
+        "class_type": "SamplerCustomAdvanced",
+        "inputs": {
+          "noise": [
+            "16",
+            0
+          ],
+          "guider": [
+            "13",
+            0
+          ],
+          "sampler": [
+            "14",
+            0
+          ],
+          "sigmas": [
+            "15",
+            0
+          ],
+          "latent_image": [
+            "22",
+            0
+          ]
+        }
+      },
+      "18": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "17",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "19": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "18",
+            0
+          ],
+          "filename_prefix": "KS-Bloodridge-Terrain-20261019/region"
+        }
+      },
+      "20": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-bloodridge-terrain-20261019/masked-guide.png"
+        }
+      },
+      "21": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "20",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "22": {
+        "class_type": "SetLatentNoiseMask",
+        "inputs": {
+          "samples": [
+            "21",
+            0
+          ],
+          "mask": [
+            "20",
+            1
+          ]
+        }
+      },
+      "25": {
+        "class_type": "ImageScale",
+        "inputs": {
+          "image": [
+            "20",
+            0
+          ],
+          "upscale_method": "area",
+          "width": 1376,
+          "height": 256,
+          "crop": "disabled"
+        }
+      },
+      "26": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "25",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "23": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "10",
+            0
+          ],
+          "latent": [
+            "26",
+            0
+          ]
+        }
+      },
+      "24": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "11",
+            0
+          ],
+          "latent": [
+            "26",
+            0
+          ]
+        }
+      }
+    },
+    {
+      "client_id": "codex-bloodridge-terrain",
+      "create_time": 1792398540847
+    },
+    [
+      "19"
+    ]
+  ],
+  "outputs": {
+    "19": {
+      "images": [
+        {
+          "filename": "region_00001_.png",
+          "subfolder": "KS-Bloodridge-Terrain-20261019",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "e50ea898-95ba-460f-9fcd-0c00206641bd",
+          "timestamp": 1792398540848
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "e50ea898-95ba-460f-9fcd-0c00206641bd",
+          "timestamp": 1792398540874
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "e50ea898-95ba-460f-9fcd-0c00206641bd",
+          "timestamp": 1792398931939
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "19": {
+      "node_id": "19",
+      "display_node": "19",
+      "parent_node": null,
+      "real_node_id": "19"
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "formations.csv_identical": true,
+  "start-state.txt_identical": true,
+  "end-state.txt_identical": true,
+  "motion-trace.csv_identical": true,
+  "screenshots": [
+    {
+      "frame": "ending.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0000.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0060.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0180.png",
+      "protected_pixels_changed": 10372,
+      "button_color_fade_pixels": 10372,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0240.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0300.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0360.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0540.png",
+      "protected_pixels_changed": 8484,
+      "button_color_fade_pixels": 8484,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0600.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0720.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-0900.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-1200.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-1500.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "frame-1800.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "paused.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": false
+    },
+    {
+      "frame": "unaffected-tutorial.png",
+      "protected_pixels_changed": 0,
+      "button_color_fade_pixels": 0,
+      "unexpected_protected_changes": 0,
+      "full_frame_identical": true
+    }
+  ],
+  "frames": 1981,
+  "seconds_at_30fps": 66.03333333333333,
+  "wind_frames_seen": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "max_simultaneous_numbers": 12,
+  "simulation_tick_first_last": [
+    "1",
+    "1890"
+  ],
+  "pass": true
+}

@@ -1,0 +1,34 @@
+{
+  "high_level_description": "One continuous side-view 2.5D pixel-art battle environment. Extend the existing scenery at the RIGHT naturally to the LEFT. Same ground plane, same material scale, same illumination and pixel clusters. The bare outer mountain shelf before the clan fortifications. A broad level stone and packed-grey-dust fighting ground. Only a low rough slate ridge at the upper edge with small snow patches in sheltered cracks. A single broken iron brace far RIGHT links it to the existing approach. Far LEFT opens toward pale distant mountain silhouettes. No fortress, no gate, no busy decoration.",
+  "style_description": {
+    "medium": "pixel_art",
+    "art_style": "Crisp native pixel clusters, organic irregular shapes, subtly chipped edges, three or four flat tones per material. Broad quiet surfaces. Precise stepped pixel contours. Match the connected existing pixels on the right. No painted brush strokes, fine texture, dithering, blur or tiny gravel.",
+    "aesthetics": "quiet connected ancient game environment, restrained detail, subdued low contrast ground",
+    "lighting": "Even soft upper-left lighting in discrete pixel planes"
+  },
+  "compositional_deconstruction": {
+    "background": "Muted blue-grey slate, violet-grey shadows, old dark iron, isolated ivory snow patches, tiny wine-red cloth accents. A cold mountain clan region. Continuous flat walkable ground across the whole lower two thirds. Camera slightly elevated SIDE battle view, not top-down or an isometric map. Ground extends to left, right and bottom. Quiet paving shapes about 60-140 pixels wide and 20-55 pixels deep, partly buried in dust; not gigantic slabs.",
+    "elements": [
+      {
+        "type": "obj",
+        "bbox": [
+          0,
+          0,
+          350,
+          1000
+        ],
+        "desc": "The bare outer mountain shelf before the clan fortifications. A broad level stone and packed-grey-dust fighting ground. Only a low rough slate ridge at the upper edge with small snow patches in sheltered cracks. A single broken iron brace far RIGHT links it to the existing approach. Far LEFT opens toward pale distant mountain silhouettes. No fortress, no gate, no busy decoration. All obstacles confined to the rear upper third. No people or living statues."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          350,
+          0,
+          1000,
+          1000
+        ],
+        "desc": "A wide clear fighting plane with the same height and perspective as the adjoining right-hand ground. Irregular low-contrast paving interrupted by broad smooth dust. No hills, stairs, cliffs, holes, props or fencing in the battle lanes. No repeated square tile grid."
+      }
+    ]
+  }
+}

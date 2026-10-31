@@ -1,0 +1,28 @@
+{
+  "source": "ground-clearance/final-composition.png",
+  "dimensions": [
+    4128,
+    768
+  ],
+  "resampled": false,
+  "native_scale": 1,
+  "grove_core_unchanged": true,
+  "court_core_unchanged": true,
+  "palette_entries": 229,
+  "unity_tested": false,
+  "art_approved": false,
+  "scope": "Static composition study. No gameplay, plane extraction, new animation or encounter mapping.",
+  "reopened_master_matches": true,
+  "observed_limits": [
+    "New natural terrain has less material detail than the original court",
+    "Grove left bank still has a sharp change in enclosure",
+    "No separated runtime planes, encounter mapping, Unity integration, or moving fight validation",
+    "No legible new fauna delivered"
+  ],
+  "browser_checks": [
+    "Earlier/revised switch at x1400 preserves viewport position",
+    "Native reference views at x400, x1400 and x2200",
+    "Front-row reference overlap corrected by ground-only native strip pass",
+    "Court paving join rechecked after restoring its approach at the original location"
+  ]
+}

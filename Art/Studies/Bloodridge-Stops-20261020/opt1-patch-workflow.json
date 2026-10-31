@@ -1,0 +1,197 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ideogram4_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+   "type": "ideogram4",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "{\"high_level_description\": \"Repair one band of an existing pixel art background of a ruined burial grove. Keep the exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters of the existing image. A low broken stone kerb runs along the back of the paved floor, edging the terrace off from the ruins behind: worn stones half sunk in ash, a little dry grass along it. Behind the kerb the walls, stairs and the giant dead root tree stand back; nothing crosses onto the floor in front of it.\", \"compositional_deconstruction\": {\"background\": \"The same ruins and root tree behind the kerb, their bases ending behind it.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [378, 94, 484, 905], \"desc\": \"A low broken kerb of worn stones edging the paved floor, with the bases of the ruins and roots ending behind it.\"}]}}"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "roots across the floor, rubble on the floor, people, person, warrior, figure, character, statue, text, watermark, thick black outline, black ink, comic book, voxel, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render"
+  }
+ },
+ "6": {
+  "class_type": "CFGOverride",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "cfg": 3.0,
+   "start_percent": 0.7,
+   "end_percent": 1.0
+  }
+ },
+ "7": {
+  "class_type": "DualModelGuider",
+  "inputs": {
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "cfg": 7.0,
+   "model_negative": [
+    "6",
+    0
+   ],
+   "negative": [
+    "5",
+    0
+   ]
+  }
+ },
+ "8": {
+  "class_type": "EmptyFlux2LatentImage",
+  "inputs": {
+   "width": 1376,
+   "height": 768,
+   "batch_size": 1
+  }
+ },
+ "9": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "10": {
+  "class_type": "Ideogram4Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 1696,
+   "height": 768,
+   "mu": 0.0,
+   "std": 1.75
+  }
+ },
+ "11": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102152
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "11",
+    0
+   ],
+   "guider": [
+    "7",
+    0
+   ],
+   "sampler": [
+    "9",
+    0
+   ],
+   "sigmas": [
+    "18",
+    1
+   ],
+   "latent_image": [
+    "17",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "filename_prefix": "KS-Bloodridge-Stops-20261020/opt1-patch"
+  }
+ },
+ "15": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-bloodridge-stops-20261020/opt1-patch-input.png"
+  }
+ },
+ "16": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "15",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "17": {
+  "class_type": "SetLatentNoiseMask",
+  "inputs": {
+   "samples": [
+    "16",
+    0
+   ],
+   "mask": [
+    "15",
+    1
+   ]
+  }
+ },
+ "18": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "10",
+    0
+   ],
+   "step": 3
+  }
+ }
+}

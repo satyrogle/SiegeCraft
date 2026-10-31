@@ -1,0 +1,33 @@
+{
+  "dimensions": [
+    4128,
+    768
+  ],
+  "native_scale": 1,
+  "resampled": false,
+  "palette_entries": 175,
+  "original_court_reference_unchanged": true,
+  "original_court_core_preserved": true,
+  "court_world_x": 2752,
+  "approach_floor_blend_x": [
+    2752,
+    3008
+  ],
+  "fighting_floor_before_court_y460_to767_unchanged": true,
+  "grove_core_preserved": true,
+  "native_fighter_reference_is_gameplay_capture": false,
+  "unity_tested": false,
+  "art_approved": false,
+  "reopened_aseprite_export_matches": true,
+  "visual_checks": [
+    "Whole panorama inspected",
+    "Native four-cutout crypt composition inspected",
+    "Browser x0, x1400 and x2200 inspected; previous-terrain switch tested",
+    "Original court approach join inspected"
+  ],
+  "integration_limits": [
+    "No Unity binding or moving-fight validation",
+    "Start-view foreground wall needs stage-specific placement/occlusion review before game integration",
+    "Native fighter image is a composition reference, not gameplay"
+  ]
+}

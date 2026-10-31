@@ -1,0 +1,98 @@
+kindred-siege-safe-file	1	614F1B25DB437156CFD4397894D7253DFFBA6AED6ACBEA861DCC912A8FE4D199
+kindred-siege-campaign	10
+seed	1
+streams	16750467030886263261	9	7009800821677620407	3
+counters	5	3	1	0	1
+camp	0
+forge	0	0
+named	Bosk	1
+named	Duro	1
+named	Ruk	1
+named	Sefa	1
+named	Tuvo	1
+codex	Tribe: the Clarth
+codex	Joined: the Clarth
+codex	Tribe: Bloodridge
+mind	cult
+habit	0	0
+habit	1	0
+habit	2	0
+habit	3	4
+habit	4	0
+threat	0	23
+threat	1	10
+threat	2	326
+threat	3	0
+threat	4	0
+learned	camp.1.raiders.tutorial
+learned	camp.2.raiders.duel
+learned	camp.3.raiders.duel
+lesson	camp.1.raiders.tutorial	0	guard	0	0	4	172	50	343	Your Warden covered 29 hits and stopped 172 damage. Now our ranged fighters shoot whoever he isn't covering.
+lesson	camp.1.raiders.tutorial	0	threat	0	0	94	188	0	500	Of everything that cost us HP, your Warden cost the most: 188 of 345. We will remember it.
+lesson	camp.2.raiders.duel	0	threat	2	37	334	632	0	989	Of everything that cost us HP, your Skirmisher cost the most: 632 of 632. We will remember it.
+lesson	camp.3.raiders.duel	0	threat	2	334	326	319	0	689	Of everything that cost us HP, your Skirmisher cost the most: 319 of 319. We will remember it.
+mind	clarth
+habit	0	0
+habit	1	0
+habit	2	0
+habit	3	0
+habit	4	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	raiders
+habit	0	0
+habit	1	6
+habit	2	1
+habit	3	0
+habit	4	0
+threat	0	48
+threat	1	54
+threat	2	101
+threat	3	20
+threat	4	8
+learned	camp.1.raiders.tutorial
+learned	camp.2.raiders.duel
+learned	camp.3.raiders.duel
+lesson	camp.1.raiders.tutorial	1	unleash	0	4	8	867	20	140	While your Unleash ran, from 0.6s, you did 867 damage to us. Now we Hold the moment you unleash.
+lesson	camp.1.raiders.tutorial	1	threat	1	0	217	434	0	500	Of everything that cost us HP, your Marksman cost the most: 434 of 972. We will remember it.
+lesson	camp.1.raiders.tutorial	1	fade.fallback	0	4	3	0	0	500	You never fell back this fight, so we ease off pressing when you do.
+lesson	camp.2.raiders.duel	1	threat	0	68	96	125	0	989	Of everything that cost us HP, your Warden cost the most: 125 of 125. We will remember it.
+lesson	camp.2.raiders.duel	1	fade.unleash	0	8	7	0	0	989	You never unleashed this fight, so we ease off holding against it.
+lesson	camp.2.raiders.duel	1	fade.fallback	0	3	2	0	0	989	You never fell back this fight, so we ease off pressing when you do.
+lesson	camp.3.raiders.duel	1	threat	2	42	101	160	0	689	Of everything that cost us HP, your Skirmisher cost the most: 160 of 160. We will remember it.
+lesson	camp.3.raiders.duel	1	fade.unleash	0	7	6	0	0	689	You never unleashed this fight, so we ease off holding against it.
+lesson	camp.3.raiders.duel	1	fade.fallback	0	2	1	0	0	689	You never fell back this fight, so we ease off pressing when you do.
+mind	skullpeak
+habit	0	4
+habit	1	4
+habit	2	4
+habit	3	0
+habit	4	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+archive	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
+archive	tVg/aNRQHH7vcn/aKudZXRwUB8HBXkhSax1EKNbFFl1LcTDNRRqb3h3JHZYiThbUyUnFyUlcHA7ExVXcFSehCuLg4CCOLpr3+l54ibGk5suDX+6SvPfl+73f994XohFCDq+F7RV7MPDdtmVYZ0zDnG6bhxx7va9bemB7HTcI9c7Q9a/9CJ5sNmc+tpqE1KKBG1E8oITQbxohLGTrRMFOo3vkgOPbwWBVv2kHHberm0Rp3Shui/9HlOt1kmw1gZeOKvm7/Y5axuVEo4zYiYwM4xNnNbrp9boVMYL9BiJUpr8ynvYvtmobE9cY23pGxpxlFFOU06X0k5a8sS3OW/OzF85aljVtWObszLwxR0WHhSgaKcSsWuSeBkaZTKb45R6d9ej97HAKyZEnbCA57mOHy3DEK8isx1lvXyIhOC5GUV33wjCEV+c+ci555o+UzAtzvCQzfw7n+Ro5l3w1voXr8jO83l/hHCsUjajRMhR0HMlzgh1OKoiFeXLLmRKIdcGxZg8HPZN7KDswk2lcdHyvH7qy6/he0+FIywrSefjELJRSwKtInnwL6JXCcxPOc0sgNv+r1iy76vWh728hibG3zYa7oyAJfHCXeYxlV+vbXc+RQyYFFxKLnMZ9HiP58rebV0rBca78oRTU76WI8yd8TlsVkmjFfVRFxDiKjkScUBFzSb4aeKF7ulJGPReRmfF6LgnEHB4kuxb3oCWkiHgaN+Alv4XkyPf1u4okcBvHU/iCfFYKz5FALehqI2ShVVcb7WWJ7ziWHLKbq71B8uUy+gKXOtHQiEdTn1wKiZIphhxDcuQucU4rQ+ZzCmrhzON9fxleIbcUnhtInlztdwRiDn+SXYv70z2kfPme+hAu3xdIjvxjwUskR+7K7+Ac35eyaOX33ILetI2cQNWbJPCYRE8azUrg2muyT4OkzYjEff4A
+archive	Y2ZgYBDJLtZNSiwpyUnVNTIwMjM0MDTWNRROTswt0DPWK0rMTEktKtZLKU3NyVW8qjo/r7FUgI+BgRWosQKIJzAyMDC+YGZgAGEYSAFiEBcoxyCcnJNYVJKhV5ydWZSbWZyRWqRnzIRQytAJxHlQtiSSOBsDKmCFmomOWRgwwX8gwCKMAhhBjlPB4ks4JzkDKJmZnwdzLYgugmJkl/7CYhsu1yIDdqiZINeyYfEx2JVArMMIdi4j4yYmVImNUL6As5Gjk6Glpbmzs4WxgamZKyNUgQUQ86KZiCs+iA4KbgY0/5MUkLisB5uqDTWRn1pu9QNiFqDOYnNqu5cLZJIntcOWB2RKKLXdCjY1nSbpoJgmbm2lSbhOpIlbF9Msza5HMpkq7nWCmXyQZm4+S5Mwvk/t9MAHMuU1td0KzhF/aZJ2ORlplRakGansXnAoqCOZSr2w1YGaygY1lTWxtCTfEFzbgwhQBcvumpyTWVCcClPKSaoDwCZFIZlkiRT01M0srtQOJHClFE7tCAW3IJJplgBLaRa+jTRzcyvUZD6yUhfIPSxppTk5rdROACAHsqdC0i3McEEC4QpP8KwFiXmZyTBtQlA3McCzFyNczXyaBexeaocIuPS8TZOM9oZmCfcnTUKBC7nbRQ33gmtRcSYquxVUYjNo0MStptR2K7hWcqO2W8GmBtPErRFQU4moQWFKKa9BU5holVEKkUymbkHURJNI7ad2pIILogU0ySxraZIAYWMWFNacG6ntOOSaE2Y40TUnS1EmQhcHzF2oFWdSUWpiNkwNOwN65coAVwMA
+names	camp.1.raiders.tutorial	camp.1.raiders.tutorial.raiders.0	Meryt	camp.1.raiders.tutorial.raiders.1	Harkhuf	camp.1.raiders.tutorial.raiders.2	Iymery	tutorial.0	Sefa	tutorial.1	Ruk	tutorial.2	Duro	tutorial.3	Tuvo	tutorial.4	Bosk
+names	camp.2.raiders.duel	camp.2.raiders.duel.raiders.champion	Kawit	clarth.warden.1	Sefa
+names	camp.3.raiders.duel	camp.3.raiders.duel.raiders.champion	Mekhu	clarth.skirmisher.3	Duro
+joined	clarth
+fighter	clarth.marksman.2	clarth	1	Ruk	1	
+fighter	clarth.trapper.4	clarth	3	Tuvo	1	
+fighter	clarth.medic.5	clarth	4	Bosk	1	
+grudge	raiders
+run	raiders	0	2
+road	-1
+offer	2
+offer	3
+offer	0
+fight	0	0
+proof	26E112020579C7E6	D847A8AEA3B3412A	82C124082A2D9ABB
+squad	clarth.marksman.2
+end

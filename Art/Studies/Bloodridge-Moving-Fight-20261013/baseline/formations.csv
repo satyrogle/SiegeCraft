@@ -1,0 +1,13 @@
+id,x,y,head,art
+clarth.warden.1,600,420,156,clarth_warden_se
+clarth.medic.5,420,420,116,clarth_medic_se
+camp.5.raiders.chief.raiders.0,1020,420,115,blood_rot_medic_sw
+camp.5.raiders.chief.raiders.2,840,420,140,blood_rot_skirmisher_sw
+camp.5.raiders.chief.raiders.1,1020,530,114,blood_rot_marksman_sw
+clarth.marksman.2,420,560,115,clarth_marksman_se
+camp.5.raiders.chief.raiders.3,840,560,154,blood_rot_warden_sw
+camp.5.raiders.chief.raiders.chief,1160,620,224,bloodridge_chief_sw
+leader,250,640,219,
+clarth.skirmisher.3,600,700,132,clarth_skirmisher_se
+clarth.trapper.4,420,700,139,clarth_trapper_se
+camp.5.raiders.chief.raiders.4,840,700,140,blood_rot_skirmisher_sw

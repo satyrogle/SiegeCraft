@@ -1,0 +1,19 @@
+{
+  "in": "g3sky",
+  "out": "g3sky2",
+  "mode": "repaint",
+  "win": [1376, 0, 3040, 768],
+  "zone": [1934, 40, 2462, 170],
+  "split": 3,
+  "seed": 2026102176,
+  "prompt": {
+    "high_level_description": "Repair the top band of an existing pixel art background of a ruined burial grove, keeping its exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters. The broken pillars in this band are gone. Only a row of knee-high broken wall stumps and a few fallen blocks remain along the bottom of the band, and everything above them is open sky, one plain flat light dusty grey-mauve colour, completely empty.",
+    "compositional_deconstruction": {
+      "background": "Open sky of one flat pale colour filling most of the band, above a low row of broken wall stumps.",
+      "elements": [
+        {"type": "obj", "bbox": [700, 330, 1000, 670], "desc": "A low row of knee-high broken wall stumps and fallen blocks along the bottom of the band, open flat sky above them."}
+      ]
+    }
+  },
+  "negative": "pillars, columns, towers, tall walls, arches, buildings, mountains, hills, ridge, clouds, sun, moon, birds, trees, gradient sky, texture in the sky, people, text, watermark, thick black outline, black ink, comic book, voxel, toy model, giant pixels, chunky pixels, cartoon, photograph, 3D render"
+}

@@ -1,0 +1,19 @@
+{
+ "from": "stop1-a-mat5r",
+ "ramp_x": [
+  900,
+  1728
+ ],
+ "lab_shift_scenery": [
+  6.86,
+  -2.25,
+  2.41
+ ],
+ "lab_shift_floor": [
+  -1.08,
+  -2.42,
+  -4.57
+ ],
+ "scrub_pixels_toned": 3221,
+ "colours": 174
+}

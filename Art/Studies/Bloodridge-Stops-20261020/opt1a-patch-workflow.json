@@ -1,0 +1,197 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ideogram4_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+   "type": "ideogram4",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "{\"high_level_description\": \"Repair the bottom band of an existing pixel art background of a ruined burial grove. Keep the exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters of the existing image. The flat paved floor ends at the bottom in the edge of a raised stone terrace, and below that edge is the terrace's front face seen straight on: big old dark fieldstone blocks in deep shadow, dry roots and dead brown vines hanging over the edge, like the ledge a side-scroller hero walks on.\", \"compositional_deconstruction\": {\"background\": \"The same flat paved floor above, ending in one clean edge.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [840, 50, 1000, 950], \"desc\": \"The terrace's dark front face of big old fieldstone blocks, with roots and dead vines hanging over its top edge.\"}]}}"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "floor continuing, cobbles at the bottom, grass, bushes, people, person, warrior, figure, character, statue, text, watermark, thick black outline, black ink, comic book, voxel, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render"
+  }
+ },
+ "6": {
+  "class_type": "CFGOverride",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "cfg": 3.0,
+   "start_percent": 0.7,
+   "end_percent": 1.0
+  }
+ },
+ "7": {
+  "class_type": "DualModelGuider",
+  "inputs": {
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "cfg": 7.0,
+   "model_negative": [
+    "6",
+    0
+   ],
+   "negative": [
+    "5",
+    0
+   ]
+  }
+ },
+ "8": {
+  "class_type": "EmptyFlux2LatentImage",
+  "inputs": {
+   "width": 1376,
+   "height": 768,
+   "batch_size": 1
+  }
+ },
+ "9": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "10": {
+  "class_type": "Ideogram4Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 1696,
+   "height": 768,
+   "mu": 0.0,
+   "std": 1.75
+  }
+ },
+ "11": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102151
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "11",
+    0
+   ],
+   "guider": [
+    "7",
+    0
+   ],
+   "sampler": [
+    "9",
+    0
+   ],
+   "sigmas": [
+    "18",
+    1
+   ],
+   "latent_image": [
+    "17",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "filename_prefix": "KS-Bloodridge-Stops-20261020/opt1a-patch"
+  }
+ },
+ "15": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-bloodridge-stops-20261020/opt1a-patch-input.png"
+  }
+ },
+ "16": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "15",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "17": {
+  "class_type": "SetLatentNoiseMask",
+  "inputs": {
+   "samples": [
+    "16",
+    0
+   ],
+   "mask": [
+    "15",
+    1
+   ]
+  }
+ },
+ "18": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "10",
+    0
+   ],
+   "step": 3
+  }
+ }
+}

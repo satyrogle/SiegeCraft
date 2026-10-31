@@ -1,0 +1,155 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "ideogram4_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "ideogram4",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "{\"high_level_description\": \"Empty alien hunters landing court in a lawless space wasteland, rendered entirely in crisp, deliberately clustered pixel art. Muted ash-grey and mauve ground, broken obsidian starship ribs and sparse dim violet seams. One single continuous 2.5D battle scene, no figures, no text.\", \"style_description\": {\"medium\": \"pixel_art\", \"art_style\": \"Authentic hand-pixelled 2D game background. Visible square pixel clusters and stair-stepped contours everywhere. Muted limited palette, flat colour clusters, two or three discrete shades per stone. Organic uneven shapes with carefully chipped corners. Broad quiet surfaces with occasional short angular cracks. Crisp pixel edges without antialiasing. The controlled pixel craft of an old burial court: irregular broad paving stones, shallow angular shadows, weathering only on selected edges. No paint brushwork, no gritty texture layer, no dithering, no gradients.\", \"aesthetics\": \"quiet, restrained, ancient, tactile, subdued, coherent pixel clusters, readable 2.5D battle stage\", \"lighting\": \"Soft upper-left light expressed as discrete flat pixel colour planes. Even readable midtone fighting ground. Subtle contact shadows, no dramatic vignette.\", \"color_palette\": [\"#29272f\", \"#413e49\", \"#5a535f\", \"#78717c\", \"#969098\", \"#b1a9a8\", \"#cbc0b5\", \"#7f628d\"]}, \"compositional_deconstruction\": {\"background\": \"The lower two thirds form one wide open flat fighting court. Large irregular worn slabs spanning about a tenth of the screen width, with broad nearly solid colour faces. Only occasional short broken seams and a few small chips, much empty midtone area for fighter silhouettes. Oblique side view looking slightly down at the ground, like a 2D RPG battle screen. The floor reaches all four side and bottom edges; no isolated platform, no border, no foreground fence. The court is a broad old landing apron made of worn irregular basalt plates, buried shallowly in pale ash. Dusty pale grey with mauve shadows, large nearly solid middle-value stone faces. No scattered gravel, no glittering sand, no tiny stones.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [0, 0, 360, 1000], \"desc\": \"Across the upper third, a broken starship hull embedded into a low basalt ridge. On the left, one great incomplete ribbed engine arch leans into the old wreck with a heavy torn black cable hanging beside it. Three broad irregular hull plates recede to the right, with just a few dim muted violet cuts in their seams. The distant horizon is a low flat charcoal escarpment against a dusty pale mauve sky. Salvaged alien technology, not medieval fortifications. Wreckage is rendered in large flat pixel planes and stepped silhouettes, with a few selected chips, no intricate greebles.\"}, {\"type\": \"obj\", \"bbox\": [360, 0, 1000, 1000], \"desc\": \"The lower two thirds form one wide open flat fighting court. Large irregular worn slabs spanning about a tenth of the screen width, with broad nearly solid colour faces. Only occasional short broken seams and a few small chips, much empty midtone area for fighter silhouettes. Oblique side view looking slightly down at the ground, like a 2D RPG battle screen. The floor reaches all four side and bottom edges; no isolated platform, no border, no foreground fence. The court is a broad old landing apron made of worn irregular basalt plates, buried shallowly in pale ash. Dusty pale grey with mauve shadows, large nearly solid middle-value stone faces. No scattered gravel, no glittering sand, no tiny stones.\"}]}}"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "photograph, painterly, digital painting, concept painting, brush strokes, realistic render, 3D render, noisy texture, fine gravel, pebbles, tiny cobblestones, scattered debris, dithering, speckles, smooth gradients, blur, antialiasing, glossy, high contrast floor, repeating tile grid, voxel cubes, people, guards, human figures, creatures, letters, UI, border, frame"
+    }
+  },
+  "6": {
+    "class_type": "CFGOverride",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "cfg": 3.0,
+      "start_percent": 0.7,
+      "end_percent": 1.0
+    }
+  },
+  "7": {
+    "class_type": "DualModelGuider",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "cfg": 7.0,
+      "model_negative": [
+        "6",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 1376,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "Ideogram4Scheduler",
+    "inputs": {
+      "steps": 20,
+      "width": 1376,
+      "height": 768,
+      "mu": 0.0,
+      "std": 1.75
+    }
+  },
+  "11": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026101871
+    }
+  },
+  "12": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "11",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "KS-Stage-Pixel-Match-20261018/hunters"
+    }
+  }
+}

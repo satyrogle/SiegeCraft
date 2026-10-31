@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bloodridge · connected depth study</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#181619;color:#e3d6c4;font:15px system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:24px 32px}h1{font:30px Georgia,serif;margin:8px 0 10px}p{color:#b8a99f;line-height:1.5;margin:8px 0}.eyebrow{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:#cba977}.overview{position:relative;overflow:hidden;line-height:0;border:1px solid #746051;margin-top:22px;cursor:crosshair;touch-action:none}.overview img{width:100%;image-rendering:pixelated}.view-window{position:absolute;top:0;bottom:0;border:2px solid #f8d9a3;box-shadow:0 0 0 5000px #100c1766;pointer-events:none}.route-labels{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;color:#bb9c76;margin:8px 0 18px}.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0}button,select{font:inherit;border:1px solid #61505a;color:#e0d1be;background:#29242a;padding:10px 14px;cursor:pointer}button:hover{border-color:#d9bb91}button:disabled{opacity:.5;cursor:default}.primary{background:#b0926b;color:#17151a;border-color:#d9bb91}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #f8d9a3;outline-offset:3px}input[type=range]{accent-color:#c7a274;flex:1;min-width:180px}label{font-size:13px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}input[type=checkbox]{accent-color:#c7a274}.scene-head{display:flex;justify-content:space-between;gap:16px;margin:20px 0 8px}#place-name{font:22px Georgia,serif;color:#e0c29d}#status{font-size:12px;color:#b7a99d;align-self:center}.viewport-scroll{overflow:auto;border:1px solid #61505a;background:#29242a}.viewport{display:block;width:1376px;height:768px;image-rendering:pixelated}.notes{font-size:12px;color:#a89a91;margin:12px 0 24px}.handoff{border-top:1px solid #44383f;padding-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.handoff h2{font:17px Georgia,serif;color:#c9ad88;margin:0 0 7px}.handoff p{font-size:12px;margin:0;line-height:1.5}.handoff img{width:100%;image-rendering:pixelated;border:1px solid #44383f;margin-top:10px}footer{font-size:12px;color:#9c8c85;margin-top:24px;line-height:1.6}a{color:#cfb48e}#error{color:#f6bca8}output{font-size:12px;color:#cbb69f;min-width:100px;text-align:right}@media(max-width:700px){main{padding:20px 16px}.handoff{grid-template-columns:1fr 1fr}h1{font-size:26px}.route-labels{letter-spacing:0;font-size:9px}.scene-head{display:block}#status{display:block;margin-top:6px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<main>
+  <div class="eyebrow">Kindred Siege · Bloodridge background review</div>
+  <h1>A region with weight.</h1>
+  <p>From the exposed ash wash, through the root grove and sunken crypt, into the original court.</p>
+  <div class="overview" id="overview"><img id="strip-image" src="panorama.png" alt="One continuous Bloodridge region from ash wash to the original court"><div class="view-window" id="view-window"></div></div>
+  <div class="route-labels"><span>ASH WASH</span><span>ROOT GROVE</span><span>SUNKEN CRYPT</span><span>ORIGINAL COURT</span></div>
+  <div class="controls">
+    <button class="primary" id="journey">Travel the region</button>
+    <button id="previous" aria-label="Previous location">←</button>
+    <select id="location" aria-label="Location"><option value="0">Ash wash</option><option value="400">Root hollow</option><option value="1400">Sunken crypt</option><option value="2200">Court approach</option><option value="2752">Original court</option></select>
+    <button id="next" aria-label="Next location">→</button>
+    <input id="position" type="range" min="0" max="2752" value="0" aria-label="Position along the connected region">
+    <output id="position-readout">0 / 2752 px</output>
+  </div>
+  <div class="controls">
+    <label><input id="depth" type="checkbox" checked> Travel depth</label>
+    <label><input id="ash" type="checkbox" checked> Existing ash</label>
+    <label><input id="figures" type="checkbox" checked> Static fighter scale</label>
+    <label><input id="paused" type="checkbox"> Pause motion</label>
+    <label><input id="occlusion" type="checkbox"> Near-layer mask</label>
+    <label><input id="original" type="checkbox"> Previous composition</label>
+  </div>
+  <div class="scene-head"><strong id="place-name">Ash wash</strong><span id="status" role="status">Loading native layers…</span></div>
+  <div class="viewport-scroll"><canvas class="viewport" id="scene" width="1376" height="768" aria-label="Native pixel Bloodridge scene with connected travel, depth layers and existing ash"></canvas></div>
+  <p class="notes">Native 1376 × 768 view. Scroll sideways on a smaller screen. Travel settles before the scene rests. These are static scale references, not a captured fight.</p>
+  <div class="handoff">
+    <section><h2>One wind</h2><p>Existing ash is anchored along the region. Exposed wash carries more; the crypt is sheltered.</p><img src="grove-reeds-a-reference.png" alt="Native grove reed source for Claude’s wind animation"></section>
+    <section><h2>Rooted growth</h2><p>Reed source pieces and root anchors are ready for Claude. Heavy roots and architecture stay solid.</p><img src="grove-reeds-b-reference.png" alt="Second native reed source, with its stone surroundings"></section>
+    <section><h2>A dark seep</h2><p>The pool has a confined motion mask for subtle ripples. No new ripple animation is playing here.</p><img src="grove-pool-reference.png" alt="Existing dark seep, the proposed area for restrained ripple animation"></section>
+    <section><h2>Shelter</h2><p>Dust is reduced under the crypt. Claude’s new plant, pool and dust clips are still pending.</p><img src="crypt-shelter-reference.png" alt="The sunken crypt opening and sheltered recess"></section>
+  </div>
+  <footer>Depth and composition review; not integrated into Unity. Original court pixels remain preserved at rest. The first foreground wall was lowered to clear the formation, with its hidden floor reconstructed locally. <a href="../bloodridge-root-crypt/index.html">Previous review</a> · <a href="layers.json">Layer and animation handoff</a></footer>
+  <p id="error" role="alert"></p>
+</main>
+<script type="module" src="review.js"></script>
+</html>

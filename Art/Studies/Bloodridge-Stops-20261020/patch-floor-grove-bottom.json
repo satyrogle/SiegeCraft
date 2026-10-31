@@ -1,0 +1,18 @@
+{
+  "in": "bx",
+  "out": "bx2",
+  "mode": "repaint",
+  "match_floor": true,
+  "win": [1536, 368, 2560, 848],
+  "zone": [1640, 690, 2360, 800],
+  "split": 3,
+  "seed": 2026102141,
+  "prompt": {
+    "high_level_description": "Repair one patch of the flat floor in an existing pixel art background of an empty ruined burial courtyard, keeping its exact palette, light, scale and oblique 2.5D camera. The worn rounded flagstones with ash in the joints simply continue across this patch, matching the stones around it in size, colour and light, with a few flat cracks and pebbles. Empty and calm. Fine controlled dusty hand-painted pixel clusters like the rest of the image.",
+    "compositional_deconstruction": {
+      "background": "The same flagstone floor as all around this patch.",
+      "elements": [{"type": "obj", "bbox": [600, 100, 900, 830], "desc": "Flat worn rounded flagstones continuous with the floor around them."}]
+    }
+  },
+  "negative": "people, person, figure, character, white branches, scrub, bush, coral, rocks, boulders, stone block, dark block, rubble, crack chasm, square patch, rectangle, bright tiles, tile grid, high contrast, thick black outline, black ink, comic book, voxel, toy model, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render, text, watermark"
+}

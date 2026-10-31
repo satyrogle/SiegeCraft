@@ -1,0 +1,22 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "2330C4BD4F80363932A958526D27770E6F78227AECEE2B9675122DE98180532F",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Bloodridge-Court-Refinement-20261013\\bloodridge-court-refinement.aseprite"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "7586E5A564C0FC22DB6571373A293BAFDF0A717CD4F627C074C31DA65ABFA7E4",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Bloodridge-Court-Refinement-20261013\\battle-screen.png"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "97B91B0EADE2F38AF04FE638007EA570D93F17B6B556581FE07ED1F89B60D20F",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Bloodridge-Battle-Screen-20261013\\captured-combat.png"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "3A4C67671AC864AADB639E063A6CBD8E5C7492CD8D83CE949195060E8CFA2C7F",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Bloodridge-Battle-Screen-20261013\\captured-hud.png"
+  }
+]

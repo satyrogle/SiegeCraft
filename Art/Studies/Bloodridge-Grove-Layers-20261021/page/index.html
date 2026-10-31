@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloodridge Root Grove</title>
+<style>
+  :root { --bg: #120e14; --ink: #ece6de; --dim: #9c8f96; --gold: #d6aa5a; --line: #3a3038; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 "Segoe UI", system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px 16px; box-sizing: border-box; min-height: 100vh; }
+  canvas { image-rendering: pixelated; image-rendering: crisp-edges; display: block; background: #000; max-width: 100%; height: auto; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+  button { font: inherit; color: var(--ink); background: #241d27; border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+  button[aria-pressed="false"] { color: var(--dim); background: transparent; text-decoration: line-through; }
+  button:hover { border-color: var(--gold); }
+  .note { color: var(--dim); font-size: 13px; text-align: center; max-width: 1100px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1440" height="900"></canvas>
+<div class="bar">
+  <button id="t1" aria-pressed="true">1 Backdrop (static)</button>
+  <button id="t2" aria-pressed="true">2 World (alive)</button>
+  <button id="t3" aria-pressed="true">3 Battle floor</button>
+  <button id="t4" aria-pressed="true">Fighters</button>
+  <button id="reset">Reset secrets</button>
+</div>
+<div class="note">Mock for Jacob, 21 Oct: the root grove in three layers. Three secrets hide in the world layer. Click what moves.</div>
+<script src="manifest.js"></script>
+<script>
+"use strict";
+const M = window.MANIFEST;
+const cv = document.getElementById("c");
+const ctx = cv.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+const SX = M.stage[0], SY = M.stage[1];           // stage offset in the 1440x900 frame
+const show = { 1: true, 2: true, 3: true, 4: true };
+
+// ---------- images ----------
+const names = ["l1-backdrop", "l2-world", "l3-floor", "frame",
+  "crows-0", "crows-1", "crows-2", "crows-3", "ghoul-0", "ghoul-1", "ghoul-2", "hand-0", "hand-1", "hand-2",
+  "ach-crows", "ach-ghoul", "ach-hand", "count-0", "count-1", "count-2", "count-3"];
+const img = {};
+let pending = 0;
+function load(key, src) {
+  pending++;
+  const i = new Image();
+  i.onload = () => { pending--; };
+  i.onerror = () => { pending--; console.error("missing", src); };
+  i.src = src;
+  img[key] = i;
+}
+names.forEach(n => load(n, n + ".png"));
+M.fighters.forEach(f => { if (!img[f.sheet]) load(f.sheet, f.sheet); });
+
+// ---------- secrets ----------
+const SECRETS = ["crows", "ghoul", "hand"];
+let found = {};
+try { found = JSON.parse(localStorage.getItem("ks-grove-secrets") || "{}"); } catch (e) { found = {}; }
+function saveFound() { try { localStorage.setItem("ks-grove-secrets", JSON.stringify(found)); } catch (e) {} }
+let toast = null;   // {key, t0}; more wait in the queue so none is lost
+const toastQueue = [];
+function unlock(key, now) {
+  if (found[key]) return;
+  found[key] = true;
+  saveFound();
+  toastQueue.push(key);
+}
+
+// ---------- helpers ----------
+function sprite(im, x, y, flip) {          // x,y = top-left in stage coords
+  if (!im || !im.complete) return;
+  if (!flip) { ctx.drawImage(im, SX + x, SY + y); return; }
+  ctx.save(); ctx.translate(SX + x + im.width, SY + y); ctx.scale(-1, 1); ctx.drawImage(im, 0, 0); ctx.restore();
+}
+function clipped(im, x, y, clipY, flip) {  // draw only the part above clipY (stage)
+  if (!im || !im.complete) return;
+  const h = Math.max(0, Math.min(im.height, Math.floor(clipY - y)));
+  if (h <= 0) return;
+  ctx.save();
+  ctx.beginPath(); ctx.rect(SX + x - 2, SY + y, im.width + 4, h); ctx.clip();
+  sprite(im, x, y, flip);
+  ctx.restore();
+}
+function px(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(SX + Math.round(x), SY + Math.round(y), w, h); }
+function rnd(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+// ---------- scene: crows on the slab ----------
+const crows = {
+  hit: [918, 100, 1040, 142], feet: 134, bone: { x: 975, y: 131, vy: 0, onGround: false },
+  state: "idle", t0: 0,
+  birds: [{ x: 948, flip: true, phase: 0.0 }, { x: 1004, flip: false, phase: 0.9 }],
+};
+function drawBone(x, y) {
+  px(x - 3, y - 2, 7, 3, "#181218");
+  px(x - 2, y - 1, 5, 1, "#e8dcc6");
+  px(x - 3, y - 2, 1, 1, "#e8dcc6"); px(x + 3, y - 2, 1, 1, "#e8dcc6");
+  px(x - 3, y, 1, 1, "#e8dcc6"); px(x + 3, y, 1, 1, "#e8dcc6");
+}
+function updateCrows(t) {
+  const c = crows;
+  if (c.state === "scatter") {
+    const s = t - c.t0;
+    // the bone falls off the slab and lands at the slab's foot
+    const b = c.bone;
+    if (!b.onGround) { b.vy += 520 * (1 / 60); b.y += b.vy * (1 / 60); if (b.y >= 240) { b.y = 240; b.vy = -b.vy * 0.25; if (Math.abs(b.vy) < 25) { b.onGround = true; b.vy = 0; } } }
+    if (s > 7.0) { c.state = "return"; c.t0 = t; }
+  } else if (c.state === "return") {
+    if (t - c.t0 > 1.6) { c.state = "idle"; c.bone = { x: 975, y: 131, vy: 0, onGround: false }; }
+  }
+}
+function drawCrows(t) {
+  const c = crows;
+  if (c.state === "idle") {
+    drawBone(c.bone.x, c.bone.y);
+    c.birds.forEach((b, i) => {
+      const k = (t + b.phase) % 1.9;
+      const peck = k > 1.35 && k < 1.65;
+      const hop = ((t * 0.7 + b.phase) % 3.1) < 0.12 ? -2 : 0;
+      const im = img[peck ? "crows-1" : "crows-0"];
+      sprite(im, Math.round(b.x - im.width / 2), c.feet - im.height + hop, b.flip);
+    });
+    return;
+  }
+  const s = t - c.t0;
+  if (c.state === "scatter") {
+    drawBone(c.bone.x, c.bone.y);
+    c.birds.forEach((b, i) => {
+      const dir = i === 0 ? -1 : 1;
+      const f = Math.floor(s / 0.09) % 2 ? "crows-3" : "crows-2";
+      const x = b.x + dir * (s * 150 + s * s * 40), y = c.feet - 20 - (s * 110 + s * s * 60);
+      if (y > -40) sprite(img[f], Math.round(x - 14), Math.round(y), i === 0 ? false : true);
+    });
+  } else if (c.state === "return") {
+    drawBone(c.bone.x, c.bone.y);
+    const u = Math.min(1, s / 1.6), e = 1 - (1 - u) * (1 - u);
+    c.birds.forEach((b, i) => {
+      const dir = i === 0 ? -1 : 1;
+      const f = u > 0.9 ? "crows-0" : (Math.floor(s / 0.09) % 2 ? "crows-3" : "crows-2");
+      const x = b.x + dir * 260 * (1 - e), y = (c.feet - 20) - 200 * (1 - e);
+      const im = img[f];
+      sprite(im, Math.round(x - im.width / 2), Math.round(u > 0.9 ? c.feet - im.height : y), b.flip);
+    });
+  }
+}
+
+// ---------- scene: the gravedigger behind the blocks ----------
+const ghoul = { hit: [760, 44, 864, 108], x: 798, feet: 118, clip: 104, state: "dig", t0: 0, dirt: [], lastDig: -1 };
+function updateGhoul(t) {
+  const g = ghoul;
+  if (g.state === "dig") {
+    const phase = Math.floor(t / 0.35) % 2;           // 0 shovel up, 1 shovel down
+    if (phase === 1 && g.lastDig !== Math.floor(t / 0.7)) {
+      g.lastDig = Math.floor(t / 0.7);
+      const r = rnd(g.lastDig * 977 + 13);
+      for (let i = 0; i < 7; i++) g.dirt.push({ x: g.x - 26 + r() * 10, y: g.clip, vx: -30 - r() * 70, vy: -90 - r() * 110, c: r() < 0.5 ? "#6a4e3c" : "#8a6a52" });
+    }
+  } else if (g.state === "fall" && t - g.t0 > 0.55) { g.state = "gone"; g.t0 = t; }
+  else if (g.state === "gone" && t - g.t0 > 5.0) { g.state = "climb"; g.t0 = t; }
+  else if (g.state === "climb" && t - g.t0 > 0.9) { g.state = "dig"; }
+  g.dirt.forEach(d => { d.vy += 420 / 60; d.x += d.vx / 60; d.y += d.vy / 60; });
+  g.dirt = g.dirt.filter(d => d.y < g.clip + 2);
+}
+function drawGhoul(t) {
+  const g = ghoul;
+  let im = img[Math.floor(t / 0.35) % 2 ? "ghoul-1" : "ghoul-0"], y = g.feet - 68;
+  if (g.state === "fall") { const u = (t - g.t0) / 0.55; im = img["ghoul-2"]; y = g.feet - 64 - 6 + u * u * 80; }
+  else if (g.state === "gone") { im = null; }
+  else if (g.state === "climb") { const u = (t - g.t0) / 0.9; im = img["ghoul-0"]; y = g.feet - 68 + (1 - u) * 70; }
+  if (im) clipped(im, g.x - Math.round(im.width / 2), Math.round(y), g.clip, false);
+  g.dirt.forEach(d => px(d.x, d.y, 2, 2, d.c));
+  if (g.state === "fall") {                          // dust puff where he went under
+    const u = (t - g.t0) / 0.55;
+    for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2, r = 6 + u * 26; px(g.x + Math.cos(a) * r, g.clip - 2 + Math.sin(a) * r * 0.3, 2, 2, "rgba(176,158,142," + (1 - u).toFixed(2) + ")"); }
+  }
+}
+
+// ---------- scene: the hand from under the fallen trunk ----------
+const hand = { hit: [638, 214, 694, 270], x: 664, clip: 266, state: "hidden", t0: 0, cycle: 0 };
+function handY(u) { return hand.clip - 4 - 40 * u; }      // u 0 hidden, 1 fully up
+function updateHand(t) {
+  const h = hand, s = t - h.t0;
+  if (h.state === "hidden" && s > 3.2) { h.state = "rise"; h.t0 = t; }
+  else if (h.state === "rise" && s > 0.7) { h.state = "wave"; h.t0 = t; }
+  else if (h.state === "wave" && s > 2.8) { h.state = "sink"; h.t0 = t; }
+  else if (h.state === "sink" && s > 0.6) { h.state = "hidden"; h.t0 = t; }
+  else if (h.state === "thumb" && s > 1.4) { h.state = "drop"; h.t0 = t; }
+  else if (h.state === "drop" && s > 0.35) { h.state = "hidden"; h.t0 = t + 1.2; }
+}
+function ripple(t0, t, big) {
+  const u = Math.min(1, (t - t0) / (big ? 0.8 : 0.6));
+  const w = Math.round(6 + u * (big ? 26 : 16));
+  const a = (1 - u).toFixed(2);
+  px(hand.x - w, hand.clip - 1, w * 2, 1, "rgba(150,138,140," + a + ")");
+  px(hand.x - Math.round(w * 0.6), hand.clip + 1, Math.round(w * 1.2), 1, "rgba(120,108,112," + a + ")");
+}
+function drawHand(t) {
+  const h = hand, s = t - h.t0;
+  let u = 0, f = "hand-0";
+  if (h.state === "rise") u = Math.min(1, s / 0.7);
+  else if (h.state === "wave") { u = 1; f = Math.floor(s / 0.26) % 2 ? "hand-1" : "hand-0"; }
+  else if (h.state === "sink") u = 1 - Math.min(1, s / 0.6);
+  else if (h.state === "thumb") { u = 1; f = "hand-2"; }
+  else if (h.state === "drop") { u = 1 - Math.min(1, s / 0.35); f = "hand-2"; }
+  if (u > 0) { const im = img[f]; clipped(im, h.x - Math.round(im.width / 2), Math.round(handY(u)), h.clip, false); }
+  if (h.state === "rise" || h.state === "sink") ripple(h.t0, t, false);
+  if (h.state === "drop") ripple(h.t0, t, true);
+}
+
+// ---------- ash in the air, world layer only, top 285 rows ----------
+const motes = (() => { const r = rnd(2110), out = []; for (let i = 0; i < 70; i++) out.push({ x: r() * 1376, y: 10 + r() * 280, vx: 14 + r() * 20, vy: 2 + r() * 4, amp: 1 + r() * 2, f: 0.4 + r() * 0.5, ph: r() * 6.28, s: r() < 0.55 ? 2 : 1, c: ["#decebb", "#b29b86", "#5c4e50"][r() < 0.45 ? 0 : (r() < 0.6 ? 1 : 2)] }); return out; })();
+function drawMotes(t) {
+  motes.forEach(m => {
+    const x = ((m.x - m.vx * t) % 1376 + 1376) % 1376;
+    const y = 10 + ((m.y - 10 + m.vy * t) % 280) + m.amp * Math.sin(6.283 * m.f * t + m.ph);
+    if (y < 285 - m.s) px(x, y, m.s, m.s, m.c);
+  });
+}
+
+// ---------- fighters idling on the floor ----------
+function drawFighters(t) {
+  const list = M.fighters.slice().sort((a, b) => a.y - b.y);
+  list.forEach((f, i) => { ctx.fillStyle = "rgba(20,12,16,0.35)"; ctx.beginPath(); ctx.ellipse(SX + f.x, SY + f.y - 2, 30, 7, 0, 0, Math.PI * 2); ctx.fill(); });
+  list.forEach((f, i) => {
+    const sheet = img[f.sheet]; if (!sheet || !sheet.complete) return;
+    const total = f.frames.reduce((a, fr) => a + fr[4], 0);
+    let ms = (t * 1000 + i * 370) % total, k = 0;
+    while (ms >= f.frames[k][4]) { ms -= f.frames[k][4]; k++; }
+    const [fx, fy, fw, fh] = f.frames[k];
+    const ax = f.flip ? fw - f.anchor[0] : f.anchor[0], ay = f.anchor[1];
+    const dx = SX + Math.round(f.x - ax), dy = SY + Math.round(f.y - ay);
+    if (!f.flip) ctx.drawImage(sheet, fx, fy, fw, fh, dx, dy, fw, fh);
+    else { ctx.save(); ctx.translate(dx + fw, dy); ctx.scale(-1, 1); ctx.drawImage(sheet, fx, fy, fw, fh, 0, 0, fw, fh); ctx.restore(); }
+  });
+}
+
+// ---------- input ----------
+function stagePoint(ev) {
+  const r = cv.getBoundingClientRect();
+  return [(ev.clientX - r.left) * (cv.width / r.width) - SX, (ev.clientY - r.top) * (cv.height / r.height) - SY];
+}
+function inBox(p, b) { return p[0] >= b[0] && p[0] <= b[2] && p[1] >= b[1] && p[1] <= b[3]; }
+function clickable(p) {
+  if (!show[2]) return null;
+  if (crows.state === "idle" && inBox(p, crows.hit)) return "crows";
+  if (ghoul.state === "dig" && inBox(p, ghoul.hit)) return "ghoul";
+  if ((hand.state === "wave" || hand.state === "rise") && inBox(p, hand.hit)) return "hand";
+  return null;
+}
+cv.addEventListener("mousemove", ev => { cv.style.cursor = clickable(stagePoint(ev)) ? "pointer" : "default"; });
+cv.addEventListener("click", ev => {
+  const t = performance.now() / 1000, which = clickable(stagePoint(ev));
+  if (which === "crows") { crows.state = "scatter"; crows.t0 = t; crows.bone.vy = -60; }
+  if (which === "ghoul") { ghoul.state = "fall"; ghoul.t0 = t; }
+  if (which === "hand") { hand.state = "thumb"; hand.t0 = t; }
+  if (which) unlock(which, t);
+});
+[1, 2, 3, 4].forEach(n => {
+  const b = document.getElementById("t" + n);
+  b.addEventListener("click", () => { show[n] = !show[n]; b.setAttribute("aria-pressed", String(show[n])); });
+});
+document.getElementById("reset").addEventListener("click", () => { found = {}; saveFound(); toast = null; toastQueue.length = 0; });
+
+// ---------- frame ----------
+function frame() {
+  const t = performance.now() / 1000;
+  if (pending > 0) { requestAnimationFrame(frame); return; }
+  updateCrows(t); updateGhoul(t); updateHand(t);
+  ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1440, 900);
+  ctx.fillStyle = "#1d171c"; ctx.fillRect(SX, SY, 1376, 768);
+  if (show[1]) ctx.drawImage(img["l1-backdrop"], SX, SY);
+  if (show[2]) {
+    ctx.drawImage(img["l2-world"], SX, SY);
+    drawGhoul(t); drawCrows(t); drawHand(t); drawMotes(t);
+  }
+  if (show[3]) ctx.drawImage(img["l3-floor"], SX, SY);
+  if (show[4]) drawFighters(t);
+  ctx.drawImage(img["frame"], 0, 0);
+  const n = SECRETS.filter(k => found[k]).length;
+  ctx.drawImage(img["count-" + n], SX + 12, SY + 20);
+  if (!toast && toastQueue.length) toast = { key: toastQueue.shift(), t0: t };
+  if (toast) {
+    // bottom left of the floor, clear of every scene and of the fighters' feet
+    const s = t - toast.t0, im = img["ach-" + toast.key];
+    if (s > 3.2) toast = null;
+    else {
+      const slide = s < 0.2 ? s / 0.2 : (s > 3.0 ? (3.2 - s) / 0.2 : 1);
+      ctx.drawImage(im, SX + 12 - Math.round((1 - slide) * (im.width + 20)), SY + 768 - im.height - 10);
+    }
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

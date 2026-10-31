@@ -1,0 +1,744 @@
+Mono path[0] = 'C:/Users/jacob/KindredSiege-Clean/Builds/Bloodridge-Moving-Review-20261013/KindredSiegeCampaign_Data/Managed'
+Mono config path = 'C:/Users/jacob/KindredSiege-Clean/Builds/Bloodridge-Moving-Review-20261013/MonoBleedingEdge/etc'
+Input System module state changed to: Initialized.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+Initialize engine version: 2022.3.62f3 (96770f904ca7)
+[Subsystems] Discovering subsystems at path C:/Users/jacob/KindredSiege-Clean/Builds/Bloodridge-Moving-Review-20261013/KindredSiegeCampaign_Data/UnitySubsystems
+Forcing GfxDevice: Direct3D 11
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 (ID=0x2487)
+    Vendor:   NVIDIA
+    VRAM:     12110 MB
+    Driver:   32.0.16.1742
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.106 seconds
+- Finished resetting the current domain, in  0.002 seconds
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+UnloadTime: 0.732900 ms
+[CampaignArt] New campaign, seed 21
+[CampaignArt] PASS new campaign button raycast
+[CampaignArt] PASS tutorial start button raycast
+[CampaignArt] PASS pause button raycast
+[CampaignArt] PASS pause freezes simulation
+[CampaignArt] PASS key 5 is gated chief assist before recruitment
+[CampaignArt] PASS Focus Fire button raycast
+[CampaignArt] PASS enemy target button raycast
+[CampaignArt] PASS Focus Fire goes through campaign order API
+[CampaignArt] PASS resume button raycast
+[CampaignArt] PASS the damage chip holds while paused and when captured
+[CampaignArt] PASS tutorial completes
+[CampaignArt] The raid on your jailers: Won, materials +0, JOINED
+[CampaignArt] PASS result button raycast
+[CampaignArt] PASS tutorial earned alliance
+[CampaignArt] PASS result continue button raycast
+[CampaignArt] Run 1 leaves camp for Bloodridge, materials at camp 0
+[CampaignArt] PASS choose Bloodridge
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] War party: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] Hold the line: You held the line, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] War party: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] the Bloodridge chief calls you out: Won, materials +30, JOINED, on to Skullpeak
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS a beaten chief gives his order and the run goes on to the next tribe
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] Precision trial: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] Hold the line: You held the line, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] War party: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] the Skullpeak chief calls you out: Won, materials +30, JOINED, on to Alpha
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS a beaten chief gives his order and the run goes on to the next tribe
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] The Sovereign's hunters: Lost, materials +0
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] The Sovereign's hunters: Lost, materials +0
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] The Sovereign's hunters: Won, materials +30, RUN WON
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] Run 2 leaves camp for Bloodridge, materials at camp 150
+[CampaignArt] PASS choose Bloodridge
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] War party: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] Champion duel: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] Hold the line: You held the line, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] the Bloodridge chief calls you out: Won, materials +30, JOINED, on to Skullpeak
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS a beaten chief gives his order and the run goes on to the next tribe
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] War party: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] War party: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] Precision trial: Won, materials +10
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] the Skullpeak chief calls you out: Won, materials +30, JOINED, on to Alpha
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS a beaten chief gives his order and the run goes on to the next tribe
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS encounter card raycast
+[CampaignArt] PASS squad fight button raycast
+[CampaignArt] PASS the fight is on its own region's stage at 1x
+[CampaignArt] PASS encounter completes
+[CampaignArt] The Sovereign's hunters: Won, materials +30, RUN WON
+[CampaignArt] PASS encounter result opens
+[CampaignArt] PASS continue after encounter
+[CampaignArt] PASS two whole runs end back at camp
+[CampaignArt] PASS a run carried on past a beaten chief
+[CampaignArt] PASS camp keeps the materials; chief orders and joined tribes reset with the run
+[CampaignArt] PASS between-run save matches live campaign
+[CampaignArt] PASS a second save keeps the first as a backup
+[CampaignArt] PASS the title says the backup was opened
+[CampaignArt] Reopened the save: Seed 21. Tribes with you: Clarth. Runs started 2, won 2. Materials 300. Bloodridge: 35 lessons about you. Skullpeak: 36 lessons about you.
+[CampaignArt] PASS CONTINUE opens the backup when the save is damaged
+[CampaignArt] PASS the backup holds the campaign as it was
+[CampaignArt] Reopened the save: Seed 21. Tribes with you: Clarth. Runs started 2, won 2. Materials 300. Bloodridge: 35 lessons about you. Skullpeak: 36 lessons about you.
+[CampaignArt] PASS CONTINUE opens the backup when the save is missing
+[CampaignArt] New campaign, seed 21
+[CampaignArt] PASS new campaign for the resume check
+[CampaignArt] PASS start a fight to leave half played
+[CampaignArt] PASS the fight is half played when saved
+[CampaignArt] Reopened the save: Seed 21. Tribes with you: none (the tutorial is next). Runs started 0, won 0. Materials 0. Bloodridge: 0 lessons about you. Skullpeak: 0 lessons about you.
+[CampaignArt] PASS continue into the half played fight
+[CampaignArt] PASS reopens inside the fight, paused
+[CampaignArt] PASS the fight comes back at the same tick, unchanged
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.duel.raiders.champion
+[CampaignArt] COVERAGE Duel art=clarth_warden_se,labelled-placeholder
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.trial.raiders.0
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.trial.raiders.1
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.trial.raiders.2
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.trial.raiders.shaman
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.trial.raiders.3
+[CampaignArt] COVERAGE raiders-Trial art=clarth_warden_se,clarth_medic_se,blood_rot_skirmisher_sw,clarth_marksman_se,blood_rot_warden_sw,blood_rot_marksman_sw,labelled-placeholder,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,blood_rot_skirmisher_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.warparty.raiders.0
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.warparty.raiders.2
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.warparty.raiders.1
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.warparty.raiders.4
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.warparty.raiders.3
+[CampaignArt] PASS formation stays on stage: camp.2.raiders.warparty.raiders.5
+[CampaignArt] COVERAGE WarParty art=clarth_warden_se,clarth_medic_se,blood_rot_skirmisher_sw,blood_rot_marksman_sw,clarth_marksman_se,blood_rot_warden_sw,blood_rot_medic_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,blood_rot_skirmisher_sw,blood_rot_marksman_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.5.raiders.chief.raiders.0
+[CampaignArt] PASS formation stays on stage: camp.5.raiders.chief.raiders.2
+[CampaignArt] PASS formation stays on stage: camp.5.raiders.chief.raiders.1
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.5.raiders.chief.raiders.3
+[CampaignArt] PASS formation stays on stage: camp.5.raiders.chief.raiders.chief
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.5.raiders.chief.raiders.4
+[CampaignArt] COVERAGE raiders-Chief art=clarth_warden_se,clarth_medic_se,blood_rot_medic_sw,blood_rot_skirmisher_sw,blood_rot_marksman_sw,clarth_marksman_se,blood_rot_warden_sw,bloodridge_chief_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,blood_rot_skirmisher_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.0
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.3
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.1
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.2
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.4
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.warparty.skullpeak.5
+[CampaignArt] PASS earned chief assist button raycast
+[CampaignArt] PASS assist is once per fight
+[CampaignArt] COVERAGE WarParty art=clarth_warden_se,clarth_medic_se,skull_medic_sw,skull_warden_sw,skull_trapper_sw,clarth_marksman_se,skull_marksman_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_warden_sw,skull_trapper_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.0
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.2
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.1
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.3
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.trial.skullpeak.4
+[CampaignArt] COVERAGE skullpeak-Trial art=clarth_warden_se,clarth_medic_se,skull_trapper_sw,skull_warden_sw,skull_marksman_sw,labelled-placeholder,clarth_skirmisher_se,clarth_marksman_se,skull_warden_sw,skull_trapper_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.0
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.1
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.2
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.5
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.3
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.4
+[CampaignArt] PASS formation stays on stage: camp.6.skullpeak.holdtheline.skullpeak.6
+[CampaignArt] PASS hold-line disables Fall Back in UI and API
+[CampaignArt] COVERAGE HoldTheLine art=clarth_warden_se,clarth_medic_se,skull_marksman_sw,skull_skirmisher_sw,skull_medic_sw,clarth_marksman_se,skull_warden_sw,skull_trapper_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_marksman_sw,skull_warden_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.0
+[CampaignArt] PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.1
+[CampaignArt] PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.2
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.5
+[CampaignArt] PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.3
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.4
+[CampaignArt] PASS formation stays on stage: camp.7.skullpeak.holdtheline.skullpeak.6
+[CampaignArt] PASS hold-line disables Fall Back in UI and API
+[CampaignArt] COVERAGE HoldTheLine art=clarth_warden_se,clarth_medic_se,skull_marksman_sw,skull_skirmisher_sw,skull_medic_sw,clarth_marksman_se,skull_warden_sw,skull_trapper_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_marksman_sw,skull_warden_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.0
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.3
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.1
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.2
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.4
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.warparty.skullpeak.5
+[CampaignArt] COVERAGE WarParty art=clarth_warden_se,clarth_medic_se,skull_medic_sw,skull_warden_sw,skull_trapper_sw,clarth_marksman_se,skull_marksman_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_warden_sw,skull_trapper_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.0
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.1
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.2
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.5
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.3
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.4
+[CampaignArt] PASS formation stays on stage: camp.8.skullpeak.holdtheline.skullpeak.6
+[CampaignArt] PASS hold-line disables Fall Back in UI and API
+[CampaignArt] COVERAGE HoldTheLine art=clarth_warden_se,clarth_medic_se,skull_marksman_sw,skull_skirmisher_sw,skull_medic_sw,clarth_marksman_se,skull_warden_sw,skull_trapper_sw,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,skull_marksman_sw,skull_warden_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.0
+[CampaignArt] PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.3
+[CampaignArt] PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.1
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.chief
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.2
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.9.skullpeak.chief.skullpeak.4
+[CampaignArt] COVERAGE skullpeak-Chief art=clarth_warden_se,clarth_medic_se,skull_medic_sw,skull_warden_sw,skull_trapper_sw,clarth_marksman_se,skullpeak_chief_sw,labelled-placeholder,skull_marksman_sw,clarth_skirmisher_se,clarth_trapper_se,skull_warden_sw
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: clarth.warden.1
+[CampaignArt] PASS formation stays on stage: clarth.medic.5
+[CampaignArt] PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.0
+[CampaignArt] PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.1
+[CampaignArt] PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.5
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.2
+[CampaignArt] PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.3
+[CampaignArt] PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.captain
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.10.alpha.alphahunt.alpha.4
+[CampaignArt] COVERAGE AlphaHunt art=clarth_warden_se,clarth_medic_se,labelled-placeholder,labelled-placeholder,labelled-placeholder,clarth_marksman_se,labelled-placeholder,labelled-placeholder,labelled-placeholder,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,labelled-placeholder
+[CampaignArt] PASS read fixture seed 1
+[CampaignArt] PASS formation stays on stage: raiders.warden.9
+[CampaignArt] PASS formation stays on stage: raiders.medic.6
+[CampaignArt] PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.0
+[CampaignArt] PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.1
+[CampaignArt] PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.5
+[CampaignArt] PASS formation stays on stage: clarth.marksman.2
+[CampaignArt] PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.2
+[CampaignArt] PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.3
+[CampaignArt] PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.captain
+[CampaignArt] PASS formation stays on stage: leader
+[CampaignArt] PASS formation stays on stage: clarth.skirmisher.3
+[CampaignArt] PASS formation stays on stage: clarth.trapper.4
+[CampaignArt] PASS formation stays on stage: camp.11.alpha.alphahunt.alpha.4
+[CampaignArt] COVERAGE AlphaHunt art=blood_rot_warden_se,blood_rot_medic_se,labelled-placeholder,labelled-placeholder,labelled-placeholder,clarth_marksman_se,labelled-placeholder,labelled-placeholder,labelled-placeholder,labelled-placeholder,clarth_skirmisher_se,clarth_trapper_se,labelled-placeholder
+[CampaignArt] PASS war party, hold line, duel, both trials and both chiefs rendered
+[CampaignArt] PASS earned assist exercised through UI
+[CampaignArt] PASS recruited tribe uses its own art in player squad
+[CampaignArt] PASS a whole slice run won and shown back at camp
+[CampaignArt] PASS the squad page's front or back button
+[CampaignArt] PASS front or back moves the fighter through Campaign
+[CampaignArt] PASS the squad starts the fight
+[CampaignArt] PASS the easy path fight ends
+[CampaignArt] Eclipse trial: Won, materials +10
+[CampaignArt] PASS the easy fight's result opens
+[CampaignArt] PASS TAKE THE PIECE on the result
+[CampaignArt] PASS taking the piece gives its materials back
+[CampaignArt] PASS the piece is taken once
+[CampaignArt] PASS on from the spoils
+[CampaignArt] PASS the squad page's GEAR button
+[CampaignArt] PASS the gear picker opens
+[CampaignArt] PASS a piece chosen in the gear picker
+[CampaignArt] PASS the piece is on the fighter and the squad page is back
+[CampaignArt] PASS front or back, the spoils and the gear picker exercised
+[CampaignArt] PASS the chief fight starts
+[CampaignArt] PASS the chief fight ends
+[CampaignArt] the Bloodridge chief calls you out: Won, materials +30, JOINED, on to Skullpeak
+[CampaignArt] PASS the chief's result opens
+[CampaignArt] PASS the result says captured or killed
+[CampaignArt] PASS a captured chief's whole band joins
+[CampaignArt] PASS a captured chief's result shown
+[CampaignArt] PASS the chief fight starts
+[CampaignArt] PASS the chief fight ends
+[CampaignArt] the Bloodridge chief calls you out: Won, materials +30, on to Skullpeak
+[CampaignArt] PASS the chief's result opens
+[CampaignArt] PASS the result says captured or killed
+[CampaignArt] PASS a killed chief's result shows his Princess piece
+[CampaignArt] PASS a killed chief's result shown
+[CampaignArt] PASS passive validation encounter ends
+[CampaignArt] Champion duel: Lost, materials +0
+[CampaignArt] PASS loss scenario result control
+[CampaignArt] PASS the fallen count and the fallen names agree
+[CampaignArt] PASS the result names who they captured
+[CampaignArt] PASS a loss ends the run only under 3 fighters
+[CampaignArt] PASS defeat saves
+[CampaignArt] PASS the result returns to the campaign
+[CampaignArt] PASS passive validation encounter ends
+[CampaignArt] Champion duel: Lost, materials +0
+[CampaignArt] PASS loss scenario result control
+[CampaignArt] PASS the fallen count and the fallen names agree
+[CampaignArt] PASS the result names who they captured
+[CampaignArt] PASS a loss ends the run only under 3 fighters
+[CampaignArt] PASS defeat saves
+[CampaignArt] PASS the result returns to the campaign
+[CampaignArt] PASS passive validation encounter ends
+[CampaignArt] Champion duel: Lost, materials +0, RUN OVER
+[CampaignArt] PASS loss scenario result control
+[CampaignArt] PASS the fallen count and the fallen names agree
+[CampaignArt] PASS the result names who they captured
+[CampaignArt] PASS a loss ends the run only under 3 fighters
+[CampaignArt] PASS defeat saves
+[CampaignArt] PASS the result returns to the campaign
+[CampaignArt] PASS a loss captures one of yours and the run ends on its lives
+[CampaignArt] PASS all 28 results show their text without scrolling
+[CampaignArt] PASS art placeholders open from the title
+[CampaignArt] PASS a popup closes
+[CampaignArt] PASS the popup is gone
+[CampaignArt] PASS codex opens from camp
+[CampaignArt] PASS codex closes
+[CampaignArt] Run 2 leaves camp for Bloodridge, materials at camp 0
+[CampaignArt] PASS a run starts for the tactics check
+[CampaignArt] PASS a fight is chosen
+[CampaignArt] PASS the fight starts
+[CampaignArt] PASS tactics opens in the fight
+[CampaignArt] PASS tactics closes
+[CampaignArt] PASS tutorial starts for the walkthrough check
+[CampaignArt] PASS the tutorial stops and asks for Hold first
+[CampaignArt] PASS Hold given through the walkthrough
+[CampaignArt] PASS Hold moves the tutorial on and the fight carries on
+[CampaignArt] PASS Focus Fire on their back row
+[CampaignArt] PASS the fight says who cannot reach a back row target
+[CampaignArt] PASS the end of the fight says why it went that way
+[CampaignArt] PASS the stage and the fighters share one 1x pixel size, the menus stay on the 2x kit
+[CampaignArt] 144 approved clips available; no generation calls. Death holds final frame; names show when you point at a fighter.
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+Memory Statistics:
+[ALLOC_TEMP_TLS] TLS Allocator
+  StackAllocators : 
+    [ALLOC_TEMP_MAIN]
+      Peak usage frame count: [0-1.0 KB]: 1382 frames, [1.0 KB-2.0 KB]: 446 frames, [2.0 KB-4.0 KB]: 4442 frames, [4.0 KB-8.0 KB]: 168 frames, [16.0 KB-32.0 KB]: 1 frames, [32.0 KB-64.0 KB]: 145 frames, [64.0 KB-128.0 KB]: 65 frames, [128.0 KB-256.0 KB]: 13 frames, [256.0 KB-0.5 MB]: 77 frames, [2.0 MB-4.0 MB]: 1 frames
+      Initial Block Size 4.0 MB
+      Current Block Size 4.0 MB
+      Peak Allocated Bytes 2.0 MB
+      Overflow Count 0
+    [ALLOC_TEMP_Loading.AsyncRead]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 396 B
+      Overflow Count 0
+    [ALLOC_TEMP_Loading.PreloadManager]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 12.7 KB
+      Overflow Count 4
+    [ALLOC_TEMP_Background Job.Worker 8]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 6]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 0]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 10]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 9]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 5]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 14]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 6]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 4]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 14]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 3]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 13]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 12]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_EnlightenWorker] x 8
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 15]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 1]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 2]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 7]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_AssetGarbageCollectorHelper] x 15
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 138 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 5]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 9]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 13]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 8]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 7]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 1]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 56.6 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 2]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 50.9 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 3]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 11]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 10]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 0]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 11]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 12]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 4]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_BatchDeleteObjects]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+[ALLOC_DEFAULT] Dual Thread Allocator
+  Peak main deferred allocation count 722
+    [ALLOC_BUCKET]
+      Large Block size 4.0 MB
+      Used Block count 1
+      Peak Allocated bytes 1.2 MB
+    [ALLOC_DEFAULT_MAIN]
+      Peak usage frame count: [16.0 MB-32.0 MB]: 6740 frames
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 31.2 MB
+      Peak Large allocation bytes 16.0 MB
+    [ALLOC_DEFAULT_THREAD]
+      Peak usage frame count: [4.0 MB-8.0 MB]: 6740 frames
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 4.9 MB
+      Peak Large allocation bytes 0 B
+[ALLOC_TEMP_JOB_1_FRAME]
+  Initial Block Size 2.0 MB
+  Used Block Count 0
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_2_FRAMES]
+  Initial Block Size 2.0 MB
+  Used Block Count 0
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_4_FRAMES (JobTemp)]
+  Initial Block Size 2.0 MB
+  Used Block Count 1
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_ASYNC (Background)]
+  Initial Block Size 1.0 MB
+  Used Block Count 1
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_GFX] Dual Thread Allocator
+  Peak main deferred allocation count 0
+    [ALLOC_BUCKET]
+      Large Block size 4.0 MB
+      Used Block count 1
+      Peak Allocated bytes 1.2 MB
+    [ALLOC_GFX_MAIN]
+      Peak usage frame count: [4.0 MB-8.0 MB]: 137 frames, [8.0 MB-16.0 MB]: 6603 frames
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 11.7 MB
+      Peak Large allocation bytes 0 B
+    [ALLOC_GFX_THREAD]
+      Peak usage frame count: [0-1.0 KB]: 6740 frames
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 464 B
+      Peak Large allocation bytes 0 B
+[ALLOC_CACHEOBJECTS] Dual Thread Allocator
+  Peak main deferred allocation count 2
+    [ALLOC_BUCKET]
+      Large Block size 4.0 MB
+      Used Block count 1
+      Peak Allocated bytes 1.2 MB
+    [ALLOC_CACHEOBJECTS_MAIN]
+      Peak usage frame count: [0.5 MB-1.0 MB]: 6740 frames
+      Requested Block Size 4.0 MB
+      Peak Block count 1
+      Peak Allocated memory 0.9 MB
+      Peak Large allocation bytes 0 B
+    [ALLOC_CACHEOBJECTS_THREAD]
+      Peak usage frame count: [32.0 KB-64.0 KB]: 6739 frames, [64.0 KB-128.0 KB]: 1 frames
+      Requested Block Size 4.0 MB
+      Peak Block count 1
+      Peak Allocated memory 114.2 KB
+      Peak Large allocation bytes 0 B
+[ALLOC_TYPETREE] Dual Thread Allocator
+  Peak main deferred allocation count 0
+    [ALLOC_BUCKET]
+      Large Block size 4.0 MB
+      Used Block count 1
+      Peak Allocated bytes 1.2 MB
+    [ALLOC_TYPETREE_MAIN]
+      Peak usage frame count: [4.0 KB-8.0 KB]: 6740 frames
+      Requested Block Size 2.0 MB
+      Peak Block count 1
+      Peak Allocated memory 5.0 KB
+      Peak Large allocation bytes 0 B
+    [ALLOC_TYPETREE_THREAD]
+      Peak usage frame count: [0-1.0 KB]: 6740 frames
+      Requested Block Size 2.0 MB
+      Peak Block count 0
+      Peak Allocated memory 0 B
+      Peak Large allocation bytes 0 B

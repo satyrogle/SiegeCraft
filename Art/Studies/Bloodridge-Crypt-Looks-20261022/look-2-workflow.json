@@ -1,0 +1,176 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ideogram4_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+   "type": "ideogram4",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "{\"high_level_description\": \"Empty Bloodridge sunken crypt battle stage, rendered entirely in crisp, deliberately clustered pixel art. Cosmic horror under an alien sky: a deep indigo night with a huge cracked pale moon, ribbons of teal and magenta aurora and strange stars; ancient pale violet stone built with impossible wrong geometry, stairs that bend the wrong way and floating broken blocks; faint glowing cyan cracks and runes. Eerie, vast and beautiful, colourful, never muddy.\", \"style_description\": {\"medium\": \"pixel_art\", \"art_style\": \"Authentic hand pixelled 2D game battle stage background. Visible square pixel clusters and stair stepped contours everywhere. Flat colour clusters, two to four shades per material. Crisp pixel edges without antialiasing. Clean readable shapes. No paint brushwork, no gradients except a dithered sky, no noise texture.\", \"aesthetics\": \"cosmic horror battle stage, alien sky, impossible geometry, eerie glow, colourful not muddy\", \"lighting\": \"Cold moonlight and teal aurora glow as discrete flat pixel colour planes, faint cyan rim light on the stone, the arena in calm even dim blue light, still readable.\", \"color_palette\": [\"#16103a\", \"#2a5e76\", \"#30285c\", \"#4c3c78\", \"#9c92c8\", \"#d6c4e8\", \"#5ad8c8\", \"#c85ad2\", \"#4e566e\", \"#1a1430\"]}, \"compositional_deconstruction\": {\"background\": \"One continuous 2.5D battle stage seen from a fixed side oblique camera like a classic arcade fighting game stage, no figures, no text. The top third is sky above a distant ridge, seen through a gap right of centre. The back of the stage is a row of ruins framed by a tall piece at each edge, the crypt left of centre and a huge tree on the right. The lower two thirds is one wide open flat arena floor where two armies will stand, calm and even, clearly separated from the back. The bottom corners hold dark foreground framing pieces in shadow.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [0, 0, 400, 120], \"desc\": \"a tall black monolith floating a little above the ground with glowing cyan cracks\"}, {\"type\": \"obj\", \"bbox\": [80, 190, 410, 470], \"desc\": \"an ancient crypt of pale violet stone with impossible geometry, its doorway a swirling dark void full of stars\"}, {\"type\": \"obj\", \"bbox\": [260, 465, 400, 650], \"desc\": \"low walls of floating broken blocks with faint glowing runes\"}, {\"type\": \"obj\", \"bbox\": [150, 470, 330, 760], \"desc\": \"a far ridge under a huge cracked pale moon with a small stepped pyramid court\"}, {\"type\": \"obj\", \"bbox\": [0, 640, 410, 920], \"desc\": \"a huge dead tree of pale crystal glowing teal, its branches bending the wrong way\"}, {\"type\": \"obj\", \"bbox\": [30, 910, 400, 1000], \"desc\": \"an arch that loops back into itself\"}, {\"type\": \"obj\", \"bbox\": [400, 70, 980, 930], \"desc\": \"a smooth dark slate blue stone arena with faint cyan runes, calm and even\"}, {\"type\": \"obj\", \"bbox\": [820, 0, 1000, 200], \"desc\": \"dark violet crystal shards and black tendrils\"}]}}"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "photograph, painterly, digital painting, concept painting, brush strokes, realistic render, 3D render, noisy texture, fine gravel, pebbles, tiny cobblestones, scattered debris, dithering, speckles, smooth gradients, blur, antialiasing, glossy, high contrast floor, repeating tile grid, voxel cubes, people, guards, human figures, creatures, letters, UI, border, frame, sepia, muddy brown, grunge, dull, desaturated, text, letters, sunlight, daylight, blue sky, green grass, cheerful"
+  }
+ },
+ "6": {
+  "class_type": "CFGOverride",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "cfg": 3.0,
+   "start_percent": 0.7,
+   "end_percent": 1.0
+  }
+ },
+ "7": {
+  "class_type": "DualModelGuider",
+  "inputs": {
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "cfg": 7.0,
+   "model_negative": [
+    "6",
+    0
+   ],
+   "negative": [
+    "5",
+    0
+   ]
+  }
+ },
+ "9": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "10": {
+  "class_type": "Ideogram4Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 1376,
+   "height": 768,
+   "mu": 0.0,
+   "std": 1.75
+  }
+ },
+ "11": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102401
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "11",
+    0
+   ],
+   "guider": [
+    "7",
+    0
+   ],
+   "sampler": [
+    "9",
+    0
+   ],
+   "sigmas": [
+    "18",
+    1
+   ],
+   "latent_image": [
+    "16",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "filename_prefix": "KS-Crypt-Looks-20261022/look-2"
+  }
+ },
+ "15": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-crypt-looks-20261022/blockout-2.png"
+  }
+ },
+ "16": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "15",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "18": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "10",
+    0
+   ],
+   "step": 3
+  }
+ }
+}

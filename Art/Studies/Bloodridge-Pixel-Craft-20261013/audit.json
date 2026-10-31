@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-13",
+  "status": "Ready for owner review; no blocking visual regression found",
+  "scope": "Floor pixel construction and cloth animation only. Captured formations and HUD remain exact. Isolated review assets, no game integration.",
+  "passes": [
+    {
+      "pass": "Floor retouch",
+      "self_audit": "Rejected initial individually traced flat surface treatment: less noise but repetitive wear polygons and insufficient material form. Retained only as rejected-flat-retouch.png and floor-pass.aseprite.",
+      "correction": "One built-in image_gen edit restricted to the floor underpaint, followed by native Aseprite crop, mapping to existing floor colours and selective low-contrast grain cleanup. No architecture or character generation used in the final composite.",
+      "independent_audit": "Genuine improvement: coherent stone surfaces, clearer ash lanes and better separation of small fighters. No blocking visual regression. Some rounded, similarly lit stone edges still suggest cobbles, and some arbitrary ash mottling remains."
+    },
+    {
+      "pass": "Cloth construction and motion",
+      "first_audit": "Improved bending, width changes and separate response, but long shading bands read like straps. Narrow tips required intermediate-frame inspection.",
+      "correction": "Shorter fold-shadow and highlight clusters follow the twist; separate phase and delayed response for each strip. Fixed both attachments. A full-frame connectivity audit caught detached tips in three poses, which were corrected with continuous row silhouettes and shallower edge nicks.",
+      "independent_audit": "More flexible silhouettes, no obvious exposed seam in inspected poses. Shading now remains somewhat flat. Samples alone do not prove loop playback or connectivity."
+    }
+  ],
+  "mechanical_evidence": {
+    "file": "verification.json",
+    "scope_file": "scope-verification.json",
+    "all_32_frames_combat_mismatches": 0,
+    "all_32_frames_hud_mismatches": 0,
+    "combat_pixels_per_frame": 101145,
+    "hud_pixels_per_frame": 258496,
+    "attachment_rows_141_to_157_unchanged": true,
+    "two_continuous_strips_in_all_frames": true,
+    "no_detached_edited_cloth_pixels": true,
+    "original_input_hashes_unchanged": true,
+    "architecture_props_contacts_and_existing_vfx_files_unchanged": true,
+    "floor_colour_count": 53,
+    "floor_colours_subset_of_previous_floor": true,
+    "native_dimensions": [1440, 900],
+    "frames": 32,
+    "frame_duration_ms": 125,
+    "master_reopened_and_looked_at": true,
+    "validation": "Aseprite layers, export_readiness and animation passed. Uniform timing note is intentional for atmospheric motion; no art score is asserted.",
+    "loop_boundary": "1089 changed composite pixels at frame 32 to 1; maximum other neighbouring transition 963. Cloth-only boundary 1384 versus 1328 maximum other transition. Values are not subjective smoothness proof."
+  },
+  "remaining_limits": [
+    "Some rounded stone edges and residual ash mottling remain. Closer to the fighters' pixel construction, not a claim of identical craft quality.",
+    "Cloth volume is simplified at this narrow pixel width. The motion and fold pattern remain an owner-review choice.",
+    "Frozen source capture predates Sprint 1; current game rules, moving-unit ground contact and full-fight readability are not established.",
+    "Fixed-camera review, not a production tileset or renderer migration."
+  ],
+  "browser_check": {
+    "checked": ["before/after", "play/pause", "frame scrub", "32-to-1 playback wrap", "native 1440x900 display", "2x cloth inspection"],
+    "errors_or_warnings": [],
+    "screenshot": "browser-review.jpg",
+    "server_pid": 58488,
+    "left_visible": "new pass, playing, fit view"
+  },
+  "review_url": "http://127.0.0.1:8770/review.html",
+  "owner_approval": "pending"
+}

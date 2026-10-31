@@ -1,0 +1,38 @@
+{
+ "in": "opt3a",
+ "out": "opt3",
+ "mode": "repaint",
+ "win": [
+  1216,
+  0,
+  2912,
+  768
+ ],
+ "zone": [
+  1376,
+  40,
+  2752,
+  110
+ ],
+ "split": 3,
+ "seed": 2026102155,
+ "prompt": {
+  "high_level_description": "Repair the top edge of an existing pixel art background of a ruined burial grove. Keep the exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters of the existing image. Along the top edge, very close to the viewer, hang dark overhanging dead branches and long hanging roots, almost black silhouettes against the scene, framing its top like the canopy of the big foreground tree in a side-scroller.",
+  "compositional_deconstruction": {
+   "background": "The same scene behind, unchanged below the hanging branches.",
+   "elements": [
+    {
+     "type": "obj",
+     "bbox": [
+      0,
+      94,
+      145,
+      906
+     ],
+     "desc": "Dark overhanging dead branches and hanging roots, almost black, along the top edge, close to the viewer."
+    }
+   ]
+  }
+ },
+ "negative": "leaves, green, light branches, people, person, warrior, figure, character, statue, text, watermark, thick black outline, black ink, comic book, voxel, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render"
+}

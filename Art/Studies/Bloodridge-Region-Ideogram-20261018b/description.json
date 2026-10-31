@@ -1,0 +1,19 @@
+{
+  "aspect_ratio": "3:2",
+  "high_level_description": "ONE SINGLE UNINTERRUPTED LANDSCAPE PAINTING. A wide establishing view of the complete Bloodridge necropolis region in Kindred Siege, all one connected stretch of terrain. The camera looks obliquely across an enormous dry limestone valley. A winding main trail traverses the entire image from the empty lower-left outskirts through modest old burial grounds in the middle and into more elaborate inner courts on the upper right, ending at ONE imposing chief gate carved into the furthest right cliff. The full journey is visible at once, naturally joined by the same valley floor and branching trails. Architectural density increases gradually along this journey. This is ONE PLACE, not several versions of the same place. The view is a cohesive hand-painted game environment concept in the muted ash-limestone, dark violet-brown, rotten linen and tarnished bronze palette of Bloodridge. Upper-right dry light, ancient Egyptian funerary motifs, occasional petrified roots, broad restrained painterly shapes.",
+  "compositional_deconstruction": {
+    "background": "The entire image is a single seamless landscape under one shared distant ridge and one shared horizon, from edge to edge. No titles, captions, borders, split-screen divisions, columns or panels. One camera, one perspective, one scale. Large atmospheric continuous cliffs contain the valley.",
+    "elements": [
+      {
+        "type": "obj",
+        "bbox": [
+          0,
+          0,
+          1000,
+          1000
+        ],
+        "desc": "A SINGLE CONNECTED VALLEY occupies the whole frame. Broad unbuilt ash ground fills the lower left and left third, with low eroded rocks and exactly one small burial marker. From this empty first area, the trail and naturally branching side paths gradually move across the middle through three modest flat fighting clearings beside small wall niches and a few broken low walls. Further right, the SAME CONTINUOUS TERRAIN rises gently into three richer funerary courts with weathered paving, stone reliefs and low ruined walls, connected by visible walkable paths. Finally these paths converge at one large chief gate in the upper-right cliff, the largest and final structure. No larger palace or structure beyond it. Other early bare clearings sit naturally beside the approach trail. Fighting areas remain broad quiet flat ground, never crater bowls. The start is visibly very bare, middle modest, boss the maximum. Natural cliff strata, shared ground plane, long continuous shadows and connecting trails join all encounter spaces. This is a whole region, NOT a temporal sequence of the same courtyard being upgraded, NOT a collage of separate locations."
+      }
+    ]
+  }
+}

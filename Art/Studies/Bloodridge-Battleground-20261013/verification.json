@@ -1,0 +1,24 @@
+{
+  "size": [
+    1440,
+    900
+  ],
+  "combat_pixel_count": 101145,
+  "combat_mismatches": 0,
+  "hud_mismatches": 0,
+  "scenery_palette_colors": 62,
+  "native_source_size": [
+    1586,
+    992
+  ],
+  "native_crop_offset": [
+    73,
+    46
+  ],
+  "resampling": false,
+  "production_integration": false,
+  "battle-screen.png_sha256": "cdbf55ad87de9ba18edcd7621a6d612c398682e7b3cbd3533849fc172570d581",
+  "bloodridge-battleground.aseprite_sha256": "5eeeee5aa812bbba7afa37e190ad36158a38ffeb5895ede918b62f9067994b85",
+  "cohesive-source.png_sha256": "724d6477f69e8af59d3665fcc678ad95406fa06f032a9866c3ce79c4646c52b8",
+  "ground-source.png_sha256": "7964980c054da58de84876d5e835c54534b0a98ed75236117642c24c1a066190"
+}

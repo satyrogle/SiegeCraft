@@ -1,0 +1,197 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ideogram4_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+   "type": "ideogram4",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "{\"high_level_description\": \"The bare outskirts of Bloodridge, the first stop on the road into an ancient burial land, preserving the exact existing composition and the oblique 2.5D battle camera. Fine controlled dusty hand-painted pixel clusters, exactly like the ruined burial court of the same region. Sparse and quiet, few built things, but every surface has worn natural detail. The right edge already shows the low burial wall, the giant dead root tree and its dark seep pool; everything continues into them.\", \"compositional_deconstruction\": {\"background\": \"A rough old fieldstone boundary wall of the burial land, eroded and slumped, with a few dark grave niches, ash drifted against its foot and dry roots creeping over it. Eroded sepia limestone, ash brown midtones, muted grey-mauve shadows, restrained tarnished bronze. Soft stepped colour clusters, chipped corners and broken edges; contours are described by materials and shadows, never heavy ink.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [600, 140, 760, 330], \"desc\": \"The single landmark: one leaning burial marker stone with two dull corroded bronze bands, on a low mound of packed ash and small stones.\"}, {\"type\": \"obj\", \"bbox\": [0, 300, 1728, 768], \"desc\": \"The broad fighting ground stays open and calm but is never an empty flat sheet: a worn track of packed ash runs from the left toward the dark pool and the root tree on the right, cracked dry silt plates, small scattered stones and bone chips, ash drifts, thin pale roots breaking the surface, a few old grave slabs sunk at angles into the ground with chipped edges. Low contrast so fighters read clearly on it.\"}, {\"type\": \"obj\", \"bbox\": [0, 230, 1728, 330], \"desc\": \"Sparse clumps of dry rust coloured reeds and small pale thorn fans at the wall foot, thicker toward the pool.\"}]}}"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "thick black outline, black ink, comic book, Minecraft, voxel, cubic blocks, clean rectangular bricks, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, low-detail game icon, noisy dithering, photograph, realistic 3D render, polished new masonry, flat empty ground, detached cutout, floating building, separate panels, text, watermark, people, creatures, green plants"
+  }
+ },
+ "6": {
+  "class_type": "CFGOverride",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "cfg": 3.0,
+   "start_percent": 0.7,
+   "end_percent": 1.0
+  }
+ },
+ "7": {
+  "class_type": "DualModelGuider",
+  "inputs": {
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "cfg": 7.0,
+   "model_negative": [
+    "6",
+    0
+   ],
+   "negative": [
+    "5",
+    0
+   ]
+  }
+ },
+ "8": {
+  "class_type": "EmptyFlux2LatentImage",
+  "inputs": {
+   "width": 1376,
+   "height": 768,
+   "batch_size": 1
+  }
+ },
+ "9": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "10": {
+  "class_type": "Ideogram4Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 2112,
+   "height": 768,
+   "mu": 0.0,
+   "std": 1.75
+  }
+ },
+ "11": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102011
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "11",
+    0
+   ],
+   "guider": [
+    "7",
+    0
+   ],
+   "sampler": [
+    "9",
+    0
+   ],
+   "sigmas": [
+    "18",
+    1
+   ],
+   "latent_image": [
+    "17",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "filename_prefix": "KS-Bloodridge-Stops-20261020/stop1-a-mat5"
+  }
+ },
+ "15": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-bloodridge-stops-20261020/stop1-a-material-input.png"
+  }
+ },
+ "16": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "15",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "17": {
+  "class_type": "SetLatentNoiseMask",
+  "inputs": {
+   "samples": [
+    "16",
+    0
+   ],
+   "mask": [
+    "15",
+    1
+   ]
+  }
+ },
+ "18": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "10",
+    0
+   ],
+   "step": 5
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Clean (2 style note(s)).\n[warning] palette: 511 colour(s) in the art are not in the palette; the most used is #221c22 (60800px). Run recolor op 'snap' to bring them in line.\n[note] palette: 255 palette entries. Most sprites read better under 32 — a large palette usually means ramps that were never merged.\n[warning] antialiasing: 4616 semi-transparent pixel(s) on '05 fighter contact shadows'. Partial alpha usually comes from a soft brush or a resize and reads as blur. on '05 fighter contact shadows' frame 1"
+    }
+  ],
+  "structuredContent": {
+    "sprite": "bloodridge-battleground.aseprite",
+    "findings": [
+      {
+        "severity": "warning",
+        "count": 511,
+        "check": "palette",
+        "message": "511 colour(s) in the art are not in the palette; the most used is #221c22 (60800px). Run recolor op 'snap' to bring them in line."
+      },
+      {
+        "severity": "note",
+        "count": 255,
+        "check": "palette",
+        "message": "255 palette entries. Most sprites read better under 32 — a large palette usually means ramps that were never merged."
+      },
+      {
+        "severity": "warning",
+        "message": "4616 semi-transparent pixel(s) on '05 fighter contact shadows'. Partial alpha usually comes from a soft brush or a resize and reads as blur.",
+        "layer": "05 fighter contact shadows",
+        "count": 4616,
+        "check": "antialiasing",
+        "frame": 1
+      }
+    ],
+    "passed": true,
+    "score": 90,
+    "summary": "Clean (2 style note(s))."
+  }
+}

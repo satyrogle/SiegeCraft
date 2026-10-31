@@ -1,0 +1,269 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-base-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+      "strength_model": 0.7
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "pixel art natural GROUND SURFACE only, oblique battle floor continuing from the reference material. Extend the existing ash brown and dusty sepia worn bedrock ground down through the ENTIRE image. All of this narrow image is the TOP SURFACE of the SAME solid ground. Irregular broad worn flat rock strata and shallow silt cracks, muted warm violet-brown shadows and quiet varied ash deposits. The lighting and tiny native pixel clusters match the reference floor. No visible side face, no cliff, no dark void, no terrace edge or drop. This is continuous level fighting ground with subtle material variation and native pixel detail, not a vertical wall. Cover the previous dark foreground cliff with the same solid naturally weathered floor. Continue unbroken ground through the bottom edge and right side. No new architecture, props or creatures, no tile pattern, no straight horizontal boundaries. The already preserved flora at the left edge stays as it is."
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "cliff, ledge, rock side face, hole, foreground gap, chasm, wall, deep black shadow, vertical rock, terrace, brick, tile grid, objects, buildings, sky"
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-bloodridge-terrain-20261019/clearance-material.png"
+    }
+  },
+  "9": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "7",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "5",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "11",
+        0
+      ],
+      "cfg": 4.0
+    }
+  },
+  "14": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "15": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 12,
+      "width": 3008,
+      "height": 288
+    }
+  },
+  "16": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 20261019146
+    }
+  },
+  "17": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "16",
+        0
+      ],
+      "guider": [
+        "13",
+        0
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "22",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ],
+      "filename_prefix": "KS-Bloodridge-Terrain-20261019/ground-clearance"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-bloodridge-terrain-20261019/clearance-masked.png"
+    }
+  },
+  "21": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "20",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "22": {
+    "class_type": "SetLatentNoiseMask",
+    "inputs": {
+      "samples": [
+        "21",
+        0
+      ],
+      "mask": [
+        "20",
+        1
+      ]
+    }
+  },
+  "25": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "20",
+        0
+      ],
+      "upscale_method": "area",
+      "width": 1376,
+      "height": 256,
+      "crop": "disabled"
+    }
+  },
+  "26": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "25",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "23": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "10",
+        0
+      ],
+      "latent": [
+        "26",
+        0
+      ]
+    }
+  },
+  "24": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "11",
+        0
+      ],
+      "latent": [
+        "26",
+        0
+      ]
+    }
+  }
+}

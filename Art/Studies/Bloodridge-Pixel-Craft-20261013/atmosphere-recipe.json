@@ -1,0 +1,112 @@
+{
+  "name": "Bloodridge court - restrained ash behind combat",
+  "canvas": {
+    "w": 1024,
+    "h": 600
+  },
+  "frames": 32,
+  "fps": 8,
+  "loop": true,
+  "origin": [
+    512,
+    300
+  ],
+  "ramps": {
+    "main": [
+      "#8f7c73",
+      "#9e897b",
+      "#b29b86"
+    ]
+  },
+  "outline": {
+    "mode": "none"
+  },
+  "dither": 0,
+  "tones": 3,
+  "detail": 0,
+  "seed": 1310,
+  "layers": [
+    {
+      "id": "far_ash",
+      "type": "particles",
+      "z": "back",
+      "mode": "travel",
+      "x": 570,
+      "y": 150,
+      "line": 510,
+      "line_angle": 0,
+      "count": 20,
+      "radius": 75,
+      "speed": 58,
+      "direction": 178,
+      "spread": 15,
+      "size": [
+        1,
+        2
+      ],
+      "shrink": 0.5,
+      "shape": "dot",
+      "cycles": 1,
+      "fade_in": 0.15,
+      "fade_out": 0.35,
+      "wobble": 2,
+      "outline": false
+    },
+    {
+      "id": "low_ash",
+      "type": "particles",
+      "z": "back",
+      "mode": "travel",
+      "x": 570,
+      "y": 510,
+      "count": 14,
+      "radius": 210,
+      "speed": 104,
+      "direction": 180,
+      "spread": 14,
+      "size": [
+        2,
+        3
+      ],
+      "shrink": 0.55,
+      "shape": "dot",
+      "cycles": 1,
+      "fade_in": 0.2,
+      "fade_out": 0.4,
+      "wobble": 3,
+      "outline": false,
+      "squash": 0.25
+    },
+    {
+      "id": "ground_wisps",
+      "type": "particles",
+      "z": "back",
+      "mode": "travel",
+      "x": 615,
+      "y": 552,
+      "count": 5,
+      "radius": 190,
+      "speed": 132,
+      "direction": 180,
+      "spread": 8,
+      "size": [
+        2,
+        3
+      ],
+      "shrink": 0,
+      "shape": "custom",
+      "pixels": [
+        ".........111.........",
+        ".....111122211.......",
+        "..111222222221111....",
+        "111111111111111......"
+      ],
+      "pixel_ramp": 3,
+      "cycles": 1,
+      "fade_in": 0.2,
+      "fade_out": 0.35,
+      "wobble": 1,
+      "outline": false
+    }
+  ]
+}

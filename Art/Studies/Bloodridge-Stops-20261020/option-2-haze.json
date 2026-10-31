@@ -1,0 +1,38 @@
+{
+ "in": "bx2",
+ "out": "opt2",
+ "mode": "repaint",
+ "win": [
+  1216,
+  0,
+  2912,
+  768
+ ],
+ "zone": [
+  1376,
+  40,
+  2752,
+  330
+ ],
+ "split": 9,
+ "seed": 2026102153,
+ "prompt": {
+  "high_level_description": "The same ruined burial grove, every shape and the whole composition kept exactly, now painted with strong atmospheric perspective like layered pixel art game backgrounds: the far ruins, stairs and sky pale, soft and hazy, light dusty grey-mauve with very low contrast; the walls and the giant dead root tree in the middle distance a little hazier and lighter than the floor in front. Keep the exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters of the existing image.",
+  "compositional_deconstruction": {
+   "background": "Far ruins and sky fading into pale dusty haze, layered behind the middle ground.",
+   "elements": [
+    {
+     "type": "obj",
+     "bbox": [
+      0,
+      94,
+      430,
+      1000
+     ],
+     "desc": "The same ruins and root tree, with distance haze: the further back, the paler and lower in contrast."
+    }
+   ]
+  }
+ },
+ "negative": "dark sky, night, high contrast background, new buildings, people, person, warrior, figure, character, statue, text, watermark, thick black outline, black ink, comic book, voxel, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render"
+}

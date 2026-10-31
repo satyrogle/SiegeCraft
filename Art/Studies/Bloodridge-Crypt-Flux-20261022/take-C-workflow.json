@@ -1,0 +1,214 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "flux-2-klein-base-4b.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+   "strength_model": 0.7
+  }
+ },
+ "3": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen_3_4b.safetensors",
+   "type": "flux2",
+   "device": "default"
+  }
+ },
+ "4": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "3",
+    0
+   ],
+   "text": "pixel art game background, side view battle stage, fine native pixel clusters at exactly the pixel scale of image 1, clean readable shapes, hand placed pixels, limited palette, crisp edges, no blur. Image 1 is the sunken crypt of Bloodridge: a ruined stone crypt door in the middle, rubble terraces and stairs on the left, a wall gripped by huge tree roots on the right, a flat courtyard floor in the lower half, a distant pale ridge with a stepped pyramid under the sky at the top. Keep exactly the same layout, the same door, the same floor line and the same camera as image 1. Bright cartoon fantasy strategy game look like Kingdom Rush: clean bold shapes, chunky readable stones with dark outlines, saturated warm sandstone, mossy green accents on the ruins and roots, a clear pale sky, spooky but cheerful, very readable, a flat clean courtyard floor."
+  }
+ },
+ "6": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "3",
+    0
+   ],
+   "text": "blurry, soft focus, smudged, noise, grain, photo, 3d render, text, watermark, people, characters, creatures, frame, border, large blocky pixels, upscaled pixel art, mixed pixel sizes, jpeg artifacts, dithering noise"
+  }
+ },
+ "7": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-crypt-flux-20261022/today-ref.png"
+  }
+ },
+ "9": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "7",
+    0
+   ],
+   "vae": [
+    "4",
+    0
+   ]
+  }
+ },
+ "10": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "5",
+    0
+   ],
+   "latent": [
+    "9",
+    0
+   ]
+  }
+ },
+ "11": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "6",
+    0
+   ],
+   "latent": [
+    "9",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "CFGGuider",
+  "inputs": {
+   "model": [
+    "2",
+    0
+   ],
+   "positive": [
+    "10",
+    0
+   ],
+   "negative": [
+    "11",
+    0
+   ],
+   "cfg": 4.0
+  }
+ },
+ "14": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "15": {
+  "class_type": "Flux2Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 1376,
+   "height": 768
+  }
+ },
+ "16": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102233
+  }
+ },
+ "20": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-crypt-flux-20261022/today.png"
+  }
+ },
+ "21": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "20",
+    0
+   ],
+   "vae": [
+    "4",
+    0
+   ]
+  }
+ },
+ "27": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "15",
+    0
+   ],
+   "step": 5
+  }
+ },
+ "17": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "16",
+    0
+   ],
+   "guider": [
+    "13",
+    0
+   ],
+   "sampler": [
+    "14",
+    0
+   ],
+   "sigmas": [
+    "27",
+    1
+   ],
+   "latent_image": [
+    "21",
+    0
+   ]
+  }
+ },
+ "18": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "17",
+    0
+   ],
+   "vae": [
+    "4",
+    0
+   ]
+  }
+ },
+ "19": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "18",
+    0
+   ],
+   "filename_prefix": "KS-Crypt-Flux-20261022/take-C"
+  }
+ }
+}

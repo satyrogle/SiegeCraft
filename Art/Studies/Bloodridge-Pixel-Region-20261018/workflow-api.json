@@ -1,0 +1,155 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "ideogram4_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "ideogram4",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "{\"aspect_ratio\": \"3:2\", \"high_level_description\": \"Hand-crafted PIXEL ART game environment, crisp square pixel clusters and stepped pixel contours, an authentic richly detailed 2D pixel-art scene with 2.5D depth. ONE continuous connected Bloodridge region, from a mostly bare earthen clearing at the left through gradually richer burial ruins to the chief courtyard and largest gateway at the right. A compact connected playable region shown together, not a realistic aerial landscape. All surfaces are deliberately drawn from visible flat-colour pixel clusters using a restrained palette of ash brown, dusty sepia, mauve shadows, pale limestone, tarnished bronze and faded ochre. Traditional sprite-based RPG environment art. A fixed three-quarter oblique game camera, parallel ground projection, consistent pixel size and environment scale across the whole scene. The scene should look made by a pixel artist in Aseprite, with chunky readable stone forms and intentional small highlights.\", \"compositional_deconstruction\": {\"background\": \"Edge-to-edge pixel-art scenery. One continuous moderately elevated rocky basin with low terraced rock edges, one joined ground plane and connected walkable paths. A consistent oblique 2.5D game view shows both the tops and front faces of walls. The terrain fills the whole image; the rear edge is low rock and ruined walls rather than a distant photographic horizon. Each rock is drawn with a few flat pixel clusters and clean angular shading. The visual language is eroded stone blocks, broken slab floors, ancient Egyptian burial niches, thick gnarled roots, rotted cloth and modest bronze trim. Selective texture, readable empty floor, crisp hard edges and flat pixel colour ramps throughout.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [80, 0, 1000, 1000], \"desc\": \"ONE seamless connected pixel-art ground plane across the entire picture. A visible walkable route branches gently around LOW rock outcrops and joins clearings from left to right. Begin on the lower left with a broad almost empty ash-earth floor, a few small broken flat stones and one waist-high burial marker. The entire left third remains sparse. Empty ground is drawn in broad quiet pixel shapes with occasional clustered stone details. Later along the route, scattered slabs gradually turn into coherent courtyard paving. All areas touch through continuous terrain and paths.\"}, {\"type\": \"obj\", \"bbox\": [300, 300, 610, 600], \"desc\": \"Modest early ruins beside the connected route: two small worn burial niches inset into a low rock edge, short broken walls and a few stone steps. Small and simple compared with the chief gate. Hand-pixelled chipped stone, stepped contours, three or four flat shade tones per stone material. Broad open fighting ground beside these structures.\"}, {\"type\": \"obj\", \"bbox\": [220, 550, 620, 820], \"desc\": \"Middle-to-late ground becomes a ruined burial court: larger flagstones, low stone parapets, several carved niches, occasional tarnished bronze accents and thick dried roots curling around masonry. Deliberate readable pixel clusters and limited shadow ramps. This court visibly connects to the earlier clearing through the same continuous floor and short stairs. Keep generous clear playable ground.\"}, {\"type\": \"obj\", \"bbox\": [70, 750, 570, 1000], \"desc\": \"At the far right, one large Egyptian-inspired chief gateway with simple tall angular stone jambs, recessed dark entrance, a small bronze emblem and rotted cloth. It is the final and most elaborate architecture. One broad open boss courtyard directly in front, connected to all earlier areas by the same route. The route ends at this gateway. Clear hand-drawn PIXEL ART, blocky stone silhouettes, crisp stepped pixel edges, clustered shadows and sparse single-pixel highlights. The lower-left start is much barer and smaller in architectural detail.\"}]}}"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "photograph, photorealism, realistic aerial photography, cinematic matte painting, realistic 3D render, PBR materials, smooth gradients, soft airbrush shading, photographic stone texture, film grain, blurred edges, depth of field, panels, split screen, collage, captions, signature, watermark"
+    }
+  },
+  "6": {
+    "class_type": "CFGOverride",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "cfg": 3.0,
+      "start_percent": 0.7,
+      "end_percent": 1.0
+    }
+  },
+  "7": {
+    "class_type": "DualModelGuider",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "cfg": 7.0,
+      "model_negative": [
+        "6",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 1536,
+      "height": 1024,
+      "batch_size": 1
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "Ideogram4Scheduler",
+    "inputs": {
+      "steps": 20,
+      "width": 1536,
+      "height": 1024,
+      "mu": 0.0,
+      "std": 1.75
+    }
+  },
+  "11": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026101600
+    }
+  },
+  "12": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "11",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "KS-Bloodridge-Pixel-Region-20261018/region"
+    }
+  }
+}

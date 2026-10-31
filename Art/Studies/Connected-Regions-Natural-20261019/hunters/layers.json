@@ -1,0 +1,34 @@
+{
+  "region": "hunters",
+  "source": "candidate-final.png",
+  "dimensions": [
+    4128,
+    768
+  ],
+  "viewport": [
+    1376,
+    768
+  ],
+  "review_viewports": [
+    0,
+    917,
+    1835,
+    2752
+  ],
+  "final_court_x": 2752,
+  "protected_court_core_x": 3008,
+  "protected_court_core_pixels_preserved": true,
+  "original_court_source_files_unchanged": true,
+  "approach_edge_blended_pixels": 256,
+  "scale": 1,
+  "resampled": false,
+  "new_scenery_palette_colors": 32,
+  "native_floor_quilting": false,
+  "mirrored_joins": false,
+  "method": "Whole-width local Flux terrain redraw, local Qwen transition edit, native gradient-domain boundary colour matching; original court source files and court core preserved",
+  "majority_replacements": 248180,
+  "static_recomposition_matches": true,
+  "sha256": "85680651963cfb2b693d4f03b4fb8e041f32c361156b73231196903df8620d49",
+  "status": "Art review. No runtime binding or new animation. Viewports are not new encounters.",
+  "approach_boundary": "Native colour-step correction plus a material-following 128-pixel feather within the original court approach overlap, at identical world coordinates; no repeated floor patches"
+}

@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-18",
+  "status": "Static background candidate for Jacob review; not integrated or approved",
+  "proposal": "Later Bloodridge road: existing burial court leads toward an inner funerary gate, then the chief's enclosure. Names and placements remain proposals.",
+  "generation": {"tool": "built-in image_gen", "calls": 1, "prompt": "prompt.txt", "output": "bloodridge-inner-gate-source.png", "source": "C:/Users/jacob/.codex/generated_images/01a14b30-98f3-7b50-ac0b-86e613e812fb/exec-03355371-44e8-454f-a402-d75566de6642.png"},
+  "references": ["../Bloodridge-Court-Refinement-20261013/source-clean.png", "../Bloodridge-Court-Refinement-20261013/battle-screen.png"],
+  "source_size": [1586, 992],
+  "editable_master": "bloodridge-inner-gate.aseprite",
+  "master_limit": "Single static raster layer imported without modification; no separated depth planes or animation authored",
+  "preview": {"file": "review.html", "screen": [1440, 900], "clip": [32, 66, 1376, 768], "source_offset": [-73, 0], "pixel_scale": 1, "device_pixel_ratio_checked": 1, "fighters": "Existing unchanged historical capture, not a new simulation or current playtest"},
+  "inspection": "Viewed generated scenery and existing accepted court. Same materials, burial motifs and lighting; larger rear gate creates progression. Browser DOM confirms natural/display sizes match. Browser screenshot did not complete, so native overlay visual check remains unverified. Upper gate ornament is partly behind the existing HUD in this crop; preserve this as a candidate rather than a final gameplay export.",
+  "integration": false,
+  "pixellab_calls": 0,
+  "comfyui_calls": 0,
+  "animation_changes": false
+}

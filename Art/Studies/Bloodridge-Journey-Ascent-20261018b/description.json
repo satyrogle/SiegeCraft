@@ -1,0 +1,49 @@
+{
+  "aspect_ratio": "3:2",
+  "high_level_description": "A full-frame hand-pixelled 16-bit dark fantasy region map, rendered with clearly visible square pixels and flat stepped colour clusters. The entire rectangular canvas is covered in dusty terrain. NO empty background, NO transparency, NO checkerboard. One continuous Bloodridge region, not an isolated strip or floating island. An asymmetrical winding journey through bare ash outskirts lower left, scattered small tombs and giant ancient dry roots in the middle, broken inner courts towards the right, ending at a single large ruined mortuary gate upper right. Zoomed-out oblique 2.5D camera. Muted ash-brown limestone, dusty sepia, grey-mauve shadows, restrained dull bronze. Much less yellow or gold. Worn irregular stone, cracked slabs, eroded burial niches and gnarled roots. Clear connected dirt tracks and naturally staggered landmarks. The entire valley belongs to one tribe. Starts almost empty and architecture gradually builds up to the final stronghold. NO UI, NO words. Pixel-art videogame background, NOT a photo or smooth miniature render.",
+  "compositional_deconstruction": {
+    "background": "FULL BLEED RECTANGULAR LANDSCAPE: dusty muted ash earth and rocky slopes fill every corner and the whole background. The terrain outside the main road is lower-detail bare desert, with low eroded hills at the edges. There is no transparent space, no checkerboard, no isolated cutout, no white canvas and no tabletop. One continuous playable valley viewed obliquely. Every texture consists of visible hard-edged square pixel clusters with limited shades and stepped shadows, as in a detailed hand-drawn 16-bit pixel-art environment. Muted mauve shadow planes, desaturated ochre light, natural crooked limestone shapes. Broad connected walking paths remain calm and readable.",
+    "elements": [
+      {
+        "type": "obj",
+        "bbox": [
+          490,
+          30,
+          960,
+          420
+        ],
+        "desc": "Sparse entry basin in the LOWER LEFT: mostly open ash earth, a dry shallow stream bed winding diagonally uphill, one tiny eroded standing stone and scattered pebbles. Three modest tracks split around low natural rock shelves. Almost no architecture. Wide open ground for the beginning of the journey. The paths visibly continue towards the central valley."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          250,
+          240,
+          760,
+          700
+        ],
+        "desc": "The central valley has one enormous ancient twisted dry root curled along the ridge, giving the whole region its unique hook-shaped silhouette. A winding road follows its base, splitting around small burial niches, a broken low bridge and a modest collapsed shrine at different heights. These landmarks are unequal in size and naturally staggered, separated by open dusty terrain. No symmetrical arrangement. Modest worn Egyptian burial architecture, decayed linen, no clean gold. Broad paths visible around the geography."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          150,
+          570,
+          650,
+          850
+        ],
+        "desc": "Beyond the root, the winding roads climb through increasingly built-up inner courts: worn stair terraces, eroded niches carved in a stone wall, broken colonnades, cracked ochre limestone paving, thick roots wrapping ruined lintels. Small distinct landmarks embedded together in one continuous hillside. One recognizable open rectangular burial court below a dark arch, seen obliquely. Architecture has the irregular chipped pixel-art look of an ancient dusty mortuary courtyard."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          40,
+          740,
+          350,
+          980
+        ],
+        "desc": "Final destination at UPPER RIGHT: one imposing Egyptian mortuary gate nested into the valley ridge. Two worn slender pylons, a deep dark doorway, eroded funeral reliefs, roots and dull corroded bronze. Three ascending paths converge on its forecourt. The strongest silhouette and darkest focal point in the scene. Bigger and more elaborate than the small landmarks, but only occupies the upper right corner so the entire journey remains visible."
+      }
+    ]
+  }
+}

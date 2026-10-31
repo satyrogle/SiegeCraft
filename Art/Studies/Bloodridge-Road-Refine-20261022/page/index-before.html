@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloodridge Road</title>
+<style>
+  :root { --bg: #120e14; --ink: #ece6de; --dim: #9c8f96; --gold: #d6aa5a; --line: #3a3038; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 "Segoe UI", system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px 16px; box-sizing: border-box; min-height: 100vh; }
+  canvas { image-rendering: pixelated; image-rendering: crisp-edges; display: block; background: #000; max-width: 100%; height: auto; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+  button { font: inherit; color: var(--ink); background: #241d27; border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+  button[aria-pressed="false"] { color: var(--dim); background: transparent; text-decoration: line-through; }
+  button:disabled { opacity: 0.45; cursor: default; }
+  button:hover:not(:disabled) { border-color: var(--gold); }
+  .note { color: var(--dim); font-size: 13px; text-align: center; max-width: 1100px; }
+  .sep { width: 1px; height: 22px; background: var(--line); }
+</style>
+</head>
+<body>
+<canvas id="c" width="1440" height="900"></canvas>
+<div class="bar">
+  <button id="win">Win this fight and march on</button>
+  <button id="restart">Restart the road</button>
+  <span class="sep"></span>
+  <button class="jump" data-k="0">Stop 1</button>
+  <button class="jump" data-k="1">Stop 2</button>
+  <button class="jump" data-k="2">Stop 3</button>
+  <button class="jump" data-k="3">Stop 4</button>
+</div>
+<div class="bar">
+  <button id="t1" aria-pressed="true">1 Backdrop (static)</button>
+  <button id="t2" aria-pressed="true">2 World (alive)</button>
+  <button id="t3" aria-pressed="true">3 Battle floor</button>
+  <button id="t4" aria-pressed="true">Fighters</button>
+  <button id="reset">Reset secrets</button>
+</div>
+<div class="note">Mock for Jacob, 21 Oct: the Bloodridge road in three layers. Twelve secrets hide in the world layer, three per stop. Click what moves.</div>
+<script src="manifest.js"></script>
+<script>
+"use strict";
+const M = window.MANIFEST;
+const cv = document.getElementById("c");
+const ctx = cv.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+const SX = M.stage[0], SY = M.stage[1], VW = 1376, VH = 768;
+const STOPS = M.stops, TILT = M.tilt;
+const show = { 1: true, 2: true, 3: true, 4: true };
+
+// ---------------- images ----------------
+const img = {};
+let pending = 0;
+function load(key, src) {
+  if (img[key]) return;
+  pending++;
+  const i = new Image();
+  i.onload = () => { pending--; };
+  i.onerror = () => { pending--; console.error("missing", src); };
+  i.src = src;
+  img[key] = i;
+}
+["l1-backdrop", "l1-court-haze", "l2-world", "l3-floor", "court-near", "court-linen", "frame-fight", "frame-travel",
+ "t-title", "t-claimed", "t-go", "banner-0", "banner-1"].forEach(n => load(n, n + ".png"));
+for (let k = 0; k < 4; k++) { load("t-name" + k, "t-name" + k + ".png"); load("t-march" + k, "t-march" + k + ".png"); }
+for (let n = 0; n <= 12; n++) load("count-" + n, "count-" + n + ".png");
+Object.keys(M.critters).forEach(key => M.critters[key].forEach((_, i) => load(key + "-" + i, key + "-" + i + ".png")));
+const SECRETS = ["skel", "robber", "bonedog", "crows", "ghoul", "hand", "mummy", "bats", "spider", "statue", "sweeper", "acolyte"];
+SECRETS.forEach(k => load("ach-" + k, "ach-" + k + ".png"));
+const F = M.fighters;
+function loadSheet(s) { load(s.sheet, s.sheet); }
+F.ours.forEach(o => { loadSheet(o.idle); loadSheet(o.attack); loadSheet(o.run); });
+loadSheet(F.leader.idle); loadSheet(F.leader.run);
+F.theirs.forEach(p => p.forEach(e => { loadSheet(e.idle); loadSheet(e.hit); loadSheet(e.death); }));
+
+// ---------------- helpers ----------------
+const cam = { x: 0, y: 0 };
+function rnd(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+function inView(x0, x1) { return x1 >= cam.x - 40 && x0 <= cam.x + VW + 40; }
+function sprW(im, wx, wy, flip, clip) {               // world top-left
+  if (!im || !im.complete || !im.width) return;
+  const x = SX + Math.round(wx - cam.x), y = SY + Math.round(wy - cam.y);
+  ctx.save();
+  if (clip) { ctx.beginPath(); ctx.rect(SX + Math.round(clip[0] - cam.x), SY + Math.round(clip[1] - cam.y), clip[2] - clip[0], clip[3] - clip[1]); ctx.clip(); }
+  if (flip) { ctx.translate(x + im.width, y); ctx.scale(-1, 1); ctx.drawImage(im, 0, 0); }
+  else ctx.drawImage(im, x, y);
+  ctx.restore();
+}
+function pxW(wx, wy, w, h, c) { ctx.fillStyle = c; ctx.fillRect(SX + Math.round(wx - cam.x), SY + Math.round(wy - cam.y), w, h); }
+function inBox(p, b) { return b && p[0] >= b[0] && p[0] <= b[2] && p[1] >= b[1] && p[1] <= b[3]; }
+function boxOf(im, wx, wy) { return im ? [wx, wy, wx + im.width, wy + im.height] : null; }
+function crit(key, i) { return img[key + "-" + i]; }
+
+// sheet frame at ms (loop or clamp); returns [fx, fy, fw, fh, ax, ay]
+function frameAt(s, ms, loop) {
+  const total = s.frames.reduce((a, f) => a + f[4], 0);
+  let t = loop ? ((ms % total) + total) % total : Math.min(Math.max(ms, 0), total - 1);
+  let k = 0;
+  while (k < s.frames.length - 1 && t >= s.frames[k][4]) { t -= s.frames[k][4]; k++; }
+  const f = s.frames[k];
+  return [f[0], f[1], f[2], f[3], s.flip ? f[2] - s.anchor[0] : s.anchor[0], s.anchor[1]];
+}
+function gaitAt(g, dist, offset) {
+  const n = g.n, k = ((Math.floor((dist + offset) / g.step) % n) + n) % n;
+  return [k * g.w, 0, g.w, g.h, g.anchor[0], g.anchor[1]];
+}
+const tintCanvas = document.createElement("canvas");
+const tctx = tintCanvas.getContext("2d");
+function drawFrame(sheetKey, fr, sx, sy, flip, tint) {     // sx, sy = screen feet
+  const sheet = img[sheetKey];
+  if (!sheet || !sheet.complete) return;
+  const [fx, fy, fw, fh, ax, ay] = fr;
+  const dx = Math.round(sx - ax), dy = Math.round(sy - ay);
+  let src = sheet, ox = fx, oy = fy;
+  if (tint) {
+    tintCanvas.width = fw; tintCanvas.height = fh;
+    tctx.imageSmoothingEnabled = false;
+    tctx.clearRect(0, 0, fw, fh);
+    tctx.drawImage(sheet, fx, fy, fw, fh, 0, 0, fw, fh);
+    tctx.globalCompositeOperation = "source-atop";
+    tctx.fillStyle = tint; tctx.fillRect(0, 0, fw, fh);
+    tctx.globalCompositeOperation = "source-over";
+    src = tintCanvas; ox = 0; oy = 0;
+  }
+  if (!flip) ctx.drawImage(src, ox, oy, fw, fh, dx, dy, fw, fh);
+  else { ctx.save(); ctx.translate(dx + fw, dy); ctx.scale(-1, 1); ctx.drawImage(src, ox, oy, fw, fh, 0, 0, fw, fh); ctx.restore(); }
+}
+
+// ---------------- secrets ----------------
+let found = {};
+try { found = JSON.parse(localStorage.getItem("ks-road-secrets") || "{}"); } catch (e) { found = {}; }
+function saveFound() { try { localStorage.setItem("ks-road-secrets", JSON.stringify(found)); } catch (e) {} }
+let toast = null;
+const toastQueue = [];
+function unlock(key) { if (found[key]) return; found[key] = true; saveFound(); toastQueue.push(key); }
+
+const scenes = [];
+
+// Stop 1: a skeleton peeking from the wall niche.
+scenes.push({
+  id: "skel", clip: [562, 88, 603, 181], state: "hidden", t0: 0,
+  y(t) { const s = t - this.t0;
+    if (this.state === "rise") return 40 * (1 - Math.min(1, s / 0.5));
+    if (this.state === "peek") return 0;
+    if (this.state === "sink") return 40 * Math.min(1, s / (this.fast ? 0.2 : 0.5));
+    return 40; },
+  update(t) { const s = t - this.t0;
+    if (this.state === "hidden" && s > (this.wait || 2.5)) { this.state = "rise"; this.t0 = t; this.fast = false; }
+    else if (this.state === "rise" && s > 0.5) { this.state = "peek"; this.t0 = t; }
+    else if (this.state === "peek" && s > 3.8) { this.state = "sink"; this.t0 = t; }
+    else if (this.state === "sink" && s > (this.fast ? 0.2 : 0.5)) { this.state = "hidden"; this.t0 = t; } },
+  frame(t) { if (this.fast) return crit("skel", 2); const s = t - this.t0; return crit("skel", (this.state === "peek" && (s % 2.8) > 1.4) ? 1 : 0); },
+  draw(t) { const im = this.frame(t); if (!im) return; sprW(im, 583 - Math.round(im.width / 2), 181 - im.height + Math.round(this.y(t)), false, this.clip); },
+  hit(t) { return (this.state === "peek" || this.state === "rise") ? this.clip : null; },
+  click(t) { this.state = "sink"; this.t0 = t; this.fast = true; this.wait = 6; unlock("skel"); }
+});
+
+// Stop 1: a grave robber tiptoeing along the wall foot; spotted, he hides behind a gravestone.
+scenes.push({
+  id: "robber", feet: 266, x0: 200, x1: 470, state: "sneak", t0: 0, x: 200, dir: 1, last: 0,
+  update(t) { const dt = Math.min(0.1, t - this.last); this.last = t;
+    if (this.state === "sneak") { this.x += this.dir * 26 * dt; if (this.x > this.x1) { this.x = this.x1; this.dir = -1; } if (this.x < this.x0) { this.x = this.x0; this.dir = 1; } }
+    else if (this.state === "hide" && t - this.t0 > 4) this.state = "sneak"; },
+  im(t) { return this.state === "hide" ? crit("robber", 2) : crit("robber", Math.floor(t / 0.28) % 2); },
+  draw(t) { const im = this.im(t); if (!im) return; sprW(im, Math.round(this.x - im.width / 2), this.feet - im.height, this.dir < 0); },
+  hit(t) { const im = this.im(t); return this.state === "sneak" ? boxOf(im, this.x - im.width / 2, this.feet - im.height) : null; },
+  click(t) { this.state = "hide"; this.t0 = t; unlock("robber"); }
+});
+
+// Stop 1: a little dog of bones by the leaning marker; pet it and it falls apart, then pulls itself together.
+scenes.push({
+  id: "bonedog", x: 770, feet: 262, state: "sit", t0: 0,
+  update(t) { if (this.state === "heap" && t - this.t0 > 3) { this.state = "hop"; this.t0 = t; } else if (this.state === "hop" && t - this.t0 > 0.35) this.state = "sit"; },
+  im(t) { if (this.state === "heap") return crit("bonedog", 2); const k = t % 3.2; return crit("bonedog", (k > 2.0 && Math.floor(k / 0.18) % 2) ? 1 : 0); },
+  draw(t) { const im = this.im(t); if (!im) return; const hop = this.state === "hop" ? -Math.round(5 * Math.sin(Math.PI * (t - this.t0) / 0.35)) : 0;
+    sprW(im, this.x - Math.round(im.width / 2), this.feet - im.height + hop, false); },
+  hit(t) { const im = this.im(t); return this.state === "sit" ? boxOf(im, this.x - im.width / 2 - 4, this.feet - im.height - 4).map((v, i) => v + (i > 1 ? 8 : 0)) : null; },
+  click(t) { this.state = "heap"; this.t0 = t; unlock("bonedog"); }
+});
+
+// Stop 2 (the grove): crows over a bone on the slab.
+const crows = { id: "crows", hit0: [2294, 140, 2416, 182], feet: 174, bone: { x: 2351, y: 171, vy: 0, ground: false }, state: "idle", t0: 0,
+  birds: [{ x: 2324, flip: true, phase: 0.0 }, { x: 2380, flip: false, phase: 0.9 }],
+  update(t) { const c = this;
+    if (c.state === "scatter") { const b = c.bone;
+      if (!b.ground) { b.vy += 520 / 60; b.y += b.vy / 60; if (b.y >= 280) { b.y = 280; b.vy = -b.vy * 0.25; if (Math.abs(b.vy) < 25) { b.ground = true; b.vy = 0; } } }
+      if (t - c.t0 > 7) { c.state = "return"; c.t0 = t; } }
+    else if (c.state === "return" && t - c.t0 > 1.6) { c.state = "idle"; c.bone = { x: 2351, y: 171, vy: 0, ground: false }; } },
+  bone_(x, y) { pxW(x - 3, y - 2, 7, 3, "#181218"); pxW(x - 2, y - 1, 5, 1, "#e8dcc6"); pxW(x - 3, y - 2, 1, 1, "#e8dcc6"); pxW(x + 3, y - 2, 1, 1, "#e8dcc6"); pxW(x - 3, y, 1, 1, "#e8dcc6"); pxW(x + 3, y, 1, 1, "#e8dcc6"); },
+  draw(t) { const c = this; c.bone_(c.bone.x, c.bone.y);
+    if (c.state === "idle") { c.birds.forEach(b => { const k = (t + b.phase) % 1.9, peck = k > 1.35 && k < 1.65, hop = ((t * 0.7 + b.phase) % 3.1) < 0.12 ? -2 : 0;
+      const im = crit("crows", peck ? 1 : 0); if (im) sprW(im, Math.round(b.x - im.width / 2), c.feet - im.height + hop, b.flip); }); return; }
+    const s = t - c.t0;
+    c.birds.forEach((b, i) => { const dir = i === 0 ? -1 : 1;
+      if (c.state === "scatter") { const im = crit("crows", Math.floor(s / 0.09) % 2 ? 3 : 2), x = b.x + dir * (s * 150 + s * s * 40), y = c.feet - 20 - (s * 110 + s * s * 60);
+        if (im && y > -60) sprW(im, Math.round(x - 14), Math.round(y), i !== 0); }
+      else { const u = Math.min(1, s / 1.6), e = 1 - (1 - u) * (1 - u), im = crit("crows", u > 0.9 ? 0 : (Math.floor(s / 0.09) % 2 ? 3 : 2));
+        if (im) sprW(im, Math.round(b.x + dir * 260 * (1 - e) - im.width / 2), Math.round(u > 0.9 ? c.feet - im.height : (c.feet - 20) - 200 * (1 - e)), b.flip); } }); },
+  hit(t) { return this.state === "idle" ? this.hit0 : null; },
+  click(t) { this.state = "scatter"; this.t0 = t; this.bone.vy = -60; unlock("crows"); } };
+scenes.push(crows);
+
+// Stop 2: the gravedigger behind the blocks.
+scenes.push({ id: "ghoul", hit0: [2136, 84, 2240, 148], x: 2174, feet: 158, clip: 144, state: "dig", t0: 0, dirt: [], lastDig: -1,
+  update(t) { const g = this;
+    if (g.state === "dig") { const phase = Math.floor(t / 0.35) % 2;
+      if (phase === 1 && g.lastDig !== Math.floor(t / 0.7)) { g.lastDig = Math.floor(t / 0.7); const r = rnd(g.lastDig * 977 + 13);
+        for (let i = 0; i < 7; i++) g.dirt.push({ x: g.x - 26 + r() * 10, y: g.clip, vx: -30 - r() * 70, vy: -90 - r() * 110, c: r() < 0.5 ? "#6a4e3c" : "#8a6a52" }); } }
+    else if (g.state === "fall" && t - g.t0 > 0.55) { g.state = "gone"; g.t0 = t; }
+    else if (g.state === "gone" && t - g.t0 > 5) { g.state = "climb"; g.t0 = t; }
+    else if (g.state === "climb" && t - g.t0 > 0.9) g.state = "dig";
+    g.dirt.forEach(d => { d.vy += 420 / 60; d.x += d.vx / 60; d.y += d.vy / 60; }); g.dirt = g.dirt.filter(d => d.y < g.clip + 2); },
+  draw(t) { const g = this; let im = crit("ghoul", Math.floor(t / 0.35) % 2), y = g.feet - 68;
+    if (g.state === "fall") { const u = (t - g.t0) / 0.55; im = crit("ghoul", 2); y = g.feet - 70 + u * u * 80; }
+    else if (g.state === "gone") im = null;
+    else if (g.state === "climb") { const u = (t - g.t0) / 0.9; im = crit("ghoul", 0); y = g.feet - 68 + (1 - u) * 70; }
+    if (im) sprW(im, g.x - Math.round(im.width / 2), Math.round(y), false, [g.x - 80, -200, g.x + 80, g.clip]);
+    g.dirt.forEach(d => pxW(d.x, d.y, 2, 2, d.c));
+    if (g.state === "fall") { const u = (t - g.t0) / 0.55; for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2, r = 6 + u * 26; pxW(g.x + Math.cos(a) * r, g.clip - 2 + Math.sin(a) * r * 0.3, 2, 2, "rgba(176,158,142," + (1 - u).toFixed(2) + ")"); } } },
+  hit(t) { return this.state === "dig" ? this.hit0 : null; },
+  click(t) { this.state = "fall"; this.t0 = t; unlock("ghoul"); } });
+
+// Stop 2: a skeletal hand waving from the gap under the fallen trunk.
+scenes.push({ id: "hand", hit0: [2014, 254, 2070, 310], x: 2040, clip: 306, state: "hidden", t0: 0,
+  update(t) { const h = this, s = t - h.t0;
+    if (h.state === "hidden" && s > 3.2) { h.state = "rise"; h.t0 = t; }
+    else if (h.state === "rise" && s > 0.7) { h.state = "wave"; h.t0 = t; }
+    else if (h.state === "wave" && s > 2.8) { h.state = "sink"; h.t0 = t; }
+    else if (h.state === "sink" && s > 0.6) { h.state = "hidden"; h.t0 = t; }
+    else if (h.state === "thumb" && s > 1.4) { h.state = "drop"; h.t0 = t; }
+    else if (h.state === "drop" && s > 0.35) { h.state = "hidden"; h.t0 = t + 1.2; } },
+  ripple(t0, t, big) { const u = Math.min(1, (t - t0) / (big ? 0.8 : 0.6)), w = Math.round(6 + u * (big ? 26 : 16)), a = (1 - u).toFixed(2);
+    pxW(this.x - w, this.clip - 1, w * 2, 1, "rgba(150,138,140," + a + ")"); pxW(this.x - Math.round(w * 0.6), this.clip + 1, Math.round(w * 1.2), 1, "rgba(120,108,112," + a + ")"); },
+  draw(t) { const h = this, s = t - h.t0; let u = 0, f = 0;
+    if (h.state === "rise") u = Math.min(1, s / 0.7);
+    else if (h.state === "wave") { u = 1; f = Math.floor(s / 0.26) % 2; }
+    else if (h.state === "sink") u = 1 - Math.min(1, s / 0.6);
+    else if (h.state === "thumb") { u = 1; f = 2; }
+    else if (h.state === "drop") { u = 1 - Math.min(1, s / 0.35); f = 2; }
+    const im = crit("hand", f);
+    if (u > 0 && im) sprW(im, h.x - Math.round(im.width / 2), Math.round(h.clip - 4 - 40 * u), false, [h.x - 40, -200, h.x + 40, h.clip]);
+    if (h.state === "rise" || h.state === "sink") h.ripple(h.t0, t, false);
+    if (h.state === "drop") h.ripple(h.t0, t, true); },
+  hit(t) { return (this.state === "wave" || this.state === "rise") ? this.hit0 : null; },
+  click(t) { this.state = "thumb"; this.t0 = t; unlock("hand"); } });
+
+// Stop 3: eyes blinking in the crypt's dark doorway; knock and a shy mummy steps out and waves.
+scenes.push({ id: "mummy", hit0: [2960, 150, 3130, 290], x: 3044, feet: 292, state: "eyes", t0: 0,
+  update(t) { const s = t - this.t0;
+    if (this.state === "out" && s > 2.6) { this.state = "gone"; this.t0 = t; }
+    else if (this.state === "gone" && s > 6) { this.state = "eyes"; this.t0 = t; } },
+  draw(t) { const s = t - this.t0;
+    if (this.state === "eyes") { const k = t % 3.3, shut = k > 3.1, dx = (t % 7) > 5 ? 4 : 0;
+      if (!shut) { pxW(3038 + dx, 206, 2, 1, "#e8c45a"); pxW(3046 + dx, 206, 2, 1, "#e8c45a"); pxW(3038 + dx, 207, 2, 1, "#7a5a20"); pxW(3046 + dx, 207, 2, 1, "#7a5a20"); } }
+    else if (this.state === "out") { const f = s < 0.5 ? 0 : (s < 2.1 ? (Math.floor(s / 0.3) % 2 ? 1 : 0) : 2);
+      const im = crit("mummy", f); if (im) sprW(im, this.x - Math.round(im.width / 2), this.feet - im.height, false); } },
+  hit(t) { return this.state === "eyes" ? this.hit0 : null; },
+  click(t) { this.state = "out"; this.t0 = t; unlock("mummy"); } });
+
+// Stop 3: bats hanging under the crypt's lintel; they burst out and come back.
+scenes.push({ id: "bats", hit0: [2975, 126, 3115, 152], spots: [[2995, 131, -1], [3045, 133, 1], [3100, 131, 1]], state: "hang", t0: 0,
+  update(t) { const s = t - this.t0;
+    if (this.state === "fly" && s > 7) { this.state = "back"; this.t0 = t; }
+    else if (this.state === "back" && s > 1.4) this.state = "hang"; },
+  draw(t) { const s = t - this.t0;
+    this.spots.forEach(([x, y, dir], i) => {
+      if (this.state === "hang") { const im = crit("bats", 0); if (!im) return; const sway = Math.floor((t + i * 0.37) / 0.8) % 2;
+        sprW(im, x - Math.round(im.width / 2) + sway, y, false); return; }
+      const im = crit("bats", Math.floor((s + i * 0.05) / 0.08) % 2 ? 2 : 1); if (!im) return;
+      if (this.state === "fly") { const u = s + i * 0.12; const px = x + dir * (u * 140 + u * u * 50), py = y + 30 * Math.sin(Math.min(u, 0.5) * Math.PI) - (u * 60 + u * u * 110);
+        if (py > -80) sprW(im, Math.round(px - im.width / 2), Math.round(py), dir < 0); }
+      else { const u = Math.min(1, s / 1.4), e = 1 - (1 - u) * (1 - u); const px = x + dir * 240 * (1 - e), py = y - 200 * (1 - e);
+        sprW(im, Math.round(px - im.width / 2), Math.round(py), dir > 0); } }); },
+  hit(t) { return this.state === "hang" ? this.hit0 : null; },
+  click(t) { this.state = "fly"; this.t0 = t; unlock("bats"); } });
+
+// Stop 3: a spider on a thread in the hollow under the slab; poke it and it zips up.
+scenes.push({ id: "spider", x: 3600, top: 124, low: 160, state: "hang", t0: 0,
+  y(t) { const s = t - this.t0;
+    if (this.state === "hang") return this.low + Math.round(2 * Math.sin(t * 1.7));
+    if (this.state === "zip") return this.low - (this.low - this.top) * Math.min(1, s / 0.3);
+    if (this.state === "up") return this.top;
+    return this.top + (this.low - this.top) * Math.min(1, s / 1.5); },
+  update(t) { const s = t - this.t0;
+    if (this.state === "zip" && s > 0.3) { this.state = "up"; this.t0 = t; }
+    else if (this.state === "up" && s > 5) { this.state = "down"; this.t0 = t; }
+    else if (this.state === "down" && s > 1.5) { this.state = "hang"; this.t0 = t; } },
+  draw(t) { const y = Math.round(this.y(t)); if (this.state === "up") return;
+    for (let yy = this.top; yy < y; yy++) pxW(this.x, yy, 1, 1, "rgba(206,196,188,0.55)");
+    const im = crit("spider", (this.state === "hang" && Math.floor(t / 0.6) % 2 === 0) ? 0 : 1); if (im) sprW(im, this.x - Math.round(im.width / 2), y, false); },
+  hit(t) { return this.state === "hang" ? [this.x - 14, this.top, this.x + 14, this.low + 18] : null; },
+  click(t) { this.state = "zip"; this.t0 = t; unlock("spider"); } });
+
+// Stop 4: the sealed statue in the court's niche; now and then its eyes glow.
+scenes.push({ id: "statue", hit0: [4530, 28, 4564, 74], eyes: [[4544, 49], [4552, 49]], state: "still", t0: 0,
+  update(t) { if (this.state === "flare" && t - this.t0 > 1.2) this.state = "still"; },
+  draw(t) { let a = 0;
+    if (this.state === "flare") { const s = t - this.t0; a = s < 0.15 ? 1 : Math.max(0, 1 - (s - 0.15) / 1.05); }
+    else { const k = t % 7.5; a = k > 6.6 ? Math.sin((k - 6.6) / 0.9 * Math.PI) * 0.8 : 0; }
+    if (a <= 0) return;
+    this.eyes.forEach(([x, y]) => { pxW(x, y, 2, 1, "rgba(255,70,50," + a.toFixed(2) + ")"); pxW(x - 1, y, 4, 1, "rgba(255,90,60," + (a * 0.35).toFixed(2) + ")"); }); },
+  hit(t) { return this.state === "still" ? this.hit0 : null; },
+  click(t) { this.state = "flare"; this.t0 = t; unlock("statue"); } });
+
+// Stop 4: a skeleton servant sweeping the top of the low wall; knock him off and he climbs back.
+scenes.push({ id: "sweeper", x: 5030, feet: 169, clipY: 171, state: "sweep", t0: 0, last: 0, dir: -1,
+  update(t) { const dt = Math.min(0.1, t - this.last); this.last = t; const s = t - this.t0;
+    if (this.state === "sweep") { this.x += this.dir * 9 * dt; if (this.x < 4995) { this.x = 4995; this.dir = 1; } if (this.x > 5075) { this.x = 5075; this.dir = -1; } }
+    else if (this.state === "fall" && s > 0.6) { this.state = "gone"; this.t0 = t; }
+    else if (this.state === "gone" && s > 5) { this.state = "climb"; this.t0 = t; }
+    else if (this.state === "climb" && s > 0.9) this.state = "sweep"; },
+  draw(t) { const s = t - this.t0; let im = crit("sweeper", Math.floor(t / 0.3) % 2), y = this.feet;
+    if (this.state === "fall") { im = crit("sweeper", 2); y = this.feet - 10 * Math.sin(Math.min(1, s / 0.25) * Math.PI / 2) + Math.max(0, s - 0.2) * Math.max(0, s - 0.2) * 420; }
+    else if (this.state === "gone") return;
+    else if (this.state === "climb") { im = crit("sweeper", 0); y = this.feet + (1 - s / 0.9) * 50; }
+    if (im) sprW(im, Math.round(this.x - im.width / 2), Math.round(y - im.height), this.dir > 0, [this.x - 60, -200, this.x + 60, this.clipY]); },
+  hit(t) { const im = crit("sweeper", 0); return this.state === "sweep" && im ? [this.x - im.width / 2, this.feet - im.height, this.x + im.width / 2, this.feet] : null; },
+  click(t) { this.state = "fall"; this.t0 = t; unlock("sweeper"); } });
+
+// Stop 4: an acolyte with a lantern peeking from the far arch; spook him and he runs off.
+scenes.push({ id: "acolyte", clip: [4123, 36, 4180, 146], feet: 146, state: "peek", t0: 0,
+  update(t) { const s = t - this.t0;
+    if (this.state === "jump" && s > 0.35) { this.state = "run"; this.t0 = t; }
+    else if (this.state === "run" && s > 0.9) { this.state = "gone"; this.t0 = t; }
+    else if (this.state === "gone" && s > 6) { this.state = "back"; this.t0 = t; }
+    else if (this.state === "back" && s > 0.8) { this.state = "peek"; this.t0 = t; } },
+  draw(t) { const s = t - this.t0; let im = crit("acolyte", 0), x = 4134 + ((t % 5) > 3.6 ? 6 : 0), y = this.feet, flip = false;
+    if (this.state === "jump") { im = crit("acolyte", 0); y -= Math.round(6 * Math.sin(Math.PI * s / 0.35)); }
+    else if (this.state === "run") { im = crit("acolyte", 1); x = 4134 - s * 120; flip = true; }
+    else if (this.state === "gone") return;
+    else if (this.state === "back") x = 4134 - (1 - s / 0.8) * 50;
+    if (!im) return;
+    sprW(im, Math.round(x - im.width / 2), y - im.height, flip, this.clip);
+    if (this.state !== "run") { const g = 0.55 + 0.25 * Math.sin(t * 6); pxW(Math.round(x) + 10, y - im.height + 16, 3, 3, "rgba(255,196,90," + g.toFixed(2) + ")"); } },
+  hit(t) { return this.state === "peek" ? this.clip : null; },
+  click(t) { this.state = "jump"; this.t0 = t; unlock("acolyte"); } });
+
+// ---------------- ash in the air (world layer, top 285 stage rows) ----------------
+const motes = (() => { const r = rnd(2110), keep = [1.0, 0.7, 0.3, 0.6], out = [];
+  while (out.length < 300) { const x = r() * M.strip[0]; const place = STOPS.filter(s => x >= s).length - 1; if (r() > keep[place]) continue;
+    out.push({ x, y: 10 + r() * 280, vx: 14 + r() * 20, vy: 2 + r() * 4, amp: 1 + r() * 2, f: 0.4 + r() * 0.5, ph: r() * 6.28, s: r() < 0.55 ? 2 : 1,
+      c: ["rgba(222,206,184,0.92)", "rgba(178,155,134,0.92)", "rgba(92,78,80,0.86)"][r() < 0.45 ? 0 : (r() < 0.6 ? 1 : 2)] }); }
+  return out; })();
+function drawMotes(t) {
+  motes.forEach(m => { const x = ((m.x - m.vx * t) % M.strip[0] + M.strip[0]) % M.strip[0];
+    const y = 10 + ((m.y - 10 + m.vy * t) % 280) + m.amp * Math.sin(6.283 * m.f * t + m.ph);
+    const sx = Math.round(x - cam.x); if (sx < 0 || sx > VW - 2 || y > 285 - m.s) return;
+    ctx.fillStyle = m.c; ctx.fillRect(SX + sx, SY + Math.round(y), m.s, m.s); });
+}
+
+// ---------------- the road: fights, clears, marches ----------------
+const MV = M.march.v, ACC = M.march.acc, DEC = M.march.dec;
+function trapezoid(d, t) {
+  const ad = 0.5 * MV * ACC, dd = 0.5 * MV * DEC, cruise = (d - ad - dd) / MV, total = ACC + cruise + DEC;
+  if (t <= 0) return [0, total];
+  if (t < ACC) return [0.5 * MV / ACC * t * t, total];
+  if (t < ACC + cruise) return [ad + MV * (t - ACC), total];
+  if (t < total) { const u = total - t; return [d - 0.5 * MV / DEC * u * u, total]; }
+  return [d, total];
+}
+const road = { k: 0, phase: "ready", t0: 0, cleared: [false, false, false, false], fight: null, clearAt: [0, 0, 0, 0], dist: 0 };
+function fightPlan(k, t0) {
+  const n = F.theirs[k].length, hits = [];
+  for (let j = 0; j < n; j++) hits.push(t0 + 0.9 + 0.32 * j + (k === 3 && j === n - 1 ? 0.5 : 0));
+  const falls = hits.map(h => h + 0.62);
+  return { hits, falls, strikes: hits.map((h, j) => [j % F.ours.length, h - 0.9]), clear: Math.max(...falls) + 2.1 };
+}
+function startWin(t) {
+  if (road.phase !== "ready") return;
+  road.fight = fightPlan(road.k, t); road.phase = "fight"; road.t0 = t;
+}
+function update(t) {
+  if (road.phase === "fight" && t >= road.fight.clear) { road.cleared[road.k] = true; road.clearAt[road.k] = t; road.phase = road.k < 3 ? "cleared" : "done"; road.t0 = t; }
+  else if (road.phase === "cleared" && t - road.t0 > 1.1) { road.phase = "march"; road.t0 = t; road.dist = 0; }
+  if (road.phase === "march") {
+    const span = STOPS[road.k + 1] - STOPS[road.k], [d, total] = trapezoid(span, t - road.t0);
+    road.dist = d; cam.x = STOPS[road.k] + d; cam.y = TILT[road.k] + (TILT[road.k + 1] - TILT[road.k]) * d / span;
+    if (t - road.t0 >= total) { road.k++; road.phase = "ready"; road.fight = null; cam.x = STOPS[road.k]; cam.y = TILT[road.k]; }
+  } else { cam.x = STOPS[road.k]; cam.y = TILT[road.k]; }
+  scenes.forEach(s => s.update(t));
+}
+function ranks(t) {
+  if (road.phase !== "march") return 0;
+  const span = STOPS[road.k + 1] - STOPS[road.k], [, total] = trapezoid(span, 0), s = t - road.t0;
+  const u = Math.min(1, Math.min(s / M.march.close, (total - s) / M.march.open));
+  return u * u * (3 - 2 * u);
+}
+function speed(t) { if (road.phase !== "march") return 0; const span = STOPS[road.k + 1] - STOPS[road.k];
+  return (trapezoid(span, t - road.t0 + 1 / 60)[0] - trapezoid(span, t - road.t0)[0]) * 60; }
+
+function drawFighters(t) {
+  const list = [];
+  // their parties: standing at stops ahead, fighting at the current stop, fallen at cleared stops
+  for (let k = 0; k < 4; k++) {
+    if (!inView(STOPS[k] - 200, STOPS[k] + VW + 200)) continue;
+    F.theirs[k].forEach((e, j) => {
+      const wx = STOPS[k] + e.x - SX, wy = e.y - SY + TILT[k];
+      let sheet = e.idle, fr = frameAt(e.idle, t * 1000 + j * 530, true), tint = null, dead = false;
+      if (road.cleared[k]) { sheet = e.death; fr = frameAt(e.death, 1e9, false); dead = true; }
+      else if (k === road.k && road.phase === "fight") { const h = road.fight.hits[j], f = road.fight.falls[j];
+        if (t >= f) { sheet = e.death; fr = frameAt(e.death, (t - f) * 1000, false); dead = t >= f + 0.5; }
+        else if (t >= h) { const ms = (t - h) * 1000; sheet = e.hit; fr = frameAt(e.hit, ms, false);
+          tint = ms < 50 ? "rgba(255,255,255,1)" : ((ms >= 120 && ms < 200) || (ms >= 280 && ms < 360)) ? "rgba(200,30,40,0.55)" : null; } }
+      list.push({ y: wy, dead, draw: () => drawFrame(sheet.sheet, fr, SX + wx - cam.x, SY + wy - cam.y, sheet.flip, tint) });
+    });
+    if (road.cleared[k]) {
+      const [bx, by] = M.banner_at[k], wx = STOPS[k] + bx - SX, wy = by + TILT[k], dt = t - road.clearAt[k];
+      const drop = dt < 2 / 60 ? 22 : (dt < 4 / 60 ? 8 : 0), b = img[Math.floor(t * 4 + k) % 2 ? "banner-1" : "banner-0"], [ax, ay] = M.hud.banner_anchor;
+      list.push({ y: wy, dead: false, draw: () => { if (b && b.complete) ctx.drawImage(b, SX + Math.round(wx - cam.x - ax), SY + Math.round(wy - cam.y - ay - drop));
+        if (dt >= 2 / 60 && dt < 0.4 + 2 / 60) { const u = (dt - 2 / 60) / 0.4; for (let n = 0; n < 12; n++) { const a = n * 0.5236, r = 5 + u * 32;
+          pxW(wx + Math.cos(a) * r, wy - 2 + Math.sin(a) * r * 0.35, 2, 2, "rgba(176,158,142," + (1 - u).toFixed(2) + ")"); } } } });
+    }
+  }
+  // our army: formation fixed on screen, closing ranks to march; legs by ground covered
+  const w = ranks(t), v = speed(t), moving = v > 25;
+  F.ours.forEach((o, i) => {
+    const fx = o.x + (o.mx - o.x) * w, fy = o.y + (o.my - o.y) * w;
+    let sheet = o.idle, fr = frameAt(o.idle, t * 1000 + i * 370, true);
+    if (road.phase === "fight") road.fight.strikes.forEach(([who, s0]) => { if (who === i && t >= s0 && t < s0 + 2) { sheet = o.attack; fr = frameAt(o.attack, (t - s0) * 1000, false); } });
+    if (moving) { sheet = o.run; fr = gaitAt(o.run, road.dist, i * 37); }
+    list.push({ y: fy - SY + cam.y, dead: false, draw: () => drawFrame(sheet.sheet, fr, fx, fy, false, null) });
+  });
+  const L = F.leader, lx = L.x + (L.mx - L.x) * w, ly = L.y + (L.my - L.y) * w;
+  const lsheet = moving ? L.run : L.idle, lfr = moving ? gaitAt(L.run, road.dist, 0) : frameAt(L.idle, t * 1000, true);
+  list.push({ y: ly - SY + cam.y, dead: false, draw: () => drawFrame(lsheet.sheet, lfr, lx, ly, false, null) });
+  list.sort((a, b) => (a.dead === b.dead ? a.y - b.y : (a.dead ? -1 : 1)));
+  // contact shadows first
+  list.forEach(it => {});
+  list.forEach(it => it.draw());
+}
+
+function drawCourtNear(t) {
+  const [cx, cy] = M.court, ox = cx - cam.x, oy = cy - cam.y;
+  if (ox > VW) return;
+  const nb = M.court_near_box, near = img["court-near"], lin = img["court-linen"];
+  if (near && near.complete) ctx.drawImage(near, SX + Math.round(ox + nb[0]), SY + Math.round(oy + nb[1]));
+  if (lin && lin.complete) { const n = Math.floor(t * 8) % 32; ctx.drawImage(lin, (n % 8) * 226, Math.floor(n / 8) * 562, 226, 562, SX + Math.round(ox + 1186), SY + Math.round(oy + 515), 226, 562); }
+}
+
+// ---------------- HUD ----------------
+const BONE = "#efdfbe", GOLD = "#d6aa5a", RED = "#b03034", DIM = "#78646e", NIGHT = "#141117";
+function drawHud(t) {
+  const travel = road.phase === "march" || road.phase === "cleared" || road.phase === "done";
+  ctx.drawImage(img[travel ? "frame-travel" : "frame-fight"], 0, 0);
+  ctx.drawImage(img["t-title"], 36, 14);
+  const nameK = road.phase === "march" ? road.k + 1 : road.k;
+  ctx.drawImage(img["t-name" + nameK], 36, 42);
+  const xs = [470, 630, 790, 950], y = 40;
+  for (let i = 0; i < 3; i++) {
+    ctx.fillStyle = DIM; ctx.fillRect(xs[i] + 8, y - 1, xs[i + 1] - xs[i] - 16, 3);
+    const done = Math.min(1, Math.max(0, (cam.x - STOPS[i]) / (STOPS[i + 1] - STOPS[i])));
+    if (done > 0) { ctx.fillStyle = GOLD; ctx.fillRect(xs[i] + 8, y - 1, Math.round((xs[i + 1] - xs[i] - 16) * done), 3); }
+  }
+  for (let i = 0; i < 4; i++) {
+    const x = xs[i], cleared = road.cleared[i], here = road.k === i && road.phase !== "march" && !cleared;
+    if (i === 3) { ctx.beginPath(); ctx.moveTo(x, y - 10); ctx.lineTo(x + 10, y); ctx.lineTo(x, y + 10); ctx.lineTo(x - 10, y); ctx.closePath();
+      ctx.fillStyle = cleared ? GOLD : RED; ctx.fill(); ctx.strokeStyle = here || cleared ? BONE : NIGHT; ctx.lineWidth = 1; ctx.stroke(); continue; }
+    if (cleared) { ctx.fillStyle = NIGHT; ctx.fillRect(x - 7, y - 7, 15, 15); ctx.fillStyle = GOLD; ctx.fillRect(x - 6, y - 6, 13, 13); ctx.fillStyle = "#785028"; ctx.fillRect(x - 2, y - 2, 5, 5); }
+    else { const blink = here && Math.floor(t * 3) % 2 === 0; ctx.fillStyle = NIGHT; ctx.fillRect(x - 6, y - 6, 13, 13);
+      ctx.strokeStyle = here && !blink ? BONE : DIM; ctx.strokeRect(x - 5.5, y - 5.5, 12, 12); }
+  }
+  let pos = null;
+  if (road.phase === "march") pos = xs[road.k] + (xs[road.k + 1] - xs[road.k]) * Math.min(1, road.dist / (STOPS[road.k + 1] - STOPS[road.k]));
+  else if (road.phase !== "done") pos = xs[road.k];
+  if (pos !== null) { const px = Math.round(pos); ctx.fillStyle = BONE; ctx.fillRect(px - 1, y - 22, 2, 14);
+    ctx.fillStyle = GOLD; ctx.beginPath(); ctx.moveTo(px + 1, y - 22); ctx.lineTo(px + 9, y - 19); ctx.lineTo(px + 1, y - 16); ctx.closePath(); ctx.fill(); }
+  if (travel) { const im = road.phase === "done" ? img["t-claimed"] : (road.phase === "march" ? img["t-march" + (road.k + 1)] : img["t-name" + road.k]);
+    if (im && im.complete) ctx.drawImage(im, Math.round((1440 - im.width) / 2), 834 + 20); }
+  if (road.phase === "cleared") { const dt = t - road.t0 - 0.3; if (dt >= 0 && dt < 1.2 && (dt % 0.4) < 0.26) {
+    const gx = 1250, gy = 440; ctx.drawImage(img["t-go"], gx + 8, gy - 34);
+    const arrow = [[gx, gy], [gx + 40, gy], [gx + 40, gy - 12], [gx + 66, gy + 10], [gx + 40, gy + 32], [gx + 40, gy + 20], [gx, gy + 20]];
+    ctx.beginPath(); arrow.forEach(([x, yy], n) => n ? ctx.lineTo(x + 2, yy + 2) : ctx.moveTo(x + 2, yy + 2)); ctx.closePath(); ctx.fillStyle = NIGHT; ctx.fill();
+    ctx.beginPath(); arrow.forEach(([x, yy], n) => n ? ctx.lineTo(x, yy) : ctx.moveTo(x, yy)); ctx.closePath(); ctx.fillStyle = BONE; ctx.fill(); ctx.strokeStyle = NIGHT; ctx.stroke(); } }
+  const n = SECRETS.filter(k => found[k]).length;
+  ctx.drawImage(img["count-" + n], SX + 12, SY + 20);
+  if (!toast && toastQueue.length) toast = { key: toastQueue.shift(), t0: t };
+  if (toast) { const s = t - toast.t0, im = img["ach-" + toast.key];
+    if (s > 3.2) toast = null;
+    else { const slide = s < 0.2 ? s / 0.2 : (s > 3.0 ? (3.2 - s) / 0.2 : 1); ctx.drawImage(im, SX + 12 - Math.round((1 - slide) * (im.width + 20)), SY + VH - im.height - 10); } }
+}
+
+// ---------------- frame ----------------
+function frame() {
+  if (pending === 0) renderAt(performance.now() / 1000);
+  requestAnimationFrame(frame);
+}
+function renderAt(t) {
+  update(t);
+  ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1440, 900);
+  ctx.save(); ctx.beginPath(); ctx.rect(SX, SY, VW, VH); ctx.clip();
+  ctx.fillStyle = "#1d171c"; ctx.fillRect(SX, SY, VW, VH);
+  if (show[1]) {
+    // the far vista drifts at a twentieth of the march speed; it sits a little lower at the crypt, whose sky is a thin band
+    const B = M.backdrop_y; let by = B[3];
+    for (let i = 0; i < 3; i++) if (cam.x <= STOPS[i + 1]) { by = B[i] + (B[i + 1] - B[i]) * Math.max(0, cam.x - STOPS[i]) / (STOPS[i + 1] - STOPS[i]); break; }
+    ctx.drawImage(img["l1-backdrop"], SX + Math.round(-100 - 0.05 * cam.x), SY + Math.round(by));
+    const hb = M.court_haze_box; ctx.drawImage(img["l1-court-haze"], SX + Math.round(hb[0] - cam.x), SY + Math.round(hb[1] - cam.y));
+  }
+  const cx = Math.round(cam.x), cy = Math.round(cam.y);
+  if (show[2]) { ctx.drawImage(img["l2-world"], cx, cy, VW, VH, SX, SY, VW, VH); drawMotes(t); scenes.forEach(s => s.draw(t)); }
+  if (show[3]) ctx.drawImage(img["l3-floor"], cx, cy, VW, VH, SX, SY, VW, VH);
+  if (show[4]) drawFighters(t);
+  if (show[2]) drawCourtNear(t);
+  ctx.restore();
+  drawHud(t);
+}
+requestAnimationFrame(frame);
+window.__renderAt = renderAt;
+window.__startWin = startWin;
+
+// ---------------- input ----------------
+function worldPoint(ev) { const r = cv.getBoundingClientRect();
+  return [(ev.clientX - r.left) * (cv.width / r.width) - SX + cam.x, (ev.clientY - r.top) * (cv.height / r.height) - SY + cam.y]; }
+function clickable(p, t) { if (!show[2]) return null; for (const s of scenes) { const b = s.hit(t); if (b && inBox(p, b)) return s; } return null; }
+cv.addEventListener("mousemove", ev => { cv.style.cursor = clickable(worldPoint(ev), performance.now() / 1000) ? "pointer" : "default"; });
+cv.addEventListener("click", ev => { const t = performance.now() / 1000, s = clickable(worldPoint(ev), t); if (s) s.click(t); });
+const winBtn = document.getElementById("win");
+winBtn.addEventListener("click", () => startWin(performance.now() / 1000));
+setInterval(() => { winBtn.disabled = road.phase !== "ready"; winBtn.textContent = road.k === 3 ? "Win the chief fight" : "Win this fight and march on"; }, 100);
+document.getElementById("restart").addEventListener("click", () => { road.k = 0; road.phase = "ready"; road.cleared = [false, false, false, false]; road.fight = null; });
+document.querySelectorAll(".jump").forEach(b => b.addEventListener("click", () => { const k = Number(b.dataset.k);
+  road.k = k; road.phase = "ready"; road.fight = null; road.cleared = [0, 1, 2, 3].map(i => i < k); road.clearAt = road.clearAt.map(() => -10); }));
+[1, 2, 3, 4].forEach(n => { const b = document.getElementById("t" + n); b.addEventListener("click", () => { show[n] = !show[n]; b.setAttribute("aria-pressed", String(show[n])); }); });
+document.getElementById("reset").addEventListener("click", () => { found = {}; saveFound(); toast = null; toastQueue.length = 0; });
+window.__road = road; window.__scenes = scenes; window.__cam = cam; window.__found = () => found;
+</script>
+</body>
+</html>

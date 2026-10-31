@@ -1,0 +1,24 @@
+{
+ "jobs": [
+  {
+   "tag": "stop1-a",
+   "seed": 2026102001,
+   "split": 0,
+   "prompt_id": "605f54df-80bc-473c-9dfe-72f2ff150e4f"
+  },
+  {
+   "tag": "stop1-b",
+   "seed": 2026102002,
+   "split": 0,
+   "prompt_id": "5f1e9ea0-a639-4a18-9a7e-96c4bb8679ad"
+  },
+  {
+   "tag": "stop1-c-plan",
+   "seed": 2026102003,
+   "split": 6,
+   "prompt_id": "40e12eed-87d9-4bff-92c1-199a72963a29"
+  }
+ ],
+ "prompt": "pixel art environment, fine native pixel clusters at exactly the scale of image 1. Image 1 is the original Bloodridge burial court: copy its rendering, worn materials, muted sepia, ash grey and violet brown shadows, light from the upper left and its oblique 2.5D battle camera. Image 2 is a rough layout plan only: replace its flat shapes with finished, detailed scenery. The right edge of the picture is existing scenery, a low burial wall, a giant dead root tree and a dark seep pool. Continue it naturally to the left so the whole picture is one place.\n\nThe new left part is the bare outskirts of Bloodridge, the first stop of the road: an open stretch of grey ash earth at the foot of low wind eroded limestone banks. Sparse and quiet but full of character: a few half buried grave slabs tilted in the ash, dead pale roots breaking out of the bank and creeping right toward the root tree, small fans of pale thorn and clumps of dry rust coloured reeds, a shallow dry silt channel winding across the ground into the pool. One landmark in the middle distance: a single leaning burial marker stone with dull corroded bronze bands, on a low mound. Far behind, the long eroded limestone ridge of Bloodridge with a few dark burial niches cut into its face, paler and lower in contrast with distance, filling the whole top of the picture.\n\nThe lower two thirds is a broad, calm, readable fighting ground: ash earth with a few broken flat slabs, quieter than the scenery around it. Bare means fewer built things, never empty space. No buildings, gates, stairs, arches, doors or rows of tombs; the existing wall at the right edge only continues a short way and ends in broken stones. No sky, mountains or desert. No people, creatures, text, black outlines, tiling or repeated stamps.",
+ "negative": "blurry, soft focus, smudged, large blocky pixels, chunky pixels, upscaled pixel art, smooth gradient sky, empty haze, desert, mountains, mesa, buildings, stairs, arches, doors, gate, tomb rows, brick wall, text, watermark, thick black outlines, 3d render, photo"
+}

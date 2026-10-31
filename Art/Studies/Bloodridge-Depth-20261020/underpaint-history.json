@@ -1,0 +1,228 @@
+{
+  "prompt": [
+    198,
+    "d5c62bf5-e503-4c07-8fa7-7baddf480f71",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+          "strength_model": 1.0
+        }
+      },
+      "3": {
+        "class_type": "ModelSamplingAuraFlow",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "shift": 3.0
+        }
+      },
+      "4": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "type": "qwen_image",
+          "device": "default"
+        }
+      },
+      "5": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "qwen_image_vae.safetensors"
+        }
+      },
+      "6": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-bloodridge-depth-20261020/underpaint.png"
+        }
+      },
+      "9": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "Fill only the transparent holes with the same continuous worn limestone and ash battle floor. This is a pixel-art game background at native size. The missing areas were a near foreground broken wall and pale shrubs; they have been removed to reveal the ground BEHIND them. Complete the floor beneath those missing shapes. Match the surrounding dusty sepia, muted violet-brown shadows, irregular weathered stone slabs, scattered small chips and sparse ash. Let existing slab edges continue naturally through the holes, with varied spacing. The surface is flat and solid, continuous with the visible floor. Preserve perspective, pixel density and worn cluster detail. Keep all visible surroundings unchanged. Do not restore the wall or shrubs. No new object, repeating tiles, decoration, grass, cliff, hole, abyss, character, text, clean blocks, black outlines or glossy 3D lighting.",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "6",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "6",
+            0
+          ]
+        }
+      },
+      "12": {
+        "class_type": "KSampler",
+        "inputs": {
+          "model": [
+            "3",
+            0
+          ],
+          "positive": [
+            "9",
+            0
+          ],
+          "negative": [
+            "10",
+            0
+          ],
+          "latent_image": [
+            "16",
+            0
+          ],
+          "seed": 20261020421,
+          "steps": 4,
+          "cfg": 1.0,
+          "sampler_name": "euler",
+          "scheduler": "simple",
+          "denoise": 1.0
+        }
+      },
+      "13": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "12",
+            0
+          ],
+          "vae": [
+            "5",
+            0
+          ]
+        }
+      },
+      "14": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "13",
+            0
+          ],
+          "filename_prefix": "KS-Bloodridge-Depth-20261020/underpaint"
+        }
+      },
+      "15": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "6",
+            0
+          ],
+          "vae": [
+            "5",
+            0
+          ]
+        }
+      },
+      "16": {
+        "class_type": "SetLatentNoiseMask",
+        "inputs": {
+          "samples": [
+            "15",
+            0
+          ],
+          "mask": [
+            "6",
+            1
+          ]
+        }
+      }
+    },
+    {
+      "client_id": "codex-bloodridge-depth",
+      "create_time": 1792466718639
+    },
+    [
+      "14"
+    ]
+  ],
+  "outputs": {
+    "14": {
+      "images": [
+        {
+          "filename": "underpaint_00001_.png",
+          "subfolder": "KS-Bloodridge-Depth-20261020",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "d5c62bf5-e503-4c07-8fa7-7baddf480f71",
+          "timestamp": 1792466718696
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "prompt_id": "d5c62bf5-e503-4c07-8fa7-7baddf480f71",
+          "timestamp": 1792466718823
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "d5c62bf5-e503-4c07-8fa7-7baddf480f71",
+          "timestamp": 1792467040378
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "14": {
+      "node_id": "14",
+      "display_node": "14",
+      "parent_node": null,
+      "real_node_id": "14"
+    }
+  }
+}

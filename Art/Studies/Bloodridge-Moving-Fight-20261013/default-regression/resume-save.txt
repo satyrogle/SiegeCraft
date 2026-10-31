@@ -1,0 +1,62 @@
+kindred-siege-safe-file	1	69A376CA711F6C8BB9F22AB905FE76D161E076B4BE94AA961C4F739ADC523ED1
+kindred-siege-campaign	10
+seed	21
+streams	6456645978308273999	9	5165316782646619195	3
+counters	0	0	0	0	0
+camp	0
+forge	0	0
+codex	Tribe: the Clarth
+mind	cult
+habit	0	0
+habit	1	0
+habit	2	0
+habit	3	0
+habit	4	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	clarth
+habit	0	0
+habit	1	0
+habit	2	0
+habit	3	0
+habit	4	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	raiders
+habit	0	0
+habit	1	4
+habit	2	4
+habit	3	0
+habit	4	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	skullpeak
+habit	0	4
+habit	1	4
+habit	2	4
+habit	3	0
+habit	4	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+fight	-1	252
+proof	26E112020579C7E6	08756381400C5EDC	C72B8FA80A59496B
+squad	tutorial.0
+squad	tutorial.1
+squad	tutorial.2
+squad	tutorial.3
+squad	tutorial.4
+order	20	Unleash	
+order	140	Unleash	
+end

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kindred Siege — Bloodridge moving fight</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#100e12;color:#e6d6bb;font:15px system-ui,sans-serif}main{max-width:1488px;margin:auto;padding:20px 24px}header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px}h1{font-size:19px;font-weight:550;margin:0}small,p{color:#bba994}video{display:block;width:100%;height:auto;image-rendering:pixelated;background:#000;border:1px solid #423839}nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}button,a{font:inherit;color:#e6d6bb;background:#292125;border:1px solid #685144;padding:8px 12px;border-radius:4px;text-decoration:none;cursor:pointer}button:hover,a:hover{background:#403038}p{line-height:1.5;max-width:980px}body.native main{max-width:none}body.native video{width:1440px;height:900px}#status{font-variant-numeric:tabular-nums}
+</style>
+<main>
+<header><h1>Bloodridge · actual KS fight</h1><small>Unity player capture · 1× battle speed · 66 seconds · silent</small></header>
+<video id="fight" controls autoplay muted loop playsinline preload="auto" poster="candidate/frame-0180.png" src="candidate/bloodridge-moving-fight.mp4"></video>
+<nav aria-label="Review moments">
+<button data-time="0">Opening formation</button><button data-time="6">Focus + chief swing</button><button data-time="12">Unleash</button><button data-time="18">Fall back</button><button data-time="60">Ending</button><button id="native">Native 1440 × 900</button>
+<a href="candidate/bloodridge-moving-fight.mp4">Open video</a><a href="candidate/frame-0180.png">Lossless combat still</a>
+</nav>
+<p id="status" aria-live="off">Loading the captured fight…</p>
+<p>This is the built game running its real simulation, fighter animations and HUD. The review issues Hold, Focus Fire, Unleash and Fall Back through the existing controls. Floor, layered scenery, ash and linen are the opt-in art pass. Pause and targeting were checked in the player before delivery.</p>
+<p>Same formations and fight outcome as the original-stage comparison. Remaining art limits: rounded stone edges, faint contact under small fighters, and simple cloth shading. This is a bounded review build; default game scenery is unchanged.</p>
+</main>
+<script>
+const video=document.querySelector('video');
+for(const b of document.querySelectorAll('[data-time]'))b.onclick=()=>{video.currentTime=+b.dataset.time;video.play()};
+document.querySelector('#native').onclick=()=>{document.body.classList.toggle('native');document.querySelector('#native').textContent=document.body.classList.contains('native')?'Fit screen':'Native 1440 × 900'};
+video.ontimeupdate=()=>document.querySelector('#status').textContent=`${video.currentTime.toFixed(1)} / ${video.duration.toFixed(1)} seconds · ${video.paused?'Paused':'Playing'}`;
+video.onerror=()=>document.querySelector('#status').textContent='Video could not load. Use Open video.';
+</script></html>

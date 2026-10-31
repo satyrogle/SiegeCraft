@@ -1,0 +1,286 @@
+{
+  "status": "PASS",
+  "scope": "Export and preservation checks, not art approval or Unity runtime proof",
+  "canvas": [
+    1440,
+    900
+  ],
+  "frames": 32,
+  "frame_duration_ms": 125,
+  "world_scale": 1,
+  "protected_combat_pixels": 101145,
+  "protected_hud_pixels": 258496,
+  "all_frame_results": [
+    {
+      "frame": 1,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 2,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 3,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 4,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 5,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 6,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 7,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 8,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 9,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 10,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 11,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 12,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 13,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 14,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 15,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 16,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 17,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 18,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 19,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 20,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 21,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 22,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 23,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 24,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 25,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 26,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 27,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 28,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 29,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 30,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 31,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    },
+    {
+      "frame": 32,
+      "combat_mismatches": 0,
+      "hud_mismatches": 0,
+      "nonopaque_pixels": 0
+    }
+  ],
+  "ground_underpaint_fully_opaque": true,
+  "linen_anchor_rows_141_to_157_unchanged": true,
+  "linen_consecutive_changes": [
+    468,
+    557,
+    528,
+    473,
+    721,
+    746,
+    540,
+    386,
+    321,
+    785,
+    435,
+    475,
+    435,
+    447,
+    439,
+    390,
+    272,
+    216,
+    153,
+    124,
+    140,
+    141,
+    142,
+    128,
+    825,
+    367,
+    289,
+    156,
+    678,
+    372,
+    276,
+    533
+  ],
+  "composite_consecutive_changes": [
+    452,
+    496,
+    500,
+    473,
+    752,
+    741,
+    545,
+    374,
+    312,
+    680,
+    318,
+    332,
+    329,
+    340,
+    354,
+    325,
+    291,
+    280,
+    335,
+    322,
+    336,
+    307,
+    316,
+    339,
+    1001,
+    514,
+    426,
+    300,
+    747,
+    408,
+    276,
+    481
+  ],
+  "renderer_integration": false,
+  "combat_motion": "frozen source capture",
+  "parallax_behind_architecture_verified": false,
+  "sha256": {
+    "battle-screen.png": "7586e5a564c0fc22db6571373a293bafdf0a717cd4f627c074c31da65abfa7e4",
+    "bloodridge-court-refinement.aseprite": "2330c4bd4f80363932a958526d27770e6f78227aecee2b9675122de98180532f",
+    "source.png": "103fd0d863027f8edb83c5ee1c19a3c0399ae46f8c7019b005f2e23fbf55f040",
+    "ground-underpaint.png": "11fc814ae2f10bf7303fc7841a29018aed8966a3859500fcb2a4fe819229b1cd"
+  }
+}

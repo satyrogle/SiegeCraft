@@ -1,0 +1,44 @@
+{
+  "high_level_description": "Empty Skullpeak mountain clan oath court, rendered entirely in crisp, deliberately clustered pixel art. Blue-grey slate and iron, sparse old wine-red cloth, bone-white snow confined to edge ledges. One single continuous 2.5D battle scene, no figures, no text.",
+  "style_description": {
+    "medium": "pixel_art",
+    "art_style": "Authentic hand-pixelled 2D game background. Visible square pixel clusters and stair-stepped contours everywhere. Muted limited palette, flat colour clusters, two or three discrete shades per stone. Organic uneven shapes with carefully chipped corners. Broad quiet surfaces with occasional short angular cracks. Crisp pixel edges without antialiasing. The controlled pixel craft of an old burial court: irregular broad paving stones, shallow angular shadows, weathering only on selected edges. No paint brushwork, no gritty texture layer, no dithering, no gradients.",
+    "aesthetics": "quiet, restrained, ancient, tactile, subdued, coherent pixel clusters, readable 2.5D battle stage",
+    "lighting": "Soft upper-left light expressed as discrete flat pixel colour planes. Even readable midtone fighting ground. Subtle contact shadows, no dramatic vignette.",
+    "color_palette": [
+      "#292933",
+      "#42404b",
+      "#5b5965",
+      "#777983",
+      "#96979b",
+      "#b8b7b0",
+      "#d2cbbb",
+      "#61464e"
+    ]
+  },
+  "compositional_deconstruction": {
+    "background": "The lower two thirds form one wide open flat fighting court. Large irregular worn slabs spanning about a tenth of the screen width, with broad nearly solid colour faces. Only occasional short broken seams and a few small chips, much empty midtone area for fighter silhouettes. Oblique side view looking slightly down at the ground, like a 2D RPG battle screen. The floor reaches all four side and bottom edges; no isolated platform, no border, no foreground fence. The paving is dusty desaturated slate grey with a slight lavender undertone. Flat stone surfaces are a quiet middle grey; only a few dark broken seams. No cobbles, gravel or granular frost.",
+    "elements": [
+      {
+        "type": "obj",
+        "bbox": [
+          0,
+          0,
+          360,
+          1000
+        ],
+        "desc": "Across the upper third, an uneven old slate retaining wall and broad low steps. On the right, a squat heavy dark iron oath gate with a blunt skull-shaped keystone carved into the stone, framed by two battered iron braces and one hanging rag of wine-red cloth. On the left, a lower crumbled wall reveals a pale flat silhouette of a distant mountain. Snow rests in a few broad solid ivory patches on the outer ledges, never scattered across the fighting court. All rock shapes are simplified broad angular pixel clusters, not finely faceted."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          360,
+          0,
+          1000,
+          1000
+        ],
+        "desc": "The lower two thirds form one wide open flat fighting court. Large irregular worn slabs spanning about a tenth of the screen width, with broad nearly solid colour faces. Only occasional short broken seams and a few small chips, much empty midtone area for fighter silhouettes. Oblique side view looking slightly down at the ground, like a 2D RPG battle screen. The floor reaches all four side and bottom edges; no isolated platform, no border, no foreground fence. The paving is dusty desaturated slate grey with a slight lavender undertone. Flat stone surfaces are a quiet middle grey; only a few dark broken seams. No cobbles, gravel or granular frost."
+      }
+    ]
+  }
+}

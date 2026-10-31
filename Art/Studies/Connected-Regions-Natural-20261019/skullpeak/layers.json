@@ -1,0 +1,33 @@
+{
+  "region": "skullpeak",
+  "source": "candidate-final.png",
+  "dimensions": [
+    4128,
+    768
+  ],
+  "viewport": [
+    1376,
+    768
+  ],
+  "review_viewports": [
+    0,
+    917,
+    1835,
+    2752
+  ],
+  "final_court_x": 2752,
+  "protected_court_core_x": 3008,
+  "protected_court_core_pixels_preserved": true,
+  "original_court_source_files_unchanged": true,
+  "approach_edge_blended_pixels": 256,
+  "scale": 1,
+  "resampled": false,
+  "new_scenery_palette_colors": 32,
+  "native_floor_quilting": false,
+  "mirrored_joins": false,
+  "method": "Whole-width local Flux terrain redraw, local Qwen transition edit, native gradient-domain boundary colour matching; original court source files and court core preserved",
+  "majority_replacements": 166349,
+  "static_recomposition_matches": true,
+  "sha256": "2bdfeb9b253b2adb4000fdf3352a2776e9b8e5dd1430ff4329dd5a1e3fc1e82b",
+  "status": "Art review. No runtime binding or new animation. Viewports are not new encounters."
+}

@@ -1,0 +1,37 @@
+{
+  "status": "bounded moving review delivered; owner art verdict pending",
+  "source": "Built Unity player, real Campaign simulation, existing fighter clips and HUD",
+  "video": "candidate/bloodridge-moving-fight.mp4",
+  "frames": 1981,
+  "fps": 30,
+  "durationSeconds": 66.033333,
+  "capture": "Fixed 1/30 presentation step with existing automatic validation path; silent video. Not a real-time performance benchmark.",
+  "implementation": {
+    "optInFlag": "-ksBloodridgeReview <external study directory>",
+    "renderer": "existing Canvas/RawImage; Point filtered textures; native world 1x, existing UI 2x",
+    "scenery": "ground, rear architecture, rooted entrance, ash behind units; foreground and linen below bars and numbers",
+    "contacts": "pixel contacts attached to live fighter anchors, following existing whole-pixel recoil; captured static contacts not loaded",
+    "protected": "no fighter/HUD screenshots loaded, no formation coordinates or animation sheets changed, default region assets untouched",
+    "cleanup": "review textures released when leaving Bloodridge; tutorial image matches baseline byte for byte in decoded pixels"
+  },
+  "validation": {
+    "build": "Succeeded, 0 errors",
+    "candidateAndBaseline": "both completed the same 1981-frame chief fight, including settling",
+    "simulation": "every captured tick compared against independently resumed simulation; start/end saves, formations and complete trace identical across original/new scenery",
+    "controls": "Hold, Focus Fire and live target, Unleash, Fall Back; pause/resume raycasts passed; cloth and ash freeze with battle clock",
+    "hud": "14 of 16 compared screenshots have exact protected HUD/border pixels. Two command frames differ only in existing real-time uGUI ColorTint transitions: Focus click and Unleash affordability. No unexpected protected differences. Not claimed as universal exact-pixel HUD equality.",
+    "defaultRegression": "392 checks passed without scenery flag; process restart/save reopen passed",
+    "video": "all 1981 frames decoded successfully; 1440x900; browser playback, ending seek and restart checked; no browser warnings/errors observed",
+    "cloth": "all 32 frames visited; runtime crop filmstrip visually inspected for attachment and loop poses"
+  },
+  "visualAudit": {
+    "self": "native gameplay captures, whole-fight contact sheet through ending, runtime cloth loop filmstrip and playing browser video inspected",
+    "independent": "pixel_critic inspected native gameplay samples at 0, 6, 12 and 24 seconds; no environment-introduced blocker identified",
+    "readability": "sampled large chief swings clear right marker; left rim clear of formation; floor separates small figures; bars, labels and numbers stay above scenery",
+    "remaining": ["Several slab edges remain rounded", "Contact shadows are faint beneath smaller fighters", "Cloth shading has limited volume"],
+    "limits": "Not exhaustive proof for every formation, animation pose, encounter, resolution or hardware. Default regression and this complete fight do not establish production art approval or live frame-time performance. Concurrent Sprint 3 UI work is outside this build's claim."
+  },
+  "coordination": "HANDOFF_LOG.md: Unity released after build. Claude file claim arrived during hooks; exact hooks logged for preservation and no further edits to his claimed files. No acknowledgement claimed.",
+  "changes": ["Assets/Scripts/Slice/CampaignArtBattle.cs: five opt-in hooks", "Assets/Scripts/Slice/CampaignArtValidation.cs: review dispatch", "Assets/Scripts/Slice/CampaignArtBloodridgeReview.cs and Unity-generated .meta", "Art/Studies/Bloodridge-Moving-Fight-20261013", "HANDOFF_LOG.md", "isolated Builds/Bloodridge-Moving-Review-20261013 output"],
+  "noCommitsOrPushes": true
+}

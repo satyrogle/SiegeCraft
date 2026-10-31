@@ -1,0 +1,17 @@
+127.0.0.1 - - [13/Oct/2026 09:30:02] "GET /review.html HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:30:02] "GET /review-sheet.json HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:30:02] "GET /scenery-sheet.json HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:30:02] "GET /review-sheet.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:30:02] "GET /scenery-sheet.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:30:02] code 404, message File not found
+127.0.0.1 - - [13/Oct/2026 09:30:02] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 09:31:04] "GET /review.html HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:31:04] "GET /review-sheet.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 09:31:04] "GET /scenery-sheet.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 09:31:04] "GET /review-sheet.json HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 09:31:04] "GET /scenery-sheet.json HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 09:33:36] "GET /review.html HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 09:33:36] "GET /review-sheet.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:33:36] "GET /scenery-sheet.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:33:36] "GET /review-sheet.json HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 09:33:36] "GET /scenery-sheet.json HTTP/1.1" 200 -

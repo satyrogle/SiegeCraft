@@ -1,0 +1,112 @@
+{
+  "activeLayer": "01 distant connected terraces",
+  "layers": [
+    {
+      "visible": true,
+      "name": "01 distant connected terraces",
+      "index": 1,
+      "blendMode": "3",
+      "isGroup": false,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "editable": true
+    },
+    {
+      "visible": true,
+      "name": "02 continuous worn battleground",
+      "index": 2,
+      "blendMode": "3",
+      "isGroup": false,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "editable": true
+    },
+    {
+      "visible": true,
+      "name": "03 single rooted burial entrance",
+      "index": 3,
+      "blendMode": "3",
+      "isGroup": false,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "editable": true
+    },
+    {
+      "visible": true,
+      "name": "04 stone lip roots and burial cloth foreground",
+      "index": 4,
+      "blendMode": "3",
+      "isGroup": false,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "editable": true
+    },
+    {
+      "visible": true,
+      "name": "05 fighter contact shadows",
+      "index": 5,
+      "blendMode": "3",
+      "isGroup": false,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "editable": true
+    },
+    {
+      "visible": true,
+      "name": "06 captured combat - unchanged",
+      "index": 6,
+      "blendMode": "3",
+      "isGroup": false,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "editable": false
+    },
+    {
+      "visible": true,
+      "name": "07 captured HUD - unchanged",
+      "index": 7,
+      "blendMode": "3",
+      "isGroup": false,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "editable": false
+    }
+  ],
+  "name": "bloodridge-battleground.aseprite",
+  "filename": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Bloodridge-Battleground-20261013\\bloodridge-battleground.aseprite",
+  "height": 900,
+  "colorMode": "rgb",
+  "activeFrame": 1,
+  "frameCount": 1,
+  "width": 1440,
+  "modified": false,
+  "id": 3,
+  "tags": [],
+  "frames": [
+    {
+      "number": 1,
+      "durationMs": 100
+    }
+  ]
+}

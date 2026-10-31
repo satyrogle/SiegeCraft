@@ -1,0 +1,341 @@
+{
+  "prompt": [
+    168,
+    "8489e781-7aa8-4c5c-8549-a407b6341be4",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "flux-2-klein-base-4b.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+          "strength_model": 0.7
+        }
+      },
+      "3": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_3_4b.safetensors",
+          "type": "flux2",
+          "device": "default"
+        }
+      },
+      "4": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "flux2-vae.safetensors"
+        }
+      },
+      "5": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "pixel art environment with fine crisp native clusters, dusty ash brown, muted sepia sandstone and violet-brown shadows. Image 1 supplies NATURAL EARTH, ROOT and SILT MATERIALS, not buildings. Image 2 supplies the long landform composition. Finish the NATURAL GROUND in the lower half. Preserve the existing root grove, distant ravine skyline, and far-right court.\nThe ENTIRE LOWER HALF is a wide solid NATURAL BEDROCK SHELF, uninterrupted fighting space. It is part of the ash badlands, eroded into irregular broad slabs and shallow mud-cracked silt patches. Not a built walkway, not a bridge or balcony. The back of this shelf has an uneven rounded earthen bank with roots, worn ledges, scattered loose rocks, reeds and grouped pale thorn fans with rusty seedpods. NO BRICK WALL, no straight masonry parapet, no long straight horizontal line, no columns, no new structures. The deep ravine is visible BEHIND the earthen bank, high in the background. Above the ground preserve the dusty sky, open mesas, hollow tree and leaning sandstone blade.\nGround varies naturally along the continuous stretch: bare wind-sculpted ash at left, darker damp silt in front of the grove, exposed irregular worn sandstone bedding at middle, then broken stone gradually merging into existing court paving at far right. Large irregular forms, varied cracks and little piled gravel sheltered behind rock lips, native detailed material edges and quiet clearings. No uniform paving pattern or tile repetition. A shallow dry wash curves across the entire shelf, not a trench. At the very bottom near edge, a little irregular exposed stone and thorn scrub frames the view. No foreground chasm, no holes in the battle floor. Keep the protected tree and far-right court exactly. Same oblique 2.5D battle camera, no 3D render, no people, no UI, no text."
+        }
+      },
+      "6": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "brick wall, straight parapet, long straight edge, masonry, bridge, balcony, repeated paving, foreground canyon, uniform sand floor, blue sky, 3D render"
+        }
+      },
+      "7": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-bloodridge-terrain-20261019/natural-material.png"
+        }
+      },
+      "9": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "7",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "5",
+            0
+          ],
+          "latent": [
+            "9",
+            0
+          ]
+        }
+      },
+      "11": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "6",
+            0
+          ],
+          "latent": [
+            "9",
+            0
+          ]
+        }
+      },
+      "13": {
+        "class_type": "CFGGuider",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "positive": [
+            "23",
+            0
+          ],
+          "negative": [
+            "24",
+            0
+          ],
+          "cfg": 4.0
+        }
+      },
+      "14": {
+        "class_type": "KSamplerSelect",
+        "inputs": {
+          "sampler_name": "euler"
+        }
+      },
+      "15": {
+        "class_type": "Flux2Scheduler",
+        "inputs": {
+          "steps": 14,
+          "width": 4128,
+          "height": 768
+        }
+      },
+      "16": {
+        "class_type": "RandomNoise",
+        "inputs": {
+          "noise_seed": 20261019145
+        }
+      },
+      "17": {
+        "class_type": "SamplerCustomAdvanced",
+        "inputs": {
+          "noise": [
+            "16",
+            0
+          ],
+          "guider": [
+            "13",
+            0
+          ],
+          "sampler": [
+            "14",
+            0
+          ],
+          "sigmas": [
+            "15",
+            0
+          ],
+          "latent_image": [
+            "22",
+            0
+          ]
+        }
+      },
+      "18": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "17",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "19": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "18",
+            0
+          ],
+          "filename_prefix": "KS-Bloodridge-Terrain-20261019/shelf"
+        }
+      },
+      "20": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-bloodridge-terrain-20261019/shelf-masked.png"
+        }
+      },
+      "21": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "20",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "22": {
+        "class_type": "SetLatentNoiseMask",
+        "inputs": {
+          "samples": [
+            "21",
+            0
+          ],
+          "mask": [
+            "20",
+            1
+          ]
+        }
+      },
+      "25": {
+        "class_type": "ImageScale",
+        "inputs": {
+          "image": [
+            "20",
+            0
+          ],
+          "upscale_method": "area",
+          "width": 1376,
+          "height": 256,
+          "crop": "disabled"
+        }
+      },
+      "26": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "25",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "23": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "10",
+            0
+          ],
+          "latent": [
+            "26",
+            0
+          ]
+        }
+      },
+      "24": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "11",
+            0
+          ],
+          "latent": [
+            "26",
+            0
+          ]
+        }
+      }
+    },
+    {
+      "client_id": "codex-bloodridge-shelf-correction",
+      "create_time": 1792399355266
+    },
+    [
+      "19"
+    ]
+  ],
+  "outputs": {
+    "19": {
+      "images": [
+        {
+          "filename": "shelf_00002_.png",
+          "subfolder": "KS-Bloodridge-Terrain-20261019",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "8489e781-7aa8-4c5c-8549-a407b6341be4",
+          "timestamp": 1792399355267
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "14",
+            "15",
+            "20",
+            "21",
+            "22",
+            "25",
+            "26"
+          ],
+          "prompt_id": "8489e781-7aa8-4c5c-8549-a407b6341be4",
+          "timestamp": 1792399355293
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "8489e781-7aa8-4c5c-8549-a407b6341be4",
+          "timestamp": 1792399551346
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "19": {
+      "node_id": "19",
+      "display_node": "19",
+      "parent_node": null,
+      "real_node_id": "19"
+    }
+  }
+}

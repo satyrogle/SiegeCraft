@@ -1,0 +1,28 @@
+{
+  "jobId": "01092461-2799-48a7-8e1d-770f1104768f",
+  "assetId": "6c5a654a-e2d8-51eb-a199-25e46b81e402",
+  "costGenerations": 25,
+  "model": "PixelLab Pro",
+  "width": 512,
+  "height": 512,
+  "maxColors": 32,
+  "prompt": "Pixel art GROUND MATERIAL for Bloodridge burial court, 512x512, fill entire canvas with continuous horizontal ground surface, no horizon, no buildings or props, no border, no people. Match reference's aged warm ash limestone, sepia soil, brown-violet recesses and fine crisp pixel clusters. Low oblique tactical-game ground projection: horizontally long flagstones with compressed vertical depth, never diamonds. Worn ancient funerary court: large irregular rectangular limestone paving slabs, uneven chipped and rounded corners, shallow dark dirt-filled seams, occasional hairline cracks. Quiet broad flat ash stone tops with sparse grouped erosion; highlights top-right, restrained contrast. Some sunk grave-cover slabs subtly outlined within paving. Thin intermittent packed ash earth and stone fragments between joints; no grass, moss, bright gold, fire or luminous runes. The ground is walkable and level. Paving shapes span 90-180 pixels horizontally, 35-75 pixels vertically. Crisp expertly clustered 1px detail, no blur, no dithering noise, no repeated decorative checkerboard, no harsh black outlines. This is a reusable environment material, calm enough behind dark detailed 150px-tall fighters. Make it feel heavy, old and weathered, not a clean bathroom floor.",
+  "styleReferenceJob": "143a0588-b963-499d-b5b2-ab7a3b044b16",
+  "scope": "Review scenery only; combat and HUD retained unchanged.",
+  "cohesion": {
+    "tool": "built-in image_gen",
+    "compositionType": "static review, not Unity integration",
+    "source": "cohesive-source.png",
+    "promptFile": "cohesion-prompt.txt",
+    "paletteColors": 62,
+    "sourceSize": [
+      1586,
+      992
+    ],
+    "resampling": false,
+    "cropOffset": [
+      73,
+      46
+    ]
+  }
+}

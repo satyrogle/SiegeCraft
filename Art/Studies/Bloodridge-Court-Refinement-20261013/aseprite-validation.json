@@ -1,0 +1,21 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Clean.\n[note] animation: Every frame has the same duration. Uniform timing reads mechanical; hold contact poses longer than pass poses."
+    }
+  ],
+  "structuredContent": {
+    "findings": [
+      {
+        "check": "animation",
+        "severity": "note",
+        "message": "Every frame has the same duration. Uniform timing reads mechanical; hold contact poses longer than pass poses."
+      }
+    ],
+    "sprite": "bloodridge-court-refinement.aseprite",
+    "passed": true,
+    "score": 100,
+    "summary": "Clean."
+  }
+}

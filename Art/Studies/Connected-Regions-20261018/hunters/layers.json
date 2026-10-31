@@ -1,0 +1,28 @@
+{
+  "region": "hunters",
+  "source": "extend-2b/joined.png",
+  "dimensions": [
+    4128,
+    768
+  ],
+  "viewport": [
+    1376,
+    768
+  ],
+  "review_viewports": [
+    0,
+    917,
+    1835,
+    2752
+  ],
+  "final_court_x": 2752,
+  "final_court_pixels_preserved": true,
+  "scale": 1,
+  "resampled": false,
+  "new_scenery_palette_colors": 32,
+  "native_floor_quilting": true,
+  "majority_replacements": 274470,
+  "static_recomposition_matches": true,
+  "sha256": "3fc22da966956e429b7665cd7bcd2c86986dfb9f7b50abbd90b44b1d55a2cb4e",
+  "status": "Art review. No runtime binding or new animation. Viewports are not new encounters."
+}

@@ -1,0 +1,11 @@
+{
+  "original_court_source_matches_previous": true,
+  "court_core_matches_source": true,
+  "reopened_master_export_matches": true,
+  "dimensions": [
+    4128,
+    768
+  ],
+  "unity_tested": false,
+  "art_approved": false
+}

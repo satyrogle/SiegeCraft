@@ -1,0 +1,61 @@
+{
+  "dimensions": [
+    4128,
+    768
+  ],
+  "native_scale": 1,
+  "resampled": false,
+  "background_palette_entries": 174,
+  "source_palette_entries": 174,
+  "reopened_aseprite_export_exact": true,
+  "plane_composite_exact": true,
+  "original_court_core_x3008_to4127_exact": true,
+  "existing_full_court_view_x2752_to4127_exact": true,
+  "original_court_source_sha256": "c1abae3e4f3fd0cca0887a21394b6aba6953ab37eace088d38253915689d6e26",
+  "prior_panorama_sha256": "d3da34895a18551e886c8967cc9ee4fb29baca05fc02ae0cfcb76c3a1a14c203",
+  "full_composite_opaque": true,
+  "native_binary_plane_alpha": true,
+  "near_wall_clears_first_view_front_lane_feet": true,
+  "new_animation_authored": false,
+  "existing_ash_reused_at_8fps": true,
+  "unity_tested": false,
+  "moving_fight_tested": false,
+  "art_approved": false,
+  "first_underpaint_candidate_rejected": true,
+  "all_generated_and_polygon_floor_drafts_excluded": true,
+  "selected_floor_source": "../Bloodridge-Region-Composition-20261019/terrain-revision/ground-clearance/final-composition.png at identical world coordinates",
+  "pixels_changed": 82710,
+  "all_pixels_outside_wall_reconstruction_and_relocation_unchanged": true,
+  "plane_opaque_pixel_counts": {
+    "far": 3170304,
+    "ground": 1629470,
+    "rear": 1448334,
+    "court-front": 31906,
+    "near-left": 14609,
+    "near-scrub": 11465
+  },
+  "limits": [
+    "Study only; no encounter mapping or Unity binding",
+    "Six figures are static scale references, not a gameplay capture",
+    "Claude environmental clips pending; existing ash only",
+    "Other stage/formation clearances require moving-fight review"
+  ],
+  "browser_checks": {
+    "consoleErrorsOrWarningsObserved": 0,
+    "pauseHeldCameraAndAsh": true,
+    "travelStartObserved": true,
+    "nearMaskToggle": true,
+    "cameraRestOffsetPx": 0,
+    "nativeCanvasAndCss": [
+      1376,
+      768
+    ],
+    "playFromPausedMidRegionRestartsAtOutskirts": true,
+    "ashAndFigureToggles": true,
+    "comparisonToggle": true,
+    "pausedFrameStayed": 2315,
+    "initialToolTimeoutRecovered": true,
+    "wholeJourneyEndedAtWorldX": 2752,
+    "actualMovingFight": false
+  }
+}

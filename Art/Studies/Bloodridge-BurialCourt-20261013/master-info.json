@@ -1,0 +1,216 @@
+{
+  "height": 900,
+  "colorMode": "rgb",
+  "layers": [
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 1,
+      "editable": true,
+      "name": "01 Distance",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 2,
+      "editable": true,
+      "name": "03 Court floor",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 3,
+      "editable": true,
+      "name": "02 Burial architecture",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 4,
+      "editable": true,
+      "name": "03b Ground contact",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 5,
+      "editable": true,
+      "name": "04 Near framing",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 6,
+      "editable": false,
+      "name": "Fighter 0 clarth_marksman_se_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 7,
+      "editable": false,
+      "name": "Fighter 1 blood_rot_marksman_sw_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 8,
+      "editable": false,
+      "name": "Fighter 2 clarth_warden_se_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 9,
+      "editable": false,
+      "name": "Fighter 3 blood_rot_warden_sw_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 10,
+      "editable": false,
+      "name": "Fighter 4 blood_rot_medic_sw_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 11,
+      "editable": false,
+      "name": "Fighter 5 clarth_medic_se_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 12,
+      "editable": false,
+      "name": "Fighter 6 clarth_warden_se_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 13,
+      "editable": false,
+      "name": "Fighter 7 blood_rot_warden_sw_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 14,
+      "editable": false,
+      "name": "Fighter 8 bloodridge_chief_sw_idle",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    },
+    {
+      "visible": true,
+      "isGroup": false,
+      "index": 15,
+      "editable": true,
+      "name": "05 UI - approved kit at 2x",
+      "opacity": 255,
+      "isTilemap": false,
+      "blendMode": "3",
+      "cels": [
+        1
+      ]
+    }
+  ],
+  "modified": false,
+  "frameCount": 1,
+  "activeLayer": "01 Distance",
+  "id": 3,
+  "name": "burial-court.aseprite",
+  "filename": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Bloodridge-BurialCourt-20261013\\burial-court.aseprite",
+  "tags": [],
+  "frames": [
+    {
+      "number": 1,
+      "durationMs": 100
+    }
+  ],
+  "activeFrame": 1,
+  "width": 1440
+}

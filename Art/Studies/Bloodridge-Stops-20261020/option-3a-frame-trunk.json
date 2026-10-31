@@ -1,0 +1,38 @@
+{
+ "in": "bx2",
+ "out": "opt3a",
+ "mode": "repaint",
+ "win": [
+  1216,
+  0,
+  2304,
+  848
+ ],
+ "zone": [
+  1376,
+  40,
+  1520,
+  848
+ ],
+ "split": 3,
+ "seed": 2026102154,
+ "prompt": {
+  "high_level_description": "Repair the left edge of an existing pixel art background of a ruined burial grove. Keep the exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters of the existing image. At the very left edge, very close to the viewer, stands a huge dark gnarled dead tree trunk with thick roots gripping the ground, almost a black silhouette with only a faint dull rim of light, framing the scene like the big foreground tree in a side-scroller.",
+  "compositional_deconstruction": {
+   "background": "The same scene behind, unchanged.",
+   "elements": [
+    {
+     "type": "obj",
+     "bbox": [
+      0,
+      147,
+      1000,
+      279
+     ],
+     "desc": "A huge dark gnarled dead tree trunk with roots, almost black, very close to the viewer at the left edge."
+    }
+   ]
+  }
+ },
+ "negative": "light trunk, bright bark, small tree, people, person, warrior, figure, character, statue, text, watermark, thick black outline, black ink, comic book, voxel, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render"
+}

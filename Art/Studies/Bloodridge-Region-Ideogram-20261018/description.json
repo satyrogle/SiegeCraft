@@ -1,0 +1,114 @@
+{
+  "aspect_ratio": "3:2",
+  "high_level_description": "A professional whole-region environment concept painting for BLOODRIDGE in Kindred Siege. One continuous dry ash-limestone necropolis valley viewed obliquely from above, with an entire branching journey visible together from almost bare outskirts on the left to the clan chief's imposing funerary gate on the right. Natural ground, paths and the same eroded cliffs physically connect every encounter. Architectural density builds gradually from minimum to maximum. This is a coherent entire region, not a single courtyard or a collection of independent arena pictures. Dark atmospheric Egyptian-inspired burial architecture, rotten linen, tarnished bronze, petrified roots, sepia limestone and violet-brown shadows. Clean readable professional game-environment concept art with decisive large landforms and subtle material detail.",
+  "compositional_deconstruction": {
+    "background": "Warm grey paper only in a narrow title/footer margin. A single connected landscape illustration occupies the rest. Same upper-right dry daylight, same ash-brown geology and burial-clan design language across the whole region. No internal panels or white gaps. All structures rest on continuous terrain, no floating island.",
+    "elements": [
+      {
+        "type": "text",
+        "bbox": [
+          20,
+          25,
+          70,
+          650
+        ],
+        "text": "BLOODRIDGE",
+        "desc": "Small strong charcoal title at top left; professional environment concept sheet."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          100,
+          20,
+          900,
+          980
+        ],
+        "desc": "The complete landscape and journey, one continuous wide elevated oblique panorama across the sheet. Three successive left-to-right groups of encounters each have three visible natural open fighting clearings across the depth of the terrain, then a single final boss court at far right. Paths fork and cross between the groups then converge at the boss. There are ten visible fight spaces in total, embedded naturally in continuous terrain; no glowing map nodes, no dotted lines. They have clear flat open ground with low edge details, and are not enclosed circular arenas. The shared canyon strata and traversable paths connect left foreground, middle burial grounds, inner courts and right boss gate. Maintain one landscape scale; each group occupies about a quarter of the width. Most visual space stays quiet walkable ground."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          160,
+          20,
+          880,
+          240
+        ],
+        "desc": "OPENING OUTSKIRTS, the first and sparsest quarter of the SAME landscape. Three bare clearings on dusty ash earth with low natural limestone shelves and a few small stones. More than eighty percent undeveloped ground. ONE waist-high weathered boundary stone with a small tarnished bronze band. No buildings, no paved court, no doorways, no tall columns or statues. Bare minimum, physically the outer edge of the same necropolis. Three winding trails continue seamlessly to the next quarter."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          150,
+          240,
+          880,
+          475
+        ],
+        "desc": "BURIAL GROUNDS, the second connected quarter of the SAME landscape. Three modest open fight areas along the winding paths; scattered low tomb slabs, a few small niches cut into the native limestone, short worn stretches of paving and low broken retaining walls. Predominantly open air. Very modest construction and more intentional human traces than the outskirts, far less monumental than the later courts. Ash and limestone still dominate."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          135,
+          475,
+          880,
+          720
+        ],
+        "desc": "INNER COURTS, third connected quarter of the SAME landscape. Three linked burial terraces with open fighting floors. Higher low-roofed retaining walls, faceless wrapped funerary reliefs, roots binding the masonry, rotted ochre linen and dull bronze fastenings. Paths and short stairs connect the courts physically and visibly. Stronger enclosure and more complete irregular paving than before. Same stones, geology, burial motifs and sun angle. Buildings still modest compared with the final chief gate. Avoid a maze of doors and keep open fight spaces legible."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          125,
+          720,
+          880,
+          980
+        ],
+        "desc": "CHIEF'S GATE, the final and most imposing quarter of the SAME landscape, with ONE big final fighting court where all paths converge. Behind it stands the region's only monumental paired-pylon burial gate, an ash-brown basalt/limestone facade with a narrow dark central entry, a weathered corroded-bronze solar ring, and recessed still faceless sarcophagus reliefs. Full silhouette visible, headroom above. An oppressive Egyptian funerary threshold, not a generic medieval castle. No larger palace beyond. Flat open boss fight floor in front. Maximum built density and architectural scale at this endpoint only. No boss character."
+      },
+      {
+        "type": "text",
+        "bbox": [
+          935,
+          25,
+          975,
+          245
+        ],
+        "text": "OUTSKIRTS",
+        "desc": "Small restrained caption below the opening."
+      },
+      {
+        "type": "text",
+        "bbox": [
+          935,
+          260,
+          975,
+          480
+        ],
+        "text": "BURIAL GROUNDS",
+        "desc": "Small restrained caption below the second area."
+      },
+      {
+        "type": "text",
+        "bbox": [
+          935,
+          510,
+          975,
+          720
+        ],
+        "text": "INNER COURTS",
+        "desc": "Small restrained caption below the third area."
+      },
+      {
+        "type": "text",
+        "bbox": [
+          935,
+          755,
+          975,
+          980
+        ],
+        "text": "CHIEF'S GATE",
+        "desc": "Small restrained caption below the final area."
+      }
+    ]
+  }
+}

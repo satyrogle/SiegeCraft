@@ -1,0 +1,104 @@
+{
+  "fighters": [
+    {
+      "fighter": 0,
+      "mismatched_pixels": 0,
+      "source_sha256": "41716553866684ea416da671796ad23f313980d297c8ae72fbe65e24d176e54e"
+    },
+    {
+      "fighter": 1,
+      "mismatched_pixels": 0,
+      "source_sha256": "c14289280a8a4e65b86784a9cd31b21adfb6a9a6a127b65d1027c829acfdf425"
+    },
+    {
+      "fighter": 2,
+      "mismatched_pixels": 0,
+      "source_sha256": "652d0cf6afb90932d8099f2c7a4a074fd658a4b2d4338ddc92a84433c783b478"
+    },
+    {
+      "fighter": 3,
+      "mismatched_pixels": 0,
+      "source_sha256": "23434a77eef1a85cf2786e0c8cc8cad48bf75e664694cd8fb65b349d698b59f3"
+    },
+    {
+      "fighter": 4,
+      "mismatched_pixels": 0,
+      "source_sha256": "76eaae5f43d8a16f2ed264266e6cc781606d3c88cf6b7869e68c947c7af4d69e"
+    },
+    {
+      "fighter": 5,
+      "mismatched_pixels": 0,
+      "source_sha256": "808c0eb54d8b15ff2a3059ef4d501d54e37c7f2f2f4664c665b436ba02c272c9"
+    },
+    {
+      "fighter": 6,
+      "mismatched_pixels": 0,
+      "source_sha256": "652d0cf6afb90932d8099f2c7a4a074fd658a4b2d4338ddc92a84433c783b478"
+    },
+    {
+      "fighter": 7,
+      "mismatched_pixels": 0,
+      "source_sha256": "23434a77eef1a85cf2786e0c8cc8cad48bf75e664694cd8fb65b349d698b59f3"
+    },
+    {
+      "fighter": 8,
+      "mismatched_pixels": 0,
+      "source_sha256": "904880dfdf1c6eb2813b00b67e70e43f3d81453c7e42303f984c631c7c7fd86e"
+    }
+  ],
+  "ui_nonuniform_2x_blocks": 0,
+  "ui_sources_hash_unchanged": true,
+  "layers": {
+    "01-distance.png": {
+      "size": [
+        1440,
+        900
+      ],
+      "alpha_range": [
+        255,
+        255
+      ]
+    },
+    "02-architecture.png": {
+      "size": [
+        1440,
+        900
+      ],
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    "03-floor.png": {
+      "size": [
+        1440,
+        900
+      ],
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    "04-framing.png": {
+      "size": [
+        1440,
+        900
+      ],
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    "05-ui.png": {
+      "size": [
+        1440,
+        900
+      ],
+      "alpha_range": [
+        0,
+        255
+      ]
+    }
+  },
+  "passed": true
+}

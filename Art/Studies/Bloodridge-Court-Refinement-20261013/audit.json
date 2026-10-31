@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-13",
+  "status": "Ready for owner review, not production approval",
+  "scope": "Bounded Bloodridge scenery refinement around a genuine, frozen KS battle capture. No Unity integration, gameplay implementation or renderer change.",
+  "review_rule": "Audit each pass at native scale, in the complete battle screen, and with an independent pixel critic before presenting it. Correct blocking findings first; keep limitations visible. Jacob's approval remains separate.",
+  "passes": [
+    {
+      "pass": "1 - place, ground and pixel texture",
+      "initial": "BLOCKED: smaller paving and stronger tomb landmark improved location, but excessive floor speckling competed with thin fighter silhouettes.",
+      "corrections": "Rejected the initial texture, a blotchy palette/filter treatment, a flat polygon treatment and a noisy PixelLab material candidate. Retained connected-cluster cleanup and lower-contrast ground, without resampling the scenery.",
+      "independent_review": "Combat-readability blocker removed at supplied full-screen scale. Remaining cloudy/mottled clusters are still a craft limitation.",
+      "evidence": ["pass-01-layout.png", "pass-01-controlled.png", "pass-01-controlled-closeup.png"]
+    },
+    {
+      "pass": "2 - contact, near framing and asset separation",
+      "changes": "Pose-specific foot and hem contacts; larger near stone/root silhouettes visible above HUD; removable bronze/stone marker and linen; complete opaque floor under the near props; separate rear architecture and rooted entrance.",
+      "independent_review": "No new blocking seam or readability regression. Better ground contact, intentional edge crops and continuous visible floor. Shadow direction remains subtle rather than a rigorously demonstrated lighting solution.",
+      "evidence": ["pass-02-grounding.png", "pass-02-contact-detail.png", "asset-layout.json", "ground-underpaint.png"]
+    },
+    {
+      "pass": "3 - atmosphere and motion",
+      "changes": "Free PixelLab ash and dust behind combat plus anchored, whole-pixel linen motion; 32 frames at 125 ms.",
+      "independent_review": "No blocking occlusion, seam or readability regression in inspected frames. Linen lower silhouette moves without obvious gaps; internal folds do not yet respond to tension. Dust is very subtle. Static inspection does not prove smooth playback.",
+      "evidence": ["battle-screen.png", "frames/frame-17.png", "frames/frame-32.png", "linen-filmstrip-2x.png", "animation.json"]
+    }
+  ],
+  "mechanical_checks": {
+    "evidence": "verification.json",
+    "all_32_frames_combat_mismatches": 0,
+    "all_32_frames_hud_mismatches": 0,
+    "protected_combat_pixels_per_frame": 101145,
+    "protected_hud_pixels_per_frame": 258496,
+    "ground_underpaint_fully_opaque": true,
+    "linen_attachment_rows_unchanged": true,
+    "master_reopened": true,
+    "layers": 9,
+    "frames": 32,
+    "frame_ms": 125,
+    "aseprite_validation": "layers, export_readiness and animation passed. Constant timing note is intentional for environmental motion. Full palette/antialias scan timed out at 120 seconds and is not claimed as passed. A lint score is not an art-quality rating.",
+    "loop_boundary": "481 changed composite pixels from 32 to 1 versus 1001 maximum between other neighbours; no exceptional boundary jump by this measure. Counts alone do not prove expressive or smooth motion."
+  },
+  "browser_review": {
+    "url": "http://127.0.0.1:8769/review.html",
+    "server_pid": 67800,
+    "controls_checked": ["previous/refined comparison", "play and pause", "frame scrub to 1 and 32", "playback wraps 32 to 1", "native display measures 1440 by 900", "return to fit"],
+    "console_errors_or_warnings": [],
+    "screenshot": "browser-review.jpg",
+    "left_visible": "refined court, playing, fit view",
+    "motion_limit": "Browser playback progression and wrap verified with UI state and sampled images. This does not establish real-time combat readability or subjective smoothness for the owner."
+  },
+  "remaining_limits": [
+    "Some arbitrary mottled floor and wall clusters remain; the environment is not yet consistently crafted to the fighters' level.",
+    "The Bloodridge burial landmark, roots, cloth and bronze improve regional identity; oppression/eeriness remains subject to Jacob's review.",
+    "Linen moves gently but its internal folds remain largely unchanged; atmospheric dust is deliberately very restrained.",
+    "The rear architecture is a fixed-camera partition. Newly painted hidden facades and free parallax are not established.",
+    "Near props and floor underpaint are separate useful review assets, not a complete seamless/autotile kit or 3D mesh set. The experimental terrain-pieces.png and stone-*.png are rejected.",
+    "Captured combat predates Sprint 1 and is held still. Full-fight readability, moving-unit contact, attacks behind props, current game rules and Unity performance are not verified."
+  ],
+  "production_integration": false,
+  "owner_approval": "pending"
+}

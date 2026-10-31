@@ -1,0 +1,162 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "shift": 3.0
+    }
+  },
+  "4": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-bloodridge-root-crypt-20261019/outskirts.png"
+    }
+  },
+  "9": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "Edit only the selected left scenery while keeping the existing hollow root grove, pool, the lower battle floor and the exact pixel-art drawing style unchanged. Make the bare beginning belong physically to the SAME Bloodridge burial complex. This is an intimate wind-scoured BURIAL WASH at the foot of eroded ash-limestone banks, not an empty generic desert with distant mountains. Large irregular low bank shapes fold gradually down into the existing root pool on the right. The bank exposes thin old grave slabs, a few corroded bronze fragments and tangled dry roots protruding from the earth. One small leaning burial marker is partly swallowed by the bank; no large gate or monumental buildings.\nThe start is sparse, worn and quiet. The material is as detailed and deliberate as the preserved court: chipped edges, irregular native pixel clusters, dusty sepia stone, deep violet-brown crevices and ash caught in sheltered folds. Sparse small pale thorn fans, dull rust-red seedpods and brittle reeds become denser near the existing grove pool. Two tiny long-legged ash birds can stand on the far rear bank near the reeds; they stay tiny background wildlife, not foreground characters. Show a continuous shallow silt channel entering the existing pool, with its bank and roots physically joining the grove. Replace the abrupt vertical skyline join with the silhouette of that same eroded bank. No copied wall, no repeated shrub stamps, no rows of tombs, no smooth painted hills, no blue sky, no cartoon outlines, no foreground cliffs, no people, no text. Keep the original 2.5D battle camera and original lower fighting ground.",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "6",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "6",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "16",
+        0
+      ],
+      "seed": 20261019232,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "KS-Bloodridge-Root-Crypt-20261019/outskirts"
+    }
+  },
+  "15": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "6",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SetLatentNoiseMask",
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "mask": [
+        "6",
+        1
+      ]
+    }
+  }
+}

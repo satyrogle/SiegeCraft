@@ -1,0 +1,176 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ideogram4_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+   "type": "ideogram4",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "{\"high_level_description\": \"Empty Bloodridge sunken crypt battle stage, rendered entirely in crisp, deliberately clustered pixel art with bold clean storybook shapes. Night under a full moon. Cold blue and teal stone, deep blue violet shadows, pale moonlight on the tops of the ruins, the courtyard in calm even mid tone blue grey moonlight, lighter than dark armour. Two small torches at the crypt doorway are the only warm light. One single continuous 2.5D battle scene, no figures, no text.\", \"style_description\": {\"medium\": \"pixel_art\", \"art_style\": \"Authentic hand-pixelled 2D game background. Visible square pixel clusters and stair-stepped contours everywhere. Muted limited palette, flat colour clusters, two or three discrete shades per stone. Organic uneven shapes with carefully chipped corners. Broad quiet surfaces with occasional short angular cracks. Crisp pixel edges without antialiasing. The controlled pixel craft of an old burial court: irregular broad paving stones, shallow angular shadows, weathering only on selected edges. No paint brushwork, no gritty texture layer, no dithering, no gradients.\", \"aesthetics\": \"readable 2.5D battle stage, moonlit night, bold storybook shapes, coherent pixel clusters\", \"lighting\": \"Cold moonlight from the upper left as discrete flat pixel colour planes, the fighting ground an even mid tone blue grey.\", \"color_palette\": [\"#101a2c\", \"#1e2e4a\", \"#33496c\", \"#55708e\", \"#8aa6ba\", \"#c8dce6\", \"#e8a050\"]}, \"compositional_deconstruction\": {\"background\": \"One continuous 2.5D side view battle stage seen from a fixed oblique camera, no figures. The upper part: the sunken crypt of Bloodridge, a ruined stone crypt doorway in the middle with heavy pillars, a broken lintel and two worn steps, its inside dark; rubble terraces and broken stairs on the left; an old wall gripped by huge twisting tree roots on the right; above them a strip of sky over a distant ridge. The lower half: one wide flat courtyard of broad worn paving stones in a calm even mid tone, quiet so small fighters in sepia rags and bronze stand out on it.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [0, 300, 380, 660], \"desc\": \"the ruined stone crypt doorway with heavy pillars, a broken lintel and two worn steps, dark inside\"}, {\"type\": \"obj\", \"bbox\": [40, 0, 360, 310], \"desc\": \"rubble terraces and broken stone stairs\"}, {\"type\": \"obj\", \"bbox\": [30, 640, 400, 1000], \"desc\": \"an old stone wall gripped by huge twisting tree roots\"}, {\"type\": \"obj\", \"bbox\": [380, 0, 1000, 1000], \"desc\": \"a wide flat courtyard of broad worn paving stones in a calm even mid tone, no sepia, no orange\"}]}}"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "photograph, painterly, digital painting, concept painting, brush strokes, realistic render, 3D render, noisy texture, fine gravel, pebbles, tiny cobblestones, scattered debris, dithering, speckles, smooth gradients, blur, antialiasing, glossy, high contrast floor, repeating tile grid, voxel cubes, people, guards, human figures, creatures, letters, UI, border, frame, sepia, orange, brown, warm sunset"
+  }
+ },
+ "6": {
+  "class_type": "CFGOverride",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "cfg": 3.0,
+   "start_percent": 0.7,
+   "end_percent": 1.0
+  }
+ },
+ "7": {
+  "class_type": "DualModelGuider",
+  "inputs": {
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "cfg": 7.0,
+   "model_negative": [
+    "6",
+    0
+   ],
+   "negative": [
+    "5",
+    0
+   ]
+  }
+ },
+ "9": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "10": {
+  "class_type": "Ideogram4Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 1376,
+   "height": 768,
+   "mu": 0.0,
+   "std": 1.75
+  }
+ },
+ "11": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102261
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "11",
+    0
+   ],
+   "guider": [
+    "7",
+    0
+   ],
+   "sampler": [
+    "9",
+    0
+   ],
+   "sigmas": [
+    "18",
+    1
+   ],
+   "latent_image": [
+    "16",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "filename_prefix": "KS-Crypt-Settings-20261022/setting-1"
+  }
+ },
+ "15": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-crypt-flux-20261022/ideo-bc-raw.png"
+  }
+ },
+ "16": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "15",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "18": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "10",
+    0
+   ],
+   "step": 5
+  }
+ }
+}

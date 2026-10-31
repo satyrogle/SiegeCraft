@@ -1,0 +1,19 @@
+{
+  "in": "bq3",
+  "out": "bq3c",
+  "mode": "repaint",
+  "win": [2688, 0, 3776, 768],
+  "zone": [2900, 340, 3740, 424],
+  "split": 3,
+  "seed": 2026102125,
+  "prompt": {
+    "high_level_description": "Repair one thin band of an existing pixel art background of an empty ruined burial courtyard, keeping its exact palette, light, scale and oblique 2.5D camera. The crypt's doorway sits on a single low flat threshold slab level with the courtyard floor, and the thick roots on the right end at the foot of the wall, all along one clean line. Below that line the empty floor runs flat: muted worn rounded flagstones exactly like the floor below, ash in the joints, small flat pebbles. Muted, low contrast. Fine controlled dusty hand-painted pixel clusters like the rest of the image.",
+    "compositional_deconstruction": {
+      "background": "The same crypt entrance, pillars, walls and roots as the surrounding image, all ending on one clean line at the top of this band.",
+      "elements": [
+        {"type": "obj", "bbox": [440, 195, 553, 977], "desc": "Empty flat floor of muted rounded flagstones continuous with the floor below; the threshold slab and the root feet sit at its top edge."}
+      ]
+    }
+  },
+  "negative": "people, person, warrior, figure, character, statue, steps, stairs, staircase, rubble heap, rocks on the ground, boulders, roots across the floor, bushes, scrub, bright tiles, cream tiles, tile grid, high contrast, fog, haze, thick black outline, black ink, comic book, voxel, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render, text, watermark"
+}

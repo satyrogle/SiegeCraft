@@ -1,0 +1,21 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Clean.\n[note] animation: Every frame has the same duration. Uniform timing reads mechanical; hold contact poses longer than pass poses."
+    }
+  ],
+  "structuredContent": {
+    "findings": [
+      {
+        "message": "Every frame has the same duration. Uniform timing reads mechanical; hold contact poses longer than pass poses.",
+        "check": "animation",
+        "severity": "note"
+      }
+    ],
+    "sprite": "bloodridge-pixel-craft.aseprite",
+    "passed": true,
+    "score": 100,
+    "summary": "Clean."
+  }
+}

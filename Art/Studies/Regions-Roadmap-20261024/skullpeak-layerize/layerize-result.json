@@ -1,0 +1,303 @@
+{
+ "status": "COMPLETED",
+ "waited_seconds": 23,
+ "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+ "status_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed/status",
+ "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+ "cancel_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed/cancel",
+ "hint": "The job is COMPLETED and its result is included. You don't need to call get_job_result.",
+ "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+ "result": {
+  "images": [
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa559/9KdTar0bzD6ChXyRuxgsm_c1fbbcfc1497454e9fcaf59dbb9e93ff.png",
+    "content_type": "image/png",
+    "file_name": "c1fbbcfc1497454e9fcaf59dbb9e93ff.png",
+    "file_size": 4484758,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa559/6uMCYlK8yzpL12xRh1tVR_0e669151bc73415bb1e5bd9e2e568b7a.png",
+    "content_type": "image/png",
+    "file_name": "0e669151bc73415bb1e5bd9e2e568b7a.png",
+    "file_size": 3557831,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa559/Hwa6YMQair0UVMtYIzXH1_7c1f794853f54dfd81ffc422455504bc.png",
+    "content_type": "image/png",
+    "file_name": "7c1f794853f54dfd81ffc422455504bc.png",
+    "file_size": 3263288,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa559/UM4u3GbnUw6UL8q2qoML9_e63e18d25ea9424ebcad7023a18b7071.png",
+    "content_type": "image/png",
+    "file_name": "e63e18d25ea9424ebcad7023a18b7071.png",
+    "file_size": 2127179,
+    "width": null,
+    "height": null
+   }
+  ],
+  "layers": [
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa559/9KdTar0bzD6ChXyRuxgsm_c1fbbcfc1497454e9fcaf59dbb9e93ff.png",
+     "content_type": "image/png",
+     "file_name": "c1fbbcfc1497454e9fcaf59dbb9e93ff.png",
+     "file_size": 4484758,
+     "width": null,
+     "height": null
+    },
+    "z_index": 0,
+    "bounding_box": null,
+    "name": null,
+    "description": null
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa559/6uMCYlK8yzpL12xRh1tVR_0e669151bc73415bb1e5bd9e2e568b7a.png",
+     "content_type": "image/png",
+     "file_name": "0e669151bc73415bb1e5bd9e2e568b7a.png",
+     "file_size": 3557831,
+     "width": null,
+     "height": null
+    },
+    "z_index": 1,
+    "bounding_box": {
+     "absolute": [
+      0,
+      0,
+      4128,
+      460
+     ],
+     "normalized": [
+      0,
+      0,
+      1000,
+      598
+     ]
+    },
+    "name": "Sky, snowy mountains and giant skull peak far background",
+    "description": "Extract only the far background including the sky, all distant snowy mountains, and the giant skull shaped mountain peak, exclude all foreground and midground elements."
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa559/Hwa6YMQair0UVMtYIzXH1_7c1f794853f54dfd81ffc422455504bc.png",
+     "content_type": "image/png",
+     "file_name": "7c1f794853f54dfd81ffc422455504bc.png",
+     "file_size": 3263288,
+     "width": null,
+     "height": null
+    },
+    "z_index": 2,
+    "bounding_box": {
+     "absolute": [
+      34,
+      0,
+      4128,
+      493
+     ],
+     "normalized": [
+      8,
+      0,
+      1000,
+      641
+     ]
+    },
+    "name": "Arena surrounding and framing elements",
+    "description": "Extract all elements standing behind and around the arena: snowy rocks, steel spikes, sniper nests, red banners, snowman, 'SKULLPAINS' sign, watchtower with targets, walled skull gate hold, and bottom near foreground framing pieces, exclude far background and flat arena floor."
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa559/UM4u3GbnUw6UL8q2qoML9_e63e18d25ea9424ebcad7023a18b7071.png",
+     "content_type": "image/png",
+     "file_name": "e63e18d25ea9424ebcad7023a18b7071.png",
+     "file_size": 2127179,
+     "width": null,
+     "height": null
+    },
+    "z_index": 3,
+    "bounding_box": {
+     "absolute": [
+      0,
+      414,
+      4128,
+      768
+     ],
+     "normalized": [
+      0,
+      539,
+      1000,
+      999
+     ]
+    },
+    "name": "Flat packed snow arena floor",
+    "description": "Extract only the flat packed snow arena floor including the stone trench running across the middle of the arena, exclude all other background and midground elements."
+   }
+  ]
+ },
+ "media": [
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa559/9KdTar0bzD6ChXyRuxgsm_c1fbbcfc1497454e9fcaf59dbb9e93ff.png",
+   "json_path": "result.images[0].url",
+   "output_path": "/images/0/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "c1fbbcfc1497454e9fcaf59dbb9e93ff.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "output_path": "/images/0/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa559/6uMCYlK8yzpL12xRh1tVR_0e669151bc73415bb1e5bd9e2e568b7a.png",
+   "json_path": "result.images[1].url",
+   "output_path": "/images/1/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "0e669151bc73415bb1e5bd9e2e568b7a.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "output_path": "/images/1/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa559/Hwa6YMQair0UVMtYIzXH1_7c1f794853f54dfd81ffc422455504bc.png",
+   "json_path": "result.images[2].url",
+   "output_path": "/images/2/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "7c1f794853f54dfd81ffc422455504bc.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "output_path": "/images/2/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa559/UM4u3GbnUw6UL8q2qoML9_e63e18d25ea9424ebcad7023a18b7071.png",
+   "json_path": "result.images[3].url",
+   "output_path": "/images/3/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "e63e18d25ea9424ebcad7023a18b7071.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "output_path": "/images/3/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa559/9KdTar0bzD6ChXyRuxgsm_c1fbbcfc1497454e9fcaf59dbb9e93ff.png",
+   "json_path": "result.layers[0].image.url",
+   "output_path": "/layers/0/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "c1fbbcfc1497454e9fcaf59dbb9e93ff.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "output_path": "/layers/0/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa559/6uMCYlK8yzpL12xRh1tVR_0e669151bc73415bb1e5bd9e2e568b7a.png",
+   "json_path": "result.layers[1].image.url",
+   "output_path": "/layers/1/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "0e669151bc73415bb1e5bd9e2e568b7a.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "output_path": "/layers/1/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa559/Hwa6YMQair0UVMtYIzXH1_7c1f794853f54dfd81ffc422455504bc.png",
+   "json_path": "result.layers[2].image.url",
+   "output_path": "/layers/2/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "7c1f794853f54dfd81ffc422455504bc.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "output_path": "/layers/2/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa559/UM4u3GbnUw6UL8q2qoML9_e63e18d25ea9424ebcad7023a18b7071.png",
+   "json_path": "result.layers[3].image.url",
+   "output_path": "/layers/3/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "e63e18d25ea9424ebcad7023a18b7071.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d29-d6aa-7640-a81a-a7fd9e6895ed",
+     "output_path": "/layers/3/image/url"
+    }
+   }
+  }
+ ],
+ "display_hint": "Present completed media to the user. Forward attached image content blocks to the host's image display helper (for example, image(block)); do not stringify image blocks as text. For Markdown previews use previews[].preview_url, and separately link original_url as the full-resolution file. If no preview is available, show a clearly labeled original-file link. Do not claim a preview rendered unless it is visible. Video, audio and 3D URLs are original result files, not queue URLs.",
+ "next_steps": "Show it to the user: where the host renders MCP app UI, call show_media with this result, endpoint_id, request_id and recipe; otherwise present the media URLs. Then offer a next generation: variations (copy recipe.input and change the seed or prompt), an edit of this image, animating it into a video, or an upscale. Submit several variations together in one submit_jobs call. For a new operation on this output, call recommend_model with its URL as the source.",
+ "previews": [
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa559/6uMCYlK8yzpL12xRh1tVR_0e669151bc73415bb1e5bd9e2e568b7a.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa559%2F6uMCYlK8yzpL12xRh1tVR_0e669151bc73415bb1e5bd9e2e568b7a.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  },
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa559/Hwa6YMQair0UVMtYIzXH1_7c1f794853f54dfd81ffc422455504bc.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa559%2FHwa6YMQair0UVMtYIzXH1_7c1f794853f54dfd81ffc422455504bc.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  },
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa559/UM4u3GbnUw6UL8q2qoML9_e63e18d25ea9424ebcad7023a18b7071.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa559%2FUM4u3GbnUw6UL8q2qoML9_e63e18d25ea9424ebcad7023a18b7071.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  }
+ ]
+}

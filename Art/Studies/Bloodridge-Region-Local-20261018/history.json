@@ -1,0 +1,218 @@
+{
+  "prompt": [
+    0,
+    "449ddaac-41c8-486f-bc5f-2af6582133be",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+          "strength_model": 1.0
+        }
+      },
+      "3": {
+        "class_type": "ModelSamplingAuraFlow",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "shift": 3.0
+        }
+      },
+      "4": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "type": "qwen_image",
+          "device": "default"
+        }
+      },
+      "5": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "qwen_image_vae.safetensors"
+        }
+      },
+      "6": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-region-local-20261018/layout-guide.png"
+        }
+      },
+      "8": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-region-local-20261018/court-style.png"
+        }
+      },
+      "9": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "Picture 1 is only a rough spatial plan. Redraw its whole landscape as a coherent original Bloodridge region concept in the native pixel-art style and material palette of picture 2. Preserve the spatial journey and connected paths from picture 1, but replace its flat geometric marks with believable terrain and buildings. Picture 2 supplies ash-brown limestone, violet-brown shadow, petrified roots, burial niches, tarnished bronze, rotting linen, and the dry oppressive atmosphere of an Egyptian-inspired burial clan. Do not copy picture 2 as one giant courtyard.\n\nShow the ENTIRE region in one wide, elevated oblique view. From left to right there are three groups of three open encounter spaces, followed by ONE final boss court at the right. They lie on ONE continuous rocky shelf, connected by branching worn paths. No separate islands, no floating arenas, no UI nodes. The whole left third is nearly bare earth and ash: low natural rock edges, a few roots and only one tiny burial marker, no buildings or paving grid. The middle begins adding modest tomb niches, broken low walls and short sections of old paving. The next area becomes connected burial courts, larger niches and more enclosing architecture. Finally all paths converge on a tall paired-pylon funerary gate and a broad flat boss court at the far right. The gate is the biggest structure; nothing larger beyond it. Increase construction gradually from minimum at the start to maximum at the boss, with the same geology, architecture and daylight throughout.\n\nMake the three route choices physically visible in each group, with open flat fight areas and traversable connections. Avoid a cliff gap cutting the route. Keep terrain silhouettes and quiet clearings readable at small scale. Restrained connected pixel clusters, crisp edges, subdued ash/sepia palette, sparse detail in the early area, deliberate stone and cloth shapes later. This is a cohesive game region concept, not a cinematic painting. No people, enemies, text, labels, icons, borders, coloured diagram lines, grid or numbered markers. No green forest, lava, snow, neon, skull carpet or unrelated biome.",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "6",
+            0
+          ],
+          "image2": [
+            "8",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "6",
+            0
+          ],
+          "image2": [
+            "8",
+            0
+          ]
+        }
+      },
+      "11": {
+        "class_type": "EmptySD3LatentImage",
+        "inputs": {
+          "width": 1024,
+          "height": 576,
+          "batch_size": 1
+        }
+      },
+      "12": {
+        "class_type": "KSampler",
+        "inputs": {
+          "model": [
+            "3",
+            0
+          ],
+          "positive": [
+            "9",
+            0
+          ],
+          "negative": [
+            "10",
+            0
+          ],
+          "latent_image": [
+            "11",
+            0
+          ],
+          "seed": 2026101801,
+          "steps": 4,
+          "cfg": 1.0,
+          "sampler_name": "euler",
+          "scheduler": "simple",
+          "denoise": 1.0
+        }
+      },
+      "13": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "12",
+            0
+          ],
+          "vae": [
+            "5",
+            0
+          ]
+        }
+      },
+      "14": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "13",
+            0
+          ],
+          "filename_prefix": "KS-Region-Local-20261018/bloodridge-whole-region"
+        }
+      }
+    },
+    {
+      "client_id": "codex-bloodridge-region-local-20261018",
+      "create_time": 1792283361673
+    },
+    [
+      "14"
+    ]
+  ],
+  "outputs": {
+    "14": {
+      "images": [
+        {
+          "filename": "bloodridge-whole-region_00001_.png",
+          "subfolder": "KS-Region-Local-20261018",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "449ddaac-41c8-486f-bc5f-2af6582133be",
+          "timestamp": 1792283361674
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "449ddaac-41c8-486f-bc5f-2af6582133be",
+          "timestamp": 1792283361698
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "449ddaac-41c8-486f-bc5f-2af6582133be",
+          "timestamp": 1792283632495
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "14": {
+      "node_id": "14",
+      "display_node": "14",
+      "parent_node": null,
+      "real_node_id": "14"
+    }
+  }
+}

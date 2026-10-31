@@ -1,0 +1,859 @@
+{
+ "frames": [
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 0.png",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 1.png",
+   "frame": {
+    "x": 632,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 2.png",
+   "frame": {
+    "x": 1264,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 3.png",
+   "frame": {
+    "x": 1896,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 4.png",
+   "frame": {
+    "x": 2528,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 5.png",
+   "frame": {
+    "x": 3160,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 6.png",
+   "frame": {
+    "x": 0,
+    "y": 424,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 7.png",
+   "frame": {
+    "x": 632,
+    "y": 424,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 8.png",
+   "frame": {
+    "x": 1264,
+    "y": 424,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 9.png",
+   "frame": {
+    "x": 1896,
+    "y": 424,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 10.png",
+   "frame": {
+    "x": 2528,
+    "y": 424,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 11.png",
+   "frame": {
+    "x": 3160,
+    "y": 424,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 12.png",
+   "frame": {
+    "x": 0,
+    "y": 848,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 13.png",
+   "frame": {
+    "x": 632,
+    "y": 848,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 14.png",
+   "frame": {
+    "x": 1264,
+    "y": 848,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 15.png",
+   "frame": {
+    "x": 1896,
+    "y": 848,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 16.png",
+   "frame": {
+    "x": 2528,
+    "y": 848,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 17.png",
+   "frame": {
+    "x": 3160,
+    "y": 848,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 18.png",
+   "frame": {
+    "x": 0,
+    "y": 1272,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 19.png",
+   "frame": {
+    "x": 632,
+    "y": 1272,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 20.png",
+   "frame": {
+    "x": 1264,
+    "y": 1272,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 21.png",
+   "frame": {
+    "x": 1896,
+    "y": 1272,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 22.png",
+   "frame": {
+    "x": 2528,
+    "y": 1272,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 23.png",
+   "frame": {
+    "x": 3160,
+    "y": 1272,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 24.png",
+   "frame": {
+    "x": 0,
+    "y": 1696,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 25.png",
+   "frame": {
+    "x": 632,
+    "y": 1696,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 26.png",
+   "frame": {
+    "x": 1264,
+    "y": 1696,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 27.png",
+   "frame": {
+    "x": 1896,
+    "y": 1696,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 28.png",
+   "frame": {
+    "x": 2528,
+    "y": 1696,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 29.png",
+   "frame": {
+    "x": 3160,
+    "y": 1696,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 30.png",
+   "frame": {
+    "x": 0,
+    "y": 2120,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-wind-study-review-only 31.png",
+   "frame": {
+    "x": 632,
+    "y": 2120,
+    "w": 632,
+    "h": 424
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 632,
+    "h": 424
+   },
+   "sourceSize": {
+    "w": 632,
+    "h": 424
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  }
+ ],
+ "meta": {
+  "app": "PixelLab VFX Creator",
+  "image": "ks-bloodridge-court-wind-study-review-only.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 3792,
+   "h": 2544
+  },
+  "scale": "1",
+  "anchor": {
+   "kind": "origin",
+   "x": 316,
+   "y": 212
+  },
+  "frameTags": [
+   {
+    "name": "ks-bloodridge-court-wind-study-review-only",
+    "from": 0,
+    "to": 31,
+    "direction": "forward"
+   }
+  ]
+ }
+}

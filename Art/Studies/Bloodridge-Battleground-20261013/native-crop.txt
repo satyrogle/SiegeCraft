@@ -1,0 +1,1 @@
+Source 1586x992; native centre crop offset 73,46. No resampling. Stage window x32..1407,y80..833.

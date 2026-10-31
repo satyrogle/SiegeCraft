@@ -1,0 +1,37 @@
+{
+  "canvas": [4128, 768],
+  "viewport": [1376, 768],
+  "nativeScale": 1,
+  "source": "../Bloodridge-Root-Crypt-20261019/panorama.png",
+  "originalCourtWorldX": 2752,
+  "courtCorePreserveX": [3008, 4128],
+  "planes": [
+    {"id":"far","file":"far.png","travelLagMaxPx":18,"restOffsetPx":0},
+    {"id":"ground","file":"ground.png","travelLagMaxPx":0,"restOffsetPx":0},
+    {"id":"rear","file":"rear.png","travelLagMaxPx":0,"restOffsetPx":0},
+    {"id":"court-front","file":"court-foreground.png","travelLeadMaxPx":6,"restOffsetPx":0},
+    {"id":"near-left","file":"near-left.png","travelLeadMaxPx":6,"restOffsetPx":0},
+    {"id":"near-scrub","file":"near-scrub.png","travelLeadMaxPx":0,"restOffsetPx":0}
+  ],
+  "nearWashFramingRelocationPx": [0,144],
+  "underpaint": {"worldRect":[0,256,1152,512],"mask":"wall-removal-mask.png","replacement":"hidden-floor-reconstruction.png","method":"recover the earlier continuous underfloor at the same world coordinates, palette match and restrict to the near-wall mask; no relocated, tiled or mirrored floor patches; generated and direct polygon drafts retained but rejected"},
+  "motionOwner":"Claude",
+  "newAnimationClipsAuthored":false,
+  "existingAsh":{"files":["ash-1.png","ash-2.png"],"frames":32,"fps":8,"cell":[1024,600],"columns":6},
+  "emitters":[
+    {"id":"exposed-wash","rect":[-60,-140,1024,600],"clip":[0,0,610,320],"opacity":0.22,"phaseFrames":0},
+    {"id":"root-grove","rect":[440,-95,1024,600],"clip":[610,0,860,355],"opacity":0.15,"phaseFrames":11},
+    {"id":"crypt-shelter","rect":[1470,-155,1024,600],"clip":[1470,0,810,300],"opacity":0.055,"phaseFrames":23},
+    {"id":"court-approach","rect":[2180,-85,1024,600],"clip":[2280,0,472,345],"opacity":0.11,"phaseFrames":7},
+    {"id":"court","rect":[2928,74,1024,600],"clip":[2752,0,1376,400],"opacity":0.18,"phaseFrames":0}
+  ],
+  "animatorSources":[
+    {"id":"grove-reeds-a","worldRect":[604,300,154,170],"anchorLocal":[76,157],"reference":"grove-reeds-a-reference.png","request":"small discrete wind response from the root anchor; original surrounding pixels are context"},
+    {"id":"grove-reeds-b","worldRect":[1178,250,132,132],"anchorLocal":[57,110],"reference":"grove-reeds-b-reference.png","request":"same wind direction; natural timing offset; do not move roots or masonry"},
+    {"id":"grove-pool","worldRect":[780,337,420,149],"anchorLocal":[0,0],"reference":"grove-pool-reference.png","mask":"grove-pool-motion-mask.png","request":"subtle interrupted ripple highlights inside seep mask only; retain dark value"},
+    {"id":"crypt-shelter","worldRect":[1732,92,470,280],"anchorLocal":[0,0],"reference":"crypt-shelter-reference.png","request":"occasional dust where the opening admits light; shelter stays quieter than wash"}
+  ],
+  "travelOnlyCameraOffsets":true,
+  "gameplayIntegration":false,
+  "unityTested":false
+}

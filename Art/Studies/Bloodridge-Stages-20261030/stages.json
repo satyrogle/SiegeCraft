@@ -1,0 +1,279 @@
+{
+ "who": "A battle stage in the land of the Bloodridge, desert guardians in the manner of ancient Egypt, on the flat top of a high windswept hill above a sea of white clouds. Ash brown, sepia and corroded bronze with ember light, under a bright cold morning sky. Ember light glows only in doorways, in the cracks of the obelisks and in braziers, never on the ground. Only the few things named for this place stand here, along the far edge of the hill top; nothing else is built anywhere in the picture.",
+ "stages": {
+  "1": {
+   "name": "THE HILL ROAD",
+   "seed": 2026103001,
+   "note": "bare: the border of their land",
+   "back": [
+    [
+     [
+      0,
+      215,
+      1376,
+      290
+     ],
+     "the far edge of the hill top, low dark rocks, the sea of clouds beyond"
+    ],
+    [
+     [
+      980,
+      50,
+      1070,
+      290
+     ],
+     "a lone tall dark stone obelisk with thin glowing ember cracks, the border of the Bloodridge"
+    ],
+    [
+     [
+      160,
+      160,
+      260,
+      290
+     ],
+     "a ragged banner with a dark red sun disc on a leaning pole"
+    ]
+   ],
+   "near": [
+    "a dark broken stone edge",
+    "a dark broken stone edge"
+   ]
+  },
+  "2": {
+   "name": "THE SIEGE LINE",
+   "seed": 2026103002,
+   "note": "their army's catapults",
+   "back": [
+    [
+     [
+      0,
+      220,
+      1376,
+      290
+     ],
+     "a row of low tents of sepia and ash brown rags along the far edge"
+    ],
+    [
+     [
+      110,
+      90,
+      480,
+      290
+     ],
+     "a big ancient siege catapult of corroded bronze: a squat frame with a tall throwing arm and a sling at its tip, a heap of rough boulders beside it"
+    ],
+    [
+     [
+      880,
+      100,
+      1250,
+      290
+     ],
+     "a second ancient bronze siege catapult with a tall throwing arm and a sling, and a bronze brazier with ember light"
+    ]
+   ],
+   "near": [
+    "a heap of rough boulders",
+    "a dark broken stone edge"
+   ]
+  },
+  "3": {
+   "name": "THE EMBER WELL",
+   "seed": 2026103003,
+   "note": "the heart of their camp",
+   "back": [
+    [
+     [
+      0,
+      200,
+      1376,
+      290
+     ],
+     "low tents of sepia and ash brown rags in rows along the far edge, ragged banners with a dark red sun disc on poles"
+    ],
+    [
+     [
+      480,
+      180,
+      900,
+      290
+     ],
+     "a wide round well of dark stone blocks with ember light glowing deep inside it, a bronze rim"
+    ],
+    [
+     [
+      150,
+      160,
+      280,
+      290
+     ],
+     "a bronze brazier with ember light"
+    ],
+    [
+     [
+      1090,
+      160,
+      1220,
+      290
+     ],
+     "a bronze brazier with ember light"
+    ]
+   ],
+   "near": [
+    "a dark broken stone edge",
+    "a heap of sepia rags over a bronze frame"
+   ]
+  },
+  "4": {
+   "name": "THE OBELISK WALK",
+   "seed": 2026103004,
+   "note": "the road to the temple",
+   "back": [
+    [
+     [
+      470,
+      60,
+      910,
+      290
+     ],
+     "one stepped pyramid of solid dark stone standing on the far end of the hill top behind the obelisks, a little hazy"
+    ],
+    [
+     [
+      30,
+      40,
+      420,
+      290
+     ],
+     "a row of tall dark stone obelisks with thin glowing ember cracks receding into the distance, bronze braziers between them"
+    ],
+    [
+     [
+      960,
+      40,
+      1350,
+      290
+     ],
+     "a second row of tall dark stone obelisks with thin glowing ember cracks receding into the distance, bronze braziers between them"
+    ]
+   ],
+   "near": [
+    "a toppled dark obelisk",
+    "a dark broken stone edge"
+   ]
+  },
+  "5": {
+   "name": "THE PYLON GATE",
+   "seed": 2026103005,
+   "note": "the chief's court",
+   "back": [
+    [
+     [
+      300,
+      20,
+      1080,
+      290
+     ],
+     "a great stepped pyramid of solid dark stone, fully opaque, standing on the hill top right behind the gate"
+    ],
+    [
+     [
+      390,
+      70,
+      990,
+      290
+     ],
+     "the dark stone temple gate of two sloped pylon towers, ember light glowing in its tall doorway, the court of the Bloodridge chief"
+    ],
+    [
+     [
+      120,
+      140,
+      290,
+      290
+     ],
+     "a tall bronze brazier with ember light and a ragged banner with a dark red sun disc"
+    ],
+    [
+     [
+      1090,
+      140,
+      1260,
+      290
+     ],
+     "a tall bronze brazier with ember light and a ragged banner with a dark red sun disc"
+    ]
+   ],
+   "near": [
+    "a dark broken stone edge",
+    "a dark broken stone edge"
+   ]
+  }
+ },
+ "lineup": {
+  "0": [
+   [
+    250,
+    640,
+    "clarth_chief_sw"
+   ],
+   [
+    600,
+    420,
+    "clarth_warden_sw"
+   ],
+   [
+    600,
+    560,
+    "clarth_skirmisher_sw"
+   ],
+   [
+    600,
+    700,
+    "clarth_trapper_sw"
+   ],
+   [
+    420,
+    420,
+    "clarth_marksman_sw"
+   ],
+   [
+    420,
+    700,
+    "clarth_medic_sw"
+   ]
+  ],
+  "1": [
+   [
+    1160,
+    620,
+    "blood_rot_warden_se"
+   ],
+   [
+    840,
+    420,
+    "blood_rot_warden_se"
+   ],
+   [
+    840,
+    560,
+    "blood_rot_skirmisher_se"
+   ],
+   [
+    840,
+    700,
+    "blood_rot_trapper_se"
+   ],
+   [
+    1020,
+    420,
+    "blood_rot_marksman_se"
+   ],
+   [
+    1020,
+    700,
+    "blood_rot_medic_se"
+   ]
+  ]
+ }
+}

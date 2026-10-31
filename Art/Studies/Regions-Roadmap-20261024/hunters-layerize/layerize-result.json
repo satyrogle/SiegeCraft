@@ -1,0 +1,309 @@
+{
+ "status": "COMPLETED",
+ "waited_seconds": 21,
+ "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+ "status_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c/status",
+ "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+ "cancel_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c/cancel",
+ "hint": "The job is COMPLETED and its result is included. You don't need to call get_job_result.",
+ "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+ "result": {
+  "images": [
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa56a/g2OEvbTzkO455oBm6lJly_d8c039a130124259b575819b483e55e9.png",
+    "content_type": "image/png",
+    "file_name": "d8c039a130124259b575819b483e55e9.png",
+    "file_size": 5595528,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa56a/QnsmcVd8Qwmx8ksRk-uw4_5b6b244e4e274a8891c0f9fd2edc762e.png",
+    "content_type": "image/png",
+    "file_name": "5b6b244e4e274a8891c0f9fd2edc762e.png",
+    "file_size": 2561225,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa56a/6tFm4nVKtjlFcT4fNRs9Q_af8e30da056d4e68a8afabfd13c8f1a5.png",
+    "content_type": "image/png",
+    "file_name": "af8e30da056d4e68a8afabfd13c8f1a5.png",
+    "file_size": 4929536,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa56a/HW55GK73TgNwXw8yqXCOQ_0db19a3785c14f4bbe6a00946cde3cc6.png",
+    "content_type": "image/png",
+    "file_name": "0db19a3785c14f4bbe6a00946cde3cc6.png",
+    "file_size": 1709661,
+    "width": null,
+    "height": null
+   }
+  ],
+  "layers": [
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa56a/g2OEvbTzkO455oBm6lJly_d8c039a130124259b575819b483e55e9.png",
+     "content_type": "image/png",
+     "file_name": "d8c039a130124259b575819b483e55e9.png",
+     "file_size": 5595528,
+     "width": null,
+     "height": null
+    },
+    "z_index": 0,
+    "bounding_box": null,
+    "name": null,
+    "description": null
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa56a/QnsmcVd8Qwmx8ksRk-uw4_5b6b244e4e274a8891c0f9fd2edc762e.png",
+     "content_type": "image/png",
+     "file_name": "5b6b244e4e274a8891c0f9fd2edc762e.png",
+     "file_size": 2561225,
+     "width": null,
+     "height": null
+    },
+    "z_index": 1,
+    "bounding_box": {
+     "absolute": [
+      0,
+      0,
+      4128,
+      331
+     ],
+     "normalized": [
+      0,
+      0,
+      1000,
+      430
+     ]
+    },
+    "name": "Far background: dusk sky, obsidian cliffs, distant trophy wall",
+    "description": "Extract the far background layer, including the purple dusk sky, distant glowing obsidian cliffs, and the far trophy wall with giant skulls, exclude all foreground and midground objects."
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa56a/6tFm4nVKtjlFcT4fNRs9Q_af8e30da056d4e68a8afabfd13c8f1a5.png",
+     "content_type": "image/png",
+     "file_name": "af8e30da056d4e68a8afabfd13c8f1a5.png",
+     "file_size": 4929536,
+     "width": null,
+     "height": null
+    },
+    "z_index": 2,
+    "bounding_box": {
+     "absolute": [
+      0,
+      0,
+      4128,
+      768
+     ],
+     "normalized": [
+      0,
+      0,
+      1000,
+      999
+     ]
+    },
+    "name": "Arena surrounding and framing elements",
+    "description": "Extract all elements standing behind and around the arena: ash drifts, obsidian shards, bear traps, nets, spear racks, trophy poles, the sign, bounty board, trophy rack, hunters' lodge with banners, cages and gong, and the near foreground framing pieces at the bottom, exclude far background and arena floor."
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa56a/HW55GK73TgNwXw8yqXCOQ_0db19a3785c14f4bbe6a00946cde3cc6.png",
+     "content_type": "image/png",
+     "file_name": "0db19a3785c14f4bbe6a00946cde3cc6.png",
+     "file_size": 1709661,
+     "width": null,
+     "height": null
+    },
+    "z_index": 3,
+    "bounding_box": {
+     "absolute": [
+      0,
+      471,
+      4128,
+      768
+     ],
+     "normalized": [
+      0,
+      613,
+      1000,
+      999
+     ]
+    },
+    "name": "Arena floor: pale ash and stone ground",
+    "description": "Extract the flat pale ash and stone arena floor, exclude all background and midground surrounding elements."
+   }
+  ]
+ },
+ "media": [
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa56a/g2OEvbTzkO455oBm6lJly_d8c039a130124259b575819b483e55e9.png",
+   "json_path": "result.images[0].url",
+   "output_path": "/images/0/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "d8c039a130124259b575819b483e55e9.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "output_path": "/images/0/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa56a/QnsmcVd8Qwmx8ksRk-uw4_5b6b244e4e274a8891c0f9fd2edc762e.png",
+   "json_path": "result.images[1].url",
+   "output_path": "/images/1/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "5b6b244e4e274a8891c0f9fd2edc762e.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "output_path": "/images/1/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa56a/6tFm4nVKtjlFcT4fNRs9Q_af8e30da056d4e68a8afabfd13c8f1a5.png",
+   "json_path": "result.images[2].url",
+   "output_path": "/images/2/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "af8e30da056d4e68a8afabfd13c8f1a5.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "output_path": "/images/2/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa56a/HW55GK73TgNwXw8yqXCOQ_0db19a3785c14f4bbe6a00946cde3cc6.png",
+   "json_path": "result.images[3].url",
+   "output_path": "/images/3/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "0db19a3785c14f4bbe6a00946cde3cc6.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "output_path": "/images/3/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa56a/g2OEvbTzkO455oBm6lJly_d8c039a130124259b575819b483e55e9.png",
+   "json_path": "result.layers[0].image.url",
+   "output_path": "/layers/0/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "d8c039a130124259b575819b483e55e9.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "output_path": "/layers/0/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa56a/QnsmcVd8Qwmx8ksRk-uw4_5b6b244e4e274a8891c0f9fd2edc762e.png",
+   "json_path": "result.layers[1].image.url",
+   "output_path": "/layers/1/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "5b6b244e4e274a8891c0f9fd2edc762e.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "output_path": "/layers/1/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa56a/6tFm4nVKtjlFcT4fNRs9Q_af8e30da056d4e68a8afabfd13c8f1a5.png",
+   "json_path": "result.layers[2].image.url",
+   "output_path": "/layers/2/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "af8e30da056d4e68a8afabfd13c8f1a5.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "output_path": "/layers/2/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa56a/HW55GK73TgNwXw8yqXCOQ_0db19a3785c14f4bbe6a00946cde3cc6.png",
+   "json_path": "result.layers[3].image.url",
+   "output_path": "/layers/3/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "0db19a3785c14f4bbe6a00946cde3cc6.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d2c-8759-7de1-99ca-1f2cc55c126c",
+     "output_path": "/layers/3/image/url"
+    }
+   }
+  }
+ ],
+ "display_hint": "Present completed media to the user. Forward attached image content blocks to the host's image display helper (for example, image(block)); do not stringify image blocks as text. For Markdown previews use previews[].preview_url, and separately link original_url as the full-resolution file. If no preview is available, show a clearly labeled original-file link. Do not claim a preview rendered unless it is visible. Video, audio and 3D URLs are original result files, not queue URLs.",
+ "next_steps": "Show it to the user: where the host renders MCP app UI, call show_media with this result, endpoint_id, request_id and recipe; otherwise present the media URLs. Then offer a next generation: variations (copy recipe.input and change the seed or prompt), an edit of this image, animating it into a video, or an upscale. Submit several variations together in one submit_jobs call. For a new operation on this output, call recommend_model with its URL as the source.",
+ "previews": [
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa56a/g2OEvbTzkO455oBm6lJly_d8c039a130124259b575819b483e55e9.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa56a%2Fg2OEvbTzkO455oBm6lJly_d8c039a130124259b575819b483e55e9.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  },
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa56a/QnsmcVd8Qwmx8ksRk-uw4_5b6b244e4e274a8891c0f9fd2edc762e.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa56a%2FQnsmcVd8Qwmx8ksRk-uw4_5b6b244e4e274a8891c0f9fd2edc762e.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  },
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa56a/6tFm4nVKtjlFcT4fNRs9Q_af8e30da056d4e68a8afabfd13c8f1a5.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa56a%2F6tFm4nVKtjlFcT4fNRs9Q_af8e30da056d4e68a8afabfd13c8f1a5.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  },
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa56a/HW55GK73TgNwXw8yqXCOQ_0db19a3785c14f4bbe6a00946cde3cc6.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa56a%2FHW55GK73TgNwXw8yqXCOQ_0db19a3785c14f4bbe6a00946cde3cc6.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  }
+ ]
+}

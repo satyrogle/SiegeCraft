@@ -1,0 +1,56 @@
+{
+ "take": "stop1-a",
+ "jobs": [
+  {
+   "tag": "stop1-a-mat5",
+   "split": 5,
+   "seed": 2026102011,
+   "prompt_id": "5fcba585-9166-4e02-9cf8-fb33c8c3a943"
+  },
+  {
+   "tag": "stop1-a-mat8",
+   "split": 8,
+   "seed": 2026102012,
+   "prompt_id": "b65020d3-9512-417c-b142-a0e46aff9544"
+  }
+ ],
+ "prompt": {
+  "high_level_description": "The bare outskirts of Bloodridge, the first stop on the road into an ancient burial land, preserving the exact existing composition and the oblique 2.5D battle camera. Fine controlled dusty hand-painted pixel clusters, exactly like the ruined burial court of the same region. Sparse and quiet, few built things, but every surface has worn natural detail. The right edge already shows the low burial wall, the giant dead root tree and its dark seep pool; everything continues into them.",
+  "compositional_deconstruction": {
+   "background": "A rough old fieldstone boundary wall of the burial land, eroded and slumped, with a few dark grave niches, ash drifted against its foot and dry roots creeping over it. Eroded sepia limestone, ash brown midtones, muted grey-mauve shadows, restrained tarnished bronze. Soft stepped colour clusters, chipped corners and broken edges; contours are described by materials and shadows, never heavy ink.",
+   "elements": [
+    {
+     "type": "obj",
+     "bbox": [
+      600,
+      140,
+      760,
+      330
+     ],
+     "desc": "The single landmark: one leaning burial marker stone with two dull corroded bronze bands, on a low mound of packed ash and small stones."
+    },
+    {
+     "type": "obj",
+     "bbox": [
+      0,
+      300,
+      1728,
+      768
+     ],
+     "desc": "The broad fighting ground stays open and calm but is never an empty flat sheet: a worn track of packed ash runs from the left toward the dark pool and the root tree on the right, cracked dry silt plates, small scattered stones and bone chips, ash drifts, thin pale roots breaking the surface, a few old grave slabs sunk at angles into the ground with chipped edges. Low contrast so fighters read clearly on it."
+    },
+    {
+     "type": "obj",
+     "bbox": [
+      0,
+      230,
+      1728,
+      330
+     ],
+     "desc": "Sparse clumps of dry rust coloured reeds and small pale thorn fans at the wall foot, thicker toward the pool."
+    }
+   ]
+  }
+ },
+ "negative": "thick black outline, black ink, comic book, Minecraft, voxel, cubic blocks, clean rectangular bricks, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, low-detail game icon, noisy dithering, photograph, realistic 3D render, polished new masonry, flat empty ground, detached cutout, floating building, separate panels, text, watermark, people, creatures, green plants"
+}

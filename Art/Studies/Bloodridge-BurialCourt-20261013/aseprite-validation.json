@@ -1,0 +1,22 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Clean (1 style note(s)).\n[warning] palette: 172 colour(s) in the art are not in the palette; the most used is #27150e (8228px). Run recolor op 'snap' to bring them in line."
+    }
+  ],
+  "structuredContent": {
+    "sprite": "burial-court.aseprite",
+    "findings": [
+      {
+        "check": "palette",
+        "message": "172 colour(s) in the art are not in the palette; the most used is #27150e (8228px). Run recolor op 'snap' to bring them in line.",
+        "count": 172,
+        "severity": "warning"
+      }
+    ],
+    "passed": true,
+    "score": 95,
+    "summary": "Clean (1 style note(s))."
+  }
+}

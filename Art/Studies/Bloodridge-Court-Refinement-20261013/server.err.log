@@ -1,0 +1,1018 @@
+127.0.0.1 - - [13/Oct/2026 15:00:02] "GET /review.html HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:19] "GET /review.html HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:19] "GET /battle-screen.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:19] "GET /frames/frame-01.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:19] "GET /frames/frame-02.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:19] "GET /frames/frame-03.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:19] "GET /frames/frame-04.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:19] "GET /frames/frame-05.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:19] "GET /frames/frame-06.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-07.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-08.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-09.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-10.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-11.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-12.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-13.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-14.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-15.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-16.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-17.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-18.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-19.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-20.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-21.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-22.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-23.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-24.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-25.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-26.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-27.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-29.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-28.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-30.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-31.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:20] "GET /frames/frame-32.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:00:21] code 404, message File not found
+127.0.0.1 - - [13/Oct/2026 15:00:21] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 15:02:05] "GET /previous-pass.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:06:53] "GET /frames/frame-32.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:53] "GET /frames/frame-01.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:53] "GET /frames/frame-02.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:53] "GET /frames/frame-03.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:53] "GET /frames/frame-04.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:53] "GET /frames/frame-05.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:53] "GET /frames/frame-06.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:54] "GET /frames/frame-07.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:54] "GET /frames/frame-08.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:54] "GET /frames/frame-09.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:54] "GET /frames/frame-10.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:54] "GET /frames/frame-11.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:54] "GET /frames/frame-12.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:54] "GET /frames/frame-13.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:54] "GET /frames/frame-14.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:55] "GET /frames/frame-15.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:55] "GET /frames/frame-16.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:55] "GET /frames/frame-17.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:55] "GET /frames/frame-18.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:55] "GET /frames/frame-19.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:55] "GET /frames/frame-20.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:55] "GET /frames/frame-21.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:55] "GET /frames/frame-22.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:56] "GET /frames/frame-23.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:56] "GET /frames/frame-24.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:56] "GET /frames/frame-25.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:56] "GET /frames/frame-26.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:56] "GET /frames/frame-27.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:56] "GET /frames/frame-28.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:56] "GET /frames/frame-29.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:56] "GET /frames/frame-30.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:06:57] "GET /frames/frame-31.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:07:56] "GET /audit.json HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:08:17] "GET /frames/frame-32.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:17] "GET /frames/frame-02.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:17] "GET /frames/frame-03.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:17] "GET /frames/frame-04.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:17] "GET /frames/frame-05.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:17] "GET /frames/frame-06.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:18] "GET /frames/frame-09.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:18] "GET /frames/frame-10.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:18] "GET /frames/frame-11.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:18] "GET /frames/frame-12.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:18] "GET /frames/frame-13.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:18] "GET /frames/frame-14.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:19] "GET /frames/frame-17.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:19] "GET /frames/frame-18.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:19] "GET /frames/frame-19.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:19] "GET /frames/frame-20.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:19] "GET /frames/frame-21.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:19] "GET /frames/frame-22.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:20] "GET /frames/frame-25.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:20] "GET /frames/frame-26.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:20] "GET /frames/frame-27.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:20] "GET /frames/frame-28.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:20] "GET /frames/frame-29.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:20] "GET /frames/frame-30.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:21] "GET /frames/frame-01.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:22] "GET /frames/frame-07.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:22] "GET /frames/frame-08.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:23] "GET /frames/frame-15.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:23] "GET /frames/frame-16.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:24] "GET /frames/frame-23.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:24] "GET /frames/frame-24.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:08:25] "GET /frames/frame-31.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:52] "GET /frames/frame-29.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:52] "GET /frames/frame-30.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:54] "GET /frames/frame-13.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:55] "GET /frames/frame-17.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:54] "GET /frames/frame-14.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:55] "GET /frames/frame-21.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:55] "GET /frames/frame-19.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:56] "GET /frames/frame-26.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:56] "GET /frames/frame-28.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:56] "GET /frames/frame-29.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:55] "GET /frames/frame-22.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:57] "GET /frames/frame-02.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:57] "GET /frames/frame-04.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:57] "GET /frames/frame-05.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:58] "GET /frames/frame-07.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:58] "GET /frames/frame-09.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:56] "GET /frames/frame-27.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:58] "GET /frames/frame-12.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:55] "GET /frames/frame-20.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:59] "GET /frames/frame-17.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:59] "GET /frames/frame-18.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:59] "GET /frames/frame-20.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:59] "GET /frames/frame-22.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:00] "GET /frames/frame-25.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:00] "GET /frames/frame-27.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:00] "GET /frames/frame-29.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:00] "GET /frames/frame-30.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:01] "GET /frames/frame-01.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:01] "GET /frames/frame-03.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:01] "GET /frames/frame-05.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:56] "GET /frames/frame-25.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:10:02] "GET /frames/frame-07.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:02] "GET /frames/frame-08.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:02] "GET /frames/frame-10.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:58] "GET /frames/frame-10.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:10:02] "GET /frames/frame-12.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:02] "GET /frames/frame-13.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:02] "GET /frames/frame-14.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:03] "GET /frames/frame-17.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:59] "GET /frames/frame-19.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:03] "GET /frames/frame-20.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:59] "GET /frames/frame-21.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:57] "GET /frames/frame-01.png HTTP/1.1" 304 -
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 15:10:00] "GET /frames/frame-28.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:57] "GET /frames/frame-03.png HTTP/1.1" 304 -
+----------------------------------------
+----------------------------------------
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 15:10:01] "GET /frames/frame-06.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:57] "GET /frames/frame-06.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:58] "GET /frames/frame-08.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:10:02] "GET /frames/frame-09.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:02] "GET /frames/frame-11.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:09:58] "GET /frames/frame-11.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:09:58] "GET /frames/frame-13.png HTTP/1.1" 200 -
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 15:10:00] "GET /frames/frame-26.png HTTP/1.1" 200 -
+----------------------------------------
+----------------------------------------
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 15:10:01] "GET /frames/frame-02.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:01] "GET /frames/frame-04.png HTTP/1.1" 200 -
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 15:09:56] "GET /frames/frame-30.png HTTP/1.1" 200 -
+Exception occurred during processing of request from ('127.0.0.1', 60223)
+Exception occurred during processing of request from ('127.0.0.1', 60224)
+Exception occurred during processing of request from ('127.0.0.1', 60225)
+Exception occurred during processing of request from ('127.0.0.1', 60226)
+Exception occurred during processing of request from ('127.0.0.1', 60198)
+Exception occurred during processing of request from ('127.0.0.1', 60200)
+Exception occurred during processing of request from ('127.0.0.1', 60201)
+Exception occurred during processing of request from ('127.0.0.1', 60204)
+Exception occurred during processing of request from ('127.0.0.1', 60207)
+Exception occurred during processing of request from ('127.0.0.1', 60209)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60212)
+----------------------------------------
+----------------------------------------
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 15:09:58] "GET /frames/frame-14.png HTTP/1.1" 200 -
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 15:10:03] "GET /frames/frame-21.png HTTP/1.1" 200 -
+Exception occurred during processing of request from ('127.0.0.1', 60179)
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60215)
+Exception occurred during processing of request from ('127.0.0.1', 60219)
+Exception occurred during processing of request from ('127.0.0.1', 60221)
+127.0.0.1 - - [13/Oct/2026 15:10:03] "GET /frames/frame-18.png HTTP/1.1" 200 -
+Exception occurred during processing of request from ('127.0.0.1', 60195)
+Exception occurred during processing of request from ('127.0.0.1', 60180)
+Exception occurred during processing of request from ('127.0.0.1', 60197)
+Exception occurred during processing of request from ('127.0.0.1', 60202)
+Exception occurred during processing of request from ('127.0.0.1', 60211)
+Exception occurred during processing of request from ('127.0.0.1', 60214)
+Exception occurred during processing of request from ('127.0.0.1', 60217)
+Exception occurred during processing of request from ('127.0.0.1', 60220)
+----------------------------------------
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60213)
+Exception occurred during processing of request from ('127.0.0.1', 60218)
+127.0.0.1 - - [13/Oct/2026 15:10:03] "GET /frames/frame-19.png HTTP/1.1" 200 -
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60216)
+Exception occurred during processing of request from ('127.0.0.1', 60196)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60205)
+Exception occurred during processing of request from ('127.0.0.1', 60222)
+Exception occurred during processing of request from ('127.0.0.1', 60199)
+Exception occurred during processing of request from ('127.0.0.1', 60208)
+Exception occurred during processing of request from ('127.0.0.1', 60229)
+Exception occurred during processing of request from ('127.0.0.1', 60227)
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+Traceback (most recent call last):
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+127.0.0.1 - - [13/Oct/2026 15:10:03] "GET /frames/frame-22.png HTTP/1.1" 200 -
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+Traceback (most recent call last):
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+127.0.0.1 - - [13/Oct/2026 15:10:04] "GET /frames/frame-23.png HTTP/1.1" 304 -
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+----------------------------------------
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 1326, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 440, in handle
+    self.handle_one_request()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+127.0.0.1 - - [13/Oct/2026 15:10:04] "GET /frames/frame-24.png HTTP/1.1" 304 -
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 428, in handle_one_request
+    method()
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 683, in do_GET
+    self.copyfile(f, self.wfile)
+----------------------------------------
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\http\server.py", line 882, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+----------------------------------------
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+----------------------------------------
+----------------------------------------
+  File "C:\Users\jacob\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+----------------------------------------
+----------------------------------------
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 15:10:04] "GET /frames/frame-25.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:04] "GET /frames/frame-26.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:04] "GET /frames/frame-27.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:04] "GET /frames/frame-28.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:04] "GET /frames/frame-29.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:04] "GET /frames/frame-30.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:05] "GET /frames/frame-31.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:10:05] "GET /frames/frame-32.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:10:05] "GET /frames/frame-01.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:05] "GET /frames/frame-02.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:05] "GET /frames/frame-03.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:05] "GET /frames/frame-04.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:05] "GET /frames/frame-05.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:05] "GET /frames/frame-06.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:06] "GET /frames/frame-07.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:06] "GET /frames/frame-08.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:06] "GET /frames/frame-09.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:06] "GET /frames/frame-10.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:06] "GET /frames/frame-11.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:06] "GET /frames/frame-12.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:06] "GET /frames/frame-13.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:06] "GET /frames/frame-14.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:07] "GET /frames/frame-15.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:10:07] "GET /frames/frame-16.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 15:10:07] "GET /frames/frame-17.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:07] "GET /frames/frame-18.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 15:10:07] "GET /frames/frame-19.png HTTP/1.1" 200 -

@@ -1,0 +1,38 @@
+{
+ "in": "opt1a",
+ "out": "opt1",
+ "mode": "repaint",
+ "win": [
+  1216,
+  0,
+  2912,
+  768
+ ],
+ "zone": [
+  1376,
+  330,
+  2752,
+  372
+ ],
+ "split": 3,
+ "seed": 2026102152,
+ "prompt": {
+  "high_level_description": "Repair one band of an existing pixel art background of a ruined burial grove. Keep the exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters of the existing image. A low broken stone kerb runs along the back of the paved floor, edging the terrace off from the ruins behind: worn stones half sunk in ash, a little dry grass along it. Behind the kerb the walls, stairs and the giant dead root tree stand back; nothing crosses onto the floor in front of it.",
+  "compositional_deconstruction": {
+   "background": "The same ruins and root tree behind the kerb, their bases ending behind it.",
+   "elements": [
+    {
+     "type": "obj",
+     "bbox": [
+      378,
+      94,
+      484,
+      905
+     ],
+     "desc": "A low broken kerb of worn stones edging the paved floor, with the bases of the ruins and roots ending behind it."
+    }
+   ]
+  }
+ },
+ "negative": "roots across the floor, rubble on the floor, people, person, warrior, figure, character, statue, text, watermark, thick black outline, black ink, comic book, voxel, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render"
+}

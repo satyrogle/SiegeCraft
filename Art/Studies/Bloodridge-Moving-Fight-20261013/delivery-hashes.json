@@ -1,0 +1,17 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "BFEF5FAFF231F715A1B9A6CC0B831D2EC81EB4218F7E1E233CC46F79019A85EA",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Builds\\Bloodridge-Moving-Review-20261013\\KindredSiegeCampaign_Data\\Managed\\Assembly-CSharp.dll"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "0994B0510E3A51F9BCBA7A53C3E53A48AAEAEDAE724027BA0DE3E7D30D39F475",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Assets\\Scripts\\Slice\\CampaignArtBloodridgeReview.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "CDEE582779884999F65743ADC5E1B6631FDDDDAB3DAA218C6019873D075A2910",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Bloodridge-Moving-Fight-20261013\\candidate\\bloodridge-moving-fight.mp4"
+  }
+]

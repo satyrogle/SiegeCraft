@@ -1,0 +1,151 @@
+{
+ "old": {
+  "1": {
+   "far_%": 3.8,
+   "floor_line": 354,
+   "bands": {
+    "head": [
+     0.324,
+     34.7
+    ],
+    "fight": [
+     0.124,
+     17.1
+    ]
+   }
+  },
+  "2": {
+   "far_%": 2.0,
+   "floor_line": 352,
+   "bands": {
+    "head": [
+     0.34,
+     40.9
+    ],
+    "fight": [
+     0.134,
+     32.5
+    ]
+   }
+  },
+  "3": {
+   "far_%": 1.1,
+   "floor_line": 398,
+   "bands": {
+    "head": [
+     0.326,
+     36.1
+    ],
+    "fight": [
+     0.171,
+     39.0
+    ]
+   }
+  },
+  "4": {
+   "far_%": 0.0,
+   "floor_line": 353,
+   "bands": {
+    "head": [
+     0.338,
+     10.2
+    ],
+    "fight": [
+     0.146,
+     7.4
+    ]
+   }
+  }
+ },
+ "new": {
+  "1": {
+   "floor_line": 354,
+   "far_%_sky1": 16.9,
+   "far_%_sky2": 13.6,
+   "far_%_sky3": 13.5,
+   "bands_sky1_floor1": {
+    "head": [
+     0.325,
+     34.7
+    ],
+    "fight": [
+     0.124,
+     17.1
+    ]
+   }
+  },
+  "2": {
+   "floor_line": 352,
+   "far_%_sky1": 11.7,
+   "far_%_sky2": 4.9,
+   "far_%_sky3": 13.7,
+   "bands_sky1_floor1": {
+    "head": [
+     0.34,
+     40.9
+    ],
+    "fight": [
+     0.134,
+     25.3
+    ]
+   }
+  },
+  "3": {
+   "floor_line": 353,
+   "far_%_sky1": 6.8,
+   "far_%_sky2": 1.9,
+   "far_%_sky3": 6.5,
+   "bands_sky1_floor1": {
+    "head": [
+     0.331,
+     5.5
+    ],
+    "fight": [
+     0.093,
+     0.0
+    ]
+   },
+   "bands_floor2": {
+    "head": [
+     0.331,
+     6.3
+    ],
+    "fight": [
+     0.143,
+     6.5
+    ]
+   },
+   "bands_floor3": {
+    "head": [
+     0.331,
+     5.5
+    ],
+    "fight": [
+     0.093,
+     0.0
+    ]
+   }
+  },
+  "4": {
+   "floor_line": 353,
+   "far_%_sky1": 0.0,
+   "far_%_sky2": 0.0,
+   "far_%_sky3": 0.0,
+   "bands_sky1_floor1": {
+    "head": [
+     0.338,
+     10.2
+    ],
+    "fight": [
+     0.146,
+     7.4
+    ]
+   }
+  }
+ },
+ "far_layer": {
+  "colours": 9,
+  "ridge_spread": 0.069,
+  "mirror": false
+ }
+}

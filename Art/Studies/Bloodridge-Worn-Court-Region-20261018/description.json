@@ -1,0 +1,49 @@
+{
+  "aspect_ratio": "3:2",
+  "high_level_description": "Detailed atmospheric PIXEL ART scenery for a 2.5D sprite game: one continuous Bloodridge region, with the aged, irregular, dusty craftsmanship of an ancient ruined burial court. A mostly bare approach at lower left leads physically through modest burial ruins to a more elaborate final chief courtyard and gateway at upper right. The material language is weathered ash-brown limestone, irregular cracked slabs, eroded stone courses, chipped corners, dusty rubble, muted grey-mauve shadows, dark tarnished bronze and thick twisted dead roots. Rich but restrained hand-placed pixel clusters, subtle broken colour ramps, organically irregular silhouettes. Architecture is ancient, worn and partly collapsed. A fixed three-quarter oblique game camera shows tops and fronts, consistent 2.5D ground projection and pixel scale. The full region is one connected scene with open walkable ground. The look is subdued, gritty and timeworn rather than a bright clean cartoon.",
+  "compositional_deconstruction": {
+    "background": "A single continuous shallow rocky basin fills the entire pixel-art canvas. The shared ground plane and paths join all locations. Low natural edges are jagged eroded strata of mixed sizes, partly buried in dirt and dust, with rubble concentrated at their feet. Stone courses are uneven and weathered; colour shifts and shadow clusters define edges instead of thick ink contours. The ground is broad and quiet with irregular worn flagstones, fractures and ash. Tightly controlled low-saturation dusty sepia and ash-brown stone with grey-mauve shadows and small muted bronze details. Lighting is soft upper-right daylight described with hard pixel clusters and subtle stepped ramps. Naturalistic stone proportions within visibly hand-drawn pixel art, not photographic rendering. The rear boundary is low ruined masonry and natural rock; all open clearings belong to the same connected floor.",
+    "elements": [
+      {
+        "type": "obj",
+        "bbox": [
+          80,
+          0,
+          1000,
+          1000
+        ],
+        "desc": "ONE connected pixel-art ground plane from lower left to upper right. The left third is an almost bare flat ash-earth clearing: only sparse small stone fragments and ONE small eroded marker at the edge. Few marks on this floor, with broad quiet pixel-colour areas. A continuous ground-level trail leads across the image, with short natural forks around low worn outcrops that rejoin the main route. It gradually acquires irregular broken flat slabs, then more complete courtyard paving toward the upper right. Gently sloping shallow terrain keeps the route visibly walkable. Every clearing joins the same floor; there are no isolated upper platforms. Preserve the empty beginning and generous playable floor throughout."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          300,
+          300,
+          610,
+          600
+        ],
+        "desc": "Modest early burial ruins at the edge of the connected route: two small recessed niches with worn carved lintels in uneven old masonry, one short partly collapsed wall and a few shallow broken steps. Edges are chipped and irregular, stones vary in size and angle, dusty rubble collects near the wall foot. Muted dry brown and grey-violet pixel clusters. Ornamental details are faint, rubbed away and understated. The buildings are low and small, leaving the surrounding floor open and simple."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          220,
+          550,
+          620,
+          820
+        ],
+        "desc": "The middle and later section grows into an aged burial court similar to an old hand-pixelled ruined temple background. Irregular broad cracked stone slabs, partially sunk paving, broken low parapets, narrow deep burial niches and weathered carved stone frames. Thick knotted roots curl around the walls and disappear into the cracks. Bronze fittings are dark, dull and corroded, cloth is sparse and rotted. Rough silhouettes and selectively textured pixel clusters convey erosion. Surfaces feel dusty, solemn and ancient, with no crisp black cartoon contours. Connect this court directly to the earlier bare ground through the same floor and low shallow steps."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          70,
+          750,
+          570,
+          1000
+        ],
+        "desc": "The terminal chief courtyard and gateway at far upper right are the most developed part of the region, yet equally worn and dusty. An imposing ancient Egyptian-inspired stone entrance with weathered tall jambs, a dark recessed opening, cracked chipped stone facing, a tiny dark bronze emblem and sparse torn cloth. Its side masonry is uneven and partly collapsed. Thick dry roots grip a damaged corner. A broad open courtyard of irregular cracked slabs lies in front; the route visibly ends here. Subdued ash-brown and grey-mauve pixel-art shading, fine deliberate weathered pixel clusters and broken edges. Avoid neat repeated blocks. Architectural richness increases toward this gateway while sharing exactly the same worn material language as the simpler beginning."
+      }
+    ]
+  }
+}

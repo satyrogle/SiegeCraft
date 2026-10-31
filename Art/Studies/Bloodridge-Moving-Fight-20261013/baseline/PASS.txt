@@ -1,0 +1,21 @@
+PASS moving review reaches Bloodridge chief through real campaign progression
+PASS independent resumed simulation for every captured tick
+PASS scenery is opt-in, with default stage available for comparison
+PASS real HUD order raycast at frame 60
+PASS reference receives the same HUD command
+PASS pause control remains clickable
+PASS pause freezes fight, cloth and ash together
+PASS resume control remains clickable
+PASS real HUD order raycast at frame 180
+PASS live fighter target raycast through scenery
+PASS reference receives the same HUD command
+PASS real HUD order raycast at frame 360
+PASS reference receives the same HUD command
+PASS real HUD order raycast at frame 540
+PASS reference receives the same HUD command
+PASS moving review captures the complete authoritative fight and three seconds of settling
+PASS actual attacks, numbers, pause and live targeting exercised
+PASS stage shake settles; HUD remains on its original parent
+PASS review texture lifetime is bounded
+Moving review: 1981 frames at 30 fps; max simultaneous numbers=12; save=C:/Users/jacob/KindredSiege-Clean/Art/Studies/Bloodridge-Moving-Fight-20261013/baseline\campaign_art_loop.txt
+PASS leaving Bloodridge releases review textures and keeps tutorial stage unchanged

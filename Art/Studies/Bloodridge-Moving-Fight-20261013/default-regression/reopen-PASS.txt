@@ -1,0 +1,3 @@
+Reopened the save: Seed 21. Tribes with you: Clarth. Runs started 2, won 2. Materials 300. Bloodridge: 35 lessons about you. Skullpeak: 36 lessons about you.
+PASS continue button raycast in second process
+PASS actual process restart preserves roster, materials, codex and learned state

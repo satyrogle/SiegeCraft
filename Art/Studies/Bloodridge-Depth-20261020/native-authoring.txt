@@ -1,0 +1,5 @@
+Native Aseprite Lua. Source colors: 174.
+No frame resizing. Original court core retained.
+New local hidden floor appears only through the extraction mask.
+Near wash framing moved down 144 px to clear formation feet.
+Animation source references are not finished clips.

@@ -1,0 +1,251 @@
+{
+ "what": "Bloodridge journey, take 3 (21 Oct): one strip, four places, march between them, built on Jacob's three layer rule. Mock values for Codex to wire; Jacob approves.",
+ "layers": {
+  "1_static": "bloodridge-stops-strip.png: scenery and battle floor, 1x. Each stop's view is a 1376x768 crop at (x, tilt), shown in the stage at (32,66) of the 1440x900 fight frame.",
+  "2_minimal_animation": {
+   "ash": "300 specks of 1 to 2 px in three tones (222,206,184), (178,155,134), (92,78,80); drift left 14 to 34 px/s, sink 2 to 6 px/s, sway 1 to 3 px at 0.4 to 0.9 Hz; world anchored; only in the top 285 stage rows, behind the fighters, like the court's own ash; denser in the outskirts (1.0), grove 0.7, crypt 0.3, court 0.6",
+   "banners": "bloodridge-banner-cult.png and -2.png alternate at 4 fps on cleared places",
+   "court": "the court's own linen loop and near layer from Assets/StreamingAssets/CampaignArt/Bloodridge, as the game draws them, in front of the fighters"
+  },
+  "3_battle": "fighters on the open floor; every back row stands below the scenery line at all four stops"
+ },
+ "strip": {
+  "file": "bloodridge-stops-strip.png",
+  "size": [
+   5104,
+   848
+  ],
+  "colours": 174
+ },
+ "stops": [
+  {
+   "index": 1,
+   "x": 0,
+   "tilt": 0,
+   "view": "stop1.png",
+   "name_placeholder": "THE OUTER GRAVES",
+   "banner_stage_xy": [
+    990,
+    382
+   ],
+   "their_spots_screen_feet_mock": [
+    [
+     860,
+     430
+    ],
+    [
+     1030,
+     520
+    ],
+    [
+     850,
+     690
+    ],
+    [
+     1040,
+     650
+    ]
+   ]
+  },
+  {
+   "index": 2,
+   "x": 1376,
+   "tilt": 40,
+   "view": "stop2.png",
+   "name_placeholder": "THE ROOT GROVE",
+   "banner_stage_xy": [
+    1190,
+    384
+   ],
+   "their_spots_screen_feet_mock": [
+    [
+     840,
+     420
+    ],
+    [
+     1020,
+     430
+    ],
+    [
+     850,
+     570
+    ],
+    [
+     1030,
+     560
+    ],
+    [
+     1160,
+     640
+    ]
+   ]
+  },
+  {
+   "index": 3,
+   "x": 2376,
+   "tilt": 60,
+   "view": "stop3.png",
+   "name_placeholder": "THE SUNKEN CRYPT",
+   "banner_stage_xy": [
+    700,
+    384
+   ],
+   "their_spots_screen_feet_mock": [
+    [
+     840,
+     420
+    ],
+    [
+     1020,
+     420
+    ],
+    [
+     840,
+     565
+    ],
+    [
+     1020,
+     540
+    ],
+    [
+     840,
+     700
+    ],
+    [
+     1160,
+     630
+    ]
+   ]
+  },
+  {
+   "index": 4,
+   "x": 3728,
+   "tilt": 0,
+   "view": "stop4.png",
+   "name_placeholder": "THE CHIEF'S COURT",
+   "banner_stage_xy": [
+    905,
+    336
+   ],
+   "their_spots_screen_feet_mock": [
+    [
+     840,
+     420
+    ],
+    [
+     1020,
+     420
+    ],
+    [
+     840,
+     565
+    ],
+    [
+     1020,
+     540
+    ],
+    [
+     835,
+     700
+    ],
+    [
+     1160,
+     625
+    ]
+   ]
+  }
+ ],
+ "road_mapping": "rows 1 to 3 of a tribe's road map to stops 1 to 3 whatever the lane; the chief's node is stop 4",
+ "ours_screen_feet_mock": {
+  "leader": [
+   250,
+   645
+  ],
+  "fighters": [
+   [
+    "zealot",
+    420,
+    420
+   ],
+   [
+    "shieldspear",
+    600,
+    415
+   ],
+   [
+    "preacher",
+    420,
+    565
+   ],
+   [
+    "tank",
+    420,
+    700
+   ],
+   [
+    "bearer",
+    590,
+    705
+   ]
+  ]
+ },
+ "march": {
+  "top_speed_px_s": 300.0,
+  "ease_in_s": 0.6,
+  "ease_out_s": 0.8,
+  "whole_pixels": true,
+  "camera": "the army keeps its formation on screen; the strip slides under it; tilt eases between stops; scroll only goes forward",
+  "legs": "run frames advance with ground covered, one frame per measured stride, not per tick; idle below 25 px/s",
+  "run_clip_skip_frames": {
+   "hookhunter": 8,
+   "bladedancer": 5,
+   "zealot": 5,
+   "raider": 4,
+   "shieldspear": 4,
+   "tank": 4,
+   "preacher": 2,
+   "bearer": 4
+  },
+  "strides_px_per_frame": {
+   "zealot": 23.2,
+   "shieldspear": 15.2,
+   "preacher": 11.0,
+   "tank": 18.2,
+   "bearer": 16.0,
+   "leader": 5.8
+  },
+  "posture": "starting values to test by watching, not sourced"
+ },
+ "fight_lock": {
+  "orders_bar": "from 0.3 s before the fight to the clear",
+  "after_clear_s": {
+   "banner_drop_frames": 4,
+   "ash_puff_s": 0.4,
+   "go_blink_s": [
+    0.3,
+    1.5
+   ],
+   "march_starts_s": 1.1
+  }
+ },
+ "tracker": {
+  "node_x_screen": [
+   470,
+   630,
+   790,
+   950
+  ],
+  "y_screen": 40,
+  "states": {
+   "ahead": "dim ring",
+   "here": "bone ring, blinking",
+   "cleared": "gold square",
+   "chief": "red diamond from the start, gold when cleared"
+  }
+ },
+ "video": {
+  "file": "journey-bloodridge.mp4",
+  "seconds": 45.25,
+  "fps": 60
+ }
+}

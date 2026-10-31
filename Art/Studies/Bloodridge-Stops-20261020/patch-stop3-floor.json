@@ -1,0 +1,19 @@
+{
+  "in": "s3tone",
+  "out": "s3floor",
+  "mode": "repaint",
+  "win": [2976, 0, 4064, 768],
+  "zone": [3320, 370, 3860, 640],
+  "split": 3,
+  "seed": 2026102102,
+  "prompt": {
+    "high_level_description": "Repair one part of an existing pixel art battle background, keeping its exact palette, light, scale and oblique 2.5D camera. Here the worn flagstone floor of a ruined burial court simply continues: large irregular pale grey-mauve flagstones with ash and dust in the joints, a few small pebbles, and the shallow dark seep of water by the roots. No plants, no bushes, no scrub, no white branches. Calm and readable, because fighters stand here. Fine controlled dusty hand-painted pixel clusters like the rest of the image.",
+    "compositional_deconstruction": {
+      "background": "The same flagstone floor as the surrounding image, continuing under the masked area with matching stone sizes, joints and light from the upper left.",
+      "elements": [
+        {"type": "obj", "bbox": [482, 317, 833, 813], "desc": "Open flagstone floor with ash filled joints and small pebbles, matching the stones around it; a thin shallow dark seep at the upper left edge near the roots."}
+      ]
+    }
+  },
+  "negative": "bush, scrub, shrub, white branches, coral, dead plant, grass, flowers, thick black outline, black ink, comic book, voxel, clean rectangular bricks, tiles grid, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render, text, watermark, people"
+}

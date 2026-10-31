@@ -1,0 +1,17 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "83B7A05B1DED1830F0F59D84FCF809152DAE5E062594C8029B19F82804B91378",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Assets\\Scripts\\Slice\\CampaignArtBattle.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "F3607B995A8376C72B6BE4E3D88DFEE9DD91DCE57484627C7A0D05D15FE98FF2",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Assets\\Scripts\\Slice\\CampaignArtValidation.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "5D8D1DE45F136F7EF023A1D89B0DD48D94B621F2A58CFD9E734C12B704373AAF",
+    "Path": "C:\\Users\\jacob\\KindredSiege-Clean\\Assets\\Scripts\\Slice\\CampaignArtLoop.cs"
+  }
+]

@@ -1,0 +1,651 @@
+{
+ "frames": [
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 0.png",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 1.png",
+   "frame": {
+    "x": 1024,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 2.png",
+   "frame": {
+    "x": 2048,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 3.png",
+   "frame": {
+    "x": 3072,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 4.png",
+   "frame": {
+    "x": 4096,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 5.png",
+   "frame": {
+    "x": 5120,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 6.png",
+   "frame": {
+    "x": 0,
+    "y": 600,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 7.png",
+   "frame": {
+    "x": 1024,
+    "y": 600,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 8.png",
+   "frame": {
+    "x": 2048,
+    "y": 600,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 9.png",
+   "frame": {
+    "x": 3072,
+    "y": 600,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 10.png",
+   "frame": {
+    "x": 4096,
+    "y": 600,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 11.png",
+   "frame": {
+    "x": 5120,
+    "y": 600,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 12.png",
+   "frame": {
+    "x": 0,
+    "y": 1200,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 13.png",
+   "frame": {
+    "x": 1024,
+    "y": 1200,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 14.png",
+   "frame": {
+    "x": 2048,
+    "y": 1200,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 15.png",
+   "frame": {
+    "x": 3072,
+    "y": 1200,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 16.png",
+   "frame": {
+    "x": 4096,
+    "y": 1200,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 17.png",
+   "frame": {
+    "x": 5120,
+    "y": 1200,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 18.png",
+   "frame": {
+    "x": 0,
+    "y": 1800,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 19.png",
+   "frame": {
+    "x": 1024,
+    "y": 1800,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 20.png",
+   "frame": {
+    "x": 2048,
+    "y": 1800,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 21.png",
+   "frame": {
+    "x": 3072,
+    "y": 1800,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 22.png",
+   "frame": {
+    "x": 4096,
+    "y": 1800,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  },
+  {
+   "filename": "ks-bloodridge-court-restrained-ash-review 23.png",
+   "frame": {
+    "x": 5120,
+    "y": 1800,
+    "w": 1024,
+    "h": 600
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 600
+   },
+   "sourceSize": {
+    "w": 1024,
+    "h": 600
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "duration": 125
+  }
+ ],
+ "meta": {
+  "app": "PixelLab VFX Creator",
+  "image": "ks-bloodridge-court-restrained-ash-review-1.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 6144,
+   "h": 2400
+  },
+  "scale": "1",
+  "anchor": {
+   "kind": "origin",
+   "x": 512,
+   "y": 300
+  },
+  "frameTags": [
+   {
+    "name": "ks-bloodridge-court-restrained-ash-review",
+    "from": 0,
+    "to": 23,
+    "direction": "forward"
+   }
+  ]
+ }
+}

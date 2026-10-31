@@ -1,0 +1,222 @@
+{
+  "prompt": [
+    170,
+    "9c9a7596-8797-44c7-af54-10b91f281a22",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+          "strength_model": 1.0
+        }
+      },
+      "3": {
+        "class_type": "ModelSamplingAuraFlow",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "shift": 3.0
+        }
+      },
+      "4": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "type": "qwen_image",
+          "device": "default"
+        }
+      },
+      "5": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "qwen_image_vae.safetensors"
+        }
+      },
+      "6": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-bloodridge-root-crypt-20261019/crypt.png"
+        }
+      },
+      "9": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "Edit only the selected upper scenery. Keep this exact pixel-art drawing style, fine stone chips and clusters, sepia limestone, muted violet-brown shadows and old corroded bronze. Keep the entire existing battle floor, the root grove at the left edge and the original court on the right unchanged. This is ONE physically connected Bloodridge burial complex, not separate pictures.\nReplace the repetitive row of tomb doors and staircases in the middle with ONE dramatic SUNKEN ROOT CRYPT. A huge ancient cracked lintel has partly collapsed into the eroded burial cliff. Thick calcified roots curve over it into a low asymmetrical arch, like the exposed ribs of a dead tree gripping a ruined roof. The arch frames one deep shadowed recess, with shallow broken steps descending into it BEHIND the clear fighting ground. At one side the broken stone roof opens to dusty light. The other side is close and root-choked. Weathered burial carvings are almost rubbed away, stone faces are irregular and chipped, small old bronze braces are dull, half buried and corroded. No new tall boss gate: the original court at far right remains the destination.\nMake the same roots from the preserved grove continue visibly along this eroded bank, over the collapsed arch and into the existing court's masonry. A shallow dark seep at the wall foot connects to the grove pool. Brittle pale reeds and small rust-red seedpods grow in a few protected crevices. Quiet tiny moth silhouettes gather near the pods. Rich rounded crumbling stone and tangled woody forms; strongly varied heights, overhang and enclosure. No evenly spaced doors or props. Preserve the worn material detail and hand-shaped pixel clusters of the existing image. No open desert panorama, mountains, big empty sky, smooth 3D cliffs, brick parapet, foreground holes, people, text or UI. The lower half remains the same broad solid battle floor.",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "6",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "6",
+            0
+          ]
+        }
+      },
+      "12": {
+        "class_type": "KSampler",
+        "inputs": {
+          "model": [
+            "3",
+            0
+          ],
+          "positive": [
+            "9",
+            0
+          ],
+          "negative": [
+            "10",
+            0
+          ],
+          "latent_image": [
+            "16",
+            0
+          ],
+          "seed": 20261019231,
+          "steps": 4,
+          "cfg": 1.0,
+          "sampler_name": "euler",
+          "scheduler": "simple",
+          "denoise": 1.0
+        }
+      },
+      "13": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "12",
+            0
+          ],
+          "vae": [
+            "5",
+            0
+          ]
+        }
+      },
+      "14": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "13",
+            0
+          ],
+          "filename_prefix": "KS-Bloodridge-Root-Crypt-20261019/crypt"
+        }
+      },
+      "15": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "6",
+            0
+          ],
+          "vae": [
+            "5",
+            0
+          ]
+        }
+      },
+      "16": {
+        "class_type": "SetLatentNoiseMask",
+        "inputs": {
+          "samples": [
+            "15",
+            0
+          ],
+          "mask": [
+            "6",
+            1
+          ]
+        }
+      }
+    },
+    {
+      "client_id": "codex-bloodridge-root-crypt",
+      "create_time": 1792424258205
+    },
+    [
+      "14"
+    ]
+  ],
+  "outputs": {
+    "14": {
+      "images": [
+        {
+          "filename": "crypt_00001_.png",
+          "subfolder": "KS-Bloodridge-Root-Crypt-20261019",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "9c9a7596-8797-44c7-af54-10b91f281a22",
+          "timestamp": 1792424258206
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "9c9a7596-8797-44c7-af54-10b91f281a22",
+          "timestamp": 1792424258223
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "9c9a7596-8797-44c7-af54-10b91f281a22",
+          "timestamp": 1792424495399
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "14": {
+      "node_id": "14",
+      "display_node": "14",
+      "parent_node": null,
+      "real_node_id": "14"
+    }
+  }
+}

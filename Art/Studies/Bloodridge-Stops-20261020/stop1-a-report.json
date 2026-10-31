@@ -1,0 +1,24 @@
+{
+ "take": "stop1-a",
+ "strip": [
+  5104,
+  768
+ ],
+ "colours_used": 174,
+ "strip_palette": 174,
+ "lone_pixels_fixed": 37183,
+ "seam_mean_rgb_diff": 11.4,
+ "seam_x_range": [
+  1665,
+  1727
+ ],
+ "run_length_new": 3.18,
+ "run_length_grove": 1.54,
+ "run_length_court": 3.5,
+ "stops": {
+  "stop1": 0,
+  "stop2": 1376,
+  "stop3": 2376,
+  "stop4": 3728
+ }
+}

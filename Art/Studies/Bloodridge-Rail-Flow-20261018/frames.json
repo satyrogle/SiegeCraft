@@ -1,0 +1,32 @@
+{
+  "clarth_warden_sw": {
+    "w": 188,
+    "ax": 86.0,
+    "h": 180,
+    "ay": 152
+  },
+  "bloodridge_chief_sw": {
+    "w": 192,
+    "ax": 94.5,
+    "h": 256,
+    "ay": 224
+  },
+  "blood_rot_skirmisher_se": {
+    "w": 160,
+    "ax": 83.0,
+    "h": 168,
+    "ay": 140
+  },
+  "clarth_skirmisher_sw": {
+    "w": 140,
+    "ax": 63.0,
+    "h": 160,
+    "ay": 132
+  },
+  "blood_rot_warden_se": {
+    "w": 160,
+    "ax": 81.0,
+    "h": 188,
+    "ay": 157
+  }
+}

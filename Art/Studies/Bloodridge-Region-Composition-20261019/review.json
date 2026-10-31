@@ -1,0 +1,15 @@
+{
+  "source": "composition.png",
+  "dimensions": [
+    4128,
+    768
+  ],
+  "native_scale": 1,
+  "source_court_colours": 66,
+  "new_region_palette_colours": 130,
+  "resampled": false,
+  "court_core_x": 3008,
+  "court_core_preserved": true,
+  "source_court_unchanged": true,
+  "status": "Composition proposal, awaiting Jacob. No Unity binding or new animation."
+}

@@ -1,0 +1,49 @@
+{
+  "aspect_ratio": "3:2",
+  "high_level_description": "A panoramic hand-painted game environment showing a single continuous ancient limestone valley. A long winding road leads from bare empty ground in the lower left, through scattered small ruins and increasingly elaborate cliffside architecture, to one monumental Egyptian-inspired gateway and a spacious final courtyard at the far upper right. The whole region is visible in one unbroken landscape painting. Muted sepia and ash-brown limestone, violet-brown shadows, corroded bronze details, faded ochre cloth and gnarled petrified roots. This is the abandoned funerary homeland of one ancient desert clan. Architecture increases naturally along the journey from the sparse outskirts to the chief gate.",
+  "compositional_deconstruction": {
+    "background": "One continuous oblique elevated landscape fills the canvas edge to edge. Continuous layered limestone cliffs contain one valley and share one distant horizon. The ground plane stretches uninterrupted from the left foreground to the upper right distance. One warm dry light source comes from the upper right. The same geology, palette, architecture and perspective persist across the entire view. Atmospheric painted environment art with readable large shapes and restrained surface detail.",
+    "elements": [
+      {
+        "type": "obj",
+        "bbox": [
+          100,
+          0,
+          1000,
+          1000
+        ],
+        "desc": "Continuous open valley terrain with a winding trail running across it from lower left to upper right. The trail forks around low ridges and joins again further up the valley, physically connecting broad quiet clearings. The whole left third is mostly bare earth and ash, flat stone and scattered low rocks. Exactly one small weathered standing marker is the only constructed object at the beginning. Gradually the trail acquires patches of old stone paving as it approaches the right-hand gateway."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          330,
+          340,
+          650,
+          690
+        ],
+        "desc": "A few small ancient burial niches and broken waist-high retaining walls built INTO the middle of the continuous valley cliff. These modest remains occupy only the edges of broad clear ground beside the main trail. They are physically part of the shared valley terrain. The surrounding land remains open and quiet."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          270,
+          610,
+          580,
+          850
+        ],
+        "desc": "Further along the same winding route, the stonework gradually becomes more substantial: connected ruined terraces, carved stone reliefs, tarnished bronze ornaments and occasional dried roots. Low stairs and continuous paths join the terraces to the valley floor. Open courtyard ground remains generous. The early valley at the left is visible from here."
+      },
+      {
+        "type": "obj",
+        "bbox": [
+          120,
+          770,
+          460,
+          990
+        ],
+        "desc": "ONE imposing chief gateway carved into the far right cliff, with tall Egyptian-inspired door jambs, restrained bronze fittings and a spacious final courtyard directly in front of it. This is the largest architecture in the valley and the final destination of the visible path. The same natural cliff ridge continues behind it. Its scale makes a clear contrast with the single tiny marker at the bare beginning on the left."
+      }
+    ]
+  }
+}

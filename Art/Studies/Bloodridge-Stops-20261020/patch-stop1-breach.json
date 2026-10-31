@@ -1,0 +1,21 @@
+{
+  "in": "stop1-g",
+  "out": "s1breach",
+  "mode": "repaint",
+  "win": [560, 0, 1648, 768],
+  "zone": [780, 0, 1120, 235],
+  "split": 4,
+  "seed": 2026102101,
+  "prompt": {
+    "high_level_description": "Repair one part of an existing pixel art battle background, keeping its exact palette, light, scale and oblique 2.5D camera. Here the old fieldstone burial wall has collapsed into a wide ragged breach with tumbled blocks at its foot. Through the breach, far away and pale with distance, the long eroded limestone ridge of Bloodridge is visible, and on it, small and faint, the stepped terraces and tall dark gate of the burial court where the chief waits. Two small dark ash crows perch on the broken top of the wall. Fine controlled dusty hand-painted pixel clusters like the rest of the image.",
+    "compositional_deconstruction": {
+      "background": "Pale hazy distance seen through the breach: an eroded ridge with the faint terraced burial court and its gate on it, low contrast, soft grey mauve and ash sepia, no blue sky.",
+      "elements": [
+        {"type": "obj", "bbox": [0, 202, 306, 515], "desc": "The ragged breach in the fieldstone wall, broken stone courses stepping down on both sides, dry roots hanging over the broken edges, a few fallen blocks at its foot."},
+        {"type": "obj", "bbox": [60, 270, 230, 450], "desc": "Far away on the ridge, small and faint: stepped terraces, stairs and one tall dark gate of the burial court."},
+        {"type": "obj", "bbox": [0, 215, 70, 300], "desc": "Two small dark ash crows perched on the broken wall top."}
+      ]
+    }
+  },
+  "negative": "thick black outline, black ink, comic book, voxel, cubic blocks, clean rectangular bricks, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render, blue sky, clouds, sun, snowy mountains, castle, text, watermark, people"
+}

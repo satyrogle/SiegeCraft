@@ -1,0 +1,217 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-base-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+      "strength_model": 0.7
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "pixel art environment, crisp fine pixel clusters, subdued limited palette. Extend the reference scene horizontally to the LEFT into ONE very wide continuous battle landscape. The supplied original court fills the RIGHT THIRD of the new canvas. Preserve it there. The new LEFT TWO THIRDS is a natural approach in the same region: alien hunter wastes, ash-grey basalt, dusty mauve ground, low craggy rock banks and buried starship wreck fragments, a few dark metal ribs and dull violet mineral seams. A low sparse bank at far left becomes gradually more enclosed toward the right court. Unique irregular landmarks along the upper quarter, no second court. An entirely empty flat fighting floor occupies the lower two thirds. All buildings, walls, rubble, ledges and large stones are confined above y=250. The lower area contains ONLY shallow ground texture, same oblique projection and ground height as the reference. Quiet weathered earth with irregular embedded stone slabs and shallow natural fissures, varying sizes and spacing. The paving gradually becomes more complete near the original court on the right. Continue the floor material across the boundary naturally. Every part of the landscape is unique, no repeating texture patches or mirrored scenery. One coherent uninterrupted scene with continuous ground and rear banks, no panels, walls crossing the floor, floating islands, foreground pillars, people or UI. Match the original art's small native pixel details, organic chipped rock shapes and restrained ash colours."
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-natural-regions-20261019/hunters-court.png"
+    }
+  },
+  "9": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "7",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "5",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "11",
+        0
+      ],
+      "cfg": 4.0
+    }
+  },
+  "14": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "15": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 20,
+      "width": 4128,
+      "height": 768
+    }
+  },
+  "16": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026101942
+    }
+  },
+  "17": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "16",
+        0
+      ],
+      "guider": [
+        "13",
+        0
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "22",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ],
+      "filename_prefix": "KS-Natural-Regions-20261019/hunters-flux"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-natural-regions-20261019/hunters-flux-guide.png"
+    }
+  },
+  "21": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "20",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "22": {
+    "class_type": "SetLatentNoiseMask",
+    "inputs": {
+      "samples": [
+        "21",
+        0
+      ],
+      "mask": [
+        "20",
+        1
+      ]
+    }
+  }
+}

@@ -1,0 +1,322 @@
+{
+ "status": "COMPLETED",
+ "waited_seconds": 2,
+ "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+ "status_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2/status",
+ "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+ "cancel_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2/cancel",
+ "hint": "The job is COMPLETED and its result is included. You don't need to call get_job_result.",
+ "uncollected_jobs": {
+  "count": 1,
+  "jobs": [
+   {
+    "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+    "request_id": "01a16cea-f8ac-7cb0-879d-010be862862b",
+    "status_url": "https://queue.fal.run/bytedance/seedream/requests/01a16cea-f8ac-7cb0-879d-010be862862b/status",
+    "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16cea-f8ac-7cb0-879d-010be862862b",
+    "submitted_seconds_ago": 4007
+   }
+  ],
+  "hint": "These jobs from this connection were accepted, but no reply has returned their results yet and nothing has read them for at least two minutes. Collect them now with wait_for_jobs (up to 32 jobs per call, each with a unique index) or check_job, and show the user their results. Never resubmit them. This list can be incomplete; keep the handles you already have."
+ },
+ "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+ "result": {
+  "images": [
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa546/5A3NaGgSTHy_6LzfGoO2y_1233e4866fb24a4fbdf51881d22a1b47.png",
+    "content_type": "image/png",
+    "file_name": "1233e4866fb24a4fbdf51881d22a1b47.png",
+    "file_size": 5688519,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa546/6EZiNl9uLAnImGAWROM8B_0162651851bd41299d9a6730fde70030.png",
+    "content_type": "image/png",
+    "file_name": "0162651851bd41299d9a6730fde70030.png",
+    "file_size": 1970366,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa546/LFKnxIp_8qYzn8bwpvZqP_f05bbd5a3f40402b95b94bb5078da3a7.png",
+    "content_type": "image/png",
+    "file_name": "f05bbd5a3f40402b95b94bb5078da3a7.png",
+    "file_size": 4497493,
+    "width": null,
+    "height": null
+   },
+   {
+    "url": "https://v3b.fal.media/files/b/0aafa546/1F-j0-l_-TZTSU031IHcI_5239a49c0c9c4d05acb1c12550c8f5d7.png",
+    "content_type": "image/png",
+    "file_name": "5239a49c0c9c4d05acb1c12550c8f5d7.png",
+    "file_size": 2009654,
+    "width": null,
+    "height": null
+   }
+  ],
+  "layers": [
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa546/5A3NaGgSTHy_6LzfGoO2y_1233e4866fb24a4fbdf51881d22a1b47.png",
+     "content_type": "image/png",
+     "file_name": "1233e4866fb24a4fbdf51881d22a1b47.png",
+     "file_size": 5688519,
+     "width": null,
+     "height": null
+    },
+    "z_index": 0,
+    "bounding_box": null,
+    "name": null,
+    "description": null
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa546/6EZiNl9uLAnImGAWROM8B_0162651851bd41299d9a6730fde70030.png",
+     "content_type": "image/png",
+     "file_name": "0162651851bd41299d9a6730fde70030.png",
+     "file_size": 1970366,
+     "width": null,
+     "height": null
+    },
+    "z_index": 1,
+    "bounding_box": {
+     "absolute": [
+      0,
+      0,
+      4128,
+      263
+     ],
+     "normalized": [
+      0,
+      0,
+      1000,
+      341
+     ]
+    },
+    "name": "Far background: sky, distant dunes and horizon elements",
+    "description": "Extract the far background including the sky, distant dunes, mesas and the giant shark jawbone on the horizon, no other midground or foreground elements included."
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa546/LFKnxIp_8qYzn8bwpvZqP_f05bbd5a3f40402b95b94bb5078da3a7.png",
+     "content_type": "image/png",
+     "file_name": "f05bbd5a3f40402b95b94bb5078da3a7.png",
+     "file_size": 4497493,
+     "width": null,
+     "height": null
+    },
+    "z_index": 2,
+    "bounding_box": {
+     "absolute": [
+      0,
+      0,
+      4128,
+      768
+     ],
+     "normalized": [
+      0,
+      0,
+      1000,
+      999
+     ]
+    },
+    "name": "Midground arena surrounding elements",
+    "description": "Extract all elements standing behind and around the arena: dunes, shark ribs, wrecked siege machines, lifeguard tower, sign, shark fin, giant shark skeleton, war camp with jaw gate, tents, totems, banners, braziers, throne, and near foreground framing pieces at the bottom, exclude far background and salt flat floor."
+   },
+   {
+    "image": {
+     "url": "https://v3b.fal.media/files/b/0aafa546/1F-j0-l_-TZTSU031IHcI_5239a49c0c9c4d05acb1c12550c8f5d7.png",
+     "content_type": "image/png",
+     "file_name": "5239a49c0c9c4d05acb1c12550c8f5d7.png",
+     "file_size": 2009654,
+     "width": null,
+     "height": null
+    },
+    "z_index": 3,
+    "bounding_box": {
+     "absolute": [
+      0,
+      401,
+      4128,
+      768
+     ],
+     "normalized": [
+      0,
+      522,
+      1000,
+      999
+     ]
+    },
+    "name": "Salt flat arena floor",
+    "description": "Extract only the flat pale salt flat arena floor, exclude all other midground and background elements."
+   }
+  ]
+ },
+ "media": [
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa546/5A3NaGgSTHy_6LzfGoO2y_1233e4866fb24a4fbdf51881d22a1b47.png",
+   "json_path": "result.images[0].url",
+   "output_path": "/images/0/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "1233e4866fb24a4fbdf51881d22a1b47.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+     "output_path": "/images/0/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa546/6EZiNl9uLAnImGAWROM8B_0162651851bd41299d9a6730fde70030.png",
+   "json_path": "result.images[1].url",
+   "output_path": "/images/1/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "0162651851bd41299d9a6730fde70030.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+     "output_path": "/images/1/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa546/LFKnxIp_8qYzn8bwpvZqP_f05bbd5a3f40402b95b94bb5078da3a7.png",
+   "json_path": "result.images[2].url",
+   "output_path": "/images/2/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "f05bbd5a3f40402b95b94bb5078da3a7.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+     "output_path": "/images/2/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa546/1F-j0-l_-TZTSU031IHcI_5239a49c0c9c4d05acb1c12550c8f5d7.png",
+   "json_path": "result.images[3].url",
+   "output_path": "/images/3/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "5239a49c0c9c4d05acb1c12550c8f5d7.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+     "output_path": "/images/3/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa546/5A3NaGgSTHy_6LzfGoO2y_1233e4866fb24a4fbdf51881d22a1b47.png",
+   "json_path": "result.layers[0].image.url",
+   "output_path": "/layers/0/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "1233e4866fb24a4fbdf51881d22a1b47.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+     "output_path": "/layers/0/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa546/6EZiNl9uLAnImGAWROM8B_0162651851bd41299d9a6730fde70030.png",
+   "json_path": "result.layers[1].image.url",
+   "output_path": "/layers/1/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "0162651851bd41299d9a6730fde70030.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+     "output_path": "/layers/1/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa546/LFKnxIp_8qYzn8bwpvZqP_f05bbd5a3f40402b95b94bb5078da3a7.png",
+   "json_path": "result.layers[2].image.url",
+   "output_path": "/layers/2/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "f05bbd5a3f40402b95b94bb5078da3a7.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+     "output_path": "/layers/2/image/url"
+    }
+   }
+  },
+  {
+   "url": "https://v3b.fal.media/files/b/0aafa546/1F-j0-l_-TZTSU031IHcI_5239a49c0c9c4d05acb1c12550c8f5d7.png",
+   "json_path": "result.layers[3].image.url",
+   "output_path": "/layers/3/image/url",
+   "media_type": "image",
+   "content_type": "image/png",
+   "file_name": "5239a49c0c9c4d05acb1c12550c8f5d7.png",
+   "reference": {
+    "$fal_ref": {
+     "kind": "job",
+     "endpoint_id": "bytedance/seedream/v5/pro/layerize",
+     "request_id": "01a16d26-479d-79f3-b758-fde82b9001f2",
+     "response_url": "https://queue.fal.run/bytedance/seedream/requests/01a16d26-479d-79f3-b758-fde82b9001f2",
+     "output_path": "/layers/3/image/url"
+    }
+   }
+  }
+ ],
+ "display_hint": "Present completed media to the user. Forward attached image content blocks to the host's image display helper (for example, image(block)); do not stringify image blocks as text. For Markdown previews use previews[].preview_url, and separately link original_url as the full-resolution file. If no preview is available, show a clearly labeled original-file link. Do not claim a preview rendered unless it is visible. Video, audio and 3D URLs are original result files, not queue URLs.",
+ "next_steps": "Show it to the user: where the host renders MCP app UI, call show_media with this result, endpoint_id, request_id and recipe; otherwise present the media URLs. Then offer a next generation: variations (copy recipe.input and change the seed or prompt), an edit of this image, animating it into a video, or an upscale. Submit several variations together in one submit_jobs call. For a new operation on this output, call recommend_model with its URL as the source.",
+ "previews": [
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa546/5A3NaGgSTHy_6LzfGoO2y_1233e4866fb24a4fbdf51881d22a1b47.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa546%2F5A3NaGgSTHy_6LzfGoO2y_1233e4866fb24a4fbdf51881d22a1b47.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  },
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa546/6EZiNl9uLAnImGAWROM8B_0162651851bd41299d9a6730fde70030.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa546%2F6EZiNl9uLAnImGAWROM8B_0162651851bd41299d9a6730fde70030.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  },
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa546/LFKnxIp_8qYzn8bwpvZqP_f05bbd5a3f40402b95b94bb5078da3a7.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa546%2FLFKnxIp_8qYzn8bwpvZqP_f05bbd5a3f40402b95b94bb5078da3a7.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  },
+  {
+   "original_url": "https://v3b.fal.media/files/b/0aafa546/1F-j0-l_-TZTSU031IHcI_5239a49c0c9c4d05acb1c12550c8f5d7.png",
+   "preview_url": "https://refinery.fal.media/url/https%3A%2F%2Fv3b.fal.media%2Ffiles%2Fb%2F0aafa546%2F1F-j0-l_-TZTSU031IHcI_5239a49c0c9c4d05acb1c12550c8f5d7.png/tr:w-768,h-768,c-at_max,q-75/preview.webp",
+   "mime_type": "image/webp",
+   "max_dimension": 768
+  }
+ ]
+}

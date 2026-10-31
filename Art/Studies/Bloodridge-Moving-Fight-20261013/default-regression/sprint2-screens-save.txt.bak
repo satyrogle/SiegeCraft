@@ -1,0 +1,85 @@
+kindred-siege-safe-file	1	276F99BE12B901B97F2844DBB92713E2AA3F720E37E6B840122F256058448D0F
+kindred-siege-campaign	10
+seed	1
+streams	3776850956583579489	9	7009800821677620407	3
+counters	5	1	1	0	1
+camp	0
+forge	0	0
+named	Bosk	1
+named	Duro	1
+named	Ruk	1
+named	Sefa	1
+named	Tuvo	1
+codex	Tribe: the Clarth
+codex	Joined: the Clarth
+codex	Tribe: Bloodridge
+mind	cult
+habit	0	0
+habit	1	0
+habit	2	0
+habit	3	4
+habit	4	0
+threat	0	94
+threat	1	41
+threat	2	37
+threat	3	0
+threat	4	0
+learned	camp.1.raiders.tutorial
+lesson	camp.1.raiders.tutorial	0	guard	0	0	4	172	50	343	Your Warden covered 29 hits and stopped 172 damage. Now our ranged fighters shoot whoever he isn't covering.
+lesson	camp.1.raiders.tutorial	0	threat	0	0	94	188	0	500	Of everything that cost us HP, your Warden cost the most: 188 of 345. We will remember it.
+mind	clarth
+habit	0	0
+habit	1	0
+habit	2	0
+habit	3	0
+habit	4	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	raiders
+habit	0	0
+habit	1	8
+habit	2	3
+habit	3	0
+habit	4	0
+threat	0	68
+threat	1	217
+threat	2	84
+threat	3	83
+threat	4	33
+learned	camp.1.raiders.tutorial
+lesson	camp.1.raiders.tutorial	1	unleash	0	4	8	867	20	140	While your Unleash ran, from 0.6s, you did 867 damage to us. Now we Hold the moment you unleash.
+lesson	camp.1.raiders.tutorial	1	threat	1	0	217	434	0	500	Of everything that cost us HP, your Marksman cost the most: 434 of 972. We will remember it.
+lesson	camp.1.raiders.tutorial	1	fade.fallback	0	4	3	0	0	500	You never fell back this fight, so we ease off pressing when you do.
+mind	skullpeak
+habit	0	4
+habit	1	4
+habit	2	4
+habit	3	0
+habit	4	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+archive	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
+names	camp.1.raiders.tutorial	camp.1.raiders.tutorial.raiders.0	Meryt	camp.1.raiders.tutorial.raiders.1	Harkhuf	camp.1.raiders.tutorial.raiders.2	Iymery	tutorial.0	Sefa	tutorial.1	Ruk	tutorial.2	Duro	tutorial.3	Tuvo	tutorial.4	Bosk
+joined	clarth
+fighter	clarth.warden.1	clarth	0	Sefa	0	
+fighter	clarth.marksman.2	clarth	1	Ruk	1	
+fighter	clarth.skirmisher.3	clarth	2	Duro	0	
+fighter	clarth.trapper.4	clarth	3	Tuvo	1	
+fighter	clarth.medic.5	clarth	4	Bosk	1	
+run	raiders	0	-1
+road	-1
+offer	4
+fight	0	0
+proof	23237797EFA6608B	3BCCDD2FCFF6AFA4	27772EFE7D0545A9
+squad	clarth.warden.1
+squad	clarth.medic.5
+squad	clarth.skirmisher.3
+squad	clarth.marksman.2
+squad	clarth.trapper.4
+end

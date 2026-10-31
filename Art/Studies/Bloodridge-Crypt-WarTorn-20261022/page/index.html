@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloodridge War Torn</title>
+<style>
+  :root { --bg: #120e14; --ink: #ece6de; --dim: #9c8f96; --gold: #d6aa5a; --line: #3a3038; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 "Segoe UI", system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px 16px; box-sizing: border-box; min-height: 100vh; }
+  canvas { image-rendering: pixelated; image-rendering: crisp-edges; display: block; background: #000; max-width: 100%; height: auto; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+  button { font: inherit; color: var(--ink); background: #241d27; border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+  button.opt[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
+  button.opt[aria-pressed="false"] { color: var(--dim); }
+  button.toggle[aria-pressed="false"] { color: var(--dim); background: transparent; text-decoration: line-through; }
+  button:hover { border-color: var(--gold); }
+  .lab { color: var(--dim); }
+  .note { color: var(--dim); font-size: 13px; text-align: center; max-width: 1100px; }
+  .sep { width: 1px; height: 22px; background: var(--line); }
+</style>
+</head>
+<body>
+<canvas id="c" width="1440" height="900"></canvas>
+<div class="bar">
+  <span class="lab">Take</span>
+  <button class="opt take" data-k="1">1 Aftermath</button>
+  <button class="opt take" data-k="2">2 Everything bites</button>
+  <button class="opt take" data-k="3">3 Kill zone</button>
+  <span class="sep"></span>
+  <button class="toggle" id="t1" aria-pressed="true">1 Far (static)</button>
+  <button class="toggle" id="t2" aria-pressed="true">2 World (alive)</button>
+  <button class="toggle" id="t3" aria-pressed="true">3 Battle floor</button>
+  <button class="toggle" id="t4" aria-pressed="true">Fighters</button>
+  <button id="reset">Reset secrets</button>
+</div>
+<div class="note">War torn mock, 22 Oct: the crypt three ways, each in Jacob's three layers. Layer 1 is the Bloodridge ridge, static. Layer 2 is the world, with three things alive in it; click them. Layer 3 is the floor the armies stand on. Turn layers off to see each one.</div>
+<script src="manifest.js"></script>
+<script>
+"use strict";
+const M = window.MANIFEST;
+const cv = document.getElementById("c");
+const ctx = cv.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+const SX = M.stage[0], SY = M.stage[1], VW = 1376, VH = 768;
+const show = { 1: true, 2: true, 3: true, 4: true };
+let take = "1";
+try { take = localStorage.getItem("ks-wartorn-take") || "1"; } catch (e) {}
+
+const img = {};
+function load(key) { if (img[key]) return img[key]; const i = new Image(); i.src = key; img[key] = i; return i; }
+function ready(i) { return i && i.complete && i.naturalWidth > 0; }
+for (const k of ["1", "2", "3"]) {
+  ["l1-far-", "l2-world-", "l3-floor-"].forEach(p => load(p + k + ".png"));
+  const T = M.takes[k];
+  T.gag.frames.forEach((_, i) => load("gag-" + T.gag.key + "-" + i + ".png"));
+  Object.entries(T.reuse).forEach(([n, fr]) => fr.forEach((_, i) => load(k + "-" + n + "-" + i + ".png")));
+  T.secrets.forEach(s => load("ach-" + s.id + ".png"));
+}
+["frame-fight.png", "t-title.png", "t-name2.png", "count-0.png", "count-1.png", "count-2.png", "count-3.png"].forEach(load);
+const F = M.fighters;
+F.ours.forEach(o => load(o.idle.sheet)); load(F.leader.idle.sheet); F.theirs.forEach(e => load(e.idle.sheet));
+
+// ---------------- fighters ----------------
+function frameAt(s, ms) {
+  const total = s.frames.reduce((a, f) => a + f[4], 0);
+  let t = ((ms % total) + total) % total, k = 0;
+  while (k < s.frames.length - 1 && t >= s.frames[k][4]) { t -= s.frames[k][4]; k++; }
+  const f = s.frames[k];
+  return [f[0], f[1], f[2], f[3], s.flip ? f[2] - s.anchor[0] : s.anchor[0], s.anchor[1]];
+}
+function drawSheet(s, fr, sx, sy) {
+  const sheet = img[s.sheet]; if (!ready(sheet)) return;
+  const [fx, fy, fw, fh, ax, ay] = fr, dx = Math.round(sx - ax), dy = Math.round(sy - ay);
+  if (!s.flip) ctx.drawImage(sheet, fx, fy, fw, fh, dx, dy, fw, fh);
+  else { ctx.save(); ctx.translate(dx + fw, dy); ctx.scale(-1, 1); ctx.drawImage(sheet, fx, fy, fw, fh, 0, 0, fw, fh); ctx.restore(); }
+}
+function shadow(sx, sy, w, h) {
+  ctx.fillStyle = "#2a2e38";
+  const x = Math.round(sx) + 2, y = Math.round(sy) - Math.round(h / 2) + 1;
+  for (let r = 0; r < h; r++) { const v = (r + 0.5) / h * 2 - 1, half = Math.round(w / 2 * Math.sqrt(1 - v * v)); if (half > 0) ctx.fillRect(x - half, y + r, half * 2, 1); }
+}
+function drawFighters(t) {
+  const list = [];
+  F.ours.forEach((o, i) => list.push({ y: o.y, sh: [o.x, o.y, o.shadow[0], o.shadow[1]], draw: () => drawSheet(o.idle, frameAt(o.idle, t * 1000 + i * 370), o.x, o.y) }));
+  const L = F.leader; list.push({ y: L.y, sh: [L.x, L.y, L.shadow[0], L.shadow[1]], draw: () => drawSheet(L.idle, frameAt(L.idle, t * 1000), L.x, L.y) });
+  F.theirs.forEach((e, j) => list.push({ y: e.y, sh: [e.x, e.y, e.shadow[0], e.shadow[1]], draw: () => drawSheet(e.idle, frameAt(e.idle, t * 1000 + j * 530), e.x, e.y) }));
+  list.sort((a, b) => a.y - b.y);
+  list.forEach(it => shadow(...it.sh));
+  list.forEach(it => it.draw());
+}
+
+// ---------------- the world's gags ----------------
+let found = {};
+try { found = JSON.parse(localStorage.getItem("ks-wartorn-secrets") || "{}"); } catch (e) { found = {}; }
+function saveFound() { try { localStorage.setItem("ks-wartorn-secrets", JSON.stringify(found)); } catch (e) {} }
+let toast = null;
+const state = {};
+function frameImg(k, s, i) { return i < 0 ? null : img[s.src === "gag" ? "gag-" + s.name + "-" + i + ".png" : k + "-" + s.name + "-" + i + ".png"]; }
+function seqAt(seq, ms, loop) {
+  const total = seq.reduce((a, f) => a + f[1], 0);
+  let t = loop ? ms % total : ms;
+  for (const f of seq) { if (t < f[1]) return f; t -= f[1]; }
+  return null;
+}
+function secretPose(k, s, t) {
+  const st = state[k + s.id] || (state[k + s.id] = { mode: "idle", t0: 0, phase: (s.x * 7) % 1700 });
+  if (st.mode === "react") {
+    const f = seqAt(s.react, (t - st.t0) * 1000, false);
+    if (f) return { f: f[0], dx: f[2] || 0, dy: f[3] || 0 };
+    st.mode = "idle"; st.t0 = t;
+  }
+  const f = seqAt(s.idle, t * 1000 + st.phase, true);
+  return { f: f[0], dx: f[2] || 0, dy: f[3] || 0 };
+}
+// copies: [dx, dy, flip, dir] for a flock; dir mirrors a reaction's sideways moves. clip: [x0, y0, x1, y1] hides the
+// part of the sprite outside a box, so something can rise from behind a ledge.
+function copiesOf(s) { return s.copies || [[0, 0, !!s.flip, 1]]; }
+function drawSecrets(t) {
+  const T = M.takes[take];
+  T.secrets.slice().sort((a, b) => a.y - b.y).forEach(s => {
+    const p = secretPose(take, s, t), im = frameImg(take, s, p.f);
+    if (s.thread && p.f >= 0) { ctx.fillStyle = s.thread; ctx.fillRect(SX + s.x, SY + s.top, 1, Math.max(0, s.y + p.dy - (im ? im.height : 0) - s.top)); }
+    if (!ready(im)) return;
+    if (s.clip) { ctx.save(); ctx.beginPath(); ctx.rect(SX + s.clip[0], SY + s.clip[1], s.clip[2] - s.clip[0], s.clip[3] - s.clip[1]); ctx.clip(); }
+    copiesOf(s).forEach(([cx, cy, flip, dir]) => {
+      const x = SX + Math.round(s.x + cx - im.width / 2 + p.dx * dir), y = SY + Math.round(s.y + cy - im.height + p.dy);
+      if (flip) { ctx.save(); ctx.translate(x + im.width, y); ctx.scale(-1, 1); ctx.drawImage(im, 0, 0); ctx.restore(); }
+      else ctx.drawImage(im, x, y);
+    });
+    if (s.clip) ctx.restore();
+  });
+}
+function hitSecret(px, py, t) {
+  const T = M.takes[take];
+  for (const s of T.secrets) {
+    const st = state[take + s.id]; if (st && st.mode === "react") continue;
+    const p = secretPose(take, s, t), im = frameImg(take, s, p.f); if (!ready(im)) continue;
+    for (const [cx, cy, , dir] of copiesOf(s)) {
+      const x = s.x + cx - im.width / 2 + p.dx * dir, y = s.y + cy - im.height + p.dy;
+      let y0 = y - 6, y1 = y + im.height + 6;
+      if (s.clip) { y0 = Math.max(y0, s.clip[1]); y1 = Math.min(y1, s.clip[3]); }
+      if (y1 > y0 && px >= x - 6 && px <= x + im.width + 6 && py >= y0 && py <= y1) return s;
+    }
+  }
+  return null;
+}
+
+// ---------------- frame ----------------
+function render(t) {
+  ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1440, 900);
+  ctx.save(); ctx.beginPath(); ctx.rect(SX, SY, VW, VH); ctx.clip();
+  ctx.fillStyle = "#1d171c"; ctx.fillRect(SX, SY, VW, VH);
+  if (show[1]) { const i = img["l1-far-" + take + ".png"]; if (ready(i)) ctx.drawImage(i, SX, SY); }
+  if (show[2]) { const i = img["l2-world-" + take + ".png"]; if (ready(i)) ctx.drawImage(i, SX, SY); }
+  if (show[3]) { const i = img["l3-floor-" + take + ".png"]; if (ready(i)) ctx.drawImage(i, SX, SY); }
+  if (show[2]) drawSecrets(t);
+  if (show[4]) drawFighters(t);
+  ctx.restore();
+  if (ready(img["frame-fight.png"])) ctx.drawImage(img["frame-fight.png"], 0, 0);
+  if (ready(img["t-title.png"])) ctx.drawImage(img["t-title.png"], 36, 14);
+  if (ready(img["t-name2.png"])) ctx.drawImage(img["t-name2.png"], 36, 42);
+  const n = M.takes[take].secrets.filter(s => found[take + s.id]).length, c = img["count-" + n + ".png"];
+  if (ready(c)) ctx.drawImage(c, SX + 12, SY + 20);
+  if (toast) { const s = t - toast.t0, im = img["ach-" + toast.id + ".png"];
+    if (s > 3.2) toast = null;
+    else if (ready(im)) { const slide = s < 0.2 ? s / 0.2 : (s > 3.0 ? (3.2 - s) / 0.2 : 1); ctx.drawImage(im, SX + 12 - Math.round((1 - slide) * (im.width + 20)), SY + VH - im.height - 10); } }
+}
+function frame() { render(performance.now() / 1000); requestAnimationFrame(frame); }
+requestAnimationFrame(frame);
+window.__render = render;
+
+// ---------------- input ----------------
+function point(ev) { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) * (cv.width / r.width) - SX, (ev.clientY - r.top) * (cv.height / r.height) - SY]; }
+cv.addEventListener("mousemove", ev => { const [x, y] = point(ev); cv.style.cursor = show[2] && hitSecret(x, y, performance.now() / 1000) ? "pointer" : "default"; });
+cv.addEventListener("click", ev => {
+  if (!show[2]) return;
+  const [x, y] = point(ev), t = performance.now() / 1000, s = hitSecret(x, y, t);
+  if (!s) return;
+  state[take + s.id] = { mode: "react", t0: t, phase: (s.x * 7) % 1700 };
+  if (!found[take + s.id]) { found[take + s.id] = true; saveFound(); toast = { id: s.id, t0: t }; }
+});
+const takeBtns = document.querySelectorAll(".take");
+function syncTakes() { takeBtns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === take))); }
+takeBtns.forEach(b => b.addEventListener("click", () => { take = b.dataset.k; try { localStorage.setItem("ks-wartorn-take", take); } catch (e) {} syncTakes(); }));
+syncTakes();
+[1, 2, 3, 4].forEach(n => { const b = document.getElementById("t" + n); b.addEventListener("click", () => { show[n] = !show[n]; b.setAttribute("aria-pressed", String(show[n])); }); });
+document.getElementById("reset").addEventListener("click", () => { found = {}; saveFound(); toast = null; });
+window.__state = state; window.__found = () => found; window.__setTake = k => { take = k; syncTakes(); };
+</script>
+</body>
+</html>

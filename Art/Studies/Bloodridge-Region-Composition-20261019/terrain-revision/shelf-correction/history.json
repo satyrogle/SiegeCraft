@@ -1,0 +1,335 @@
+{
+  "prompt": [
+    167,
+    "4ed73dbf-35b4-4ded-99a6-8294a2d30f65",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "flux-2-klein-base-4b.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+          "strength_model": 0.7
+        }
+      },
+      "3": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_3_4b.safetensors",
+          "type": "flux2",
+          "device": "default"
+        }
+      },
+      "4": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "flux2-vae.safetensors"
+        }
+      },
+      "5": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "Fine native pixel art, match the original Bloodridge court material rendering, dusty warm sepia and violet-brown shadows. Follow the composition guide exactly. Complete the BROAD CONTINUOUS BATTLE GROUND across the entire LOWER HALF of this panoramic image. The deep ravine stays in the BACKGROUND above the fighting floor, NOT through the foreground. Keep the protected grove and far-right original court unchanged.\nOne enormous connected ash-and-bedrock SHELF in front of the distant ravine, wide enough for two armies. NO holes, cliffs or chasms interrupt the lower middle fighting space. The shelf has natural worn irregular edges and geological bedding, quiet sandy ash patches interlocking with exposed layered stone, a single shallow silt wash curving along the surface and scattered small stones. At the left it descends gently into the poolside root clearing, then rises subtly along the ravine bank towards the existing court on the right. Surface material gradually turns into old court paving only at the far right. DO NOT tile or repeat the court slabs across the rest of the environment. Real varied rock and sand shapes, crisp authored pixel clusters and warm material depth, not uniform blank sand, not noisy stippling. A few small grouped pale thorn plants and rust seedpods sit along the REAR BANK and extreme bottom corners. Rich irregular root and rock detail at the bank, quiet coherent ground in the middle-lower fight space. Only a thin irregular foreground ledge along the VERY BOTTOM 40 pixels suggests a drop beyond the screen. No large obelisk through the battlefield. Keep the already rendered distant ravine and mesas. Dusty grey-brown sky, no blue sky. No humans, no UI, no text, no new buildings."
+        }
+      },
+      "6": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "holes across battlefield, canyon in foreground, narrow bridge, floating islands, generic flat sand, repeated floor tiles, blue sky, smooth 3D render"
+        }
+      },
+      "7": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-bloodridge-terrain-20261019/court-style.png"
+        }
+      },
+      "9": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "7",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "5",
+            0
+          ],
+          "latent": [
+            "9",
+            0
+          ]
+        }
+      },
+      "11": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "6",
+            0
+          ],
+          "latent": [
+            "9",
+            0
+          ]
+        }
+      },
+      "13": {
+        "class_type": "CFGGuider",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "positive": [
+            "23",
+            0
+          ],
+          "negative": [
+            "24",
+            0
+          ],
+          "cfg": 4.0
+        }
+      },
+      "14": {
+        "class_type": "KSamplerSelect",
+        "inputs": {
+          "sampler_name": "euler"
+        }
+      },
+      "15": {
+        "class_type": "Flux2Scheduler",
+        "inputs": {
+          "steps": 14,
+          "width": 4128,
+          "height": 768
+        }
+      },
+      "16": {
+        "class_type": "RandomNoise",
+        "inputs": {
+          "noise_seed": 20261019144
+        }
+      },
+      "17": {
+        "class_type": "SamplerCustomAdvanced",
+        "inputs": {
+          "noise": [
+            "16",
+            0
+          ],
+          "guider": [
+            "13",
+            0
+          ],
+          "sampler": [
+            "14",
+            0
+          ],
+          "sigmas": [
+            "15",
+            0
+          ],
+          "latent_image": [
+            "22",
+            0
+          ]
+        }
+      },
+      "18": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "17",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "19": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "18",
+            0
+          ],
+          "filename_prefix": "KS-Bloodridge-Terrain-20261019/shelf"
+        }
+      },
+      "20": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-bloodridge-terrain-20261019/shelf-masked.png"
+        }
+      },
+      "21": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "20",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "22": {
+        "class_type": "SetLatentNoiseMask",
+        "inputs": {
+          "samples": [
+            "21",
+            0
+          ],
+          "mask": [
+            "20",
+            1
+          ]
+        }
+      },
+      "25": {
+        "class_type": "ImageScale",
+        "inputs": {
+          "image": [
+            "20",
+            0
+          ],
+          "upscale_method": "area",
+          "width": 1376,
+          "height": 256,
+          "crop": "disabled"
+        }
+      },
+      "26": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "25",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "23": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "10",
+            0
+          ],
+          "latent": [
+            "26",
+            0
+          ]
+        }
+      },
+      "24": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "11",
+            0
+          ],
+          "latent": [
+            "26",
+            0
+          ]
+        }
+      }
+    },
+    {
+      "client_id": "codex-bloodridge-shelf-correction",
+      "create_time": 1792399028654
+    },
+    [
+      "19"
+    ]
+  ],
+  "outputs": {
+    "19": {
+      "images": [
+        {
+          "filename": "shelf_00001_.png",
+          "subfolder": "KS-Bloodridge-Terrain-20261019",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "4ed73dbf-35b4-4ded-99a6-8294a2d30f65",
+          "timestamp": 1792399028655
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "14"
+          ],
+          "prompt_id": "4ed73dbf-35b4-4ded-99a6-8294a2d30f65",
+          "timestamp": 1792399028684
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "4ed73dbf-35b4-4ded-99a6-8294a2d30f65",
+          "timestamp": 1792399277631
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "19": {
+      "node_id": "19",
+      "display_node": "19",
+      "parent_node": null,
+      "real_node_id": "19"
+    }
+  }
+}

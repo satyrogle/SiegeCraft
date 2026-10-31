@@ -1,0 +1,223 @@
+{
+  "prompt": [
+    4,
+    "d9d9d946-4542-4ac4-ace4-88a7573c83a5",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "ideogram4_int8_convrot.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+          "type": "ideogram4",
+          "device": "default"
+        }
+      },
+      "3": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "flux2-vae.safetensors"
+        }
+      },
+      "4": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "2",
+            0
+          ],
+          "text": "{\"aspect_ratio\": \"3:2\", \"high_level_description\": \"A panoramic hand-painted game environment showing a single continuous ancient limestone valley. A long winding road leads from bare empty ground in the lower left, through scattered small ruins and increasingly elaborate cliffside architecture, to one monumental Egyptian-inspired gateway and a spacious final courtyard at the far upper right. The whole region is visible in one unbroken landscape painting. Muted sepia and ash-brown limestone, violet-brown shadows, corroded bronze details, faded ochre cloth and gnarled petrified roots. This is the abandoned funerary homeland of one ancient desert clan. Architecture increases naturally along the journey from the sparse outskirts to the chief gate.\", \"compositional_deconstruction\": {\"background\": \"One continuous oblique elevated landscape fills the canvas edge to edge. Continuous layered limestone cliffs contain one valley and share one distant horizon. The ground plane stretches uninterrupted from the left foreground to the upper right distance. One warm dry light source comes from the upper right. The same geology, palette, architecture and perspective persist across the entire view. Atmospheric painted environment art with readable large shapes and restrained surface detail.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [100, 0, 1000, 1000], \"desc\": \"Continuous open valley terrain with a winding trail running across it from lower left to upper right. The trail forks around low ridges and joins again further up the valley, physically connecting broad quiet clearings. The whole left third is mostly bare earth and ash, flat stone and scattered low rocks. Exactly one small weathered standing marker is the only constructed object at the beginning. Gradually the trail acquires patches of old stone paving as it approaches the right-hand gateway.\"}, {\"type\": \"obj\", \"bbox\": [330, 340, 650, 690], \"desc\": \"A few small ancient burial niches and broken waist-high retaining walls built INTO the middle of the continuous valley cliff. These modest remains occupy only the edges of broad clear ground beside the main trail. They are physically part of the shared valley terrain. The surrounding land remains open and quiet.\"}, {\"type\": \"obj\", \"bbox\": [270, 610, 580, 850], \"desc\": \"Further along the same winding route, the stonework gradually becomes more substantial: connected ruined terraces, carved stone reliefs, tarnished bronze ornaments and occasional dried roots. Low stairs and continuous paths join the terraces to the valley floor. Open courtyard ground remains generous. The early valley at the left is visible from here.\"}, {\"type\": \"obj\", \"bbox\": [120, 770, 460, 990], \"desc\": \"ONE imposing chief gateway carved into the far right cliff, with tall Egyptian-inspired door jambs, restrained bronze fittings and a spacious final courtyard directly in front of it. This is the largest architecture in the valley and the final destination of the visible path. The same natural cliff ridge continues behind it. Its scale makes a clear contrast with the single tiny marker at the bare beginning on the left.\"}]}}"
+        }
+      },
+      "5": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "2",
+            0
+          ],
+          "text": "World of Warcraft dracthyr, dragon, dragon head, dragonborn, crest, spines along the back, head spikes, ear fins, frills, long snout, long horns, wings, tail, cartoon, comic, luchador, bright colours, clean, smiling, human face, signature, watermark"
+        }
+      },
+      "6": {
+        "class_type": "CFGOverride",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "cfg": 3.0,
+          "start_percent": 0.7,
+          "end_percent": 1.0
+        }
+      },
+      "7": {
+        "class_type": "DualModelGuider",
+        "inputs": {
+          "model": [
+            "6",
+            0
+          ],
+          "positive": [
+            "4",
+            0
+          ],
+          "cfg": 7.0,
+          "model_negative": [
+            "6",
+            0
+          ],
+          "negative": [
+            "5",
+            0
+          ]
+        }
+      },
+      "8": {
+        "class_type": "EmptyFlux2LatentImage",
+        "inputs": {
+          "width": 1536,
+          "height": 1024,
+          "batch_size": 1
+        }
+      },
+      "9": {
+        "class_type": "KSamplerSelect",
+        "inputs": {
+          "sampler_name": "euler"
+        }
+      },
+      "10": {
+        "class_type": "Ideogram4Scheduler",
+        "inputs": {
+          "steps": 20,
+          "width": 1536,
+          "height": 1024,
+          "mu": 0.0,
+          "std": 1.75
+        }
+      },
+      "11": {
+        "class_type": "RandomNoise",
+        "inputs": {
+          "noise_seed": 2026101600
+        }
+      },
+      "12": {
+        "class_type": "SamplerCustomAdvanced",
+        "inputs": {
+          "noise": [
+            "11",
+            0
+          ],
+          "guider": [
+            "7",
+            0
+          ],
+          "sampler": [
+            "9",
+            0
+          ],
+          "sigmas": [
+            "10",
+            0
+          ],
+          "latent_image": [
+            "8",
+            0
+          ]
+        }
+      },
+      "13": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "12",
+            0
+          ],
+          "vae": [
+            "3",
+            0
+          ]
+        }
+      },
+      "14": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "13",
+            0
+          ],
+          "filename_prefix": "KS-Bloodridge-Connected-20261018/region"
+        }
+      }
+    },
+    {
+      "client_id": "codex-bloodridge-ideogram-20261018",
+      "create_time": 1792313361932
+    },
+    [
+      "14"
+    ]
+  ],
+  "outputs": {
+    "14": {
+      "images": [
+        {
+          "filename": "region_00001_.png",
+          "subfolder": "KS-Bloodridge-Connected-20261018",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "d9d9d946-4542-4ac4-ace4-88a7573c83a5",
+          "timestamp": 1792313361933
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "3",
+            "6",
+            "8",
+            "9",
+            "10"
+          ],
+          "prompt_id": "d9d9d946-4542-4ac4-ace4-88a7573c83a5",
+          "timestamp": 1792313361935
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "d9d9d946-4542-4ac4-ace4-88a7573c83a5",
+          "timestamp": 1792313643628
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "14": {
+      "node_id": "14",
+      "display_node": "14",
+      "parent_node": null,
+      "real_node_id": "14"
+    }
+  }
+}

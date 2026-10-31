@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bloodridge — Court refinement</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#161216;color:#d6c8b1;font:15px system-ui,sans-serif}main{max-width:1504px;margin:auto;padding:20px 24px 32px}header{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}h1{font:500 23px Georgia,serif;margin:0 0 7px}p{margin:0;color:#ab9d96;font-size:13px;line-height:1.6}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:17px 0 12px}button,a{color:inherit}button{border:1px solid #51434a;background:#241c23;padding:8px 13px;cursor:pointer;font:inherit;border-radius:4px}button:hover{background:#392a31}button[aria-pressed=true]{border-color:#be9a6f;background:#46332c}button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #ddba86;outline-offset:3px}button:disabled{opacity:.5;cursor:wait}input{accent-color:#b59872;width:160px}output{font:12px monospace;color:#bdafa2;min-width:100px}.viewport{overflow:auto;background:#0c0a0c;border:1px solid #352b33}.viewport img{display:block;max-width:100%;height:auto;image-rendering:pixelated}.viewport.native img{max-width:none;width:1440px;height:900px}footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:#a99991}footer a{text-underline-offset:3px}.mode{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#b99572}@media(max-width:700px){main{padding:14px 10px}header{gap:3px}h1{font-size:21px}}
+</style></head><body><main>
+<header><div><div class="mode">Kindred Siege · Visual study</div><h1>Bloodridge burial court</h1></div><p>Captured formations and HUD held still. Scenery motion only.</p></header>
+<div class="toolbar" role="group" aria-label="Scene review controls">
+<button id="new" aria-pressed="true">Refined court</button><button id="before" aria-pressed="false">Previous pass</button>
+<button id="play" disabled>Loading motion…</button><input id="frame" aria-label="Animation frame" type="range" min="1" max="32" value="1"><output id="status">Frame 01 / 32</output>
+<button id="native" aria-pressed="false">Native 1×</button>
+</div>
+<div class="viewport" id="viewport"><img id="scene" src="battle-screen.png" width="1440" height="900" alt="Bloodridge burial court around the captured Kindred Siege formations and HUD" data-frame="1"></div>
+<footer><span>Four-second loop · ash, low dust and anchored linen · isolated review, not integrated into Unity</span><span><a href="audit.json">Audit</a> · <a href="source-prompt.txt">Source prompt</a> · <a href="bloodridge-court-refinement.aseprite">Layered master</a></span></footer>
+</main><script>
+const scene=document.getElementById('scene'), slider=document.getElementById('frame'), status=document.getElementById('status'), play=document.getElementById('play');
+let images=[],ready=false,playing=false,previous=false,current=0,accum=0,last=0;
+function show(i){current=i;scene.src=images[i]?.src||'battle-screen.png';scene.dataset.frame=i+1;slider.value=i+1;status.textContent=`Frame ${String(i+1).padStart(2,'0')} / 32`;}
+function setPlaying(value){playing=value;play.textContent=value?'Pause atmosphere':'Play atmosphere';play.setAttribute('aria-pressed',String(value));accum=0;last=0;}
+function setView(old){previous=old;document.getElementById('before').setAttribute('aria-pressed',old);document.getElementById('new').setAttribute('aria-pressed',!old);slider.disabled=old;play.disabled=old||!ready;if(old){setPlaying(false);scene.src='previous-pass.png';scene.dataset.frame='previous';status.textContent='Previous pass';}else show(current);}
+document.getElementById('new').onclick=()=>setView(false);document.getElementById('before').onclick=()=>setView(true);
+play.onclick=()=>setPlaying(!playing);slider.oninput=()=>{setPlaying(false);show(Number(slider.value)-1);};
+document.getElementById('native').onclick=e=>{const value=document.getElementById('viewport').classList.toggle('native');e.target.setAttribute('aria-pressed',value);e.target.textContent=value?'Fit to panel':'Native 1×';};
+Promise.all(Array.from({length:32},(_,i)=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(Error('Could not load animation frame '+(i+1)));image.src=`frames/frame-${String(i+1).padStart(2,'0')}.png`;}))).then(loaded=>{images=loaded;ready=true;play.disabled=previous;setPlaying(!previous);}).catch(error=>{status.textContent=error.message;play.textContent='Motion unavailable';});
+function tick(time){if(playing&&!previous){if(last)accum+=time-last;if(accum>=125){const steps=Math.floor(accum/125);accum%=125;show((current+steps)%32);}last=time;}requestAnimationFrame(tick);}requestAnimationFrame(tick);
+</script></body></html>

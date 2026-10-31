@@ -1,0 +1,236 @@
+{
+  "prompt": [
+    86,
+    "58432d56-596e-45e7-bc66-8bab9a05fa96",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+          "strength_model": 1.0
+        }
+      },
+      "3": {
+        "class_type": "ModelSamplingAuraFlow",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "shift": 3.0
+        }
+      },
+      "4": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "type": "qwen_image",
+          "device": "default"
+        }
+      },
+      "5": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "qwen_image_vae.safetensors"
+        }
+      },
+      "6": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-natural-regions-20261019/bloodridge-guide.png"
+        }
+      },
+      "8": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-natural-regions-20261019/bloodridge-court.png"
+        }
+      },
+      "9": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "Edit image 1 into ONE uninterrupted horizontal 2.5D pixel-art battle landscape, in exactly the pixel-art materials and lighting of image 2. Completely redraw the left two thirds, including the flat blank floor. Preserve the original court occupying the entire RIGHT third, at exactly its current size and position. Its camera and ground plane are the reference for everything added on the left.\n\nRemove every vertical seam, reflected shape and copied pattern. Create unique natural irregularities all the way across the extension: no repeated floor chunks, no recurring fork-shaped cracks, no mirrored rock pillars, no tiled sections, no separate panels or platforms. Terrain and rear scenery must continue through the former joins, with continuous material boundaries and plausible connected forms.\n\nThe lower two thirds is level WALKABLE GROUND in an oblique side battle view: broad quiet ash and worn irregular stone, with a few unique partly buried paving shapes. Keep this ground calm and mostly smooth, with sparse low-contrast cracks, enough empty space for small fighters. It is a horizontal floor, never a wall. No stairs or large rocks interrupt the fighting lanes. Architecture stays along the rear upper third. No path into the distance, top-down map, overhead camera or perspective change.\n\nBloodridge burial lands: muted ash-brown limestone, violet-brown shadows, worn pale stone and dry ancient roots. The far left has only low eroded banks and scattered sunken stones. Small burial niches emerge gradually along the back edge toward the middle, becoming taller ruined masonry toward the original court on the right. No duplicate monumental entrance.\n\nMatch the original court's crisp small native pixel clusters, organic chipped silhouettes and subdued palette. Limited discrete shades, no photographic grit, airbrush, painterly texture, gradients, blocky voxel geometry or enlarged pixel blocks. No people, creatures, text, labels or UI. One connected region, sparse at the left and gradually more built toward the preserved right-hand court.",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "6",
+            0
+          ],
+          "image2": [
+            "8",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "6",
+            0
+          ],
+          "image2": [
+            "8",
+            0
+          ]
+        }
+      },
+      "12": {
+        "class_type": "KSampler",
+        "inputs": {
+          "model": [
+            "3",
+            0
+          ],
+          "positive": [
+            "9",
+            0
+          ],
+          "negative": [
+            "10",
+            0
+          ],
+          "latent_image": [
+            "16",
+            0
+          ],
+          "seed": 2026101920,
+          "steps": 4,
+          "cfg": 1.0,
+          "sampler_name": "euler",
+          "scheduler": "simple",
+          "denoise": 1.0
+        }
+      },
+      "13": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "12",
+            0
+          ],
+          "vae": [
+            "5",
+            0
+          ]
+        }
+      },
+      "14": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "13",
+            0
+          ],
+          "filename_prefix": "KS-Natural-Regions-20261019/bloodridge"
+        }
+      },
+      "15": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "6",
+            0
+          ],
+          "vae": [
+            "5",
+            0
+          ]
+        }
+      },
+      "16": {
+        "class_type": "SetLatentNoiseMask",
+        "inputs": {
+          "samples": [
+            "15",
+            0
+          ],
+          "mask": [
+            "6",
+            1
+          ]
+        }
+      }
+    },
+    {
+      "client_id": "codex-natural-regions",
+      "create_time": 1792365871748
+    },
+    [
+      "14"
+    ]
+  ],
+  "outputs": {
+    "14": {
+      "images": [
+        {
+          "filename": "bloodridge_00001_.png",
+          "subfolder": "KS-Natural-Regions-20261019",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "58432d56-596e-45e7-bc66-8bab9a05fa96",
+          "timestamp": 1792365871750
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "58432d56-596e-45e7-bc66-8bab9a05fa96",
+          "timestamp": 1792365871783
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "58432d56-596e-45e7-bc66-8bab9a05fa96",
+          "timestamp": 1792366106413
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "14": {
+      "node_id": "14",
+      "display_node": "14",
+      "parent_node": null,
+      "real_node_id": "14"
+    }
+  }
+}

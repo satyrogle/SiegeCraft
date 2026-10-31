@@ -1,0 +1,50 @@
+{
+  "study": "Bloodridge court refinement",
+  "status": "Isolated owner-review study",
+  "combat_source": "C:/Users/jacob/.codex/scratch/ks-sprint-20261012/r4-full/coverage-raiders-Chief.png",
+  "protected_layers": "../Bloodridge-Battle-Screen-20261013/captured-combat.png and captured-hud.png",
+  "source_capture_limitation": "Predates Sprint 1; frozen combat, not a current Unity capture.",
+  "image_generation": {
+    "tool": "Built-in image_gen",
+    "calls": 1,
+    "prompt": "source-prompt.txt",
+    "original": "C:/Users/jacob/.codex/generated_images/01a1339a-6da2-72d1-99f6-37f05f4cc6ac/exec-d5e45cdf-7088-45f3-a377-6aa7c4369ae6.png",
+    "local_copy": "source.png",
+    "references": ["../Bloodridge-Battleground-20261013/scenery.png", "../Bloodridge-Battleground-20261013/battle-screen.png"],
+    "source_dimensions": [1586, 992],
+    "final_mapping": "Source x = screen x + 73; source y = screen y - 80. No resampling. Foreground pieces have separate placements in asset-layout.json.",
+    "craft": "Generated source edited and assembled in native Aseprite Lua, with connected-cluster cleanup, quieter floor contrast, prop masking/underpaint, contact shadows and anchored linen motion. Not claimed as entirely hand-drawn pixel art."
+  },
+  "pixellab_material": {
+    "job_id": "dcd3f2a9-22fa-4df1-a2f2-ac914ce94cdd",
+    "asset_id": "fe5de037-b5bf-5d29-bedd-ee033c4560b1",
+    "generations_charged": 25,
+    "prompt": "pixellab-prompt.json",
+    "output": "pixellab-ground-source.png",
+    "review": "Rejected for excess texture noise; not used in final scenery.",
+    "first_attempt": "Reference URL timed out before a job was created; retry used the same local reference as base64."
+  },
+  "pixellab_atmosphere": {
+    "tool": "vfx_workbench deterministic renderer",
+    "generation_charge": 0,
+    "step_id": "3d6cea9f-710c-421e-91fa-2c167b85b881",
+    "effect_id": "f107f3ca-5a89-4949-87df-2a0334900e13",
+    "recipe": "atmosphere-recipe.json",
+    "frame_dimensions": [1024, 600],
+    "placement": [208, 140],
+    "frames": 32,
+    "fps": 8,
+    "native_scale": 1
+  },
+  "aseprite": {
+    "mode": "isolated headless",
+    "version": "1.3.18.6",
+    "ai_artist_version": "0.8.2",
+    "master": "bloodridge-court-refinement.aseprite",
+    "construction_scripts": ["prepare.lua", "controlled-floor.lua", "assemble.lua", "animate.lua"],
+    "verification": ["verify.py", "verification.json", "master-info.json", "aseprite-validation.json"]
+  },
+  "rejected_experiments": ["pass-01-layout.*", "pass-01-corrected.*", "pass-01-crafted.*", "source-quiet-floor.png", "crafted-environment.png", "terrain-pieces.png", "terrain-layout.json", "stone-*.png", "ground-complete.png", "ground-visible.png", "pixellab-ground-source.png"],
+  "integration": false,
+  "blender_or_renderer_changes": false
+}

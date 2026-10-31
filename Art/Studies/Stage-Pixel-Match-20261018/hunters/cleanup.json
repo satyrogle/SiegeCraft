@@ -1,0 +1,14 @@
+{
+  "source": "hunters.png",
+  "output": "hunters-review.png",
+  "dimensions": [
+    1376,
+    768
+  ],
+  "palette_colors": 32,
+  "low_contrast_island_pixels_merged": 99192,
+  "majority_replacements_across_three_passes": 153513,
+  "resampled": false,
+  "dither": false,
+  "method": "Native palette reduction, three local majority passes and connected-component cleanup, based on the original Bloodridge prepare/controlled-floor pass; generated art, not claimed hand-drawn."
+}

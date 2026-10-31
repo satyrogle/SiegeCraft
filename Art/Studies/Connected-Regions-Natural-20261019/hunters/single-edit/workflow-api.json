@@ -1,0 +1,162 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "shift": 3.0
+    }
+  },
+  "4": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-natural-regions-20261019/hunters-guide.png"
+    }
+  },
+  "9": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "Replace the repeated paving and mirrored rocks in the left two thirds with unique natural ground. Erase the visible vertical joins between sections. Redraw the extension as one connected Alien hunter wastes: ash-grey basalt and dusty mauve, weathered dark starship metal, very sparse dull violet seams. The far left has almost empty ash flats below a low rock bank. Small buried wreck fragments gradually become larger broken ship ribs toward the original engine court on the right. No intact factory wall, city, repeated engines or rows of identical wrecks. landscape in the same pixel art style and colours. A bare start on the far left develops gradually toward the existing right-hand court. The ground stays flat across the entire lower two thirds. Use quiet irregular stone and earth with shallow unique cracks, fewer pavers toward the left. Rear scenery continues naturally with varied organic shapes. No duplicated pillars, reflected patches, repeating fork cracks, pits or foreground structures. Preserve the entire right third, the original court, exactly. Keep the same camera, native small pixel clusters, muted palette and lighting. One continuous battle environment, no panels.",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "6",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "6",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "16",
+        0
+      ],
+      "seed": 2026101962,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "KS-Natural-Regions-20261019/hunters"
+    }
+  },
+  "15": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "6",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SetLatentNoiseMask",
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "mask": [
+        "6",
+        1
+      ]
+    }
+  }
+}

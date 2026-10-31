@@ -1,0 +1,38 @@
+{
+ "in": "bx2",
+ "out": "opt1a",
+ "mode": "repaint",
+ "win": [
+  1216,
+  80,
+  2912,
+  848
+ ],
+ "zone": [
+  1300,
+  760,
+  2830,
+  848
+ ],
+ "split": 3,
+ "seed": 2026102151,
+ "prompt": {
+  "high_level_description": "Repair the bottom band of an existing pixel art background of a ruined burial grove. Keep the exact palette, light, scale, oblique 2.5D camera and fine controlled dusty hand-painted pixel clusters of the existing image. The flat paved floor ends at the bottom in the edge of a raised stone terrace, and below that edge is the terrace's front face seen straight on: big old dark fieldstone blocks in deep shadow, dry roots and dead brown vines hanging over the edge, like the ledge a side-scroller hero walks on.",
+  "compositional_deconstruction": {
+   "background": "The same flat paved floor above, ending in one clean edge.",
+   "elements": [
+    {
+     "type": "obj",
+     "bbox": [
+      840,
+      50,
+      1000,
+      950
+     ],
+     "desc": "The terrace's dark front face of big old fieldstone blocks, with roots and dead vines hanging over its top edge."
+    }
+   ]
+  }
+ },
+ "negative": "floor continuing, cobbles at the bottom, grass, bushes, people, person, warrior, figure, character, statue, text, watermark, thick black outline, black ink, comic book, voxel, toy model, smooth plastic, giant pixels, chunky pixels, cartoon, flat vector shading, noisy dithering, photograph, 3D render"
+}

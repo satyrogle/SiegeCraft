@@ -1,0 +1,205 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ideogram4_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+   "type": "ideogram4",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "{\"high_level_description\": \"Bloodridge sunken crypt battle stage, rendered entirely in crisp, deliberately clustered pixel art. Modern high quality pixel art like Sea of Stars: bright, colourful and readable, never muddy. A hostile planet where everything wants to kill everything, told with deadpan humour. At the left of the stage, in front of the broken colonnade, one real creature is part of the ruins, painted in the same light and pixel clusters as everything around it: a tall bleached sandstone sarcophagus standing upright that is really a creature: its lid is a jaw hinged at the top with rows of long fangs inside, short crab legs underneath. Thorny spikes, old bones high on the ruins, a crooked sign that says BEWARE OF EVERYTHING, and a plain calm low wall right behind the arena.\", \"style_description\": {\"medium\": \"pixel_art\", \"art_style\": \"Authentic hand pixelled 2D game battle stage background. Visible square pixel clusters and stair stepped contours everywhere. Flat colour clusters, two to four shades per material. Crisp pixel edges without antialiasing. Clean readable shapes. No paint brushwork, no gradients except a dithered sky, no noise texture.\", \"aesthetics\": \"bright readable battle stage, calm behind the fighters, coherent pixel clusters\", \"lighting\": \"Bright clear daylight from the upper left, cool teal shadows, as discrete flat pixel colour planes, the arena and the low wall behind it in calm even light.\", \"color_palette\": [\"#5aa6e4\", \"#b0daf0\", \"#e6e8d8\", \"#4f9a3e\", \"#7ab84e\", \"#2c5a30\", \"#d8c09a\", \"#ecb050\", \"#96a0bc\", \"#3a3a52\", \"#e8e0d0\"]}, \"compositional_deconstruction\": {\"background\": \"One continuous 2.5D battle stage seen from a fixed side oblique camera like a classic arcade game stage, no people. The top third is sky over a distant ridge. Along the back stands a row of ruins: an obelisk at the far left, a broken colonnade, the temple crypt in the middle with a brazier each side of its doorway, a ruined hut with ladders, a huge tree at the right, with a plain low wall in front of them. The lower two thirds is one wide open flat arena floor where two armies will stand, calm and even. A fallen column and a giant fallen statue head frame the bottom corners in shadow.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [0, 0, 420, 105], \"desc\": \"a tall cracked sandstone obelisk wrapped in plain thorny vines, no faces\"}, {\"type\": \"obj\", \"bbox\": [130, 55, 410, 325], \"desc\": \"a broken sandstone colonnade wrapped in plain thorny vines, no faces\"}, {\"type\": \"obj\", \"bbox\": [0, 370, 430, 635], \"desc\": \"the sunken crypt temple of bleached sandstone, its doorway dark, two braziers burning, a flat empty roof ledge\"}, {\"type\": \"obj\", \"bbox\": [140, 600, 420, 860], \"desc\": \"a ruined sandstone wall with a crooked wooden sign that says BEWARE OF EVERYTHING\"}, {\"type\": \"obj\", \"bbox\": [0, 790, 420, 1000], \"desc\": \"a big dead bare tree with twisted branches and roots, no face\"}, {\"type\": \"obj\", \"bbox\": [300, 250, 470, 1000], \"desc\": \"a low plain broken sandstone wall running across the back of the arena with short grass in front of it, calm and empty, nothing on it\"}, {\"type\": \"obj\", \"bbox\": [0, 0, 330, 1000], \"desc\": \"a bright clear blue sky over the long Bloodridge burial ridge with pink mesas and the chief's stepped pyramid court on its crest\"}, {\"type\": \"obj\", \"bbox\": [420, 60, 1000, 940], \"desc\": \"a calm mossy grey stone arena with short grass in the cracks, nothing busy\"}, {\"type\": \"obj\", \"bbox\": [820, 0, 1000, 230], \"desc\": \"a thorny bush and a broken column in shadow\"}, {\"type\": \"obj\", \"bbox\": [800, 830, 1000, 1000], \"desc\": \"a giant fallen statue head wrapped in plain thorns\"}, {\"type\": \"obj\", \"bbox\": [244, 79, 467, 231], \"desc\": \"a tall bleached sandstone sarcophagus standing upright that is really a creature: its lid is a jaw hinged at the top with rows of long fangs inside, short crab legs underneath, the sarcophagus standing shut like an ordinary coffin, crouched on its crab legs among the fallen slabs in front of the broken colonnade. Painted into the scene, not pasted on: the same warm light from the upper left, the same pixel clusters and colours as the ruins around it, its feet planted on the ground among grass and broken stones, a soft shadow falling on the ground to its lower right.\"}]}}"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "photograph, painterly, digital painting, concept painting, brush strokes, realistic render, 3D render, noisy texture, fine gravel, pebbles, tiny cobblestones, scattered debris, dithering, speckles, smooth gradients, blur, antialiasing, glossy, high contrast floor, repeating tile grid, voxel cubes, people, guards, human figures, letters, UI, border, frame, sepia, muddy brown, grunge, dull, desaturated, vector art, flat cartoon, smooth shapes, night, gloomy, fog, gore, blood, cute, chibi, mascot, big cute eyes, cartoon eyes, smiling face, kawaii, plush toy, sticker, cut out, pasted on, white outline, glowing outline, halo"
+  }
+ },
+ "6": {
+  "class_type": "CFGOverride",
+  "inputs": {
+   "model": [
+    "20",
+    0
+   ],
+   "cfg": 3.0,
+   "start_percent": 0.7,
+   "end_percent": 1.0
+  }
+ },
+ "7": {
+  "class_type": "DualModelGuider",
+  "inputs": {
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "cfg": 7.0,
+   "model_negative": [
+    "6",
+    0
+   ],
+   "negative": [
+    "5",
+    0
+   ]
+  }
+ },
+ "9": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "10": {
+  "class_type": "Ideogram4Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 1376,
+   "height": 768,
+   "mu": 0.0,
+   "std": 1.75
+  }
+ },
+ "11": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102611
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "11",
+    0
+   ],
+   "guider": [
+    "7",
+    0
+   ],
+   "sampler": [
+    "9",
+    0
+   ],
+   "sigmas": [
+    "18",
+    1
+   ],
+   "latent_image": [
+    "17",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "filename_prefix": "KS-Crypt-Biters-20261023/paint-sarc-0"
+  }
+ },
+ "15": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-crypt-biters-20261023/paint-sarc-0-init.png"
+  }
+ },
+ "16": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "15",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "17": {
+  "class_type": "SetLatentNoiseMask",
+  "inputs": {
+   "samples": [
+    "16",
+    0
+   ],
+   "mask": [
+    "19",
+    0
+   ]
+  }
+ },
+ "18": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "10",
+    0
+   ],
+   "step": 10
+  }
+ },
+ "19": {
+  "class_type": "LoadImageMask",
+  "inputs": {
+   "image": "ks-crypt-biters-20261023/paint-sarc-0-mask.png",
+   "channel": "red"
+  }
+ },
+ "20": {
+  "class_type": "DifferentialDiffusion",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ]
+  }
+ }
+}
