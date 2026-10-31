@@ -1,0 +1,700 @@
+{
+ "note": "Teaser sounds, ElevenLabs, 18 Oct 2026",
+ "takes": {
+  "court_wind": {
+   "kind": "sfx",
+   "sent": {
+    "text": "low desolate wind blowing over an empty ancient stone courtyard, faint and eerie",
+    "duration_seconds": 8.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/court_wind.wav",
+   "channels": 2,
+   "seconds": 8.0,
+   "taken": 2.8,
+   "cost_headers": {
+    "character-cost": "80"
+   },
+   "date": "2026-10-18"
+  },
+  "charge": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a war band of armored warriors charging, roaring battle cries and heavy stomping footsteps with rattling armor, rising in intensity",
+    "duration_seconds": 3.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/charge.wav",
+   "channels": 2,
+   "seconds": 3.0,
+   "taken": 1.8,
+   "cost_headers": {
+    "character-cost": "30"
+   },
+   "date": "2026-10-18"
+  },
+  "clash": {
+   "kind": "sfx",
+   "sent": {
+    "text": "two armored armies colliding, a huge crash of shields and swords slamming together",
+    "duration_seconds": 2.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/clash.wav",
+   "channels": 2,
+   "seconds": 2.0,
+   "taken": 1.6,
+   "cost_headers": {
+    "character-cost": "20"
+   },
+   "date": "2026-10-18"
+  },
+  "melee": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a chaotic melee battle, swords clanging on shields, grunts and shouts, metal hitting armor",
+    "duration_seconds": 4.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/melee.wav",
+   "channels": 2,
+   "seconds": 4.0,
+   "taken": 1.8,
+   "cost_headers": {
+    "character-cost": "40"
+   },
+   "date": "2026-10-18"
+  },
+  "hit_a": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a single sword blow striking steel armor, a sharp punchy metallic impact",
+    "duration_seconds": 0.6,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/hit_a.wav",
+   "channels": 2,
+   "seconds": 0.6,
+   "taken": 1.3,
+   "cost_headers": {
+    "character-cost": "6"
+   },
+   "date": "2026-10-18"
+  },
+  "hit_b": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a heavy blade hitting a shield, a dull thudding clang",
+    "duration_seconds": 0.6,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/hit_b.wav",
+   "channels": 2,
+   "seconds": 0.6,
+   "taken": 1.3,
+   "cost_headers": {
+    "character-cost": "6"
+   },
+   "date": "2026-10-18"
+  },
+  "death_cry": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a warrior's short agonized death scream",
+    "duration_seconds": 1.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/death_cry.wav",
+   "channels": 2,
+   "seconds": 1.0,
+   "taken": 1.1,
+   "cost_headers": {
+    "character-cost": "10"
+   },
+   "date": "2026-10-18"
+  },
+  "her_drain": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a sudden reverse inhale that sucks all sound out of the air, a deep rising supernatural swell",
+    "duration_seconds": 0.6,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/her_drain.wav",
+   "channels": 2,
+   "seconds": 0.6,
+   "taken": 1.3,
+   "cost_headers": {
+    "character-cost": "6"
+   },
+   "date": "2026-10-18"
+  },
+  "her_strike": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a blinding cosmic strike, a deafening deep boom with a glassy shattering crack and a shockwave",
+    "duration_seconds": 2.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/her_strike.wav",
+   "channels": 2,
+   "seconds": 2.48,
+   "taken": 1.7,
+   "cost_headers": {
+    "character-cost": "25"
+   },
+   "date": "2026-10-18"
+  },
+  "aftermath": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a high ringing tone in the ears after an explosion, with soft wind and drifting ash, slowly fading",
+    "duration_seconds": 2.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/aftermath.wav",
+   "channels": 2,
+   "seconds": 2.48,
+   "taken": 1.8,
+   "cost_headers": {
+    "character-cost": "25"
+   },
+   "date": "2026-10-18"
+  },
+  "riser": {
+   "kind": "sfx",
+   "sent": {
+    "text": "dark magic energy charging up, an ominous rising swell building tension",
+    "duration_seconds": 3.2,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/riser.wav",
+   "channels": 2,
+   "seconds": 3.2,
+   "taken": 1.8,
+   "cost_headers": {
+    "character-cost": "32"
+   },
+   "date": "2026-10-18"
+  },
+  "parry": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a perfect sword parry, a bright ringing metallic clang with a heavy impact",
+    "duration_seconds": 1.2,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/parry.wav",
+   "channels": 2,
+   "seconds": 1.2,
+   "taken": 1.7,
+   "cost_headers": {
+    "character-cost": "12"
+   },
+   "date": "2026-10-18"
+  },
+  "freeze": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a dramatic hit stop, a deep thump with a reversed whoosh",
+    "duration_seconds": 0.8,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/freeze.wav",
+   "channels": 2,
+   "seconds": 0.8,
+   "taken": 1.4,
+   "cost_headers": {
+    "character-cost": "8"
+   },
+   "date": "2026-10-18"
+  },
+  "lesson_sting": {
+   "kind": "sfx",
+   "sent": {
+    "text": "an ominous low brass stinger, a sinister dark realization",
+    "duration_seconds": 2.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/lesson_sting.wav",
+   "channels": 2,
+   "seconds": 2.0,
+   "taken": 1.7,
+   "cost_headers": {
+    "character-cost": "20"
+   },
+   "date": "2026-10-18"
+  },
+  "heavy_hit": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a crushing heavy blow smashing through a raised shield, a deep impact with a crunch",
+    "duration_seconds": 1.2,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/heavy_hit.wav",
+   "channels": 2,
+   "seconds": 1.2,
+   "taken": 1.8,
+   "cost_headers": {
+    "character-cost": "12"
+   },
+   "date": "2026-10-18"
+  },
+  "title_boom": {
+   "kind": "sfx",
+   "sent": {
+    "text": "an epic cinematic trailer hit, a huge deep boom with a long dark reverb tail",
+    "duration_seconds": 4.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/title_boom.wav",
+   "channels": 2,
+   "seconds": 4.0,
+   "taken": 1.5,
+   "cost_headers": {
+    "character-cost": "40"
+   },
+   "date": "2026-10-18"
+  },
+  "music_bed": {
+   "kind": "music",
+   "sent": {
+    "prompt": "Dark fantasy action game trailer music, instrumental. Heavy drums and chugging distorted guitars with dark brass and strings. Starts at full energy with a cocky, swaggering groove, turns ominous and tense halfway through, and builds to a big ending.",
+    "music_length_ms": 20000,
+    "force_instrumental": true,
+    "model_id": "music_v2_5"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/music_bed.wav",
+   "channels": 2,
+   "seconds": 20.0,
+   "taken": 3.8,
+   "cost_headers": {},
+   "date": "2026-10-18"
+  },
+  "slash_cut": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a razor thin supernatural slash cutting cleanly through armor, a high whistling slice",
+    "duration_seconds": 1.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/slash_cut.wav",
+   "channels": 2,
+   "seconds": 1.0,
+   "cost_headers": {
+    "character-cost": "10"
+   },
+   "date": "2026-10-18"
+  },
+  "halves_fall": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a heavy armored body splitting in two and the halves thudding onto stone, wet and heavy",
+    "duration_seconds": 1.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/halves_fall.wav",
+   "channels": 2,
+   "seconds": 1.48,
+   "cost_headers": {
+    "character-cost": "15"
+   },
+   "date": "2026-10-18"
+  },
+  "falling_rush": {
+   "kind": "sfx",
+   "sent": {
+    "text": "something enormous dropping from the sky, a fast rising rushing whoosh",
+    "duration_seconds": 1.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/falling_rush.wav",
+   "channels": 2,
+   "seconds": 1.0,
+   "cost_headers": {
+    "character-cost": "10"
+   },
+   "date": "2026-10-18"
+  },
+  "landing_impact": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a colossal impact slamming into the ground, stone cracking apart, a deep boom and falling debris",
+    "duration_seconds": 2.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/landing_impact.wav",
+   "channels": 2,
+   "seconds": 2.48,
+   "cost_headers": {
+    "character-cost": "25"
+   },
+   "date": "2026-10-18"
+  },
+  "chain_explosions": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a chain of rapid supernatural explosions tearing through an army, deep booms and screams cut short",
+    "duration_seconds": 3.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/chain_explosions.wav",
+   "channels": 2,
+   "seconds": 3.0,
+   "cost_headers": {
+    "character-cost": "30"
+   },
+   "date": "2026-10-18"
+  },
+  "dust_settle": {
+   "kind": "sfx",
+   "sent": {
+    "text": "dust settling after a massacre, soft falling debris and wind, an empty ringing quiet",
+    "duration_seconds": 4.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/dust_settle.wav",
+   "channels": 2,
+   "seconds": 4.0,
+   "cost_headers": {
+    "character-cost": "40"
+   },
+   "date": "2026-10-18"
+  },
+  "readout_beep": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a retro sci-fi computer readout, two flat beeps",
+    "duration_seconds": 1.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/readout_beep.wav",
+   "channels": 2,
+   "seconds": 1.0,
+   "cost_headers": {
+    "character-cost": "10"
+   },
+   "date": "2026-10-18"
+  },
+  "wounded_groan": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a wounded warrior's low pained groan in the dust",
+    "duration_seconds": 1.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/wounded_groan.wav",
+   "channels": 2,
+   "seconds": 1.48,
+   "cost_headers": {
+    "character-cost": "15"
+   },
+   "date": "2026-10-18"
+  },
+  "her_line_a": {
+   "kind": "voice",
+   "voice": "Lily (premade)",
+   "sent": {
+    "text": "[amused] Boo hoo... [whispers] you suck.",
+    "model_id": "eleven_v3",
+    "voice_settings": {
+     "stability": 0.0,
+     "similarity_boost": 0.75
+    }
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/her_line_a.wav",
+   "channels": 2,
+   "seconds": 2.96,
+   "cost_headers": {
+    "character-cost": "16"
+   },
+   "date": "2026-10-18"
+  },
+  "her_line_b": {
+   "kind": "voice",
+   "voice": "Lily (premade)",
+   "sent": {
+    "text": "[slowly, mocking] Boo... hoo. [laughs softly] You suck.",
+    "model_id": "eleven_v3",
+    "voice_settings": {
+     "stability": 0.0,
+     "similarity_boost": 0.75
+    }
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/her_line_b.wav",
+   "channels": 2,
+   "seconds": 4.48,
+   "cost_headers": {
+    "character-cost": "22"
+   },
+   "date": "2026-10-18"
+  },
+  "her_line_c": {
+   "kind": "voice",
+   "voice": "Lily (premade)",
+   "sent": {
+    "text": "[bored, cruel] Boo hoo. You suck.",
+    "model_id": "eleven_v3",
+    "voice_settings": {
+     "stability": 0.0,
+     "similarity_boost": 0.75
+    }
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/her_line_c.wav",
+   "channels": 2,
+   "seconds": 3.76,
+   "cost_headers": {
+    "character-cost": "13"
+   },
+   "date": "2026-10-18"
+  },
+  "camp_fire": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a small campfire crackling and popping at night, close",
+    "duration_seconds": 8.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/camp_fire.wav",
+   "channels": 2,
+   "seconds": 8.0,
+   "cost_headers": {
+    "character-cost": "80"
+   },
+   "date": "2026-10-18"
+  },
+  "night_wind": {
+   "kind": "sfx",
+   "sent": {
+    "text": "cold night wind over a barren rocky wasteland, distant and lonely",
+    "duration_seconds": 10.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/night_wind.wav",
+   "channels": 2,
+   "seconds": 10.0,
+   "cost_headers": {
+    "character-cost": "100"
+   },
+   "date": "2026-10-18"
+  },
+  "ritual_hum": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a low eerie ritual chant hum rising with a glowing magical drone, otherworldly",
+    "duration_seconds": 4.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/ritual_hum.wav",
+   "channels": 2,
+   "seconds": 4.0,
+   "cost_headers": {
+    "character-cost": "40"
+   },
+   "date": "2026-10-18"
+  },
+  "vision_whoosh": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a bright magical whoosh into a vision, a shimmering rising swell",
+    "duration_seconds": 1.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/vision_whoosh.wav",
+   "channels": 2,
+   "seconds": 1.48,
+   "cost_headers": {
+    "character-cost": "15"
+   },
+   "date": "2026-10-18"
+  },
+  "crowd_cheer": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a huge crowd of many warriors cheering and roaring in triumph, echoing, distant and dreamlike",
+    "duration_seconds": 3.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/crowd_cheer.wav",
+   "channels": 2,
+   "seconds": 3.0,
+   "cost_headers": {
+    "character-cost": "30"
+   },
+   "date": "2026-10-18"
+  },
+  "vision_out": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a vision snapping shut, a sharp reversed whoosh into silence",
+    "duration_seconds": 1.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/vision_out.wav",
+   "channels": 2,
+   "seconds": 1.0,
+   "cost_headers": {
+    "character-cost": "10"
+   },
+   "date": "2026-10-18"
+  },
+  "her_gaze": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a deep ominous tone as something enormous and far away turns its attention toward you",
+    "duration_seconds": 2.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/her_gaze.wav",
+   "channels": 2,
+   "seconds": 2.48,
+   "cost_headers": {
+    "character-cost": "25"
+   },
+   "date": "2026-10-18"
+  },
+  "clarth_horn": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a tribal war horn blowing in the dark, then hunters calling to each other",
+    "duration_seconds": 2.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/clarth_horn.wav",
+   "channels": 2,
+   "seconds": 2.48,
+   "cost_headers": {
+    "character-cost": "25"
+   },
+   "date": "2026-10-18"
+  },
+  "surround_steps": {
+   "kind": "sfx",
+   "sent": {
+    "text": "many light footsteps on gravel closing in from all sides, spears rattling",
+    "duration_seconds": 3.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/surround_steps.wav",
+   "channels": 2,
+   "seconds": 3.0,
+   "cost_headers": {
+    "character-cost": "30"
+   },
+   "date": "2026-10-18"
+  },
+  "net_throw": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a heavy weighted net whirling through the air and slamming down over people",
+    "duration_seconds": 1.2,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/net_throw.wav",
+   "channels": 2,
+   "seconds": 1.2,
+   "cost_headers": {
+    "character-cost": "12"
+   },
+   "date": "2026-10-18"
+  },
+  "cage_struggle": {
+   "kind": "sfx",
+   "sent": {
+    "text": "people trapped under a heavy net, struggling, grunting, ropes straining",
+    "duration_seconds": 1.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/cage_struggle.wav",
+   "channels": 2,
+   "seconds": 1.48,
+   "cost_headers": {
+    "character-cost": "15"
+   },
+   "date": "2026-10-18"
+  },
+  "music_montage": {
+   "kind": "music",
+   "sent": {
+    "prompt": "Dark fantasy action game trailer music, instrumental. Heavy drums and chugging distorted guitars with dark brass and strings, driving at about 120 BPM. Starts at full energy with a cocky, swaggering groove, drops to a tense, sparse middle for a few seconds, then builds hard to a big ending that stops dead on the last hit.",
+    "music_length_ms": 28000,
+    "force_instrumental": true,
+    "model_id": "music_v2_5"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/music_montage.wav",
+   "channels": 2,
+   "seconds": 28.0,
+   "taken": 4.8,
+   "cost_headers": {},
+   "date": "2026-10-18"
+  },
+  "ship_bay_hum": {
+   "kind": "sfx",
+   "sent": {
+    "text": "the deep low hum of a spaceship's open hangar bay high above a planet, quiet machinery, faint airflow, cold and ominous",
+    "duration_seconds": 8.0,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/ship_bay_hum.wav",
+   "channels": 2,
+   "seconds": 8.0,
+   "cost_headers": {
+    "character-cost": "80"
+   },
+   "date": "2026-10-19"
+  },
+  "orbit_dive": {
+   "kind": "sfx",
+   "sent": {
+    "text": "a ship dropping from orbit into a planet's atmosphere, a deep rising roar and rumble building into a violent rushing descent",
+    "duration_seconds": 2.5,
+    "prompt_influence": 0.5,
+    "model_id": "eleven_text_to_sound_v2"
+   },
+   "wav": "C:/Users/jacob/KindredSiege-Clean/Art/Audio/Trailer/2026-10-18/raw/orbit_dive.wav",
+   "channels": 2,
+   "seconds": 2.48,
+   "cost_headers": {
+    "character-cost": "25"
+   },
+   "date": "2026-10-19"
+  }
+ }
+}
