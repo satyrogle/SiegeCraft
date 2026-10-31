@@ -4,9 +4,10 @@ Every land frame sits with canvas row 148 on the sand line and is cut below it, 
 front fins and lower tail are under. A rim moves along the cut every tick: a rippling lip over the cut, a bow wave
 of piled sand on whichever side is pushing forward (bigger the faster it goes), a furrow behind that fills back in,
 and grains pouring off the body above the line. The haul still bursts out and flies; on landing it sinks to half
-depth with a splash along its length. The approach is a plow: the fin walk clip twists and rolls the whole body
-on every step, which with the fins under the sand reads as the shark wobbling in place, so the plow uses the steady
-breathing frames carried toward the squad in one smooth glide (Jacob, 31 Oct), no stop and go. The bite is shark_bite2: gape 8 to 10,
+depth with a splash along its length. The approach moves the way it does underwater (Jacob, 31 Oct: "make it behave
+the same way it would underwater"): it dives under head first, its fin and shadow glide and kick toward the squad
+like the patrol, and it bursts up half in the sand right in front of them. No walk clip. The bite is shark_bite2:
+gape 8 to 10,
 clamp at 11 (the hit, held, the front column takes it), thrash 12 to 33, open by 40. The tail sweep's blast through
 all five and the head first dive stay. Clips are 40 frames (41 with the loop frame); beast and effects are drawn on the half
 layer (2x pixels), squad and stage stay 1x.
@@ -29,7 +30,8 @@ from boss_scenes import A, D, TICK, WHITE, fx  # noqa: E402
 G = 283                       # the sand line on the half size layer (566 on screen)
 CUT_ROW = 148                 # the canvas row every land frame puts on G
 LAND_F, SNAP_F, SWEEP_F = 23, 11, 18
-WALK_SHIFT = 50               # half size pixels the plow carries it toward the squad
+WALK_SHIFT = 50               # half size pixels left of the old landing spot where it surfaces to bite
+LAND_BACK = 60                # it lands this much further right, so the swim under the sand has room
 SAND = (fx.S4, fx.S5, fx.S6)
 SINK_MS = 300                 # landing: from belly on the sand to half depth
 FREEZE = 120                  # hit stop on the snap
@@ -181,7 +183,8 @@ def scene():
     vis = np.nonzero((np.asarray(fin)[:CUT, :, 3] > 0).any(0))[0]
     FRONT, BACK = vis.min() - fin.width / 2, vis.max() - fin.width / 2
     base0 = np.nonzero((np.asarray(haul[0])[200:216, :, 3] > 0).any(0))[0]
-    ERUPT = (X0 + (base0.min() + base0.max()) / 2 if len(base0) else X0 + 190, G + 4)
+    XL = X0 + LAND_BACK             # where it erupts, lands and breathes
+    ERUPT = (XL + (base0.min() + base0.max()) / 2 if len(base0) else XL + 190, G + 4)
     RXH = 46
     L = 210
 
@@ -192,9 +195,17 @@ def scene():
     T_LANDED = T_HAUL + sum(HAUL_MS[:LAND_F])
     T_OUT = T_HAUL + sum(HAUL_MS[:12])       # the tail is clear of the hole
     T_BREATHE = T_HAUL + sum(HAUL_MS)
-    T_WALK = T_BREATHE + 41 * 60
+    T_WALK = T_BREATHE + 41 * 60     # the approach starts: under the sand and across to the squad
     WALK_MS = 41 * 50
     T_BITE = T_WALK + WALK_MS
+    DIVE_MS = 280
+    T_SWIM = T_WALK + DIVE_MS          # under; the fin and shadow swim
+    SWIM_MS = 1230
+    T_SURF = T_SWIM + SWIM_MS          # bursts up half in the sand where it bites from
+    SURF_MS = 360
+    RISE = 90                          # canvas rows still under the sand when the surfacing starts (dorsal tip at
+                                       # the surface)
+    HANDOFF = 120                      # the fin and shadow stay while the body breaks the surface
     BITE_MS = [50] * 41
     BITE_MS[SNAP_F] = 50 + FREEZE + 60
     T_SNAP = T_BITE + sum(BITE_MS[:SNAP_F])
@@ -202,7 +213,6 @@ def scene():
     SWEEP_MS = [55] * 41
     T_BLAST = T_SWEEP + sum(SWEEP_MS[:SWEEP_F])
     T_DIVE = T_SWEEP + sum(SWEEP_MS)
-    DIVE_MS = 280
     T_DART = T_DIVE + DIVE_MS
     T_UP = T_DART + 450
     R0, R1 = (650, 320), (540, 312)
@@ -219,27 +229,8 @@ def scene():
             u -= m
         return len(durs) - 1
 
-    RAMP = 0.2            # share of the glide spent speeding up, and again slowing into the bite
-
-    def plow(t):
-        """How far the body has glided toward the squad, half size pixels, at time t: one steady glide, speeding
-        up and slowing down gently at the ends."""
-        u = min(1.0, max(0.0, (t - T_WALK) / WALK_MS))
-        v = 1 / (1 - RAMP)
-        if u < RAMP:
-            s = v * u * u / (2 * RAMP)
-        elif u <= 1 - RAMP:
-            s = v * (u - RAMP / 2)
-        else:
-            s = 1 - v * (1 - u) ** 2 / (2 * RAMP)
-        return WALK_SHIFT * s
-
     def shift(t):
-        if t < T_WALK:
-            return 0.0
-        if t < T_BITE:
-            return -plow(t)
-        return -WALK_SHIFT
+        return LAND_BACK if t < T_SURF else -WALK_SHIFT
 
     def body_top(im):
         a = np.asarray(im)[..., 3] > 0
@@ -266,6 +257,13 @@ def scene():
     JAWS = (X0 - WALK_SHIFT + mx + 4, Y0 + my)     # the hit star sits on the clamped teeth
     MOUTH_FLOOR = ((X0 - WALK_SHIFT + hx) * 2, G * 2)
     DIVE_HOLE = (X0 - WALK_SHIFT + head_of(sweep[40])[0] + 12, G)
+    SUB_HOLE = (XL + head_of(breathe[40])[0] + 12, G)
+    # under the sand the fin rides where the dorsal fin is: from the landed shark's dorsal to where it surfaces
+    sa = np.asarray(still)[..., 3] > 0
+    tops = [np.nonzero(sa[:, x])[0].min() if sa[:, x].any() else 999 for x in range(130, 200)]
+    DORSAL = 130 + int(np.argmin(tops))
+    SWIM = ((XL + DORSAL, G - 2), (X0 - WALK_SHIFT + DORSAL, G - 2), T_SWIM, SWIM_MS, [0, 560])
+    DIVES = ((T_WALK, SUB_HOLE), (T_DIVE, DIVE_HOLE))
 
     def blast_x(u, y):
         x0 = X0 - WALK_SHIFT + bb[0]
@@ -273,15 +271,16 @@ def scene():
         return xf + 22 * ((y - 288) / 105) ** 2
 
     for f in team:
-        f.blow(T_LANDED, ((X0 + 128) * 2, G * 2), 4, fear=True)
+        f.blow(T_LANDED, ((XL + 128) * 2, G * 2), 4, fear=True)
+        f.blow(T_SURF, ((X0 - WALK_SHIFT + 128) * 2, G * 2), 4, fear=True)
         if f.x > 500:
             f.blow(T_SNAP, MOUTH_FLOOR, 8, lift=4)
         for u in range(0, BLAST_MS + 1, TICK):
             if blast_x(u, f.y / 2) * 2 <= f.x:
                 f.blow(T_BLAST + u, (f.x + 80, f.y), 8, lift=6)
                 break
-    shakes = [(T_HAUL, 0.35), (T_LANDED, 0.6), (T_LANDED + SINK_MS // 2, 0.25), (T_SNAP, 0.65), (T_BLAST, 0.7),
-              (T_DIVE + 60, 0.35)]
+    shakes = [(T_HAUL, 0.35), (T_LANDED, 0.6), (T_LANDED + SINK_MS // 2, 0.25), (T_WALK + 60, 0.3),
+              (T_SWIM + 560, 0.2), (T_SURF, 0.5), (T_SNAP, 0.65), (T_BLAST, 0.7), (T_DIVE + 60, 0.35)]
     bits, grains, rnd = fx.Bits(5), bs.Grains(), random.Random(12)
     furrow, spikes, out = [], [], []
     cover = np.full(720, -1e9)
@@ -337,9 +336,20 @@ def scene():
             fy0 = Y0_AIR + sink_at(t)
         elif t < T_WALK:
             frame_img = breathe[min(40, (t - T_BREATHE) // 60)]
+        elif t < T_SWIM:
+            frame_img = breathe[40]
+        elif t < T_SURF:
+            x, y, kick, sink = sp.glide(*SWIM, t)
+            under = dict(x=x, y=y, left=True, sink=max(CUT * (1 - (t - T_SWIM) / 160), sink), kick=kick,
+                         depth=sink / 14, fin=True)
         elif t < T_BITE:
-            frame_img = breathe[min(40, (t - T_WALK) // 50)]
-            fx0 = X0 - plow(t)
+            frame_img = bite[0]
+            u = min(1.0, (t - T_SURF) / SURF_MS)
+            fy0 = Y0 + RISE * (1 - u) ** 2.2
+            if t < T_SURF + HANDOFF:
+                h = (t - T_SURF) / HANDOFF
+                x, y = SWIM[1]
+                under = dict(x=x, y=y, left=True, sink=CUT * h, kick=1.0, depth=h, fin=True)
         elif t < T_SWEEP:
             frame_img = bite[at(T_BITE, BITE_MS, t)]
         elif t < T_DIVE:
@@ -365,8 +375,8 @@ def scene():
                 hole_x = ERUPT[0]
                 fx.place(body, frame_img, (0, 0), fx0, fy0,
                          clip=lambda xs, ys: ys < G + 4 + 6 * np.sqrt(np.clip(1 - ((xs - hole_x) / RXH) ** 2, 0, 1)))
-            elif t >= T_DIVE:
-                u = min(1.0, (t - T_DIVE) / DIVE_MS)
+            elif t >= T_DIVE or T_WALK <= t < T_SWIM:
+                u = min(1.0, (t - (T_DIVE if t >= T_DIVE else T_WALK)) / DIVE_MS)
                 rot = frame_img.rotate(52 * u, resample=Image.NEAREST, center=(head_of(frame_img)[0] + 10, CUT_ROW))
                 fx.place(body, rot, (0, 0), fx0 - 8 * u, fy0 + 150 * u * u, clip=lambda xs, ys: ys < G)
             else:
@@ -377,12 +387,9 @@ def scene():
         # how hard each end is pushing: the outermost cut edges' speed, kicked up and dying away
         if spans and not frozen:
             l, r = spans[0][0], spans[-1][1]
-            if edge_l is not None and T_BREATHE <= t < T_DIVE:
+            if edge_l is not None and (T_BREATHE <= t < T_WALK or T_BITE <= t < T_DIVE):
                 bow_l = min(6.0, bow_l * 0.86 + min(2.5, max(0.0, edge_l - l)) * 0.8)
                 bow_r = min(6.0, bow_r * 0.86 + min(2.5, max(0.0, r - edge_r)) * 0.8)
-                if T_WALK <= t < T_BITE:
-                    # the plow: the bow never drops below what its forward speed piles up
-                    bow_l = max(bow_l, min(6.0, 2.0 + 5.0 * (shift(t - TICK) - shift(t))))
             else:
                 bow_l *= 0.8
                 bow_r *= 0.8
@@ -406,6 +413,14 @@ def scene():
                 sand(7, x0 + (x1 - x0) * k / 8, G, 3.0, 8)
         if now(t, T_LANDED + SINK_MS - 60):
             new_streams(body, 5, 1500, t)
+        if now(t, T_SURF + 60):
+            bb2 = bite[0].getbbox()
+            x0, x1 = fx0 + bb2[0], fx0 + bb2[2]
+            for k in range(9):
+                bits.chunks(x0 + (x1 - x0) * k / 8, G - 2, G, 3, 10, spread=0.9, aim=-90)
+                sand(7, x0 + (x1 - x0) * k / 8, G, 3.4, 8)
+        if now(t, T_SURF + SURF_MS - 60):
+            new_streams(body, 5, 1300, t)
         if now(t, T_SNAP):
             sand(20, JAWS[0], G, 2.6, 12)
             bits.chunks(JAWS[0] + 6, G - 2, G, 8, 7, spread=0.8, aim=-110)
@@ -413,9 +428,10 @@ def scene():
             new_streams(body, 4, 1100, t)
         if now(t, T_BLAST):
             new_streams(body, 4, 900, t)
-        if now(t, T_DIVE + DIVE_MS // 3):
-            bits.chunks(DIVE_HOLE[0], G - 3, G, 22, 11, spread=0.9, aim=-90)
-            sand(26, DIVE_HOLE[0], G, 3.6, 14)
+        for t0, hole in DIVES:
+            if now(t, t0 + DIVE_MS // 3):
+                bits.chunks(hole[0], G - 3, G, 22, 11, spread=0.9, aim=-90)
+                sand(26, hole[0], G, 3.6, 14)
         if now(t, T_UP):
             bits.chunks(R0[0], R0[1] - 2, R0[1], 10, 8, spread=0.8, aim=-90)
             sand(16, R0[0], R0[1], 3.0, 10)
@@ -426,7 +442,7 @@ def scene():
             step_at = t
         if spans and not frozen:
             # grains pouring off the body: a sprinkle from the outline, more after the landing and the thrash
-            since_land = t - T_LANDED
+            since_land = t - (T_SURF if t >= T_SURF else T_LANDED)
             n = 2 + (10 if since_land < 250 else 6 if since_land < 700 else 0) + round(4 * thrash)
             pour(body, n)
             pts = top_edge(body)
@@ -496,6 +512,8 @@ def scene():
             fx.crater(gd, ERUPT[0], ERUPT[1], RXH - 4, 10, dark=t < T_HAUL + 900)
         if T_DART <= t < T_DART + 1300:
             fx.crater(gd, DIVE_HOLE[0], G, 34, 10, dark=t < T_DART + 600)
+        if T_SWIM <= t < T_SWIM + 1100:
+            fx.crater(gd, SUB_HOLE[0], G, 34, 10, dark=t < T_SWIM + 500)
         if under and under["fin"] and under["sink"] < CUT:
             line = under["y"]
             bob = round(1.5 * math.sin(t * 0.012))
@@ -505,10 +523,13 @@ def scene():
         # the shark and its rim
         beast = bs.layer()
         bd = ImageDraw.Draw(beast)
-        splash_k = (t - T_LANDED) // TICK
+        splash_k = (t - (T_SURF if t >= T_SURF else T_LANDED)) // TICK
         land_splash = [16, 26, 32, 28, 20, 12, 6][splash_k] if in_sand and 0 <= splash_k < 7 else 0
-        dive_k = (t - T_DIVE - DIVE_MS // 3) // TICK
-        dive_splash = [14, 24, 28, 22, 14, 7][dive_k] if 0 <= dive_k < 6 else 0
+        dive_splash, dive_x = 0, 0
+        for t0, hole in DIVES:
+            dive_k = (t - t0 - DIVE_MS // 3) // TICK
+            if 0 <= dive_k < 6:
+                dive_splash, dive_x = [14, 24, 28, 22, 14, 7][dive_k], hole[0]
         if land_splash:
             for a, b in spans:
                 n = max(1, (b - a) // 30)
@@ -516,8 +537,9 @@ def scene():
                     fx.spikes(bd, a + (b - a) * (k + 0.5) / n, G - 1, t // TICK * 13 + k, land_splash,
                               dirs=[-130, -110, -90, -70, -50], light=False)
         if dive_splash:
-            fx.spikes(bd, DIVE_HOLE[0], G - 1, t // TICK, dive_splash, dirs=[-130, -110, -90, -70, -50], light=False)
-        lips = [lip_heights(a, b, t, 1.0 + 0.8 * thrash + (0.6 if 0 <= t - T_LANDED < 600 else 0.0)) for a, b in spans]
+            fx.spikes(bd, dive_x, G - 1, t // TICK, dive_splash, dirs=[-130, -110, -90, -70, -50], light=False)
+        fresh = 0 <= t - T_LANDED < 600 or 0 <= t - T_SURF < 600
+        lips = [lip_heights(a, b, t, 1.0 + 0.8 * thrash + (0.6 if fresh else 0.0)) for a, b in spans]
         for xs, hs in lips:
             body = shade_above(body, xs, hs)
         beast.alpha_composite(body)
@@ -539,7 +561,7 @@ def scene():
                     fx.spikes(bd, a + (b - a) * k / n, G + 1, t // TICK * 17 + k, land_splash * 0.7,
                               dirs=[-160, -135, -110, -70, -45, -20])
         if dive_splash:
-            fx.spikes(bd, DIVE_HOLE[0], G + 1, t // TICK + 5, dive_splash * 0.7, dirs=[-165, -140, -40, -15])
+            fx.spikes(bd, dive_x, G + 1, t // TICK + 5, dive_splash * 0.7, dirs=[-165, -140, -40, -15])
         if T_SNAP <= t < T_SNAP + 50 + FREEZE:
             bs.star(bd, JAWS[0], JAWS[1], 12 if t < T_SNAP + 60 else 8, WHITE)
         grains.draw(bd)
@@ -574,11 +596,10 @@ def scene():
         t += TICK
 
     bs.save_mp4(out, A / "shark-land2.mp4")
-    marks = [t // TICK for t in (900, T_HAUL + 400, T_LANDED + 60, T_LANDED + SINK_MS + 200, T_BREATHE + 1200,
-                                 T_WALK + 1000, T_SNAP + 60, T_BITE + sum(BITE_MS[:20]), T_BLAST + 260,
-                                 T_DIVE + 140, T_DART + 300, T_UP + 700)]
+    marks = [t // TICK for t in (900, T_HAUL + 400, T_LANDED + 60, T_BREATHE + 1200, T_WALK + 160, T_SWIM + 600,
+                                 T_SURF + 120, T_SNAP + 60, T_BLAST + 260, T_DIVE + 140, T_DART + 300, T_UP + 700)]
     bs.key_sheet(out, marks, A / "shark-land2-keys.png")
-    times = dict(landed=T_LANDED, walk=T_WALK, bite=T_BITE, snap=T_SNAP, sweep=T_SWEEP, blast=T_BLAST, dive=T_DIVE,
+    times = dict(landed=T_LANDED, walk=T_WALK, swim=T_SWIM, surf=T_SURF, bite=T_BITE, snap=T_SNAP, sweep=T_SWEEP, blast=T_BLAST, dive=T_DIVE,
                  end=T_END)
     print("shark half in the sand", len(out), "frames;", " ".join("%s %d" % kv for kv in times.items()))
     return out, times
