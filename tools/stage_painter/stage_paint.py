@@ -1,7 +1,11 @@
+import io
 import json
 import sys
 import time
 import urllib.error
+import urllib.parse
+import urllib.request
+import uuid
 from pathlib import Path
 
 import numpy as np
@@ -177,17 +181,58 @@ def plan(o):
     return Image.fromarray(np.clip(a, 0, 255).round().astype(np.uint8))
 
 
+API = getattr(G, "API", "http://127.0.0.1:8191")
+
+
+def upload(img, name, sub="ks-bloodridge-stages"):
+    """Hands the colour plan to the painter over its own API (/upload/image), so it lands in whatever input folder the
+    running ArtLab reads. 31 Oct: saved by path into ComfyUI-ArtLab/input, the painter answered "Invalid image file",
+    it reads another folder. Returns the name LoadImage takes."""
+    buf = io.BytesIO()
+    img.save(buf, "PNG")
+    b = "----ks" + uuid.uuid4().hex
+    body = (("--%s\r\nContent-Disposition: form-data; name=\"image\"; filename=\"%s\"\r\nContent-Type: image/png"
+             "\r\n\r\n" % (b, name)).encode() + buf.getvalue() + b"\r\n")
+    for k, v in (("subfolder", sub), ("type", "input"), ("overwrite", "true")):
+        body += ("--%s\r\nContent-Disposition: form-data; name=\"%s\"\r\n\r\n%s\r\n" % (b, k, v)).encode()
+    body += ("--%s--\r\n" % b).encode()
+    req = urllib.request.Request(API + "/upload/image", data=body,
+                                 headers={"Content-Type": "multipart/form-data; boundary=" + b})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        j = json.load(r)
+    return (j["subfolder"] + "/" if j.get("subfolder") else "") + j["name"]
+
+
+def result(pid):
+    """Waits for the job and fetches its image over the painter's API (/view), whatever its output folder is."""
+    while True:
+        try:
+            h = G.api("/history/" + pid).get(pid)
+        except OSError:
+            time.sleep(10)
+            continue
+        if h:
+            if h.get("status", {}).get("status_str") == "error":
+                raise RuntimeError(json.dumps(h["status"])[:2000])
+            imgs = [i for o in h.get("outputs", {}).values() for i in o.get("images", [])]
+            if imgs:
+                q = urllib.parse.urlencode({"filename": imgs[0]["filename"], "subfolder": imgs[0].get("subfolder", ""),
+                                            "type": imgs[0].get("type", "output")})
+                with urllib.request.urlopen(API + "/view?" + q, timeout=120) as r:
+                    return Image.open(io.BytesIO(r.read()))
+        time.sleep(4)
+
+
 def run(tag, init, pos, seed, step=2):
-    """barren_paint.run into this stage folder."""
-    RG.INP.mkdir(parents=True, exist_ok=True)
+    """barren_paint.run into this stage folder, with the plan and the result sent over the painter's API."""
     OUT.mkdir(parents=True, exist_ok=True)
-    init.save(RG.INP / (tag + "-init.png"))
+    name = upload(init, tag + "-init.png")
     g = {n: v for n, v in json.loads(RG.L3.BASE.read_text()).items() if n != "8"}
     g["4"]["inputs"]["text"] = pos
     g["5"]["inputs"]["text"] = negative()
     g["10"]["inputs"].update(width=W, height=H)
     g["11"]["inputs"]["noise_seed"] = seed
-    g["15"] = {"class_type": "LoadImage", "inputs": {"image": "ks-regions-20261024/" + tag + "-init.png"}}
+    g["15"] = {"class_type": "LoadImage", "inputs": {"image": name}}
     g["16"] = {"class_type": "VAEEncode", "inputs": {"pixels": ["15", 0], "vae": ["3", 0]}}
     g["18"] = {"class_type": "SplitSigmas", "inputs": {"sigmas": ["10", 0], "step": step}}
     g["12"]["inputs"]["sigmas"] = ["18", 1]
@@ -199,7 +244,7 @@ def run(tag, init, pos, seed, step=2):
         pid = G.api("/prompt", {"prompt": g, "front": True})["prompt_id"]
     except urllib.error.HTTPError as e:  # 31 Oct: a bare "HTTP Error 400"; the painter's reply says why
         raise SystemExit("The painter refused %s: %s" % (tag, e.read().decode("utf-8", "replace")[:4000]))
-    out = G.wait_image(pid).convert("RGB")
+    out = result(pid).convert("RGB")
     print(tag, out.size, "%.0fs" % (time.time() - t0), flush=True)
     return out
 
