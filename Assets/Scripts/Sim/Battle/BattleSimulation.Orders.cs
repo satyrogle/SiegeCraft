@@ -340,7 +340,7 @@ namespace KindredSiege.Sim.Battle
             {
                 case Directive.Hold: return HoldTicks * percent / 100;
                 case Directive.FallBack: return Longer(FallBackTicks * percent / 100, _rules[side].Favours.FallBackLongerPercent);
-                case Directive.FocusFire: return Longer(FocusTicks * percent / 100, _rules[side].Favours.FocusLongerPercent);
+                case Directive.FocusFire: return FearPriced(side, Longer(FocusTicks * percent / 100, _rules[side].Favours.FocusLongerPercent));
                 default: return Longer(UnleashTicks * percent / 100, _rules[side].Favours.UnleashLongerPercent);
             }
         }

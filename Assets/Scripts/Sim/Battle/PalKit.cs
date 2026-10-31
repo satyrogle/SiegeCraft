@@ -49,6 +49,92 @@ namespace KindredSiege.Sim.Battle
         public const string BackstabDetail = "backstab";
         public const string FearDetail = "fear";
 
+        // ------------------------------------------------------------ the forms (campaign rules 25)
+        // Jacob in chat, 31 Oct 2026: "go" on Claude's Shade design (HANDOFF_LOG, "Claim: the Shade's forms"). Every number is a
+        // starting value.
+
+        /// Sanctuary 2, Relay: the field also makes one shared pool of this share of the shields it gave. When a hit breaks a
+        /// fighter's shield, the pool soaks what is left of it, until the pool is gone or the field ends (ShieldTicks).
+        public const int RelayPercent = 25;
+
+        /// Sanctuary 3, Last Refuge: once a fight, a hit that would kill one of the side while its field is up leaves him at 1
+        /// health, and every shield of the field shatters.
+        public const int RefugeHealth = 1;
+
+        // Sanctuary's price from rules 25: the side's parries do not stagger (BattleSimulation.ParryLands).
+
+        /// Backstab 2, Twin Knives: each fighter's next this many hits land double, not one.
+        public const int TwinKnivesHits = 2;
+
+        /// Backstab 3, Shadow Strike: the side keeps attacking while it falls back. Backstab's price from rules 25: the next Fall
+        /// Back waits until this long after the last one ran out.
+        public const int BackstabLockTicks = 2 * SimClock.TicksPerSecond;
+
+        /// Fear 2, Spreading Dread: an enemy Fear breaks sets Fear off again around him, at most this many more times for one
+        /// fall.
+        public const int DreadSpreads = 2;
+
+        /// Fear's price from rules 25: Focus Fire lasts this percent as long.
+        public const int FearFocusPercent = 75;
+
+        /// The events' details for the forms: Relay's pool soaking (Shield), Last Refuge (Trick, its target the one saved),
+        /// Fear spreading (Trick, its target the one who broke), and Turncoat's blow (Trick, then the Hit's detail).
+        public const string RelayDetail = "relay";
+        public const string RefugeDetail = "refuge";
+        public const string DreadDetail = "dread";
+        public const string TurncoatDetail = "turncoat";
+
+        /// The routes the road offers from rules 25: the three built so far. The other five wait for their forms.
+        public static bool Built(ShadeRoute route)
+        {
+            return route == ShadeRoute.Sanctuary || route == ShadeRoute.Backstab || route == ShadeRoute.Fear;
+        }
+
+        /// A route's name, as the road card and the codex show it.
+        public static string Name(ShadeRoute route)
+        {
+            switch (route)
+            {
+                case ShadeRoute.RiftMine: return "Rift Mine";
+                case ShadeRoute.None: return string.Empty;
+                default: return route.ToString();
+            }
+        }
+
+        /// A form's name: the route's name at form 1.
+        public static string FormName(ShadeRoute route, int form)
+        {
+            switch (route)
+            {
+                case ShadeRoute.Sanctuary: return form >= 3 ? "Last Refuge" : form == 2 ? "Relay" : "Sanctuary";
+                case ShadeRoute.Backstab: return form >= 3 ? "Shadow Strike" : form == 2 ? "Twin Knives" : "Backstab";
+                case ShadeRoute.Fear: return form >= 3 ? "Turncoat" : form == 2 ? "Spreading Dread" : "Fear";
+                default: return Name(route);
+            }
+        }
+
+        /// What a form adds, in one line, for the road card.
+        public static string Describe(ShadeRoute route, int form)
+        {
+            switch (route)
+            {
+                case ShadeRoute.Sanctuary:
+                    if (form >= 3) return "Once a fight, a killing blow on one of yours under the field leaves him at 1 health.";
+                    if (form == 2) return "The field also makes a shared pool that soaks what a broken shield could not.";
+                    return "A clean parry shields every fighter. Your parries no longer stagger.";
+                case ShadeRoute.Backstab:
+                    if (form >= 3) return "Fall Back no longer stops your attacks.";
+                    if (form == 2) return "After a Fall Back, each fighter's next " + TwinKnivesHits + " hits land double.";
+                    return "After a Fall Back, each fighter's next hit lands double. Fall Back waits " +
+                        BackstabLockTicks / SimClock.TicksPerSecond + " s longer.";
+                case ShadeRoute.Fear:
+                    if (form >= 3) return "The enemy Fear panics hits the enemy beside him once.";
+                    if (form == 2) return "An enemy Fear breaks sets Fear off again around him, up to " + DreadSpreads + " more times.";
+                    return "When your Focus Fire target falls, those beside him lose nerve and the weakest panics. Focus Fire is a quarter shorter.";
+                default: return string.Empty;
+            }
+        }
+
         /// The button a route sits on.
         public static Directive ButtonOf(ShadeRoute route)
         {

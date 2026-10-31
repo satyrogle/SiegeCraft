@@ -62,7 +62,9 @@ namespace KindredSiege.Sim.Learning
         // The rules just before 13 Oct. Each 13 Oct rule and doctrine is a switch that stays off unless a fight
         // turns it on, so a fight recorded under these that turned none on plays the same in this build.
         private const string PreSkillRulesIdentity = "ks-battle-20261011-3";
-        private const int FormatVersion = 29;
+        // Format 30 (31 Oct 2026, the Shade's forms, campaign rules 25) adds that switch after format 29's; the forms themselves
+        // were already in each side's Pal kit (format 28). Older evidence reads it as off.
+        private const int FormatVersion = 30;
 
         // The longest move name a learned wait out or feint can sit on, read back.
         private const int MaxMoveName = 64;
@@ -102,6 +104,7 @@ namespace KindredSiege.Sim.Learning
         // piece, else 9.
         private static int FormatUsed(BattleSetup setup)
         {
+            if (setup.Fight.ShadeForms) return 30;
             if (setup.Fight.Whisper) return 29;
             if (setup.Fight.Floor) return 28;
             if (setup.Fight.Meter) return 27;
@@ -437,6 +440,9 @@ namespace KindredSiege.Sim.Learning
                 for (int i = 0; i < habits.Length; i++) w.Write(habits[i]);
                 w.Write((int)kit.Pair);
             }
+            if (format < 30) return;
+            // Format 30: the Shade's forms (rules 25): the switch.
+            w.Write(fight.ShadeForms);
         }
 
         private static BattleSetup ReadSetup(BinaryReader r, int version)
@@ -650,9 +656,10 @@ namespace KindredSiege.Sim.Learning
                         rules[side] = rules[side].WithPals(rules[side].Pals.WithWhisper(habits, pair));
                     }
                 }
+                bool shadeForms = version >= 30 && r.ReadBoolean();
                 fight = new FightRules(misses, earned, perfectHold, snaps, classSpells, chiefRules, chiefKits, beasts, chiefTactics,
                     parryCenter, squadFirst, raidChief, roadCombat, roadKit, clearRoad, squadScreen, duel, layers, marks, payoffs, danger,
-                    meter, floor, whisper);
+                    meter, floor, whisper, shadeForms);
                 // A beast's side is exactly its parts, or the fight cannot be played back (the audit, 22 Oct 2026).
                 for (int side = 0; side < 2 && beasts; side++)
                     if (rules[side].Beast != BeastKit.None && units[side].Count != BeastKits.PartCount)

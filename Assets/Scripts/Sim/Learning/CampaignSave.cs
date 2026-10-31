@@ -6,7 +6,9 @@ using KindredSiege.Sim.Battle;
 
 namespace KindredSiege.Sim.Learning
 {
-    /// Writes a campaign down and reads it back. Version 27 (31 Oct 2026, the Whisperer, campaign rules 24) reads the habits
+    /// Writes a campaign down and reads it back. Version 28 (31 Oct 2026, the Shade's forms, campaign rules 25) can hold her road
+    /// card on offer: favour offer choices from Favour.ShadeMirror to Favour.ShadeEcho, one a route; an older game refuses it by
+    /// its version. Version 27 (31 Oct 2026, the Whisperer, campaign rules 24) reads the habits
     /// as camp records, kept between runs, and keeps the run's habit upgrades (habitup) and her picks on offer (whisperpick,
     /// one for each of the favour offer's choices, in order). Version 26 (31 Oct 2026, the floor under the three Pals, campaign rules 23)
     /// keeps the Pals' stores: talent, route, palhabit, pair, rank and slot2 records. Version 25 (31 Oct 2026, fix 5, campaign rules 19) keeps whether the run's
@@ -62,7 +64,7 @@ namespace KindredSiege.Sim.Learning
     public static partial class CampaignSave
     {
         public const string Header = "kindred-siege-campaign";
-        public const int Version = 27;
+        public const int Version = 28;
 
         public const string OldSaveNote =
             "This save is from the old respect campaign, so you are back at camp. What the tribes learned about you and your codex are kept.";

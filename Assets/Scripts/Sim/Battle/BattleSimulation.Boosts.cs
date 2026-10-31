@@ -63,10 +63,10 @@ namespace KindredSiege.Sim.Battle
             }
         }
 
-        // While a side falls back nobody of it attacks (the road kit).
+        // While a side falls back nobody of it attacks (the road kit), unless it plays Shadow Strike (rules 25).
         private bool FallingBack(int side)
         {
-            return _roadKitOn && side >= 0 && side <= 1 && _sides[side].FallBackTicks > 0;
+            return _roadKitOn && side >= 0 && side <= 1 && _sides[side].FallBackTicks > 0 && !ShadowStrike(side);
         }
 
         private void Boosted(BattleUnit by, BattleUnit on, int amount, string move)

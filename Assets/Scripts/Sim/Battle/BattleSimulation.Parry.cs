@@ -333,10 +333,15 @@ namespace KindredSiege.Sim.Battle
             if (_squadOn) points = ParryRules.SquadParryPoints;
             int facing = 1 - side;
             SideState theirs = _sides[facing];
+            // Sanctuary's price (rules 25): the parrying side's parries do not stagger (BattleSimulation.Shade.cs).
+            int stagger = SanctuaryPriced(facing) ? 0 : FightRules.StaggerTicks;
             Emit(new BattleEvent(_tick, BattleEventKind.Parry, facing, string.Empty, -1, doer.Id, (int)doer.Class,
-                FightRules.StaggerTicks, move));
-            doer.Cooldown += FightRules.StaggerTicks;
-            doer.ReelTicks = FightRules.StaggerTicks;
+                stagger, move));
+            if (stagger > 0)
+            {
+                doer.Cooldown += stagger;
+                doer.ReelTicks = stagger;
+            }
             theirs.HoldTicks = 0;
             theirs.LastParryTick = _tick;
             theirs.ParriedCasterId = doer.Id;

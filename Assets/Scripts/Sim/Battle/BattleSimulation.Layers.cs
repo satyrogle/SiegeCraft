@@ -40,6 +40,9 @@ namespace KindredSiege.Sim.Battle
             amount = Shielded(victim, amount);
             if (amount <= 0 && unshielded > 0) return;
             if (amount <= 0) return;
+            // Last Refuge, Sanctuary's last form (rules 25): once a fight a killing blow under the field leaves him at 1 health.
+            if (_shadeOn) amount = LastRefuge(victim, amount);
+            if (amount <= 0) return;
             // Who hit one of yours, for Avenger and Counter Shot (rules 24, BattleSimulation.Whisperer.cs).
             if (_whisperOn && foe && source != null && source.Side == sourceSide) Struck(source, victim);
             Land(source, sourceSide, victim, amount, detail);

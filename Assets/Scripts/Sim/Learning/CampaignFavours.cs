@@ -69,7 +69,20 @@ namespace KindredSiege.Sim.Learning
         // habit, for the run (Campaign.PalStores.cs).
         WhisperRankUp = 28,
         WhisperPair = 29,
-        WhisperHabitUp = 30
+        WhisperHabitUp = 30,
+
+        // The Shade's road card (campaign rules 25; Jacob in chat, 31 Oct 2026: "go" on Claude's Shade design): one a route, in
+        // Battle.ShadeRoute's order. From rules 25 her road fights offer three of these in place of her three favours above.
+        // Taking one gives that route its next form, or puts it on its plain button at form 1 (Campaign.TryTakeRoute). Only
+        // Sanctuary, Backstab and Fear are offered so far (Battle.ShadeRules.Built).
+        ShadeMirror = 31,
+        ShadeSanctuary = 32,
+        ShadeBackstab = 33,
+        ShadeRiftMine = 34,
+        ShadeRupture = 35,
+        ShadeFear = 36,
+        ShadeBreach = 37,
+        ShadeEcho = 38
     }
 
     /// One of the Whisperer's picks on offer (rules 24): its kind, and the fighter it ranks up, the pair it sets or the habit it
@@ -226,6 +239,25 @@ namespace KindredSiege.Sim.Learning
             return favour >= Favour.WhisperRankUp && favour <= Favour.WhisperHabitUp;
         }
 
+        /// True for one of the Shade's road card picks (rules 25): a route, its form in the run's store.
+        public static bool IsShade(Favour favour)
+        {
+            return favour >= Favour.ShadeMirror && favour <= Favour.ShadeEcho;
+        }
+
+        /// The route a Shade pick takes; None for any other favour.
+        public static ShadeRoute RouteOf(Favour favour)
+        {
+            return IsShade(favour) ? (ShadeRoute)((int)favour - (int)Favour.ShadeMirror + (int)ShadeRoute.Mirror) : ShadeRoute.None;
+        }
+
+        /// The Shade pick for a route.
+        public static Favour ShadePick(ShadeRoute route)
+        {
+            if (route <= ShadeRoute.None || (int)route >= ShadeRules.RouteCount) return Favour.None;
+            return (Favour)((int)route - (int)ShadeRoute.Mirror + (int)Favour.ShadeMirror);
+        }
+
         /// A pair's name.
         public static string PairName(SquadPair pair)
         {
@@ -280,6 +312,7 @@ namespace KindredSiege.Sim.Learning
         {
             if (IsCombo(favour)) return Pal.Butcher;
             if (IsWhisper(favour)) return Pal.Whisperer;
+            if (IsShade(favour)) return Pal.Shade;
             if (favour <= Favour.None || (int)favour > Count) return Pal.None;
             return (Pal)(((int)favour - 1) / 3 + 1);
         }
@@ -314,6 +347,7 @@ namespace KindredSiege.Sim.Learning
             if (favour == Favour.WhisperRankUp) return "Rank up";
             if (favour == Favour.WhisperPair) return "Pair";
             if (favour == Favour.WhisperHabitUp) return "Habit upgrade";
+            if (IsShade(favour)) return ShadeRules.Name(RouteOf(favour));
             switch (favour)
             {
                 case Favour.LongRage: return "Long Rage";
@@ -342,6 +376,8 @@ namespace KindredSiege.Sim.Learning
                 return "For a " + SliceClasses.Name(ClassSpells.ClassOf(bend)) + "'s gear slot. " + ClassSpells.Describe(bend);
             }
             rank = Math.Max(1, Math.Min(MaxRank, rank));
+            // A Shade pick's rank is its route's form (Campaign.FavourRank): what that form adds.
+            if (IsShade(favour)) return ShadeRules.FormName(RouteOf(favour), rank) + ": " + ShadeRules.Describe(RouteOf(favour), rank);
             switch (favour)
             {
                 case Favour.LongRage: return "Unleash lasts " + LongerPercent * rank + "% longer.";

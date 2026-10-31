@@ -109,6 +109,12 @@ namespace KindredSiege.Sim.Battle
             public long AvengeTick = -1;
             public int ForcedWardTicks;
             public string ForcedWardId = string.Empty;
+            // From rules 25 (BattleSimulation.Shade.cs): Sanctuary's field and its Relay pool, whether its Last Refuge is spent,
+            // and how long Backstab's price keeps Fall Back waiting.
+            public int FieldTicks;
+            public int RelaySize;
+            public bool RefugeUsed;
+            public int FallBackLockTicks;
             public int Nerve;
             public int StartHp;
             public int NerveRemainder;
@@ -357,6 +363,8 @@ namespace KindredSiege.Sim.Battle
             _floorOn = _fight.Floor;
             // The Whisperer (BattleSimulation.Whisperer.cs, campaign rules 24) rides on the floor.
             _whisperOn = _floorOn && _fight.Whisper;
+            // The Shade's forms (BattleSimulation.Shade.cs, campaign rules 25) ride on the floor too.
+            _shadeOn = _floorOn && _fight.ShadeForms;
             // The Butcher's combos (BattleSimulation.Combos.cs, 29 Oct 2026): only a fight where someone wears one plays them.
             _comboOn = _classOn && AnyCombo();
             // The damage layers (BattleSimulation.Layers.cs, campaign rules 17): every hit and heal through one pipeline.
@@ -615,6 +623,12 @@ namespace KindredSiege.Sim.Battle
                     return false;
                 }
             }
+            else if (directive == Directive.FallBack && _shadeOn && state.FallBackLockTicks > 0)
+            {
+                // Backstab's price (rules 25, BattleSimulation.Shade.cs).
+                failure = "Fall Back is back in " + SecondsLeft(state.FallBackLockTicks) + ".";
+                return false;
+            }
             else if (directive == Directive.Frenzy)
             {
                 if (LivingPal(side) == null)
@@ -794,6 +808,7 @@ namespace KindredSiege.Sim.Battle
                 if (_comboOn) CountDownCombos();
                 if (_marksOn) CountDownTheme();
                 if (_floorOn) CountDownFloor();
+                if (_shadeOn) CountDownShade();
                 if (_kitsOn) CountDownKit();
 
                 if (!_finished && _tick + 1 >= _setup.TickLimit)
@@ -956,6 +971,7 @@ namespace KindredSiege.Sim.Battle
                     b.Field("ward", state.ForcedWardTicks);
                     b.Field("wardId", state.ForcedWardId);
                     if (_whisperOn) AppendWhisperSide(b, state);
+                    if (_shadeOn) AppendShadeSide(b, state);
                     if (_nerveOn)
                     {
                         b.Field("nerve", state.Nerve);
@@ -1202,6 +1218,8 @@ namespace KindredSiege.Sim.Battle
                         b.Field(u.Id + ".backstab", u.Statuses[StatusKind.Backstab].Ticks);
                         // And the Whisperer's, only where she plays (BattleSimulation.Whisperer.cs).
                         if (_whisperOn) AppendWhisperUnit(b, u);
+                        // And the Shade's forms, only where they play (rules 25).
+                        if (_shadeOn) b.Field(u.Id + ".backstabHits", u.Statuses[StatusKind.Backstab].Store);
                     }
                 }
                 b.Section("events");
@@ -1245,6 +1263,8 @@ namespace KindredSiege.Sim.Battle
                     break;
                 case Directive.FallBack:
                     state.FallBackTicks = Longer(FallBackTicks * percent / 100, _rules[side].Favours.FallBackLongerPercent);
+                    // Backstab's price (rules 25): the next Fall Back waits until a while after this one runs out.
+                    if (_shadeOn && KitOf(side).Has(ShadeRoute.Backstab)) state.FallBackLockTicks = state.FallBackTicks + ShadeRules.BackstabLockTicks;
                     if (ordered) state.LastFallBackTick = _tick;
                     ReflexPressOnFallBack(1 - side);
                     // Backstab, the Shade's Fall Back trick (rules 23, BattleSimulation.Shade.cs).
@@ -1254,7 +1274,7 @@ namespace KindredSiege.Sim.Battle
                     // A Thick Hide hunter braces the moment you focus him, under the parry at the center (BattleSimulation.Band.cs).
                     if (_parryOn && HasBand(target.Side, BandTrait.ThickHide)) Fired(target.Side, LessonFiring.ThickHide, target, null);
                     state.FocusTargetId = target.Id;
-                    state.FocusTicks = Longer(FocusTicks * percent / 100, _rules[side].Favours.FocusLongerPercent);
+                    state.FocusTicks = FearPriced(side, Longer(FocusTicks * percent / 100, _rules[side].Favours.FocusLongerPercent));
                     if (ordered)
                     {
                         state.LastFocusTick = _tick;
@@ -2181,7 +2201,10 @@ namespace KindredSiege.Sim.Battle
             SideState mine = _sides[attacker.Side];
             SideState theirs = _sides[1 - attacker.Side];
             // A band with Long Reach still reaches you through your Fall Back (BandTrait.LongReach), not through its own.
-            if (mine.FallBackTicks > 0 || (theirs.FallBackTicks > 0 && !HasBand(attacker.Side, BandTrait.LongReach)))
+            // Shadow Strike, Backstab's last form (rules 25): your side keeps striking while it falls back, and they still can't
+            // reach you (BattleSimulation.Shade.cs).
+            if ((mine.FallBackTicks > 0 && !ShadowStrike(attacker.Side)) ||
+                (theirs.FallBackTicks > 0 && !HasBand(attacker.Side, BandTrait.LongReach)))
                 return StrikeBlock.FallBack;
             // Never on an Ambusher's trap, which no light blow springs (rules 24).
             if (attacker.Class != UnitClass.Warden && theirs.TrapArmed && !AmbushWaits(1 - attacker.Side) &&

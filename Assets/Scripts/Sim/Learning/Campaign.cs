@@ -602,7 +602,9 @@ namespace KindredSiege.Sim.Learning
         /// 23 those and the floor under the three Pals (31 Oct 2026, "Go, sprint it"; Battle.FightRules.Floor; FloorRules).
         /// 24 those and the Whisperer (31 Oct 2026, "Go, build her"; Battle.FightRules.Whisper; WhispererRules): habits set at
         /// camp and kept, her road card, the habits, pairs and rank 2 in the fight, and a fallen fighter's rank.
-        public const int RulesVersion = 24;
+        /// 25 those and the Shade's forms (Jacob in chat, 31 Oct 2026: "go" on Claude's Shade design; Battle.FightRules.ShadeForms;
+        /// ShadeFormsRules): her road card, and Sanctuary, Backstab and Fear at their second and third forms, each with its price.
+        public const int RulesVersion = 25;
         public const int SquadScreenRules = 14;
         public const int ClearRoadRules = 13;
 
@@ -656,6 +658,13 @@ namespace KindredSiege.Sim.Learning
         /// kept, her road card (a rank up, a pair or a habit upgrade for the run), the habits, their upgrades, the pairs and rank 2
         /// in the fight, and a fighter who falls in a lost fight losing his top rank.
         public const int WhispererRules = 24;
+
+        /// The campaign rules version from which the Shade's forms play (Jacob in chat, 31 Oct 2026: "go" on Claude's Shade
+        /// design; Campaign.PalStores.cs and Battle.BattleSimulation.Shade.cs): her road card (a new route on a plain button, or
+        /// the next form of one you hold), Sanctuary's Relay and Last Refuge, Backstab's Twin Knives and Shadow Strike, Fear's
+        /// Spreading Dread and Turncoat, and each route's price: Sanctuary's parries do not stagger, Backstab's Fall Back waits
+        /// longer, and Fear's Focus Fire is shorter.
+        public const int ShadeFormsRules = 25;
 
         /// Whether this run's roads carry a Pal on every fight (fix 5): set when the run starts under PalRoadRules, and kept
         /// with the run, so its roads come back the same when it loads.
@@ -888,6 +897,12 @@ namespace KindredSiege.Sim.Learning
             {
                 CampaignGear piece = ComboPiece(FavourRules.ComboBend(favour));
                 return piece == null ? 0 : piece.Rank;
+            }
+            // A Shade pick's rank is its route's form (rules 25).
+            if (FavourRules.IsShade(favour))
+            {
+                HeldRoute route = FindRoute(FavourRules.RouteOf(favour));
+                return route == null ? 0 : route.Form;
             }
             HeldFavour held = FindFavour(favour);
             return held == null ? 0 : held.Rank;
@@ -1431,6 +1446,8 @@ namespace KindredSiege.Sim.Learning
             if (FavourRules.IsCombo(favour)) TakeCombo(favour);
             // Her road card (rules 24, Campaign.PalStores.cs).
             else if (FavourRules.IsWhisper(favour)) name = TakeWhisper(_favourOffer.Picks[choice]);
+            // Hers (rules 25, Campaign.PalStores.cs).
+            else if (FavourRules.IsShade(favour)) name = TakeShade(favour);
             else
             {
                 HeldFavour held = FindFavour(favour);
@@ -1463,6 +1480,8 @@ namespace KindredSiege.Sim.Learning
             if (pal == Pal.None) return null;
             // From rules 24 the Whisperer offers her road card (Campaign.PalStores.cs).
             if (pal == Pal.Whisperer && rules >= WhispererRules) return WhisperOffer(node);
+            // From rules 25 the Shade offers her road card (Campaign.PalStores.cs).
+            if (pal == Pal.Shade && rules >= ShadeFormsRules) return ShadeOffer(node);
             var choices = new List<Favour>();
             if (pal == Pal.Butcher && rules >= ButcherComboRules)
             {
@@ -1568,6 +1587,8 @@ namespace KindredSiege.Sim.Learning
             int held = 0;
             for (int i = 0; i < _gear.Count; i++) if (ClassSpells.IsCombo(_gear[i].Bend)) held |= 1 << (int)Pal.Butcher;
             for (int i = 0; i < _favours.Count; i++) held |= 1 << (int)FavourRules.PalOf(_favours[i].Favour);
+            // From rules 25 a route she gave counts as a pick of hers.
+            if (ShadeFormsRun && _routes.Count > 0) held |= 1 << (int)Pal.Shade;
             return held;
         }
 
@@ -3114,6 +3135,8 @@ namespace KindredSiege.Sim.Learning
                     fightRules = fightRules.WithWhisper();
                     if (encounter.Kind != EncounterKind.Tutorial) RankSpecs(side0);
                 }
+                // From rules 25 the Shade's forms and prices play. Last, after the Whisperer.
+                if (rules >= ShadeFormsRules) fightRules = fightRules.WithShadeForms();
             }
             bool raidChief = IsRaidChief(tribe, encounter.Kind, rules);
             if (raidChief) MakeRaidChief(side1);

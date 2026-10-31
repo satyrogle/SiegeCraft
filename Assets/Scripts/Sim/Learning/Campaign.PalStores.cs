@@ -35,6 +35,9 @@ namespace KindredSiege.Sim.Learning
         /// Whether this campaign plays the Whisperer (rules 24): its rules version, under the tuning's cap.
         public bool WhispererRun => Math.Min(RulesVersion, _tuning.RulesCap) >= WhispererRules;
 
+        /// Whether this campaign plays the Shade's forms and her road card (rules 25): its rules version, under the tuning's cap.
+        public bool ShadeFormsRun => Math.Min(RulesVersion, _tuning.RulesCap) >= ShadeFormsRules;
+
         /// The Glutton lends this talent for the run. False when the run holds it already, or plays rules below 23.
         public bool TryLendTalent(GluttonTalent talent)
         {
@@ -257,6 +260,77 @@ namespace KindredSiege.Sim.Learning
             if (second != null) _gear.Remove(second);
             f.GearId2 = string.Empty;
             f.Rank = 1;
+        }
+
+        // ------------------------------------------------------------ the Shade's road card (rules 25)
+
+        // The road node's own dice for her three picks: a stream of its seed nothing else draws from.
+        private const ulong ShadeOfferStream = 17UL;
+
+        /// What a pick weighs in her offer: the next form of a route the run holds weighs this, a new route 1, so leaning on her
+        /// two buttons pays (the Butcher's ComboRankUpWeight). A starting value.
+        public const int ShadeFormWeight = 2;
+
+        // Her card: three of the next form of every built route the run holds below its last form, and every built route whose
+        // button is plain while the run enhances fewer than two, drawn by weight from the node's own dice, in ShadeRoute's order.
+        // Null when there is nothing, and the fight drops gear as usual.
+        private FavourOffer ShadeOffer(RoadNode node)
+        {
+            var pool = new List<Favour>();
+            var weights = new List<int>();
+            for (int r = (int)ShadeRoute.Mirror; r < ShadeRules.RouteCount; r++)
+            {
+                var route = (ShadeRoute)r;
+                if (!ShadeRules.Built(route)) continue;
+                HeldRoute held = FindRoute(route);
+                if (held != null)
+                {
+                    if (held.Form >= ShadeRules.MaxForm) continue;
+                    pool.Add(FavourRules.ShadePick(route));
+                    weights.Add(ShadeFormWeight);
+                    continue;
+                }
+                if (_routes.Count >= ShadeRules.MaxButtons || ButtonTaken(ShadeRules.ButtonOf(route))) continue;
+                pool.Add(FavourRules.ShadePick(route));
+                weights.Add(1);
+            }
+            var dice = new DeterministicRng(node.Seed, ShadeOfferStream);
+            var taken = new bool[pool.Count];
+            for (int n = 0; n < FavourRules.Offered && n < pool.Count; n++)
+            {
+                int total = 0;
+                for (int i = 0; i < pool.Count; i++) if (!taken[i]) total += weights[i];
+                int roll = dice.Next(total);
+                for (int i = 0; i < pool.Count; i++)
+                {
+                    if (taken[i]) continue;
+                    if (roll < weights[i])
+                    {
+                        taken[i] = true;
+                        break;
+                    }
+                    roll -= weights[i];
+                }
+            }
+            var choices = new List<Favour>();
+            for (int i = 0; i < pool.Count; i++) if (taken[i]) choices.Add(pool[i]);
+            return choices.Count == 0 ? null : new FavourOffer(Pal.Shade, choices);
+        }
+
+        // Takes one of her picks; its name for the codex: the form it gave.
+        private string TakeShade(Favour favour)
+        {
+            ShadeRoute route = FavourRules.RouteOf(favour);
+            TryTakeRoute(route);
+            HeldRoute held = FindRoute(route);
+            return ShadeRules.FormName(route, held == null ? 1 : held.Form);
+        }
+
+        // Whether one of the run's routes sits on this button.
+        private bool ButtonTaken(Directive button)
+        {
+            for (int i = 0; i < _routes.Count; i++) if (ShadeRules.ButtonOf(_routes[i].Route) == button) return true;
+            return false;
         }
 
         private HeldTalent FindTalent(GluttonTalent talent)
