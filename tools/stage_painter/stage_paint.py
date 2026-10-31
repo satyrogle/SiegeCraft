@@ -59,7 +59,8 @@ FLOOR = ("flat bare warm tan stone of the hill top, the same stone as the camp's
 NEG_STAGE = (", user interface, HUD, health bar, inventory slots, icons, buttons, game UI, cannon, cannonballs, gun "
              "barrel, gunpowder, lava, molten rock, glowing ground, glowing cracks in the floor, fire on the ground, "
              "fog, mist, haze over the ground, dust clouds, sand drifts, dunes, floating pyramids, buildings on the "
-             "clouds, translucent buildings, ghost buildings, see through stone")
+             "clouds, translucent buildings, ghost buildings, see through stone, giant stone head, colossal face, "
+             "giant sword stuck in the ground")  # the last three: stage 1's head and khopesh (Jacob, 31 Oct)
 FRAMEBOX = [(0, 650, 170, H), (1220, 650, W, H)]
 PLAN = dict(sky0=[42, 106, 184], sky1=[200, 228, 246], far=[236, 242, 248], back=[206, 200, 214],
             floor0=[208, 192, 160], floor1=[180, 164, 134], piece=[62, 48, 46])  # sky to floor: camp 5's plan colours
@@ -120,8 +121,10 @@ def bb(b):
 
 def negative():
     """regions.py's negative without the camp's bans (Bloodridge's stages are full of their tents and banners), plus
-    what the first five showed."""
-    return RG.negative() + NEG_STAGE
+    what the first five showed. RG.negative() would carry the camp's bans (tents, banners, statues, buildings, ruins,
+    bones, trees), which barren_paint.py adds to RG.NEG when camp_v4_parts loads it, so this builds from NEG_BASE."""
+    base = json.loads(RG.L3.BASE.read_text())["5"]["inputs"]["text"]
+    return base.replace(" creatures,", "").replace(" letters,", "") + RG.NEG_BASE + NEG_STAGE
 
 
 def prompt(o):

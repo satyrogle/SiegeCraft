@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -14,7 +14,7 @@ import regions as RG
 import stage_paint as SP
 import town_fix as TF
 
-# stage_region.py STAGE [paint] [life]
+# stage_region.py STAGE [paint] [life] | options
 # Jacob, 30 Oct 2026, on the first five Bloodridge stages: "i said use same artstyle layering etc not copy paste the
 # same shit and call it a day make bloodridge have more flavour and varirty if you compare where is camp and wheres
 # this dog shit", then "yes go" to Claude's plan: five places of their own (red dunes at sunrise, their siege camp at
@@ -22,7 +22,10 @@ import town_fix as TF
 # living layer, made the camp's way (same painter and palette rules, three layers, a loop). Stage 1 first, as the
 # template. Bloodridge's look is their 3 Oct lock: Medjai desert guardians in Beksinski's mood, rotted sepia rags,
 # burial bandages, corroded bronze, lava glowing through cracks. Layout and lanes as stage_paint.py.
-OUT = RG.REPO / "Art/Stages/Bloodridge"  # not ignored, so results can be pushed for review (31 Oct)
+# Not ignored, so results can be pushed for review (31 Oct). Under this script's own checkout: Jacob paints from a
+# worktree of tools/stage-painter, because his main folder is shared with Codex on game-one. Inputs (sprites, the
+# painter's base graph) are still read from RG.REPO, his main folder.
+OUT = HERE.parents[1] / "Art/Stages/Bloodridge"
 W, H, N, FPS = SP.W, SP.H, 96, 12
 WHO = ("A battle stage in the land of the Bloodridge, Egyptian desert guardians after the Medjai, painted in the eerie "
        "dreamlike mood of Zdzislaw Beksinski: rotted sepia rags, burial bandages, corroded bronze, ashen stone and ember "
@@ -118,6 +121,95 @@ STAGES = {
 }
 
 
+# Jacob, 31 Oct 2026, on stage 1 (the red dunes): pterodactyls are the only animal anywhere, no variety, "what the fuck
+# is that head in the background", and "i didn't say literally use [Medjai] culture ... they just look like medjai ...
+# but they are all cultish kind of shit, but now you made them into a river of red sand". Asked what the place should
+# be: "you built their town for camp same vibe", their settlement on camp 5's right hill (town_paint.py): low tents of
+# rotted sepia rags, tall black obelisks with ember cracks, ragged banners with a dark red sun disc, bronze braziers and
+# catapults, the pylon gate, bright and readable in full colour. Three takes of stage 1 in that vibe, three different
+# places of their land, none on the camp's hill over the sea of clouds (the copied first five were rejected, 30 Oct):
+# painted into one picture, numbered 1 to 3, for Jacob to pick from. No dunes, no red sand, no giant head or sword.
+WHO_TOWN = ("A battle stage in the land of the Bloodridge, a sun cult of faceless hooded guardians, the same people as "
+            "their settlement in the camp: low tents of rotted sepia and ash brown rags, tall black stone obelisks "
+            "with thin glowing ember cracks, ragged banners with a dark red sun disc on poles, bronze braziers, ram "
+            "skulls and burial bandages hung on poles, temples in the manner of ancient Egypt. Ash brown, sepia and "
+            "corroded bronze with ember light, in bright clear full colour. Ember light glows only in the cracks of "
+            "the obelisks and in braziers, never on the ground. Only the few things named for this place stand here, "
+            "along the far edge; nothing else is built anywhere in the picture.")
+AES_TOWN = ("a bright readable battle stage in a real lived in place of a sun cult, coherent pixel clusters, a real "
+            "place with depth and scale, readable silhouettes, the open ground calm and even so fighters read on it")
+LAY_TOWN = ("One battle stage seen from a fixed side oblique camera like a classic arcade fighting game stage, no "
+            "people. The top third is sky and distant land, and the landmarks stand along the far edge of the open "
+            "ground with their feet on one line a third of the way down. Everything below that line is one wide open "
+            "flat ground where two armies will fight, calm and empty from the left edge to the right edge, with "
+            "nothing standing on it.")
+TOWN = dict(who=WHO_TOWN, aes=AES_TOWN, lay=LAY_TOWN)
+OPTIONS = {
+    "1": dict(TOWN, name="THE WAR CAMP", seed=2026103111, note="their army's tents on the valley floor in the morning",
+              sky="a clear bright morning sky, deep blue above fading to pale blue at the horizon, a few small white "
+                  "clouds",
+              far="the long cliffs of the blood red ridge far away across a wide valley, a dark stepped pyramid and a "
+                  "temple gate of two pylon towers small on its top, thin columns of smoke rising",
+              light="Clear morning sun from the upper left, cool blue shadows, as discrete flat pixel colour planes, "
+                    "the ground in calm even light.",
+              pal=["#2a6ab8", "#8cc0ea", "#e6f2fa", "#a8423a", "#6e2a2a", "#c8c2bc", "#a49e9a", "#e2d6ba"] + T,
+              floor="flat pale ash grey packed earth of the camp ground, trampled smooth, crisp and clear, calm and "
+                    "even, no dust and no fog",
+              plan=dict(sky0=[52, 110, 190], sky1=[196, 224, 244], far=[150, 62, 56], back=[160, 140, 122],
+                        floor0=[200, 194, 188], floor1=[168, 162, 158], piece=[62, 48, 46]),
+              back=[((0, 215, W, 290), "rows of low tents of rotted sepia and ash brown rags along the far edge, "
+                                       "lines of burial bandages strung between poles"),
+                    ((150, 110, 320, 290), "a tall pole hung with ram skulls and a ragged banner with a dark red sun "
+                                           "disc, a bronze brazier with ember light at its foot"),
+                    ((590, 120, 680, 290), "a tall black stone obelisk with thin glowing ember cracks"),
+                    ((900, 100, 1250, 290), "an ancient siege catapult of corroded bronze with a tall throwing arm and "
+                                            "a sling, a heap of rough boulders beside it")],
+              near=["a dark broken rock", "a toppled bronze brazier and a heap of sepia rags"]),
+    "2": dict(TOWN, name="THE OBELISK QUARRY", seed=2026103112, note="where they cut their obelisks, at noon",
+              sky="a hard bright noon sky, clear pale blue, almost white near the horizon",
+              far="tall quarried cliffs of black stone with bands of rust red rock, cut into huge square steps, small "
+                  "rag awnings on the steps far away",
+              light="Hard white noon sun from straight above, short dark shadows, as discrete flat pixel colour "
+                    "planes, the ground in calm even light.",
+              pal=["#5a9ad6", "#cfe4f6", "#ffffff", "#2e2a30", "#54484c", "#9a3a2c", "#d6d2cc", "#b4aea8"] + T,
+              floor="flat pale grey cut stone floor of the quarry, big smooth slabs with faint chisel marks, crisp and "
+                    "clear, calm and even, no dust, no fog and no rubble",
+              plan=dict(sky0=[90, 150, 214], sky1=[232, 240, 246], far=[70, 58, 62], back=[110, 92, 88],
+                        floor0=[210, 206, 200], floor1=[178, 174, 170], piece=[44, 38, 42]),
+              back=[((0, 225, W, 290), "the foot of the quarry face along the far edge, cut blocks of black stone "
+                                       "stacked in rows"),
+                    ((110, 40, 320, 290), "a tall black obelisk half carved out of the cliff, still joined to the rock "
+                                          "at its back, thin glowing ember cracks in it, a scaffold of poles and rag "
+                                          "awnings around it"),
+                    ((540, 180, 1000, 290), "a huge finished black obelisk lying on its side on log rollers, bound "
+                                            "with thick ropes, ready to be hauled"),
+                    ((1080, 70, 1280, 290), "a tall timber crane with a corroded bronze hook and ropes, a ragged banner "
+                                            "with a dark red sun disc at its top")],
+              near=["a rough black stone block", "a low pile of cut black stone blocks"]),
+    "3": dict(TOWN, name="THE SUN SHRINE", seed=2026103113, note="their ritual ground in the late afternoon",
+              sky="a warm late afternoon sky, clear blue above fading to warm gold at the horizon, a big bright sun low "
+                  "on the right",
+              far="the jagged crests of the blood red ridge running away into the distance, lit warm gold, two small "
+                  "flying sun boats with crescent hulls and rag sails far away",
+              light="Warm late afternoon sun from the right, long violet shadows, as discrete flat pixel colour "
+                    "planes, the ground in calm even light.",
+              pal=["#3a78c8", "#9cc8ec", "#f8d890", "#f0a850", "#b0443a", "#6a2a2a", "#e4d8c8", "#c0b0a0"] + T,
+              floor="flat pale sand coloured paving stones of the shrine court, big worn slabs, crisp and clear, calm "
+                    "and even, no dust and no fog, nothing glowing on the floor",
+              plan=dict(sky0=[58, 120, 200], sky1=[244, 214, 150], far=[170, 72, 60], back=[150, 120, 100],
+                        floor0=[222, 210, 190], floor1=[190, 176, 158], piece=[56, 40, 40]),
+              back=[((0, 225, W, 290), "a low wall of dark stone along the far edge of the court, burial bandages "
+                                       "fluttering from lines strung over it"),
+                    ((460, 50, 920, 290), "a huge round sun disc of corroded bronze standing upright on a stepped "
+                                          "altar of dark stone, ember light in the bowls at its foot"),
+                    ((140, 70, 330, 290), "two tall black stone obelisks with thin glowing ember cracks, a pole hung "
+                                          "with ram skulls between them"),
+                    ((1050, 70, 1240, 290), "two tall black stone obelisks with thin glowing ember cracks, a ragged "
+                                            "banner with a dark red sun disc between them")],
+              near=["a dark broken stone edge", "a bronze offering bowl tipped over and some sepia rags"]),
+}
+
+
 def prompt(o):
     els = [{"type": "obj", "bbox": SP.bb((0, 0, W, 170)), "desc": o["sky"]},
            {"type": "obj", "bbox": SP.bb((0, 120, W, 250)), "desc": o["far"]}]
@@ -125,11 +217,13 @@ def prompt(o):
     els += [{"type": "obj", "bbox": SP.bb((0, SP.FLOOR_Y, W, H)), "desc": o["floor"]},
             {"type": "obj", "bbox": SP.bb(SP.FRAMEBOX[0]), "desc": o["near"][0] + " in the near foreground, in shadow"},
             {"type": "obj", "bbox": SP.bb(SP.FRAMEBOX[1]), "desc": o["near"][1] + " in the near foreground, in shadow"}]
-    return json.dumps({"high_level_description": WHO + " " + SP.STYLE + " No people anywhere, the fighters are added "
-                                                 "later. This place: " + o["name"].lower() + ", " + o["note"] + ".",
-                       "style_description": {"medium": "pixel_art", "art_style": RG.L3.ART, "aesthetics": SP.AES,
-                                             "lighting": o["light"], "color_palette": o["pal"]},
-                       "compositional_deconstruction": {"background": SP.LAY, "elements": els}})
+    return json.dumps({"high_level_description": o.get("who", WHO) + " " + SP.STYLE + " No people anywhere, the "
+                                                 "fighters are added later. This place: " + o["name"].lower() + ", " +
+                                                 o["note"] + ".",
+                       "style_description": {"medium": "pixel_art", "art_style": RG.L3.ART,
+                                             "aesthetics": o.get("aes", SP.AES), "lighting": o["light"],
+                                             "color_palette": o["pal"]},
+                       "compositional_deconstruction": {"background": o.get("lay", SP.LAY), "elements": els}})
 
 
 def paint(k):
@@ -252,8 +346,40 @@ def life(k):
     print("life", k, dst.name, "frames", N, "eye px", int(eyes.sum()), flush=True)
 
 
+def options():
+    """The three takes of stage 1 in OPTIONS, each painted as paint() does, then one picture of their test lineups
+    numbered 1 to 3: look-stage-1-options.png. Paint only, no layers and no loop until Jacob picks."""
+    SP.OUT = OUT
+    OUT.mkdir(parents=True, exist_ok=True)
+    for i, o in sorted(OPTIONS.items()):
+        k = "1-option-" + i
+        SP.PLAN = o["plan"]
+        init = SP.plan(o)
+        init.save(OUT / ("stage-%s-init.png" % k))
+        raw = SP.run("stage-" + k, init, prompt(o), o["seed"])
+        raw.save(OUT / ("stage-%s-raw.png" % k))
+        RG.clean(raw).save(OUT / ("stage-%s.png" % k))
+        SP.test_fight(k)
+    try:
+        font = ImageFont.truetype("arial.ttf", 22)
+    except OSError:
+        font = ImageFont.load_default()
+    bar = 36
+    s = Image.new("RGB", (W, 3 * (H + bar)), (18, 14, 20))
+    d = ImageDraw.Draw(s)
+    for j, (i, o) in enumerate(sorted(OPTIONS.items())):
+        y = j * (H + bar)
+        s.paste(Image.open(OUT / ("stage-1-option-%s-test-fight.png" % i)).convert("RGB"), (0, y + bar))
+        d.text((10, y + 7), "%s   %s, %s" % (i, o["name"], o["note"]), fill=(239, 223, 190), font=font)
+    s.save(OUT / "look-stage-1-options.png")
+    print("options", "look-stage-1-options.png", flush=True)
+
+
 if __name__ == "__main__":
     k = sys.argv[1]
+    if k == "options":
+        options()
+        sys.exit()
     if "life" not in sys.argv[2:]:
         paint(k)
     if "paint" not in sys.argv[2:]:

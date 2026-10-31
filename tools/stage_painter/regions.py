@@ -43,6 +43,7 @@ STYLE = ("Rendered entirely in crisp, deliberately clustered pixel art. Modern h
 NEG = (", vector art, flat cartoon, smooth shapes, muddy brown, grunge, dull, desaturated, gore, tiny figures, characters, "
        "soldiers, warriors, units, sprites, people standing on the floor, square floor tiles, repeated buildings, "
        "duplicated landmarks, seams, panels, split screen, collage, borders, watermark, signature")
+NEG_BASE = NEG  # NEG as written here: barren_paint.py adds the camp's bans to NEG when the camp helpers load
 BOX = {"sky": (0, 0, W, 200), "far": (0, 110, W, 340), "back": (0, 280, W, 430),
        "p1": (380, 150, 1000, 470), "p2": (1650, 30, 2480, 480), "p3": (2950, 0, 3960, 480), "floor": (0, 410, W, H),
        "f0": (0, 520, 300, H), "f1": (1250, 640, 1500, H), "f2": (2630, 640, 2880, H), "f3": (3860, 470, W, H)}
