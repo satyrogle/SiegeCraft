@@ -59,3 +59,17 @@ build_errors*.txt
 
 # Nested repo
 /kindred-siege/
+
+# Tool logs
+build_log.txt
+.playwright-cli/
+
+# Art archives: studies, sprite sources and trailer takes live on their own branches
+# (art/sprite-sources, art/camp-5, studies/*, media/trailer) in Git LFS, never on game-one.
+# On those branches they are added with git add -f.
+/Art/Studies/
+/Art/PixelLab/
+/Art/Concepts/
+/Art/Pipeline/
+/Art/Audio/
+/reports/*.mp4

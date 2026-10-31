@@ -135,16 +135,16 @@
     {
       "id": "C06",
       "name": "Skirmisher",
-      "family": "ranged",
-      "role": "Maintain ranged pressure while repositioning.",
+      "family": "frontline",
+      "role": "The squad's main melee damage: dash in, cut, dash back out.",
       "tribal_foundation": "Mobile scout or outrider.",
-      "technology_kit": "Light ranged weapon and a mobility harness.",
+      "technology_kit": "Light blades and a mobility harness.",
       "signature": {
-        "name": "Running Shot",
-        "description": "Combine a light shot with a short reposition along a valid route."
+        "name": "Running Strike",
+        "description": "A hard melee strike that reaches the back row. It hits an Opening twice as hard and rips a bleeding wound open, so all the bleeding left lands at once."
       },
-      "weakness": "Lower burst damage; needs space to escape.",
-      "range": "short",
+      "weakness": "Low health; weak against an enemy that is free to fight back.",
+      "range": "melee",
       "shared_systems": [
         "attacks",
         "movement"
@@ -197,10 +197,10 @@
       "family": "tactical",
       "role": "Deny an approaching route.",
       "tribal_foundation": "Hunter familiar with routes and ambush sites.",
-      "technology_kit": "Compact sensor-triggered restraint traps.",
+      "technology_kit": "Compact sensor-triggered barbed restraint traps.",
       "signature": {
-        "name": "Snare",
-        "description": "Place a trap that arms, triggers on an eligible enemy and briefly restrains it."
+        "name": "Barbed Snare",
+        "description": "Place a trap that arms, triggers on an eligible enemy, briefly restrains it and leaves a wound that bleeds."
       },
       "weakness": "Requires anticipation; unused placements contribute nothing.",
       "range": "placed",
@@ -479,6 +479,18 @@
       "from": "Vessel",
       "to": "Conduit",
       "reason": "Active relic channeling with sanity risk; passive Mercy generation is not this class's defining role."
+    },
+    {
+      "slot": "C06",
+      "from": "Skirmisher, light ranged with Running Shot",
+      "to": "Skirmisher, melee main damage with Running Strike",
+      "reason": "Owner decision, 20 Oct 2026 (DESIGN_LOCKS.md, 'The squad's spells, marks and class pieces'): melee main damage, as every tribe's Skirmisher is drawn with blades."
+    },
+    {
+      "slot": "C09",
+      "from": "Trapper, Snare that only restrains",
+      "to": "Trapper, Barbed Snare that restrains and bleeds",
+      "reason": "Owner decision, 20 Oct 2026 (DESIGN_LOCKS.md, 'The squad's spells, marks and class pieces'): the Trapper deals damage over time, so the snare both holds and bleeds."
     }
   ],
   "implementation_handoff": {

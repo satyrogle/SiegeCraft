@@ -1,0 +1,33 @@
+# Git LFS for the art archives (art/sprite-sources, art/camp-5, studies/*, media/trailer).
+# Game art under Assets/ stays in plain git, so the build needs nothing extra.
+Art/**/*.png filter=lfs diff=lfs merge=lfs -text
+Art/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+Art/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+Art/**/*.gif filter=lfs diff=lfs merge=lfs -text
+Art/**/*.webp filter=lfs diff=lfs merge=lfs -text
+Art/**/*.bmp filter=lfs diff=lfs merge=lfs -text
+Art/**/*.tga filter=lfs diff=lfs merge=lfs -text
+Art/**/*.tif filter=lfs diff=lfs merge=lfs -text
+Art/**/*.tiff filter=lfs diff=lfs merge=lfs -text
+Art/**/*.exr filter=lfs diff=lfs merge=lfs -text
+Art/**/*.psd filter=lfs diff=lfs merge=lfs -text
+Art/**/*.aseprite filter=lfs diff=lfs merge=lfs -text
+Art/**/*.ase filter=lfs diff=lfs merge=lfs -text
+Art/**/*.blend filter=lfs diff=lfs merge=lfs -text
+Art/**/*.fbx filter=lfs diff=lfs merge=lfs -text
+Art/**/*.glb filter=lfs diff=lfs merge=lfs -text
+Art/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+Art/**/*.mkv filter=lfs diff=lfs merge=lfs -text
+Art/**/*.webm filter=lfs diff=lfs merge=lfs -text
+Art/**/*.mov filter=lfs diff=lfs merge=lfs -text
+Art/**/*.avi filter=lfs diff=lfs merge=lfs -text
+Art/**/*.wav filter=lfs diff=lfs merge=lfs -text
+Art/**/*.ogg filter=lfs diff=lfs merge=lfs -text
+Art/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+Art/**/*.flac filter=lfs diff=lfs merge=lfs -text
+Art/**/*.zip filter=lfs diff=lfs merge=lfs -text
+Art/**/*.7z filter=lfs diff=lfs merge=lfs -text
+Art/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+Art/**/*.npy filter=lfs diff=lfs merge=lfs -text
+Art/**/*.npz filter=lfs diff=lfs merge=lfs -text
+reports/*.mp4 filter=lfs diff=lfs merge=lfs -text

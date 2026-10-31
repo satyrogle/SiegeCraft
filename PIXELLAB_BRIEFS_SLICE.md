@@ -119,3 +119,19 @@ Notes:
 - Aseprite: calm busy textures (the Clarth Trapper's checkerboard, the Skullpeak ribs, the chiefs' stray pixels) by hand.
 - Turning, colour cuts and idles for the three chiefs, and their mounts, when Jacob asks.
 - Attack, hit and death animations, once the fight needs them.
+
+## Leader and camp Pals - 10 Oct 2026 implementation
+
+Jacob authorised 192px PixelLab fronts and game integration after the concept rounds. These are current implementation candidates, not a retrospective approval of every concept detail. All five are single transparent 192 x 192 fronts, exported through Aseprite at at most 32 colours, with editable `.aseprite` masters. No turning or animation was generated in this pass.
+
+| Character | Concept used | PixelLab image ID | Runtime PNG |
+|---|---|---|---|
+| Leader | leader_neural_relic_v17 | b2eaeb5a-39fc-54d9-b5e8-4d0d5261127f | leader_front.png |
+| Butcher | butcher_v4_commanding_mass | d54ccd19-2e3f-5e19-8d73-55016028aceb | butcher_front.png |
+| Glutton | glutton_v3_carefree_patriarch | d2ce0827-910b-5b1e-9f58-cd21ac45d31d | glutton_front.png |
+| Shade | shade_v4_embodied_regalia | ae952e42-01f3-5e9f-88a0-94355652be09 | shade_front.png |
+| Whisperer | whisperer_v3_inviting_menace, clothed retry | f153433b-4c86-58f8-85dc-36e0540db4a6 | whisperer_front.png |
+
+Runtime folder: `Assets/Resources/CampaignArt/InnerCircle/`. Source crops, exact prompts, job receipts, raw PixelLab PNGs, Aseprite masters and palette/hash checks: `Art/PixelLab/InnerCircle/2026-10-10/`. Five successful jobs cost 6 generations each: 30 used, balance 2984 -> 2954. The first Whisperer job failed the provider content check with no charge; her successful retry has substantially more opaque clothing than the concept.
+
+Leader replaces the CampaignArtLoop battle placeholder. Pals stay at camp: Butcher weapons/gear, Glutton armour/body augments, Shade new orders, Whisperer skins/regalia. Camp currently presents these characters and roles; transactions need Claude's authoritative upgrade API. No new combat or upgrade rules were added. Older future-work/mount notes above are historical; current DESIGN_LOCKS.md and HANDOFF_LOG.md take precedence.
