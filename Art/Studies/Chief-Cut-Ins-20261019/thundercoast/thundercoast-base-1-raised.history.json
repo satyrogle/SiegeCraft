@@ -1,0 +1,217 @@
+{
+ "c029b990-1128-44b1-8e36-b2e6446896c2": {
+  "prompt": [
+   136,
+   "c029b990-1128-44b1-8e36-b2e6446896c2",
+   {
+    "1": {
+     "class_type": "UNETLoader",
+     "inputs": {
+      "unet_name": "ideogram4_int8_convrot.safetensors",
+      "weight_dtype": "default"
+     }
+    },
+    "2": {
+     "class_type": "CLIPLoader",
+     "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "ideogram4",
+      "device": "default"
+     }
+    },
+    "3": {
+     "class_type": "VAELoader",
+     "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+     }
+    },
+    "4": {
+     "class_type": "CLIPTextEncode",
+     "inputs": {
+      "clip": [
+       "2",
+       0
+      ],
+      "text": "{\"aspect_ratio\": \"3:2\", \"high_level_description\": \"A waist up character portrait of a fierce amphibious fishman warlord with long head tentacles, holding one glowing harpoon straight up high above his head with his arm stretched up, in bold comic book art with heavy black ink and flat strong colours, on a plain flat light grey background.\", \"compositional_deconstruction\": {\"background\": \"Plain flat light grey, completely empty, no speed lines, no shadows, no texture. No text, no border, no signature, no watermark.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [20, 120, 1000, 880], \"desc\": \"Waist up portrait of the Thundercoast gene lord, a lean, powerful, arrogant warlord of an ancient underwater tribe of amphibious fishmen who remade their own bodies with deep sea machines and gene splicing, his face turned three quarters toward the viewer with a cold, superior sneer, his whole face clearly visible with nothing in front of it. He is a humanoid amphibian, not a shark: a smooth dark teal humanoid face with high cheekbones, no nose, only two thin nostril slits, large glossy pale glowing eyes, a wide thin lipped mouth, and gill slits on the sides of his neck. A bundle of long thick smooth head tentacles grows from the back and sides of his skull and hangs down past his shoulders, dark teal with paler tips. A low swept back fin crest runs along the top of his skull. Sleek black and dark slate armour plates fit over his chest and stomach, with thin glowing electric blue lines along their seams and small glowing blue lights. A cluster of glowing electric blue capsules is fixed on his left shoulder. Muscular bare teal arms with fin ridges along the forearms. A dark belt with a glowing blue gem, and a long tattered dark teal skirt like torn fins below it. His long harpoon spear has a dark metal shaft with glowing electric blue segments and a large crystal-like barbed harpoon head glowing electric blue, the whole harpoon inside the picture. His right hand, on the left side of the picture, raises his one harpoon high above his head with his arm stretched straight up, the harpoon held upright so its glowing barbed head points up to the sky far above his head. His other hand is clenched into a fist at his side. He holds only one harpoon. His only colours are dark teal, pale grey teal, black, dark slate, electric blue and a cyan glow.\"}]}}"
+     }
+    },
+    "5": {
+     "class_type": "CLIPTextEncode",
+     "inputs": {
+      "clip": [
+       "2",
+       0
+      ],
+      "text": "shark, shark head, shark snout, shark teeth, fish head, beak, two harpoons, two spears, second weapon, crossed spears, human nose, hair, beard, helmet, visor, mask covering the face, hidden face, harpoon across his face, cropped harpoon, red, orange, gold, purple, green, pink, modern clothes, cute, chibi, anime, photo, pixel art, speed lines, background scenery, text, letters, signature, watermark, border"
+     }
+    },
+    "6": {
+     "class_type": "CFGOverride",
+     "inputs": {
+      "model": [
+       "1",
+       0
+      ],
+      "cfg": 3.0,
+      "start_percent": 0.7,
+      "end_percent": 1.0
+     }
+    },
+    "7": {
+     "class_type": "DualModelGuider",
+     "inputs": {
+      "model": [
+       "6",
+       0
+      ],
+      "positive": [
+       "4",
+       0
+      ],
+      "cfg": 7.0,
+      "model_negative": [
+       "6",
+       0
+      ],
+      "negative": [
+       "5",
+       0
+      ]
+     }
+    },
+    "8": {
+     "class_type": "EmptyFlux2LatentImage",
+     "inputs": {
+      "width": 1248,
+      "height": 832,
+      "batch_size": 1
+     }
+    },
+    "9": {
+     "class_type": "KSamplerSelect",
+     "inputs": {
+      "sampler_name": "euler"
+     }
+    },
+    "10": {
+     "class_type": "Ideogram4Scheduler",
+     "inputs": {
+      "steps": 20,
+      "width": 1248,
+      "height": 832,
+      "mu": 0.0,
+      "std": 1.75
+     }
+    },
+    "11": {
+     "class_type": "RandomNoise",
+     "inputs": {
+      "noise_seed": 2026101951
+     }
+    },
+    "12": {
+     "class_type": "SamplerCustomAdvanced",
+     "inputs": {
+      "noise": [
+       "11",
+       0
+      ],
+      "guider": [
+       "7",
+       0
+      ],
+      "sampler": [
+       "9",
+       0
+      ],
+      "sigmas": [
+       "10",
+       0
+      ],
+      "latent_image": [
+       "8",
+       0
+      ]
+     }
+    },
+    "13": {
+     "class_type": "VAEDecode",
+     "inputs": {
+      "samples": [
+       "12",
+       0
+      ],
+      "vae": [
+       "3",
+       0
+      ]
+     }
+    },
+    "14": {
+     "class_type": "SaveImage",
+     "inputs": {
+      "images": [
+       "13",
+       0
+      ],
+      "filename_prefix": "KS-Chief-CutIns-20261019/thundercoast-base-1-raised"
+     }
+    }
+   },
+   {
+    "client_id": "ks-cutins19-04ca66be",
+    "create_time": 1792373626578
+   },
+   [
+    "14"
+   ]
+  ],
+  "outputs": {
+   "14": {
+    "images": [
+     {
+      "filename": "thundercoast-base-1-raised_00001_.png",
+      "subfolder": "KS-Chief-CutIns-20261019",
+      "type": "output"
+     }
+    ]
+   }
+  },
+  "status": {
+   "status_str": "success",
+   "completed": true,
+   "messages": [
+    [
+     "execution_start",
+     {
+      "prompt_id": "c029b990-1128-44b1-8e36-b2e6446896c2",
+      "timestamp": 1792373878257
+     }
+    ],
+    [
+     "execution_cached",
+     {
+      "nodes": [],
+      "prompt_id": "c029b990-1128-44b1-8e36-b2e6446896c2",
+      "timestamp": 1792373878416
+     }
+    ],
+    [
+     "execution_success",
+     {
+      "prompt_id": "c029b990-1128-44b1-8e36-b2e6446896c2",
+      "timestamp": 1792374065026
+     }
+    ]
+   ]
+  },
+  "meta": {
+   "14": {
+    "node_id": "14",
+    "display_node": "14",
+    "parent_node": null,
+    "real_node_id": "14"
+   }
+  }
+ }
+}

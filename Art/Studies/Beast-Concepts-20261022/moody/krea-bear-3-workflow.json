@@ -1,0 +1,100 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "krea2_turbo_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "A huge cave bear, a living animal that has grown polished steel through its own body like extra bones, a cyborg beast. Warm brown shaggy fur. A polished steel ribcage bursts out through its chest like a cage, and inside the cage a glowing turquoise heart shows between the steel bars. A polished steel crest grows along the top of its skull and stops above its eyes, so its real bear face shows. Thin turquoise glowing seams where the steel meets the flesh. Organic and alive, not a robot. One of its front legs is a giant bionic arm ending in one huge two pronged mechanical pincer. It hunches forward with its shoulders high, roaring with steel fangs, the pincer arm dragging along the ground. Steel bones show through the fur along its back and legs, like a skeleton breaking through. Scene: a foggy mountain pass of grey stone and old steel ruins high in the snow, cold teal grey light, the turquoise glow of its heart lighting the fog around it, two tiny hunters with rifles in the foreground for scale. A still from an 80s dark fantasy film, painted like an epic fantasy matte painting. Cinematic low camera angle, dramatic rim light from behind, thick drifting fog and haze, deep black shadows, a muted teal grey palette with one glowing hot accent colour. Moody, epic and menacing, the whole creature in frame, facing left."
+    }
+  },
+  "5": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "4",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1216,
+      "height": 832,
+      "batch_size": 1
+    }
+  },
+  "7": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ],
+      "seed": 330332,
+      "steps": 8,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "8": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "7",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ],
+      "filename_prefix": "KS-Beast-Concepts-20261022/moody/krea-bear-3"
+    }
+  }
+}

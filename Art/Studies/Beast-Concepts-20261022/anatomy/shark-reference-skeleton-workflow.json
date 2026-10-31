@@ -1,0 +1,138 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_turbo_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "prompt": "A creature designer's anatomy reference page for a video game boss called the sand shark, drawn in confident pencil with light ochre and brick red washes on cream paper, like a page from a creature anatomy book, with small neat hand lettered labels. Top row, four reference studies of real animals side by side, each with its label underneath: the skull and open jaw of a great white shark labelled \"shark jaw\"; a sandfish skink lizard diving head first into sand labelled \"sandfish skink\"; the back of a spiny dogfish with sharp spines in front of its fins labelled \"dogfish spines\"; a thresher shark with its very long curved tail labelled \"thresher tail\". Bottom half, large: the sand shark seen from the side, drawn as a skeleton and muscle study inside a faint outline of its body: a long, low, flat body; a flat wedge shaped head for cutting through sand; an oversized jaw with rows of teeth; a tall blade shaped dorsal fin; a rack of long hollow spines rooted along its backbone that it can raise and fire; and a heavy tail with a sickle shaped fin. Short labels with arrows point to the parts: \"jaw\", \"fin\", \"spine rack\", \"tail\". A wavy line across it marks the surface of the sand, labelled \"sand line\", with only the fin and the spine rack above it. Clean, technical, believable anatomy, no scenery, no other text. ",
+      "negative_prompt": "",
+      "resolution": 1024
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 2048,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "7": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 660661
+    }
+  },
+  "8": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "cfg": 1.0
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "7",
+        0
+      ],
+      "guider": [
+        "8",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "KS-Beast-Concepts-20261022/shark-reference-skeleton"
+    }
+  }
+}

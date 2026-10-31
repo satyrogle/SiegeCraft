@@ -1,0 +1,846 @@
+{
+ "frames": [
+  {
+   "filename": "steel_wall_tell_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_01",
+   "frame": {
+    "x": 74,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_02",
+   "frame": {
+    "x": 148,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_03",
+   "frame": {
+    "x": 222,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_04",
+   "frame": {
+    "x": 296,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_05",
+   "frame": {
+    "x": 370,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_06",
+   "frame": {
+    "x": 444,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_07",
+   "frame": {
+    "x": 518,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_08",
+   "frame": {
+    "x": 592,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_09",
+   "frame": {
+    "x": 666,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_10",
+   "frame": {
+    "x": 740,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_11",
+   "frame": {
+    "x": 814,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_12",
+   "frame": {
+    "x": 888,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_13",
+   "frame": {
+    "x": 962,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_14",
+   "frame": {
+    "x": 1036,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_15",
+   "frame": {
+    "x": 1110,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_16",
+   "frame": {
+    "x": 1184,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_17",
+   "frame": {
+    "x": 1258,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_18",
+   "frame": {
+    "x": 1332,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_19",
+   "frame": {
+    "x": 1406,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_20",
+   "frame": {
+    "x": 1480,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_21",
+   "frame": {
+    "x": 1554,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_22",
+   "frame": {
+    "x": 1628,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_23",
+   "frame": {
+    "x": 1702,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_24",
+   "frame": {
+    "x": 1776,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_25",
+   "frame": {
+    "x": 1850,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_26",
+   "frame": {
+    "x": 1924,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_27",
+   "frame": {
+    "x": 0,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_28",
+   "frame": {
+    "x": 74,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_29",
+   "frame": {
+    "x": 148,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_30",
+   "frame": {
+    "x": 222,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_31",
+   "frame": {
+    "x": 296,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_32",
+   "frame": {
+    "x": 370,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_33",
+   "frame": {
+    "x": 444,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_34",
+   "frame": {
+    "x": 518,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_35",
+   "frame": {
+    "x": 592,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_36",
+   "frame": {
+    "x": 666,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_tell_37",
+   "frame": {
+    "x": 740,
+    "y": 419,
+    "w": 74,
+    "h": 419
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 419
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 419
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 30.0,
+ "anchorY": 230.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "tell",
+ "startsAt": "the windup start, 38 frames before Release"
+}

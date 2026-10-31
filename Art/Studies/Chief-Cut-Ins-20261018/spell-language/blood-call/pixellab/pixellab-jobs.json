@@ -1,0 +1,41 @@
+{
+  "model": "PixelLab animate_image_pixminimax (MiniMax H3)",
+  "date": "2026-10-22",
+  "jobs": [
+    {
+      "clip": "rise",
+      "job_id": "0161facd-64c5-459a-9780-d070b2ac0744",
+      "frames": 9,
+      "folder": "pixellab/rise",
+      "prompt": "The pool of blood surges straight up out of the ground and rises into a huge clawed hand of blood with its fingers spread, dripping.",
+      "input": {
+        "first_frame_url": "upload:32db5186-722e-49d3-9616-27158be881f2",
+        "last_frame_url": "upload:60e2767e-c0bd-444e-9344-c64afcfc05c0",
+        "frame_count": 8,
+        "view": "side",
+        "subject_description": "a clawed hand made of dripping blood rising from a pool",
+        "initial_pose": "a flat pool of blood on the ground",
+        "no_background": true,
+        "seed": 2026102237
+      }
+    },
+    {
+      "clip": "burst",
+      "job_id": "f5df120e-851f-4c65-a751-ec10b10bdfd4",
+      "frames": 17,
+      "folder": "pixellab/burst",
+      "prompt": "The clawed hand of blood clenches its fingers shut into a tight fist, squeezing hard, then bursts apart into a spray of blood droplets that rain down and splash on the ground.",
+      "input": {
+        "first_frame_url": "upload:60e2767e-c0bd-444e-9344-c64afcfc05c0",
+        "frame_count": 16,
+        "view": "side",
+        "subject_description": "a clawed hand made of dripping blood rising from a pool",
+        "initial_pose": "rising straight up with its clawed fingers spread",
+        "no_background": true,
+        "seed": 2026102238
+      }
+    }
+  ],
+  "placement": "Clip pixel (96, 214) sits 16 px behind each bleeding fighter and 8 px below his feet (on his blood mark). All hands are drawn behind every fighter (back to front), so a lower fighter's hand never hides the fighter above it; the middle hand is mirrored.",
+  "timing": "80 ms frames. 3 s tell (wounds beating, blood beads lifting, the priestess's bowl pulsing, 38 frames); dark frame at 38; rise frames 2 to 8 from 39 (the hit: white, red, normal, red, a shake); burst frames 1 to 16 from 46: the clench, the fist, the burst at 53, the rain and splats. Blood streams from each wound into the hand from 41 to 52."
+}

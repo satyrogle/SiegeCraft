@@ -1,0 +1,25 @@
+{
+  "model": "PixelLab animate_image_pixminimax (MiniMax H3)",
+  "date": "2026-10-22",
+  "jobs": [
+    {
+      "clip": "explode",
+      "job_id": "140cd5a9-92ad-41d5-bebc-ec4f7dce645d",
+      "frames": 17,
+      "folder": "pixellab/explode",
+      "prompt": "The firebomb explodes into a huge burst of purple fire and dark smoke that blasts outward and upward, the purple flames burn fiercely, then die down into glowing embers and drifting dark smoke.",
+      "input": {
+        "first_frame_url": "upload:705e63bb-c787-4a5a-9626-17851059d8a7",
+        "frame_count": 16,
+        "view": "side",
+        "subject_description": "a black iron firebomb with a lit fuse lying on the ground",
+        "initial_pose": "resting on the ground with its fuse burning",
+        "no_background": true,
+        "seed": 2026102234
+      }
+    }
+  ],
+  "recolour": "game/ holds the explode frames mapped by brightness onto the hunters' purple ramp (white, lavender, violet, deep violet), the outline kept.",
+  "placement": "Clip pixel (128, 246) sits on the ground point. Frames 0 to 2 cropped to 48x48 are the lit bomb (spear tip, flight, tumbling 90 degrees every 2 frames). Where it lands: frame 0, then frame 3 as a small burst; then frames 3 to 16 on each front fighter's feet, drawn behind him.",
+  "timing": "80 ms frames. 3 s tell (38 frames) with the hunter mark on both front fighters and the bomb on the captain's spear; thrown at 39, lands at 50 (dark frame), burst at 51, the top fighter's fire from 52, the bottom one's from 53; each is hit (white, red, normal, red) one frame after his fire starts."
+}

@@ -1,0 +1,13 @@
+{
+  "out": "C:/Users/jacob/KindredSiege-Clean/Art/Studies/Chief-Cut-Ins-20261018/tide/raw",
+  "prefix": "KS-Chief-CutIns-20261018/tide/",
+  "steps": 24,
+  "cfg": 5.0,
+  "negative": "blurry, smooth gradients, painting, photograph, 3d render, realistic, dithering, noise, background scenery, ocean surface, horizon, sky, clouds, floor, ground, text, letters, watermark, more than one creature, cropped, cut off, legs, arms, horns, wings, scales armour, rider",
+  "jobs": [
+    {"name": "serpent-head-1", "seed": 2026102011, "width": 1024, "height": 640,
+     "prompt": "pixel art sprite, game asset, 32-bit pixel art. The head of a huge sea serpent made entirely of sea water, seen from the side, facing left, jaws gaping wide open, a long pointed snout, rows of sharp white foam teeth, one fierce glowing cyan eye, a flowing mane of white sea foam and spray streaming back from its head, its neck made of curling water that trails off to the right edge. Deep navy and teal water with bright cyan highlights and white foam edges. Clean dark outline, crisp shading with few colours. The whole head inside the image with clear margins. One creature only. Plain flat uniform dark brown (#4a3528) background, no floor, no shadow, no text."},
+    {"name": "serpent-head-2", "seed": 2026102012, "width": 1024, "height": 640,
+     "prompt": "pixel art sprite, game asset, 32-bit pixel art. The head of a huge sea serpent made entirely of sea water, seen from the side, facing left, jaws gaping wide open, a long pointed snout, rows of sharp white foam teeth, one fierce glowing cyan eye, a flowing mane of white sea foam and spray streaming back from its head, its neck made of curling water that trails off to the right edge. Deep navy and teal water with bright cyan highlights and white foam edges. Clean dark outline, crisp shading with few colours. The whole head inside the image with clear margins. One creature only. Plain flat uniform dark brown (#4a3528) background, no floor, no shadow, no text."}
+  ]
+}

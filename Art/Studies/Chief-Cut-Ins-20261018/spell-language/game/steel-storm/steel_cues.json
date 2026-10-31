@@ -1,0 +1,140 @@
+{
+ "spell": "Steel Storm",
+ "frameMs": 80,
+ "tellFrames": 38,
+ "anchor": "on the wall line, 82 px in front of their Wardens' feet, level with the middle row",
+ "slots": [
+  {
+   "slot": 0,
+   "dx": -15.6,
+   "dy": -162,
+   "mirrored": false,
+   "riseDelayFrames": 2,
+   "sparkDx": -33.6,
+   "sparkDy": -254
+  },
+  {
+   "slot": 1,
+   "dx": 10.68,
+   "dy": -124,
+   "mirrored": true,
+   "riseDelayFrames": 1,
+   "sparkDx": -7.32,
+   "sparkDy": -216
+  },
+  {
+   "slot": 2,
+   "dx": -11.04,
+   "dy": -86,
+   "mirrored": false,
+   "riseDelayFrames": 1,
+   "sparkDx": -29.04,
+   "sparkDy": -178
+  },
+  {
+   "slot": 3,
+   "dx": 15.24,
+   "dy": -48,
+   "mirrored": true,
+   "riseDelayFrames": 0,
+   "sparkDx": -2.76,
+   "sparkDy": -140
+  },
+  {
+   "slot": 4,
+   "dx": -6.48,
+   "dy": -10,
+   "mirrored": false,
+   "riseDelayFrames": 0,
+   "sparkDx": -24.48,
+   "sparkDy": -102
+  },
+  {
+   "slot": 5,
+   "dx": 19.8,
+   "dy": 28,
+   "mirrored": true,
+   "riseDelayFrames": 0,
+   "sparkDx": 1.8,
+   "sparkDy": -64
+  },
+  {
+   "slot": 6,
+   "dx": -1.92,
+   "dy": 66,
+   "mirrored": false,
+   "riseDelayFrames": 0,
+   "sparkDx": -19.92,
+   "sparkDy": -26
+  },
+  {
+   "slot": 7,
+   "dx": 24.36,
+   "dy": 104,
+   "mirrored": true,
+   "riseDelayFrames": 1,
+   "sparkDx": 6.36,
+   "sparkDy": 12
+  },
+  {
+   "slot": 8,
+   "dx": 2.64,
+   "dy": 142,
+   "mirrored": false,
+   "riseDelayFrames": 1,
+   "sparkDx": -15.36,
+   "sparkDy": 50
+  },
+  {
+   "slot": 9,
+   "dx": 28.92,
+   "dy": 180,
+   "mirrored": true,
+   "riseDelayFrames": 2,
+   "sparkDx": 10.92,
+   "sparkDy": 88
+  }
+ ],
+ "cues": [
+  {
+   "when": "tell frames 26 to 37, even frames",
+   "who": "their Wardens",
+   "rim": [
+    39,
+    214,
+    201
+   ],
+   "rimPx": 2
+  },
+  {
+   "when": "rise frame 2 (the middle shields land)",
+   "shake": [
+    2,
+    -1
+   ]
+  },
+  {
+   "when": "smash frames 1, 2, 3",
+   "shake": [
+    [
+     4,
+     -2
+    ],
+    [
+     -4,
+     2
+    ],
+    [
+     2,
+     -1
+    ]
+   ],
+   "who": "every fighter on their side",
+   "dx": [
+    3,
+    2,
+    1
+   ]
+  }
+ ]
+}

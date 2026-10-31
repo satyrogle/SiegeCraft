@@ -1,0 +1,45 @@
+{
+ "date": "2026-10-23",
+ "model": "pixen stills and animate_image_pixminimax",
+ "view": "low top-down for the impact, side for the sun, the comet and the staff",
+ "jobs": [
+  {
+   "clip": "blacksun.png",
+   "tool": "create_image_pixen 192x192, transparent",
+   "job_id": "975e2e56-8605-4eca-9098-ff602effd473",
+   "cost": 1,
+   "prompt": "a huge black sun eclipse hanging in the sky, a perfectly round pitch black disc with a thin glowing orange rim, ringed by a blazing blood red corona of long jagged flame rays, dark fantasy pixel art"
+  },
+  {
+   "clip": "comet.png",
+   "tool": "create_image_pixen 128x224, transparent",
+   "job_id": "fb7934b4-5325-4494-b1f2-fd6640385bf6",
+   "cost": 1,
+   "prompt": "a falling blood red comet seen from the side, a round black orb with glowing red cracks wrapped in crimson fire at the bottom, a long tail of blood red and orange flames streaming straight up behind it"
+  },
+  {
+   "clip": "corona/",
+   "tool": "animate_image_pixminimax 8 frames, first and last frame the black sun",
+   "job_id": "acef0a10-30a0-45c1-a59e-aede5f90d1a4",
+   "cost": 1,
+   "prompt": "the blood red corona around the black sun flickers and flares, its jagged flame rays writhing and pulsing outward, the black disc stays still"
+  },
+  {
+   "clip": "impact/",
+   "tool": "animate_image_pixminimax 16 frames at 224x224, first frame impact-seed.png (the 19 Oct sigil on black)",
+   "job_id": "a1c468c5-75f1-4ddd-89bb-1788d1e20a86",
+   "cost": 2,
+   "prompt": "a blood red comet streaks straight down from above and smashes into the centre of the glowing sigil, exploding into a big dome of crimson fire, then the fire turns into black smoke that billows up and the sigil keeps burning"
+  },
+  {
+   "clip": "staff/",
+   "tool": "animate_image_pixminimax 8 frames at 68x68, first and last frame staff-seed.png (the sun on the chief's staff, cut from the capture)",
+   "job_id": "ba4ea73d-3a2d-4cf0-979e-99f1479cc0fc",
+   "cost": 1,
+   "prompt": "the ring of fiery rays around the black sun flares outward and blazes brighter with blood red light, pulsing, then settles back"
+  }
+ ],
+ "rejected": "the first redo, a plain fire column out of each sigil (jobs ca26e5ba and bb3aef06): Jacob, \"no its just fire need to redo it can you do it like the meteor\"",
+ "colours": "every frame mapped onto the 19 Oct Bloodridge fire ramp by heat (red + 1.5 green), greys onto its browns, the 19 Oct colours kept; the impact's dark red halo removed; no flat white after the impact star",
+ "frames": "index 00 is the input frame, as PixelLab returns it"
+}

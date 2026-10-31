@@ -1,0 +1,110 @@
+{
+ "a11742a2-a638-4858-b77d-3ff193c9c63d": {
+  "prompt": [
+   159,
+   "a11742a2-a638-4858-b77d-3ff193c9c63d",
+   {
+    "1": {
+     "class_type": "LoadImage",
+     "inputs": {
+      "image": "ks-cutins19-stoneveil-bust-3-chant-q.png"
+     }
+    },
+    "2": {
+     "class_type": "LoadBackgroundRemovalModel",
+     "inputs": {
+      "bg_removal_name": "birefnet-general.safetensors"
+     }
+    },
+    "3": {
+     "class_type": "RemoveBackground",
+     "inputs": {
+      "bg_removal_model": [
+       "2",
+       0
+      ],
+      "image": [
+       "1",
+       0
+      ]
+     }
+    },
+    "4": {
+     "class_type": "MaskToImage",
+     "inputs": {
+      "mask": [
+       "3",
+       0
+      ]
+     }
+    },
+    "5": {
+     "class_type": "SaveImage",
+     "inputs": {
+      "images": [
+       "4",
+       0
+      ],
+      "filename_prefix": "KS-Chief-CutIns-20261019/stoneveil-3-chant-q-mask"
+     }
+    }
+   },
+   {
+    "client_id": "ks-cutins19-fix-627a901a",
+    "create_time": 1792376460747
+   },
+   [
+    "5"
+   ]
+  ],
+  "outputs": {
+   "5": {
+    "images": [
+     {
+      "filename": "stoneveil-3-chant-q-mask_00001_.png",
+      "subfolder": "KS-Chief-CutIns-20261019",
+      "type": "output"
+     }
+    ]
+   }
+  },
+  "status": {
+   "status_str": "success",
+   "completed": true,
+   "messages": [
+    [
+     "execution_start",
+     {
+      "prompt_id": "a11742a2-a638-4858-b77d-3ff193c9c63d",
+      "timestamp": 1792376460750
+     }
+    ],
+    [
+     "execution_cached",
+     {
+      "nodes": [
+       "2"
+      ],
+      "prompt_id": "a11742a2-a638-4858-b77d-3ff193c9c63d",
+      "timestamp": 1792376460764
+     }
+    ],
+    [
+     "execution_success",
+     {
+      "prompt_id": "a11742a2-a638-4858-b77d-3ff193c9c63d",
+      "timestamp": 1792376461932
+     }
+    ]
+   ]
+  },
+  "meta": {
+   "5": {
+    "node_id": "5",
+    "display_node": "5",
+    "parent_node": null,
+    "real_node_id": "5"
+   }
+  }
+ }
+}

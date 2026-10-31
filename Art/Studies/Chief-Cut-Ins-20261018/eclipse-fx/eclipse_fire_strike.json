@@ -1,0 +1,314 @@
+{
+ "frames": [
+  {
+   "filename": "eclipse_fire_strike_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 40
+  },
+  {
+   "filename": "eclipse_fire_strike_01",
+   "frame": {
+    "x": 192,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 40
+  },
+  {
+   "filename": "eclipse_fire_strike_02",
+   "frame": {
+    "x": 384,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 40
+  },
+  {
+   "filename": "eclipse_fire_strike_03",
+   "frame": {
+    "x": 576,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 40
+  },
+  {
+   "filename": "eclipse_fire_strike_04",
+   "frame": {
+    "x": 768,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_05",
+   "frame": {
+    "x": 960,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_06",
+   "frame": {
+    "x": 1152,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_07",
+   "frame": {
+    "x": 0,
+    "y": 728,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_08",
+   "frame": {
+    "x": 192,
+    "y": 728,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_09",
+   "frame": {
+    "x": 384,
+    "y": 728,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_10",
+   "frame": {
+    "x": 576,
+    "y": 728,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_11",
+   "frame": {
+    "x": 768,
+    "y": 728,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_12",
+   "frame": {
+    "x": 960,
+    "y": 728,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  },
+  {
+   "filename": "eclipse_fire_strike_13",
+   "frame": {
+    "x": 1152,
+    "y": 728,
+    "w": 192,
+    "h": 728
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 192,
+    "h": 728
+   },
+   "sourceSize": {
+    "w": 192,
+    "h": 728
+   },
+   "duration": 60
+  }
+ ],
+ "anchorX": 96.0,
+ "anchorY": 720
+}

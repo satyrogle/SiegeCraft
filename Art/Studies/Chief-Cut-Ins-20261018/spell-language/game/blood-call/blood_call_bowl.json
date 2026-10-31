@@ -1,0 +1,847 @@
+{
+ "frames": [
+  {
+   "filename": "blood_call_bowl_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_01",
+   "frame": {
+    "x": 29,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_02",
+   "frame": {
+    "x": 58,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_03",
+   "frame": {
+    "x": 87,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_04",
+   "frame": {
+    "x": 116,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_05",
+   "frame": {
+    "x": 145,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_06",
+   "frame": {
+    "x": 174,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_07",
+   "frame": {
+    "x": 203,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_08",
+   "frame": {
+    "x": 232,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_09",
+   "frame": {
+    "x": 261,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_10",
+   "frame": {
+    "x": 290,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_11",
+   "frame": {
+    "x": 319,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_12",
+   "frame": {
+    "x": 348,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_13",
+   "frame": {
+    "x": 377,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_14",
+   "frame": {
+    "x": 406,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_15",
+   "frame": {
+    "x": 435,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_16",
+   "frame": {
+    "x": 464,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_17",
+   "frame": {
+    "x": 493,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_18",
+   "frame": {
+    "x": 522,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_19",
+   "frame": {
+    "x": 551,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_20",
+   "frame": {
+    "x": 580,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_21",
+   "frame": {
+    "x": 609,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_22",
+   "frame": {
+    "x": 638,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_23",
+   "frame": {
+    "x": 667,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_24",
+   "frame": {
+    "x": 696,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_25",
+   "frame": {
+    "x": 725,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_26",
+   "frame": {
+    "x": 754,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_27",
+   "frame": {
+    "x": 783,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_28",
+   "frame": {
+    "x": 812,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_29",
+   "frame": {
+    "x": 841,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_30",
+   "frame": {
+    "x": 870,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_31",
+   "frame": {
+    "x": 899,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_32",
+   "frame": {
+    "x": 928,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_33",
+   "frame": {
+    "x": 957,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_34",
+   "frame": {
+    "x": 986,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_35",
+   "frame": {
+    "x": 1015,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_36",
+   "frame": {
+    "x": 1044,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_bowl_37",
+   "frame": {
+    "x": 1073,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 29,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 29,
+    "h": 23
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": -25.0,
+ "anchorY": 180.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "tell",
+ "startsAt": "the windup start, 38 frames before Release",
+ "note": "the priestess's bowl pulsing; anchor is her feet"
+}

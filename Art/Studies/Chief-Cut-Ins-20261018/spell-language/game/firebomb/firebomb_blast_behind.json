@@ -1,0 +1,348 @@
+{
+ "frames": [
+  {
+   "filename": "firebomb_blast_behind_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_01",
+   "frame": {
+    "x": 258,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_02",
+   "frame": {
+    "x": 516,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_03",
+   "frame": {
+    "x": 774,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_04",
+   "frame": {
+    "x": 1032,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_05",
+   "frame": {
+    "x": 1290,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_06",
+   "frame": {
+    "x": 1548,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_07",
+   "frame": {
+    "x": 0,
+    "y": 257,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_08",
+   "frame": {
+    "x": 258,
+    "y": 257,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_09",
+   "frame": {
+    "x": 516,
+    "y": 257,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_10",
+   "frame": {
+    "x": 774,
+    "y": 257,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_11",
+   "frame": {
+    "x": 1032,
+    "y": 257,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_12",
+   "frame": {
+    "x": 1290,
+    "y": 257,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_blast_behind_13",
+   "frame": {
+    "x": 1548,
+    "y": 257,
+    "w": 258,
+    "h": 257
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 258,
+    "h": 257
+   },
+   "sourceSize": {
+    "w": 258,
+    "h": 257
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 129.0,
+ "anchorY": 244.0,
+ "layer": "behind",
+ "frameMs": 80,
+ "clip": "blast",
+ "impactFrame": 1,
+ "cues": [
+  {
+   "frame": 1,
+   "victim": "white",
+   "shake": [
+    4,
+    -2
+   ]
+  },
+  {
+   "frame": 2,
+   "victim": "red",
+   "shake": [
+    -4,
+    2
+   ]
+  },
+  {
+   "frame": 3,
+   "shake": [
+    2,
+    -1
+   ]
+  },
+  {
+   "frame": 4,
+   "victim": "red"
+  }
+ ],
+ "startsAt": "2 frames after the bomb lands (Release + 14) on the top front fighter, 1 more frame for each fighter below"
+}

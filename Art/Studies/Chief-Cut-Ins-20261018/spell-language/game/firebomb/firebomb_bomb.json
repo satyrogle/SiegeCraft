@@ -1,0 +1,77 @@
+{
+ "frames": [
+  {
+   "filename": "firebomb_bomb_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 30,
+    "h": 39
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 30,
+    "h": 39
+   },
+   "sourceSize": {
+    "w": 30,
+    "h": 39
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_bomb_01",
+   "frame": {
+    "x": 30,
+    "y": 0,
+    "w": 30,
+    "h": 39
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 30,
+    "h": 39
+   },
+   "sourceSize": {
+    "w": 30,
+    "h": 39
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_bomb_02",
+   "frame": {
+    "x": 60,
+    "y": 0,
+    "w": 30,
+    "h": 39
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 30,
+    "h": 39
+   },
+   "sourceSize": {
+    "w": 30,
+    "h": 39
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 11.0,
+ "anchorY": 27.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "bomb",
+ "loops": true,
+ "note": "the lit bomb, fuse sparking; anchor is the bomb's centre"
+}

@@ -1,0 +1,28 @@
+{
+ "date": "2026-10-22",
+ "model": "pixen stills, animate_image_pixminimax (8 frames)",
+ "cost": "1 generation each",
+ "jobs": [
+  {
+   "clip": "b1-anim",
+   "job_id": "640647a8-07bf-4f2e-a60d-9df60bf26c3e",
+   "frames": 9,
+   "prompt": "purple fire erupts along the whole crack, tall flames bursting up out of it",
+   "still_job": "c1d1603b-355b-4626-9982-9993583c2912"
+  },
+  {
+   "clip": "b2-anim",
+   "job_id": "f7265710-2bf2-422c-9dad-760e135b7f8a",
+   "frames": 9,
+   "prompt": "the glass flask smashes on the ground, purple liquid fire splashes out into a wide puddle and bursts into tall purple flames",
+   "still_job": "3299c1de-8397-4adb-8a7e-c74bcf5d6825"
+  },
+  {
+   "clip": "b3-anim",
+   "job_id": "8940d411-cc26-4b05-b9c9-7d5b640230bc",
+   "frames": 9,
+   "prompt": "the flaming purple meteor slams into the ground and explodes into a big ring of purple fire and dark smoke",
+   "still_job": "7969b912-86d5-4859-b759-368adae7880a"
+  }
+ ]
+}

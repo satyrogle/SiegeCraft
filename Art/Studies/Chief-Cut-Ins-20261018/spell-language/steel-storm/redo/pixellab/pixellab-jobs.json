@@ -1,0 +1,28 @@
+{
+ "date": "2026-10-22",
+ "model": "pixen stills, animate_image_pixminimax (8 frames)",
+ "cost": "1 generation each",
+ "jobs": [
+  {
+   "clip": "s1-anim",
+   "job_id": "49a668be-ad5c-4728-9bf0-f888f1cd3ef8",
+   "frames": 9,
+   "prompt": "the shield swells and grows into a giant tower shield, slamming down onto the snow",
+   "still_job": "a0261dcf-c82a-409d-bba8-1c579d361879"
+  },
+  {
+   "clip": "s2-anim",
+   "job_id": "f82ff680-4305-48e9-a915-dac73796e7d8",
+   "frames": 9,
+   "prompt": "the colossal shield slams down into the snow, a ring of snow and ice shards blasts out from its base and the shield shudders",
+   "still_job": "dfdba7cb-fa87-4c4e-8820-d424d70a84d2"
+  },
+  {
+   "clip": "s3-anim",
+   "job_id": "9932d419-443f-4f2a-9438-1eccfc9e4b49",
+   "frames": 9,
+   "prompt": "the dome cage builds itself up from the ground, hexagonal plates locking into place row by row",
+   "still_job": "06db1ed6-4bbb-4125-a2d4-12d24eec3a1a"
+  }
+ ]
+}

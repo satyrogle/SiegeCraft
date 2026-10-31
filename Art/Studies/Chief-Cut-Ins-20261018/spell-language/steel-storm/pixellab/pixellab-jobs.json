@@ -1,0 +1,43 @@
+{
+  "model": "PixelLab animate_image_pixminimax (MiniMax H3)",
+  "date": "2026-10-22",
+  "jobs": [
+    {
+      "clip": "rise",
+      "job_id": "8e0d7b61-2b9d-41f3-abf7-a2faf3fd0495",
+      "frames": 9,
+      "folder": "pixellab/rise",
+      "prompt": "The tall steel tower shield slams straight up out of the snowy ground, kicking up a puff of snow, and stands firm.",
+      "input": {
+        "first_frame_url": "upload:a133067d-7d22-4e13-998a-4094d8d58185",
+        "last_frame_url": "upload:47641675-0595-48af-895d-e817b311f643",
+        "frame_count": 8,
+        "view": "side",
+        "direction": "west",
+        "subject_description": "a tall battered steel tower shield with a teal gem",
+        "initial_pose": "the top of the shield just poking out of the snowy ground",
+        "no_background": true,
+        "seed": 2026102231
+      }
+    },
+    {
+      "clip": "shatter",
+      "job_id": "746bd8fa-ab1d-47ae-a722-ca3b3d12c4e6",
+      "frames": 17,
+      "folder": "pixellab/shatter",
+      "prompt": "The steel tower shield cracks down the middle and shatters into jagged steel shards that burst outward and tumble down onto the snowy ground, a spray of snow flying up.",
+      "input": {
+        "first_frame_url": "upload:47641675-0595-48af-895d-e817b311f643",
+        "frame_count": 16,
+        "view": "side",
+        "direction": "west",
+        "subject_description": "a tall battered steel tower shield with a teal gem",
+        "initial_pose": "standing upright planted in the snowy ground",
+        "no_background": true,
+        "seed": 2026102232
+      }
+    }
+  ],
+  "placement": "Each clip frame's pixel (64, 182) stands on a wall slot (the shield's foot). Odd slots use the mirrored frames. Drawn over the fighters, back to front.",
+  "timing": "80 ms frames. 3 s rune tell (38 frames), dark frame at 38, rise frames 2 to 8 from frame 39 (middle slots first, outer ones up to 2 frames later), then shatter frame 0 holds as the standing shield. Unleash at 67: dark shield, white shield, then shatter frames 4 to 16 (same middle out stagger)."
+}

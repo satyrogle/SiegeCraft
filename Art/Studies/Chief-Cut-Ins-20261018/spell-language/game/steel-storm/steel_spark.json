@@ -1,0 +1,98 @@
+{
+ "frames": [
+  {
+   "filename": "steel_spark_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 55,
+    "h": 50
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 55,
+    "h": 50
+   },
+   "sourceSize": {
+    "w": 55,
+    "h": 50
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_spark_01",
+   "frame": {
+    "x": 55,
+    "y": 0,
+    "w": 55,
+    "h": 50
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 55,
+    "h": 50
+   },
+   "sourceSize": {
+    "w": 55,
+    "h": 50
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_spark_02",
+   "frame": {
+    "x": 110,
+    "y": 0,
+    "w": 55,
+    "h": 50
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 55,
+    "h": 50
+   },
+   "sourceSize": {
+    "w": 55,
+    "h": 50
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_spark_03",
+   "frame": {
+    "x": 165,
+    "y": 0,
+    "w": 55,
+    "h": 50
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 55,
+    "h": 50
+   },
+   "sourceSize": {
+    "w": 55,
+    "h": 50
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 24.0,
+ "anchorY": 21.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "blow",
+ "startsAt": "the frame one of your blows lands on the wall"
+}

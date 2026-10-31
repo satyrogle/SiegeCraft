@@ -1,0 +1,228 @@
+{
+ "a169da83-5911-496a-8a8d-8550f8a54993": {
+  "prompt": [
+   150,
+   "a169da83-5911-496a-8a8d-8550f8a54993",
+   {
+    "1": {
+     "class_type": "UNETLoader",
+     "inputs": {
+      "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+      "weight_dtype": "default"
+     }
+    },
+    "2": {
+     "class_type": "LoraLoaderModelOnly",
+     "inputs": {
+      "model": [
+       "1",
+       0
+      ],
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+      "strength_model": 1.0
+     }
+    },
+    "3": {
+     "class_type": "ModelSamplingAuraFlow",
+     "inputs": {
+      "model": [
+       "2",
+       0
+      ],
+      "shift": 3.0
+     }
+    },
+    "4": {
+     "class_type": "CLIPLoader",
+     "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+     }
+    },
+    "5": {
+     "class_type": "VAELoader",
+     "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+     }
+    },
+    "6": {
+     "class_type": "LoadImage",
+     "inputs": {
+      "image": "ks-cutins19-thundercoast-base-3-wave.png"
+     }
+    },
+    "7": {
+     "class_type": "LoadImage",
+     "inputs": {
+      "image": "ks-cutins19-thundercoast-chief-x5-grey.png"
+     }
+    },
+    "8": {
+     "class_type": "TextEncodeQwenImageEditPlus",
+     "inputs": {
+      "clip": [
+       "4",
+       0
+      ],
+      "vae": [
+       "5",
+       0
+      ],
+      "image1": [
+       "6",
+       0
+      ],
+      "image2": [
+       "7",
+       0
+      ],
+      "prompt": "Picture 1 is a comic book portrait of the Thundercoast gene lord. Picture 2 is his approved design, drawn as a small pixel art sprite. Keep picture 1's comic book art style, black inking, flat colours, plain light grey background, framing and size exactly, and keep his pose exactly: his harpoon held upright beside him, his other arm sweeping a curling wave of dark water with glowing blue foam up beside him. Keep his long head tentacles and his fin crest from picture 1, but replace his pointed shark snout with a flat humanoid amphibian face: a short flat face with no snout, high cheekbones, large glossy pale glowing eyes, no nose, only two thin nostril slits, and a wide thin lipped mouth; he is not a shark. Also correct his costume and colours to match picture 2: picture 2's sleek black armour with glowing electric blue seams and small blue lights, the cluster of glowing blue capsules on his shoulder, his dark teal skin, the glowing blue gem on his belt, the long tattered dark teal and blue skirt, and picture 2's harpoon with its long dark shaft, glowing blue segments and long glowing crystal blue head. Keep it a smooth inked comic illustration, not pixel art."
+     }
+    },
+    "9": {
+     "class_type": "TextEncodeQwenImageEditPlus",
+     "inputs": {
+      "clip": [
+       "4",
+       0
+      ],
+      "vae": [
+       "5",
+       0
+      ],
+      "image1": [
+       "6",
+       0
+      ],
+      "image2": [
+       "7",
+       0
+      ],
+      "prompt": ""
+     }
+    },
+    "10": {
+     "class_type": "EmptySD3LatentImage",
+     "inputs": {
+      "width": 1248,
+      "height": 832,
+      "batch_size": 1
+     }
+    },
+    "11": {
+     "class_type": "KSampler",
+     "inputs": {
+      "model": [
+       "3",
+       0
+      ],
+      "positive": [
+       "8",
+       0
+      ],
+      "negative": [
+       "9",
+       0
+      ],
+      "latent_image": [
+       "10",
+       0
+      ],
+      "seed": 2026101963,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+     }
+    },
+    "12": {
+     "class_type": "VAEDecode",
+     "inputs": {
+      "samples": [
+       "11",
+       0
+      ],
+      "vae": [
+       "5",
+       0
+      ]
+     }
+    },
+    "13": {
+     "class_type": "SaveImage",
+     "inputs": {
+      "images": [
+       "12",
+       0
+      ],
+      "filename_prefix": "KS-Chief-CutIns-20261019/thundercoast-bust-3-wave-q"
+     }
+    }
+   },
+   {
+    "client_id": "ks-cutins19-fix-1aed31a8",
+    "create_time": 1792375007477
+   },
+   [
+    "13"
+   ]
+  ],
+  "outputs": {
+   "13": {
+    "images": [
+     {
+      "filename": "thundercoast-bust-3-wave-q_00001_.png",
+      "subfolder": "KS-Chief-CutIns-20261019",
+      "type": "output"
+     }
+    ]
+   }
+  },
+  "status": {
+   "status_str": "success",
+   "completed": true,
+   "messages": [
+    [
+     "execution_start",
+     {
+      "prompt_id": "a169da83-5911-496a-8a8d-8550f8a54993",
+      "timestamp": 1792375964257
+     }
+    ],
+    [
+     "execution_cached",
+     {
+      "nodes": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "7",
+       "10"
+      ],
+      "prompt_id": "a169da83-5911-496a-8a8d-8550f8a54993",
+      "timestamp": 1792375964797
+     }
+    ],
+    [
+     "execution_success",
+     {
+      "prompt_id": "a169da83-5911-496a-8a8d-8550f8a54993",
+      "timestamp": 1792376071011
+     }
+    ]
+   ]
+  },
+  "meta": {
+   "13": {
+    "node_id": "13",
+    "display_node": "13",
+    "parent_node": null,
+    "real_node_id": "13"
+   }
+  }
+ }
+}

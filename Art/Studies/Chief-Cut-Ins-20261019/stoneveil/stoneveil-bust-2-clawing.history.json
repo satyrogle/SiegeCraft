@@ -1,0 +1,226 @@
+{
+ "79da4c3d-8b09-4770-b418-0e80ac4e08c1": {
+  "prompt": [
+   110,
+   "79da4c3d-8b09-4770-b418-0e80ac4e08c1",
+   {
+    "1": {
+     "class_type": "UNETLoader",
+     "inputs": {
+      "unet_name": "ideogram4_int8_convrot.safetensors",
+      "weight_dtype": "default"
+     }
+    },
+    "2": {
+     "class_type": "CLIPLoader",
+     "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "ideogram4",
+      "device": "default"
+     }
+    },
+    "3": {
+     "class_type": "VAELoader",
+     "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+     }
+    },
+    "4": {
+     "class_type": "CLIPTextEncode",
+     "inputs": {
+      "clip": [
+       "2",
+       0
+      ],
+      "text": "{\"aspect_ratio\": \"3:2\", \"high_level_description\": \"A waist up character portrait of a fierce blood priestess clawing at the viewer with one hand while ribbons of glowing blood fly through the air into the bowl on her staff, in bold comic book art with heavy black ink and flat strong colours, on a plain flat light grey background.\", \"compositional_deconstruction\": {\"background\": \"Plain flat light grey, completely empty, no speed lines, no shadows, no texture. No text, no border, no signature, no watermark.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [20, 120, 1000, 880], \"desc\": \"Waist up portrait of the Stoneveil high priestess, a lean, fierce, menacing woman of a cave dwelling tribe whose faith is blood ritual, facing the viewer, her whole face clearly visible with nothing in front of it. Deep crimson red skin with thin white ritual paint lines down her forehead and face and across her shoulders and arms. Her head is crowned by a smooth crimson crest striped with bone white, and two long curved horns sweep outward and up from it, bone white with crimson stripes. Long thick head tails hang from the back of her head down past her shoulders, striped crimson and bone white like her horns. Her eyes glow red. Dark lips. A necklace of small bones and teeth. She wears a dark brown leather top hung with small bones. White bone cuffs and cloth wraps on her wrists. A dark leather belt with a curved bone tusk hanging at her hip, and a long deep crimson skirt with torn edges. Her tall ritual staff has a dark wooden shaft wrapped in blood red cords, topped with a wide bronze bowl fringed with hanging bone claws and full of glowing red blood, the whole staff top and bowl inside the picture. Her left hand, on the right side of the picture, holds her staff upright beside her with the glowing bowl at its top. Her right hand, on the left side of the picture, reaches out toward the viewer with her fingers curled like claws, and thin ribbons of glowing red blood fly through the air from in front of her clawed hand and arc up into the bowl. She snarls at the viewer. Her only colours are deep crimson red skin, blood red, dark red brown, bone white, dark brown leather, bronze and a glowing red.\"}]}}"
+     }
+    },
+    "5": {
+     "class_type": "CLIPTextEncode",
+     "inputs": {
+      "clip": [
+       "2",
+       0
+      ],
+      "text": "staff across her face, hidden face, human hair, blonde, gold, purple, blue, green, turquoise, helmet, mask, hat, modern clothes, cute, chibi, anime, photo, pixel art, speed lines, background scenery, text, letters, signature, watermark, border"
+     }
+    },
+    "6": {
+     "class_type": "CFGOverride",
+     "inputs": {
+      "model": [
+       "1",
+       0
+      ],
+      "cfg": 3.0,
+      "start_percent": 0.7,
+      "end_percent": 1.0
+     }
+    },
+    "7": {
+     "class_type": "DualModelGuider",
+     "inputs": {
+      "model": [
+       "6",
+       0
+      ],
+      "positive": [
+       "4",
+       0
+      ],
+      "cfg": 7.0,
+      "model_negative": [
+       "6",
+       0
+      ],
+      "negative": [
+       "5",
+       0
+      ]
+     }
+    },
+    "8": {
+     "class_type": "EmptyFlux2LatentImage",
+     "inputs": {
+      "width": 1248,
+      "height": 832,
+      "batch_size": 1
+     }
+    },
+    "9": {
+     "class_type": "KSamplerSelect",
+     "inputs": {
+      "sampler_name": "euler"
+     }
+    },
+    "10": {
+     "class_type": "Ideogram4Scheduler",
+     "inputs": {
+      "steps": 20,
+      "width": 1248,
+      "height": 832,
+      "mu": 0.0,
+      "std": 1.75
+     }
+    },
+    "11": {
+     "class_type": "RandomNoise",
+     "inputs": {
+      "noise_seed": 2026101902
+     }
+    },
+    "12": {
+     "class_type": "SamplerCustomAdvanced",
+     "inputs": {
+      "noise": [
+       "11",
+       0
+      ],
+      "guider": [
+       "7",
+       0
+      ],
+      "sampler": [
+       "9",
+       0
+      ],
+      "sigmas": [
+       "10",
+       0
+      ],
+      "latent_image": [
+       "8",
+       0
+      ]
+     }
+    },
+    "13": {
+     "class_type": "VAEDecode",
+     "inputs": {
+      "samples": [
+       "12",
+       0
+      ],
+      "vae": [
+       "3",
+       0
+      ]
+     }
+    },
+    "14": {
+     "class_type": "SaveImage",
+     "inputs": {
+      "images": [
+       "13",
+       0
+      ],
+      "filename_prefix": "KS-Chief-CutIns-20261019/stoneveil-bust-2-clawing"
+     }
+    }
+   },
+   {
+    "client_id": "ks-cutins19-144a572a",
+    "create_time": 1792371352953
+   },
+   [
+    "14"
+   ]
+  ],
+  "outputs": {
+   "14": {
+    "images": [
+     {
+      "filename": "stoneveil-bust-2-clawing_00001_.png",
+      "subfolder": "KS-Chief-CutIns-20261019",
+      "type": "output"
+     }
+    ]
+   }
+  },
+  "status": {
+   "status_str": "success",
+   "completed": true,
+   "messages": [
+    [
+     "execution_start",
+     {
+      "prompt_id": "79da4c3d-8b09-4770-b418-0e80ac4e08c1",
+      "timestamp": 1792371966339
+     }
+    ],
+    [
+     "execution_cached",
+     {
+      "nodes": [
+       "1",
+       "2",
+       "3",
+       "5",
+       "6",
+       "8",
+       "9",
+       "10"
+      ],
+      "prompt_id": "79da4c3d-8b09-4770-b418-0e80ac4e08c1",
+      "timestamp": 1792371966340
+     }
+    ],
+    [
+     "execution_success",
+     {
+      "prompt_id": "79da4c3d-8b09-4770-b418-0e80ac4e08c1",
+      "timestamp": 1792372071954
+     }
+    ]
+   ]
+  },
+  "meta": {
+   "14": {
+    "node_id": "14",
+    "display_node": "14",
+    "parent_node": null,
+    "real_node_id": "14"
+   }
+  }
+ }
+}

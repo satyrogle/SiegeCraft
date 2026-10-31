@@ -1,0 +1,385 @@
+{
+ "frames": [
+  {
+   "filename": "steel_wall_smash_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_01",
+   "frame": {
+    "x": 175,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_02",
+   "frame": {
+    "x": 350,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_03",
+   "frame": {
+    "x": 525,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_04",
+   "frame": {
+    "x": 700,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_05",
+   "frame": {
+    "x": 875,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_06",
+   "frame": {
+    "x": 1050,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_07",
+   "frame": {
+    "x": 1225,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_08",
+   "frame": {
+    "x": 1400,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_09",
+   "frame": {
+    "x": 1575,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_10",
+   "frame": {
+    "x": 1750,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_11",
+   "frame": {
+    "x": 0,
+    "y": 493,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_12",
+   "frame": {
+    "x": 175,
+    "y": 493,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_13",
+   "frame": {
+    "x": 350,
+    "y": 493,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_14",
+   "frame": {
+    "x": 525,
+    "y": 493,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_15",
+   "frame": {
+    "x": 700,
+    "y": 493,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_smash_16",
+   "frame": {
+    "x": 875,
+    "y": 493,
+    "w": 175,
+    "h": 493
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 175,
+    "h": 493
+   },
+   "sourceSize": {
+    "w": 175,
+    "h": 493
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 81.0,
+ "anchorY": 302.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "smash",
+ "startsAt": "the Unleash that breaks the wall",
+ "impactFrame": 1
+}

@@ -1,0 +1,16 @@
+{
+  "out": "C:/Users/jacob/KindredSiege-Clean/Art/Studies/Chief-Cut-Ins-20261018/dust-shark/raw",
+  "steps": 24,
+  "cfg": 5.0,
+  "negative": "blurry, smooth gradients, painting, photograph, 3d render, realistic, dithering, noise, water, waves, splash, background scenery, floor, ground, text, letters, watermark, more than one creature, cropped, cut off, extra fins, extra tails, legs, arms",
+  "jobs": [
+    {"name": "shark-open-1", "seed": 2026101951, "width": 1024, "height": 512,
+     "prompt": "pixel art sprite, game asset, 32-bit pixel art. A huge sand shark seen from the side, facing right, lunging forward with its jaws gaping wide open: rows of jagged white teeth, a dark red mouth and gums. Long low powerful body, a pointed snout, a small fierce yellow eye, a tall jagged dorsal fin and a ridge of short bony spikes along its back, rough cracked hide like dry red clay, dusty brick red on top fading to pale sand on the belly, a big crescent tail. Clean dark outline, crisp shading with few colours. The whole body inside the image with clear margins. One creature only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no sand, no water, no text."},
+    {"name": "shark-open-2", "seed": 2026101952, "width": 1024, "height": 512,
+     "prompt": "pixel art sprite, game asset, 32-bit pixel art. A huge sand shark seen from the side, facing right, lunging forward with its jaws gaping wide open: rows of jagged white teeth, a dark red mouth and gums. Long low powerful body, a pointed snout, a small fierce yellow eye, a tall jagged dorsal fin and a ridge of short bony spikes along its back, rough cracked hide like dry red clay, dusty brick red on top fading to pale sand on the belly, a big crescent tail. Clean dark outline, crisp shading with few colours. The whole body inside the image with clear margins. One creature only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no sand, no water, no text."},
+    {"name": "maw-open-1", "seed": 2026101961, "width": 768, "height": 768,
+     "prompt": "pixel art sprite, game asset, 32-bit pixel art. The huge round mouth of a giant sand worm seen straight from above, gaping wide open: a perfect circle of hooked white teeth, three rings of teeth spiralling inward to a deep dark red throat, a thick ridged fleshy rim of rough cracked hide like dry red clay, dusty brick red and pale sand colours. Symmetrical and centred, top down view. Clean dark outline, crisp shading with few colours. The whole mouth inside the image with clear margins. One creature only. Plain flat uniform blue grey (#56616c) background, no ground, no sand, no text."},
+    {"name": "maw-open-2", "seed": 2026101962, "width": 768, "height": 768,
+     "prompt": "pixel art sprite, game asset, 32-bit pixel art. The huge round mouth of a giant sand worm seen straight from above, gaping wide open: a perfect circle of hooked white teeth, three rings of teeth spiralling inward to a deep dark red throat, a thick ridged fleshy rim of rough cracked hide like dry red clay, dusty brick red and pale sand colours. Symmetrical and centred, top down view. Clean dark outline, crisp shading with few colours. The whole mouth inside the image with clear margins. One creature only. Plain flat uniform blue grey (#56616c) background, no ground, no sand, no text."}
+  ]
+}

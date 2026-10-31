@@ -1,0 +1,43 @@
+{
+  "model": "PixelLab animate_image_pixminimax (MiniMax H3)",
+  "date": "2026-10-22",
+  "jobs": [
+    {
+      "clip": "rise",
+      "job_id": "50a0f95c-caa4-4a3e-b31f-c2dcfbc54fcf",
+      "frames": 9,
+      "folder": "pixellab/rise",
+      "prompt": "A wisp of purple smoke swirls upward and grows into a ghostly hound head that howls with its jaws wide open, spirit flames streaming back from its head.",
+      "input": {
+        "first_frame_url": "upload:e1214017-8e84-48cb-b1fd-7b2645eb3096",
+        "last_frame_url": "upload:646117d9-0bcf-4db5-a8f6-2a2977ada68c",
+        "frame_count": 8,
+        "view": "side",
+        "direction": "west",
+        "subject_description": "a ghostly purple hound head made of spirit flame",
+        "initial_pose": "a small wisp of purple smoke near the ground",
+        "no_background": true,
+        "seed": 2026102235
+      }
+    },
+    {
+      "clip": "howl",
+      "job_id": "ec8f29cf-0f4c-4f2c-872c-500a361a0681",
+      "frames": 17,
+      "folder": "pixellab/howl",
+      "prompt": "The ghostly hound head throws its head back and howls with its jaws wide open, its spirit flames streaming back, then it bursts apart into purple smoke and sparks that scatter away and vanish.",
+      "input": {
+        "first_frame_url": "upload:646117d9-0bcf-4db5-a8f6-2a2977ada68c",
+        "frame_count": 16,
+        "view": "side",
+        "direction": "west",
+        "subject_description": "a ghostly purple hound head made of spirit flame",
+        "initial_pose": "howling with its jaws wide open",
+        "no_background": true,
+        "seed": 2026102236
+      }
+    }
+  ],
+  "placement": "Clip pixel (112, 127) sits on the hound's spot over the captain (26 px left of him, 225 px above his feet). Through the tell the rise frames are shown as smoke (lifted 55 percent toward deep violet), the howl frames in full colour.",
+  "timing": "80 ms frames. Tell: rise frames 0 to 8 spread over frames 6 to 34, flickering in the last second; dark frame at 38 (the hound flat dark); 39 is the hound flat white with the shockwave; howl frames 1 to 15 from 40 (frames 10 to 15 are its burst into puffs). Broken take: Focus Fire lands at 24, the smoke hound breaks into specks 3 frames later."
+}

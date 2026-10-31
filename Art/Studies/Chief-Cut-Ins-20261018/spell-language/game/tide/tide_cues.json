@@ -1,0 +1,8 @@
+{
+ "spell": "Tide",
+ "frameMs": 80,
+ "tellFrames": 38,
+ "targets": "your back row",
+ "stagger": "1 frame (80 ms) per target, top to bottom, tell and hit both",
+ "casterAnchor": "the Thundercoast chief's feet"
+}

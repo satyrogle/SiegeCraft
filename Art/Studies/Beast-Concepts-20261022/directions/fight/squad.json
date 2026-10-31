@@ -1,0 +1,27 @@
+[
+  {
+    "sprite": "clarth_medic",
+    "x": 418,
+    "y": 424
+  },
+  {
+    "sprite": "clarth_warden",
+    "x": 600,
+    "y": 426
+  },
+  {
+    "sprite": "clarth_skirmisher",
+    "x": 418,
+    "y": 564
+  },
+  {
+    "sprite": "clarth_marksman",
+    "x": 418,
+    "y": 704
+  },
+  {
+    "sprite": "clarth_trapper",
+    "x": 600,
+    "y": 706
+  }
+]

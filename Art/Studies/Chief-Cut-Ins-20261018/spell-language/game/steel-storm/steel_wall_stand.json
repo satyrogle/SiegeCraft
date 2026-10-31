@@ -1,0 +1,32 @@
+{
+ "frames": [
+  {
+   "filename": "steel_wall_stand_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 83,
+    "h": 490
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 83,
+    "h": 490
+   },
+   "sourceSize": {
+    "w": 83,
+    "h": 490
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 35.0,
+ "anchorY": 301.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "stand",
+ "startsAt": "after the rise; hold until the wall ends"
+}

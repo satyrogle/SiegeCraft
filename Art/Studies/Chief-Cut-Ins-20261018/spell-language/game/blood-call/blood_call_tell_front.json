@@ -1,0 +1,847 @@
+{
+ "frames": [
+  {
+   "filename": "blood_call_tell_front_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_01",
+   "frame": {
+    "x": 18,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_02",
+   "frame": {
+    "x": 36,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_03",
+   "frame": {
+    "x": 54,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_04",
+   "frame": {
+    "x": 72,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_05",
+   "frame": {
+    "x": 90,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_06",
+   "frame": {
+    "x": 108,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_07",
+   "frame": {
+    "x": 126,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_08",
+   "frame": {
+    "x": 144,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_09",
+   "frame": {
+    "x": 162,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_10",
+   "frame": {
+    "x": 180,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_11",
+   "frame": {
+    "x": 198,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_12",
+   "frame": {
+    "x": 216,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_13",
+   "frame": {
+    "x": 234,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_14",
+   "frame": {
+    "x": 252,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_15",
+   "frame": {
+    "x": 270,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_16",
+   "frame": {
+    "x": 288,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_17",
+   "frame": {
+    "x": 306,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_18",
+   "frame": {
+    "x": 324,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_19",
+   "frame": {
+    "x": 342,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_20",
+   "frame": {
+    "x": 360,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_21",
+   "frame": {
+    "x": 378,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_22",
+   "frame": {
+    "x": 396,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_23",
+   "frame": {
+    "x": 414,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_24",
+   "frame": {
+    "x": 432,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_25",
+   "frame": {
+    "x": 450,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_26",
+   "frame": {
+    "x": 468,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_27",
+   "frame": {
+    "x": 486,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_28",
+   "frame": {
+    "x": 504,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_29",
+   "frame": {
+    "x": 522,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_30",
+   "frame": {
+    "x": 540,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_31",
+   "frame": {
+    "x": 558,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_32",
+   "frame": {
+    "x": 576,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_33",
+   "frame": {
+    "x": 594,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_34",
+   "frame": {
+    "x": 612,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_35",
+   "frame": {
+    "x": 630,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_36",
+   "frame": {
+    "x": 648,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_tell_front_37",
+   "frame": {
+    "x": 666,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 18,
+    "h": 36
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 5.0,
+ "anchorY": 75.0,
+ "layer": "front",
+ "frameMs": 80,
+ "clip": "tell",
+ "startsAt": "the windup start, 38 frames before Release",
+ "note": "the wound drop beating and blood beads lifting out of it"
+}

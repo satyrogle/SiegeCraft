@@ -1,0 +1,138 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_turbo_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "prompt": "A creature designer's anatomy reference page for a video game boss called the cage bear, drawn in confident pencil with washes of warm brown, polished steel grey and turquoise on cream paper, like a page from a creature anatomy book, with small neat hand lettered labels. Top row, four accurate studies of real animals side by side, each with its label underneath: a cave bear skull with its high domed forehead, labelled \"cave bear skull\"; a grizzly bear on all fours showing its shoulder hump, labelled \"grizzly stance\"; the bones of a bear's front leg and paw with long claws, labelled \"foreleg bones\"; a bear's ribcage and breastbone, labelled \"ribs and breastbone\". Bottom half, large: the cage bear seen from the side, a huge cave bear with shaggy warm brown fur, with its skeleton drawn showing through the fur. Some of its own bones have grown into polished steel and pushed out through the fur. Its ribs and breastbone have become a cage of steel bars on its chest, with a glowing turquoise heart inside. The bones of its near front leg have grown into a giant steel grappling claw, twice as long and twice as thick as its other legs, ending in three huge hooked steel fingers. The claw is so heavy that the bear is lopsided and leans its weight onto its other three legs. A steel crest grows along the top of its skull and stops above its eyes. Its other paws are still animal paws with dark claws, and its jaws are open in a roar. Turquoise glows only in the heart and in thin seams where steel meets fur. Steel grown from bone, never armour bolted on. Short labels with arrows: \"claw\" pointing at the steel claw, \"cage\" pointing at the steel ribcage, \"heart\" pointing at the glowing heart, \"crest\" pointing at the skull crest, \"maw\" pointing at the open jaws. Clean, technical, believable anatomy, no scenery, no other text. ",
+      "negative_prompt": "",
+      "resolution": 1024
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 2048,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "7": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 660664
+    }
+  },
+  "8": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "cfg": 1.0
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "7",
+        0
+      ],
+      "guider": [
+        "8",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "KS-Beast-Concepts-20261022/bear-reference-skeleton-2"
+    }
+  }
+}

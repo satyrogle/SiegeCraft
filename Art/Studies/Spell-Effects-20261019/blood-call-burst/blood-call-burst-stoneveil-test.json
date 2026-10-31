@@ -1,0 +1,365 @@
+{
+ "frames": [
+  {
+   "filename": "blood-call-burst-stoneveil-test 0.png",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 1.png",
+   "frame": {
+    "x": 190,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 2.png",
+   "frame": {
+    "x": 380,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 3.png",
+   "frame": {
+    "x": 570,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 4.png",
+   "frame": {
+    "x": 0,
+    "y": 130,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 5.png",
+   "frame": {
+    "x": 190,
+    "y": 130,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 6.png",
+   "frame": {
+    "x": 380,
+    "y": 130,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 7.png",
+   "frame": {
+    "x": 570,
+    "y": 130,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 8.png",
+   "frame": {
+    "x": 0,
+    "y": 260,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 9.png",
+   "frame": {
+    "x": 190,
+    "y": 260,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 10.png",
+   "frame": {
+    "x": 380,
+    "y": 260,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 11.png",
+   "frame": {
+    "x": 570,
+    "y": 260,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  },
+  {
+   "filename": "blood-call-burst-stoneveil-test 12.png",
+   "frame": {
+    "x": 0,
+    "y": 390,
+    "w": 190,
+    "h": 130
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 190,
+    "h": 130
+   },
+   "sourceSize": {
+    "w": 190,
+    "h": 130
+   },
+   "pivot": {
+    "x": 0.2,
+    "y": 0.8846153846153846
+   },
+   "duration": 83
+  }
+ ],
+ "meta": {
+  "app": "PixelLab VFX Creator",
+  "image": "blood-call-burst-stoneveil-test.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 760,
+   "h": 520
+  },
+  "scale": "1",
+  "anchor": {
+   "kind": "feet",
+   "x": 38,
+   "y": 115
+  },
+  "frameTags": [
+   {
+    "name": "blood-call-burst-stoneveil-test",
+    "from": 0,
+    "to": 12,
+    "direction": "forward"
+   }
+  ]
+ }
+}

@@ -1,0 +1,117 @@
+{
+ "spell": "Blood Call",
+ "frameMs": 80,
+ "tellFrames": 38,
+ "targets": "your bleeding fighters, all at once",
+ "drawnFor": "a fighter whose wound is 46 px above his feet and 4 px forward; a taller one bleeds lower on the body",
+ "rims": {
+  "tellBeat": {
+   "frames": [
+    0,
+    1,
+    2,
+    3,
+    8,
+    9,
+    10,
+    11,
+    16,
+    17,
+    18,
+    19,
+    24,
+    25,
+    26,
+    28,
+    30,
+    32,
+    34,
+    36
+   ],
+   "colour": [
+    209,
+    27,
+    27
+   ],
+   "px": 2
+  },
+  "release": {
+   "frame": 0,
+   "colour": [
+    68,
+    15,
+    21
+   ],
+   "px": 2
+  },
+  "draining": {
+   "hitFrames": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14
+   ],
+   "colour": [
+    209,
+    27,
+    27
+   ],
+   "px": 2
+  }
+ },
+ "eachBleeder": [
+  {
+   "hitFrame": 1,
+   "victim": "white",
+   "shake": [
+    4,
+    -2
+   ]
+  },
+  {
+   "hitFrame": 2,
+   "victim": "red",
+   "shake": [
+    -4,
+    2
+   ]
+  },
+  {
+   "hitFrame": 3,
+   "shake": [
+    2,
+    -1
+   ]
+  },
+  {
+   "hitFrame": 4,
+   "victim": "red"
+  },
+  {
+   "hitFrames": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+   ],
+   "dx": "alternate +1 on odd tell frames, -1 on even ones (the drain shakes him)"
+  },
+  {
+   "hitFrame": 15,
+   "shake": [
+    3,
+    -1
+   ],
+   "note": "the fist bursts"
+  }
+ ]
+}

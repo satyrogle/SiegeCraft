@@ -1,0 +1,407 @@
+{
+ "frames": [
+  {
+   "filename": "dust_shark_fin_behind_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_01",
+   "frame": {
+    "x": 102,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_02",
+   "frame": {
+    "x": 204,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_03",
+   "frame": {
+    "x": 306,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_04",
+   "frame": {
+    "x": 408,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_05",
+   "frame": {
+    "x": 510,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_06",
+   "frame": {
+    "x": 612,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_07",
+   "frame": {
+    "x": 714,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_08",
+   "frame": {
+    "x": 816,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_09",
+   "frame": {
+    "x": 918,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_10",
+   "frame": {
+    "x": 1020,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_11",
+   "frame": {
+    "x": 1122,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_12",
+   "frame": {
+    "x": 1224,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_13",
+   "frame": {
+    "x": 1326,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_14",
+   "frame": {
+    "x": 1428,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_15",
+   "frame": {
+    "x": 1530,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_16",
+   "frame": {
+    "x": 1632,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  },
+  {
+   "filename": "dust_shark_fin_behind_17",
+   "frame": {
+    "x": 1734,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 40
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 45.0,
+ "anchorY": 42.0,
+ "layer": "behind",
+ "frameMs": 80,
+ "clip": "fin loop",
+ "loops": true,
+ "startsAt": "tell frame 4, at loop frame (4 + 6 x the target's place in the row) mod 18, until Release; the fins of a row run a third of a lap apart"
+}

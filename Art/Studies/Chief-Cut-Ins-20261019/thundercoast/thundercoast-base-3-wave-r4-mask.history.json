@@ -1,0 +1,108 @@
+{
+ "f1df1768-e988-4b1a-b68b-712c15d055eb": {
+  "prompt": [
+   162,
+   "f1df1768-e988-4b1a-b68b-712c15d055eb",
+   {
+    "1": {
+     "class_type": "LoadImage",
+     "inputs": {
+      "image": "ks-cutins19-thundercoast-base-3-wave-r4.png"
+     }
+    },
+    "2": {
+     "class_type": "LoadBackgroundRemovalModel",
+     "inputs": {
+      "bg_removal_name": "birefnet-general.safetensors"
+     }
+    },
+    "3": {
+     "class_type": "RemoveBackground",
+     "inputs": {
+      "bg_removal_model": [
+       "2",
+       0
+      ],
+      "image": [
+       "1",
+       0
+      ]
+     }
+    },
+    "4": {
+     "class_type": "MaskToImage",
+     "inputs": {
+      "mask": [
+       "3",
+       0
+      ]
+     }
+    },
+    "5": {
+     "class_type": "SaveImage",
+     "inputs": {
+      "images": [
+       "4",
+       0
+      ],
+      "filename_prefix": "KS-Chief-CutIns-20261019/thundercoast-base-3-wave-r4-mask"
+     }
+    }
+   },
+   {
+    "client_id": "ks-cutins19-da96f235",
+    "create_time": 1792376762749
+   },
+   [
+    "5"
+   ]
+  ],
+  "outputs": {
+   "5": {
+    "images": [
+     {
+      "filename": "thundercoast-base-3-wave-r4-mask_00001_.png",
+      "subfolder": "KS-Chief-CutIns-20261019",
+      "type": "output"
+     }
+    ]
+   }
+  },
+  "status": {
+   "status_str": "success",
+   "completed": true,
+   "messages": [
+    [
+     "execution_start",
+     {
+      "prompt_id": "f1df1768-e988-4b1a-b68b-712c15d055eb",
+      "timestamp": 1792376846936
+     }
+    ],
+    [
+     "execution_cached",
+     {
+      "nodes": [],
+      "prompt_id": "f1df1768-e988-4b1a-b68b-712c15d055eb",
+      "timestamp": 1792376846949
+     }
+    ],
+    [
+     "execution_success",
+     {
+      "prompt_id": "f1df1768-e988-4b1a-b68b-712c15d055eb",
+      "timestamp": 1792376852690
+     }
+    ]
+   ]
+  },
+  "meta": {
+   "5": {
+    "node_id": "5",
+    "display_node": "5",
+    "parent_node": null,
+    "real_node_id": "5"
+   }
+  }
+ }
+}

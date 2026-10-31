@@ -1,0 +1,10 @@
+{
+  "tool": "Qwen Image Edit 2511 INT8 (qwen_image_edit_2511_int8_convrot) + Lightning 4 step LoRA, ModelSamplingAuraFlow shift 3, KSampler euler simple, 4 steps, cfg 1, denoise 1, text encoder qwen_2.5_vl_7b_fp8_scaled, VAE qwen_image_vae",
+  "edits": [
+    {"out": "shark-shut-2.png", "input": "shark-open-2.png", "size": [1024, 512], "seed": 2026101971, "used": true,
+     "prompt": "Picture 1 is a pixel art sprite of a sand shark on a plain flat blue grey background. Close its jaws completely: the mouth shut tight, the lower jaw pressed up against the upper jaw, the jagged teeth interlocking along one closed jaw line, no gap and no open mouth. Keep everything else exactly the same: the same shark, the same body, fins, tail, eye, gills and cracked hide, the same colours, dark outline, pixel art style and pixel size, the same position and framing, and the same plain flat blue grey background."},
+    {"out": "maw-shut-1.png", "input": "maw-open-1.png", "size": [768, 768], "seed": 2026101972, "used": false, "why_not": "drew a literal star in the middle",
+     "prompt": "Picture 1 is a pixel art sprite of the round mouth of a giant sand worm seen from above, on a plain flat blue grey background. Close the mouth completely: the thick ridged rim squeezed shut into a tight puckered knot at the centre, like a drawstring pulled closed, the hooked white teeth clamped together into a small star in the middle, no dark throat showing. Keep the same rough cracked red hide, the same colours, dark outline, pixel art style and pixel size, centred, and the same plain flat blue grey background."}
+  ],
+  "flux_stills": "the *-workflow.json files next to each picture: FLUX.2 Klein base 4B + flux2klein_pixel_art_sprite_limbicnation LoRA, no reference, 24 steps, cfg 5, seeds in each file"
+}

@@ -1,0 +1,6 @@
+{
+  "tool": "Qwen Image Edit 2511 INT8 (qwen_image_edit_2511_int8_convrot) + Lightning 4 step LoRA, ModelSamplingAuraFlow shift 3, KSampler euler simple, 4 steps, cfg 1, denoise 1, text encoder qwen_2.5_vl_7b_fp8_scaled, VAE qwen_image_vae",
+  "out": "serpent-shut-1.png", "input": "serpent-head-1.png", "size": [1024, 640], "seed": 2026102021,
+  "prompt": "Picture 1 is a pixel art sprite of the head of a sea serpent made of water on a plain flat dark brown background. Close its jaws completely: the mouth shut tight, the lower jaw pressed up against the upper jaw, the sharp white teeth interlocking along one closed jaw line, no gap and no open mouth, no tongue showing. Keep everything else exactly the same: the same head, snout, glowing cyan eye, white foam mane, curling water neck, the same colours, dark outline, pixel art style and pixel size, the same position and framing, and the same plain flat dark brown background.",
+  "flux_heads": "serpent-head-1/2 *-workflow.json beside each picture: FLUX.2 Klein base 4B + flux2klein_pixel_art_sprite_limbicnation LoRA, no reference, 24 steps, cfg 5. Head 1 used (open), head 2 not used."
+}

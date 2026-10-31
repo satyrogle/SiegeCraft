@@ -1,0 +1,270 @@
+{
+ "frames": [
+  {
+   "filename": "eclipse_sun_form_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_01",
+   "frame": {
+    "x": 336,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_02",
+   "frame": {
+    "x": 672,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_03",
+   "frame": {
+    "x": 1008,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_04",
+   "frame": {
+    "x": 1344,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_05",
+   "frame": {
+    "x": 1680,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_06",
+   "frame": {
+    "x": 0,
+    "y": 336,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_07",
+   "frame": {
+    "x": 336,
+    "y": 336,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_08",
+   "frame": {
+    "x": 672,
+    "y": 336,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_09",
+   "frame": {
+    "x": 1008,
+    "y": 336,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_10",
+   "frame": {
+    "x": 1344,
+    "y": 336,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  },
+  {
+   "filename": "eclipse_sun_form_11",
+   "frame": {
+    "x": 1680,
+    "y": 336,
+    "w": 336,
+    "h": 336
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 336,
+    "h": 336
+   },
+   "sourceSize": {
+    "w": 336,
+    "h": 336
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 168.0,
+ "anchorY": 168.0
+}

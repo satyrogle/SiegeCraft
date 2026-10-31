@@ -1,0 +1,28 @@
+{
+ "tool": "PixelLab animate_image_pixminimax (PixMiniMax, MiniMax H3), Jacob 21 Oct 2026: Use pixel lab animator bro",
+ "input": "wave-full.png: Comfy hero-wave keyed, cut to 86 percent height, shrunk to 216x120 and locked to the Thundercoast palette, on a clear 256x192 canvas",
+ "jobs": [
+  {
+   "name": "rise",
+   "job_id": "1464ea4a-8241-4710-9b44-9bb857e09551",
+   "frames": 8,
+   "seed": 2026102202,
+   "cost_generations": 1,
+   "first_frame": "wave-low.png (the same wave squashed to 22 percent)",
+   "last_frame": "wave-full.png",
+   "description": "The low swell of water surges upward and rears up into a tall wave, its white foam crest rising and curling over to the right."
+  },
+  {
+   "name": "crash",
+   "job_id": "b7ce3bbb-9b38-4fa4-bb39-326295ce0ce9",
+   "frames": 16,
+   "seed": 2026102201,
+   "cost_generations": 2,
+   "first_frame": "wave-full.png",
+   "description": "The curling crest of the wave pitches forward and crashes straight down to the right, smashing into a big burst of white foam and spray that shoots up and outward, then the whole wave collapses and the water spreads out flat along the ground in foamy ripples that sink away."
+  }
+ ],
+ "frames": "rise/ and crash/ are the raw PixelLab frames (index 0 is the input). clean/ trims the cut off foot of the wave into a slope with an outline. game/ is clean/ mirrored so the wave comes from the enemy side and breaks left onto your back row (Jacob, 22 Oct 2026: bro the wave is reversed).",
+ "placement": "game/ frame pixel (67, 182) on the bitten fighter's feet plus 3 px; rise and crash frames 1 to 3 behind the fighter, crash frames 4 to 16 in front",
+ "timing": "80 ms frames: 3 s tell (38 frames), dark frame, rise 8, crash 16 (impact on crash frame 4), the whirlpools drain and pop; back row staggered one frame each"
+}

@@ -1,0 +1,227 @@
+{
+ "569cfa8d-b7f4-4616-a166-ca9d766b04c2": {
+  "prompt": [
+   151,
+   "569cfa8d-b7f4-4616-a166-ca9d766b04c2",
+   {
+    "1": {
+     "class_type": "UNETLoader",
+     "inputs": {
+      "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+      "weight_dtype": "default"
+     }
+    },
+    "2": {
+     "class_type": "LoraLoaderModelOnly",
+     "inputs": {
+      "model": [
+       "1",
+       0
+      ],
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+      "strength_model": 1.0
+     }
+    },
+    "3": {
+     "class_type": "ModelSamplingAuraFlow",
+     "inputs": {
+      "model": [
+       "2",
+       0
+      ],
+      "shift": 3.0
+     }
+    },
+    "4": {
+     "class_type": "CLIPLoader",
+     "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+     }
+    },
+    "5": {
+     "class_type": "VAELoader",
+     "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+     }
+    },
+    "6": {
+     "class_type": "LoadImage",
+     "inputs": {
+      "image": "ks-cutins19-stoneveil-base-1-raised.png"
+     }
+    },
+    "7": {
+     "class_type": "LoadImage",
+     "inputs": {
+      "image": "ks-cutins19-stoneveil-chief-x5-grey.png"
+     }
+    },
+    "8": {
+     "class_type": "TextEncodeQwenImageEditPlus",
+     "inputs": {
+      "clip": [
+       "4",
+       0
+      ],
+      "vae": [
+       "5",
+       0
+      ],
+      "image1": [
+       "6",
+       0
+      ],
+      "image2": [
+       "7",
+       0
+      ],
+      "prompt": "Picture 1 is a comic book portrait of the Stoneveil high priestess. Picture 2 is her approved design, drawn as a small pixel art sprite. Keep picture 1's comic book art style, black inking, flat colours, plain light grey background, framing and size exactly, and keep her pose exactly: her staff lifted straight up so the bowl of glowing blood is high above her head with blood rising out of it, her other hand open like a claw. Only correct her look to match picture 2: her two horns curve outward and then up from the sides of her head like picture 2, bone white with crimson stripes; give her picture 2's few long thick head tails, striped crimson and bone white, hanging from the back of her head over her shoulders, not dreadlocks; give her picture 2's smooth striped head crest, picture 2's white face paint lines and picture 2's deep red skin; give her the same dark top, bone necklace, white wrist wraps, belt with the bone tusk and long crimson skirt as picture 2, and the same staff with the bronze bowl of glowing blood and hanging bone claws. Keep it a smooth inked comic illustration, not pixel art."
+     }
+    },
+    "9": {
+     "class_type": "TextEncodeQwenImageEditPlus",
+     "inputs": {
+      "clip": [
+       "4",
+       0
+      ],
+      "vae": [
+       "5",
+       0
+      ],
+      "image1": [
+       "6",
+       0
+      ],
+      "image2": [
+       "7",
+       0
+      ],
+      "prompt": ""
+     }
+    },
+    "10": {
+     "class_type": "EmptySD3LatentImage",
+     "inputs": {
+      "width": 1248,
+      "height": 832,
+      "batch_size": 1
+     }
+    },
+    "11": {
+     "class_type": "KSampler",
+     "inputs": {
+      "model": [
+       "3",
+       0
+      ],
+      "positive": [
+       "8",
+       0
+      ],
+      "negative": [
+       "9",
+       0
+      ],
+      "latent_image": [
+       "10",
+       0
+      ],
+      "seed": 2026101964,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+     }
+    },
+    "12": {
+     "class_type": "VAEDecode",
+     "inputs": {
+      "samples": [
+       "11",
+       0
+      ],
+      "vae": [
+       "5",
+       0
+      ]
+     }
+    },
+    "13": {
+     "class_type": "SaveImage",
+     "inputs": {
+      "images": [
+       "12",
+       0
+      ],
+      "filename_prefix": "KS-Chief-CutIns-20261019/stoneveil-bust-1-raised-q"
+     }
+    }
+   },
+   {
+    "client_id": "ks-cutins19-fix-1aed31a8",
+    "create_time": 1792375007569
+   },
+   [
+    "13"
+   ]
+  ],
+  "outputs": {
+   "13": {
+    "images": [
+     {
+      "filename": "stoneveil-bust-1-raised-q_00001_.png",
+      "subfolder": "KS-Chief-CutIns-20261019",
+      "type": "output"
+     }
+    ]
+   }
+  },
+  "status": {
+   "status_str": "success",
+   "completed": true,
+   "messages": [
+    [
+     "execution_start",
+     {
+      "prompt_id": "569cfa8d-b7f4-4616-a166-ca9d766b04c2",
+      "timestamp": 1792376071336
+     }
+    ],
+    [
+     "execution_cached",
+     {
+      "nodes": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "10"
+      ],
+      "prompt_id": "569cfa8d-b7f4-4616-a166-ca9d766b04c2",
+      "timestamp": 1792376071358
+     }
+    ],
+    [
+     "execution_success",
+     {
+      "prompt_id": "569cfa8d-b7f4-4616-a166-ca9d766b04c2",
+      "timestamp": 1792376257435
+     }
+    ]
+   ]
+  },
+  "meta": {
+   "13": {
+    "node_id": "13",
+    "display_node": "13",
+    "parent_node": null,
+    "real_node_id": "13"
+   }
+  }
+ }
+}

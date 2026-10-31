@@ -1,0 +1,540 @@
+{
+ "frames": [
+  {
+   "filename": "blood_call_hand_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_01",
+   "frame": {
+    "x": 171,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_02",
+   "frame": {
+    "x": 342,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_03",
+   "frame": {
+    "x": 513,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_04",
+   "frame": {
+    "x": 684,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_05",
+   "frame": {
+    "x": 855,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_06",
+   "frame": {
+    "x": 1026,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_07",
+   "frame": {
+    "x": 1197,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_08",
+   "frame": {
+    "x": 1368,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_09",
+   "frame": {
+    "x": 1539,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_10",
+   "frame": {
+    "x": 1710,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_11",
+   "frame": {
+    "x": 0,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_12",
+   "frame": {
+    "x": 171,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_13",
+   "frame": {
+    "x": 342,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_14",
+   "frame": {
+    "x": 513,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_15",
+   "frame": {
+    "x": 684,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_16",
+   "frame": {
+    "x": 855,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_17",
+   "frame": {
+    "x": 1026,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_18",
+   "frame": {
+    "x": 1197,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_19",
+   "frame": {
+    "x": 1368,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_20",
+   "frame": {
+    "x": 1539,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_21",
+   "frame": {
+    "x": 1710,
+    "y": 207,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_22",
+   "frame": {
+    "x": 0,
+    "y": 414,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  },
+  {
+   "filename": "blood_call_hand_23",
+   "frame": {
+    "x": 171,
+    "y": 414,
+    "w": 171,
+    "h": 207
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 171,
+    "h": 207
+   },
+   "sourceSize": {
+    "w": 171,
+    "h": 207
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 102.0,
+ "anchorY": 198.0,
+ "layer": "under",
+ "frameMs": 80,
+ "clip": "hit",
+ "startsAt": "the Release tick",
+ "impactFrame": 1,
+ "note": "the hand of blood, 16 px behind the fighter: drawn after every mark and under every fighter, back to front; every second bleeder uses blood_call_hand_mirrored"
+}

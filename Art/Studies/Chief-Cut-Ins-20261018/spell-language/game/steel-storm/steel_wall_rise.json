@@ -1,0 +1,230 @@
+{
+ "frames": [
+  {
+   "filename": "steel_wall_rise_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_01",
+   "frame": {
+    "x": 167,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_02",
+   "frame": {
+    "x": 334,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_03",
+   "frame": {
+    "x": 501,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_04",
+   "frame": {
+    "x": 668,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_05",
+   "frame": {
+    "x": 835,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_06",
+   "frame": {
+    "x": 1002,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_07",
+   "frame": {
+    "x": 1169,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_08",
+   "frame": {
+    "x": 1336,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  },
+  {
+   "filename": "steel_wall_rise_09",
+   "frame": {
+    "x": 1503,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 167,
+    "h": 504
+   },
+   "sourceSize": {
+    "w": 167,
+    "h": 504
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 77.0,
+ "anchorY": 315.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "hit",
+ "startsAt": "the Release tick"
+}

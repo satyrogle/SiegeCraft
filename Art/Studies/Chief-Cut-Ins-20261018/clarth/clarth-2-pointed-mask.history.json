@@ -1,0 +1,110 @@
+{
+ "16873c87-8145-49a2-8966-ed0de72ef8df": {
+  "prompt": [
+   39,
+   "16873c87-8145-49a2-8966-ed0de72ef8df",
+   {
+    "1": {
+     "class_type": "LoadImage",
+     "inputs": {
+      "image": "ks-cutins-clarth-2-pointed.png"
+     }
+    },
+    "2": {
+     "class_type": "LoadBackgroundRemovalModel",
+     "inputs": {
+      "bg_removal_name": "birefnet-general.safetensors"
+     }
+    },
+    "3": {
+     "class_type": "RemoveBackground",
+     "inputs": {
+      "bg_removal_model": [
+       "2",
+       0
+      ],
+      "image": [
+       "1",
+       0
+      ]
+     }
+    },
+    "4": {
+     "class_type": "MaskToImage",
+     "inputs": {
+      "mask": [
+       "3",
+       0
+      ]
+     }
+    },
+    "5": {
+     "class_type": "SaveImage",
+     "inputs": {
+      "images": [
+       "4",
+       0
+      ],
+      "filename_prefix": "KS-Chief-CutIns-20261018/clarth-2-pointed-mask"
+     }
+    }
+   },
+   {
+    "client_id": "claude-clarth-mask",
+    "create_time": 1792342482830
+   },
+   [
+    "5"
+   ]
+  ],
+  "outputs": {
+   "5": {
+    "images": [
+     {
+      "filename": "clarth-2-pointed-mask_00001_.png",
+      "subfolder": "KS-Chief-CutIns-20261018",
+      "type": "output"
+     }
+    ]
+   }
+  },
+  "status": {
+   "status_str": "success",
+   "completed": true,
+   "messages": [
+    [
+     "execution_start",
+     {
+      "prompt_id": "16873c87-8145-49a2-8966-ed0de72ef8df",
+      "timestamp": 1792342682859
+     }
+    ],
+    [
+     "execution_cached",
+     {
+      "nodes": [
+       "2"
+      ],
+      "prompt_id": "16873c87-8145-49a2-8966-ed0de72ef8df",
+      "timestamp": 1792342682875
+     }
+    ],
+    [
+     "execution_success",
+     {
+      "prompt_id": "16873c87-8145-49a2-8966-ed0de72ef8df",
+      "timestamp": 1792342683935
+     }
+    ]
+   ]
+  },
+  "meta": {
+   "5": {
+    "node_id": "5",
+    "display_node": "5",
+    "parent_node": null,
+    "real_node_id": "5"
+   }
+  }
+ }
+}

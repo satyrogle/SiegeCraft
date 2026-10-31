@@ -1,0 +1,28 @@
+{
+ "tool": "PixelLab animate_image_pixminimax (PixMiniMax). Jacob 22 Oct 2026: still feels off wave is emerging from the side",
+ "input": "wave-full.png: Comfy hero-wave keyed, cut to 86 percent height, shrunk to 140x128 (narrower so it fits a whirlpool), mirrored to break left, cut foot rounded, Thundercoast palette, on a clear 224x224 canvas",
+ "jobs": [
+  {
+   "name": "rise",
+   "job_id": "9914ee6f-b175-4cda-a22e-4c075100601f",
+   "frames": 8,
+   "seed": 2026102212,
+   "cost_generations": 1,
+   "first_frame": "wave-low.png (the wave squashed to 15 percent)",
+   "last_frame": "wave-full.png",
+   "description": "The low pool of water surges straight upward out of the ground and rears up into a tall steep wave, its white foam crest rising and curling over to the left."
+  },
+  {
+   "name": "crash",
+   "job_id": "c3487afe-8536-40da-b1ad-af0a80e1ec50",
+   "frames": 16,
+   "seed": 2026102211,
+   "cost_generations": 2,
+   "first_frame": "wave-full.png",
+   "description": "The tall wave's curling crest pitches forward and crashes straight down to the left, smashing into a big burst of white foam and spray that shoots up and outward, then the whole wave collapses and the water spreads out flat along the ground in foamy ripples that sink away."
+  }
+ ],
+ "frames": "rise/ and crash/ are raw PixelLab frames (index 0 is the input). game/ keeps the water inside the whirlpool ellipse and above a slope round it, with an outline on the new edge.",
+ "placement": "game/ frame pixel (85, 214) on the bitten fighter's feet plus 3 px; rise and crash frames 1 to 4 behind the fighter, crash frames 5 to 16 in front, impact on crash frame 5",
+ "timing": "80 ms frames: 3 s tell (38 frames), dark frame, rise 8, crash 16, the whirlpools drain and pop; back row staggered one frame each"
+}

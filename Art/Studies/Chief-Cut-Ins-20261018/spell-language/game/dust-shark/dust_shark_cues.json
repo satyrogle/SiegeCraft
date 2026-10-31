@@ -1,0 +1,9 @@
+{
+ "spell": "Dust Shark",
+ "frameMs": 80,
+ "tellFrames": 38,
+ "targets": "every live fighter in the enemy back row (the front row if the back is empty)",
+ "stagger": "the tell plays on every target at once; the hit clips go top to bottom, 2 frames (160 ms) apart; a target waiting its turn holds the tell's last frame",
+ "shake": "on a bite; when two bites overlap the earlier one keeps the shake",
+ "dodged": "on a Fall Back dodge play it at the row's old spots with no cues: it bites sand"
+}

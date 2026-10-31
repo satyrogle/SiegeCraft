@@ -1,0 +1,49 @@
+{
+  "out": "C:/Users/jacob/KindredSiege-Clean/Art/Studies/Beast-Concepts-20261022/raw",
+  "text_encoder": "qwen3vl_8b_fp8_scaled.safetensors",
+  "style": "Creature concept art for a dark fantasy video game, in the mood of an 80s dark fantasy film. Painted, with clear shapes and a strong readable silhouette. Full body, the whole creature inside the frame, seen in a three quarter view and facing left. Plain flat light grey background with soft even light, no scenery, no people, no text, no border.",
+  "jobs": [
+    {
+      "name": "shark-1",
+      "seed": 220221,
+      "width": 1024,
+      "height": 1024,
+      "prompt": "A huge sand shark, a monster that swims through desert sand like water. Dusty red brown back, pale cream belly, a huge jaw full of jagged bone white teeth, a tall blade shaped dorsal fin, a ridge of spines running down its back, and a heavy powerful tail, each of them clearly visible. Old spear scars and broken spear shafts stuck in its hide from the hunters who chase it. Menacing, not cartoony. It leaps clear of the sand in a long arc with its jaws wide open and sand streaming off its body, sleek and fast. The spines along its back are long thin quills that lie back like a porcupine's."
+    },
+    {
+      "name": "shark-2",
+      "seed": 220221,
+      "width": 1024,
+      "height": 1024,
+      "prompt": "A huge sand shark, a monster that swims through desert sand like water. Dusty red brown back, pale cream belly, a huge jaw full of jagged bone white teeth, a tall blade shaped dorsal fin, a ridge of spines running down its back, and a heavy powerful tail, each of them clearly visible. Old spear scars and broken spear shafts stuck in its hide from the hunters who chase it. Menacing, not cartoony. It bursts up out of a sand dune at a steep angle with its tail lashing behind it, its body thick and heavy and covered in rough armoured hide. The spines along its back are short heavy bone plates like a stegosaurus's."
+    },
+    {
+      "name": "shark-3",
+      "seed": 220221,
+      "width": 1024,
+      "height": 1024,
+      "prompt": "A huge sand shark, a monster that swims through desert sand like water. Dusty red brown back, pale cream belly, a huge jaw full of jagged bone white teeth, a tall blade shaped dorsal fin, a ridge of spines running down its back, and a heavy powerful tail, each of them clearly visible. Old spear scars and broken spear shafts stuck in its hide from the hunters who chase it. Menacing, not cartoony. It twists sideways across the top of the sand in a tight curve like an eel, its long serpentine body coiled so its jaw, fin, spines and tail all show at once. The spines along its back are a crest of long jagged bone blades."
+    },
+    {
+      "name": "bear-1",
+      "seed": 220222,
+      "width": 1024,
+      "height": 1024,
+      "prompt": "A huge cave bear, a living animal that has grown polished steel through its own body like extra bones, a cyborg beast. Warm brown shaggy fur. A polished steel ribcage bursts out through its chest like a cage, and inside the cage a glowing turquoise heart is clearly visible between the steel bars. A polished steel crest grows along the top of its skull and stops above its eyes, so its real bear face and eyes show. Thin turquoise glowing seams where the steel meets the flesh. One of its front legs is a giant bionic arm ending in a huge mechanical grappling claw, big enough to grab and hold a person. Its jaws are open in a roar, with steel fangs. Organic and alive, not a robot. It stands on all fours, low and heavy, with the giant claw arm reaching forward. Steel shows only in the ribcage, the claw arm and the skull crest; everywhere else is fur."
+    },
+    {
+      "name": "bear-2",
+      "seed": 220222,
+      "width": 1024,
+      "height": 1024,
+      "prompt": "A huge cave bear, a living animal that has grown polished steel through its own body like extra bones, a cyborg beast. Warm brown shaggy fur. A polished steel ribcage bursts out through its chest like a cage, and inside the cage a glowing turquoise heart is clearly visible between the steel bars. A polished steel crest grows along the top of its skull and stops above its eyes, so its real bear face and eyes show. Thin turquoise glowing seams where the steel meets the flesh. One of its front legs is a giant bionic arm ending in a huge mechanical grappling claw, big enough to grab and hold a person. Its jaws are open in a roar, with steel fangs. Organic and alive, not a robot. It rears up on its hind legs to its full height, roaring, with the claw arm raised high. Steel vertebrae run down its spine and steel shoulder bones break out through the fur."
+    },
+    {
+      "name": "bear-3",
+      "seed": 220222,
+      "width": 1024,
+      "height": 1024,
+      "prompt": "A huge cave bear, a living animal that has grown polished steel through its own body like extra bones, a cyborg beast. Warm brown shaggy fur. A polished steel ribcage bursts out through its chest like a cage, and inside the cage a glowing turquoise heart is clearly visible between the steel bars. A polished steel crest grows along the top of its skull and stops above its eyes, so its real bear face and eyes show. Thin turquoise glowing seams where the steel meets the flesh. One of its front legs is a giant bionic arm, and its jaws are open in a roar with steel fangs. Organic and alive, not a robot. It hunches forward with its shoulders high and the bionic arm dragging along the ground, and the arm ends in one huge two pronged mechanical pincer instead of fingers. Steel bones show through the fur along its back and legs too, like a skeleton breaking through."
+    }
+  ]
+}

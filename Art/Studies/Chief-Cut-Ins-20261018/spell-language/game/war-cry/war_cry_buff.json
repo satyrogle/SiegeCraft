@@ -1,0 +1,364 @@
+{
+ "frames": [
+  {
+   "filename": "war_cry_buff_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_01",
+   "frame": {
+    "x": 22,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_02",
+   "frame": {
+    "x": 44,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_03",
+   "frame": {
+    "x": 66,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_04",
+   "frame": {
+    "x": 88,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_05",
+   "frame": {
+    "x": 110,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_06",
+   "frame": {
+    "x": 132,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_07",
+   "frame": {
+    "x": 154,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_08",
+   "frame": {
+    "x": 176,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_09",
+   "frame": {
+    "x": 198,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_10",
+   "frame": {
+    "x": 220,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_11",
+   "frame": {
+    "x": 242,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_12",
+   "frame": {
+    "x": 264,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_13",
+   "frame": {
+    "x": 286,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_14",
+   "frame": {
+    "x": 308,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  },
+  {
+   "filename": "war_cry_buff_15",
+   "frame": {
+    "x": 330,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 23
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 23
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 10.0,
+ "anchorY": 26.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "buff",
+ "startsAt": "the frame the shockwave reaches that hunter (see cues)",
+ "anchorIs": "the top of the hunter's head (his feet point, raised by his sprite's height)",
+ "hold": "hold the last frame (the chevron) until the cry's buff ends; 1.5 s after the howl in the take"
+}

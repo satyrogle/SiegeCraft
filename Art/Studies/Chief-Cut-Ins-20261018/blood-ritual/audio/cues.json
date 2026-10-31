@@ -1,0 +1,74 @@
+{
+ "sfx_eclipse_slam_bloodridge_a.wav": {
+  "seconds": 1.0,
+  "hit_at": 0.022,
+  "peak_db": -1.0,
+  "rms_db": -22.0
+ },
+ "sfx_eclipse_pour_bloodridge_a.wav": {
+  "seconds": 1.2,
+  "hit_at": 0.141,
+  "peak_db": -7.6,
+  "rms_db": -21.0
+ },
+ "sfx_eclipse_ritual_bloodridge_a.wav": {
+  "seconds": 2.0,
+  "hit_at": 0.449,
+  "peak_db": -1.0,
+  "rms_db": -22.1
+ },
+ "sfx_eclipse_impact_bloodridge_a.wav": {
+  "seconds": 1.5,
+  "hit_at": 0.882,
+  "peak_db": -1.0,
+  "rms_db": -17.5
+ },
+ "sfx_eclipse_slam_bloodridge_b.wav": {
+  "seconds": 0.981,
+  "hit_at": 0.008,
+  "peak_db": -1.0,
+  "rms_db": -27.5
+ },
+ "sfx_eclipse_pour_bloodridge_b.wav": {
+  "seconds": 1.2,
+  "hit_at": 0.056,
+  "peak_db": -4.2,
+  "rms_db": -21.0
+ },
+ "sfx_eclipse_ritual_bloodridge_b.wav": {
+  "seconds": 2.0,
+  "hit_at": 0.523,
+  "peak_db": -1.0,
+  "rms_db": -22.0
+ },
+ "sfx_eclipse_impact_bloodridge_b.wav": {
+  "seconds": 1.5,
+  "hit_at": 0.993,
+  "peak_db": -1.0,
+  "rms_db": -23.5
+ },
+ "sfx_eclipse_slam_bloodridge_c.wav": {
+  "seconds": 1.0,
+  "hit_at": 0.011,
+  "peak_db": -1.0,
+  "rms_db": -20.7
+ },
+ "sfx_eclipse_pour_bloodridge_c.wav": {
+  "seconds": 1.2,
+  "hit_at": 0.795,
+  "peak_db": -4.4,
+  "rms_db": -21.0
+ },
+ "sfx_eclipse_ritual_bloodridge_c.wav": {
+  "seconds": 2.0,
+  "hit_at": 1.508,
+  "peak_db": -5.0,
+  "rms_db": -22.0
+ },
+ "sfx_eclipse_impact_bloodridge_c.wav": {
+  "seconds": 1.5,
+  "hit_at": 1.329,
+  "peak_db": -1.0,
+  "rms_db": -22.2
+ }
+}

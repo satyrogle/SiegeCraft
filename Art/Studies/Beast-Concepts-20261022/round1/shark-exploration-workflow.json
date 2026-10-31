@@ -1,0 +1,138 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_turbo_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "prompt": "A concept artist's sketchbook page of creature exploration for a dark fantasy video game boss: twelve rough concept sketches of a giant sand shark that swims through desert sand, laid out in a grid of four columns and three rows on white paper, each sketch numbered with a big hand written number from 1 to 12. Loose confident pencil lines with grey marker shading and a quick wash of dusty brick red and pale sand colour. Every sketch shows the whole creature in a three quarter view with a genuinely different body plan, and every one keeps a big jaw full of bone white teeth, a dorsal fin, a ridge of spines along its back that it can fire like arrows, and a heavy tail that sweeps. The twelve ideas: 1 a sleek classic shark with long quills along its back. 2 a hammerhead with a wide shovel snout for digging through sand. 3 a long eel serpent with a sail of bone spines. 4 an armoured battering ram covered in bony plates. 5 a manta shaped glider with wide wing fins skimming over the dunes. 6 a sawfish with a long toothed saw snout. 7 a mosasaur with four paddle flippers that pull it through the sand. 8 a shark with a hermit crab shell on its back. 9 a segmented sand worm with a shark head. 10 a lionfish shark with fans of venom spines. 11 a huge whale shark with a cave sized mouth. 12 an anglerfish shark with a glowing lure hanging over its jaw. Short hand written notes and arrows beside some sketches. Clean white paper, no frame, no other text. ",
+      "negative_prompt": "",
+      "resolution": 1024
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 2048,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "7": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 550551
+    }
+  },
+  "8": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "cfg": 1.0
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "7",
+        0
+      ],
+      "guider": [
+        "8",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "KS-Beast-Concepts-20261022/shark-exploration"
+    }
+  }
+}

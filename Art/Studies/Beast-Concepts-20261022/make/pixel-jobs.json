@@ -1,0 +1,25 @@
+{
+  "out": "C:/Users/jacob/KindredSiege-Clean/Art/Studies/Beast-Concepts-20261022/pixel/raw",
+  "steps": 24,
+  "cfg": 5.0,
+  "tail": "Clean dark outline, crisp shading with few colours. The whole body inside the image with clear margins. One creature only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no sand, no water, no text.",
+  "negative_shark": "blurry, smooth gradients, painting, photograph, 3d render, realistic, dithering, noise, water, waves, splash, background scenery, floor, ground, text, letters, watermark, more than one creature, cropped, cut off, extra fins, extra tails, legs, arms",
+  "negative_bear": "blurry, smooth gradients, painting, photograph, 3d render, realistic, dithering, noise, background scenery, floor, ground, text, letters, watermark, more than one creature, cropped, cut off, human, rider, armour plates, robot",
+  "shark_head": "pixel art sprite, game asset, 32-bit pixel art. A huge sand shark monster designed for a boss fight, seen in a three quarter side view facing left.",
+  "shark_hide": "A small fierce yellow eye. Rough cracked hide like dry red clay, dusty brick red on top fading to pale sand on the belly, old pale spear scars.",
+  "bear_head": "pixel art sprite, game asset, 32-bit pixel art. A huge cyborg cave bear monster designed for a boss fight, seen in a three quarter view facing left. Warm brown shaggy fur. Polished steel bones grown through its own body. On its chest an open cage of polished steel ribs with a glowing turquoise heart inside, clearly visible. A polished steel crest along the top of its skull. Thin turquoise glowing seams where the steel meets the flesh. A roaring mouth with steel fangs.",
+  "jobs": [
+    {"name": "shark-1", "seed": 440441, "width": 1024, "height": 768,
+     "idea": "A long low wedge shaped body like a spearhead, sharp and aggressive. A giant sickle shaped dorsal fin like a curved blade. A ridge of long thin quills down its back, raked backwards like arrows ready to fire. A heavy crescent tail. An oversized jaw gaping open with rows of jagged bone white teeth and a dark red mouth."},
+    {"name": "shark-2", "seed": 440441, "width": 1024, "height": 768,
+     "idea": "A thick heavy armoured body like a battering ram, covered in overlapping bony plates like an armadillo. A short broad dorsal fin like an axe head. A row of short heavy bone plates down its back. A club shaped tail with spikes. A huge square shovel jaw gaping open with rows of jagged bone white teeth for digging through sand, and a dark red mouth."},
+    {"name": "shark-3", "seed": 440441, "width": 1024, "height": 768,
+     "idea": "A long serpentine body like an eel, curved in an S shape, lean and fast. A tall thin dorsal fin like a sail. A crest of long jagged bone blades down its whole spine. A long whip tail ending in a forked fin. A narrow pointed snout with a gaping jaw full of long needle teeth and a dark red mouth."},
+    {"name": "bear-1", "seed": 440442, "width": 1024, "height": 1024,
+     "idea": "A hulking hunched body with massive high shoulders and a small head, like a gorilla. One front arm is a giant bionic grappling claw bigger than its head, with three long hooked steel fingers."},
+    {"name": "bear-2", "seed": 440442, "width": 1024, "height": 1024,
+     "idea": "It stands upright on its hind legs like a giant warrior, a tall block shaped body, roaring. One arm is a giant bionic grappling claw raised high, with three long hooked steel fingers. Steel vertebrae run down its back."},
+    {"name": "bear-3", "seed": 440442, "width": 1024, "height": 1024,
+     "idea": "A long low body like a wolverine, crouched to pounce, steel bones breaking out along its back like a ridge of spikes. One front arm is a long bionic arm ending in a huge two pronged steel pincer dragging on the ground."}
+  ]
+}

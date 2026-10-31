@@ -1,0 +1,148 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-base-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "pixel art sprite, game asset, 32-bit pixel art. A huge, heavy cave bear boss sitting back on its haunches like an old chained dancing bear, three quarter view facing left, its head bowed low and its shoulders slumped. Its near foreleg has grown into a giant steel grappling claw, twice as long and thick as its other arm, dark gunmetal steel segments ending in three huge hooked steel fingers, so heavy that it rests on the ground in front of it. Its ribs and breastbone have pushed out through the fur of its chest as a cage of curved dark steel bars, and deep inside the cage one small round heart glows turquoise; the bars themselves are dark steel, not glowing. A low ridge of dark steel grows from its brow back along the top of its skull like a bony crest, flush with the skull, not a crown or helmet. Old scars and matted shaggy warm brown fur, a massive shoulder hump, a huge heavy head with a scarred muzzle and small tired eyes; its other forepaw is an ordinary bear paw with dark claws. A great beast its own steel is killing, tired and sad, menacing in size, real animal proportions, not cute, gritty detailed 32-bit arcade boss sprite. Clean dark outline, crisp shading with few colours. The whole body inside the image with clear margins. One creature only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no text."
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "cute, chibi, cartoon, mascot, teddy bear, plush toy, kawaii, big eyes, googly eyes, smiling, standing upright like a human, crown, helmet, love heart symbol, heart shape, glowing ribs, blurry, smooth gradients, painting, photograph, 3d render, dithering, noise, text, letters, watermark, more than one creature, human, person, cropped, cut off, floor, ground, sand, water, scenery, shadow"
+    }
+  },
+  "12": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 896,
+      "height": 896,
+      "batch_size": 1
+    }
+  },
+  "13": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "5",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "cfg": 5.0
+    }
+  },
+  "14": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "15": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 24,
+      "width": 896,
+      "height": 896
+    }
+  },
+  "16": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 231122
+    }
+  },
+  "17": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "16",
+        0
+      ],
+      "guider": [
+        "13",
+        0
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ],
+      "filename_prefix": "KS-Beast-Concepts-20261022/directions/bearC-2"
+    }
+  }
+}

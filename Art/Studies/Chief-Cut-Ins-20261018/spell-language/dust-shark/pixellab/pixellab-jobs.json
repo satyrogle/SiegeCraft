@@ -1,0 +1,25 @@
+{
+  "model": "PixelLab animate_image_pixminimax (MiniMax H3)",
+  "date": "2026-10-22",
+  "jobs": [
+    {
+      "clip": "leap",
+      "job_id": "3ea1b505-d817-4e6d-bc68-e3f7def16f5d",
+      "frames": 17,
+      "folder": "pixellab/leap",
+      "prompt": "The sand shark bursts up out of the sand and leaps in a high arc to the right with its jaws wide open, then comes down snapping its jaws shut and dives nose first back into the sand on the right, throwing up a spray of sand.",
+      "input": {
+        "first_frame_url": "upload:9e6dec6e-3dcd-44bb-bd7b-501da7755b14",
+        "frame_count": 16,
+        "view": "side",
+        "direction": "east",
+        "subject_description": "a red sand shark with a pale belly and jagged teeth",
+        "initial_pose": "breaching nose up out of the sand with its jaws wide open",
+        "no_background": true,
+        "seed": 2026102233
+      }
+    }
+  ],
+  "placement": "Clip pixel (200, 200) stands on the bitten fighter's feet, so the jaws shut over him (leap frame 9). The shark leaves the sand at clip x 108 (92 px behind him) and dives back in at clip x 205 (at his feet). Leap frames 7 to 10 are drawn in front of him, the rest behind.",
+  "timing": "80 ms frames. 3 s tell with the sand mark and the circling fin (38 frames), then one fighter at a time, 2 frames apart: a dark hole frame, leap frames 1 to 16; the bite (white, red, normal, red, and a shake) on leap frame 9; the mark breaks into sand on leap frame 12."
+}

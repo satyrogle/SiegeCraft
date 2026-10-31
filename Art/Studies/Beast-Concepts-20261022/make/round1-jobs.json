@@ -1,0 +1,21 @@
+{
+  "out": "C:/Users/jacob/KindredSiege-Clean/Art/Studies/Beast-Concepts-20261022/round1",
+  "text_encoder": "qwen3vl_8b_fp8_scaled.safetensors",
+  "style": "",
+  "jobs": [
+    {
+      "name": "shark-exploration",
+      "seed": 550551,
+      "width": 2048,
+      "height": 1536,
+      "prompt": "A concept artist's sketchbook page of creature exploration for a dark fantasy video game boss: twelve rough concept sketches of a giant sand shark that swims through desert sand, laid out in a grid of four columns and three rows on white paper, each sketch numbered with a big hand written number from 1 to 12. Loose confident pencil lines with grey marker shading and a quick wash of dusty brick red and pale sand colour. Every sketch shows the whole creature in a three quarter view with a genuinely different body plan, and every one keeps a big jaw full of bone white teeth, a dorsal fin, a ridge of spines along its back that it can fire like arrows, and a heavy tail that sweeps. The twelve ideas: 1 a sleek classic shark with long quills along its back. 2 a hammerhead with a wide shovel snout for digging through sand. 3 a long eel serpent with a sail of bone spines. 4 an armoured battering ram covered in bony plates. 5 a manta shaped glider with wide wing fins skimming over the dunes. 6 a sawfish with a long toothed saw snout. 7 a mosasaur with four paddle flippers that pull it through the sand. 8 a shark with a hermit crab shell on its back. 9 a segmented sand worm with a shark head. 10 a lionfish shark with fans of venom spines. 11 a huge whale shark with a cave sized mouth. 12 an anglerfish shark with a glowing lure hanging over its jaw. Short hand written notes and arrows beside some sketches. Clean white paper, no frame, no other text."
+    },
+    {
+      "name": "bear-exploration",
+      "seed": 550552,
+      "width": 2048,
+      "height": 1536,
+      "prompt": "A concept artist's sketchbook page of creature exploration for a dark fantasy video game boss: twelve rough concept sketches of the cage bear, a huge cave bear that has grown polished steel through its own body, laid out in a grid of four columns and three rows on white paper, each sketch numbered with a big hand written number from 1 to 12. Loose confident pencil lines with grey marker shading and a quick wash of warm brown, polished steel grey and glowing turquoise. Every sketch shows the whole creature in a three quarter view with a genuinely different design, and every one keeps warm brown fur, a steel ribcage grown out through its chest like a cage with a glowing turquoise heart inside, a steel crest on its skull that stops above its eyes, turquoise glowing seams where the steel meets the flesh, one giant bionic grappling arm and a roaring maw. Steel grown through living flesh like bone, never a robot, never armour bolted on. The twelve ideas: 1 a hunched gorilla bear with a crane claw arm. 2 an upright war bear with a three fingered grappling claw raised high. 3 a low wolverine bear with steel spines along its back. 4 a bear whose ribcage opens like an iron maiden door. 5 a bear whose arm fires a grappling hook on a chain. 6 a bear with steel spider legs growing from its back. 7 a skeletal bear with half its body showing steel bones. 8 a bear with its claw arm folded over its shoulder like a scorpion tail. 9 a bear whose heart is a furnace with steam vents on its shoulders. 10 a bear with a birdcage dome of steel ribs over its whole back. 11 a bear with a pincer arm as long as its body. 12 a bear with steel antlers grown from its skull crest. Short hand written notes and arrows beside some sketches. Clean white paper, no frame, no other text."
+    }
+  ]
+}

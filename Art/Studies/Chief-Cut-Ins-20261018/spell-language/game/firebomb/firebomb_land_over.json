@@ -1,0 +1,55 @@
+{
+ "frames": [
+  {
+   "filename": "firebomb_land_over_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 151,
+    "h": 102
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 151,
+    "h": 102
+   },
+   "sourceSize": {
+    "w": 151,
+    "h": 102
+   },
+   "duration": 80
+  },
+  {
+   "filename": "firebomb_land_over_01",
+   "frame": {
+    "x": 151,
+    "y": 0,
+    "w": 151,
+    "h": 102
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 151,
+    "h": 102
+   },
+   "sourceSize": {
+    "w": 151,
+    "h": 102
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 75.0,
+ "anchorY": 74.0,
+ "layer": "over",
+ "frameMs": 80,
+ "clip": "land",
+ "startsAt": "the landing, Release + 12",
+ "impactFrame": 1
+}

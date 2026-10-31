@@ -1,0 +1,409 @@
+{
+ "spell": "Firebomb",
+ "frameMs": 80,
+ "tellFrames": 38,
+ "targets": "your front row",
+ "landingPoint": "the middle of your front row (the empty middle slot in the take)",
+ "captainPose": [
+  {
+   "tellFrame": 22,
+   "attackFrame": 8
+  },
+  {
+   "tellFrame": 23,
+   "attackFrame": 9
+  },
+  {
+   "tellFrame": 24,
+   "attackFrame": 10
+  },
+  {
+   "tellFrame": 25,
+   "attackFrame": 11
+  },
+  {
+   "tellFrame": 26,
+   "attackFrame": 12
+  },
+  {
+   "tellFrame": 27,
+   "attackFrame": 13
+  },
+  {
+   "tellFrame": 28,
+   "attackFrame": 14
+  },
+  {
+   "tellFrame": 29,
+   "attackFrame": 15
+  },
+  {
+   "tellFrame": 30,
+   "attackFrame": 16
+  },
+  {
+   "tellFrame": 31,
+   "attackFrame": 16
+  },
+  {
+   "tellFrame": 32,
+   "attackFrame": 16
+  },
+  {
+   "tellFrame": 33,
+   "attackFrame": 16
+  },
+  {
+   "tellFrame": 34,
+   "attackFrame": 16
+  },
+  {
+   "tellFrame": 35,
+   "attackFrame": 16
+  },
+  {
+   "tellFrame": 36,
+   "attackFrame": 16
+  },
+  {
+   "tellFrame": 37,
+   "attackFrame": 16
+  },
+  {
+   "tellFrame": 38,
+   "attackFrame": 20
+  },
+  {
+   "tellFrame": 39,
+   "attackFrame": 24
+  },
+  {
+   "tellFrame": 40,
+   "attackFrame": 28
+  },
+  {
+   "tellFrame": 41,
+   "attackFrame": 30
+  },
+  {
+   "tellFrame": 42,
+   "attackFrame": 32
+  },
+  {
+   "tellFrame": 43,
+   "attackFrame": 36
+  }
+ ],
+ "bombOnSpear": {
+  "idle": [
+   {
+    "idleFrame": 0,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 1,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 2,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 3,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 4,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 5,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 6,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 7,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 8,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 9,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 10,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 11,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 12,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 13,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 14,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 15,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 16,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 17,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 18,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 19,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 20,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 21,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 22,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 23,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 24,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 25,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 26,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 27,
+    "durationMs": 100,
+    "bombDx": 33,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 28,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 29,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 30,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 31,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 32,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 33,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 34,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 35,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 36,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 37,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 38,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   },
+   {
+    "idleFrame": 39,
+    "durationMs": 100,
+    "bombDx": 34,
+    "bombDy": -194
+   }
+  ],
+  "cockedBack": [
+   {
+    "attackFrame": 8,
+    "bombDx": 68,
+    "bombDy": -194
+   },
+   {
+    "attackFrame": 9,
+    "bombDx": 93,
+    "bombDy": -186
+   },
+   {
+    "attackFrame": 10,
+    "bombDx": 93,
+    "bombDy": -186
+   },
+   {
+    "attackFrame": 11,
+    "bombDx": 93,
+    "bombDy": -186
+   },
+   {
+    "attackFrame": 12,
+    "bombDx": 93,
+    "bombDy": -186
+   },
+   {
+    "attackFrame": 13,
+    "bombDx": 93,
+    "bombDy": -186
+   },
+   {
+    "attackFrame": 14,
+    "bombDx": 93,
+    "bombDy": -186
+   },
+   {
+    "attackFrame": 15,
+    "bombDx": 93,
+    "bombDy": -186
+   },
+   {
+    "attackFrame": 16,
+    "bombDx": 93,
+    "bombDy": -186
+   }
+  ],
+  "atRelease": {
+   "bombDx": 93,
+   "bombDy": -186
+  },
+  "note": "frames 0 to 21 of the tell on his idle (topmost spear pixel), 22 to 37 on his attack frames (the cocked spear tip), Release frame at the release spot"
+ },
+ "flight": {
+  "frames": 11,
+  "from": "the release spot",
+  "to": "the landing point",
+  "arcHeightPx": 230,
+  "position": "x = x0 + (x1 - x0) t, y = y0 + (y1 - y0) t - 230 sin(pi t), t = k / 11 for flight frame k",
+  "turn": "the bomb sprite turns 90 degrees every 2 frames",
+  "trail": "8 dots behind it at t - 0.035 j: an ellipse of radius 2.5 - 0.2 j in (77,40,134), a 1.5 px dot in (230,179,255) or (177,108,240) alternating"
+ },
+ "shake": {
+  "landing": [
+   2,
+   1
+  ],
+  "firstBlast": "blast frames 1 to 3: +4,-2 then -4,+2 then +2,-1"
+ }
+}
