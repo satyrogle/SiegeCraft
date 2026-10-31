@@ -211,11 +211,31 @@ def scene():
             u -= m
         return len(durs) - 1
 
+    def mass_x(im):
+        """Middle of the shark above the sand line, along x."""
+        return float(np.nonzero(np.asarray(im)[:CUT_ROW, :, 3] > 0)[1].mean())
+    # The fin walk clip rocks the whole body forward on each step and back on the recovery. With the fins under
+    # the sand that reads as sliding backward, so the plow keeps each forward push from the clip, swaps the
+    # backward slide for a slow creep, and is scaled to cover WALK_SHIFT. The clip's own rocking is cancelled by
+    # placing every frame from where its body sits in the canvas.
+    WALK_MX = [mass_x(w) for w in walk]
+    MX0, MX1 = WALK_MX[0], mass_x(bite[0])
+    push = [0.0] + [max(0.4, WALK_MX[i - 1] - WALK_MX[i]) for i in range(1, 41)]
+    # body middle runs from X0 + MX0 (walk frame 0 at X0) to X0 - WALK_SHIFT + MX1 (bite frame 0 where it bites)
+    PLOW = list(np.cumsum(push) * (WALK_SHIFT + MX0 - MX1) / sum(push))
+
+    def plow(t):
+        """How far the body has travelled into the plow, half size pixels, at time t."""
+        f = min(40.0, max(0.0, (t - T_WALK) / 50))
+        i = int(f)
+        return PLOW[i] + (PLOW[min(40, i + 1)] - PLOW[i]) * (f - i)
+
     def shift(t):
         if t < T_WALK:
             return 0.0
-        u = min(1.0, (t - T_WALK) / WALK_MS)
-        return -WALK_SHIFT * (u + 0.05 * math.sin(2 * math.pi * 4 * u))
+        if t < T_BITE:
+            return -plow(t)
+        return -WALK_SHIFT
 
     def body_top(im):
         a = np.asarray(im)[..., 3] > 0
@@ -314,7 +334,9 @@ def scene():
         elif t < T_WALK:
             frame_img = breathe[min(40, (t - T_BREATHE) // 60)]
         elif t < T_BITE:
-            frame_img = walk[min(40, (t - T_WALK) // 50)]
+            wi = min(40, (t - T_WALK) // 50)
+            frame_img = walk[wi]
+            fx0 = X0 + MX0 - plow(t) - WALK_MX[wi]
         elif t < T_SWEEP:
             frame_img = bite[at(T_BITE, BITE_MS, t)]
         elif t < T_DIVE:
