@@ -1,0 +1,176 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ideogram4_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+   "type": "ideogram4",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "{\"high_level_description\": \"A pixel art sprite sheet of six small flying ships of two desert tribes, each one whole and separate with empty space around it, on a plain flat pale grey background. Top row: three different sky barques of the Bloodridge, ancient Egyptian sun boats that sail the sky. Bottom row: three different sand skiffs of the Clarth hunters. Rendered entirely in crisp, deliberately clustered pixel art. Modern high quality pixel art like Sea of Stars: bright, colourful and readable, never muddy.\", \"style_description\": {\"medium\": \"pixel_art\", \"art_style\": \"Authentic hand pixelled 2D game battle stage background. Visible square pixel clusters and stair stepped contours everywhere. Flat colour clusters, two to four shades per material. Crisp pixel edges without antialiasing. Clean readable shapes. No paint brushwork, no gradients except a dithered sky, no noise texture.\", \"aesthetics\": \"clean game sprites, readable silhouettes, coherent pixel clusters\", \"lighting\": \"Clear morning sun from the upper left, flat pixel colour planes.\", \"color_palette\": [\"#5a443a\", \"#3e302c\", \"#7a6250\", \"#96703e\", \"#f07828\", \"#8c201c\", \"#b03a30\", \"#701f20\", \"#e2d6ba\", \"#a89880\", \"#e2e6ec\"]}, \"compositional_deconstruction\": {\"background\": \"A plain flat pale grey background and nothing else: no sky, no clouds, no water, no ground.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [130, 29, 442, 319], \"desc\": \"a small flying sky barque of the Bloodridge: an ancient Egyptian sun boat with a long crescent hull curling up into a tall papyrus prow and stern, dark ash brown wood and corroded bronze plates with thin ember cracks, a ragged sepia sail with a dark red sun disc, ember lanterns hanging from it, side view, facing left\"}, {\"type\": \"obj\", \"bbox\": [130, 354, 442, 645], \"desc\": \"a small flying sky barque of the Bloodridge: an ancient Egyptian sun boat with a long crescent hull curling up into a tall papyrus prow and stern, dark ash brown wood and corroded bronze plates with thin ember cracks, a ragged sepia sail with a dark red sun disc, ember lanterns hanging from it, side view, facing left\"}, {\"type\": \"obj\", \"bbox\": [130, 680, 442, 970], \"desc\": \"a small flying sky barque of the Bloodridge: an ancient Egyptian sun boat with a long crescent hull curling up into a tall papyrus prow and stern, dark ash brown wood and corroded bronze plates with thin ember cracks, a ragged sepia sail with a dark red sun disc, ember lanterns hanging from it, side view, facing left\"}, {\"type\": \"obj\", \"bbox\": [559, 29, 872, 319], \"desc\": \"a small fast flying sand skiff of the Clarth hunters: a sleek hull built from the ribs and jaw of a giant sand shark lashed with red hide, one big curved red hide sail with a white horn sign, a bone outrigger, side view, facing right\"}, {\"type\": \"obj\", \"bbox\": [559, 354, 872, 645], \"desc\": \"a small fast flying sand skiff of the Clarth hunters: a sleek hull built from the ribs and jaw of a giant sand shark lashed with red hide, one big curved red hide sail with a white horn sign, a bone outrigger, side view, facing right\"}, {\"type\": \"obj\", \"bbox\": [559, 680, 872, 970], \"desc\": \"a small fast flying sand skiff of the Clarth hunters: a sleek hull built from the ribs and jaw of a giant sand shark lashed with red hide, one big curved red hide sail with a white horn sign, a bone outrigger, side view, facing right\"}]}}"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "photograph, painterly, digital painting, concept painting, brush strokes, realistic render, 3D render, noisy texture, fine gravel, pebbles, tiny cobblestones, scattered debris, dithering, speckles, smooth gradients, blur, antialiasing, glossy, high contrast floor, repeating tile grid, voxel cubes, people, guards, human figures, UI, border, frame, vector art, flat cartoon, smooth shapes, muddy brown, grunge, dull, desaturated, gore, tiny figures, characters, soldiers, warriors, units, sprites, people standing on the floor, square floor tiles, seams, panels, split screen, collage, borders, watermark, signature, people, figures, crowds, fire, flames, smoke, text, letters, signs, trees, plants, water, modern buildings, castles, European houses, frames, borders, sea, waves, sky, clouds, scenery, ground, grid, labels, crew"
+  }
+ },
+ "6": {
+  "class_type": "CFGOverride",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "cfg": 3.0,
+   "start_percent": 0.7,
+   "end_percent": 1.0
+  }
+ },
+ "7": {
+  "class_type": "DualModelGuider",
+  "inputs": {
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "cfg": 7.0,
+   "model_negative": [
+    "6",
+    0
+   ],
+   "negative": [
+    "5",
+    0
+   ]
+  }
+ },
+ "9": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "10": {
+  "class_type": "Ideogram4Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 1376,
+   "height": 768,
+   "mu": 0.0,
+   "std": 1.75
+  }
+ },
+ "11": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102803
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "11",
+    0
+   ],
+   "guider": [
+    "7",
+    0
+   ],
+   "sampler": [
+    "9",
+    0
+   ],
+   "sigmas": [
+    "18",
+    1
+   ],
+   "latent_image": [
+    "16",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "filename_prefix": "KS-Camp-War-20261028/ships"
+  }
+ },
+ "15": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-regions-20261024/ships-init.png"
+  }
+ },
+ "16": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "15",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "18": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "10",
+    0
+   ],
+   "step": 2
+  }
+ }
+}

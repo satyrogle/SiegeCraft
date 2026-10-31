@@ -1,0 +1,138 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_turbo_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "prompt": "A concept artist sketchbook page of prop exploration for a dark fantasy video game: twelve rough concept sketches of the work station of a towering alien weapon smith, a cold forge and a surgeon bench where weapons go in and come out changed, laid out in a grid of four columns and three rows on white paper, each sketch numbered with a big hand written number from 1 to 12. Loose confident pencil lines with grey marker shading and a quick wash of dark gunmetal, orange glyph light, and three accent glows: purple, electric blue and gold. Every sketch shows the whole object in a three quarter view standing on bare sand, each a genuinely different idea, all made by one alien civilisation from pearly opalescent scaled shell, plum cloth printed with a starfield, rose gold trims and dark gunmetal with glowing orange glyph seams. Every one shows three lit parts for his three powers: a purple pull like a small black hole, a blue portal, and gold frozen time like a clock. No anvil, no hammer, no fire. The twelve ideas: 1 an operating slab where a weapon lies clamped, three jointed arms above it each ending in a purple, a blue and a gold lens. 2 a standing ring gate a weapon is pushed through, its three segments glowing purple, blue and gold. 3 a captive black hole floating over a rose gold cradle, weapons held into it with long tongs. 4 three stacked basins of light, purple, blue and gold, that a blade is dipped through in turn. 5 a turntable with three stations around it, a weapon riding from one to the next. 6 a tall crucible tower with a purple window, a blue portal mouth at its foot and a gold clock dial on top. 7 an hourglass machine with gold sand falling and a weapon hanging still in its waist. 8 a giant kneeling metal hand that holds a weapon in its palm while three rings orbit it. 9 a loom of light threads strung between two pylons, a weapon woven through the threads. 10 a weapon pinned open like a specimen on a dark board, three glowing scalpels hovering over it. 11 a vertical press with two heavy glyph plates and three orbs above. 12 a dark altar with a swirling vortex in its top, a blue door in its side and a gold clock face on its front. Short hand written notes and arrows beside some sketches. Clean white paper, no frame, no other text. ",
+      "negative_prompt": "",
+      "resolution": 1024
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 2048,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "7": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 20261029
+    }
+  },
+  "8": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "cfg": 1.0
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "7",
+        0
+      ],
+      "guider": [
+        "8",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "KS-Beast-Concepts-20261022/butcher-forge-exploration"
+    }
+  }
+}

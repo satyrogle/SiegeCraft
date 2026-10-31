@@ -1,0 +1,471 @@
+{
+ "1": {
+  "name": "THE WRECK",
+  "seed": 2026102711,
+  "sky": "a hot late afternoon sky, deep blue above fading to warm gold at the horizon",
+  "far": "golden dunes and red mesas of the Broken Wastes far away, pale and hazy",
+  "big": [
+   [
+    330,
+    0,
+    1100,
+    330
+   ],
+   "the colossal broken hull of their crashed alien starship rising out of the sand behind the camp like a ruined cathedral, torn armour plates, snapped ribs of its frame, dangling cables, thin smoke, far bigger than anything else, the landmark of the camp"
+  ],
+  "gag": [
+   [
+    770,
+    180,
+    970,
+    330
+   ],
+   "an escape pod half sunk in the sand used as a bathtub, laundry hung on a snapped antenna, and a hull panel sign that says DAYS WITHOUT A WIPEOUT 0"
+  ],
+  "floor": "flat packed pale sand and a few scattered hull plates as the camp ground, calm and empty in the middle, footpaths between the stations",
+  "light": "Warm late afternoon sun from the upper left, long soft violet shadows, as discrete flat pixel colour planes, the camp ground in calm even light.",
+  "pal": [
+   "#3d7fc6",
+   "#8cbce8",
+   "#f6d6a0",
+   "#e8b45a",
+   "#c0823c",
+   "#8a5a3c",
+   "#9aa0b4",
+   "#5a6078",
+   "#2e3448",
+   "#c43a2e",
+   "#f2a24a",
+   "#6ad0e0",
+   "#e8e0cc",
+   "#d8c8a8",
+   "#b4a48a"
+  ],
+  "plan": {
+   "sky0": [
+    60,
+    128,
+    200
+   ],
+   "sky1": [
+    246,
+    214,
+    160
+   ],
+   "far": [
+    220,
+    170,
+    110
+   ],
+   "floor0": [
+    226,
+    206,
+    170
+   ],
+   "floor1": [
+    200,
+    180,
+    146
+   ],
+   "piece": [
+    70,
+    72,
+    92
+   ]
+  },
+  "frames": [
+   "a crumpled hull plate and a broken crate",
+   "a toppled fuel drum and loose cables"
+  ]
+ },
+ "2": {
+  "name": "THE BONE VAULT",
+  "seed": 2026102712,
+  "sky": "a clear pale blue desert sky with high thin clouds",
+  "far": "rolling golden dunes far away, pale and hazy",
+  "big": [
+   [
+    0,
+    0,
+    1376,
+    330
+   ],
+   "the camp sits inside the ribcage of a colossal sand shark skeleton half buried in the desert, giant curved ribs arching high overhead from left to right like the vault of a cathedral, its enormous skull with open jaws at the right end as the gate of the camp, tarps and strings of lanterns hung between the ribs, the landmark of the camp"
+  ],
+  "gag": [
+   [
+    780,
+    180,
+    980,
+    330
+   ],
+   "a hammock strung between two giant teeth, and a sign hung on a rib that says MIND THE TEETH"
+  ],
+  "floor": "flat packed pale sand as the camp ground, calm and empty in the middle, footpaths between the stations",
+  "light": "Bright clear midday sun from the upper left, the ribs casting long cool striped shadows over the sand, as discrete flat pixel colour planes, the camp ground in calm even light.",
+  "pal": [
+   "#4a96d8",
+   "#a8d4f0",
+   "#f2e4c0",
+   "#e8c07a",
+   "#cc9450",
+   "#efe6cf",
+   "#c9b994",
+   "#8a7a64",
+   "#5a4a3c",
+   "#c43a2e",
+   "#f2a24a",
+   "#2e2a38",
+   "#d8ccb0",
+   "#b8a888"
+  ],
+  "plan": {
+   "sky0": [
+    74,
+    150,
+    216
+   ],
+   "sky1": [
+    236,
+    226,
+    196
+   ],
+   "far": [
+    226,
+    190,
+    130
+   ],
+   "floor0": [
+    230,
+    214,
+    180
+   ],
+   "floor1": [
+    206,
+    190,
+    156
+   ],
+   "piece": [
+    150,
+    132,
+    104
+   ]
+  },
+  "frames": [
+   "a half buried shark vertebra",
+   "a pile of shark teeth and a broken lantern"
+  ]
+ },
+ "3": {
+  "name": "THE LOOKOUT",
+  "seed": 2026102713,
+  "sky": "a huge dramatic dusk sky, deep violet above fading through pink to orange at the horizon, two moons rising",
+  "far": "far below and far away, the whole land the army will march through in a hazy line along the horizon, red burial ridges, a dark mountain glowing red from within, snowy peaks, a stormy grey sea, tiny and pale with distance",
+  "big": [
+   [
+    480,
+    110,
+    900,
+    330
+   ],
+   "the edge of a high flat mesa top where the camp stands, sheer cliffs dropping away behind it, and their small crashed escape ship tipped on its nose in the middle behind the camp, its lights still blinking, the landmark of the camp"
+  ],
+  "gag": [
+   [
+    880,
+    190,
+    990,
+    330
+   ],
+   "a brass telescope on a tripod pointed at the horizon, and a hand painted sign that says SCENIC VIEW"
+  ],
+  "floor": "flat cracked red sandstone of the mesa top as the camp ground, calm and empty in the middle, footpaths between the stations",
+  "light": "Warm dusk light from the upper left, long violet shadows, campfire glow, as discrete flat pixel colour planes, the camp ground in calm even light, bright and readable.",
+  "pal": [
+   "#3a2a6a",
+   "#7a4a9a",
+   "#e07a8a",
+   "#f4a86a",
+   "#ffd8a0",
+   "#8a8ab0",
+   "#5a5a80",
+   "#a85a4a",
+   "#c87a5a",
+   "#e0a080",
+   "#2e2438",
+   "#f2a24a",
+   "#6ad0e0",
+   "#d8b0a0"
+  ],
+  "plan": {
+   "sky0": [
+    58,
+    42,
+    106
+   ],
+   "sky1": [
+    244,
+    168,
+    106
+   ],
+   "far": [
+    150,
+    120,
+    160
+   ],
+   "floor0": [
+    200,
+    140,
+    120
+   ],
+   "floor1": [
+    172,
+    114,
+    98
+   ],
+   "piece": [
+    64,
+    42,
+    52
+   ]
+  },
+  "frames": [
+   "a crooked signpost and a coil of rope",
+   "a broken crate of supplies"
+  ]
+ },
+ "4": {
+  "name": "THE OASIS",
+  "seed": 2026102714,
+  "sky": "a hot clear blue sky, paler near the horizon, a few small white clouds",
+  "far": "golden dunes and wind carved red rock far away, pale and hazy",
+  "big": [
+   [
+    300,
+    0,
+    1100,
+    330
+   ],
+   "a colossal natural arch of wind carved red rock spanning high over the camp, and under it a small green oasis pool among tall palm trees, with shark fins circling in the pool, the landmark of the camp"
+  ],
+  "gag": [
+   [
+    760,
+    200,
+    960,
+    330
+   ],
+   "a wooden diving board over the pool and a sign that says THE WATER IS FINE"
+  ],
+  "floor": "flat packed warm sand with patches of short grass as the camp ground, calm and empty in the middle, footpaths between the stations",
+  "light": "Bright clear afternoon sun from the upper left, cool teal shadows, as discrete flat pixel colour planes, the camp ground in calm even light.",
+  "pal": [
+   "#3a8ad6",
+   "#9cd0f0",
+   "#f4e2b8",
+   "#e8b45a",
+   "#c0703c",
+   "#8a3a2c",
+   "#3a9a4a",
+   "#6ac05a",
+   "#1e6a5a",
+   "#2a9ab0",
+   "#f2a24a",
+   "#e8e0cc",
+   "#d0b48a",
+   "#5a4a3c"
+  ],
+  "plan": {
+   "sky0": [
+    58,
+    138,
+    214
+   ],
+   "sky1": [
+    240,
+    226,
+    190
+   ],
+   "far": [
+    210,
+    120,
+    70
+   ],
+   "floor0": [
+    224,
+    200,
+    156
+   ],
+   "floor1": [
+    198,
+    172,
+    130
+   ],
+   "piece": [
+    60,
+    96,
+    64
+   ]
+  },
+  "frames": [
+   "a palm frond and a broken water jar",
+   "a coconut pile and a rolled up rug"
+  ]
+ },
+ "5": {
+  "name": "THE SALT MIRROR",
+  "seed": 2026102715,
+  "sky": "a huge bright sky of tall white clouds over a pale blue, the clouds mirrored on the ground",
+  "far": "a flat white horizon of salt with the faint curve of the planet, a lone giant dead tree far away",
+  "big": [
+   [
+    260,
+    20,
+    1120,
+    300
+   ],
+   "a huge patchwork canopy of tarps, sails and torn flags stretched high over the camp between tall poles and crooked masts, flapping in the wind, the landmark of the camp"
+  ],
+  "gag": [
+   [
+    760,
+    190,
+    960,
+    330
+   ],
+   "a rowing boat stranded on the dry salt with a sign that says LOW TIDE"
+  ],
+  "floor": "a vast flat white salt flat with a thin mirror of shallow water reflecting the sky as the camp ground, calm and empty in the middle, footpaths between the stations",
+  "light": "Bright soft midday light from the upper left, pale blue shadows, as discrete flat pixel colour planes, the salt ground in calm even light.",
+  "pal": [
+   "#5a9ae0",
+   "#a8ccf0",
+   "#e8f0f8",
+   "#ffffff",
+   "#c8d4e4",
+   "#9aaac0",
+   "#8a6a4a",
+   "#5a4030",
+   "#c43a2e",
+   "#e8b45a",
+   "#3a4a6a",
+   "#f2a24a",
+   "#d8dce4",
+   "#b4bccc"
+  ],
+  "plan": {
+   "sky0": [
+    90,
+    150,
+    222
+   ],
+   "sky1": [
+    232,
+    238,
+    246
+   ],
+   "far": [
+    214,
+    220,
+    230
+   ],
+   "floor0": [
+    236,
+    238,
+    244
+   ],
+   "floor1": [
+    212,
+    218,
+    228
+   ],
+   "piece": [
+    120,
+    92,
+    72
+   ]
+  },
+  "frames": [
+   "a crooked mooring post and a tangle of rope",
+   "a broken oar and an upturned crate"
+  ]
+ },
+ "6": {
+  "name": "THE GIANT HAND",
+  "seed": 2026102716,
+  "sky": "a warm late afternoon sky, deep blue above fading to gold at the horizon",
+  "far": "golden dunes far away, and lying far off in the sand the broken stone head of a colossal fallen statue, pale and hazy",
+  "big": [
+   [
+    0,
+    0,
+    1376,
+    330
+   ],
+   "the camp sits in the cupped open palm of a colossal fallen stone statue hand half buried in the sand, its huge cracked stone fingers curling up behind the camp like walls, moss and vines in the cracks, the landmark of the camp"
+  ],
+  "gag": [
+   [
+    760,
+    190,
+    960,
+    330
+   ],
+   "a ladder leaning on a stone finger and a sign that says KEEP OFF THE FINGERS"
+  ],
+  "floor": "the flat worn stone of the giant palm with sand drifted over it as the camp ground, calm and empty in the middle, footpaths between the stations",
+  "light": "Warm late afternoon sun from the upper left, long violet shadows, as discrete flat pixel colour planes, the camp ground in calm even light.",
+  "pal": [
+   "#3d7fc6",
+   "#8cbce8",
+   "#f6d6a0",
+   "#e8b45a",
+   "#c0823c",
+   "#a8a090",
+   "#7a7468",
+   "#4a463e",
+   "#5a8a4a",
+   "#c43a2e",
+   "#f2a24a",
+   "#e8e0cc",
+   "#d0c4a8",
+   "#b4a48a"
+  ],
+  "plan": {
+   "sky0": [
+    60,
+    128,
+    200
+   ],
+   "sky1": [
+    246,
+    214,
+    160
+   ],
+   "far": [
+    214,
+    170,
+    120
+   ],
+   "floor0": [
+    206,
+    196,
+    176
+   ],
+   "floor1": [
+    182,
+    170,
+    150
+   ],
+   "piece": [
+    128,
+    120,
+    108
+   ]
+  },
+  "frames": [
+   "a cracked stone knuckle and a broken crate",
+   "a bundle of firewood and a water skin"
+  ]
+ }
+}

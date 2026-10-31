@@ -1,0 +1,138 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_turbo_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "prompt": "A concept artist sketchbook page of prop exploration for a dark fantasy video game: twelve rough concept sketches of a floor circle that a floating alien sorceress hovers over, a rune circle and an astral loom with eight marks for her eight powers, laid out in a grid of four columns and three rows on white paper, each sketch numbered with a big hand written number from 1 to 12. Loose confident pencil lines with grey marker shading and a quick wash of plum, night blue and pale astral violet outlines. Every sketch shows the whole object in a three quarter view standing on bare sand, each a genuinely different idea, all made by one alien civilisation from pearly opalescent scaled shell, plum cloth printed with a starfield, rose gold trims and dark gunmetal with glowing orange glyph seams. Every one is a circle on the ground with eight marks around it. No crystal blades, no loose planks. The twelve ideas: 1 a disc of plum starfield cloth pegged flat on the sand with eight glyphs around its rim. 2 a ring of eight standing stones of dark glass, each with a lit glyph. 3 an orrery of eight small astral spheres orbiting over a floor disc. 4 a loom of eight threads of light running from the centre to eight pegs in a circle. 5 a sundial circle cut into eight segments with a shadow pointer. 6 eight floating mirrors in a ring, all facing in. 7 a mandala of light drawn in the sand with eight petals. 8 a round pool of liquid night sky with eight glyph pads floating on it. 9 a rose gold compass rose inlaid in a dark disc, its eight points each a power. 10 a ring of eight lanterns of astral light standing on thin stems. 11 eight thin concentric rings turning at different speeds just above the ground. 12 a dark disc with an eight armed star of astral ribbons floating over it. Short hand written notes and arrows beside some sketches. Clean white paper, no frame, no other text. ",
+      "negative_prompt": "",
+      "resolution": 1024
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 2048,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "7": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 20261031
+    }
+  },
+  "8": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "cfg": 1.0
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "7",
+        0
+      ],
+      "guider": [
+        "8",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "KS-Beast-Concepts-20261022/shade-sigil-exploration"
+    }
+  }
+}

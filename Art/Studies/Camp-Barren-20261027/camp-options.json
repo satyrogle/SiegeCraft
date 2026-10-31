@@ -1,0 +1,445 @@
+{
+ "who": "The camp of the last five survivors of a cult of cyborg flesh beings, an intergalactic species from a Type 4 civilization: their leader and his four first officers, all heavily damaged, who fled with only what they could carry after the Sovereign destroyed their army in one second. They have stopped on a barren, desolate, empty stretch of bare natural land where nothing grows and nobody ever built anything. The only objects in the whole picture are a few small pieces of their own advanced alien technology that they carried with them, made of pearly opalescent shell with iridescent hexagonal scale cells and rose gold trims, deep plum astral cloth with a starfield inside it, and dark gunmetal with glowing orange glyph seams.",
+ "stations": [
+  [
+   [
+    200,
+    150,
+    660,
+    350
+   ],
+   "the small forge of the Butcher for weapons and gear, made of their own alien technology: a squat dark gunmetal heat core with glowing orange glyph seams and a glowing open mouth, capped with pearly opalescent shell, three finished curved alien blades standing upright in the ground beside it"
+  ],
+  [
+   [
+    960,
+    150,
+    1376,
+    350
+   ],
+   "the small corner of the Glutton for armour and body augments, made of their own alien technology: a low stack of pearly opalescent armour plates with rose gold trims and a dark gunmetal augment cradle with glowing orange glyph seams"
+  ],
+  [
+   [
+    60,
+    450,
+    470,
+    720
+   ],
+   "the small floating shrine of the Shade to their old gods for war orders, made of their own alien technology: their white three pronged sigil of pearly opalescent shell hovering above a low dark gunmetal disc, a few glowing orange glyph tablets floating around it"
+  ],
+  [
+   [
+    930,
+    470,
+    1340,
+    750
+   ],
+   "the pod of the Whisperer for skins and regalia, made of their own alien technology: a tall pearly opalescent chrysalis pod standing half open, glowing violet inside, small violet crystal shards floating around it"
+  ]
+ ],
+ "lands": {
+  "1": {
+   "name": "SALT PAN",
+   "seed": 2026102721,
+   "land": "a vast flat salt pan, cracked white and empty all the way to the horizon",
+   "sky": "a bright pale blue midday sky, almost white near the horizon",
+   "far": "the endless flat white horizon of the salt pan, a thin line of low pale blue hills very far away",
+   "big": [
+    [
+     0,
+     175,
+     1376,
+     300
+    ],
+    "a few low cracked ridges of raised salt crust far behind the camp, pale and hazy"
+   ],
+   "floor": "a vast flat crust of white salt cracked into big polygon plates, bare and empty, calm and empty in the middle",
+   "light": "Bright hard midday sun from the upper left, short cool blue shadows, as discrete flat pixel colour planes, the ground in calm even light.",
+   "pal": [
+    "#5a9ae0",
+    "#cfe4f6",
+    "#9ab4d0",
+    "#f4f2ec",
+    "#dcd8d2",
+    "#b8b6b6",
+    "#8c98b4",
+    "#ece4ee",
+    "#a898b8",
+    "#4a2350",
+    "#a050e0",
+    "#f2a24a",
+    "#2e2c38",
+    "#e0a070"
+   ],
+   "plan": {
+    "sky0": [
+     90,
+     154,
+     224
+    ],
+    "sky1": [
+     214,
+     232,
+     246
+    ],
+    "far": [
+     176,
+     196,
+     216
+    ],
+    "floor0": [
+     240,
+     238,
+     232
+    ],
+    "floor1": [
+     214,
+     210,
+     204
+    ],
+    "piece": [
+     70,
+     62,
+     84
+    ]
+   },
+   "rock": "a raised slab of cracked salt crust"
+  },
+  "2": {
+   "name": "ASH DUNES",
+   "seed": 2026102722,
+   "land": "a sea of pale ash dunes, soft and empty, under a dusk sky",
+   "sky": "a huge dusk sky, deep violet above fading through pink to orange at the horizon",
+   "far": "long rolling pale ash dunes far away, violet and hazy",
+   "big": [
+    [
+     0,
+     170,
+     1376,
+     310
+    ],
+    "one long low dune crest of pale ash behind the camp, its wind blown edge catching the dusk light"
+   ],
+   "floor": "flat packed pale warm grey ash with soft wind ripples, bare and empty, calm and empty in the middle",
+   "light": "Warm dusk light from the upper left, long violet shadows, as discrete flat pixel colour planes, the ground in calm even light, bright and readable.",
+   "pal": [
+    "#3a2a6a",
+    "#e07a8a",
+    "#f4a86a",
+    "#8a7aa0",
+    "#e6dace",
+    "#c4b4ac",
+    "#94849a",
+    "#ece4ee",
+    "#a898b8",
+    "#4a2350",
+    "#a050e0",
+    "#f2a24a",
+    "#2e2c38",
+    "#e0a070"
+   ],
+   "plan": {
+    "sky0": [
+     58,
+     42,
+     106
+    ],
+    "sky1": [
+     244,
+     168,
+     106
+    ],
+    "far": [
+     160,
+     140,
+     170
+    ],
+    "floor0": [
+     226,
+     214,
+     202
+    ],
+    "floor1": [
+     196,
+     182,
+     176
+    ],
+    "piece": [
+     70,
+     56,
+     86
+    ]
+   },
+   "rock": "a dark drift of ash with a sharp wind cut edge"
+  },
+  "3": {
+   "name": "RED FLATS",
+   "seed": 2026102723,
+   "land": "a flat red stone desert, bare and endless, with low mesas on the horizon",
+   "sky": "a hot late afternoon sky, deep blue above fading to warm gold at the horizon",
+   "far": "a row of low flat topped red mesas far away on the horizon, pale and hazy",
+   "big": [
+    [
+     0,
+     180,
+     1376,
+     310
+    ],
+    "a low wind worn shelf of red rock behind the camp"
+   ],
+   "floor": "flat bare red sandstone with long dry cracks and a little drifted sand, calm and empty in the middle",
+   "light": "Warm late afternoon sun from the upper left, long violet shadows, as discrete flat pixel colour planes, the ground in calm even light.",
+   "pal": [
+    "#3d7fc6",
+    "#f6d6a0",
+    "#e8a070",
+    "#e08a5a",
+    "#c86a44",
+    "#9a4a34",
+    "#6a3a3a",
+    "#ece4ee",
+    "#a898b8",
+    "#4a2350",
+    "#a050e0",
+    "#f2a24a",
+    "#2e2c38",
+    "#e0a070"
+   ],
+   "plan": {
+    "sky0": [
+     60,
+     128,
+     200
+    ],
+    "sky1": [
+     246,
+     214,
+     160
+    ],
+    "far": [
+     226,
+     160,
+     120
+    ],
+    "floor0": [
+     214,
+     132,
+     92
+    ],
+    "floor1": [
+     184,
+     104,
+     72
+    ],
+    "piece": [
+     64,
+     50,
+     70
+    ]
+   },
+   "rock": "a dark red boulder"
+  },
+  "4": {
+   "name": "DRY SEA",
+   "seed": 2026102724,
+   "land": "the bed of a long dead sea, pale cracked clay as flat as a table",
+   "sky": "a soft dawn sky, pale lavender blue above fading to pink and cream at the horizon",
+   "far": "a far line of tall pale cliffs, the old shore of the dead sea, pink and hazy",
+   "big": [
+    [
+     0,
+     160,
+     1376,
+     300
+    ],
+    "the far line of tall pale cliffs of the old shore"
+   ],
+   "floor": "flat pale cream clay of the dry sea bed cracked into big plates, bare and empty, calm and empty in the middle",
+   "light": "Soft pink dawn light from the upper left, cool lilac shadows, as discrete flat pixel colour planes, the ground in calm even light.",
+   "pal": [
+    "#7a8ad0",
+    "#f8d0c8",
+    "#d8b8c0",
+    "#f0e4d4",
+    "#d6c6b6",
+    "#ac9c90",
+    "#8a7c94",
+    "#ece4ee",
+    "#a898b8",
+    "#4a2350",
+    "#a050e0",
+    "#f2a24a",
+    "#2e2c38",
+    "#e0a070"
+   ],
+   "plan": {
+    "sky0": [
+     130,
+     142,
+     210
+    ],
+    "sky1": [
+     248,
+     214,
+     204
+    ],
+    "far": [
+     214,
+     186,
+     192
+    ],
+    "floor0": [
+     236,
+     226,
+     210
+    ],
+    "floor1": [
+     212,
+     198,
+     184
+    ],
+    "piece": [
+     72,
+     60,
+     88
+    ]
+   },
+   "rock": "a dark cracked clay ledge"
+  },
+  "5": {
+   "name": "HIGH PLATEAU",
+   "seed": 2026102725,
+   "land": "a bare windswept stone plateau high above a sea of white clouds",
+   "sky": "a clear cold morning sky, deep blue above fading to pale blue at the horizon",
+   "far": "a sea of white clouds far below the plateau with tall blue mountain peaks poking through it far away",
+   "big": [
+    [
+     0,
+     190,
+     1376,
+     310
+    ],
+    "the sheer edge of the plateau behind the camp dropping away to the clouds"
+   ],
+   "floor": "flat bare warm tan stone of the plateau, wind scoured and cracked, calm and empty in the middle",
+   "light": "Clear cold morning sun from the upper left, cool blue shadows, as discrete flat pixel colour planes, the ground in calm even light.",
+   "pal": [
+    "#2a6ab8",
+    "#bfe0f4",
+    "#ffffff",
+    "#6a88b0",
+    "#d4c4a4",
+    "#b0a084",
+    "#7c7480",
+    "#ece4ee",
+    "#a898b8",
+    "#4a2350",
+    "#a050e0",
+    "#f2a24a",
+    "#2e2c38",
+    "#e0a070"
+   ],
+   "plan": {
+    "sky0": [
+     42,
+     106,
+     184
+    ],
+    "sky1": [
+     200,
+     228,
+     246
+    ],
+    "far": [
+     236,
+     242,
+     248
+    ],
+    "floor0": [
+     208,
+     192,
+     160
+    ],
+    "floor1": [
+     180,
+     164,
+     134
+    ],
+    "piece": [
+     66,
+     58,
+     80
+    ]
+   },
+   "rock": "a dark broken stone edge"
+  },
+  "6": {
+   "name": "CRATER",
+   "seed": 2026102726,
+   "land": "the floor of a vast shallow crater, pale ochre dust ringed by its low rim far away",
+   "sky": "a warm afternoon sky, clear blue above fading to pale gold at the horizon",
+   "far": "the low ring of the crater rim far away all round, ochre cliffs pale and hazy",
+   "big": [
+    [
+     0,
+     165,
+     1376,
+     300
+    ],
+    "the low curved cliffs of the crater rim far behind the camp"
+   ],
+   "floor": "flat pale ochre dust of the crater floor, bare and empty, calm and empty in the middle",
+   "light": "Warm afternoon sun from the upper left, soft violet shadows, as discrete flat pixel colour planes, the ground in calm even light.",
+   "pal": [
+    "#4a8ad0",
+    "#f0dcb0",
+    "#c09060",
+    "#ecd09c",
+    "#d0b07c",
+    "#a8885c",
+    "#80688a",
+    "#ece4ee",
+    "#a898b8",
+    "#4a2350",
+    "#a050e0",
+    "#f2a24a",
+    "#2e2c38",
+    "#e0a070"
+   ],
+   "plan": {
+    "sky0": [
+     74,
+     138,
+     208
+    ],
+    "sky1": [
+     240,
+     220,
+     176
+    ],
+    "far": [
+     200,
+     156,
+     110
+    ],
+    "floor0": [
+     232,
+     206,
+     156
+    ],
+    "floor1": [
+     206,
+     178,
+     126
+    ],
+    "piece": [
+     66,
+     54,
+     76
+    ]
+   },
+   "rock": "a dark ochre boulder"
+  }
+ }
+}

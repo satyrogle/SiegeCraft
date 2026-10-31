@@ -1,0 +1,138 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_turbo_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "prompt": "A concept artist sketchbook page of prop exploration for a dark fantasy video game: twelve rough concept sketches of the luggage of five alien exiles, a folded armoury of travel cases that pulse with glyph light, laid out in a grid of four columns and three rows on white paper, each sketch numbered with a big hand written number from 1 to 12. Loose confident pencil lines with grey marker shading and a quick wash of dark gunmetal, orange glyph light and rose gold. Every sketch shows the whole object in a three quarter view standing on bare sand, each a genuinely different idea, all made by one alien civilisation from pearly opalescent scaled shell, plum cloth printed with a starfield, rose gold trims and dark gunmetal with glowing orange glyph seams. Every one is a case or a set of cases, closed or opening. Not wooden crates, no shelves, no cloth. The twelve ideas: 1 stacked hexagonal cases that unfold like petals into weapon displays. 2 one tall case standing open like a wardrobe with tools held in light. 3 three cubes floating in orbit around each other. 4 a row of cylinder capsules lying side by side with pulsing seams. 5 a case shaped like a beetle shell that opens its wings. 6 nested cases inside each other like a set of boxes, opened out. 7 an upright monolith case with a seam down its middle. 8 a pair of pods fused onto a small hover sled. 9 a clamshell case of dark metal hinged on rose gold. 10 a long reliquary case with a domed lid. 11 slabs of dark metal leaning together like a fan, each a case. 12 a ring shaped case lying flat with a glowing core. Short hand written notes and arrows beside some sketches. Clean white paper, no frame, no other text. ",
+      "negative_prompt": "",
+      "resolution": 1024
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 2048,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "7": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 20261033
+    }
+  },
+  "8": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "cfg": 1.0
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "7",
+        0
+      ],
+      "guider": [
+        "8",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "KS-Beast-Concepts-20261022/supply-cases-exploration"
+    }
+  }
+}

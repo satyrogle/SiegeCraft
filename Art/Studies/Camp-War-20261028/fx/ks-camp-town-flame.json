@@ -1,0 +1,235 @@
+{
+ "frames": [
+  {
+   "filename": "ks-camp-town-flame 0.png",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-town-flame 1.png",
+   "frame": {
+    "x": 48,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-town-flame 2.png",
+   "frame": {
+    "x": 96,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-town-flame 3.png",
+   "frame": {
+    "x": 0,
+    "y": 76,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-town-flame 4.png",
+   "frame": {
+    "x": 48,
+    "y": 76,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-town-flame 5.png",
+   "frame": {
+    "x": 96,
+    "y": 76,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-town-flame 6.png",
+   "frame": {
+    "x": 0,
+    "y": 152,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-town-flame 7.png",
+   "frame": {
+    "x": 48,
+    "y": 152,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  }
+ ],
+ "meta": {
+  "app": "PixelLab VFX Creator",
+  "image": "ks-camp-town-flame.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 144,
+   "h": 228
+  },
+  "scale": "1",
+  "anchor": {
+   "kind": "origin",
+   "x": 24,
+   "y": 58
+  },
+  "frameTags": [
+   {
+    "name": "ks-camp-town-flame",
+    "from": 0,
+    "to": 7,
+    "direction": "forward"
+   }
+  ]
+ }
+}

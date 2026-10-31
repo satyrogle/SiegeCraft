@@ -1,0 +1,176 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ideogram4_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+   "type": "ideogram4",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "{\"high_level_description\": \"A close patch of the camp of the last five survivors of a cult of cyborg flesh beings, an intergalactic species from a Type 4 civilization, on a bare high plateau of tan stone: their forge stands on the bare stone. Rendered entirely in crisp, deliberately clustered pixel art. Modern high quality pixel art like Sea of Stars: bright, colourful and readable, never muddy.\", \"style_description\": {\"medium\": \"pixel_art\", \"art_style\": \"Authentic hand pixelled 2D game battle stage background. Visible square pixel clusters and stair stepped contours everywhere. Flat colour clusters, two to four shades per material. Crisp pixel edges without antialiasing. Clean readable shapes. No paint brushwork, no gradients except a dithered sky, no noise texture.\", \"aesthetics\": \"compact sacred alien technology, coherent pixel clusters\", \"lighting\": \"Clear cold morning sun from the upper left, cool blue shadows, as discrete flat pixel colour planes.\", \"color_palette\": [\"#d4c4a4\", \"#b0a084\", \"#7c7480\", \"#2e2c38\", \"#f2a24a\", \"#ece4ee\", \"#a898b8\", \"#e0a070\", \"#4a2350\", \"#a050e0\"]}, \"compositional_deconstruction\": {\"background\": \"A patch of the flat bare plateau floor with pale clouds beyond its far edge, seen from a fixed side oblique camera like a classic arcade game stage.\", \"elements\": [{\"type\": \"obj\", \"bbox\": [193, 121, 900, 507], \"desc\": \"the forge of the Butcher: a squat dark gunmetal heat core with glowing orange glyph seams and a glowing open mouth, capped with pearly opalescent shell, curved alien blades standing upright beside it\"}, {\"type\": \"obj\", \"bbox\": [462, 402, 737, 625], \"desc\": \"the forge machine of the Butcher, their own advanced alien technology: a wide shallow rose gold cradle like an open bowl filled with a swirling dark violet field, held up on a heavy low dark gunmetal base with glowing orange glyph seams, seen from the front\"}, {\"type\": \"obj\", \"bbox\": [731, 0, 1000, 1000], \"desc\": \"flat bare warm tan stone of the plateau, wind scoured and cracked\"}]}}"
+  }
+ },
+ "5": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "text": "photograph, painterly, digital painting, concept painting, brush strokes, realistic render, 3D render, noisy texture, fine gravel, pebbles, tiny cobblestones, scattered debris, dithering, speckles, smooth gradients, blur, antialiasing, glossy, high contrast floor, repeating tile grid, voxel cubes, people, guards, human figures, UI, border, frame, vector art, flat cartoon, smooth shapes, muddy brown, grunge, dull, desaturated, gore, tiny figures, characters, soldiers, warriors, units, sprites, people standing on the floor, square floor tiles, seams, panels, split screen, collage, borders, watermark, signature, wood, wooden furniture, planks, logs, campfire, fire pit, tents, tarps, canvas, sails, rope, laundry, clothes, clothes racks, wardrobes, bookshelves, shelves, books, candles, banners, flags, signs, text, letters, crates, barrels, chests, ladders, hammocks, benches, stools, boats, telescopes, statues, ruins, buildings, walls, wrecks, crashed spaceship, skeletons, bones, trees, palm trees, plants, grass, water, pools, oasis, medieval, fantasy village, people, figures, hands, arms, anvil, hammer, wood, planks, crates, barrels, cloth, banners, text, letters, frames, borders"
+  }
+ },
+ "6": {
+  "class_type": "CFGOverride",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "cfg": 3.0,
+   "start_percent": 0.7,
+   "end_percent": 1.0
+  }
+ },
+ "7": {
+  "class_type": "DualModelGuider",
+  "inputs": {
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "cfg": 7.0,
+   "model_negative": [
+    "6",
+    0
+   ],
+   "negative": [
+    "5",
+    0
+   ]
+  }
+ },
+ "9": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "10": {
+  "class_type": "Ideogram4Scheduler",
+  "inputs": {
+   "steps": 20,
+   "width": 512,
+   "height": 320,
+   "mu": 0.0,
+   "std": 1.75
+  }
+ },
+ "11": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 2026102843
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "11",
+    0
+   ],
+   "guider": [
+    "7",
+    0
+   ],
+   "sampler": [
+    "9",
+    0
+   ],
+   "sigmas": [
+    "18",
+    1
+   ],
+   "latent_image": [
+    "16",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "filename_prefix": "KS-Camp-War-20261028/v4-m2"
+  }
+ },
+ "15": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "ks-regions-20261024/v4-m2-init.png"
+  }
+ },
+ "16": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "15",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "18": {
+  "class_type": "SplitSigmas",
+  "inputs": {
+   "sigmas": [
+    "10",
+    0
+   ],
+   "step": 3
+  }
+ }
+}

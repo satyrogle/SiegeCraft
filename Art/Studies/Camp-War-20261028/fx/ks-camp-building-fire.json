@@ -1,0 +1,235 @@
+{
+ "frames": [
+  {
+   "filename": "ks-camp-building-fire 0.png",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-building-fire 1.png",
+   "frame": {
+    "x": 48,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-building-fire 2.png",
+   "frame": {
+    "x": 96,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-building-fire 3.png",
+   "frame": {
+    "x": 0,
+    "y": 76,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-building-fire 4.png",
+   "frame": {
+    "x": 48,
+    "y": 76,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-building-fire 5.png",
+   "frame": {
+    "x": 96,
+    "y": 76,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-building-fire 6.png",
+   "frame": {
+    "x": 0,
+    "y": 152,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  },
+  {
+   "filename": "ks-camp-building-fire 7.png",
+   "frame": {
+    "x": 48,
+    "y": 152,
+    "w": 48,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 48,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 48,
+    "h": 76
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.7631578947368421
+   },
+   "duration": 83
+  }
+ ],
+ "meta": {
+  "app": "PixelLab VFX Creator",
+  "image": "ks-camp-building-fire.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 144,
+   "h": 228
+  },
+  "scale": "1",
+  "anchor": {
+   "kind": "origin",
+   "x": 24,
+   "y": 58
+  },
+  "frameTags": [
+   {
+    "name": "ks-camp-building-fire",
+    "from": 0,
+    "to": 7,
+    "direction": "forward"
+   }
+  ]
+ }
+}
