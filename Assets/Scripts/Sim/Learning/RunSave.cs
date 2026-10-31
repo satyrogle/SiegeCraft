@@ -139,7 +139,8 @@ namespace KindredSiege.Sim.Learning
         private static void WriteMind(StringBuilder b, TribeMind mind)
         {
             Line(b, "mind", mind.TribeId);
-            for (int i = 0; i < TribeMind.HabitCount; i++) Line(b, "habit", N(i), N(mind.HabitValue((Habit)i)));
+            for (int i = 0; i < TribeMind.HabitCount; i++)
+                if (mind.SavesHabit((Habit)i)) Line(b, "habit", N(i), N(mind.HabitValue((Habit)i)));
             for (int i = 0; i < SliceClasses.Count; i++) Line(b, "threat", N(i), N(mind.ThreatMemory((UnitClass)i)));
             for (int i = 0; i < mind.FightsLearned.Count; i++) Line(b, "learned", mind.FightsLearned[i]);
             for (int i = 0; i < mind.Lessons.Count; i++)

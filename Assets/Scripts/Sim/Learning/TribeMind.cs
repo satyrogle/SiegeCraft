@@ -13,7 +13,11 @@ namespace KindredSiege.Sim.Learning
         HoldOnUnleash = 1,
         PressOnFallBack = 2,
         AvoidGuarded = 3,
-        TrapCaution = 4
+        TrapCaution = 4,
+        WaitOutParry = 5,
+
+        /// Under the parry at the center (24 Oct 2026): a fake beat before each real one (TacticsProfile.Feint).
+        Feint = 6
     }
 
     /// One change a tribe made to how it fights, with the reason and the evidence behind it.
@@ -31,7 +35,8 @@ namespace KindredSiege.Sim.Learning
             int evidence,
             long fromTick,
             long toTick,
-            string why)
+            string why,
+            string move = "")
         {
             TribeId = tribeId ?? string.Empty;
             FightId = fightId ?? string.Empty;
@@ -44,6 +49,7 @@ namespace KindredSiege.Sim.Learning
             FromTick = fromTick;
             ToTick = toTick;
             Why = why ?? string.Empty;
+            Move = move ?? string.Empty;
         }
 
         public string TribeId { get; }
@@ -71,6 +77,10 @@ namespace KindredSiege.Sim.Learning
 
         /// Plain sentence a player can read.
         public string Why { get; }
+
+        /// Under the squad first (FightRecord.SquadFirst, 24 Oct 2026) the move a wait out or feint lesson sits on, by the
+        /// Parry event's name for it ("Cleave", "Heavy"); empty for every other lesson, and for every lesson before then.
+        public string Move { get; }
     }
 
     /// What a tribe has learned from real fights: habits that answer what beat it, a memory of
@@ -78,7 +88,17 @@ namespace KindredSiege.Sim.Learning
     /// scripted. Every change comes from a fight record through LessonRules.
     public sealed class TribeMind
     {
-        public const int HabitCount = 5;
+        public const int HabitCount = 7;
+
+        /// The habits every save writes; one after them (Feint, 24 Oct 2026) is written only when set, so older saves keep
+        /// their text.
+        public const int FirstHabits = 6;
+
+        /// Whether a save writes this habit's line.
+        public bool SavesHabit(Habit habit)
+        {
+            return (int)habit < FirstHabits || HabitValue(habit) != 0;
+        }
 
         private readonly TacticsProfile _tactics = new TacticsProfile();
         private readonly int[] _threatMemory = new int[SliceClasses.Count];
@@ -96,6 +116,28 @@ namespace KindredSiege.Sim.Learning
         public IReadOnlyList<Lesson> Lessons => _lessons;
         public IReadOnlyList<string> FightsLearned => _fightsLearned;
 
+        /// Under the squad first (FightRecord.SquadFirst, 24 Oct 2026) the one move each parry habit sits on, by the Parry
+        /// event's name for it; empty for none. A habit with no move acts on nothing under the squad first.
+        public string WaitOutMove => _tactics.WaitOutMove;
+        public string FeintMove => _tactics.FeintMove;
+
+        /// The move a habit sits on: the wait out's or the feint's; empty for every other habit.
+        public string HabitMove(Habit habit)
+        {
+            return habit == Habit.WaitOutParry ? WaitOutMove : habit == Habit.Feint ? FeintMove : string.Empty;
+        }
+
+        /// True when this mind has learned nothing: no habit, threat, fight or lesson.
+        internal bool IsBlank
+        {
+            get
+            {
+                for (int i = 0; i < HabitCount; i++) if (HabitValue((Habit)i) != 0) return false;
+                for (int i = 0; i < _threatMemory.Length; i++) if (_threatMemory[i] != 0) return false;
+                return _lessons.Count == 0 && _fightsLearned.Count == 0 && WaitOutMove.Length == 0 && FeintMove.Length == 0;
+            }
+        }
+
         public int HabitValue(Habit habit)
         {
             switch (habit)
@@ -105,6 +147,8 @@ namespace KindredSiege.Sim.Learning
                 case Habit.PressOnFallBack: return _tactics.PressOnFallBack;
                 case Habit.AvoidGuarded: return _tactics.AvoidGuarded;
                 case Habit.TrapCaution: return _tactics.TrapCaution;
+                case Habit.WaitOutParry: return _tactics.WaitOutParry;
+                case Habit.Feint: return _tactics.Feint;
                 default: return 0;
             }
         }
@@ -145,7 +189,9 @@ namespace KindredSiege.Sim.Learning
                 var habit = (Habit)i;
                 if (!HasHabit(habit)) continue;
                 if (b.Length > 0) b.Append(", ");
-                b.Append(HabitName(habit)).Append(' ').Append(HabitValue(habit).ToString(CultureInfo.InvariantCulture));
+                b.Append(HabitName(habit));
+                if (HabitMove(habit).Length > 0) b.Append(" (").Append(HabitMove(habit)).Append(')');
+                b.Append(' ').Append(HabitValue(habit).ToString(CultureInfo.InvariantCulture));
             }
             return b.Length == 0 ? "none" : b.ToString();
         }
@@ -159,6 +205,8 @@ namespace KindredSiege.Sim.Learning
                 case Habit.PressOnFallBack: return "press on fall back";
                 case Habit.AvoidGuarded: return "avoid the guarded";
                 case Habit.TrapCaution: return "trap caution";
+                case Habit.WaitOutParry: return "wait out your parry";
+                case Habit.Feint: return "feint";
                 default: return "unknown";
             }
         }
@@ -167,6 +215,8 @@ namespace KindredSiege.Sim.Learning
         {
             var clone = new TribeMind(TribeId, LeaderName);
             for (int i = 0; i < HabitCount; i++) clone.SetHabit((Habit)i, HabitValue((Habit)i));
+            clone.SetHabitMove(Habit.WaitOutParry, WaitOutMove);
+            clone.SetHabitMove(Habit.Feint, FeintMove);
             Array.Copy(_threatMemory, clone._threatMemory, _threatMemory.Length);
             clone._lessons.AddRange(_lessons);
             clone._fightsLearned.AddRange(_fightsLearned);
@@ -190,7 +240,7 @@ namespace KindredSiege.Sim.Learning
                     l.FightId + "/" + l.Rule + "/" + SliceClasses.Name(l.Subject) + "/" +
                     l.ValueBefore.ToString(CultureInfo.InvariantCulture) + ">" +
                     l.ValueAfter.ToString(CultureInfo.InvariantCulture) + "/" +
-                    l.Evidence.ToString(CultureInfo.InvariantCulture));
+                    l.Evidence.ToString(CultureInfo.InvariantCulture) + (l.Move.Length > 0 ? "/" + l.Move : string.Empty));
             }
             return b.ToString();
         }
@@ -227,7 +277,16 @@ namespace KindredSiege.Sim.Learning
                 case Habit.PressOnFallBack: _tactics.SetPressOnFallBack(value); break;
                 case Habit.AvoidGuarded: _tactics.SetAvoidGuarded(value); break;
                 case Habit.TrapCaution: _tactics.SetTrapCaution(value); break;
+                case Habit.WaitOutParry: _tactics.SetWaitOutParry(value); break;
+                case Habit.Feint: _tactics.SetFeint(value); break;
             }
+        }
+
+        /// Puts a parry habit on its move (the wait out's or the feint's); does nothing for any other habit.
+        internal void SetHabitMove(Habit habit, string move)
+        {
+            if (habit == Habit.WaitOutParry) _tactics.SetWaitOutMove(move);
+            else if (habit == Habit.Feint) _tactics.SetFeintMove(move);
         }
     }
 }

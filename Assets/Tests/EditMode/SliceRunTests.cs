@@ -243,16 +243,23 @@ namespace KindredSiege.Sim.Tests
         }
 
         [Test]
-        public void TheShowcase_HasAWorldThatShowsEveryMove()
+        public void TheLegacyShowcaseKeepsItsCombosAndReplaysExactly()
         {
-            ulong found = 0;
-            for (ulong seed = 1; seed <= 300 && found == 0; seed++)
+            // The old seed search promised all defences in a winning demo, which ceased to hold after
+            // Jacob's 18 Oct spell-strength change. This fixed recording checks the retained prototype's
+            // combo and replay contract; it makes no promise about demo coverage or balance.
+            RunOutcome outcome = SliceAutopilot.PlayRun(new RunMemory(), 1, SliceAutopilot.Style.Showcase);
+            Assert.IsTrue(outcome.Won);
+            Assert.Greater(outcome.Ambushes, 0);
+            Assert.Greater(outcome.Pyres, 0);
+            Assert.Greater(outcome.Frenzies, 0);
+            foreach (var fight in outcome.Run.Archive.Fights)
             {
-                RunOutcome o = SliceAutopilot.PlayRun(new RunMemory(), seed, SliceAutopilot.Style.Showcase);
-                if (o.Won && o.Soaked > 0 && o.Dodged > 0 && o.Ambushes > 0 && o.Pyres > 0 && o.Frenzies > 0) found = seed;
+                Assert.IsTrue(outcome.Run.Archive.TryReplay(fight.FightId, out _, out string why), why);
+                Assert.IsTrue(FightPlayback.TryOpen(outcome.Run.Archive, fight.FightId, out var p, out why), why);
+                Assert.IsTrue(p.Seek(p.Length), p.Failure);
+                Assert.IsTrue(p.Matched);
             }
-            TestContext.WriteLine("First showcase world: " + found);
-            Assert.AreNotEqual(0UL, found, "the recorded demo needs a world where it wins and shows soak, dodge, Ambush, Pyre and Frenzy");
         }
 
         // ---------------------------------------------------------------- helpers

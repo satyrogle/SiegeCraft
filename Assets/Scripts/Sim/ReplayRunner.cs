@@ -55,6 +55,20 @@ namespace KindredSiege.Sim
                 simulation.Tick();
             }
 
+            // An order on the last tick can end the fight on that tick (an Ambush or a Riposte that breaks their
+            // nerve): it was given before the fight stopped, so it is given here too.
+            while (index < commands.Count && commands[index].Tick == simulation.CurrentTick)
+            {
+                SimCommand command = commands[index];
+                if (!simulation.TryApply(command, out string failure))
+                {
+                    return new ReplayResult(false,
+                        "Command " + command.Sequence + " rejected: " + failure,
+                        string.Empty, simulation.CurrentTick, index);
+                }
+                index++;
+            }
+
             if (index < commands.Count)
             {
                 return new ReplayResult(false,

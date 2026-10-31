@@ -166,6 +166,16 @@ namespace KindredSiege.Sim.Learning
     /// focusing their Medic); Hold always plus Unleash and Frenzy 98; ignoring the chief with
     /// Unleash and Frenzy 15; Unleash whenever affordable 0; Passive 0. Answering the chief's
     /// Eclipse is what wins. At 540 ticks, ignoring him with Unleash and Frenzy still won 278.
+    ///
+    /// After Jacob's playtest the same day (blows spread along the line, only a Focus Fire breaks
+    /// a cast, a chief is worn out after his Eclipse, one trait per tribe), the same 300 seeds:
+    /// the Butcher took 29% of the enemy's damage instead of 40%, no fight was lost to him
+    /// dropping, and none of the Smart autopilot's 600 Eclipses broke (371 did before). Full runs
+    /// won: Smart 300, dodging with Unleash and Frenzy 300, ignoring the chief 0, Hold always 0,
+    /// Unleash only 0, Passive 0. Not settled: the rematch is now all or nothing on the dodge;
+    /// your unbreakable Eclipse lets Smart win every run even at a tier 3 of 180; and focusing
+    /// the worn out chief did not pay for a scripted player (12 of 300 runs at a tier 3 of 160,
+    /// against 225 for dodging alone), because it pulls fire off his front row.
     public sealed class RunTuning
     {
         /// Strength of each tier in percent, for power and health alike: tier 1, 2, 3.
@@ -510,8 +520,8 @@ namespace KindredSiege.Sim.Learning
             for (int i = 0; i < squad.Count; i++)
             {
                 RunFighter f = squad[i];
-                side0.Add(new UnitSpec(f.Id, f.Class, SliceClasses.Stats(f.Class).DefaultRow, UnitRole.Fighter,
-                    f.PowerPercent, f.HealthPercent, f.FearPercent));
+                side0.Add(TribeTraits.Spec(f.Id, f.Class, SliceClasses.Stats(f.Class).DefaultRow, UnitRole.Fighter,
+                    f.PowerPercent, f.HealthPercent, f.FearPercent, f.TribeId));
             }
             UnitClass chiefClass = Stage == RunStage.Skullpeak ? SkullpeakChiefClass : RaiderChiefClass;
             List<UnitSpec> side1 = DeployEnemy(enemy, fightId, tier, chiefClass, true);
@@ -528,7 +538,7 @@ namespace KindredSiege.Sim.Learning
         }
 
         /// Up to EnemyDeploy of the tribe's fighters at its tier's strength, then its chief in the
-        /// back row when it brings one.
+        /// back row when it brings one. Every one of them carries the tribe's trait.
         private List<UnitSpec> DeployEnemy(Tribe tribe, string fightId, int tier, UnitClass chiefClass, bool withChief)
         {
             int percent = _tuning.TierPercent(tier);
@@ -537,12 +547,12 @@ namespace KindredSiege.Sim.Learning
             for (int i = 0; i < count; i++)
             {
                 UnitClass c = tribe.Fighters[i];
-                specs.Add(new UnitSpec(fightId + "." + tribe.Id + "." + i.ToString(CultureInfo.InvariantCulture), c,
-                    SliceClasses.Stats(c).DefaultRow, UnitRole.Fighter, percent, percent));
+                specs.Add(TribeTraits.Spec(fightId + "." + tribe.Id + "." + i.ToString(CultureInfo.InvariantCulture), c,
+                    SliceClasses.Stats(c).DefaultRow, UnitRole.Fighter, percent, percent, 0, tribe.Id));
             }
             if (withChief)
-                specs.Add(new UnitSpec(fightId + "." + tribe.Id + ".chief", chiefClass, Row.Back, UnitRole.Chief,
-                    percent * _tuning.ChiefPowerPercent / 100, percent * _tuning.ChiefHealthPercent / 100));
+                specs.Add(TribeTraits.Spec(fightId + "." + tribe.Id + ".chief", chiefClass, Row.Back, UnitRole.Chief,
+                    percent * _tuning.ChiefPowerPercent / 100, percent * _tuning.ChiefHealthPercent / 100, 0, tribe.Id));
             return specs;
         }
 

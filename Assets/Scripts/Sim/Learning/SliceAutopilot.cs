@@ -101,6 +101,18 @@ namespace KindredSiege.Sim.Learning
                     return;
                 }
 
+                // Dodge, then punish (6 Oct 2026): while the chief is worn out by his own Eclipse he
+                // takes double damage, so everyone who can reach him goes for him.
+                if (sim.WornOutTicksLeft(1) > 0 && t >= _focusUntil)
+                {
+                    BattleUnit chief = sim.Leader(1);
+                    if (chief != null && Order(session, Directive.FocusFire, chief.Id))
+                    {
+                        _focusUntil = t + BattleSimulation.FocusTicks;
+                        return;
+                    }
+                }
+
                 int points = sim.DirectivePoints(0);
                 if (sim.Rules(0).EclipseGrade > 0 && !sim.ComboUsed(0, Moves.Pyre) && sim.WindupTicks(0) == 0 &&
                     points >= BattleSetup.DefaultDirectivePoints)

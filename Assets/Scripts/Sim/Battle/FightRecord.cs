@@ -12,6 +12,7 @@ namespace KindredSiege.Sim.Battle
         public const int TrapSlowThreat = 12;
 
         private readonly List<BattleEvent> _events;
+        private readonly IReadOnlyList<BattleEvent> _eventView;
         private readonly UnitClass[][] _classes = new UnitClass[2][];
 
         private FightRecord(BattleSimulation sim)
@@ -19,10 +20,13 @@ namespace KindredSiege.Sim.Battle
             FightId = sim.Setup.FightId;
             Seed = sim.Setup.Seed;
             StartingDirectivePoints = sim.Setup.StartingDirectivePoints;
+            ParryCenter = sim.Setup.Fight.ParryCenter;
+            SquadFirst = sim.Setup.Fight.SquadFirst;
             Winner = sim.Winner;
             EndTick = sim.EndTick;
             Checksum = StateChecksum.Compute(sim.OrderedStateSnapshot);
             _events = new List<BattleEvent>(sim.Events);
+            _eventView = _events.AsReadOnly();
             for (int side = 0; side < 2; side++)
             {
                 IReadOnlyList<UnitSpec> specs = sim.Setup.Side(side);
@@ -48,19 +52,66 @@ namespace KindredSiege.Sim.Battle
             return new FightRecord(sim);
         }
 
+        /// A fight still going, as a record of what has happened so far (no winner yet, no checksum), for the reads of what a
+        /// rival is learning now (Learning.Campaign.TribeLearning, 24 Oct 2026).
+        internal static FightRecord SoFar(BattleSimulation sim)
+        {
+            if (sim == null) throw new ArgumentNullException(nameof(sim));
+            int survivors0 = 0, survivors1 = 0;
+            for (int i = 0; i < sim.Units.Count; i++)
+            {
+                if (!sim.Units[i].Alive) continue;
+                if (sim.Units[i].Side == 0) survivors0++;
+                else survivors1++;
+            }
+            return new FightRecord(sim.Setup, sim.Winner, sim.IsFinished ? sim.EndTick : sim.CurrentTick, string.Empty, survivors0, survivors1,
+                sim.Events);
+        }
+
         public string FightId { get; }
+        // Historical evidence remains readable when a later rules version cannot replay it.
+        internal FightRecord(BattleSetup setup, int winner, long endTick, string checksum,
+            int survivors0, int survivors1, IReadOnlyList<BattleEvent> events)
+        {
+            FightId = setup.FightId;
+            Seed = setup.Seed;
+            StartingDirectivePoints = setup.StartingDirectivePoints;
+            ParryCenter = setup.Fight.ParryCenter;
+            SquadFirst = setup.Fight.SquadFirst;
+            Winner = winner;
+            EndTick = endTick;
+            Checksum = checksum;
+            Survivors0 = survivors0;
+            Survivors1 = survivors1;
+            _events = new List<BattleEvent>(events);
+            _eventView = _events.AsReadOnly();
+            for (int side = 0; side < 2; side++)
+            {
+                var specs = setup.Side(side);
+                _classes[side] = new UnitClass[specs.Count];
+                for (int i = 0; i < specs.Count; i++) _classes[side][i] = specs[i].Class;
+            }
+        }
         public ulong Seed { get; }
 
         /// Directive points each side started with. 0 means nobody could give orders, as in
         /// off screen wars between tribes.
         public int StartingDirectivePoints { get; }
 
+        /// True when the fight played the parry at the center (FightRules.ParryCenter, campaign rules version 8), so its
+        /// lessons are learned the 24 Oct 2026 way (LessonRules).
+        public bool ParryCenter { get; }
+
+        /// True when the fight played the squad first (FightRules.SquadFirst, campaign rules version 9), so its lessons are
+        /// learned one at a time and on one move (LessonRules).
+        public bool SquadFirst { get; }
+
         public int Winner { get; }
         public long EndTick { get; }
         public string Checksum { get; }
         public int Survivors0 { get; }
         public int Survivors1 { get; }
-        public IReadOnlyList<BattleEvent> Events => _events;
+        public IReadOnlyList<BattleEvent> Events => _eventView;
 
         public int Survivors(int side)
         {
@@ -147,6 +198,119 @@ namespace KindredSiege.Sim.Battle
             for (int i = 0; i < _events.Count; i++)
             {
                 if (_events[i].Kind == BattleEventKind.TrapArmed && _events[i].ActorSide == side) count++;
+            }
+            return count;
+        }
+
+        /// Big moves a side parried, the first one's tick and its caster's class (-1 for none).
+        public int Parries(int side, out long firstTick, out int firstCasterClass)
+        {
+            int count = 0;
+            firstTick = -1;
+            firstCasterClass = -1;
+            for (int i = 0; i < _events.Count; i++)
+            {
+                BattleEvent e = _events[i];
+                if (e.Kind != BattleEventKind.Parry || e.ActorSide != side) continue;
+                count++;
+                if (firstTick >= 0) continue;
+                firstTick = e.Tick;
+                firstCasterClass = e.TargetClass;
+            }
+            return count;
+        }
+
+        /// The move of a side's first parry: under the parry at the center the Parry event names it ("Cleave", "Heavy", "Eclipse");
+        /// empty before then, or with no parry.
+        public string FirstParryMove(int side)
+        {
+            for (int i = 0; i < _events.Count; i++)
+            {
+                BattleEvent e = _events[i];
+                if (e.Kind == BattleEventKind.Parry && e.ActorSide == side) return e.Detail;
+            }
+            return string.Empty;
+        }
+
+        /// The move a side parried most this fight, by the Parry event's detail, leaving out except: a big beat before a band's
+        /// heavy swing (ParryRules.HeavyName, a small beat under the squad first), and the earliest on a tie. Empty with none.
+        public string MostParriedMove(int side, string except = "")
+        {
+            var moves = new List<string>();
+            var counts = new List<int>();
+            for (int i = 0; i < _events.Count; i++)
+            {
+                BattleEvent e = _events[i];
+                if (e.Kind != BattleEventKind.Parry || e.ActorSide != side || string.Equals(e.Detail, except, StringComparison.Ordinal)) continue;
+                int at = moves.IndexOf(e.Detail);
+                if (at < 0)
+                {
+                    moves.Add(e.Detail);
+                    counts.Add(1);
+                }
+                else counts[at]++;
+            }
+            int best = -1;
+            for (int k = 0; k < moves.Count; k++)
+            {
+                if (string.Equals(moves[k], ParryRules.HeavyName, StringComparison.Ordinal)) continue;
+                if (best < 0 || counts[k] > counts[best]) best = k;
+            }
+            if (best < 0) best = moves.IndexOf(ParryRules.HeavyName);
+            return best < 0 ? string.Empty : moves[best];
+        }
+
+        /// How many times a side parried this move this fight, the first one's tick and its doer's class (-1 for none).
+        public int ParriesOf(int side, string move, out long firstTick, out int firstDoerClass)
+        {
+            int n = 0;
+            firstTick = -1;
+            firstDoerClass = -1;
+            for (int i = 0; i < _events.Count; i++)
+            {
+                BattleEvent e = _events[i];
+                if (e.Kind != BattleEventKind.Parry || e.ActorSide != side || !string.Equals(e.Detail, move, StringComparison.Ordinal)) continue;
+                n++;
+                if (firstTick >= 0) continue;
+                firstTick = e.Tick;
+                firstDoerClass = e.TargetClass;
+            }
+            return n;
+        }
+
+        /// Moves with a tell a side started: its casts and heavy swings (Windup) and its kit's moves (Tell). Under the parry at the
+        /// center every one of them has a beat to parry.
+        public int Beats(int side)
+        {
+            int count = 0;
+            for (int i = 0; i < _events.Count; i++)
+            {
+                BattleEventKind kind = _events[i].Kind;
+                if ((kind == BattleEventKind.Windup || kind == BattleEventKind.Tell) && _events[i].ActorSide == side) count++;
+            }
+            return count;
+        }
+
+        /// Times a side's caster waited out a fresh Hold (BattleSimulation.WaitOutDetail).
+        public int WaitOuts(int casterSide)
+        {
+            int count = 0;
+            for (int i = 0; i < _events.Count; i++)
+            {
+                BattleEvent e = _events[i];
+                if (e.Kind == BattleEventKind.Reaction && e.ActorSide == casterSide &&
+                    string.Equals(e.Detail, BattleSimulation.WaitOutDetail, StringComparison.Ordinal)) count++;
+            }
+            return count;
+        }
+
+        /// Big moves a side started winding up.
+        public int Casts(int side)
+        {
+            int count = 0;
+            for (int i = 0; i < _events.Count; i++)
+            {
+                if (_events[i].Kind == BattleEventKind.Windup && _events[i].ActorSide == side) count++;
             }
             return count;
         }

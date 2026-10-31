@@ -44,31 +44,182 @@ namespace KindredSiege.Sim.Tests
             Assert.IsTrue(HasBlock(sim, 1));
         }
 
+        /// Sacrifice is a death too, so it forces one: since blows spread out (6 Oct 2026) the
+        /// autopilot's won fights rarely cost anyone.
         [Test]
         public void ADeadFighter_LeavesTheReserveForGood_AndNeverGetsTheGear()
         {
-            int wonWithLosses = 0;
-            for (ulong seed = 41000; seed < 41060 && wonWithLosses < 5; seed++)
+            SliceRun run = SliceRun.Start(new RunMemory(), 5);
+            BattleSetup setup = run.NextFight(run.DefaultSquad());
+            var sim = new BattleSimulation(setup);
+            var session = new SimSession(sim);
+            Assert.IsTrue(session.TryIssue(Directives.CommandKind, "0", "clarth.marksman", 0, 0,
+                Directives.Name(Directive.Sacrifice), out string failure), failure);
+            var pilot = new SliceAutopilot(SliceAutopilot.Style.Smart);
+            while (!sim.IsFinished && sim.CurrentTick < setup.TickLimit)
             {
-                SliceRun run = SliceRun.Start(new RunMemory(), seed);
-                while (!run.Over)
+                pilot.Step(session, sim);
+                session.Tick();
+            }
+            RunFightResult result = run.FinishFight(setup, session);
+
+            Assert.IsTrue(HasFighter(result.Fallen, "clarth.marksman"), "the sacrificed fighter is listed as fallen");
+            Assert.IsNull(run.FindFighter("clarth.marksman"), "and is gone from the reserve");
+            CollectionAssert.DoesNotContain(run.DefaultSquad(), "clarth.marksman");
+            foreach (RunFighter f in result.Fallen) Assert.IsNull(run.FindFighter(f.Id), f.Id + " died, so it must leave the reserve");
+            if (result.Won && result.GearWearer != null)
+            {
+                Assert.IsFalse(HasFighter(result.Fallen, result.GearWearer.Id), "the dead get no gear");
+                Assert.AreSame(result.GearWearer, run.FindFighter(result.GearWearer.Id), "the gear goes to someone alive");
+            }
+        }
+
+        /// Jacob's playtest, 6 Oct 2026: every enemy piled onto the Butcher. Three enemy Wardens
+        /// against your Pal and two Skirmishers each go for whoever stands across from them first.
+        [Test]
+        public void TheEnemyLineSpreadsItsBlows_InsteadOfAllHittingYourLeader()
+        {
+            var us = new List<UnitSpec>
+            {
+                new UnitSpec("pal", UnitClass.Skirmisher, Row.Front, UnitRole.Pal, 100, 100),
+                new UnitSpec("s1", UnitClass.Skirmisher),
+                new UnitSpec("s2", UnitClass.Skirmisher)
+            };
+            var them = new List<UnitSpec>
+            {
+                new UnitSpec("e0", UnitClass.Warden), new UnitSpec("e1", UnitClass.Warden), new UnitSpec("e2", UnitClass.Warden)
+            };
+            var sim = new BattleSimulation(new BattleSetup("lanes", 3, us, them, new TacticsProfile(), new TacticsProfile()));
+            var firstTarget = new Dictionary<string, string>();
+            while (firstTarget.Count < 3 && !sim.IsFinished)
+            {
+                sim.Tick();
+                foreach (BattleEvent e in sim.Events)
                 {
-                    if (run.WarPending) run.RunWar();
-                    BattleSetup setup = run.NextFight(run.DefaultSquad());
-                    RunFightResult result = run.FinishFight(setup, Play(setup, SliceAutopilot.Style.Smart));
-                    foreach (RunFighter f in result.Fallen)
-                    {
-                        Assert.IsNull(run.FindFighter(f.Id), f.Id + " died, so it must leave the reserve");
-                        Assert.AreNotSame(f, result.GearWearer, "the dead get no gear");
-                        CollectionAssert.DoesNotContain(run.DefaultSquad(), f.Id);
-                    }
-                    if (!result.Won) continue;
-                    if (result.GearWearer != null)
-                        Assert.AreSame(result.GearWearer, run.FindFighter(result.GearWearer.Id), "the gear goes to someone alive");
-                    if (result.Fallen.Count > 0) wonWithLosses++;
+                    if (e.Kind == BattleEventKind.Hit && e.ActorSide == 1 && !firstTarget.ContainsKey(e.ActorId))
+                        firstTarget[e.ActorId] = e.TargetId;
                 }
             }
-            Assert.Greater(wonWithLosses, 0, "precondition: some won fights cost a fighter");
+            Assert.AreEqual("pal", firstTarget["e0"]);
+            Assert.AreEqual("s1", firstTarget["e1"]);
+            Assert.AreEqual("s2", firstTarget["e2"]);
+        }
+
+        /// Only a Focus Fire on the caster breaks a cast (6 Oct 2026). Three Wardens pound your Pal
+        /// for more than the interrupt share while he winds up, and nobody is focusing him.
+        [Test]
+        public void StrayHitsNoLongerBreakYourEclipse()
+        {
+            var us = new List<UnitSpec>
+            {
+                new UnitSpec("pal", UnitClass.Warden, Row.Front, UnitRole.Pal, 100, 100),
+                new UnitSpec("m", UnitClass.Marksman)
+            };
+            var them = new List<UnitSpec>
+            {
+                new UnitSpec("e0", UnitClass.Warden), new UnitSpec("e1", UnitClass.Warden), new UnitSpec("e2", UnitClass.Warden)
+            };
+            var setup = new BattleSetup("stray", 3, us, them, new TacticsProfile(), new TacticsProfile(),
+                BattleSetup.DefaultTickLimit, BattleSetup.DefaultDirectivePoints, NerveRules.Off, 0, 100,
+                new SideRules(1, 0, false), null);
+            var sim = new BattleSimulation(setup);
+            var session = new SimSession(sim);
+            Assert.IsTrue(Order(session, 0, Directive.Eclipse));
+            while (!sim.IsFinished && sim.WindupTicks(0) > 0) session.Tick();
+
+            int taken = 0;
+            bool released = false, interrupted = false;
+            foreach (BattleEvent e in sim.Events)
+            {
+                if (e.Kind == BattleEventKind.Hit && e.ActorSide == 1 && e.TargetId == "pal") taken += e.Amount;
+                if (e.Kind == BattleEventKind.Release && e.ActorSide == 0) released = true;
+                if (e.Kind == BattleEventKind.Interrupt) interrupted = true;
+            }
+            Assert.Greater(taken * 100, Moves.InterruptPercent * sim.FindById("pal").MaxHp,
+                "precondition: the Pal lost more than the interrupt share while casting");
+            Assert.IsFalse(interrupted, "nobody was focusing him, so stray hits did not break the cast");
+            Assert.IsTrue(released);
+        }
+
+        /// The rematch chief's weak spot (6 Oct 2026): after his own Eclipse he is worn out and
+        /// takes double. Your Eclipse lands inside that window: his guard takes the plain share of
+        /// its health, the chief twice his.
+        [Test]
+        public void AChiefWornOutByHisOwnEclipse_TakesDoubleDamage()
+        {
+            var us = new List<UnitSpec> { new UnitSpec("pal", UnitClass.Warden, Row.Front, UnitRole.Pal, 100, 400) };
+            var them = new List<UnitSpec>
+            {
+                new UnitSpec("guard", UnitClass.Warden, Row.Front, UnitRole.Fighter, 100, 400),
+                new UnitSpec("chief", UnitClass.Marksman, Row.Front, UnitRole.Chief, 100, 400)
+            };
+            var setup = new BattleSetup("worn", 3, us, them, new TacticsProfile(), new TacticsProfile(),
+                BattleSetup.DefaultTickLimit, BattleSetup.DefaultDirectivePoints, NerveRules.Off, 0, 100,
+                new SideRules(1, 0, false), new SideRules(1, 30, false));
+            var sim = new BattleSimulation(setup);
+            var session = new SimSession(sim);
+
+            BattleEvent his = TickUntil(session, sim, BattleEventKind.Release, 1);
+            Assert.AreEqual(Moves.WornOutTicks - (int)(sim.CurrentTick - his.Tick), sim.WornOutTicksLeft(1), "his Eclipse wears him out");
+            Assert.IsTrue(Order(session, 0, Directive.Eclipse));
+            BattleEvent ours = TickUntil(session, sim, BattleEventKind.Release, 0);
+            Assert.Less(ours.Tick - his.Tick, Moves.WornOutTicks, "precondition: yours lands while he is worn out");
+
+            int plain = Math.Max(1, sim.FindById("guard").MaxHp * Moves.EclipsePercent(1) / 100);
+            int chief = Math.Max(1, sim.FindById("chief").MaxHp * Moves.EclipsePercent(1) / 100);
+            Assert.AreEqual(plain, EclipseHitOn(sim, ours.Tick, "guard"), "a plain fighter takes the plain share");
+            Assert.AreEqual(chief * Moves.WornOutDamagePercent / 100, EclipseHitOn(sim, ours.Tick, "chief"), "the worn out chief takes double");
+        }
+
+        [Test]
+        public void EveryTribeHasATrait_AndItsFightersBringItToBattle()
+        {
+            Assert.AreEqual(TribeTrait.Hunters, TribeTraits.For(SliceRun.ClarthId));
+            Assert.AreEqual(TribeTrait.Dread, TribeTraits.For(SliceRun.RaidersId));
+            Assert.AreEqual(TribeTrait.Dread, TribeTraits.For(SliceRun.SplinterId), "the chief's splinter crew are raiders");
+            Assert.AreEqual(TribeTrait.SteelBones, TribeTraits.For(SliceRun.SkullpeakId));
+            CollectionAssert.AllItemsAreUnique(new[]
+            {
+                TribeTraits.Describe(TribeTrait.Hunters), TribeTraits.Describe(TribeTrait.Dread), TribeTraits.Describe(TribeTrait.SteelBones)
+            });
+
+            SliceRun run = SliceRun.Start(new RunMemory(), 5);
+            BattleSetup setup = run.NextFight(run.DefaultSquad());
+            foreach (UnitSpec u in setup.Side(0))
+                Assert.AreEqual(u.Role == UnitRole.Fighter ? TribeTraits.HuntersPercent : 0, u.WoundedBonusPercent, u.Id);
+            foreach (UnitSpec u in setup.Side(1))
+                Assert.AreEqual(TribeTraits.DreadPercent, u.FearPercent, u.Id);
+        }
+
+        private static bool HasFighter(IReadOnlyList<RunFighter> fighters, string id)
+        {
+            foreach (RunFighter f in fighters) if (f.Id == id) return true;
+            return false;
+        }
+
+        private static BattleEvent TickUntil(SimSession session, BattleSimulation sim, BattleEventKind kind, int side)
+        {
+            int seen = sim.Events.Count;
+            while (!sim.IsFinished && sim.CurrentTick < sim.Setup.TickLimit)
+            {
+                session.Tick();
+                for (int i = seen; i < sim.Events.Count; i++)
+                {
+                    if (sim.Events[i].Kind == kind && sim.Events[i].ActorSide == side) return sim.Events[i];
+                }
+                seen = sim.Events.Count;
+            }
+            Assert.Fail("No " + kind + " from side " + side + ".");
+            return sim.Events[sim.Events.Count - 1];
+        }
+
+        private static int EclipseHitOn(BattleSimulation sim, long tick, string id)
+        {
+            foreach (BattleEvent e in sim.Events)
+            {
+                if (e.Kind == BattleEventKind.Hit && e.Tick == tick && e.TargetId == id && e.Detail == Moves.EclipseDetail) return e.Amount;
+            }
+            return -1;
         }
 
         [Test]

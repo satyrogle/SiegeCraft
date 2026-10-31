@@ -77,6 +77,34 @@ namespace KindredSiege.Sim.Battle
             }
         }
 
+        /// Aim in fights with misses (FightRules.Misses, 13 Oct 2026): a blow lands when a roll comes
+        /// up under the attacker's Hit minus the target's Avoid, both in percent. Starting values.
+        public static int Hit(UnitClass unitClass)
+        {
+            switch (unitClass)
+            {
+                case UnitClass.Warden: return 88;
+                case UnitClass.Marksman: return 95;
+                case UnitClass.Skirmisher: return 92;
+                case UnitClass.Trapper: return 90;
+                case UnitClass.Medic: return 85;
+                default: return 90;
+            }
+        }
+
+        public static int Avoid(UnitClass unitClass)
+        {
+            switch (unitClass)
+            {
+                case UnitClass.Warden: return 4;
+                case UnitClass.Marksman: return 6;
+                case UnitClass.Skirmisher: return 14;
+                case UnitClass.Trapper: return 10;
+                case UnitClass.Medic: return 8;
+                default: return 5;
+            }
+        }
+
         public static string Name(UnitClass unitClass)
         {
             switch (unitClass)
