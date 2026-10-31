@@ -1,6 +1,7 @@
 import json
 import sys
 import time
+import urllib.error
 from pathlib import Path
 
 import numpy as np
@@ -194,7 +195,11 @@ def run(tag, init, pos, seed, step=2):
     g["14"]["inputs"]["filename_prefix"] = "KS-Bloodridge-Stages-20261030/" + tag
     (OUT / (tag + "-workflow.json")).write_text(json.dumps(g, indent=1))
     t0 = time.time()
-    out = G.wait_image(G.api("/prompt", {"prompt": g, "front": True})["prompt_id"]).convert("RGB")
+    try:
+        pid = G.api("/prompt", {"prompt": g, "front": True})["prompt_id"]
+    except urllib.error.HTTPError as e:  # 31 Oct: a bare "HTTP Error 400"; the painter's reply says why
+        raise SystemExit("The painter refused %s: %s" % (tag, e.read().decode("utf-8", "replace")[:4000]))
+    out = G.wait_image(pid).convert("RGB")
     print(tag, out.size, "%.0fs" % (time.time() - t0), flush=True)
     return out
 
