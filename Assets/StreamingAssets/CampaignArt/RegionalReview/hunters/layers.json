@@ -1,0 +1,139 @@
+{
+  "region": "hunters",
+  "dimensions": [
+    1376,
+    768
+  ],
+  "stage_origin": [
+    32,
+    66
+  ],
+  "scale": 1,
+  "camera": "fixed",
+  "static_layers": [
+    "ground.png",
+    "rear.png"
+  ],
+  "above_fighters": "foreground.png",
+  "source_sha256": "ea16bee1863732c63a9193bec238d31f0e313afa9b83c909fb62870d96aef578",
+  "recomposition_matches": true,
+  "ambient": "Existing Bloodridge ash sheets, unmodified, clipped to distant scenery and tinted by presenter. Claude review pending.",
+  "masks": {
+    "rear": [
+      [
+        0,
+        0
+      ],
+      [
+        1376,
+        0
+      ],
+      [
+        1376,
+        306
+      ],
+      [
+        1310,
+        296
+      ],
+      [
+        1240,
+        282
+      ],
+      [
+        1160,
+        280
+      ],
+      [
+        1070,
+        268
+      ],
+      [
+        960,
+        275
+      ],
+      [
+        860,
+        269
+      ],
+      [
+        760,
+        267
+      ],
+      [
+        640,
+        267
+      ],
+      [
+        530,
+        275
+      ],
+      [
+        420,
+        278
+      ],
+      [
+        310,
+        275
+      ],
+      [
+        200,
+        288
+      ],
+      [
+        100,
+        294
+      ],
+      [
+        0,
+        307
+      ]
+    ],
+    "front": [
+      [
+        [
+          0,
+          678
+        ],
+        [
+          48,
+          695
+        ],
+        [
+          97,
+          725
+        ],
+        [
+          155,
+          768
+        ],
+        [
+          0,
+          768
+        ]
+      ],
+      [
+        [
+          1376,
+          714
+        ],
+        [
+          1350,
+          720
+        ],
+        [
+          1321,
+          749
+        ],
+        [
+          1310,
+          768
+        ],
+        [
+          1376,
+          768
+        ]
+      ]
+    ]
+  }
+}

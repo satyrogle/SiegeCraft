@@ -1,0 +1,358 @@
+{
+ "frames": [
+  {
+   "filename": "hunter_marksman_sw_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_01",
+   "frame": {
+    "x": 132,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_02",
+   "frame": {
+    "x": 264,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_03",
+   "frame": {
+    "x": 396,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_04",
+   "frame": {
+    "x": 528,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_05",
+   "frame": {
+    "x": 660,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_06",
+   "frame": {
+    "x": 792,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_07",
+   "frame": {
+    "x": 924,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_08",
+   "frame": {
+    "x": 0,
+    "y": 132,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_09",
+   "frame": {
+    "x": 132,
+    "y": 132,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_10",
+   "frame": {
+    "x": 264,
+    "y": 132,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_11",
+   "frame": {
+    "x": 396,
+    "y": 132,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_12",
+   "frame": {
+    "x": 528,
+    "y": 132,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_13",
+   "frame": {
+    "x": 660,
+    "y": 132,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_14",
+   "frame": {
+    "x": 792,
+    "y": 132,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_marksman_sw_15",
+   "frame": {
+    "x": 924,
+    "y": 132,
+    "w": 132,
+    "h": 132
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 132,
+    "h": 132
+   },
+   "sourceSize": {
+    "w": 132,
+    "h": 132
+   },
+   "duration": 40
+  }
+ ],
+ "anchorX": 63.0,
+ "anchorY": 111
+}

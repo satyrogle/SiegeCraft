@@ -1,0 +1,358 @@
+{
+ "frames": [
+  {
+   "filename": "hunter_medic_sw_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_01",
+   "frame": {
+    "x": 136,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_02",
+   "frame": {
+    "x": 272,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_03",
+   "frame": {
+    "x": 408,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_04",
+   "frame": {
+    "x": 544,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_05",
+   "frame": {
+    "x": 680,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_06",
+   "frame": {
+    "x": 816,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_07",
+   "frame": {
+    "x": 952,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_08",
+   "frame": {
+    "x": 0,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_09",
+   "frame": {
+    "x": 136,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_10",
+   "frame": {
+    "x": 272,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_11",
+   "frame": {
+    "x": 408,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_12",
+   "frame": {
+    "x": 544,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_13",
+   "frame": {
+    "x": 680,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_14",
+   "frame": {
+    "x": 816,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "hunter_medic_sw_15",
+   "frame": {
+    "x": 952,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  }
+ ],
+ "anchorX": 54.0,
+ "anchorY": 115
+}

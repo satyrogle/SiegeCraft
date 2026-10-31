@@ -1,0 +1,534 @@
+{
+ "frames": [
+  {
+   "filename": "stoneveil_marksman_sw_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_01",
+   "frame": {
+    "x": 136,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_02",
+   "frame": {
+    "x": 272,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_03",
+   "frame": {
+    "x": 408,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_04",
+   "frame": {
+    "x": 544,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_05",
+   "frame": {
+    "x": 680,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_06",
+   "frame": {
+    "x": 816,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_07",
+   "frame": {
+    "x": 952,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_08",
+   "frame": {
+    "x": 0,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_09",
+   "frame": {
+    "x": 136,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_10",
+   "frame": {
+    "x": 272,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_11",
+   "frame": {
+    "x": 408,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_12",
+   "frame": {
+    "x": 544,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_13",
+   "frame": {
+    "x": 680,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_14",
+   "frame": {
+    "x": 816,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_15",
+   "frame": {
+    "x": 952,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_16",
+   "frame": {
+    "x": 0,
+    "y": 272,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_17",
+   "frame": {
+    "x": 136,
+    "y": 272,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_18",
+   "frame": {
+    "x": 272,
+    "y": 272,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_19",
+   "frame": {
+    "x": 408,
+    "y": 272,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_20",
+   "frame": {
+    "x": 544,
+    "y": 272,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_21",
+   "frame": {
+    "x": 680,
+    "y": 272,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_22",
+   "frame": {
+    "x": 816,
+    "y": 272,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  },
+  {
+   "filename": "stoneveil_marksman_sw_23",
+   "frame": {
+    "x": 952,
+    "y": 272,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 62.0,
+ "anchorY": 115
+}

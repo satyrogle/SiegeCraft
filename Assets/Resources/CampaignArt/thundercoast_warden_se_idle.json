@@ -1,0 +1,798 @@
+{
+ "frames": [
+  {
+   "filename": "thundercoast_warden_se_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_01",
+   "frame": {
+    "x": 180,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_02",
+   "frame": {
+    "x": 360,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_03",
+   "frame": {
+    "x": 540,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_04",
+   "frame": {
+    "x": 720,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_05",
+   "frame": {
+    "x": 900,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_06",
+   "frame": {
+    "x": 1080,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_07",
+   "frame": {
+    "x": 1260,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_08",
+   "frame": {
+    "x": 0,
+    "y": 180,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_09",
+   "frame": {
+    "x": 180,
+    "y": 180,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_10",
+   "frame": {
+    "x": 360,
+    "y": 180,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_11",
+   "frame": {
+    "x": 540,
+    "y": 180,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_12",
+   "frame": {
+    "x": 720,
+    "y": 180,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_13",
+   "frame": {
+    "x": 900,
+    "y": 180,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_14",
+   "frame": {
+    "x": 1080,
+    "y": 180,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_15",
+   "frame": {
+    "x": 1260,
+    "y": 180,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_16",
+   "frame": {
+    "x": 0,
+    "y": 360,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_17",
+   "frame": {
+    "x": 180,
+    "y": 360,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_18",
+   "frame": {
+    "x": 360,
+    "y": 360,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_19",
+   "frame": {
+    "x": 540,
+    "y": 360,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_20",
+   "frame": {
+    "x": 720,
+    "y": 360,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_21",
+   "frame": {
+    "x": 900,
+    "y": 360,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_22",
+   "frame": {
+    "x": 1080,
+    "y": 360,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_23",
+   "frame": {
+    "x": 1260,
+    "y": 360,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_24",
+   "frame": {
+    "x": 0,
+    "y": 540,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_25",
+   "frame": {
+    "x": 180,
+    "y": 540,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_26",
+   "frame": {
+    "x": 360,
+    "y": 540,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_27",
+   "frame": {
+    "x": 540,
+    "y": 540,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_28",
+   "frame": {
+    "x": 720,
+    "y": 540,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_29",
+   "frame": {
+    "x": 900,
+    "y": 540,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_30",
+   "frame": {
+    "x": 1080,
+    "y": 540,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_31",
+   "frame": {
+    "x": 1260,
+    "y": 540,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_32",
+   "frame": {
+    "x": 0,
+    "y": 720,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_33",
+   "frame": {
+    "x": 180,
+    "y": 720,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_34",
+   "frame": {
+    "x": 360,
+    "y": 720,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  },
+  {
+   "filename": "thundercoast_warden_se_35",
+   "frame": {
+    "x": 540,
+    "y": 720,
+    "w": 180,
+    "h": 180
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 180,
+    "h": 180
+   },
+   "sourceSize": {
+    "w": 180,
+    "h": 180
+   },
+   "duration": 100
+  }
+ ],
+ "anchorX": 90.0,
+ "anchorY": 153
+}

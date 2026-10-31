@@ -1,0 +1,147 @@
+{
+  "region": "skullpeak",
+  "dimensions": [
+    1376,
+    768
+  ],
+  "stage_origin": [
+    32,
+    66
+  ],
+  "scale": 1,
+  "camera": "fixed",
+  "static_layers": [
+    "ground.png",
+    "rear.png"
+  ],
+  "above_fighters": "foreground.png",
+  "source_sha256": "17577c8b8c6861942985a80c8a76b91b0c72bd74c3b8c83aa55a7817389e6c26",
+  "recomposition_matches": true,
+  "ambient": "Existing Bloodridge ash sheets, unmodified, clipped to distant scenery and tinted by presenter. Claude review pending.",
+  "masks": {
+    "rear": [
+      [
+        0,
+        0
+      ],
+      [
+        1376,
+        0
+      ],
+      [
+        1376,
+        399
+      ],
+      [
+        1310,
+        370
+      ],
+      [
+        1250,
+        340
+      ],
+      [
+        1160,
+        320
+      ],
+      [
+        1060,
+        305
+      ],
+      [
+        970,
+        300
+      ],
+      [
+        900,
+        286
+      ],
+      [
+        815,
+        295
+      ],
+      [
+        710,
+        278
+      ],
+      [
+        600,
+        286
+      ],
+      [
+        480,
+        294
+      ],
+      [
+        380,
+        302
+      ],
+      [
+        270,
+        298
+      ],
+      [
+        185,
+        315
+      ],
+      [
+        100,
+        348
+      ],
+      [
+        0,
+        390
+      ]
+    ],
+    "front": [
+      [
+        [
+          0,
+          625
+        ],
+        [
+          54,
+          653
+        ],
+        [
+          92,
+          693
+        ],
+        [
+          137,
+          726
+        ],
+        [
+          174,
+          768
+        ],
+        [
+          0,
+          768
+        ]
+      ],
+      [
+        [
+          1376,
+          668
+        ],
+        [
+          1330,
+          694
+        ],
+        [
+          1292,
+          737
+        ],
+        [
+          1270,
+          768
+        ],
+        [
+          1376,
+          768
+        ]
+      ]
+    ]
+  }
+}

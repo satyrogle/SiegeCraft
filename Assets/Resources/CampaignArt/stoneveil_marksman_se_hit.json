@@ -1,0 +1,358 @@
+{
+ "frames": [
+  {
+   "filename": "stoneveil_marksman_se_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_01",
+   "frame": {
+    "x": 136,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_02",
+   "frame": {
+    "x": 272,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_03",
+   "frame": {
+    "x": 408,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_04",
+   "frame": {
+    "x": 544,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_05",
+   "frame": {
+    "x": 680,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_06",
+   "frame": {
+    "x": 816,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_07",
+   "frame": {
+    "x": 952,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_08",
+   "frame": {
+    "x": 0,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_09",
+   "frame": {
+    "x": 136,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_10",
+   "frame": {
+    "x": 272,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_11",
+   "frame": {
+    "x": 408,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_12",
+   "frame": {
+    "x": 544,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_13",
+   "frame": {
+    "x": 680,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_14",
+   "frame": {
+    "x": 816,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  },
+  {
+   "filename": "stoneveil_marksman_se_15",
+   "frame": {
+    "x": 952,
+    "y": 136,
+    "w": 136,
+    "h": 136
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 136,
+    "h": 136
+   },
+   "sourceSize": {
+    "w": 136,
+    "h": 136
+   },
+   "duration": 40
+  }
+ ],
+ "anchorX": 60.0,
+ "anchorY": 115
+}

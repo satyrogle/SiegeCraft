@@ -1,0 +1,534 @@
+{
+ "frames": [
+  {
+   "filename": "cult_tank_se_00",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_01",
+   "frame": {
+    "x": 172,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_02",
+   "frame": {
+    "x": 344,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_03",
+   "frame": {
+    "x": 516,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_04",
+   "frame": {
+    "x": 688,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_05",
+   "frame": {
+    "x": 860,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_06",
+   "frame": {
+    "x": 1032,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_07",
+   "frame": {
+    "x": 1204,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_08",
+   "frame": {
+    "x": 0,
+    "y": 172,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_09",
+   "frame": {
+    "x": 172,
+    "y": 172,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_10",
+   "frame": {
+    "x": 344,
+    "y": 172,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_11",
+   "frame": {
+    "x": 516,
+    "y": 172,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_12",
+   "frame": {
+    "x": 688,
+    "y": 172,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_13",
+   "frame": {
+    "x": 860,
+    "y": 172,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_14",
+   "frame": {
+    "x": 1032,
+    "y": 172,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_15",
+   "frame": {
+    "x": 1204,
+    "y": 172,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_16",
+   "frame": {
+    "x": 0,
+    "y": 344,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_17",
+   "frame": {
+    "x": 172,
+    "y": 344,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_18",
+   "frame": {
+    "x": 344,
+    "y": 344,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_19",
+   "frame": {
+    "x": 516,
+    "y": 344,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_20",
+   "frame": {
+    "x": 688,
+    "y": 344,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_21",
+   "frame": {
+    "x": 860,
+    "y": 344,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_22",
+   "frame": {
+    "x": 1032,
+    "y": 344,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  },
+  {
+   "filename": "cult_tank_se_23",
+   "frame": {
+    "x": 1204,
+    "y": 344,
+    "w": 172,
+    "h": 172
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 172,
+    "h": 172
+   },
+   "sourceSize": {
+    "w": 172,
+    "h": 172
+   },
+   "duration": 80
+  }
+ ],
+ "anchorX": 87.0,
+ "anchorY": 146
+}
