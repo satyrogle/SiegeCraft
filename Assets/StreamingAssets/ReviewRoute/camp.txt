@@ -1,0 +1,106 @@
+kindred-siege-campaign	18
+seed	21
+streams	1207614761146606213	9	5165316782646619195	3
+counters	5	1	0	0	1
+camp	0
+forge	0	0
+named	Bosk	1
+named	Brakka	1
+named	Fenno	1
+named	Gesh	1
+named	Karru	1
+codex	Tribe: the Clarth
+codex	Joined: the Clarth
+company		10	0
+hunter	hunter.0	Quell	Who Brings Receipts	0	3	0	0	3	9	3	10
+hunter	hunter.1	Grisk	the Overtime	4	2	0	0	2	0	10
+hunter	hunter.2	Syrrin	the Patient	3	2	0	0	3	11	9
+hunter	hunter.3	Ixil	Twice Paid	1	1	0	0	2	7	5
+hunter	hunter.4	Hesk	Who Reads the Fine Print	2	1	0	0	3	3	7
+hunter	hunter.5	Ozzith	the Polite	0	1	0	0	1	10	13
+hunter	hunter.6	Xannic	Collector of Debts	4	0	0	0	0	13
+hunter	hunter.7	Nhal	Who Signed in Blood	3	0	0	0	3	12
+hunter	hunter.8	Sabek	the Late Fee	1	0	0	0	3	11
+hunter	hunter.9	Myrrex	Who Never Misses a Deadline	2	0	0	0	1	3
+ladder	hunter.0	hunter.1	hunter.2	hunter.3	hunter.4	hunter.5	hunter.6	hunter.7	hunter.8	hunter.9	you
+mind	cult
+habit	0	0
+habit	1	0
+habit	2	0
+habit	3	0
+habit	4	0
+habit	5	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	clarth
+habit	0	0
+habit	1	0
+habit	2	0
+habit	3	0
+habit	4	0
+habit	5	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	raiders
+habit	0	0
+habit	1	4
+habit	2	4
+habit	3	0
+habit	4	0
+habit	5	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	skullpeak
+habit	0	4
+habit	1	4
+habit	2	4
+habit	3	0
+habit	4	0
+habit	5	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	stoneveil
+habit	0	0
+habit	1	4
+habit	2	4
+habit	3	0
+habit	4	0
+habit	5	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+mind	thundercoast
+habit	0	4
+habit	1	4
+habit	2	4
+habit	3	0
+habit	4	0
+habit	5	0
+threat	0	0
+threat	1	0
+threat	2	0
+threat	3	0
+threat	4	0
+archive	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
+names	camp.1.raiders.tutorial	camp.1.raiders.tutorial.raiders.0	Iymery	camp.1.raiders.tutorial.raiders.1	Rensi	camp.1.raiders.tutorial.raiders.2	Nebet	tutorial.0	Bosk	tutorial.1	Gesh	tutorial.2	Brakka	tutorial.3	Karru	tutorial.4	Fenno
+joined	clarth
+fighter	clarth.warden.1	clarth	0	Bosk	0		
+fighter	clarth.marksman.2	clarth	1	Gesh	1		
+fighter	clarth.skirmisher.3	clarth	2	Brakka	0		
+fighter	clarth.trapper.4	clarth	3	Karru	1		
+fighter	clarth.medic.5	clarth	4	Fenno	1		
+end

@@ -85,7 +85,7 @@ namespace KindredSiege.Slice
         static readonly Color HitFlash = new Color(1f, 0.35f, 0.3f);
         static readonly Color HealFlash = new Color(0.5f, 1f, 0.55f);
         static readonly Color DeadTint = new Color(0.36f, 0.34f, 0.33f);
-        static readonly Color MoodTint = new Color(0.84f, 0.77f, 0.68f);
+        static readonly Color MoodTint = new Color(1f, 0.98f, 0.94f);
         static readonly Color GroundTint = new Color(0.72f, 0.66f, 0.58f);
         static readonly Color TorchColor = new Color(1f, 0.6f, 0.3f);
         static readonly Color DustColor = new Color(0.62f, 0.55f, 0.45f);
@@ -176,9 +176,10 @@ namespace KindredSiege.Slice
             public bool Fleeing;
             public bool Arrived;
             public Vector3 WalkGoal;
+            public int FloatLane;
         }
 
-        sealed class FloatText { public Vector3 Pos; public string Text; public Color Color; public float Age; public float Life; public bool Big; }
+        sealed class FloatText { public Vector3 Pos; public string Text; public string UnitId; public Color Color; public float Age; public float Life; public bool Big; }
         sealed class Shot { public GameObject Ball; public Vector3 From; public Vector3 To; public float Age; }
         sealed class Dust { public SpriteRenderer Renderer; public Vector3 Velocity; public float Age; public float Size; }
         sealed class Banner { public string Text; public string Sub; public Color Color; public float Age; public float Life; }
@@ -213,11 +214,13 @@ namespace KindredSiege.Slice
             Shader flat = Shader.Find("GUI/Text Shader");
             if (flat != null) _silhouetteMaterial = new Material(flat);
             StartRun();
+            BuildPresentation();
         }
 
         void OnDestroy()
         {
             if (_captureFolder.Length > 0) Time.captureDeltaTime = 0f;
+            DisposePresentation();
         }
 
         void Update()
@@ -615,6 +618,13 @@ namespace KindredSiege.Slice
                 fx.FocusId = e.TargetId;
             }
 
+            // A Hold that stopped an Unleash shows over the line that held, not as a learned answer.
+            if (detail == BattleSimulation.BlockedDetail)
+            {
+                AddPop(LineTop(side), "BLOCKED", side == SliceRun.PlayerSide ? Teal : Rival);
+                Feed(side == SliceRun.PlayerSide ? "Your Hold blocks their Unleash." : "Their Hold blocks your Unleash.");
+                return;
+            }
             bool auto = e.ActorId.StartsWith(BattleSimulation.AutoActorPrefix, System.StringComparison.Ordinal);
             string target = e.TargetId.Length > 0 ? " on " + Name(e.TargetId) : string.Empty;
             if (!auto && side == SliceRun.PlayerSide)
@@ -740,78 +750,7 @@ namespace KindredSiege.Slice
 
         void BuildStage()
         {
-            _stageRoot = new GameObject("Stage").transform;
-
-            var cameraObject = new GameObject("Slice camera");
-            cameraObject.tag = "MainCamera";
-            cameraObject.transform.SetParent(_stageRoot);
-            _camera = cameraObject.AddComponent<Camera>();
-            _camera.clearFlags = CameraClearFlags.SolidColor;
-            _camera.backgroundColor = new Color(0.035f, 0.03f, 0.028f);
-            _camera.orthographic = true;
-            _camera.orthographicSize = 5.2f;
-            cameraObject.transform.position = CameraHome;
-            cameraObject.transform.LookAt(CameraLook);
-
-            // Dim warm light, low ambient and torches: the mood comes from what is not lit.
-            var sun = new GameObject("Sun").AddComponent<Light>();
-            sun.transform.SetParent(_stageRoot);
-            sun.type = LightType.Directional;
-            sun.intensity = 0.55f;
-            sun.color = new Color(1f, 0.8f, 0.6f);
-            sun.shadows = LightShadows.Soft;
-            sun.transform.rotation = Quaternion.Euler(48f, -35f, 0f);
-            RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
-            RenderSettings.ambientLight = new Color(0.22f, 0.2f, 0.21f);
-            RenderSettings.fog = true;
-            RenderSettings.fogMode = FogMode.Linear;
-            RenderSettings.fogColor = _camera.backgroundColor;
-            RenderSettings.fogStartDistance = 12f;
-            RenderSettings.fogEndDistance = 24f;
-
-            GameObject ground = Block("Ground", PrimitiveType.Cube, new Vector3(0f, -0.1f, 1.2f), new Vector3(17f, 0.2f, 9.5f), GroundTint);
-            var sand = Resources.Load<Texture2D>("RivalSlice/Ground/sand");
-            if (sand != null)
-            {
-                Material groundMaterial = ground.GetComponent<Renderer>().material;
-                groundMaterial.mainTexture = sand;
-                groundMaterial.mainTextureScale = new Vector2(4f, 2.2f);
-            }
-            Block("Centre line", PrimitiveType.Cube, new Vector3(0f, 0.01f, 1.2f), new Vector3(0.05f, 0.02f, 9f), new Color(0.3f, 0.26f, 0.2f));
-            Block("Rock", PrimitiveType.Sphere, new Vector3(-4.9f, 0.25f, 4.3f), new Vector3(1.6f, 0.9f, 1.2f), new Color(0.5f, 0.44f, 0.36f));
-            Block("Rock", PrimitiveType.Sphere, new Vector3(4.6f, 0.2f, 4.9f), new Vector3(1.3f, 0.75f, 1f), new Color(0.48f, 0.42f, 0.34f));
-            Block("Rock", PrimitiveType.Sphere, new Vector3(-4.4f, 0.15f, -1.6f), new Vector3(0.8f, 0.45f, 0.7f), new Color(0.5f, 0.44f, 0.36f));
-
-            // Torches behind the lines, close enough to light the fighters.
-            Vector3[] feet = { new Vector3(-3.4f, 0f, 4.1f), new Vector3(2.9f, 0f, 4.3f) };
-            for (int t = 0; t < feet.Length; t++)
-            {
-                Vector3 foot = feet[t];
-                Block("Torch pole", PrimitiveType.Cylinder, foot + new Vector3(0f, 0.75f, 0f), new Vector3(0.12f, 0.75f, 0.12f), new Color(0.16f, 0.12f, 0.09f));
-                GameObject fire = Block("Torch fire", PrimitiveType.Sphere, foot + new Vector3(0f, 1.6f, 0f), new Vector3(0.3f, 0.42f, 0.3f), TorchColor);
-                Material fireMaterial = fire.GetComponent<Renderer>().material;
-                fireMaterial.EnableKeyword("_EMISSION");
-                fireMaterial.SetColor("_EmissionColor", TorchColor * 2.2f);
-                var light = new GameObject("Torch light").AddComponent<Light>();
-                light.transform.SetParent(_stageRoot);
-                light.transform.position = foot + new Vector3(0f, 1.8f, 0f);
-                light.type = LightType.Point;
-                light.range = 9f;
-                light.color = TorchColor;
-                light.intensity = 1.6f;
-                _torches.Add(light);
-            }
-
-            for (int s = 0; s < 2; s++)
-            {
-                _traps[s] = Block("Trap", PrimitiveType.Cylinder, new Vector3(s == 0 ? -0.6f : 0.6f, 0.02f, 1.2f), new Vector3(0.6f, 0.02f, 0.6f), new Color(0.55f, 0.3f, 0.75f));
-                _traps[s].SetActive(false);
-                _focusRings[s] = Block("Focus", PrimitiveType.Cylinder, Vector3.zero, new Vector3(1.25f, 0.01f, 1.25f), s == 0 ? Amber : Rival);
-                _focusRings[s].SetActive(false);
-            }
-
-            _unitsRoot = new GameObject("Units").transform;
-            _unitsRoot.SetParent(_stageRoot);
+            BuildArena();
         }
 
         static void Surface(GameObject go, Color color)
@@ -950,7 +889,7 @@ namespace KindredSiege.Slice
             root.transform.position = home;
             var view = new UnitView { Unit = unit, Root = root, Home = home, Pos = home, Phase = unit.Index * 0.37f };
 
-            Part(root.transform, PrimitiveType.Cylinder, new Vector3(0f, 0.012f, 0f), new Vector3(1.05f, 0.004f, 0.55f), new Color(0.08f, 0.07f, 0.06f));
+            Part(root.transform, PrimitiveType.Cylinder, new Vector3(0f, 0.012f, 0f), new Vector3(1.05f, 0.004f, 0.55f), new Color(0.33f, 0.30f, 0.24f));
 
             // The Clarth stand on the left and face right; the raiders face left. Converts turn when they arrive.
             string facing = unit.Side == 0 ? "se" : "sw";
@@ -990,6 +929,7 @@ namespace KindredSiege.Slice
             else
             {
                 float size = unit.Class == UnitClass.Warden ? 0.95f : unit.Class == UnitClass.Skirmisher ? 0.72f : 0.82f;
+                if (unit.Role == UnitRole.Pal) size *= 0.8f;
                 GameObject body = GameObject.CreatePrimitive(PrimitiveType.Capsule);
                 body.name = "Body";
                 body.transform.SetParent(root.transform, false);
@@ -1005,7 +945,7 @@ namespace KindredSiege.Slice
                 view.Height = size * 2f;
             }
 
-            GameObject disc = Part(root.transform, PrimitiveType.Cylinder, new Vector3(0f, 0.02f, 0f), new Vector3(1.15f, 0.01f, 1.15f), Color.white);
+            GameObject disc = OrderRing(root.transform, "Order effect", new Vector3(0f, 0.025f, 0f), .59f, Color.white);
             disc.SetActive(false);
             view.Disc = disc;
             view.DiscRenderer = disc.GetComponent<Renderer>();
@@ -1090,7 +1030,7 @@ namespace KindredSiege.Slice
 
                 // During an impact the pair is lit and everyone else sinks into the dark.
                 bool inFocus = _focusTime > 0f && (v == _focusA || v == _focusB);
-                Color light = inFocus ? Color.Lerp(MoodTint, Color.white, focus) : MoodTint * (1f - 0.5f * focus);
+                Color light = inFocus ? Color.Lerp(MoodTint, Color.white, focus) : MoodTint * (1f - 0.18f * focus);
                 Color color = u.Alive ? v.BaseColor : (v.Art != null ? Color.Lerp(v.BaseColor, DeadTint, Mathf.Clamp01(v.DeathAge / DeathTime)) : Fallen);
                 color = new Color(color.r * light.r, color.g * light.g, color.b * light.b, fade);
                 if (v.Flash > 0f)
@@ -1136,8 +1076,8 @@ namespace KindredSiege.Slice
                 bool unleashed = u.Alive && !walking && fx.Unleash > 0;
                 bool holding = u.Alive && !walking && fx.Hold > 0 && u.Row == Row.Front;
                 v.Disc.SetActive(unleashed || holding);
-                if (unleashed) v.DiscRenderer.material.color = new Color(0.9f, 0.25f, 0.2f);
-                else if (holding) v.DiscRenderer.material.color = new Color(0.3f, 0.55f, 0.95f);
+                if (unleashed) v.DiscRenderer.material.color = Amber;
+                else if (holding) v.DiscRenderer.material.color = UiAlly;
 
                 UpdateTether(v);
             }
@@ -1191,29 +1131,8 @@ namespace KindredSiege.Slice
 
         void UpdateTether(UnitView v)
         {
-            BattleUnit u = v.Unit;
-            UnitView ward = u.Class == UnitClass.Warden && u.Alive && !v.WalkOver && !v.Fleeing && u.GuardTargetId.Length > 0 ? View(u.GuardTargetId) : null;
-            if (ward == null || !ward.Unit.Alive)
-            {
-                if (v.Tether != null) v.Tether.SetActive(false);
-                return;
-            }
-            if (v.Tether == null)
-            {
-                v.Tether = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                v.Tether.name = "Guard";
-                v.Tether.transform.SetParent(_unitsRoot);
-                Destroy(v.Tether.GetComponent<Collider>());
-                Surface(v.Tether, Teal);
-            }
-            Vector3 a = v.Root.transform.position + Vector3.up * 0.15f;
-            Vector3 b = ward.Root.transform.position + Vector3.up * 0.15f;
-            float length = Vector3.Distance(a, b);
-            v.Tether.SetActive(length > 0.05f);
-            if (length <= 0.05f) return;
-            v.Tether.transform.position = (a + b) * 0.5f;
-            v.Tether.transform.rotation = Quaternion.LookRotation(b - a);
-            v.Tether.transform.localScale = new Vector3(0.07f, 0.03f, length);
+            // Guard lines between units are cut: on the battlefield they read as debug clutter.
+            if (v.Tether != null) v.Tether.SetActive(false);
         }
 
         void UpdateEffects(float dt)
@@ -1286,12 +1205,18 @@ namespace KindredSiege.Slice
 
         void AddFloat(UnitView view, string text, Color color, bool big)
         {
+            // Repeated cover events need one readable notice, not a stack of identical words.
+            if (text == "covered")
+                for (int i = 0; i < _floats.Count; i++)
+                    if (_floats[i].UnitId == view.Unit.Id && _floats[i].Text == text && _floats[i].Age < .4f) return;
+            int lane = view.FloatLane++ % 3;
             _floats.Add(new FloatText
             {
-                Pos = view.Root.transform.position + Vector3.up * (view.Height + 0.3f),
+                Pos = view.Root.transform.position + Vector3.up * (view.Height + 0.3f) + _camera.transform.right * ((lane - 1) * .28f) + _camera.transform.up * (lane * .12f),
                 Text = text,
+                UnitId = view.Unit.Id,
                 Color = color,
-                Life = big ? 1.2f : 0.9f,
+                Life = big ? 1.0f : 0.7f,
                 Big = big
             });
         }
@@ -1394,6 +1319,7 @@ namespace KindredSiege.Slice
 
         void OnGUI()
         {
+            if (_hudCanvas != null) return;
             EnsureStyles();
             float scale = Mathf.Min(Screen.width / RefWidth, Screen.height / RefHeight);
             var offset = new Vector2((Screen.width - RefWidth * scale) * 0.5f, (Screen.height - RefHeight * scale) * 0.5f);

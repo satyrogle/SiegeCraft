@@ -1,0 +1,148 @@
+{
+    "entries": [
+        {
+            "name": "blood_rot_chief_idle_se",
+            "top": 192
+        },
+        {
+            "name": "blood_rot_chief_idle_sw",
+            "top": 192
+        },
+        {
+            "name": "blood_rot_marksman_idle_se",
+            "top": 91
+        },
+        {
+            "name": "blood_rot_marksman_idle_sw",
+            "top": 92
+        },
+        {
+            "name": "blood_rot_medic_idle_se",
+            "top": 100
+        },
+        {
+            "name": "blood_rot_medic_idle_sw",
+            "top": 94
+        },
+        {
+            "name": "blood_rot_skirmisher_idle_se",
+            "top": 111
+        },
+        {
+            "name": "blood_rot_skirmisher_idle_sw",
+            "top": 108
+        },
+        {
+            "name": "blood_rot_trapper_idle_se",
+            "top": 114
+        },
+        {
+            "name": "blood_rot_trapper_idle_sw",
+            "top": 111
+        },
+        {
+            "name": "blood_rot_warden_idle_se",
+            "top": 128
+        },
+        {
+            "name": "blood_rot_warden_idle_sw",
+            "top": 124
+        },
+        {
+            "name": "clarth_chief_idle_se",
+            "top": 189
+        },
+        {
+            "name": "clarth_chief_idle_sw",
+            "top": 185
+        },
+        {
+            "name": "clarth_marksman_idle_se",
+            "top": 94
+        },
+        {
+            "name": "clarth_marksman_idle_sw",
+            "top": 93
+        },
+        {
+            "name": "clarth_medic_idle_se",
+            "top": 92
+        },
+        {
+            "name": "clarth_medic_idle_sw",
+            "top": 93
+        },
+        {
+            "name": "clarth_skirmisher_idle_se",
+            "top": 105
+        },
+        {
+            "name": "clarth_skirmisher_idle_sw",
+            "top": 101
+        },
+        {
+            "name": "clarth_trapper_idle_se",
+            "top": 117
+        },
+        {
+            "name": "clarth_trapper_idle_sw",
+            "top": 114
+        },
+        {
+            "name": "clarth_warden_idle_se",
+            "top": 129
+        },
+        {
+            "name": "clarth_warden_idle_sw",
+            "top": 125
+        },
+        {
+            "name": "skull_chief_idle_se",
+            "top": 189
+        },
+        {
+            "name": "skull_chief_idle_sw",
+            "top": 191
+        },
+        {
+            "name": "skull_marksman_idle_se",
+            "top": 99
+        },
+        {
+            "name": "skull_marksman_idle_sw",
+            "top": 101
+        },
+        {
+            "name": "skull_medic_idle_se",
+            "top": 94
+        },
+        {
+            "name": "skull_medic_idle_sw",
+            "top": 96
+        },
+        {
+            "name": "skull_skirmisher_idle_se",
+            "top": 111
+        },
+        {
+            "name": "skull_skirmisher_idle_sw",
+            "top": 109
+        },
+        {
+            "name": "skull_trapper_idle_se",
+            "top": 113
+        },
+        {
+            "name": "skull_trapper_idle_sw",
+            "top": 114
+        },
+        {
+            "name": "skull_warden_idle_se",
+            "top": 134
+        },
+        {
+            "name": "skull_warden_idle_sw",
+            "top": 130
+        }
+    ]
+}

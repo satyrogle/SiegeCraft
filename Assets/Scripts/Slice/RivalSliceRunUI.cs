@@ -56,10 +56,11 @@ namespace KindredSiege.Slice
 
         bool PointerInBattle()
         {
+            if (UnityEngine.EventSystems.EventSystem.current != null && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return false;
             float scale = Mathf.Min(Screen.width / RefWidth, Screen.height / RefHeight);
             float x = (Input.mousePosition.x - (Screen.width - RefWidth * scale) * 0.5f) / scale;
             float y = (Screen.height - Input.mousePosition.y - (Screen.height - RefHeight * scale) * 0.5f) / scale;
-            return x >= 20f && x <= 1260f && y >= 145f && y <= 550f;
+            return x >= 20f && x <= 1260f && y >= 170f && y <= 545f;
         }
 
         static string LessonSummary(Lesson lesson)
@@ -83,12 +84,22 @@ namespace KindredSiege.Slice
                     if (View(e.ActorId) is UnitView caster) Flash(caster, Amber);
                     return true;
                 case BattleEventKind.Release:
-                    AddBanner((e.ActorSide == 1 ? "ENEMY " : "YOUR ") + "ECLIPSE: " + e.Detail.ToUpperInvariant(),
-                        e.Detail == Moves.Dodged ? "The cast missed." : e.Detail == Moves.Soaked ? "Hold softened the impact." : "The cast landed.",
-                        e.ActorSide == 0 ? Amber : Rival, 2f);
+                {
+                    // The answer shows over the line the cast was aimed at: dodged, halved or hit.
+                    int aimed = 1 - e.ActorSide;
+                    bool atYou = aimed == SliceRun.PlayerSide;
+                    string name = _castWasPyre[e.ActorSide] ? "Pyre" : "Eclipse";
+                    bool full = e.Detail == Moves.Full;
+                    AddPop(LineTop(aimed), e.Detail == Moves.Dodged ? "DODGED!" : e.Detail == Moves.Soaked ? "HALVED" : name.ToUpperInvariant() + " HITS",
+                        full ? (atYou ? Rival : Amber) : (atYou ? Teal : Dim));
+                    Feed(atYou
+                        ? (e.Detail == Moves.Dodged ? "You dodged his " + name + "." : e.Detail == Moves.Soaked ? "Your Hold halved his " + name + "." : "His " + name + " hit your front line.")
+                        : (e.Detail == Moves.Dodged ? "They dodged your " + name + "." : e.Detail == Moves.Soaked ? "Their Hold halved your " + name + "." : "Your " + name + " hit their front line."));
                     return true;
+                }
                 case BattleEventKind.Interrupt:
-                    AddBanner("CAST INTERRUPTED", e.ActorSide == 0 ? "Your next order is empowered." : "The chief's next order is empowered.", Teal, 2f);
+                    if (View(e.TargetId) is UnitView broken) AddPop(HeadTop(broken), "INTERRUPTED!", e.ActorSide == SliceRun.PlayerSide ? Teal : Rival);
+                    Feed(e.ActorSide == SliceRun.PlayerSide ? "You broke his cast. Your next order is empowered." : "He broke your cast. His next order is empowered.");
                     return true;
                 case BattleEventKind.Transform:
                     AddBanner("THE BUTCHER: FRENZY", "Your Pal and allies strike harder.", Amber, 2f);
