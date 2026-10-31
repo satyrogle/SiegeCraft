@@ -1,0 +1,21 @@
+{
+  "out": "C:/Users/jacob/KindredSiege-Clean/Art/Studies/Beast-Concepts-20261022/anatomy",
+  "text_encoder": "qwen3vl_8b_fp8_scaled.safetensors",
+  "style": "",
+  "jobs": [
+    {
+      "name": "shark-reference-skeleton",
+      "seed": 660661,
+      "width": 2048,
+      "height": 1536,
+      "prompt": "A creature designer's anatomy reference page for a video game boss called the sand shark, drawn in confident pencil with light ochre and brick red washes on cream paper, like a page from a creature anatomy book, with small neat hand lettered labels. Top row, four reference studies of real animals side by side, each with its label underneath: the skull and open jaw of a great white shark labelled \"shark jaw\"; a sandfish skink lizard diving head first into sand labelled \"sandfish skink\"; the back of a spiny dogfish with sharp spines in front of its fins labelled \"dogfish spines\"; a thresher shark with its very long curved tail labelled \"thresher tail\". Bottom half, large: the sand shark seen from the side, drawn as a skeleton and muscle study inside a faint outline of its body: a long, low, flat body; a flat wedge shaped head for cutting through sand; an oversized jaw with rows of teeth; a tall blade shaped dorsal fin; a rack of long hollow spines rooted along its backbone that it can raise and fire; and a heavy tail with a sickle shaped fin. Short labels with arrows point to the parts: \"jaw\", \"fin\", \"spine rack\", \"tail\". A wavy line across it marks the surface of the sand, labelled \"sand line\", with only the fin and the spine rack above it. Clean, technical, believable anatomy, no scenery, no other text."
+    },
+    {
+      "name": "bear-reference-skeleton",
+      "seed": 660662,
+      "width": 2048,
+      "height": 1536,
+      "prompt": "A creature designer's anatomy reference page for a video game boss called the cage bear, drawn in confident pencil with light warm brown, steel grey and turquoise washes on cream paper, like a page from a creature anatomy book, with small neat hand lettered labels. Top row, four reference studies of real animals side by side, each with its label underneath: a cave bear skull with its high domed forehead labelled \"cave bear skull\"; a grizzly bear on all fours showing its shoulder hump labelled \"grizzly stance\"; the bones of a bear's front leg and paw with long claws labelled \"foreleg bones\"; a bear's ribcage and breastbone labelled \"ribs and breastbone\". Bottom half, large: the cage bear seen from the side, drawn as a skeleton study inside a faint outline of its body: a heavy bear skeleton where some of its own bones have grown into polished steel and pushed out through the fur. Its ribs and breastbone have become a cage of steel bars on its chest with a glowing turquoise heart inside. The bones of one front leg have grown into a giant steel grappling claw with three hooked fingers, much bigger than the other front paw, so the bear leans its weight onto its other side. A steel crest grows along the top of its skull and stops above its eyes. Short labels with arrows point to the parts: \"claw\", \"cage\", \"heart\", \"crest\", \"maw\". Steel grown from bone, never armour bolted on. Clean, technical, believable anatomy, no scenery, no other text."
+    }
+  ]
+}
