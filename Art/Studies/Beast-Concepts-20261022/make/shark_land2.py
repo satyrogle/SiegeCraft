@@ -6,7 +6,7 @@ of piled sand on whichever side is pushing forward (bigger the faster it goes), 
 and grains pouring off the body above the line. The haul still bursts out and flies; on landing it sinks to half
 depth with a splash along its length. The approach is a plow: the fin walk clip twists and rolls the whole body
 on every step, which with the fins under the sand reads as the shark wobbling in place, so the plow uses the steady
-breathing frames pushed forward through the sand in three tail kick surges. The bite is shark_bite2: gape 8 to 10,
+breathing frames carried toward the squad in one smooth glide (Jacob, 31 Oct), no stop and go. The bite is shark_bite2: gape 8 to 10,
 clamp at 11 (the hit, held, the front column takes it), thrash 12 to 33, open by 40. The tail sweep's blast through
 all five and the head first dive stay. Clips are 40 frames (41 with the loop frame); beast and effects are drawn on the half
 layer (2x pixels), squad and stage stay 1x.
@@ -161,6 +161,13 @@ def scene():
     team = bs.the_squad()
     still = bs.strip_base(Image.open(A / "shark-land-256.png"), floor=256)
     haul, breathe, bite, sweep = (clip(n) for n in ("shark_haul", "shark_breathe", "shark_bite2", "shark_sweep"))
+    # the breathing clip flashes stray pixels in front of the snout for one frame (an arrow tip on 2, specks on 18
+    # and 38) that read as the head jerking forward; clear anything ahead of where the snout sits in every frame
+    snout = int(np.median([np.nonzero((np.asarray(b)[95:140, :, 3] > 0).any(0))[0].min() for b in breathe]))
+    for n, b in enumerate(breathe):
+        a = np.asarray(b).copy()
+        a[90:146, :snout - 1, 3] = 0
+        breathe[n] = Image.fromarray(a, "RGBA")
     bb = still.getbbox()
     BELLY = bs.feet_row(still)
     SINK = BELLY - CUT_ROW
@@ -212,15 +219,20 @@ def scene():
             u -= m
         return len(durs) - 1
 
-    KICKS = (0, 680, 1360)
-
-    def far(x):
-        """Tail kick surges: each kick adds speed that dies away, a slow drift between (as in the fin patrol)."""
-        return 0.2 * x + sum(350 * (1 - math.exp(-(x - k) / 350)) for k in KICKS if x >= k)
+    RAMP = 0.2            # share of the glide spent speeding up, and again slowing into the bite
 
     def plow(t):
-        """How far the body has travelled into the plow, half size pixels, at time t."""
-        return WALK_SHIFT * far(min(max(0.0, t - T_WALK), WALK_MS)) / far(WALK_MS)
+        """How far the body has glided toward the squad, half size pixels, at time t: one steady glide, speeding
+        up and slowing down gently at the ends."""
+        u = min(1.0, max(0.0, (t - T_WALK) / WALK_MS))
+        v = 1 / (1 - RAMP)
+        if u < RAMP:
+            s = v * u * u / (2 * RAMP)
+        elif u <= 1 - RAMP:
+            s = v * (u - RAMP / 2)
+        else:
+            s = 1 - v * (1 - u) ** 2 / (2 * RAMP)
+        return WALK_SHIFT * s
 
     def shift(t):
         if t < T_WALK:
