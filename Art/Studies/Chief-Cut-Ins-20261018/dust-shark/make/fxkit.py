@@ -9,10 +9,11 @@ import numpy as np
 from PIL import Image, ImageDraw
 from scipy import ndimage
 
-REPO = pathlib.Path("C:/Users/jacob/KindredSiege-Clean")
+REPO = pathlib.Path(__file__).resolve().parents[5]   # make, dust-shark, Chief-Cut-Ins, Studies, Art, repo
 CA = REPO / "Assets/Resources/CampaignArt"
 STUDY = REPO / "Art/Studies/Chief-Cut-Ins-20261018/dust-shark"
-HUNT = pathlib.Path("C:/Users/jacob/.codex/scratch/ks-art-audit-fixes-20261014/full/fight-11-AlphaHunt.png")
+# Fight() only: the Codex audit render, not in the repo; drop it here to use Fight()
+HUNT = REPO / "Art/Studies/Chief-Cut-Ins-20261018/refs/fight-11-AlphaHunt.png"
 CLARTH_REF = REPO / "Art/Studies/Chief-Cut-Ins-20261018/refs/clarth-chief-front-approved.png"
 FRAME_MS = 80
 PLAY = (32, 80, 1408, 834)

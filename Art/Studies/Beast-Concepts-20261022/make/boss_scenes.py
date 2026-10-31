@@ -34,7 +34,7 @@ import fxkit as fx  # noqa: E402
 
 D = HERE.parent / "directions"
 A = D / "anim2"
-CA = pathlib.Path("C:/Users/jacob/KindredSiege-Clean/Assets/Resources/CampaignArt")
+CA = HERE.parents[3] / "Assets" / "Resources" / "CampaignArt"   # repo root is four folders up
 TICK = 20
 PLAY = (32, 80, 1408, 834)
 ICE = [(236, 242, 248), (178, 196, 214), (120, 140, 168), (40, 52, 70)]
