@@ -1,0 +1,156 @@
+{
+  "name": "death_sw",
+  "state": "death",
+  "direction": "south-west",
+  "canvas": [
+    256,
+    256
+  ],
+  "original_sprite_size": [
+    192,
+    192
+  ],
+  "padding": [
+    32,
+    32
+  ],
+  "pixel_scale": 1,
+  "frames": 15,
+  "raw_frames": 15,
+  "echoed_reference_excluded": false,
+  "unique_frames": 10,
+  "colours": 28,
+  "shared_palette_verified": true,
+  "master_frames": 15,
+  "duration_ms": 3070,
+  "durations": [
+    160,
+    120,
+    140,
+    180,
+    160,
+    110,
+    70,
+    50,
+    50,
+    70,
+    100,
+    160,
+    250,
+    250,
+    1200
+  ],
+  "bounds": [
+    [
+      64,
+      37,
+      175,
+      219
+    ],
+    [
+      93,
+      36,
+      175,
+      218
+    ],
+    [
+      74,
+      44,
+      180,
+      222
+    ],
+    [
+      57,
+      63,
+      191,
+      223
+    ],
+    [
+      25,
+      101,
+      197,
+      222
+    ],
+    [
+      24,
+      136,
+      199,
+      232
+    ],
+    [
+      22,
+      154,
+      204,
+      232
+    ],
+    [
+      21,
+      173,
+      208,
+      230
+    ],
+    [
+      21,
+      180,
+      206,
+      229
+    ],
+    [
+      21,
+      180,
+      206,
+      229
+    ],
+    [
+      21,
+      180,
+      206,
+      229
+    ],
+    [
+      21,
+      180,
+      206,
+      229
+    ],
+    [
+      21,
+      180,
+      206,
+      229
+    ],
+    [
+      21,
+      180,
+      206,
+      229
+    ],
+    [
+      21,
+      180,
+      206,
+      229
+    ]
+  ],
+  "edge_frames": [],
+  "seam_changed_pixels": 13178,
+  "adjacent_changed_pixels": [
+    8858,
+    9968,
+    10656,
+    12023,
+    10938,
+    9736,
+    7500,
+    4429,
+    522,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "sha256_sheet": "c7b2cdd10a86ddd1dffb5aea9381ac63de1b1b78f77c49b37352b166acf11edb",
+  "review_status": "pending_owner",
+  "frozen_end_from": 9
+}

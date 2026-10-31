@@ -1,0 +1,13 @@
+{
+  "name": "shade",
+  "label": "SHADE - Reading orders",
+  "count": 40,
+  "ms": 130,
+  "columns": 8,
+  "width": 192,
+  "height": 192,
+  "sheet": "shade/sheet.png",
+  "gif": "shade/camp_work.gif",
+  "master": "shade/camp_work.aseprite",
+  "contact": "shade/contact.png"
+}

@@ -1,0 +1,35 @@
+{
+  "name": "hunters-warden-20261015c",
+  "out": "Art/Pipeline/runs/hunters-warden-20261015c",
+  "_note": "Rerun of 20261015b, whose three readings came out as one lizard knight (same seed, the readings buried in a long shared prompt). Readings now lead the prompt, one seed each, cfg 5, no horn size words in the negative.",
+  "reference": "Assets/Resources/CampaignArt/clarth_chief_sw_idle.png",
+  "reference_scale": 3,
+  "native_divisor": 4.5,
+  "reference_feet": 744,
+  "matte": "#56616c",
+  "colours": 32,
+  "steps": 24,
+  "cfg": 5.0,
+  "beside": "Assets/Resources/CampaignArt/skull_warden_sw_idle.png",
+  "negative": "ugly, goofy, cartoon, chibi, child, kobold, gecko, frog, open mouth, tongue, hair, fur, war paint, hunched, bulky, fat, blurry, smooth gradients, painting, photograph, extra arms, extra weapons, two banners, background scenery, floor, text, letters, more than one character, cropped",
+  "options": [
+    {
+      "id": 1,
+      "label": "winged dragonkin",
+      "seed": 2026101531,
+      "prompt": "pixel art sprite, game asset, 32-bit pixel art. A winged dragonkin: a reptilian dragon man with a sleek dragon head, a short muzzle, a crest of small horns sweeping back from the brow, a long graceful neck, big dark dragon wings folded on his back with the wing tips rising above his shoulders, and a long dragon tail behind him. Edit the reference image: replace the warrior with this character in the same upright pose, the same spot with his feet on the same line, the same height, the same three quarter view facing down-left, and the same crisp dark fantasy pixel art style and pixel size. His spear becomes a tall war banner. Nothing of the old warrior remains: no war paint, no hair, no fur mantle, no bone crown. He is the Sovereign's standard bearer: very good looking, goth, proud and elegant. Two thin flaps of skin hang down from either side of his chin like a goatee. Scales on his face, neck and hands. Fitted body armour. His front hand grips the tall pole of a war banner planted upright beside him, the flag high above his head; his other arm carries a shield. Colours: black scales with a silver sheen, black armour with silver edges, a black cape with a blood red lining, a blood red banner with a black sigil, a black shield with a silver rim. Full body, wings and the whole banner inside the image with clear margins. One character only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no text."
+    },
+    {
+      "id": 2,
+      "label": "dragon knight, no wings",
+      "seed": 2026101532,
+      "prompt": "pixel art sprite, game asset, 32-bit pixel art. A dragon knight: a tall knight in full ornate gothic plate armour whose head is a noble dragon head with a short muzzle and two small horns swept back. Edit the reference image: replace the warrior with this character in the same upright pose, the same spot with his feet on the same line, the same height, the same three quarter view facing down-left, and the same crisp dark fantasy pixel art style and pixel size. His spear becomes a tall war banner. Nothing of the old warrior remains: no war paint, no hair, no fur mantle, no bone crown. He is the Sovereign's standard bearer: very good looking, goth, proud and elegant. Two thin flaps of skin hang down from either side of his chin like a goatee. Scales on his face, neck and hands. Fitted body armour. His front hand grips the tall pole of a war banner planted upright beside him, the flag high above his head; his other arm carries a shield. Colours: black scales with a silver sheen, black armour with silver edges, a black cape with a blood red lining, a blood red banner with a black sigil, a black shield with a silver rim. Full body, wings and the whole banner inside the image with clear margins. One character only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no text."
+    },
+    {
+      "id": 3,
+      "label": "half dragon, handsome face",
+      "seed": 2026101533,
+      "prompt": "pixel art sprite, game asset, 32-bit pixel art. A half dragon: a strikingly handsome man's face, like an elf prince, with high cheekbones, a sharp jaw and slit eyes, his skin covered in fine scales, two small horns swept back from his brow, no muzzle. Edit the reference image: replace the warrior with this character in the same upright pose, the same spot with his feet on the same line, the same height, the same three quarter view facing down-left, and the same crisp dark fantasy pixel art style and pixel size. His spear becomes a tall war banner. Nothing of the old warrior remains: no war paint, no hair, no fur mantle, no bone crown. He is the Sovereign's standard bearer: very good looking, goth, proud and elegant. Two thin flaps of skin hang down from either side of his chin like a goatee. Scales on his face, neck and hands. Fitted body armour. His front hand grips the tall pole of a war banner planted upright beside him, the flag high above his head; his other arm carries a shield. Colours: black scales with a silver sheen, black armour with silver edges, a black cape with a blood red lining, a blood red banner with a black sigil, a black shield with a silver rim. Full body, wings and the whole banner inside the image with clear margins. One character only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no text."
+    }
+  ]
+}

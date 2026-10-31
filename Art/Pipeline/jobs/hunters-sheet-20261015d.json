@@ -1,0 +1,96 @@
+{
+  "name": "hunters-sheet-20261015d",
+  "out": "Art/Pipeline/runs/hunters-sheet-20261015d",
+  "_note": "Jacob 15 Oct on hunters-sheet-20261015c: \"you made a humanoid with stars for beard ... i meant an actual banner showcasing their might not sigil ... body is okay but looks like mucha lucha character more than menacing dragonkin of wartorn space lawless wasteland\". One sheet: menacing original draconic head, leathery chin flaps, a real trophy war banner, same top heavy body, gritty palette.",
+  "size": [
+    1536,
+    1024
+  ],
+  "aspect_ratio": "3:2",
+  "preset": "Default",
+  "negative": "cartoon, comic, luchador, wrestling mask, bright colours, clean, smiling, human face, bald human, galaxy print skin, stars in the beard, floating sigil, wings, slender elegant dragon, long neck, swept back crest, frills, fins, long horns, signature, watermark",
+  "background": "A clean, light warm grey character concept art sheet with a subtle paper texture, laid out in tidy panels with thin pencil guide lines. No signature and no watermark.",
+  "stack_width": 1400,
+  "options": [
+    {
+      "id": 1,
+      "label": "wasteland standard bearer",
+      "seed": 2026101600,
+      "summary": "A professional character concept art sheet for a menacing reptilian mercenary standard bearer from a war torn, lawless space wasteland, carrying a huge trophy war banner, with a main painting, a turnaround, head studies, a banner study and colour swatches, in a gritty, high end video game concept art style.",
+      "elements": [
+        {
+          "type": "text",
+          "bbox": [
+            25,
+            25,
+            75,
+            600
+          ],
+          "text": "HUNT STANDARD BEARER",
+          "desc": "Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            20,
+            975,
+            370
+          ],
+          "desc": "Main concept painting: full body of a menacing reptilian warlord from a war torn, lawless space wasteland, an original draconic alien species with no wings: a heavy, broad, brutal reptilian head with a thick jaw, a short powerful muzzle, armoured scutes over the brow, two small stubby horns, glowing ember eyes, old battle scars, a cybernetic brace bolted along one side of the jaw, and two leathery flaps of skin hanging down from either side of the chin like a goatee. A thick neck. Dark scales with a faint astral sheen: tiny cold star glints and a deep blue iridescence inside the black scales, like a night sky, but clearly reptile scales. A top heavy body: an enormous chest, shoulders and arms, a narrower waist and strong, solid legs. Body augmentations: scavenged black alloy implants and cables fused into his shoulders, spine and one forearm, with dim starlight seams. Battle worn salvaged armour of dark iron plates, scratched and scorched, blood red cloth wraps, dust and rust from the wasteland. A grim, menacing snarl, in a three quarter view facing left, standing menacingly and gripping beside him a huge war banner that shows off the hunters' might: a tall, heavy pole of scavenged metal and a long, torn and scorched blood red war banner with a black emblem of a clawed hand, hung with trophies of their hunts: broken helmets and skulls of beaten foes, rows of kill marks, chains and battle honours. Dust in the air, hard dramatic light, painted in gritty, confident brushwork."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            390,
+            540,
+            980
+          ],
+          "desc": "Turnaround of the same character, a menacing reptilian warlord from a war torn, lawless space wasteland, an original draconic alien species with no wings: a heavy, broad, brutal reptilian head with a thick jaw, a short powerful muzzle, armoured scutes over the brow, two small stubby horns, glowing ember eyes, old battle scars, a cybernetic brace bolted along one side of the jaw, and two leathery flaps of skin hanging down from either side of the chin like a goatee. A thick neck. Dark scales with a faint astral sheen: tiny cold star glints and a deep blue iridescence inside the black scales, like a night sky, but clearly reptile scales. A top heavy body: an enormous chest, shoulders and arms, a narrower waist and strong, solid legs. Body augmentations: scavenged black alloy implants and cables fused into his shoulders, spine and one forearm, with dim starlight seams. Battle worn salvaged armour of dark iron plates, scratched and scorched, blood red cloth wraps, dust and rust from the wasteland. A grim, menacing snarl: front view, side view and back view standing in a row at the same height, without the banner, flat colour with clean line art."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            545,
+            400,
+            580,
+            980
+          ],
+          "text": "FRONT          SIDE          BACK",
+          "desc": "Small neat capital labels under the three turnaround views."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            390,
+            975,
+            660
+          ],
+          "desc": "Three head studies of the same menacing reptilian head: profile, three quarter and front, in full colour, showing the heavy jaw and short muzzle, the two small stubby horns, the cybernetic jaw brace, the scars and the two leathery flaps of skin hanging from either side of the chin like a goatee."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            680,
+            975,
+            840
+          ],
+          "desc": "Design study of the war banner on its own: a huge war banner that shows off the hunters' might: a tall, heavy pole of scavenged metal and a long, torn and scorched blood red war banner with a black emblem of a clawed hand, hung with trophies of their hunts: broken helmets and skulls of beaten foes, rows of kill marks, chains and battle honours."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            860,
+            975,
+            980
+          ],
+          "desc": "A column of colour swatches (black scale, astral blue glint, dark iron, rust, blood red cloth, ember eye) above two small close ups of the astral scales and a scavenged implant."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-base-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "pixel art sprite, game asset, 32-bit pixel art. One full body fighter for a dark fantasy tactics game, three quarter view from slightly above, facing down-left, standing in a ready combat stance. One of the Sovereign's hunters: a faceless elite mercenary, the face completely hidden, no skin showing anywhere. A smooth blank white porcelain mask with no features and one thin crack, black lacquered plate armour with thin dull gold trim, a long black coat split at the back, a short hooked spear held low. Lean adult proportions, crisp native pixel clusters, selective dark outlines, limited muted palette, light from the upper left. A 112px tall game fighter enlarged four times with nearest neighbour pixel edges. Full body inside the image with clear margins. One character only, centred. Isolated on a perfectly uniform flat blue grey (#56616c) background, no floor, no shadow, no text."
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "face, eyes, mouth, skin, chibi, child, cartoon, blurry painting, smooth gradients, photograph, extra arms, extra weapons, background scenery, floor, text, more than one character"
+    }
+  },
+  "12": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "13": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "5",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "cfg": 4.0
+    }
+  },
+  "14": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "15": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 24,
+      "width": 768,
+      "height": 768
+    }
+  },
+  "16": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026101460
+    }
+  },
+  "17": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "16",
+        0
+      ],
+      "guider": [
+        "13",
+        0
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ],
+      "filename_prefix": "KS-Pipeline/hunters-looks-20261014/option-1"
+    }
+  }
+}

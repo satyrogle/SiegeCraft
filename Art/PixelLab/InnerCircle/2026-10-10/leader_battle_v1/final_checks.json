@@ -1,0 +1,152 @@
+{
+  "clips": 16,
+  "actions": 8,
+  "shared_palette_colours": 31,
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "name": "idle_se",
+      "frames": 40,
+      "duration_ms": 4000,
+      "master": "idle_se/idle.aseprite",
+      "sheet": "idle_se/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "idle_sw",
+      "frames": 40,
+      "duration_ms": 4000,
+      "master": "idle_sw/idle.aseprite",
+      "sheet": "idle_sw/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "move_se",
+      "frames": 40,
+      "duration_ms": 2000,
+      "master": "move_se/move.aseprite",
+      "sheet": "move_se/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "move_sw",
+      "frames": 40,
+      "duration_ms": 2000,
+      "master": "move_sw/move.aseprite",
+      "sheet": "move_sw/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "attack_se",
+      "frames": 40,
+      "duration_ms": 2240,
+      "master": "attack_se/attack.aseprite",
+      "sheet": "attack_se/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "attack_sw",
+      "frames": 40,
+      "duration_ms": 2240,
+      "master": "attack_sw/attack.aseprite",
+      "sheet": "attack_sw/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "hit_se",
+      "frames": 13,
+      "duration_ms": 680,
+      "master": "hit_se_repair/hit.aseprite",
+      "sheet": "hit_se_repair/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "hit_sw",
+      "frames": 13,
+      "duration_ms": 680,
+      "master": "hit_sw_repair/hit.aseprite",
+      "sheet": "hit_sw_repair/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "block_se",
+      "frames": 15,
+      "duration_ms": 1290,
+      "master": "block_se_repair/block.aseprite",
+      "sheet": "block_se_repair/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "block_sw",
+      "frames": 15,
+      "duration_ms": 1290,
+      "master": "block_sw_repair/block.aseprite",
+      "sheet": "block_sw_repair/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "parry_se",
+      "frames": 16,
+      "duration_ms": 780,
+      "master": "parry_se/parry.aseprite",
+      "sheet": "parry_se/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "parry_sw",
+      "frames": 16,
+      "duration_ms": 780,
+      "master": "parry_sw/parry.aseprite",
+      "sheet": "parry_sw/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "death_se",
+      "frames": 15,
+      "duration_ms": 3070,
+      "master": "death_se_repair/death.aseprite",
+      "sheet": "death_se_repair/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "death_sw",
+      "frames": 15,
+      "duration_ms": 3070,
+      "master": "death_sw_repair/death.aseprite",
+      "sheet": "death_sw_repair/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "victory_se",
+      "frames": 24,
+      "duration_ms": 2340,
+      "master": "victory_se/victory.aseprite",
+      "sheet": "victory_se/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    },
+    {
+      "name": "victory_sw",
+      "frames": 24,
+      "duration_ms": 2340,
+      "master": "victory_sw/victory.aseprite",
+      "sheet": "victory_sw/sheet.png",
+      "palette_verified": true,
+      "edges_clear": true
+    }
+  ]
+}

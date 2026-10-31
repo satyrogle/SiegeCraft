@@ -1,0 +1,13 @@
+{
+  "name": "leader",
+  "label": "LEADER - Palm relic",
+  "count": 40,
+  "ms": 120,
+  "columns": 8,
+  "width": 192,
+  "height": 192,
+  "sheet": "leader/sheet.png",
+  "gif": "leader/camp_work.gif",
+  "master": "leader/camp_work.aseprite",
+  "contact": "leader/contact.png"
+}

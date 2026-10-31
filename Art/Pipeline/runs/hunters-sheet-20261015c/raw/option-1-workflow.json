@@ -1,0 +1,155 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "ideogram4_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+      "type": "ideogram4",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "{\"aspect_ratio\": \"3:2\", \"high_level_description\": \"A professional character concept art sheet for a handsome alien standard bearer with galaxy night sky skin, a huge top heavy chest on strong legs, body augmentations and a floating war sigil, with a main painting, a turnaround, head studies, a sigil study and colour swatches, in a clean, high end video game concept art style.\", \"compositional_deconstruction\": {\"background\": \"A clean, light warm grey character concept art sheet with a subtle paper texture, laid out in tidy panels with thin pencil guide lines. No signature and no watermark.\", \"elements\": [{\"type\": \"text\", \"bbox\": [25, 25, 75, 600], \"text\": \"HUNT STANDARD BEARER\", \"desc\": \"Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet.\"}, {\"type\": \"obj\", \"bbox\": [95, 20, 975, 370], \"desc\": \"Main concept painting: full body of an alien man from another planet with reptilian traits, an original species: a smooth, strikingly handsome face that is almost human, with a strong square jaw, high cheekbones, slit pupils that glow silver, two narrow slits for a nose, a confident smirk, a smooth bald head with two small, short horn nubs on the forehead, and two smooth flaps of skin hanging down from either side of the chin like a goatee. No crest, no spikes, no frills, no fins, no ear fins, no muzzle. Astral skin over his whole body, head included: his skin looks like the night sky seen through him, deep indigo black with glowing star specks and soft teal and silver nebula clouds drifting inside it, with a very fine scale texture only visible up close. A top heavy bodybuilder physique: an enormous puffed out chest and huge shoulders and arms, a narrow waist, and strong, solid, athletic legs with thick thighs and calves, in proportion, never thin. Body augmentations: black alloy plates fused into his shoulders and forearms, a ring of small implants around his temples and glowing ports down his spine. Fitted black and silver armour on the chest and shoulders, a blood red sash, black armoured boots. Goth look, in a three quarter view facing left, striking a vain, proud pose. His war banner is not a flag on a pole: it is a large floating sigil, an emblem of black metal and cold starlight with a blood red core, that hovers in the air beside his shoulder and always stays next to him. Painted in full colour with confident brushwork and a cold rim light.\"}, {\"type\": \"obj\", \"bbox\": [95, 390, 540, 980], \"desc\": \"Turnaround of the same character, an alien man from another planet with reptilian traits, an original species: a smooth, strikingly handsome face that is almost human, with a strong square jaw, high cheekbones, slit pupils that glow silver, two narrow slits for a nose, a confident smirk, a smooth bald head with two small, short horn nubs on the forehead, and two smooth flaps of skin hanging down from either side of the chin like a goatee. No crest, no spikes, no frills, no fins, no ear fins, no muzzle. Astral skin over his whole body, head included: his skin looks like the night sky seen through him, deep indigo black with glowing star specks and soft teal and silver nebula clouds drifting inside it, with a very fine scale texture only visible up close. A top heavy bodybuilder physique: an enormous puffed out chest and huge shoulders and arms, a narrow waist, and strong, solid, athletic legs with thick thighs and calves, in proportion, never thin. Body augmentations: black alloy plates fused into his shoulders and forearms, a ring of small implants around his temples and glowing ports down his spine. Fitted black and silver armour on the chest and shoulders, a blood red sash, black armoured boots. Goth look: front view, side view and back view standing in a row at the same height, flat colour with clean line art.\"}, {\"type\": \"text\", \"bbox\": [545, 400, 580, 980], \"text\": \"FRONT          SIDE          BACK\", \"desc\": \"Small neat capital labels under the three turnaround views.\"}, {\"type\": \"obj\", \"bbox\": [600, 390, 975, 660], \"desc\": \"Three head studies of the same handsome alien face: profile, three quarter and front, in full colour, showing the astral night sky skin with star specks on the face, the two small horn nubs, the temple implants and the two flaps of skin hanging from either side of the chin like a goatee.\"}, {\"type\": \"obj\", \"bbox\": [600, 680, 975, 840], \"desc\": \"Design study of the floating war sigil on its own: an emblem of black metal and cold starlight with a blood red core, hovering, with small arrows showing it stays beside his shoulder.\"}, {\"type\": \"obj\", \"bbox\": [600, 860, 975, 980], \"desc\": \"A column of colour swatches (indigo black night sky, star white, teal nebula, black alloy, silver, blood red) above two small close ups of the astral skin and an implant.\"}]}}"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "dragon, dragon head, dragonborn, muzzle, snout, crest, head spikes, frills, fins, ear fins, wings, tail, lizard head, long horns, thin legs, skinny legs, pale skin, grey skin, signature, watermark"
+    }
+  },
+  "6": {
+    "class_type": "CFGOverride",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "cfg": 3.0,
+      "start_percent": 0.7,
+      "end_percent": 1.0
+    }
+  },
+  "7": {
+    "class_type": "DualModelGuider",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "cfg": 7.0,
+      "model_negative": [
+        "6",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 1536,
+      "height": 1024,
+      "batch_size": 1
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "Ideogram4Scheduler",
+    "inputs": {
+      "steps": 20,
+      "width": 1536,
+      "height": 1024,
+      "mu": 0.0,
+      "std": 1.75
+    }
+  },
+  "11": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026101590
+    }
+  },
+  "12": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "11",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "KS-Pipeline/hunters-sheet-20261015c/option-1"
+    }
+  }
+}

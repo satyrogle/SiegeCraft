@@ -1,0 +1,956 @@
+{
+ "note": "Jacob, 19 Oct 2026, on round 1 (Art/PixelLab/NewTribes/2026-10-18): 'hmm not quite right they are good but not that great bro also do chieftain 1st then we do rest using that chieftain'. Chieftains first: three looks per tribe, 192x192 (chief height), create_image_pro_flash, no background, one seed per tribe, pushed toward the locked native look (lean, toned, hot and menacing, light gear, one signature piece). The squad is made from the picked chief afterwards.",
+ "style_image": {
+  "source_image_id": "c2435347-a2a8-5830-b76a-60621174e6f1",
+  "colours": "off",
+  "outline": "on",
+  "detail": "on",
+  "shading": "on"
+ },
+ "stoneveil_chief": {
+  "seed": 2026101840,
+  "options": {
+   "1-priestess": {
+    "job": "90f66a8a-e32f-48c1-b0f6-dc6314e0bcaa",
+    "image": "29661017-77d0-5a80-8186-b3e05164c3eb",
+    "look": "crimson high priestess, curved striped horns, striped head-tails, staff topped with a bowl of glowing red",
+    "note": "first try 37ce992e-ea10-4d5a-82b1-559f65d94666 blocked by the content filter; reworded without skin and gore words"
+   },
+   "2-masked-priest": {
+    "job": "787d18da-8523-4f79-bab0-779811ff6403",
+    "image": "587315bd-7048-55fc-b411-fee2f21e212f",
+    "look": "regal bone and bronze breathing mask with red goggles, striped head-tails, high-collared mantle, staff with a censer of red mist"
+   },
+   "3-warlord": {
+    "job": "bb1cb419-ed50-4e22-8902-65fd65fdd271",
+    "image": "43cc2f0f-b2bf-5639-8c2d-f0cbf4ece243",
+    "look": "blood-painted warlord, tusks, crown of finger bones, crest of black hair, twin bloody sacrificial blades"
+   }
+  }
+ },
+ "thundercoast_chief": {
+  "seed": 2026101850,
+  "options": {
+   "1-queen": {
+    "job": "a1e29143-d996-4aac-901b-6f4545e16fac",
+    "image": "b2ff91d2-07b2-57c9-a790-4d4deb206986",
+    "look": "tentacle-haired queen with gold rings, silver scale top, sheer fin cape, trident with a glowing machine core"
+   },
+   "2-gene-lord": {
+    "job": "a8af67d0-dab7-4199-b401-017c1233539b",
+    "image": "d298db33-863f-5135-b94b-b1a4cc1d5f2b",
+    "look": "shark-crested gene lord, glowing blue veins, black tech armour, glowing spine device, harpoon spear"
+   },
+   "3-admiral": {
+    "job": "5a4a0d64-dd8a-4074-beff-3faf41057efc",
+    "image": "a67c6207-7e61-5b89-ba32-a9174a2e1134",
+    "look": "tentacled head in a water-filled glass dome, ray-skin coat, tide gauntlet with swirling water"
+   }
+  }
+ },
+ "three_tit_rule": "asked for in both women's prompts; neither shows it at this size (like the Skullpeak chief, where it reads only faintly)",
+ "sheet": "pick-new-tribe-chiefs-round1.png (each 192 px look at 3x, numbered 1 to 3 per tribe)",
+ "spend": "6 images, 36 generations, plus one blocked try not charged",
+ "picked": {
+  "note": "Jacob, 19 Oct 2026: '1.1 2.2'",
+  "stoneveil_chief": "1-priestess (squad/stoneveil-chief.png)",
+  "thundercoast_chief": "2-gene-lord (squad/thundercoast-chief.png)"
+ },
+ "three_tit_edit": {
+  "job": "253dc7e3-b25c-4e42-bc04-b7215c104029",
+  "image": "208e425e-3923-513f-8ea2-368440989388",
+  "result": "edit_image_pro_flash on the priestess asking for a top over three breasts; it came back with the same two cups (squad/stoneveil-chief-edit-try.png), 6 generations; not used"
+ },
+ "squad": {
+  "recipe": "create_image_pro_flash, no background, each class at the size ladder; style image = the picked chief cropped round the head and chest to each canvas (squad/style/<tribe>-style-<size>.png, uploaded), palette, outline, detail and shading on. Three women and two men a squad, the women's prompts asking for the three tit rule.",
+  "stoneveil": {
+   "warden": {
+    "size": 128,
+    "seed": 2026101941,
+    "job": "c31f099d-88dd-4732-8615-6a421b36ca8a",
+    "image": "6c1aea21-10d0-568c-aeb4-7f81dafec24f",
+    "piece": "bone and bronze tower shield with a red handprint, curved ritual blade"
+   },
+   "skirmisher": {
+    "size": 112,
+    "seed": 2026101942,
+    "job": "c29c988a-bf17-4434-9b7d-861e143abc12",
+    "image": "8239a38d-2eb3-581e-a479-6c7454c1721b",
+    "piece": "twin curved ritual daggers glowing red"
+   },
+   "trapper": {
+    "size": 112,
+    "seed": 2026101943,
+    "job": "0437d27c-af02-4fe3-8be7-d1c0252dd175",
+    "image": "0687ba08-a4de-5a7a-9705-51929ef0f822",
+    "piece": "barbed chain with a bronze hook"
+   },
+   "marksman": {
+    "size": 96,
+    "seed": 2026101944,
+    "job": "b04f07e3-9fec-4247-a654-fed2ee56b166",
+    "image": "059e0f10-8bdd-5846-947b-f36041206757",
+    "piece": "bone rifle with a glowing red crystal"
+   },
+   "medic": {
+    "size": 96,
+    "seed": 2026101945,
+    "job": "88f6a23d-53b1-43bc-b72c-fabf38b5b0a2",
+    "image": "97faff9e-6d22-5805-a39f-61bef7803038",
+    "piece": "bronze bowl of glowing red and a bone staff"
+   }
+  },
+  "thundercoast": {
+   "warden": {
+    "size": 128,
+    "seed": 2026101951,
+    "job": "ecd2a504-deb7-4eb7-a1c1-dea9b7d3b809",
+    "image": "3c4e3891-77db-5acd-8778-d205fbb53cb1",
+    "piece": "black shell shield rimmed in blue, harpoon blade"
+   },
+   "skirmisher": {
+    "size": 112,
+    "seed": 2026101952,
+    "job": "9a9728bc-8143-4ef3-9b67-7f216ef8fcc3",
+    "image": "75efb4c9-db1f-52d0-8b0c-03d2aa611082",
+    "piece": "glowing fin blades on both forearms"
+   },
+   "trapper": {
+    "size": 112,
+    "seed": 2026101953,
+    "job": "62c6e1ad-00ca-470e-85e3-1d5810bf6870",
+    "image": "d9c24bf3-e9ef-5c1a-969a-67b606d6edac",
+    "piece": "electric net launcher, net rack on the back"
+   },
+   "marksman": {
+    "size": 96,
+    "seed": 2026101954,
+    "job": "439fe0c6-2dee-4611-9aa5-36a392095c20",
+    "image": "f38b500b-5c8f-545b-ae9c-4dfdff1fa18d",
+    "piece": "energy harpoon rifle"
+   },
+   "medic": {
+    "size": 96,
+    "seed": 2026101955,
+    "job": "93f5fd52-cbec-4fed-a146-caec567b981d",
+    "image": "9d104eab-eb3c-58c9-aca5-996d44869a39",
+    "piece": "injector bandolier, glass tank, injector gauntlet (reads faintly)"
+   }
+  },
+  "sheet": "squad/squads-new-tribes.png (each chief and squad at 2x, feet aligned, true relative size)",
+  "known": "the three tit rule does not show on any of the women; everyone faces front, not turned or animated"
+ },
+ "spend_19_oct": "chiefs 36, three tit edit 6, squad 56: 98 generations on 19 Oct",
+ "champions": {
+  "note": "Jacob, 19 Oct 2026: 'now the champions for both tribes'. Each tribe's duel champion, the chief's right hand (as the Bloodridge champion, 15 Oct: near the Warden's size, a clear champion trait, an elite officer's presence). 128x128, create_image_pro_flash, no background, style image = the picked chief cropped to 128 (squad/style), palette, outline, detail and shading on, one seed per tribe. In the sim the cave champion is a Skirmisher and the sea champion a Warden (Campaign.DuelChampion: the roster's first Warden or Skirmisher).",
+  "stoneveil": {
+   "seed": 2026101960,
+   "options": {
+    "1-blade-dancer": {
+     "job": "ce38013e-8b43-4842-ab82-7d6f7909d294",
+     "image": "7b0f8c0a-c986-5da8-8bfb-6579288ab381",
+     "look": "masked blade dancer, long curved two-handed sword glowing red, cloak of red ribbons; the sword tip touches the canvas edge"
+    },
+    "2-gladiator": {
+     "job": "0a0121c1-ae80-4aef-a612-a7c3b0ebb149",
+     "image": "92a1a2e4-b31f-5d8c-9cd3-88266792ce60",
+     "look": "pit fighter with two hooked bronze sickles and one bone pauldron with the red handprint"
+    },
+    "3-blood-knight": {
+     "job": "57875fbd-ac73-475d-89b3-cb4292daa1bf",
+     "image": "981c5a5b-d205-58dd-89fb-79a114fd25b1",
+     "look": "red lacquered bone plates and a glaive with a sharpened rib blade; the glaive tip touches the top edge"
+    }
+   }
+  },
+  "thundercoast": {
+   "seed": 2026101970,
+   "options": {
+    "1-shell-guard": {
+     "job": "b1ccb1e4-f75f-483f-be98-45c999157cba",
+     "image": "2abf40cd-e270-5a9e-8ca4-c8f5c9e139ef",
+     "look": "huge black shell shield studded with glowing blue, trident"
+    },
+    "2-shark-knight": {
+     "job": "b5492739-46a3-4d6a-9ab9-047f00cbc6f8",
+     "image": "5f49877b-500e-51cb-8b57-9d0512ab7851",
+     "look": "hammerhead helmet, tower shield like an open shark jaw, short heavy blade"
+    },
+    "3-coral-guardian": {
+     "job": "a298e529-3324-4172-9d2b-0d475dd8ed8c",
+     "image": "bd41d437-1a7e-5c3c-84cd-2cd169c0f7af",
+     "look": "black coral and steel carapace down one side, glowing energy shield gauntlet, harpoon lance"
+    }
+   }
+  },
+  "sheet": "pick-new-tribe-champions.png (each 128 px look at 3x, numbered 1 to 3 per tribe)",
+  "spend": "36 generations",
+  "picked": {
+   "note": "Jacob, 19 Oct 2026: '1.1 2.3'",
+   "stoneveil": "1-blade-dancer (champions/stoneveil-champion.png)",
+   "thundercoast": "3-coral-guardian (champions/thundercoast-champion.png)",
+   "edge_check": "the blade dancer's sword stops 3 px short of the right edge, so it is not clipped; only the feet touch the bottom edge"
+  }
+ },
+ "animated": {
+  "note": "Jacob, 19 Oct 2026: 'go, turn and animate all 14'. Each picked look became a PixelLab character (create_character_pro_flash from the picked image, low top-down, 8 directions), then four clips facing SW in pixminimax with keep_first_frame false: idle 40, attack 40, hit 16, death 32 frames, like the Sovereign's 57. Turns in turns/<name>-<direction>.png, frames in clips/<name>/<clip>/NN.png. Checked by eye on scratch contact sheets. Not exported to game sheets; that waits for Jacob's go. No SE facing yet.",
+  "canvas": {
+   "stoneveil_chief": 252,
+   "thundercoast_chief": 256,
+   "wardens and champions": 180,
+   "skirmishers and trappers": 160,
+   "marksmen and medics": 136
+  },
+  "characters": {
+   "stoneveil_chief": {
+    "id": "7ade289c-9561-4397-9825-ba8af87e24a4",
+    "clips": {
+     "idle": {
+      "job": "914b784b-3905-40f2-be2b-09ab58a71db3",
+      "frames": 40
+     },
+     "attack": {
+      "job": "e14bb417-d722-44c6-88de-5b97f0a66d96",
+      "frames": 40
+     },
+     "hit": {
+      "job": "c855542a-25e2-4963-b92a-81be9a82b654",
+      "frames": 16
+     },
+     "death": {
+      "job": "955e7bd0-25b8-465b-a9fd-02edc1094caf",
+      "frames": 32
+     }
+    }
+   },
+   "stoneveil_warden": {
+    "id": "7ad5ce2b-9f45-40fe-ba77-a1da5d5ec28d",
+    "clips": {
+     "idle": {
+      "job": "f5e32659-9fff-4669-b3cc-aeee8fdd81b4",
+      "frames": 40
+     },
+     "attack": {
+      "job": "e16169bd-4177-4b6c-b36a-0f427266a2ce",
+      "frames": 40
+     },
+     "hit": {
+      "job": "daa05ef5-e4b9-43a3-bfb7-84afc210c921",
+      "frames": 16
+     },
+     "death": {
+      "job": "c5cc2707-9bac-4498-a904-fa63bb4885f3",
+      "frames": 32
+     }
+    }
+   },
+   "stoneveil_skirmisher": {
+    "id": "7383c976-4b02-4f9f-8631-685efb8c4aa1",
+    "clips": {
+     "idle": {
+      "job": "8d9df62f-623f-479b-b159-edce65e7b9c2",
+      "frames": 40
+     },
+     "attack": {
+      "job": "c6d7f0e0-232e-43da-a267-91acb875a993",
+      "frames": 40
+     },
+     "hit": {
+      "job": "a7c643ae-2fe0-4bba-87da-71eaa1e95f4c",
+      "frames": 16
+     },
+     "death": {
+      "job": "79f533a7-c4ef-4adf-a7ce-516ef064f5f5",
+      "frames": 32
+     }
+    }
+   },
+   "stoneveil_trapper": {
+    "id": "1b4cfa9c-0cce-464a-a6fb-46da6f972551",
+    "clips": {
+     "idle": {
+      "job": "e5ceb55d-9bba-4b12-9f66-f3cc8cc6ba30",
+      "frames": 40
+     },
+     "attack": {
+      "job": "205c00d1-b792-4e5d-9604-d9e607481203",
+      "frames": 40
+     },
+     "hit": {
+      "job": "59183098-01c7-4d84-b5e3-9c18077a8a8e",
+      "frames": 16
+     },
+     "death": {
+      "job": "d4f59bbf-12fa-462c-94a2-8ffea15ad698",
+      "frames": 32
+     }
+    }
+   },
+   "stoneveil_marksman": {
+    "id": "68c47f07-35ad-481a-89ec-4f2bb71a292f",
+    "clips": {
+     "idle": {
+      "job": "c214aa89-7143-42f5-9c93-e5e2e884a96a",
+      "frames": 40
+     },
+     "attack": {
+      "job": "906aabde-0d66-4d37-9112-01bc676628e6",
+      "frames": 40
+     },
+     "hit": {
+      "job": "78dc6422-feac-4e7b-a775-91ed757af76b",
+      "frames": 16
+     },
+     "death": {
+      "job": "ba51716a-1ec0-4810-b011-b642fca777da",
+      "frames": 32
+     }
+    }
+   },
+   "stoneveil_medic": {
+    "id": "c6f790c3-2953-43e3-a423-1de0bf758672",
+    "clips": {
+     "idle": {
+      "job": "8f8d5474-3d1f-4cf9-91eb-a046a38da3a7",
+      "frames": 40
+     },
+     "attack": {
+      "job": "c21ab945-81a7-4f65-8606-ce86fca84427",
+      "frames": 40
+     },
+     "hit": {
+      "job": "d55cd07e-4404-43e0-8ae7-40a62d5b2c5d",
+      "frames": 16
+     },
+     "death": {
+      "job": "0adc4a2f-1110-4e58-a9ee-4eed702438e1",
+      "frames": 32
+     }
+    }
+   },
+   "stoneveil_champion": {
+    "id": "3d99fb9e-00d4-4ed0-bd34-cfa4edde28ff",
+    "clips": {
+     "idle": {
+      "job": "63ec23cf-3417-4958-9f77-1ec1ca2cb01f",
+      "frames": 40
+     },
+     "attack": {
+      "job": "c839f17d-b5c3-47e2-92f3-17151d299c5d",
+      "frames": 40
+     },
+     "hit": {
+      "job": "0af59c9b-56b2-4a49-b615-a3273b5b7f91",
+      "frames": 16
+     },
+     "death": {
+      "job": "7493569e-3f8b-456a-a6bf-811c779002af",
+      "frames": 32
+     }
+    }
+   },
+   "thundercoast_chief": {
+    "id": "156de947-3562-4305-8689-da2513697267",
+    "clips": {
+     "idle": {
+      "job": "1fef9202-6cd3-4fa9-8662-78bcca727d23",
+      "frames": 40
+     },
+     "attack": {
+      "job": "4c0240e1-0321-4b64-b3a9-e2ee73bddf9f",
+      "frames": 40
+     },
+     "hit": {
+      "job": "427fdb90-0cef-449c-bc79-1ddd1c42766f",
+      "frames": 16
+     },
+     "death": {
+      "job": "bb837079-133d-49ad-8b88-9cc3924d3255",
+      "frames": 32
+     }
+    }
+   },
+   "thundercoast_warden": {
+    "id": "a9b05c27-cdf5-45cd-a957-6d4b308f762e",
+    "clips": {
+     "idle": {
+      "job": "0c8b5c89-4b21-436a-b1f1-72e3923ea7ea",
+      "frames": 40
+     },
+     "attack": {
+      "job": "1301b7f1-bfec-4022-93fd-14131f665007",
+      "frames": 40
+     },
+     "hit": {
+      "job": "ef168c87-7001-4597-b05e-2865fbb43212",
+      "frames": 16
+     },
+     "death": {
+      "job": "08c0d1a7-e5b2-4128-bfe1-591d0ee93a4f",
+      "frames": 32
+     }
+    }
+   },
+   "thundercoast_skirmisher": {
+    "id": "82c1a5fd-0234-4c03-ab21-89e29e276fc4",
+    "clips": {
+     "idle": {
+      "job": "b11cc621-26ca-442f-b247-0a9c59e7816c",
+      "frames": 40
+     },
+     "attack": {
+      "job": "7a8bcf07-b7ac-45f9-9027-da5dd6b179f0",
+      "frames": 40
+     },
+     "hit": {
+      "job": "a0a4f411-9e85-462f-97d2-a24a8d07191f",
+      "frames": 16
+     },
+     "death": {
+      "job": "0adeabd7-5e79-4dde-9a6d-414181d1cd82",
+      "frames": 32
+     }
+    }
+   },
+   "thundercoast_trapper": {
+    "id": "ba94272d-d109-4a54-9b95-eced057e1d71",
+    "clips": {
+     "idle": {
+      "job": "ae139272-af22-4edc-9197-3af555164a57",
+      "frames": 40
+     },
+     "attack": {
+      "job": "868d1aaa-fa03-4898-96f2-4544c4918c30",
+      "frames": 40
+     },
+     "hit": {
+      "job": "7b01772c-3ede-4156-aa1f-a09e7fd58443",
+      "frames": 16
+     },
+     "death": {
+      "job": "6734ae78-c0b1-4ed2-af84-f966335b633f",
+      "frames": 32
+     }
+    }
+   },
+   "thundercoast_marksman": {
+    "id": "b1cd7b35-f05b-4644-ac64-a08384b1856a",
+    "clips": {
+     "idle": {
+      "job": "924b34fb-8ec6-4a86-8539-26dfd17374b1",
+      "frames": 40
+     },
+     "attack": {
+      "job": "4c572cb7-8f51-4445-bb61-a7e03f32582b",
+      "frames": 40
+     },
+     "hit": {
+      "job": "b1b664fe-f5d9-4eb5-9728-2f59f4729d1a",
+      "frames": 16
+     },
+     "death": {
+      "job": "e2abc43b-ba06-4f7e-991e-c9fe8007d3b9",
+      "frames": 32
+     }
+    }
+   },
+   "thundercoast_medic": {
+    "id": "104fffba-b897-4b79-adba-8a6a513404f7",
+    "clips": {
+     "idle": {
+      "job": "4ff82f9a-ea49-4328-9314-3b28d6167e35",
+      "frames": 40
+     },
+     "attack": {
+      "job": "f7fc5f5f-f555-4bdc-9aff-7ffaab44ab3d",
+      "frames": 40
+     },
+     "hit": {
+      "job": "9861e8d2-dd15-4df7-9805-cc1d6ee8044a",
+      "frames": 16
+     },
+     "death": {
+      "job": "7174f5e4-8257-4a48-a9f0-ae2920ee20c1",
+      "frames": 32
+     }
+    }
+   },
+   "thundercoast_champion": {
+    "id": "459f0ca6-ad41-4a2d-a599-682869795d86",
+    "clips": {
+     "idle": {
+      "job": "fa89ab77-1664-4b5a-9843-e7fa49b6578d",
+      "frames": 40
+     },
+     "attack": {
+      "job": "cbe084dd-cb5f-49af-80cf-33e9b6b33cd9",
+      "frames": 40
+     },
+     "hit": {
+      "job": "c36f36dd-6040-4636-b40b-48be45521f30",
+      "frames": 16
+     },
+     "death": {
+      "job": "54dbef57-5cff-43a2-8fdc-51901d570881",
+      "frames": 32
+     }
+    }
+   }
+  },
+  "retries": [
+   {
+    "character": "thundercoast_chief",
+    "clip": "idle",
+    "job": "978a051f-e462-4d50-bdea-ce11866fc735",
+    "frames": 40,
+    "why": "slid sideways across the canvas instead of standing in place",
+    "kept": true
+   },
+   {
+    "character": "stoneveil_marksman",
+    "clip": "death",
+    "job": "710f2471-0969-4633-89c8-a96256eec967",
+    "frames": 32,
+    "why": "the body ran off the canvas edge",
+    "kept": true
+   },
+   {
+    "character": "thundercoast_marksman",
+    "clip": "death",
+    "job": "bacfa7b2-8e45-49e7-a9d4-442852b48f50",
+    "frames": 32,
+    "why": "the body ran off the canvas edge",
+    "kept": true
+   },
+   {
+    "character": "stoneveil_marksman",
+    "clip": "hit",
+    "job": "b2cce377-ebb2-4460-8b71-d0b7e507d02c",
+    "frames": 16,
+    "why": "a slash effect covered the body",
+    "kept": true
+   },
+   {
+    "character": "thundercoast_warden",
+    "clip": "hit",
+    "job": "c985314e-0321-4107-b094-5cbb0b506904",
+    "frames": 16,
+    "why": "a slash effect covered the body",
+    "kept": true
+   },
+   {
+    "character": "stoneveil_champion",
+    "clip": "hit",
+    "job": "64a62701-9c5c-4587-887d-cee91cf62eab",
+    "frames": 16,
+    "why": "a slash effect covered the body",
+    "kept": true
+   },
+   {
+    "character": "thundercoast_medic",
+    "clip": "death",
+    "job": "5de62e50-f52b-4066-b043-2439c05af298",
+    "frames": 32,
+    "why": "the body ran off the canvas edge",
+    "kept": true
+   }
+  ],
+  "first_takes": "The first take of each retried clip is kept beside it as <clip>-first, not for use.",
+  "flaws": [
+   "Hit retries for stoneveil_marksman (frame 0), stoneveil_champion (frame 4) and thundercoast_warden (frame 6) still show a slash effect, thinner than the first takes.",
+   "thundercoast_warden hit: the shield swaps sides in frames 8 to 10, in both takes.",
+   "thundercoast_chief idle retry: a small water arc in frame 0 fades by frame 4, so it pops once a loop.",
+   "thundercoast_champion idle barely moves: frames 0 and 20 are identical.",
+   "Deaths fall fast: standing to lying in about 4 to 8 frames.",
+   "stoneveil_marksman attack touches the right canvas edge in 2 frames, stoneveil_medic attack in 3 (the burst)."
+  ],
+  "spend": "PixelLab generations went from 1170.6 before the turns to 980.6 after: 190 in all, 15 of them retries. Not split per job."
+ },
+ "se_and_priest": {
+  "note": "Jacob, 19 Oct 2026: 'man do both and fix em go' (SE clips so the new tribes' fighters show on the player's side, and a blood priest of its own for the cave trial), then 'go, redo the 12 bowing deaths so they fall flat'. SE clips: pixminimax facing south-east, keep_first_frame false, animation names idle_se, attack_se, hit_se, death_se, the SW wording for idle and attack. Frames in clips_se/<name>/<clip>/NN.png; other takes sit beside them as <clip>-first, -second, -heap or -flat-bootscut, not for use. In the zip, takes of one name are told apart by group id (scratch take.py), never by folder order.",
+  "se_kept": {
+   "stoneveil_marksman": {
+    "attack": {
+     "job": "c2df7352-efd8-4e30-9ec8-68408e753e46",
+     "frames": 40
+    },
+    "death": {
+     "job": "e6153b99-3fe1-4481-b8fb-284450e61c03",
+     "frames": 32,
+     "group": "baea7cd8"
+    },
+    "hit": {
+     "job": "773b82ad-2067-4ebe-bab7-f555d61e16a4",
+     "frames": 16
+    },
+    "idle": {
+     "job": "ac020e10-ee95-42a1-a599-af448c0c76a0",
+     "frames": 40
+    }
+   },
+   "stoneveil_medic": {
+    "attack": {
+     "job": "5cf97a3b-18e8-4bd2-85f5-438e2199faba",
+     "frames": 40
+    },
+    "death": {
+     "job": "bdd4dcb1-1c49-4c7e-814b-a46917301a62",
+     "frames": 32,
+     "group": "b47168c0"
+    },
+    "hit": {
+     "job": "cf8a1477-9b2a-4add-baf8-5a8eff993be3",
+     "frames": 16
+    },
+    "idle": {
+     "job": "f94f968a-228c-4b57-948f-58a6b8136ed0",
+     "frames": 40
+    }
+   },
+   "stoneveil_skirmisher": {
+    "attack": {
+     "job": "512670b9-a67e-4616-ad78-242e567b77b1",
+     "frames": 40
+    },
+    "death": {
+     "job": "05551a7d-76d7-487e-8f17-77759855932b",
+     "frames": 32,
+     "group": "63f576fb"
+    },
+    "hit": {
+     "job": "3a56a2ca-736e-40f9-94fc-a478e5073c4e",
+     "frames": 16
+    },
+    "idle": {
+     "job": "19d5a63d-6c04-4a78-b9ba-e599f978d324",
+     "frames": 40
+    }
+   },
+   "stoneveil_trapper": {
+    "attack": {
+     "job": "f3d771bb-ddc2-4666-9b2d-a8fb14b53101",
+     "frames": 40
+    },
+    "death": {
+     "job": "2a085697-0c26-4df9-bde8-9399f352e557",
+     "frames": 32,
+     "group": "0ce17277"
+    },
+    "hit": {
+     "job": "822738a5-13b7-46cb-9861-cef72103dceb",
+     "frames": 16
+    },
+    "idle": {
+     "job": "13ee177a-51fe-47b0-a0b1-fc8649430c73",
+     "frames": 40
+    }
+   },
+   "stoneveil_warden": {
+    "attack": {
+     "job": "a7929956-a296-4a54-a35f-47c9b1912c8c",
+     "frames": 40
+    },
+    "death": {
+     "job": "de44729a-631a-4b1b-9e58-80388b11fff5",
+     "frames": 32,
+     "group": "420b2656"
+    },
+    "hit": {
+     "job": "6e416459-2e6e-41ca-b961-5e6a8b950b01",
+     "frames": 16
+    },
+    "idle": {
+     "job": "d84844df-2834-47b5-ba8f-a1fb54cfca23",
+     "frames": 40
+    }
+   },
+   "thundercoast_marksman": {
+    "attack": {
+     "job": "63ae7643-7df4-416d-8778-18526edd88fe",
+     "frames": 40
+    },
+    "death": {
+     "job": "da2847d0-99d7-4c50-bca5-e9100d850d5b",
+     "frames": 32,
+     "group": "0bd80247"
+    },
+    "hit": {
+     "job": "eeb4893f-40b2-4481-9da8-2df5ba660ca0",
+     "frames": 16
+    },
+    "idle": {
+     "job": "53564011-5691-4844-a315-73421ec06a76",
+     "frames": 40
+    }
+   },
+   "thundercoast_medic": {
+    "attack": {
+     "job": "cc1639f5-eff4-490a-9ceb-850589df7065",
+     "frames": 40
+    },
+    "death": {
+     "job": "1070c0a4-ae67-4dd7-ae1a-a290c8c1a1aa",
+     "frames": 32,
+     "group": "70d464c0"
+    },
+    "hit": {
+     "job": "56917621-341c-46f2-91cb-a79e397da68b",
+     "frames": 16
+    },
+    "idle": {
+     "job": "dab9bbac-1068-48aa-860f-bbd841cc80fc",
+     "frames": 40
+    }
+   },
+   "thundercoast_skirmisher": {
+    "attack": {
+     "job": "4ee640aa-e09b-41e5-9f5a-6d68b234b444",
+     "frames": 40
+    },
+    "death": {
+     "job": "1fe81ea4-06ce-4c2d-a07c-96397ce179f6",
+     "frames": 32,
+     "group": "24c4a50e"
+    },
+    "hit": {
+     "job": "26a0d766-4c1e-4857-a2b2-e6b483a2dc13",
+     "frames": 16
+    },
+    "idle": {
+     "job": "f4723e0d-9a00-4d7e-aaba-392ad4e1c8d4",
+     "frames": 40
+    }
+   },
+   "thundercoast_trapper": {
+    "attack": {
+     "job": "eceedc8f-7f82-4ebb-befb-b65aff8806b2",
+     "frames": 40
+    },
+    "death": {
+     "job": "d8cae417-fea4-4226-aca7-c101d7c4ca1e",
+     "frames": 32
+    },
+    "hit": {
+     "job": "eaeae792-41bb-4104-adcf-aa24eda2e65a",
+     "frames": 16
+    },
+    "idle": {
+     "job": "24b35a7e-84f2-4df5-8a51-dd54714272cd",
+     "frames": 40
+    }
+   },
+   "thundercoast_warden": {
+    "attack": {
+     "job": "51780e75-a113-4e13-9ad0-248c77f657ad",
+     "frames": 40
+    },
+    "death": {
+     "job": "f0052853-0183-4a4f-848a-09771d9b0b0b",
+     "frames": 32,
+     "group": "f7056a41"
+    },
+    "hit": {
+     "job": "e81f5a1e-1ff9-4e82-8934-5fe2ee5ce4dd",
+     "frames": 16
+    },
+    "idle": {
+     "job": "55288511-c209-422d-9a0e-846377dff69f",
+     "frames": 40
+    }
+   }
+  },
+  "redos": [
+   {
+    "character": "stoneveil_medic",
+    "clip": "idle",
+    "job": "f94f968a-228c-4b57-948f-58a6b8136ed0",
+    "why": "a spinning ring behind her in every idle frame"
+   },
+   {
+    "character": "thundercoast_marksman",
+    "clip": "idle",
+    "job": "53564011-5691-4844-a315-73421ec06a76",
+    "why": "a column of orange symbols beside her"
+   },
+   {
+    "character": "thundercoast_marksman",
+    "clip": "attack",
+    "job": "37e138aa-a7da-479d-af7e-fb458fd60faa",
+    "why": "the attack barely moved"
+   },
+   {
+    "character": "thundercoast_skirmisher",
+    "clip": "hit",
+    "job": "26a0d766-4c1e-4857-a2b2-e6b483a2dc13",
+    "why": "a big slash effect over the body"
+   },
+   {
+    "character": "thundercoast_medic",
+    "clip": "hit",
+    "job": "56917621-341c-46f2-91cb-a79e397da68b",
+    "why": "a big slash effect over the body"
+   },
+   {
+    "character": "thundercoast_marksman",
+    "clip": "attack",
+    "job": "63ae7643-7df4-416d-8778-18526edd88fe",
+    "why": "the redo read 'strong kick' literally and kicked a leg out"
+   },
+   {
+    "character": "thundercoast_trapper",
+    "clip": "hit",
+    "job": "eaeae792-41bb-4104-adcf-aa24eda2e65a",
+    "why": "a big slash effect over the body"
+   },
+   {
+    "character": "stoneveil_marksman",
+    "clip": "death",
+    "job": "e6153b99-3fe1-4481-b8fb-284450e61c03",
+    "why": "the flat body ran off the canvas edge and lost its boot tips"
+   }
+  ],
+  "flat_deaths": {
+   "why": "The 'drop to the knees and crumple into a compact heap' wording, used to stop bodies running off the canvas, made them kneel face down; Jacob: 'why are they bowing down'. Redone as 'staggers backward, then falls flat on the back and lies still'. Two of the twelve already ended flat and were left: stoneveil_marksman SW and thundercoast_trapper SE.",
+   "jobs": [
+    {
+     "character": "stoneveil_warden",
+     "facing": "SE",
+     "job": "de44729a-631a-4b1b-9e58-80388b11fff5",
+     "group": "420b2656"
+    },
+    {
+     "character": "stoneveil_skirmisher",
+     "facing": "SE",
+     "job": "05551a7d-76d7-487e-8f17-77759855932b",
+     "group": "63f576fb"
+    },
+    {
+     "character": "stoneveil_trapper",
+     "facing": "SE",
+     "job": "2a085697-0c26-4df9-bde8-9399f352e557",
+     "group": "0ce17277"
+    },
+    {
+     "character": "stoneveil_marksman",
+     "facing": "SE",
+     "job": "166ebb5c-221b-43e6-b539-abe5b60406e7",
+     "group": "8a15e737"
+    },
+    {
+     "character": "stoneveil_medic",
+     "facing": "SE",
+     "job": "bdd4dcb1-1c49-4c7e-814b-a46917301a62",
+     "group": "b47168c0"
+    },
+    {
+     "character": "thundercoast_warden",
+     "facing": "SE",
+     "job": "f0052853-0183-4a4f-848a-09771d9b0b0b",
+     "group": "f7056a41"
+    },
+    {
+     "character": "thundercoast_skirmisher",
+     "facing": "SE",
+     "job": "1fe81ea4-06ce-4c2d-a07c-96397ce179f6",
+     "group": "24c4a50e"
+    },
+    {
+     "character": "thundercoast_marksman",
+     "facing": "SE",
+     "job": "da2847d0-99d7-4c50-bca5-e9100d850d5b",
+     "group": "0bd80247"
+    },
+    {
+     "character": "thundercoast_medic",
+     "facing": "SE",
+     "job": "1070c0a4-ae67-4dd7-ae1a-a290c8c1a1aa",
+     "group": "70d464c0"
+    },
+    {
+     "character": "thundercoast_medic",
+     "facing": "SW",
+     "job": "86c7f49c-5be4-42ae-bdaf-b9166d8bceac",
+     "group": "f9bc1df0"
+    },
+    {
+     "character": "stoneveil_marksman",
+     "facing": "SE",
+     "job": "e6153b99-3fe1-4481-b8fb-284450e61c03",
+     "group": "baea7cd8"
+    }
+   ]
+  },
+  "export_trims": {
+   "stoneveil_medic SE idle": "first 9 frames cut (a ring and sparks), 31 frames",
+   "thundercoast_warden SE idle": "first 4 frames cut (the shield swings open), 36 frames",
+   "stoneveil_trapper SE death": "starts at frame 17 instead of 8 (he stood still until frame 24), 15 frames"
+  },
+  "exported": "Assets/Resources/CampaignArt/<tribe>_<class>_se_<idle|attack|hit|death> for the 10 squad fighters, same exporter and format as the SW sheets; thundercoast_medic_sw re-exported with its flat death.",
+  "flaws": [
+   "stoneveil_marksman SE death: the tip of the rifle she drops is cut by the canvas edge in the last 9 frames.",
+   "SE hits still flash a thin trail for a frame on the five cave fighters and the sea Marksman.",
+   "stoneveil_warden SE idle barely moves; in its attack the shield turns from edge on to face front.",
+   "stoneveil_medic SE attack: the whole body flashes solid red while casting.",
+   "thundercoast_warden SE attack recovers to standing only in its last frames.",
+   "SE turns face only a little toward the right, like the SW ones toward the left."
+  ],
+  "blood_priest": {
+   "recipe": "create_image_pro_flash 112x112, no background, style image = squad/style/stoneveil-style-112.png (uploaded), palette, outline, detail and shading on. Men in robes, so nothing for the content filter.",
+   "options": {
+    "1-masked-censer": {
+     "job": "b8de234f-5420-4bc2-8799-f4da3f3d6a9a",
+     "image": "34551c09-6e93-5c2f-b760-29556455985d",
+     "seed": 2026101971,
+     "look": "hooded crimson robe, bone breathing mask with red goggles, bone staff with a swinging bronze censer of red mist"
+    },
+    "2-elder-bowl": {
+     "job": "3e84d4d9-1f1c-4f62-9d8f-de1b12884847",
+     "image": "931581f6-879a-56f1-9864-03a854573d65",
+     "seed": 2026101972,
+     "look": "hunched elder with tusks, horns wrapped in red cloth, ragged robe of bone charms, ritual knife and a raised bowl of glowing red"
+    },
+    "3-crystal-oracle": {
+     "job": "d9014e11-a548-4930-bece-13b10b590f34",
+     "image": "1128c239-70f3-57cc-b783-4bfbe7bfa127",
+     "seed": 2026101973,
+     "look": "crown of red crystals between striped horns, moss and bone mantle, hands round a floating red crystal; crown touches the top edge"
+    }
+   },
+   "sheet": "priest/pick-blood-priest.png",
+   "picked": {
+    "note": "Jacob, 19 Oct 2026: 'go, make blood priest look 1'",
+    "look": "1-masked-censer",
+    "character": "6717377d-cff2-48fd-82b3-c19b544e6bc4",
+    "turn_job": "def19ae8-4510-4e45-8281-20a455d02fdc",
+    "clips_sw": {
+     "idle": {
+      "job": "ae6d6030-a26b-44ac-995d-c3121935ff5b",
+      "group": "7ff2af7b"
+     },
+     "attack": {
+      "job": "9f5b225a-f549-4786-acbb-cb4c5799958e",
+      "group": "b7cbf7f8"
+     },
+     "hit": {
+      "job": "9d35502f-60ae-4d12-a5e7-90f6be75a6b5",
+      "group": "2b6db5de"
+     },
+     "death": {
+      "job": "c49e85bb-b6c7-449a-a415-627a11f2d0e0",
+      "group": "dcc07424"
+     }
+    },
+    "wording": {
+     "idle": "standing in a ready stance holding the bone staff, the censer swaying gently, breathing slowly",
+     "attack": "raises the bone staff and swings the censer forward, pouring out a wave of glowing red mist, then returns to the ready stance",
+     "hit": "recoils a step backward with the head jerking back, then steps forward again to the ready stance, only the body moves, no added effects",
+     "death": "staggers backward, then falls flat on the back and lies still, stretched out on the ground"
+    },
+    "files": "turns/stoneveil_shaman-<direction>.png, clips/stoneveil_shaman/<clip>/NN.png",
+    "exported": "Assets/Resources/CampaignArt/stoneveil_shaman_sw_<state>; death starts at frame 15 (17 frames), he stood still until about frame 21",
+    "bound": "not yet: CampaignArtBattle.cs is in Codex Sprint 3 claim; the ArtKey line is in HANDOFF_LOG for Codex"
+   }
+  },
+  "spend": "PixelLab generations went from 980.6 to 843.6: 18 for the three looks, the rest SE clips, redos and flat deaths."
+ }
+}

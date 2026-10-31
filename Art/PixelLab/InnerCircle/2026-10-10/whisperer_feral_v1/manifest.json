@@ -1,0 +1,27 @@
+{
+  "status": "complete_review_only_see_completion.json",
+  "scope": "One fresh Whisperer 192px feral astral goth sprite, review only. Previous apparition rejected. No integration or animation.",
+  "owner_direction": "Wild beautiful feral astral being like naaru; intense goth woman",
+  "starting_balance": 2937,
+  "prompt": "ONE original full-body pixel-art character: WHISPERER, a beautiful adult feral astral goth woman, a powerful camp companion. Fresh design, not a modification of any earlier woman. Her FACE is the focal point: strong cheekbones, intense narrowed eyes with dramatic black winged liner and smoky shadows, dark plum-black lips, a sly challenging half-smile, wild voluminous teased black hair swept outward into a huge asymmetric mane. She is magnetic, untamed and self-possessed, not demure, not elderly, not a screaming monster. Pearl-grey violet skin with angular inhuman facial accents. Distinct feminine heroic anatomy with broad expressive shoulders and strong hands, not skinny or chibi. Opaque obsidian-black embodied chest regalia fully covers both breasts, grown old-gold joins and jagged black hip regalia. Her astral anatomy breaks into separated floating curved obsidian and smoky amethyst facets at the shoulders, waist and lower limbs, joined by restrained dark energy. Around the body a few asymmetric suspended crescents imply an ancient cosmic being; borrow the principle of a hovering energy-and-fragment organism, but no literal Warcraft character, Naaru shape or icon. Her face and feminine presence remain clearly readable within that nonhuman geometry. Two arms spread in a relaxed predatory beckoning pose, long elegant fingers. Floating posture, no mundane footwear, no nun hood, no conventional dress, no schoolgirl, no white ghost ribbons, no giant wings, no neon. Dark black / muted purple / pearl-grey / sparse antique gold palette. The silhouette should read WILD BEAUTIFUL GOTH ASTRAL BEING at thumbnail size. Entire character and hair fit inside transparent 192x192 canvas with a 6px margin, south/front view, seven-head heroic proportions. Clean readable pixel clusters, restrained 32-colour game sprite rendering. No text, background, floor, props, additional characters or animation frames.",
+  "submission": {
+    "background_job_id": "049ffb19-a7eb-4f33-9c3b-f7a535cf5063",
+    "image_id": "af2acf1b-d84d-522f-b76c-51848f901e5f",
+    "status": "processing",
+    "source_image_id": "af2acf1b-d84d-522f-b76c-51848f901e5f",
+    "job_id": "049ffb19-a7eb-4f33-9c3b-f7a535cf5063",
+    "image_size": {
+      "width": 192,
+      "height": 192
+    },
+    "output_count": 1,
+    "estimated_generations": 6,
+    "pricing_provisional": true,
+    "poll_tool": "get_image",
+    "download_path": "/mcp/images/049ffb19-a7eb-4f33-9c3b-f7a535cf5063/download"
+  },
+  "references": [
+    "https://news.blizzard.com/en-gb/article/20979711/dungeon-preview-seat-of-the-triumvirate"
+  ],
+  "reference_use": "Conceptual floating energy/fragment anatomy; no reference image supplied to generation."
+}

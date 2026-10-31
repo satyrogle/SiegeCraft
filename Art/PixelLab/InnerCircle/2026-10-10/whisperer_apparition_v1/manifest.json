@@ -1,0 +1,22 @@
+{
+  "status": "complete_review_only_see_completion.json",
+  "scope": "One Whisperer living-apparition sprite candidate for phone review. No animation or integration.",
+  "starting_balance": 2943,
+  "prompt": "Redesign this camp character as a LIVING ASTRAL APPARITION. Keep only the inviting, mesmerising adult face and restrained violet-pearl / black obsidian / antique-gold material family from the source. Her body is dangerously inhuman: an asymmetric partly translucent smoke-glass form with overlapping inner contours, open negative spaces and two graceful hands. A calm welcoming face emerges from the dark form; two quiet eyes, no screaming skull or monstrous teeth. Below the ribcage the body separates into three broad tapering translucent astral streams suspended above the ground, with a few small grown obsidian facets and gold seams. The streams are her BODY, not cloth. No human hourglass torso, no exposed breasts, no human legs, boots, dress, corset, robe, hood, cape, nun costume, wings or horns. Clothing and regalia are embodied opaque obsidian layers integrated into the form. Beautiful and inviting at first glance, impossible anatomy on closer inspection. No neon or luminous outline. A clear readable silhouette with restrained mist, not a large smoke cloud. One full character, entire floating form in the unchanged 192x192 transparent canvas. Preserve clean pixel clusters and the original pixel-art rendering style. Static design review pose, no animation frames, props, scenery or lettering.",
+  "submission": {
+    "background_job_id": "ac36381c-92f8-4606-8bee-c44a06473571",
+    "image_id": "8b4e2f64-08c6-509a-9ce2-f3c4a70800c4",
+    "status": "processing",
+    "source_image_id": "8b4e2f64-08c6-509a-9ce2-f3c4a70800c4",
+    "job_id": "ac36381c-92f8-4606-8bee-c44a06473571",
+    "image_size": {
+      "width": 192,
+      "height": 192
+    },
+    "output_count": 1,
+    "estimated_generations": 6,
+    "pricing_provisional": true,
+    "poll_tool": "get_image",
+    "download_path": "/mcp/images/ac36381c-92f8-4606-8bee-c44a06473571/download"
+  }
+}

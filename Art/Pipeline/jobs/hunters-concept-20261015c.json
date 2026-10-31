@@ -1,0 +1,41 @@
+{
+  "name": "hunters-concept-20261015c",
+  "out": "Art/Pipeline/runs/hunters-concept-20261015c",
+  "_note": "Jacob 15 Oct: \"use another model\" (local, any licence: these are placeholders an artist redoes). Local Ideogram 4 int8 (Comfy-Org/Ideogram-4, non commercial weights), template graph, the main model also runs the negative pass. Same race in all three, three costume ideas, one colourway. His look: goth, reptilian, own race (not a WoW copy), fit but fat, body armour, scales, chin skin goatee, very good looking, small horns, the Warden carries the war banner. Option 1 ran with the older summary (it named the Sovereign's hunters and the model wrote a small logo in the corner, painted out on the sheet); 2 and 3 ran with the hunters' name dropped and no text asked for.",
+  "size": [
+    896,
+    1152
+  ],
+  "aspect_ratio": "7:9",
+  "preset": "Default",
+  "background": "Plain flat light grey studio background with no scenery, no floor and no texture. No text, no logo, no signature, no watermark anywhere.",
+  "bbox": [
+    40,
+    110,
+    985,
+    890
+  ],
+  "options": [
+    {
+      "id": 1,
+      "label": "cathedral plate",
+      "seed": 2026101560,
+      "summary": "Full body fantasy character concept art of a heavy reptilian standard bearer in massive gothic cathedral plate armour, painted in a clean, detailed concept art style.",
+      "prompt": "An original reptilian humanoid from a proud warrior race, not a dragon. A broad, handsome reptilian head with a short blunt snout like a monitor lizard, a heavy brow ridge over intense amber eyes, fine dark charcoal scales with a faint silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge, heavy, powerful build like a strongman or a heavyweight wrestler, very broad shoulders, a thick neck, a barrel chest and a big hard belly, thick muscular arms and legs. Striking and good looking in a dangerous way, calm and proud. Goth look. He wears massive black iron plate armour shaped like gothic cathedral architecture: pointed arches, buttress shaped pauldrons and tracery cut outs, trimmed with tarnished silver. He holds a tall processional war banner on a heavy pole: a long blood red banner hanging from a crossbar, with a black sigil and silver tassels. He stands full body in a three quarter view facing left, the whole figure from horns to feet and the whole banner in view. The banner's sigil is an abstract symbol, not letters."
+    },
+    {
+      "id": 2,
+      "label": "mourning bruiser",
+      "seed": 2026101560,
+      "summary": "Full body fantasy character concept art of a heavy reptilian standard bearer in a bare armed bruiser in a mourning harness, painted in a clean, detailed concept art style.",
+      "prompt": "An original reptilian humanoid from a proud warrior race, not a dragon. A broad, handsome reptilian head with a short blunt snout like a monitor lizard, a heavy brow ridge over intense amber eyes, fine dark charcoal scales with a faint silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge, heavy, powerful build like a strongman or a heavyweight wrestler, very broad shoulders, a thick neck, a barrel chest and a big hard belly, thick muscular arms and legs. Striking and good looking in a dangerous way, calm and proud. Goth look. He wears a black leather harness with a small black breastplate, his huge scaled arms and belly bare, a high black lace mourning collar, heavy silver chains and rings, and silver rings pierced through his chin flaps and horns. He holds a tall war banner on a heavy pole: a ragged black banner with a blood red sigil. He stands full body in a three quarter view facing left, the whole figure from horns to feet and the whole banner in view. The banner's sigil is an abstract symbol, not letters."
+    },
+    {
+      "id": 3,
+      "label": "velvet greatcoat",
+      "seed": 2026101560,
+      "summary": "Full body fantasy character concept art of a heavy reptilian standard bearer in a long velvet greatcoat over scale plates, painted in a clean, detailed concept art style.",
+      "prompt": "An original reptilian humanoid from a proud warrior race, not a dragon. A broad, handsome reptilian head with a short blunt snout like a monitor lizard, a heavy brow ridge over intense amber eyes, fine dark charcoal scales with a faint silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge, heavy, powerful build like a strongman or a heavyweight wrestler, very broad shoulders, a thick neck, a barrel chest and a big hard belly, thick muscular arms and legs. Striking and good looking in a dangerous way, calm and proud. Goth look. He wears a long black velvet greatcoat with a high collar and silver buttons over armour of overlapping black lacquered scale plates, with heavy gauntlets and boots. He holds a tall war banner on a heavy pole topped with a silver crescent: a blood red velvet banner with a silver embroidered sigil. He stands full body in a three quarter view facing left, the whole figure from horns to feet and the whole banner in view. The banner's sigil is an abstract symbol, not letters."
+    }
+  ]
+}

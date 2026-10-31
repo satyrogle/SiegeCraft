@@ -1,0 +1,55 @@
+{
+ "name": "bloodridge",
+ "tileset": "acaeda58-da24-4b4b-a6d7-51b31d5da799",
+ "fill": "r",
+ "top": 420,
+ "enemy": "ClarthStudy/blood_rot",
+ "rows": {
+  "-2": "llllllllllllllllllllllllll",
+  "-1": "llllllllllllllllllllllllll",
+  "0": "llllllllllllllllllllllllll",
+  "1": "eeeeeeeeeeeeeeeeeeeellllll",
+  "2": "rrrrrrrrrrrrrrrrrrrrllllll",
+  "3": "rrrrrrrrrrrrrrrrrrrrllllll",
+  "4": "rrrrrrrrrrrrrrrrrrrrllllll",
+  "5": "rrrrrrrrrrrrrrrrrrrreeeeee"
+ },
+ "props": [
+  [
+   "1290a020-aee2-4f4c-a988-d2267077a8ca",
+   90,
+   95,
+   false
+  ],
+  [
+   "998859d1-e98d-4276-8e4a-3f1e58a534d9",
+   616,
+   112,
+   false
+  ],
+  [
+   "1cd5bd71-c265-43fe-a194-e41ca2ba2ecf",
+   1240,
+   380,
+   false
+  ],
+  [
+   "c9b98a9e-3ec6-4651-a44f-8eb0d3630c00",
+   40,
+   400,
+   false
+  ],
+  [
+   "c9b98a9e-3ec6-4651-a44f-8eb0d3630c00",
+   1180,
+   640,
+   false
+  ],
+  [
+   "035078ff-1098-4270-afb4-f0200880ec34",
+   -18,
+   652,
+   false
+  ]
+ ]
+}

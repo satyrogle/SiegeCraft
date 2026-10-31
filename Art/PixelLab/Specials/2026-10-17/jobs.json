@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-17",
+  "model": "PixelLab Pro Flash (create_image_pro_flash), no_background true, style_options all true",
+  "spec": "HANDOFF_LOG.md entry 'Nine PixelLab fronts ready for the next Claude session to run' (line 8472)",
+  "khopesh_reference_note": "champion-1-1x.png is 144x144 and PixelLab will not resize a style image onto a 128 canvas, so refs/khopesh-ref-128.png is champion-1-1x.png cropped at (8,8,136,136): the 128 frame PixelLab drew source-1 in, with the approved palette. The hand drawn blade cap above that frame is cut off.",
+  "jobs": [
+    {"file": "shaman-v1.png", "seed": 2026101701, "size": 112, "job_id": "5750af10-3975-444e-b574-bfc428df5d8f", "image_id": "1417c701-e547-5699-9e8b-f9a19afe2071", "style": "source_image_id 3226f287-acef-54f3-8fed-e339e4c5fd4a"},
+    {"file": "shaman-v2.png", "seed": 2026101702, "size": 112, "job_id": "d2e7df04-7bf0-4c5c-818c-6dffb0d6d1a5", "image_id": "3ef6abfc-f04b-5622-8a1d-0cba9cbc381a", "style": "source_image_id 3226f287-acef-54f3-8fed-e339e4c5fd4a"},
+    {"file": "shaman-v3.png", "seed": 2026101703, "size": 112, "job_id": "1609cd9b-86a5-4382-aa31-cd1105f99630", "image_id": "f2c31e8f-ee6e-5bba-8d6f-ca59ca7811b3", "style": "source_image_id 3226f287-acef-54f3-8fed-e339e4c5fd4a"},
+    {"file": "khopesh-1.png", "seed": 2026101711, "size": 128, "job_id": "3daa7fc7-2762-44b9-9f06-da081e0b3472", "image_id": "9f500fec-a076-560c-943e-e78df3478258", "style": "upload:7aff1b86-d8fa-463f-9215-eab12bf5ad67 (refs/khopesh-ref-128.png)"},
+    {"file": "khopesh-2.png", "seed": 2026101712, "size": 128, "job_id": "8fef22ce-6f68-4ad1-9040-6489b07cc22b", "image_id": "5ac9476e-07c4-5681-a323-f86740428d41", "style": "upload:7aff1b86-d8fa-463f-9215-eab12bf5ad67 (refs/khopesh-ref-128.png)"},
+    {"file": "khopesh-3.png", "seed": 2026101713, "size": 128, "job_id": "a9626e64-3d2f-40bb-b94d-9ebe4585baec", "image_id": "07d766ce-dfa4-59d5-b73b-737aa3e08a73", "style": "upload:7aff1b86-d8fa-463f-9215-eab12bf5ad67 (refs/khopesh-ref-128.png)"},
+    {"file": "skullchamp-4.png", "seed": 2026101721, "size": 128, "job_id": "4dbcf38d-0ef4-4d87-851d-612b4a2cc48f", "image_id": "75346ce9-f3ab-5437-9e69-abc4fc0da6d6", "style": "source_image_id c2435347-a2a8-5830-b76a-60621174e6f1"},
+    {"file": "skullchamp-5.png", "seed": 2026101722, "size": 128, "job_id": "68efd566-1025-4eda-9bb0-058561a4c193", "image_id": "376d2cc9-929b-59f3-8bc5-d70b49ee87ea", "style": "source_image_id c2435347-a2a8-5830-b76a-60621174e6f1"},
+    {"file": "skullchamp-6.png", "seed": 2026101723, "size": 128, "job_id": "46064ceb-6eff-4a7f-b7d2-19cfc2db0b4c", "image_id": "9d80fd02-210a-5479-9ee1-403fb4f1fa5a", "style": "source_image_id c2435347-a2a8-5830-b76a-60621174e6f1"}
+  ]
+}

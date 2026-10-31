@@ -1,0 +1,13 @@
+{
+  "name": "whisperer",
+  "label": "WHISPERER - Veil weaving",
+  "count": 40,
+  "ms": 110,
+  "columns": 8,
+  "width": 192,
+  "height": 192,
+  "sheet": "whisperer/sheet.png",
+  "gif": "whisperer/camp_work.gif",
+  "master": "whisperer/camp_work.aseprite",
+  "contact": "whisperer/contact.png"
+}

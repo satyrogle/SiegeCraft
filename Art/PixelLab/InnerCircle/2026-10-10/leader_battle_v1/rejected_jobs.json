@@ -1,0 +1,204 @@
+[
+  {
+    "name": "hit_se",
+    "state": "hit",
+    "direction": "se",
+    "facing": "south-east",
+    "label": "Hit reaction",
+    "count": 16,
+    "loop": false,
+    "id": "455afbf6-8c7e-441e-8abe-1dfe18efcd2d",
+    "quoted_cost": 2,
+    "request": {
+      "description": "One sudden NONFATAL hit from the facing direction. Chest and head recoil sharply backward, shoulders twist a little, one knee flexes as balance is briefly lost, the bracer hand draws the small relic close protectively. Feet stay near their original ground positions. A short tense recoil hold then firm recovery to the initial combat stance, hair and cloak settle. Alive and hurt, not dying, kneeling, falling over or walking. No particles, blood, explosion or invented shield. Facing south-east toward screen right. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.",
+      "subject_description": "The approved alien tactician with transparent brain, split crown, long dreads, opalescent body augments, black tabard and cloak, ancient gold and a small bracer-controlled physical relic",
+      "initial_pose": "Standing in a three-quarter south-east ready stance with feet planted and bracer hand controlling the small pointed relic",
+      "first_frame_url": "rotations/leader_se_start.png (data URL supplied)",
+      "frame_count": 16,
+      "direction": "south-east",
+      "view": "low top-down",
+      "enhance_prompt": false,
+      "no_background": true,
+      "seed": 2026101406,
+      "last_frame_url": "same source supplied as end pose"
+    },
+    "submission": {
+      "content": [
+        {
+          "type": "text",
+          "text": "id: 455afbf6-8c7e-441e-8abe-1dfe18efcd2d\njob_id: 455afbf6-8c7e-441e-8abe-1dfe18efcd2d\ndescription: One sudden NONFATAL hit from the facing direction. Chest and head recoil sharply backward, shoulders twist a little, one knee flexes as balance is briefly lost, the bracer hand draws the small relic close protectively. Feet stay near their original ground positions. A short tense recoil hold then firm recovery to the initial combat stance, hair and cloak settle. Alive and hurt, not dying, kneeling, falling over or walking. No particles, blood, explosion or invented shield. Facing south-east toward screen right. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.\nframes: 16\nsize: 256x256px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101406\ncost: 2 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"455afbf6-8c7e-441e-8abe-1dfe18efcd2d\")\nasset_id: b2bb7ce7-1a16-5a0e-9265-920944ba1a04\nasset_status: pending (saved to your gallery when generation completes)"
+        }
+      ],
+      "isError": false
+    },
+    "reason": "Unrequested red/white hit flash and silhouette recolouring"
+  },
+  {
+    "name": "hit_sw",
+    "state": "hit",
+    "direction": "sw",
+    "facing": "south-west",
+    "label": "Hit reaction",
+    "count": 16,
+    "loop": false,
+    "id": "f5eebe37-104e-45ae-baac-3757c9b20e76",
+    "quoted_cost": 2,
+    "request": {
+      "description": "One sudden NONFATAL hit from the facing direction. Chest and head recoil sharply backward, shoulders twist a little, one knee flexes as balance is briefly lost, the bracer hand draws the small relic close protectively. Feet stay near their original ground positions. A short tense recoil hold then firm recovery to the initial combat stance, hair and cloak settle. Alive and hurt, not dying, kneeling, falling over or walking. No particles, blood, explosion or invented shield. Facing south-west toward screen left. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.",
+      "subject_description": "The approved alien tactician with transparent brain, split crown, long dreads, opalescent body augments, black tabard and cloak, ancient gold and a small bracer-controlled physical relic",
+      "initial_pose": "Standing in a three-quarter south-west ready stance with feet planted and bracer hand controlling the small pointed relic",
+      "first_frame_url": "rotations/leader_sw_start.png (data URL supplied)",
+      "frame_count": 16,
+      "direction": "south-west",
+      "view": "low top-down",
+      "enhance_prompt": false,
+      "no_background": true,
+      "seed": 2026101407,
+      "last_frame_url": "same source supplied as end pose"
+    },
+    "submission": {
+      "content": [
+        {
+          "type": "text",
+          "text": "id: f5eebe37-104e-45ae-baac-3757c9b20e76\njob_id: f5eebe37-104e-45ae-baac-3757c9b20e76\ndescription: One sudden NONFATAL hit from the facing direction. Chest and head recoil sharply backward, shoulders twist a little, one knee flexes as balance is briefly lost, the bracer hand draws the small relic close protectively. Feet stay near their original ground positions. A short tense recoil hold then firm recovery to the initial combat stance, hair and cloak settle. Alive and hurt, not dying, kneeling, falling over or walking. No particles, blood, explosion or invented shield. Facing south-west toward screen left. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.\nframes: 16\nsize: 256x256px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101407\ncost: 2 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"f5eebe37-104e-45ae-baac-3757c9b20e76\")\nasset_id: 3d9af814-d579-53ae-a3f7-1f194b68778f\nasset_status: pending (saved to your gallery when generation completes)"
+        }
+      ],
+      "isError": false
+    },
+    "reason": "Unrequested red/white hit flash and silhouette recolouring"
+  },
+  {
+    "name": "block_se",
+    "state": "block",
+    "direction": "se",
+    "facing": "south-east",
+    "label": "Block",
+    "count": 24,
+    "loop": false,
+    "id": "b07b8fea-f702-43b8-b406-ed7fd51d09a6",
+    "quoted_cost": 3,
+    "request": {
+      "description": "One deliberate guard and BLOCK cycle. Raise the integrated bracer forearm across the upper torso and position the EXISTING small relic just forward of it, planted broad firm stance. Show a brief readable held guard. An implied incoming strike hits that guard: the forearm makes a broad abrupt STOP with a small backward compression through shoulders and knees, while feet remain planted. Hold the resistance briefly, then lower the guard to the opening pose. Weight and solidity, no evasive step or swatting. The relic remains small; no giant projected barrier, new shield or neon. Facing south-east toward screen right. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.",
+      "subject_description": "The approved alien tactician with transparent brain, split crown, long dreads, opalescent body augments, black tabard and cloak, ancient gold and a small bracer-controlled physical relic",
+      "initial_pose": "Standing in a three-quarter south-east ready stance with feet planted and bracer hand controlling the small pointed relic",
+      "first_frame_url": "rotations/leader_se_start.png (data URL supplied)",
+      "frame_count": 24,
+      "direction": "south-east",
+      "view": "low top-down",
+      "enhance_prompt": false,
+      "no_background": true,
+      "seed": 2026101408,
+      "last_frame_url": "same source supplied as end pose"
+    },
+    "submission": {
+      "content": [
+        {
+          "type": "text",
+          "text": "id: b07b8fea-f702-43b8-b406-ed7fd51d09a6\njob_id: b07b8fea-f702-43b8-b406-ed7fd51d09a6\ndescription: One deliberate guard and BLOCK cycle. Raise the integrated bracer forearm across the upper torso and position the EXISTING small relic just forward of it, planted broad firm stance. Show a brief readable held guard. An implied incoming strike hits that guard: the forearm makes a broad abrupt STOP with a small backward compression through shoulders and knees, while feet remain planted. Hold the resistance briefly, then lower the guard to the opening pose. Weight and solidity, no evasive step or swatting. The relic remains small; no giant projected barrier, new shield or neon. Facing south-east toward screen right. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.\nframes: 24\nsize: 256x256px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101408\ncost: 3 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"b07b8fea-f702-43b8-b406-ed7fd51d09a6\")\nasset_id: 438098a3-6a80-59d2-9392-a2cdaa88b790\nasset_status: pending (saved to your gallery when generation completes)"
+        }
+      ],
+      "isError": false
+    },
+    "reason": "Unrequested giant projected shields and barriers"
+  },
+  {
+    "name": "block_sw",
+    "state": "block",
+    "direction": "sw",
+    "facing": "south-west",
+    "label": "Block",
+    "count": 24,
+    "loop": false,
+    "id": "b83bf4d8-3396-4509-96b3-63fd638d6817",
+    "quoted_cost": 3,
+    "request": {
+      "description": "One deliberate guard and BLOCK cycle. Raise the integrated bracer forearm across the upper torso and position the EXISTING small relic just forward of it, planted broad firm stance. Show a brief readable held guard. An implied incoming strike hits that guard: the forearm makes a broad abrupt STOP with a small backward compression through shoulders and knees, while feet remain planted. Hold the resistance briefly, then lower the guard to the opening pose. Weight and solidity, no evasive step or swatting. The relic remains small; no giant projected barrier, new shield or neon. Facing south-west toward screen left. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.",
+      "subject_description": "The approved alien tactician with transparent brain, split crown, long dreads, opalescent body augments, black tabard and cloak, ancient gold and a small bracer-controlled physical relic",
+      "initial_pose": "Standing in a three-quarter south-west ready stance with feet planted and bracer hand controlling the small pointed relic",
+      "first_frame_url": "rotations/leader_sw_start.png (data URL supplied)",
+      "frame_count": 24,
+      "direction": "south-west",
+      "view": "low top-down",
+      "enhance_prompt": false,
+      "no_background": true,
+      "seed": 2026101409,
+      "last_frame_url": "same source supplied as end pose"
+    },
+    "submission": {
+      "content": [
+        {
+          "type": "text",
+          "text": "id: b83bf4d8-3396-4509-96b3-63fd638d6817\njob_id: b83bf4d8-3396-4509-96b3-63fd638d6817\ndescription: One deliberate guard and BLOCK cycle. Raise the integrated bracer forearm across the upper torso and position the EXISTING small relic just forward of it, planted broad firm stance. Show a brief readable held guard. An implied incoming strike hits that guard: the forearm makes a broad abrupt STOP with a small backward compression through shoulders and knees, while feet remain planted. Hold the resistance briefly, then lower the guard to the opening pose. Weight and solidity, no evasive step or swatting. The relic remains small; no giant projected barrier, new shield or neon. Facing south-west toward screen left. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.\nframes: 24\nsize: 256x256px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101409\ncost: 3 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"b83bf4d8-3396-4509-96b3-63fd638d6817\")\nasset_id: 57eadf9b-a36b-59c9-ab30-b84ede632128\nasset_status: pending (saved to your gallery when generation completes)"
+        }
+      ],
+      "isError": false
+    },
+    "reason": "Unrequested giant projected shields and barriers"
+  },
+  {
+    "name": "death_se",
+    "state": "death",
+    "direction": "se",
+    "facing": "south-east",
+    "label": "Death",
+    "count": 40,
+    "loop": false,
+    "id": "f506176b-87ef-4883-ae04-10f1eb68aef9",
+    "quoted_cost": 6,
+    "request": {
+      "description": "One lethal hit and heavy uncontrolled collapse, ending dead and motionless. A fatal blow from ahead snaps chest and head back; fingers go slack and the small relic drops. A knee buckles, hips lose support, torso pitches sideways-backward with increasing speed, arms loose. No deliberate kneeling or hand placement. Shoulder and back strike the floor hard at the original feet level; legs kick briefly then drop into an uneven limp sprawl. Cloak and dreads settle a beat later; relic rests by the slack hand. Last frames completely still. No sitting, sleeping, hovering, resurrection, fade-out, recovery, blood or gore. Facing south-east toward screen right. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.",
+      "subject_description": "The approved alien tactician with transparent brain, split crown, long dreads, opalescent body augments, black tabard and cloak, ancient gold and a small bracer-controlled physical relic",
+      "initial_pose": "Standing in a three-quarter south-east ready stance with feet planted and bracer hand controlling the small pointed relic",
+      "first_frame_url": "rotations/leader_se_start.png (data URL supplied)",
+      "frame_count": 40,
+      "direction": "south-east",
+      "view": "low top-down",
+      "enhance_prompt": false,
+      "no_background": true,
+      "seed": 2026101412
+    },
+    "submission": {
+      "content": [
+        {
+          "type": "text",
+          "text": "id: f506176b-87ef-4883-ae04-10f1eb68aef9\njob_id: f506176b-87ef-4883-ae04-10f1eb68aef9\ndescription: One lethal hit and heavy uncontrolled collapse, ending dead and motionless. A fatal blow from ahead snaps chest and head back; fingers go slack and the small relic drops. A knee buckles, hips lose support, torso pitches sideways-backward with increasing speed, arms loose. No deliberate kneeling or hand placement. Shoulder and back strike the floor hard at the original feet level; legs kick briefly then drop into an uneven limp sprawl. Cloak and dreads settle a beat later; relic rests by the slack hand. Last frames completely still. No sitting, sleeping, hovering, resurrection, fade-out, recovery, blood or gore. Facing south-east toward screen right. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.\nframes: 40\nsize: 256x256px\ntransparent: True\nseed: 2026101412\ncost: 6 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"f506176b-87ef-4883-ae04-10f1eb68aef9\")\nasset_id: 6526822c-fcf9-5883-8045-50b63897745f\nasset_status: pending (saved to your gallery when generation completes)"
+        }
+      ],
+      "isError": false
+    },
+    "reason": "Final body propped upright, reads as resting rather than dead"
+  },
+  {
+    "name": "death_sw",
+    "state": "death",
+    "direction": "sw",
+    "facing": "south-west",
+    "label": "Death",
+    "count": 40,
+    "loop": false,
+    "id": "1b3eafcf-f18a-4fca-b47b-e673a023e908",
+    "quoted_cost": 6,
+    "request": {
+      "description": "One lethal hit and heavy uncontrolled collapse, ending dead and motionless. A fatal blow from ahead snaps chest and head back; fingers go slack and the small relic drops. A knee buckles, hips lose support, torso pitches sideways-backward with increasing speed, arms loose. No deliberate kneeling or hand placement. Shoulder and back strike the floor hard at the original feet level; legs kick briefly then drop into an uneven limp sprawl. Cloak and dreads settle a beat later; relic rests by the slack hand. Last frames completely still. No sitting, sleeping, hovering, resurrection, fade-out, recovery, blood or gore. Facing south-west toward screen left. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.",
+      "subject_description": "The approved alien tactician with transparent brain, split crown, long dreads, opalescent body augments, black tabard and cloak, ancient gold and a small bracer-controlled physical relic",
+      "initial_pose": "Standing in a three-quarter south-west ready stance with feet planted and bracer hand controlling the small pointed relic",
+      "first_frame_url": "rotations/leader_sw_start.png (data URL supplied)",
+      "frame_count": 40,
+      "direction": "south-west",
+      "view": "low top-down",
+      "enhance_prompt": false,
+      "no_background": true,
+      "seed": 2026101413
+    },
+    "submission": {
+      "content": [
+        {
+          "type": "text",
+          "text": "id: 1b3eafcf-f18a-4fca-b47b-e673a023e908\njob_id: 1b3eafcf-f18a-4fca-b47b-e673a023e908\ndescription: One lethal hit and heavy uncontrolled collapse, ending dead and motionless. A fatal blow from ahead snaps chest and head back; fingers go slack and the small relic drops. A knee buckles, hips lose support, torso pitches sideways-backward with increasing speed, arms loose. No deliberate kneeling or hand placement. Shoulder and back strike the floor hard at the original feet level; legs kick briefly then drop into an uneven limp sprawl. Cloak and dreads settle a beat later; relic rests by the slack hand. Last frames completely still. No sitting, sleeping, hovering, resurrection, fade-out, recovery, blood or gore. Facing south-west toward screen left. Preserve exact face, brain dome, crown, dreads, augments, BLACK clothes, antique gold and existing SMALL relic. Same facing, camera and pixel scale. Full figure and motion inside transparency. No new weapon, costume, limbs, opponent or neon.\nframes: 40\nsize: 256x256px\ntransparent: True\nseed: 2026101413\ncost: 6 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"1b3eafcf-f18a-4fca-b47b-e673a023e908\")\nasset_id: 5f27c373-e399-5acc-92ef-82a391110082\nasset_status: pending (saved to your gallery when generation completes)"
+        }
+      ],
+      "isError": false
+    },
+    "reason": "Final body propped upright, reads as resting rather than dead"
+  }
+]

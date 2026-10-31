@@ -1,0 +1,32 @@
+{
+  "status": "review_only",
+  "balance_before": 2931,
+  "request": {
+    "method": "reference",
+    "source_image_id": "af2acf1b-d84d-522f-b76c-51848f901e5f",
+    "reference_image": {
+      "source_image_id": "f9bef0e7-9ba2-53ca-be7f-1616842ae78d",
+      "usage_description": "Use ONLY this companion's alien species facial anatomy, pearlescent living skin and grown obsidian augmentation language. Do not copy her bald head, clothes, pose, silhouette or individual identity."
+    },
+    "description": "Repair WHISPERER so she is unmistakably a transformed female of the reference companion's SAME ALIEN SPECIES. Preserve the source character's huge wild swept black hair, beautiful fierce goth expression, adult feminine presence, two open expressive hands, floating pose and separated astral obsidian fragments. Change the underlying skull and face: sculpted ridged brow flowing into elongated segmented cheek planes, compressed nonhuman nasal bridge, tapered alien jaw; two intense deep-set eyes, dark plum lips, alluring controlled expression. The face must remain readable and beautiful but visibly alien, not a human woman wearing face paint. Give her pearlescent grey-violet living skin with subtle mineral iridescence and grown black obsidian structures integrated continuously into collarbones, ribs and forearms, not a bra and armour strapped onto normal human anatomy. Opaque embodied chest regalia fully covers both breasts. Retain restrained antique gold seams, obsidian black, muted violet, wild hair and dark intentional haze. Keep her own unique feral silhouette, distinct from the reference. No third eye, transparent brain, dreadlocks, crown, neon, wings, literal Warcraft icons or additional props. Entire one character inside unchanged transparent 192x192 canvas with safe margins, front view, clean pixel clusters and restrained palette.",
+    "no_background": true,
+    "use_color_palette_correction": false,
+    "seed": 2026101109
+  },
+  "submission": {
+    "background_job_id": "0ba340cf-e45b-4e73-b49d-53574dbf2eab",
+    "image_id": "19006203-e74a-51fb-8bc7-9509eb25f319",
+    "status": "processing",
+    "source_image_id": "19006203-e74a-51fb-8bc7-9509eb25f319",
+    "job_id": "0ba340cf-e45b-4e73-b49d-53574dbf2eab",
+    "image_size": {
+      "width": 192,
+      "height": 192
+    },
+    "output_count": 1,
+    "estimated_generations": 6,
+    "pricing_provisional": true,
+    "poll_tool": "get_image",
+    "download_path": "/mcp/images/0ba340cf-e45b-4e73-b49d-53574dbf2eab/download"
+  }
+}

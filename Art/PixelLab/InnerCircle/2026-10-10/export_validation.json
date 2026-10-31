@@ -1,0 +1,107 @@
+[
+  {
+    "name": "leader",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "P",
+    "colors": 31,
+    "bounds": [
+      38,
+      5,
+      140,
+      185
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "raw_sha256": "1b8108544f1d7588f8d3891c095e5377b33225af4619f1ef6c039c4756b2905c",
+    "export_sha256": "2a816ab68c19bc4e62fe868ec509b9c6f9af9389dc8d52e1e5a0a2f218506b97"
+  },
+  {
+    "name": "butcher",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "P",
+    "colors": 28,
+    "bounds": [
+      35,
+      6,
+      147,
+      186
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "raw_sha256": "55c6451cb18b8e0675a9cbd7e4009eb3d209333cd1c836c095bae47e7608de19",
+    "export_sha256": "97113e40d756335bdc0fc3d8b95964c8a23993496c1296d7dc574d902ddb7d4b"
+  },
+  {
+    "name": "glutton",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "P",
+    "colors": 30,
+    "bounds": [
+      7,
+      6,
+      176,
+      186
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "raw_sha256": "871e92cdcc6ef791d89a424a75934ecea2b2cbb08ab084af7d33db19054883e2",
+    "export_sha256": "ac7997a2e962430c727cd136287aacf616cb3a9116bddd4788eb1867ee12db84"
+  },
+  {
+    "name": "shade",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "P",
+    "colors": 32,
+    "bounds": [
+      54,
+      5,
+      135,
+      188
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "raw_sha256": "9e59275646a1bbd0bd5681b6ac5877f04c87c2c7316c4383e1966096bbc92fc5",
+    "export_sha256": "9aad7d48730e47cb51e324b7ff714cad83eabbc438784d47585d6abbc9c635d0"
+  },
+  {
+    "name": "whisperer",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "P",
+    "colors": 32,
+    "bounds": [
+      61,
+      4,
+      124,
+      185
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "raw_sha256": "c1a81ece7ca08faa12260497d9953659febf10fbad4a8ea856ee36dd2e2d0df2",
+    "export_sha256": "a057b34c691ff51449806c3845b06a46d82df1b718f93a090bb3f357c22c79f8"
+  }
+]

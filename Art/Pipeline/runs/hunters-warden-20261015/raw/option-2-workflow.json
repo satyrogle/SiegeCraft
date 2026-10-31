@@ -1,0 +1,206 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-base-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "pixel art sprite, game asset, 32-bit pixel art. Edit the reference image. Replace the fighter with a completely new character who stands in the same spot with his feet on the same line, at the same body height, in the same three quarter view facing down-left, drawn in the same crisp pixel art style with the same pixel size, dark outlines and light from the upper left. Nothing of the old fighter remains: no human skin, no hair, no metal ribs, no claw arm. The new character is a handsome goth dragonkin warrior, one of the Sovereign's hunters: a lean, toned reptilian humanoid with a sleek, good looking dragon head, a short tapered snout, a strong jaw, glowing slit eyes, two small horns swept back from the brow, and two thin flaps of scaled skin hanging down on either side of the chin like a goatee. Fine scales cover his face, neck and hands. He wears fitted gothic body armour over his scales. He is the war band's standard bearer: one hand grips a tall war banner on a long pole planted upright on the ground beside him, the flag hanging high above his head, and his other arm carries a shield. No wings. Colours: pale bone white scales, black lacquered armour with silver edges, a black banner with a bone white sigil, a black shield with a bone white rim. Full body and the whole banner inside the image with clear margins. One character only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no text."
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "human face, human skin, hair, wings, chibi, child, cartoon, bulky, fat, blurry, smooth gradients, painting, photograph, extra arms, extra weapons, two banners, background scenery, floor, text, letters, more than one character, cropped"
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-hunters-warden-20261015/reference.png"
+    }
+  },
+  "8": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "7",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 768,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "9": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "8",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "5",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "13": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "11",
+        0
+      ],
+      "cfg": 4.0
+    }
+  },
+  "14": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "15": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 24,
+      "width": 768,
+      "height": 768
+    }
+  },
+  "16": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026101510
+    }
+  },
+  "17": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "16",
+        0
+      ],
+      "guider": [
+        "13",
+        0
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ],
+      "filename_prefix": "KS-Pipeline/hunters-warden-20261015/option-2"
+    }
+  }
+}

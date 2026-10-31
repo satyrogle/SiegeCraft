@@ -1,0 +1,44 @@
+{
+  "status": "rotations_processing",
+  "owner_request": "Make all battle animations for leader",
+  "balance_start": 2887,
+  "source": "../corrections_v2/leader_front.png",
+  "rotation_request": {
+    "description": "The approved Kindred Siege leader: quiet menacing adult alien tactician, broad heroic body, opalescent skin with integrated body augmentations, black embodied tabard and structured black astral cloak with sparse ancient gold, broken chest sigil, fully transparent cranial dome showing brain, split arch crown, aged long dreads, three eyes with vertical forehead eye, all limbs intact. One integrated bracer guides a small physical angular neural relic floating over his open palm. Preserve this exact identity and materials, black garments, same proportions and full-body scale. Rotate into consistent three-quarter tactical battle facings. No new weapon, no purple robe, no neon or new costume.",
+    "first_frame_url": "local corrected leader_front.png; PNG supplied as data URL",
+    "first_frame_direction": "south",
+    "name": "KS Leader black regalia battle rotations 10 Oct",
+    "view": "low top-down",
+    "n_directions": 8,
+    "seed": 2026101301,
+    "template_id": "mannequin"
+  },
+  "rotation_submission": {
+    "background_job_id": "81cf9f86-ef42-41c2-b52a-07e3997fa79d",
+    "character_id": "ee645644-253a-4ffb-a97b-82955b7a3000",
+    "status": "processing",
+    "first_direction_generated": false,
+    "estimated_generations": 5,
+    "job_id": "81cf9f86-ef42-41c2-b52a-07e3997fa79d",
+    "n_directions": 8,
+    "poll_tool": "get_character",
+    "status_path": "/v2/background-jobs/81cf9f86-ef42-41c2-b52a-07e3997fa79d",
+    "download_path": "/mcp/characters/ee645644-253a-4ffb-a97b-82955b7a3000/download"
+  },
+  "states": [
+    "idle",
+    "move",
+    "attack",
+    "hit",
+    "block",
+    "parry",
+    "death",
+    "victory"
+  ],
+  "directions": [
+    "south-east",
+    "south-west"
+  ],
+  "scope": "Leader animation assets and review only",
+  "pipeline": "PixelLab motion, Aseprite timing/palette; preserve native sprite scale"
+}

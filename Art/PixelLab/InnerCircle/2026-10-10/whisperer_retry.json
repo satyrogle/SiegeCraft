@@ -1,0 +1,75 @@
+{
+  "rejectedJob": {
+    "background_job_id": "3a779a35-a37c-4a64-9702-4a43f5b0bda5",
+    "image_id": "0827c941-9280-5e6a-aed6-0453f8979e50",
+    "status": "processing",
+    "source_image_id": "0827c941-9280-5e6a-aed6-0453f8979e50",
+    "job_id": "3a779a35-a37c-4a64-9702-4a43f5b0bda5",
+    "image_size": {
+      "width": 192,
+      "height": 192
+    },
+    "output_count": 1,
+    "estimated_generations": 6,
+    "pricing_provisional": true,
+    "poll_tool": "get_image",
+    "download_path": "/mcp/images/3a779a35-a37c-4a64-9702-4a43f5b0bda5/download"
+  },
+  "rejectedResult": {
+    "content": [
+      {
+        "type": "text",
+        "text": "status: failed\nid: 3a779a35-a37c-4a64-9702-4a43f5b0bda5\njob_id: 3a779a35-a37c-4a64-9702-4a43f5b0bda5\nerror: Generation blocked by content policy. The image model's safety filter refused this and gives no reason; it also misfires on harmless requests. Rewording usually clears it \u2014 prompts mentioning the body or skin are blocked most often \u2014 or try a different input image."
+      }
+    ],
+    "isError": false
+  },
+  "request": {
+    "description": "A fully clothed adult dark-fantasy camp adviser matching this character reference: long flowing black hair, violet pearl complexion, distinctive gentle alien face, two quiet golden eyes and a small friendly smile. Long opaque black ceremonial regalia and draped cloak, obsidian details with restrained antique gold. Two arms, one open welcoming hand. Preserve her identity and colours. Single full-length front-view pixel-art character on transparent 192x192 canvas, feet on ground, seven-head heroic proportions, subtle low top-down perspective, crisp clusters, dark outline, restrained 32-colour palette. No text, props, backdrop, pedestal, extra limbs or neon. Clear practical coverage across chest and hips.",
+    "width": 192,
+    "height": 192,
+    "no_background": true,
+    "seed": 2026101006,
+    "style_image": {
+      "base64": "[local whisperer_reference.png encoded at submission]",
+      "usage_description": "Character identity and colour reference. Preserve face, long dark hair and violet/black/antique-gold palette. Use opaque full-length ceremonial clothing. Ignore the reference background."
+    },
+    "style_options": {
+      "color_palette": true,
+      "detail": true,
+      "outline": true,
+      "shading": true
+    }
+  },
+  "submission": {
+    "background_job_id": "c9b2cd9e-3275-43d5-8cac-c9fad088d624",
+    "image_id": "f153433b-4c86-58f8-85dc-36e0540db4a6",
+    "status": "processing",
+    "source_image_id": "f153433b-4c86-58f8-85dc-36e0540db4a6",
+    "job_id": "c9b2cd9e-3275-43d5-8cac-c9fad088d624",
+    "image_size": {
+      "width": 192,
+      "height": 192
+    },
+    "output_count": 1,
+    "estimated_generations": 6,
+    "pricing_provisional": true,
+    "poll_tool": "get_image",
+    "download_path": "/mcp/images/c9b2cd9e-3275-43d5-8cac-c9fad088d624/download"
+  },
+  "completion": {
+    "job_id": "c9b2cd9e-3275-43d5-8cac-c9fad088d624",
+    "status": "completed",
+    "frames": 1,
+    "download_url": "https://api.pixellab.ai/mcp/images/c9b2cd9e-3275-43d5-8cac-c9fad088d624/download",
+    "download_urls": [
+      "https://api.pixellab.ai/mcp/images/c9b2cd9e-3275-43d5-8cac-c9fad088d624/download"
+    ],
+    "asset": {
+      "id": "f153433b-4c86-58f8-85dc-36e0540db4a6",
+      "type": "image",
+      "status": "saved"
+    },
+    "charged_generations": 6
+  }
+}

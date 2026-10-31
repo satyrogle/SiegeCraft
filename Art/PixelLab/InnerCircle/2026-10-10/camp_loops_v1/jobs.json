@@ -1,0 +1,224 @@
+{
+  "status": "animations_processing",
+  "start_balance": 2925,
+  "expected_total": 38,
+  "pose_jobs": [
+    {
+      "name": "butcher",
+      "request": {
+        "source_image_id": "d14b3739-eaae-54a3-8b46-57466aa497f0",
+        "description": "Keep this exact inhuman muscular general: same proportionate large ridged head, face, pearl-grey skin, obsidian forearm growths, black clothing and ancient gold. Change ONLY his camp work pose and add functional blacksmith gear. One full-body front sprite, standing grounded behind a small squat dark obsidian anvil in the lower centre. His right hand holds a short heavy angular forging hammer above the anvil ready for a measured strike; left hand holds a pair of dark tongs keeping a small blunt metal workpiece on the anvil. Hammer and tongs must read clearly, no weapon swing or battle pose. Anvil has simple broad flat top and pedestal, muted antique gold metalwork. Calm absolute command, concentration, chest stays broad and head readable. Keep character recognisably identical, no new helmet, no robe, no neon. Entire sprite AND anvil and hammer inside transparent 192x192 canvas with 8px margin; retain heroic proportions and crisp pixel clusters. No text, floor, scenery, extra characters or flames.",
+        "seed": 2026101201
+      },
+      "submission": {
+        "background_job_id": "549db3f6-a8bf-4398-b87f-0cf88a3cc8bd",
+        "image_id": "780bc428-944d-500d-916d-4f23d64d29a1",
+        "status": "processing",
+        "source_image_id": "780bc428-944d-500d-916d-4f23d64d29a1",
+        "job_id": "549db3f6-a8bf-4398-b87f-0cf88a3cc8bd",
+        "image_size": {
+          "width": 192,
+          "height": 192
+        },
+        "output_count": 1,
+        "estimated_generations": 6,
+        "pricing_provisional": true,
+        "poll_tool": "get_image",
+        "download_path": "/mcp/images/549db3f6-a8bf-4398-b87f-0cf88a3cc8bd/download"
+      },
+      "completion": {
+        "job_id": "549db3f6-a8bf-4398-b87f-0cf88a3cc8bd",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/549db3f6-a8bf-4398-b87f-0cf88a3cc8bd/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/549db3f6-a8bf-4398-b87f-0cf88a3cc8bd/download"
+        ],
+        "asset": {
+          "id": "780bc428-944d-500d-916d-4f23d64d29a1",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 6
+      }
+    },
+    {
+      "name": "glutton",
+      "request": {
+        "source_image_id": "3556b8a2-d0c0-5758-ad63-7a7bcfeaa281",
+        "description": "Keep the same stout alien patriarch: exact flared ridged cranial anatomy, amused gentle uncle face, grey-violet nacre skin, grown obsidian and gold augments, black regalia, reduced rounded abdomen from this source. Change his pose to RECLINING ASLEEP for camp. Heavy relaxed body resting low in a wide reclining posture, upper body propped against one elbow on a low black obsidian bolster, head gently tipped sideways, both eyes closed, mouth relaxed with tiny contented smile, one free hand resting on his body augmentation. Legs folded naturally to one side, all limbs intact. His silhouette reads sleepy carefree alien uncle, NOT a dead body, not a slug, not Jabba copied, not a huge spherical belly. Same face and materials, keep fully clothed hip regalia. Entire reclined body inside transparent 192x192 frame with 8px margin, detailed coherent pixel art. No text, z letters, floor, background, other characters or additional furniture.",
+        "seed": 2026101202
+      },
+      "submission": {
+        "background_job_id": "197265eb-9d58-42ac-9c4d-5aaaedceef4e",
+        "image_id": "732b1879-90c9-50a6-a042-8fcc7a6a6dd9",
+        "status": "processing",
+        "source_image_id": "732b1879-90c9-50a6-a042-8fcc7a6a6dd9",
+        "job_id": "197265eb-9d58-42ac-9c4d-5aaaedceef4e",
+        "image_size": {
+          "width": 192,
+          "height": 192
+        },
+        "output_count": 1,
+        "estimated_generations": 6,
+        "pricing_provisional": true,
+        "poll_tool": "get_image",
+        "download_path": "/mcp/images/197265eb-9d58-42ac-9c4d-5aaaedceef4e/download"
+      },
+      "completion": {
+        "job_id": "197265eb-9d58-42ac-9c4d-5aaaedceef4e",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/197265eb-9d58-42ac-9c4d-5aaaedceef4e/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/197265eb-9d58-42ac-9c4d-5aaaedceef4e/download"
+        ],
+        "asset": {
+          "id": "732b1879-90c9-50a6-a042-8fcc7a6a6dd9",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 6
+      }
+    },
+    {
+      "name": "shade",
+      "request": {
+        "source_image_id": "f9bef0e7-9ba2-53ca-be7f-1616842ae78d",
+        "description": "Preserve this exact alien astral scholar's elongated ridged head, eyes, facial identity, lavender nacre skin, black embodied membranes, sparse ancient gold, covered chest and two arms. Change only camp pose to deliberate STUDYING AND TRACING ORDERS. She levitates quietly with lower legs loosely folded beneath her, posture upright and thoughtful rather than dancing. Three small separated dark obsidian tablet fragments float in a shallow arc in front of her chest and waist, etched with restrained muted old-gold short line marks. One hand points a precise index finger at the nearest tablet; other hand gently steadies a lower fragment. Clearly reads scholar sorting and tracing instructions. No book, hood, conventional magician robe, wand, bright symbols, halo, neon or circular magic portal. This activity must differ from a woman simply hovering or waving a veil. Same individual, fully covered breasts, all limbs intact. Entire character and tablets inside transparent 192x192 frame with 8px margin, front facing, same crisp pixel style and subdued palette. No text, scene, floor or other people.",
+        "seed": 2026101203
+      },
+      "submission": {
+        "background_job_id": "d5484319-60e3-40d4-b5f2-5763e5d4443b",
+        "image_id": "33c242d6-eef3-5604-9d53-c8c7d0132a65",
+        "status": "processing",
+        "source_image_id": "33c242d6-eef3-5604-9d53-c8c7d0132a65",
+        "job_id": "d5484319-60e3-40d4-b5f2-5763e5d4443b",
+        "image_size": {
+          "width": 192,
+          "height": 192
+        },
+        "output_count": 1,
+        "estimated_generations": 6,
+        "pricing_provisional": true,
+        "poll_tool": "get_image",
+        "download_path": "/mcp/images/d5484319-60e3-40d4-b5f2-5763e5d4443b/download"
+      },
+      "completion": {
+        "job_id": "d5484319-60e3-40d4-b5f2-5763e5d4443b",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/d5484319-60e3-40d4-b5f2-5763e5d4443b/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/d5484319-60e3-40d4-b5f2-5763e5d4443b/download"
+        ],
+        "asset": {
+          "id": "33c242d6-eef3-5604-9d53-c8c7d0132a65",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 6
+      }
+    }
+  ],
+  "animation_jobs": [
+    {
+      "name": "leader",
+      "request": {
+        "description": "Seamless slow camp idle, one controlled continuous cycle returning to the exact opening pose. Feet remain planted and hips steady. Chest and shoulders breathe subtly. His open palm rises slightly as the tiny neural relic rotates once above it, his fingers make a precise restrained adjustment, then return. Eyes remain calm and focused. Long dreadlocks and black cloak move with small delayed settling. Preserve brain, three eyes, face, anatomy, black clothes, gold accents and the same relic. No step, attack, new weapon, new aura or large body sway. All motion stays inside the frame. Finish matching the original relaxed position so the loop has no snap.",
+        "subject_description": "An augmented alien tactician with visible brain, three eyes, long dreads, black tabard and cloak, gold joins and a small relic above an open palm",
+        "initial_pose": "Standing front facing with feet apart, one open palm bearing a tiny hovering relic and other arm relaxed",
+        "seed": 2026101221
+      },
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: dfef5be4-fb10-470e-9ea7-38efe594814e\njob_id: dfef5be4-fb10-470e-9ea7-38efe594814e\ndescription: Seamless slow camp idle, one controlled continuous cycle returning to the exact opening pose. Feet remain planted and hips steady. Chest and shoulders breathe subtly. His open palm rises slightly as the tiny neural relic rotates once above it, his fingers make a precise restrained adjustment, then return. Eyes remain calm and focused. Long dreadlocks and black cloak move with small delayed settling. Preserve brain, three eyes, face, anatomy, black clothes, gold accents and the same relic. No step, attack, new weapon, new aura or large body sway. All motion stays inside the frame. Finish matching the original relaxed position so the loop has no snap.\nframes: 40\nsize: 192x192px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101221\ncost: 4 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"dfef5be4-fb10-470e-9ea7-38efe594814e\")\nasset_id: 33860149-b016-593f-903c-354eead8329a\nasset_status: pending (saved to your gallery when generation completes)"
+          }
+        ],
+        "isError": false
+      },
+      "id": "dfef5be4-fb10-470e-9ea7-38efe594814e"
+    },
+    {
+      "name": "whisperer",
+      "request": {
+        "description": "Seamless camp regalia-weaving loop, a graceful controlled full cycle returning to the original pose. She remains levitating at the same average height, never lands. Both hands draw slowly together near the waist, shaping a small restrained dark smoky veil between the fingers, then unfurl it gently as the arms return to their open resting position. Existing floating obsidian crescents drift in a subtle coordinated arc and return to their starting positions. Wild hair moves in a slow delayed ripple, face remains beautiful fierce and alien, not changing expression radically. Preserve the two arms, original face, chest regalia, colours and fragmented lower body. No new limbs, bright neon, wings, attack, portal or spinning whole body. End exactly in the opening silhouette and hand positions for continuous repeat.",
+        "subject_description": "A wild-haired adult alien astral regalia keeper with sculpted ridged face, pearl-violet skin, black embodied regalia, gold seams and floating obsidian body fragments",
+        "initial_pose": "Levitating front facing with two hands spread open and lower body tapering into suspended astral fragments",
+        "seed": 2026101222
+      },
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: b5e7b623-369d-4ab5-9852-f67222b6eb82\njob_id: b5e7b623-369d-4ab5-9852-f67222b6eb82\ndescription: Seamless camp regalia-weaving loop, a graceful controlled full cycle returning to the original pose. She remains levitating at the same average height, never lands. Both hands draw slowly together near the waist, shaping a small restrained dark smoky veil between the fingers, then unfurl it gently as the arms return to their open resting position. Existing floating obsidian crescents drift in a subtle coordinated arc and return to their starting positions. Wild hair moves in a slow delayed ripple, face remains beautiful fierce and alien, not changing expression radically. Preserve the two arms, original face, chest regalia, colours and fragmented lower body. No new limbs, bright neon, wings, attack, portal or spinning whole body. End exactly in the opening silhouette and hand positions for continuous repeat.\nframes: 40\nsize: 192x192px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101222\ncost: 4 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"b5e7b623-369d-4ab5-9852-f67222b6eb82\")\nasset_id: 07b9cf91-e0b9-59b5-bf6d-7ee096e02899\nasset_status: pending (saved to your gallery when generation completes)"
+          }
+        ],
+        "isError": false
+      },
+      "id": "b5e7b623-369d-4ab5-9852-f67222b6eb82"
+    },
+    {
+      "name": "butcher",
+      "id": "e33782f2-1907-4e86-ad88-9d3a2b27f453",
+      "request": {
+        "description": "Seamless measured forging cycle in camp. Keep anvil, legs, pelvis and left hand with tongs fixed and solid. Right hand lifts the existing forging hammer to shoulder height in a deliberate arc, makes one strong downward strike onto the small workpiece, pauses on contact, then lifts and returns to the exact opening grip and position. Shoulder and elbow move with weight, chest settles after the strike. A tiny muted warm metal spark at contact only, no fire or neon. Preserve exact alien face, large head, muscular anatomy, black clothes, gold trim and obsidian arm growths. Same two hands and tools throughout. No attack toward viewer, walking, anvil wobble, floating hammer or new weapon. Finish at opening pose for a continuous looping work task.",
+        "subject_description": "A tall muscular alien general with ridged grey head, nacre skin and grown obsidian gauntlets, black regalia, holding a forging hammer and tongs behind a small dark gold-trimmed anvil",
+        "initial_pose": "Standing front facing behind the anvil, hammer in his right hand just over the metal workpiece and left-hand tongs resting on the anvil",
+        "seed": 2026101223
+      },
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: e33782f2-1907-4e86-ad88-9d3a2b27f453\njob_id: e33782f2-1907-4e86-ad88-9d3a2b27f453\ndescription: Seamless measured forging cycle in camp. Keep anvil, legs, pelvis and left hand with tongs fixed and solid. Right hand lifts the existing forging hammer to shoulder height in a deliberate arc, makes one strong downward strike onto the small workpiece, pauses on contact, then lifts and returns to the exact opening grip and position. Shoulder and elbow move with weight, chest settles after the strike. A tiny muted warm metal spark at contact only, no fire or neon. Preserve exact alien face, large head, muscular anatomy, black clothes, gold trim and obsidian arm growths. Same two hands and tools throughout. No attack toward viewer, walking, anvil wobble, floating hammer or new weapon. Finish at opening pose for a continuous looping work task.\nframes: 40\nsize: 192x192px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101223\ncost: 4 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"e33782f2-1907-4e86-ad88-9d3a2b27f453\")\nasset_id: 75672f18-131e-5368-8a78-d717964b4fe9\nasset_status: pending (saved to your gallery when generation completes)"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "glutton",
+      "id": "34a7a370-0a10-4078-93fd-9af8e9c2ff37",
+      "request": {
+        "description": "Seamless very slow sleeping idle. He remains reclined asleep with closed eyes from start to finish. Belly and ribcage rise gradually on one deep inhale, head and resting hand lift a tiny amount with it, then everything sinks gently on the long exhale. One slight relaxed mouth movement suggests a soft snore; no letters or bubbles. Supporting elbow, folded legs and obsidian bolster stay anchored. Keep exact kindly alien face, stout proportions, small rounded abdomen, black regalia and gold markings. No waking, sitting up, eye opening, gesture, fighting, falling or body roll. Return slowly to the exact initial sleeping pose, comfortable alive and carefree.",
+        "subject_description": "A stout sleeping alien patriarch with flared ridged cheek and cranial anatomy, violet nacre skin, obsidian and gold augmentation, black regalia, reclining on an obsidian bolster",
+        "initial_pose": "Reclining asleep with eyes closed, head leaning on one supporting hand and other hand resting on his abdomen, legs folded to one side",
+        "seed": 2026101224
+      },
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: 34a7a370-0a10-4078-93fd-9af8e9c2ff37\njob_id: 34a7a370-0a10-4078-93fd-9af8e9c2ff37\ndescription: Seamless very slow sleeping idle. He remains reclined asleep with closed eyes from start to finish. Belly and ribcage rise gradually on one deep inhale, head and resting hand lift a tiny amount with it, then everything sinks gently on the long exhale. One slight relaxed mouth movement suggests a soft snore; no letters or bubbles. Supporting elbow, folded legs and obsidian bolster stay anchored. Keep exact kindly alien face, stout proportions, small rounded abdomen, black regalia and gold markings. No waking, sitting up, eye opening, gesture, fighting, falling or body roll. Return slowly to the exact initial sleeping pose, comfortable alive and carefree.\nframes: 40\nsize: 192x192px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101224\ncost: 4 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"34a7a370-0a10-4078-93fd-9af8e9c2ff37\")\nasset_id: 943622ef-2e8d-59ad-8230-cabdb3fadf9b\nasset_status: pending (saved to your gallery when generation completes)"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "shade",
+      "id": "5a29da94-bcdb-4a9a-8347-edf0e4a15d00",
+      "request": {
+        "description": "Seamless deliberate scholarly camp task. Stay seated levitating steadily with folded legs and upright spine. Pointing index finger traces a short precise path across the nearest floating obsidian tablet; head and eyes follow the fingertip. Three existing tablets slide slightly past one another as she calmly sorts them, the other hand stabilises the lower tablet. She briefly inspects the upper fragment then returns both hands, head and all three tablets to the exact starting configuration. Tiny breathing and delayed membrane motion only. Preserve ridged alien head, two arms, covered chest and dark materials. No veil weaving, large hover bob, book, wand, portal, bright glow or new glyph cloud. Clear reading and arranging instructions, not a dance or combat spell.",
+        "subject_description": "A levitating female alien scholar with elongated ridged cranium, lavender nacre skin, grown black membranes and ancient gold accents, studying three small floating obsidian tablets",
+        "initial_pose": "Seated levitating front facing with crossed folded legs, one index finger pointing to the upper tablet and other hand steadying a lower tablet",
+        "seed": 2026101225
+      },
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: 5a29da94-bcdb-4a9a-8347-edf0e4a15d00\njob_id: 5a29da94-bcdb-4a9a-8347-edf0e4a15d00\ndescription: Seamless deliberate scholarly camp task. Stay seated levitating steadily with folded legs and upright spine. Pointing index finger traces a short precise path across the nearest floating obsidian tablet; head and eyes follow the fingertip. Three existing tablets slide slightly past one another as she calmly sorts them, the other hand stabilises the lower tablet. She briefly inspects the upper fragment then returns both hands, head and all three tablets to the exact starting configuration. Tiny breathing and delayed membrane motion only. Preserve ridged alien head, two arms, covered chest and dark materials. No veil weaving, large hover bob, book, wand, portal, bright glow or new glyph cloud. Clear reading and arranging instructions, not a dance or combat spell.\nframes: 40\nsize: 192x192px\ntransparent: True\nlast_frame: yes (animating toward it)\nseed: 2026101225\ncost: 4 generations\nstatus: processing (~1-5 min)\n\nhint: get_image(job_id=\"5a29da94-bcdb-4a9a-8347-edf0e4a15d00\")\nasset_id: 286a1fe8-22e4-5179-9628-027a52d43fc7\nasset_status: pending (saved to your gallery when generation completes)"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "frame_count_generated": 40,
+  "pipeline": "PixelLab PixMiniMax motion, Aseprite indexed masters and shared palette per clip",
+  "review_only": true
+}

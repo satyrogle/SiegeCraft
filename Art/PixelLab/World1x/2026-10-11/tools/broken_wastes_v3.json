@@ -1,0 +1,59 @@
+{
+ "name": "broken_wastes",
+ "tileset": "da785dac-ccc3-49f5-b6aa-e350201f7929",
+ "rows": {
+  "-2": "llllllllllllllllllllllllll",
+  "-1": "llllllllllllllllllllllllll",
+  "0": "llllllllllllllllllllllllll",
+  "1": "lllleeeeeeeeeeeeeeeeeellll",
+  "2": "llllrrrrrrrrrrrrrrrrrrllll",
+  "3": "llllrrrrrrrrrrrrrrrrrrllll",
+  "4": "eeeerrrrrrrrrrrrrrrrrreeee"
+ },
+ "fill": "r",
+ "top": 420,
+ "props": [
+  [
+   "06a46faa-c97a-48b3-a6d6-270e99858463",
+   -12,
+   -17,
+   false
+  ],
+  [
+   "06a46faa-c97a-48b3-a6d6-270e99858463",
+   1244,
+   -27,
+   true
+  ],
+  [
+   "666a3760-6d65-4ca3-8fe1-df8d9125a050",
+   572,
+   112,
+   false
+  ],
+  [
+   "49fec96c-885c-48b6-8958-8d9e069de5da",
+   120,
+   310,
+   true
+  ],
+  [
+   "49fec96c-885c-48b6-8958-8d9e069de5da",
+   1222,
+   318,
+   false
+  ],
+  [
+   "035078ff-1098-4270-afb4-f0200880ec34",
+   -18,
+   652,
+   false
+  ],
+  [
+   "035078ff-1098-4270-afb4-f0200880ec34",
+   1269,
+   642,
+   true
+  ]
+ ]
+}

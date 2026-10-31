@@ -1,0 +1,23 @@
+PASS camp opens from title through raycast
+PASS camp modal visible
+PASS butcher loads at 192px with point sampling
+PASS glutton loads at 192px with point sampling
+PASS shade loads at 192px with point sampling
+PASS whisperer loads at 192px with point sampling
+PASS camp blocks underlying new-campaign button
+PASS camp return button works
+PASS camp closes cleanly
+New campaign, seed 21
+PASS new campaign
+PASS tutorial starts
+PASS leader placeholder replaced by PixelLab front
+PASS leader and battlefield share source pixel scale
+PASS leader visible pixels stay inside battlefield
+PASS tutorial completes with static leader front
+The raid on your jailers: Won, respect 0 -> 0, JOINED
+PASS result opens
+PASS camp opens from campaign result
+PASS camp closes after fight
+PASS campaign continues after visiting camp
+PASS campaign save remains readable
+PASS camp visit preserves campaign state

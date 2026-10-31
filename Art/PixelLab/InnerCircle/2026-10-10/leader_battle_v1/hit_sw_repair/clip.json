@@ -1,0 +1,31 @@
+{
+  "name": "hit_sw",
+  "state": "hit",
+  "direction": "sw",
+  "label": "Hit reaction",
+  "loop": false,
+  "count": 13,
+  "durations": [
+    40,
+    40,
+    40,
+    40,
+    40,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    130
+  ],
+  "ms": 680,
+  "columns": 8,
+  "width": 256,
+  "height": 256,
+  "sheet": "hit_sw_repair/sheet.png",
+  "gif": "hit_sw_repair/preview.gif",
+  "master": "hit_sw_repair/hit.aseprite",
+  "contact": "hit_sw_repair/contact.png"
+}

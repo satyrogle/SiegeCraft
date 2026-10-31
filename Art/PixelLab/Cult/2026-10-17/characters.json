@@ -1,0 +1,59 @@
+{
+ "note": "Cult soldiers, Jacob go 17 Oct 2026. Fronts by create_image_pro_flash (style: leader body crop), turned by create_character_pro_flash from each front, low top-down, 8 directions. Clips SE PixMiniMax.",
+ "soldiers": {
+  "1": {
+   "key": "cult_zealot",
+   "front_image": "437f795e-e5be-595a-95f0-da1e4e7717cf",
+   "character": "b7499d1d-c42a-4d12-9a9a-cdaa1073f6ff",
+   "size": 112
+  },
+  "2": {
+   "key": "cult_raider",
+   "front_image": "ff2def58-09e3-5a22-8f82-f7477ce44b84",
+   "character": "ce83d7dd-cf58-4381-9854-eba428f99edc",
+   "size": 112
+  },
+  "3": {
+   "key": "cult_shieldspear",
+   "front_image": "1c733e62-f7b6-5e28-bd7c-0811ab6cd0b1",
+   "character": "24bc5386-c759-42c0-a466-4c7dbab9a742",
+   "size": 112
+  },
+  "4": {
+   "key": "cult_tank",
+   "front_image": "25a148eb-f56c-5411-a1a8-6cc6386876d1",
+   "character": "ad622bd4-8812-4989-81dc-858c4562b086",
+   "size": 128
+  },
+  "5": {
+   "key": "cult_sharpshooter",
+   "front_image": "6aa122ed-a295-5418-a975-3d3729ed3306",
+   "character": "3d52eef1-53b0-4b4b-86f8-52b16a91f4e9",
+   "size": 96
+  },
+  "6": {
+   "key": "cult_preacher",
+   "front_image": "4e3087f7-a44a-5473-a5fd-1ad98e90b5e2",
+   "character": "80cfc95e-2f9b-4317-b339-02a87675c256",
+   "size": 96
+  },
+  "7": {
+   "key": "cult_hookhunter",
+   "front_image": "36c0d3bb-9157-5bf6-8641-8dba49ef74bb",
+   "character": "1ace039a-be96-4e8f-8d21-00e521c5a589",
+   "size": 112
+  },
+  "8": {
+   "key": "cult_bladedancer",
+   "front_image": "4ee89109-6e03-5094-a6fc-49c5c96f7d86",
+   "character": "64f0b2b1-0c66-428b-8e18-eb763e4af72a",
+   "size": 112
+  },
+  "9": {
+   "key": "cult_bearer",
+   "front_image": "ab786830-5349-5159-8120-bb4c1e8c12a7",
+   "character": "f40b7b4a-2155-4a42-b5c7-f487eee87b04",
+   "size": 112
+  }
+ }
+}

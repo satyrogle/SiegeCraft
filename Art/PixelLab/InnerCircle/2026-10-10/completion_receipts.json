@@ -1,0 +1,107 @@
+{
+  "completedAt": "2026-10-10",
+  "startingBalance": 2984,
+  "endingBalance": 2954,
+  "chargedGenerations": 30,
+  "jobs": [
+    {
+      "name": "leader",
+      "result": {
+        "job_id": "1a625c71-0806-4c20-b0a0-85668395fe84",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/1a625c71-0806-4c20-b0a0-85668395fe84/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/1a625c71-0806-4c20-b0a0-85668395fe84/download"
+        ],
+        "asset": {
+          "id": "b2eaeb5a-39fc-54d9-b5e8-4d0d5261127f",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 6
+      }
+    },
+    {
+      "name": "butcher",
+      "result": {
+        "job_id": "b9d24333-45de-4e79-8e01-894c4c0c2bea",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/b9d24333-45de-4e79-8e01-894c4c0c2bea/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/b9d24333-45de-4e79-8e01-894c4c0c2bea/download"
+        ],
+        "asset": {
+          "id": "d54ccd19-2e3f-5e19-8d73-55016028aceb",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 6
+      }
+    },
+    {
+      "name": "glutton",
+      "result": {
+        "job_id": "24505200-6aaf-4c18-9025-b579ec3a1538",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/24505200-6aaf-4c18-9025-b579ec3a1538/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/24505200-6aaf-4c18-9025-b579ec3a1538/download"
+        ],
+        "asset": {
+          "id": "d2ce0827-910b-5b1e-9f58-cd21ac45d31d",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 6
+      }
+    },
+    {
+      "name": "shade",
+      "result": {
+        "job_id": "e8f48a2b-9209-40f3-b2c6-0e1b8fa7a01a",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/e8f48a2b-9209-40f3-b2c6-0e1b8fa7a01a/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/e8f48a2b-9209-40f3-b2c6-0e1b8fa7a01a/download"
+        ],
+        "asset": {
+          "id": "ae952e42-01f3-5e9f-88a0-94355652be09",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 6
+      }
+    },
+    {
+      "name": "whisperer",
+      "result": {
+        "job_id": "3a779a35-a37c-4a64-9702-4a43f5b0bda5",
+        "status": "failed",
+        "charged_generations": 0,
+        "error": "Provider content policy rejection; see whisperer_retry.json for original response."
+      }
+    },
+    {
+      "name": "whisperer_retry",
+      "result": {
+        "job_id": "c9b2cd9e-3275-43d5-8cac-c9fad088d624",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/c9b2cd9e-3275-43d5-8cac-c9fad088d624/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/c9b2cd9e-3275-43d5-8cac-c9fad088d624/download"
+        ],
+        "asset": {
+          "id": "f153433b-4c86-58f8-85dc-36e0540db4a6",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 6
+      }
+    }
+  ]
+}

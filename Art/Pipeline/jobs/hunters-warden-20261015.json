@@ -1,0 +1,34 @@
+{
+  "name": "hunters-warden-20261015",
+  "out": "Art/Pipeline/runs/hunters-warden-20261015",
+  "_note": "Jacob 15 Oct: goth reptilian dragonkin (WoW dragonkin as the reference), body armour, scales, a goatee that is skin hanging either side of the chin, very good looking, smallish horns, the Warden always carries a war banner. Run by a scratch driver: reference placed at 4x with the feet at y 744 for banner headroom, native size = raw / 4.",
+  "reference": "Assets/Resources/CampaignArt/skull_warden_sw_idle.png",
+  "reference_scale": 4,
+  "reference_feet": 744,
+  "matte": "#56616c",
+  "colours": 32,
+  "steps": 24,
+  "cfg": 4.0,
+  "beside": "Assets/Resources/CampaignArt/skull_warden_sw_idle.png",
+  "negative": "human face, human skin, hair, wings, chibi, child, cartoon, bulky, fat, blurry, smooth gradients, painting, photograph, extra arms, extra weapons, two banners, background scenery, floor, text, letters, more than one character, cropped",
+  "options": [
+    {
+      "id": 1,
+      "label": "black, blood red banner",
+      "seed": 2026101510,
+      "prompt": "pixel art sprite, game asset, 32-bit pixel art. Edit the reference image. Replace the fighter with a completely new character who stands in the same spot with his feet on the same line, at the same body height, in the same three quarter view facing down-left, drawn in the same crisp pixel art style with the same pixel size, dark outlines and light from the upper left. Nothing of the old fighter remains: no human skin, no hair, no metal ribs, no claw arm. The new character is a handsome goth dragonkin warrior, one of the Sovereign's hunters: a lean, toned reptilian humanoid with a sleek, good looking dragon head, a short tapered snout, a strong jaw, glowing slit eyes, two small horns swept back from the brow, and two thin flaps of scaled skin hanging down on either side of the chin like a goatee. Fine scales cover his face, neck and hands. He wears fitted gothic body armour over his scales. He is the war band's standard bearer: one hand grips a tall war banner on a long pole planted upright on the ground beside him, the flag hanging high above his head, and his other arm carries a shield. No wings. Colours: glossy jet black scales, blackened steel armour with sharp silver edges, a blood red banner with a black sigil, a black shield with a silver rim. Full body and the whole banner inside the image with clear margins. One character only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no text."
+    },
+    {
+      "id": 2,
+      "label": "bone white, black banner",
+      "seed": 2026101510,
+      "prompt": "pixel art sprite, game asset, 32-bit pixel art. Edit the reference image. Replace the fighter with a completely new character who stands in the same spot with his feet on the same line, at the same body height, in the same three quarter view facing down-left, drawn in the same crisp pixel art style with the same pixel size, dark outlines and light from the upper left. Nothing of the old fighter remains: no human skin, no hair, no metal ribs, no claw arm. The new character is a handsome goth dragonkin warrior, one of the Sovereign's hunters: a lean, toned reptilian humanoid with a sleek, good looking dragon head, a short tapered snout, a strong jaw, glowing slit eyes, two small horns swept back from the brow, and two thin flaps of scaled skin hanging down on either side of the chin like a goatee. Fine scales cover his face, neck and hands. He wears fitted gothic body armour over his scales. He is the war band's standard bearer: one hand grips a tall war banner on a long pole planted upright on the ground beside him, the flag hanging high above his head, and his other arm carries a shield. No wings. Colours: pale bone white scales, black lacquered armour with silver edges, a black banner with a bone white sigil, a black shield with a bone white rim. Full body and the whole banner inside the image with clear margins. One character only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no text."
+    },
+    {
+      "id": 3,
+      "label": "emerald, black banner",
+      "seed": 2026101510,
+      "prompt": "pixel art sprite, game asset, 32-bit pixel art. Edit the reference image. Replace the fighter with a completely new character who stands in the same spot with his feet on the same line, at the same body height, in the same three quarter view facing down-left, drawn in the same crisp pixel art style with the same pixel size, dark outlines and light from the upper left. Nothing of the old fighter remains: no human skin, no hair, no metal ribs, no claw arm. The new character is a handsome goth dragonkin warrior, one of the Sovereign's hunters: a lean, toned reptilian humanoid with a sleek, good looking dragon head, a short tapered snout, a strong jaw, glowing slit eyes, two small horns swept back from the brow, and two thin flaps of scaled skin hanging down on either side of the chin like a goatee. Fine scales cover his face, neck and hands. He wears fitted gothic body armour over his scales. He is the war band's standard bearer: one hand grips a tall war banner on a long pole planted upright on the ground beside him, the flag hanging high above his head, and his other arm carries a shield. No wings. Colours: deep emerald green scales, blackened steel armour with silver edges, a black banner with an emerald sigil, a black shield with a silver rim. Full body and the whole banner inside the image with clear margins. One character only. Plain flat uniform blue grey (#56616c) background, no floor, no shadow, no text."
+    }
+  ]
+}

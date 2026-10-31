@@ -1,0 +1,15 @@
+{
+  "url": "http://127.0.0.1:62556/camp_innercircle_v1/review.html",
+  "all_five_loaded": true,
+  "all_five_playback_advanced_and_repeated": true,
+  "observed_repeat_counts": {
+    "leader": 8,
+    "butcher": 15,
+    "glutton": 6,
+    "shade": 7,
+    "whisperer": 9
+  },
+  "selected_shade_played_alone": true,
+  "screenshot": "review-screenshot.jpg",
+  "owner_art_verdict": "pending"
+}

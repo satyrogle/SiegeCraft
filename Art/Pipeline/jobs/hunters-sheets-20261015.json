@@ -1,0 +1,255 @@
+{
+  "name": "hunters-sheets-20261015",
+  "out": "Art/Pipeline/runs/hunters-sheets-20261015",
+  "_note": "Jacob 15 Oct: \"do concept art not character art\". Concept sheets on local Ideogram 4 int8 (main model also runs the negative pass): main painting, turnaround, head studies, banner study, swatches. Same race and the same three costume ideas as hunters-concept-20261015c, with the bruiser given armour (his brief says body armour) and the face asked to be handsome and regal.",
+  "size": [
+    1536,
+    1024
+  ],
+  "aspect_ratio": "3:2",
+  "preset": "Default",
+  "background": "A clean, light warm grey character concept art sheet with a subtle paper texture, laid out in tidy panels with thin pencil guide lines. No signature and no watermark.",
+  "stack_width": 1400,
+  "options": [
+    {
+      "id": 1,
+      "label": "cathedral plate",
+      "seed": 2026101570,
+      "summary": "A professional fantasy character concept art sheet for a heavy reptilian standard bearer in massive black iron plate armour shaped like gothic cathedral architecture, with a main painting, a turnaround, head studies, a banner study and colour swatches, in a clean, high end video game concept art style.",
+      "elements": [
+        {
+          "type": "text",
+          "bbox": [
+            25,
+            25,
+            75,
+            600
+          ],
+          "text": "HUNT STANDARD BEARER",
+          "desc": "Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            20,
+            975,
+            370
+          ],
+          "desc": "Main concept painting: full body of the same character, an original heavy reptilian humanoid from a proud warrior race, not a dragon: a handsome, regal reptilian face with a strong jaw and a noble profile, a short blunt snout like a monitor lizard, a heavy brow over intense amber eyes, fine dark charcoal scales with a silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge strongman build, very broad shoulders, a thick neck, a barrel chest, a big hard belly and thick muscular limbs. Goth look, wearing massive black iron plate armour shaped like gothic cathedral architecture, with pointed arches, buttress shaped pauldrons and tracery cut outs trimmed with tarnished silver, in a three quarter view facing left, holding upright a tall war banner, a long blood red processional banner hanging from a crossbar, with a black abstract sigil and silver tassels, on a heavy black pole with a spear finial. Painted in full colour with confident brushwork and a cold rim light."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            390,
+            540,
+            980
+          ],
+          "desc": "Turnaround of the same character, an original heavy reptilian humanoid from a proud warrior race, not a dragon: a handsome, regal reptilian face with a strong jaw and a noble profile, a short blunt snout like a monitor lizard, a heavy brow over intense amber eyes, fine dark charcoal scales with a silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge strongman build, very broad shoulders, a thick neck, a barrel chest, a big hard belly and thick muscular limbs. Goth look, wearing massive black iron plate armour shaped like gothic cathedral architecture, with pointed arches, buttress shaped pauldrons and tracery cut outs trimmed with tarnished silver: front view, side view and back view standing in a row at the same height, flat colour with clean line art, without the banner."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            545,
+            400,
+            580,
+            980
+          ],
+          "text": "FRONT          SIDE          BACK",
+          "desc": "Small neat capital labels under the three turnaround views."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            390,
+            975,
+            660
+          ],
+          "desc": "Three head studies of the same character: profile, three quarter and front, showing the two skin flaps hanging from either side of the chin like a forked goatee, the small swept back horns and the scale pattern."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            680,
+            975,
+            840
+          ],
+          "desc": "Design study of the war banner on its own: a long blood red processional banner hanging from a crossbar, with a black abstract sigil and silver tassels, on a heavy black pole with a spear finial."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            860,
+            975,
+            980
+          ],
+          "desc": "A column of five colour swatches (charcoal scale, silver, black iron, blood red cloth, amber eye) above two small material close ups of the scales and the armour."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "label": "mourning plate",
+      "seed": 2026101570,
+      "summary": "A professional fantasy character concept art sheet for a heavy reptilian standard bearer in heavy black scale mail and a dented black breastplate under a black lace mourning mantle, with a main painting, a turnaround, head studies, a banner study and colour swatches, in a clean, high end video game concept art style.",
+      "elements": [
+        {
+          "type": "text",
+          "bbox": [
+            25,
+            25,
+            75,
+            600
+          ],
+          "text": "HUNT STANDARD BEARER",
+          "desc": "Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            20,
+            975,
+            370
+          ],
+          "desc": "Main concept painting: full body of the same character, an original heavy reptilian humanoid from a proud warrior race, not a dragon: a handsome, regal reptilian face with a strong jaw and a noble profile, a short blunt snout like a monitor lizard, a heavy brow over intense amber eyes, fine dark charcoal scales with a silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge strongman build, very broad shoulders, a thick neck, a barrel chest, a big hard belly and thick muscular limbs. Goth look, wearing heavy black scale mail and a dented black breastplate under a black lace mourning mantle, heavy silver chains, and silver rings pierced through his chin flaps and horns, in a three quarter view facing left, holding upright a tall war banner, a ragged black banner with a blood red abstract sigil, on a heavy black pole with a crossbar and a spear finial. Painted in full colour with confident brushwork and a cold rim light."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            390,
+            540,
+            980
+          ],
+          "desc": "Turnaround of the same character, an original heavy reptilian humanoid from a proud warrior race, not a dragon: a handsome, regal reptilian face with a strong jaw and a noble profile, a short blunt snout like a monitor lizard, a heavy brow over intense amber eyes, fine dark charcoal scales with a silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge strongman build, very broad shoulders, a thick neck, a barrel chest, a big hard belly and thick muscular limbs. Goth look, wearing heavy black scale mail and a dented black breastplate under a black lace mourning mantle, heavy silver chains, and silver rings pierced through his chin flaps and horns: front view, side view and back view standing in a row at the same height, flat colour with clean line art, without the banner."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            545,
+            400,
+            580,
+            980
+          ],
+          "text": "FRONT          SIDE          BACK",
+          "desc": "Small neat capital labels under the three turnaround views."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            390,
+            975,
+            660
+          ],
+          "desc": "Three head studies of the same character: profile, three quarter and front, showing the two skin flaps hanging from either side of the chin like a forked goatee, the small swept back horns and the scale pattern."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            680,
+            975,
+            840
+          ],
+          "desc": "Design study of the war banner on its own: a ragged black banner with a blood red abstract sigil, on a heavy black pole with a crossbar and a spear finial."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            860,
+            975,
+            980
+          ],
+          "desc": "A column of five colour swatches (charcoal scale, silver, black iron, blood red cloth, amber eye) above two small material close ups of the scales and the armour."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "label": "velvet greatcoat",
+      "seed": 2026101570,
+      "summary": "A professional fantasy character concept art sheet for a heavy reptilian standard bearer in a long black velvet greatcoat with a high collar and silver buttons over armour of overlapping black lacquered scale plates, with a main painting, a turnaround, head studies, a banner study and colour swatches, in a clean, high end video game concept art style.",
+      "elements": [
+        {
+          "type": "text",
+          "bbox": [
+            25,
+            25,
+            75,
+            600
+          ],
+          "text": "HUNT STANDARD BEARER",
+          "desc": "Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            20,
+            975,
+            370
+          ],
+          "desc": "Main concept painting: full body of the same character, an original heavy reptilian humanoid from a proud warrior race, not a dragon: a handsome, regal reptilian face with a strong jaw and a noble profile, a short blunt snout like a monitor lizard, a heavy brow over intense amber eyes, fine dark charcoal scales with a silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge strongman build, very broad shoulders, a thick neck, a barrel chest, a big hard belly and thick muscular limbs. Goth look, wearing a long black velvet greatcoat with a high collar and silver buttons over armour of overlapping black lacquered scale plates, with heavy gauntlets and boots, in a three quarter view facing left, holding upright a tall war banner, a blood red velvet banner with a silver embroidered abstract sigil, on a heavy black pole topped with a silver crescent. Painted in full colour with confident brushwork and a cold rim light."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            390,
+            540,
+            980
+          ],
+          "desc": "Turnaround of the same character, an original heavy reptilian humanoid from a proud warrior race, not a dragon: a handsome, regal reptilian face with a strong jaw and a noble profile, a short blunt snout like a monitor lizard, a heavy brow over intense amber eyes, fine dark charcoal scales with a silver sheen, two small curved horns swept back above the brow, and two thin fleshy flaps of scaled skin hanging down from either side of the chin like a forked goatee. Fit but fat: a huge strongman build, very broad shoulders, a thick neck, a barrel chest, a big hard belly and thick muscular limbs. Goth look, wearing a long black velvet greatcoat with a high collar and silver buttons over armour of overlapping black lacquered scale plates, with heavy gauntlets and boots: front view, side view and back view standing in a row at the same height, flat colour with clean line art, without the banner."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            545,
+            400,
+            580,
+            980
+          ],
+          "text": "FRONT          SIDE          BACK",
+          "desc": "Small neat capital labels under the three turnaround views."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            390,
+            975,
+            660
+          ],
+          "desc": "Three head studies of the same character: profile, three quarter and front, showing the two skin flaps hanging from either side of the chin like a forked goatee, the small swept back horns and the scale pattern."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            680,
+            975,
+            840
+          ],
+          "desc": "Design study of the war banner on its own: a blood red velvet banner with a silver embroidered abstract sigil, on a heavy black pole topped with a silver crescent."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            860,
+            975,
+            980
+          ],
+          "desc": "A column of five colour swatches (charcoal scale, silver, black iron, blood red cloth, amber eye) above two small material close ups of the scales and the armour."
+        }
+      ]
+    }
+  ]
+}

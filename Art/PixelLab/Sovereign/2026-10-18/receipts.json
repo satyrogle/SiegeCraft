@@ -1,0 +1,122 @@
+{
+ "note": "The Sovereign's 57, her own Alpha tribe. Jacob, 18 Oct 2026: look 2 picked ('go with 2'). Fronts by create_image_pro_flash, no background. Turn later with create_character_pro_flash from each image id.",
+ "round1": {
+  "size": 160,
+  "seed": 2026101800,
+  "style_image": "c2435347-a2a8-5830-b76a-60621174e6f1, colours off (the hunters' first round recipe)",
+  "options": {
+   "1-light": {
+    "job": "80b953c2-a060-40aa-89d4-46a0c36936ca",
+    "image": "3b6b725d-d8ed-55aa-90f8-90936989a12b"
+   },
+   "2-glass": {
+    "job": "ea4e34ff-0e26-489d-8832-22a2f1228abb",
+    "image": "f32d2d4c-1885-5076-a55e-3cfd34ee883b",
+    "picked": true
+   },
+   "3-half": {
+    "job": "ed6fa2d9-7046-46d4-8295-4ebc4e97a992",
+    "image": "f5f7dcb3-99aa-59c8-b773-f5b92d82e34d"
+   }
+  }
+ },
+ "squad": {
+  "style": "look 2 cropped to each canvas (squad/style/style-<size>.png; the captain used the whole look 2 front), palette, outline, detail and shading on",
+  "units": {
+   "warden": {
+    "size": 128,
+    "seed": 2026101811,
+    "job": "6298572f-a187-4310-a964-a23a29ddc624",
+    "image": "f3f4e9e5-85b3-5254-8585-5c59d9cb04c0"
+   },
+   "skirmisher": {
+    "size": 112,
+    "seed": 2026101812,
+    "job": "75a09afa-843b-4ba5-80a3-0641f76c2184",
+    "image": "bbd3bb09-a13a-5076-9440-2f389774a3eb"
+   },
+   "trapper": {
+    "size": 112,
+    "seed": 2026101813,
+    "job": "839ff54f-41e9-4694-95f0-c4fe090fec51",
+    "image": "3ef35ffb-7226-5d09-9ec7-6af7766f0377"
+   },
+   "marksman": {
+    "size": 96,
+    "seed": 2026101814,
+    "job": "07022715-e468-4c2f-9cd7-0380fdf9f824",
+    "image": "2c4b7752-9101-59a2-af18-f05f7dfe73e2"
+   },
+   "medic": {
+    "size": 96,
+    "seed": 2026101815,
+    "job": "3490ab32-5e8f-47da-8e86-09fcf234ff92",
+    "image": "dbf21c3c-30ea-5421-b817-1b519ed45b32"
+   },
+   "captain": {
+    "size": 192,
+    "seed": 2026101816,
+    "job": "2b26d73a-a6b1-48e9-bc00-29d25e1bdef2",
+    "image": "202fd353-dd07-530c-bb1d-1a1fb2891022"
+   }
+  }
+ },
+ "spend": "round 1 18 generations, squad 34, turns 15, clips 60, runs 5",
+ "characters": {
+  "note": "Jacob: 'go turn and animate all 6' (18 Oct). create_character_pro_flash from each squad front (low top-down, 8 directions), then animate_character pixminimax facing south-west, keep_first_frame false: idle 40, attack 40, hit 16, death 32. Frames in clips/sov_<unit>/<clip>/NN.png; canvas per unit below.",
+  "sov_warden": {
+   "character": "99a59e2d-fa0b-4881-ab55-5fee4f5bbd41",
+   "canvas": 180,
+   "idle": "d6731843-9408-4f21-ba7a-2ae629b6637b",
+   "attack": "4ce1a3dd-9710-4a03-a0a4-2223f6394ad4",
+   "hit": "4477ae6d-6f09-462a-b214-3528b37913b1",
+   "death": "985ccd10-3b51-4637-b058-27d918b70d2a",
+   "run": "87cb07c8-97d1-46b6-950d-c45341cbfbd1"
+  },
+  "sov_skirmisher": {
+   "character": "1894f578-91e0-4156-9a7c-ae3ea7badc88",
+   "canvas": 160,
+   "idle": "0510a145-5100-47dc-9cdd-9b03d86a0483",
+   "attack": "9c349552-1efd-4685-8505-65ab1c5d62d5",
+   "hit": "31f10a35-4f52-4f0b-9fc2-da34991bf237",
+   "death": "673f2933-a676-4a6c-b3ba-0606387ee1cb",
+   "run": "14ff863c-fe51-403d-a8fa-e92a0bacedf9"
+  },
+  "sov_trapper": {
+   "character": "75ab65cb-daed-4be0-90dc-2bc9ea635193",
+   "canvas": 160,
+   "idle": "3495db7b-56c6-4a5f-93cd-7f2e88ad3340",
+   "attack": "8f8b70a5-44f3-4b3d-bc45-1bdea33f6828",
+   "hit": "7e3a582c-ad6c-4eef-8c46-b78d355a3ec7",
+   "death": "a566de1c-b697-4745-9f78-348452b9fad7",
+   "run": "794e98af-d68d-413c-81f1-69eed2a34621"
+  },
+  "sov_marksman": {
+   "character": "eb7f6363-11a2-4a0c-bc61-f323c6ff901b",
+   "canvas": 136,
+   "idle": "9a015502-a079-4ee8-a2fa-b1997e45264e",
+   "attack": "9a51d428-8fa3-4bda-89e6-009dd161748a",
+   "hit": "7d9878da-87b8-4ecd-9a61-979d4e7fb91e",
+   "death": "394abe5d-054c-4ca7-85cb-c3ee1544164d",
+   "run": "34b54f5d-f95c-4a70-ba31-c71804a91d23"
+  },
+  "sov_medic": {
+   "character": "fe59a4f9-d49d-4fb6-9cd2-2cc443f398a8",
+   "canvas": 136,
+   "idle": "96418323-53ac-417a-ad47-a6dab79e0aad",
+   "attack": "afc05ce4-17df-4707-b6b5-e0a8cc65df08",
+   "hit": "ad41b20f-6df7-4c8f-af3e-35909bcf6071",
+   "death": "4dfc2329-c1aa-4b46-94c5-df10c1e75cab",
+   "run": "00fcc4a2-75f0-4172-baed-8bc1a77e8ec6"
+  },
+  "sov_captain": {
+   "character": "457868e3-7100-4f52-b912-e41cdc5c51c7",
+   "canvas": 252,
+   "idle": "7846adbe-2809-42cf-8702-f3d2912f4b26",
+   "attack": "89723592-3109-4a26-afe2-a781cf7c88bf",
+   "hit": "7674eda1-3e71-4a1d-8f78-a223febbeea7",
+   "death": "834e55ac-49cd-47e9-9f92-061967276537"
+  }
+ },
+ "sheets": "Assets/Resources/CampaignArt/sovereign_<unit>_sw_{idle,attack,hit,death} (.png, .json, .meta), death skips its first 8 frames"
+}

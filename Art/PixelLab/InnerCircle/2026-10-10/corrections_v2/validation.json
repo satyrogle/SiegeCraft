@@ -1,0 +1,82 @@
+[
+  {
+    "name": "leader",
+    "size": [
+      192,
+      192
+    ],
+    "colours": 31,
+    "bounds": [
+      38,
+      5,
+      140,
+      185
+    ],
+    "sha256": "3a68775043ed7dc1c643281140dc9ccecb8fe6cbb97a9e80ffb6adb3198915c1",
+    "original_unchanged": "2a816ab68c19bc4e62fe868ec509b9c6f9af9389dc8d52e1e5a0a2f218506b97"
+  },
+  {
+    "name": "butcher",
+    "size": [
+      192,
+      192
+    ],
+    "colours": 31,
+    "bounds": [
+      38,
+      6,
+      150,
+      186
+    ],
+    "sha256": "c0eb86cb4c9b3a983c7564bbfe5becf525b50e8b0117ad37913e4c206f96bfa7",
+    "original_unchanged": "97113e40d756335bdc0fc3d8b95964c8a23993496c1296d7dc574d902ddb7d4b"
+  },
+  {
+    "name": "glutton",
+    "size": [
+      192,
+      192
+    ],
+    "colours": 16,
+    "bounds": [
+      7,
+      6,
+      176,
+      186
+    ],
+    "sha256": "9489151ff516c31f07c283a09a69d0b7f239e7fc34bd545452945d95081d8843",
+    "original_unchanged": "ac7997a2e962430c727cd136287aacf616cb3a9116bddd4788eb1867ee12db84"
+  },
+  {
+    "name": "shade",
+    "size": [
+      192,
+      192
+    ],
+    "colours": 30,
+    "bounds": [
+      54,
+      5,
+      135,
+      188
+    ],
+    "sha256": "fab332bf384edf2181a600c4984b0164d5d1c98f2e10a5386a95846f94cee1d2",
+    "original_unchanged": "9aad7d48730e47cb51e324b7ff714cad83eabbc438784d47585d6abbc9c635d0"
+  },
+  {
+    "name": "whisperer",
+    "size": [
+      192,
+      192
+    ],
+    "colours": 30,
+    "bounds": [
+      53,
+      4,
+      124,
+      185
+    ],
+    "sha256": "0372cf890f14c9b91c67a96b3d6a9cf2568ac8771ff0caf885f24707e96a8e5b",
+    "original_unchanged": "a057b34c691ff51449806c3845b06a46d82df1b718f93a090bb3f357c22c79f8"
+  }
+]

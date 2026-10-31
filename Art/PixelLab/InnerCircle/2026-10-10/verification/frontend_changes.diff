@@ -1,0 +1,104 @@
+--- before/CampaignArtLoop.cs
++++ after/CampaignArtLoop.cs
+@@ -42,7 +42,7 @@
+         {
+             Application.runInBackground=true;
+             _font=Resources.GetBuiltinResource<Font>("Arial.ttf");
+-            _capture=Argument("-ksArtValidate"); _auto=_capture!=null;
++            _capture=Argument("-ksArtValidate")??Argument("-ksInnerCircleValidate"); _auto=_capture!=null;
+             _savePath=_auto?Path.Combine(_capture,"campaign_art_loop.txt"):Path.Combine(Application.persistentDataPath,"campaign_art_loop.txt");
+             if (_auto) Directory.CreateDirectory(_capture);
+             _canvas=new GameObject("Campaign art canvas",typeof(Canvas),typeof(GraphicRaycaster)).GetComponent<Canvas>();
+@@ -60,12 +60,13 @@
+             _root=Rect(_canvas.transform,"1440 x 900",0,0,W,H);
+             _root.anchorMin=_root.anchorMax=_root.pivot=new Vector2(.5f,.5f); _root.anchoredPosition=Vector2.zero;
+             ShowTitle();
+-            if (_auto) StartCoroutine(Validate());
++            if (_auto) StartCoroutine(Argument("-ksInnerCircleValidate")!=null?ValidateInnerCircle():Validate());
+         }
+         void Update()
+         {
+             _canvas.scaleFactor=_auto?1:Mathf.Min(Screen.width/W,Screen.height/H);
+             if(_noticeText!=null)_noticeText.text=_notice;
++            InnerCircleInput();
+             if (_page!=Page.Fight || _fight==null) return;
+             if(_modal==null)
+             {
+@@ -91,6 +92,7 @@
+         }
+         void SetPage(Page page)
+         {
++            _campOpen=false;
+             ClearBattle();
+             if(_screen!=null){_screen.gameObject.SetActive(false);Destroy(_screen.gameObject);}
+             if(_modal!=null){Destroy(_modal.gameObject);_modal=null;}
+@@ -99,10 +101,11 @@
+             Panel(_screen,0,0,W,H,Ink);
+             Label(_screen,"K I N D R E D   S I E G E",32,18,760,24,15,Bronze,FontStyle.Bold);
+             _noticeText=Label(_screen,_notice,32,846,1110,34,16,Red);
+-            if(page==Page.Fight) BuildBattle(); else BuildPage();
++            if(page==Page.Fight) BuildBattle(); else { BuildPage(); AddCampAccess(); }
+         }
+         void OnDestroy()
+         {
++            ClearInnerCircle();
+             if(_canvas!=null) Destroy(_canvas.gameObject);
+             if(_capturePixels!=null) Destroy(_capturePixels);
+             if(_captureTarget!=null){_captureTarget.Release();Destroy(_captureTarget);}
+
+--- before/CampaignArtBattle.cs
++++ after/CampaignArtBattle.cs
+@@ -32,7 +32,7 @@
+             public Clip idle,attack,hit,death;public Vector2 feet;
+             public string artKey;
+             public float attackAt=-100,hitAt=-100,deathAt=-1,attackLength;
+-            public bool anticipated;public int lane;
++            public bool anticipated,staticFront;public int lane;
+         }
+         sealed class Number { public Text text;public Vector2 origin;public float at; }
+         readonly Dictionary<string,Clip> _clips=new Dictionary<string,Clip>();
+@@ -90,10 +90,17 @@
+                 float x=u.Side==0?(u.Row==Row.Front?650:465):(u.Row==Row.Front?811:1010);
+                 if(chiefPresent&&u.Side==1&&u.Row==Row.Back&&!u.IsLeader)y=330+slot*125;
+                 if(u.IsLeader){x=u.Side==0?341:1030;y=u.Id.EndsWith(".chief")?615:626;}
++                if(u.Id==Campaign.LeaderId)x=368;
+                 var f=new Figure{unit=u,feet=new Vector2(x,y),artKey=ArtKey(u)};
+                 f.root=Rect(_stage,u.Id,x,y,1,1);
+                 f.marker=Panel(f.root,-36,5,72,4,u.Side==0?Mint:Red);
+-                if(f.artKey!=null)
++                if(u.Id==Campaign.LeaderId)
++                {
++                    f.staticFront=true;
++                    f.body=Raw(f.root,"Leader - PixelLab front",-96*ArtScale,-188*ArtScale,192*ArtScale,192*ArtScale);
++                    f.body.texture=InnerCircleTexture("leader");
++                }
++                else if(f.artKey!=null)
+                 {
+                     f.idle=LoadClip(f.artKey+"_idle");f.attack=LoadClip(f.artKey+"_attack");
+                     f.hit=LoadClip(f.artKey+"_hit");f.death=LoadClip(f.artKey+"_death");
+@@ -175,6 +182,12 @@
+                 f.marker.color=!u.Alive?Muted:_selected==u.Id?Bone:u.Side==0?Mint:Red;
+                 f.target.interactable=u.Alive;
+                 if(f.body==null)continue;
++                if(f.staticFront)
++                {
++                    // Front-only asset pass: show the actual sprite; do not fake unmade animation clips.
++                    f.body.color=u.Alive?Color.white:new Color(.55f,.55f,.55f,.4f);
++                    continue;
++                }
+                 Clip c=f.idle;float time=_visualTime+u.Index*.41f;bool loop=true;
+                 if(!u.Alive)
+                 {if(f.deathAt<0)f.deathAt=_visualTime;c=f.death;time=_visualTime-f.deathAt;loop=false;}
+
+--- before/CampaignArtPages.cs
++++ after/CampaignArtPages.cs
+@@ -156,7 +156,7 @@
+             TextPanel(learned.ToString(),738,200,670,566,18);
+         }
+         void ShowCodex()=>Modal("CODEX",string.Join("\n\n",_campaign.Codex));
+-        void ShowMissing()=>Modal("ART PLACEHOLDERS","Your leader: labelled commander token.\n\nEnemy trial shamans: labelled caster tokens.\n\nDuel champions: labelled champion tokens.\n\nAssist, Eclipse, precision-cast and other combat effects: readable text and simple UI feedback until bespoke art is approved.\n\nAll encounters share the approved Clarth study stage. Bloodridge and Skullpeak environments are not supplied here.\n\nNo new images or animations have been generated for this build.");
++        void ShowMissing()=>Modal("ART PLACEHOLDERS","Your leader and all four camp Pals now have 192 px PixelLab front sprites. Their rotations and animations are still to be made.\n\nEnemy trial shamans: labelled caster tokens.\n\nDuel champions: labelled champion tokens.\n\nAssist, Eclipse, precision-cast and other combat effects: readable text and simple UI feedback until bespoke art is approved.\n\nAll encounters share the approved Clarth study stage. Bloodridge and Skullpeak environments are not supplied here.");
+         void Modal(string title,string content)
+         {
+             _modal=Rect(_root,title,180,105,1080,690);var shade=Panel(_modal,0,0,1080,690,Ink);shade.raycastTarget=true;
+

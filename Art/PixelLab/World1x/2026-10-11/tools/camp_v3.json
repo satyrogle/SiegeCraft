@@ -1,0 +1,95 @@
+{
+ "name": "camp",
+ "tileset": "da785dac-ccc3-49f5-b6aa-e350201f7929",
+ "rows": {
+  "-2": "llllllllllllllllllllllllll",
+  "-1": "llllllllllllllllllllllllll",
+  "0": "llllllllllllllllllllllllll",
+  "1": "eeeeeeeeeeeeeeeeeeeeeeeeee"
+ },
+ "fill": "r",
+ "props": [
+  [
+   "06a46faa-c97a-48b3-a6d6-270e99858463",
+   -12,
+   -17,
+   false
+  ],
+  [
+   "06a46faa-c97a-48b3-a6d6-270e99858463",
+   1244,
+   -27,
+   true
+  ],
+  [
+   "a3354464-ec01-49ce-99f0-ce506b0d976b",
+   120,
+   118,
+   false
+  ],
+  [
+   "d65cd4bb-7dd2-4d76-9971-2de1d561479b",
+   1000,
+   112,
+   false
+  ],
+  [
+   "3cf15203-721c-4f52-8586-5c9f6e77a67e",
+   1190,
+   392,
+   false
+  ],
+  [
+   "5dc4501f-4de3-4110-ba6a-6beb19451f37",
+   610,
+   330,
+   false
+  ],
+  [
+   "72a17900-c78a-480c-a702-7fd48d804e12",
+   130,
+   520,
+   false
+  ],
+  [
+   "5e2851e0-5ba0-4a24-8902-a9ce2d085697",
+   1010,
+   520,
+   false
+  ],
+  [
+   "035078ff-1098-4270-afb4-f0200880ec34",
+   -18,
+   652,
+   false
+  ],
+  [
+   "035078ff-1098-4270-afb4-f0200880ec34",
+   1269,
+   690,
+   true
+  ]
+ ],
+ "pals": [
+  [
+   "butcher",
+   446,
+   334
+  ],
+  [
+   "glutton",
+   1112,
+   330
+  ],
+  [
+   "shade",
+   236,
+   640
+  ],
+  [
+   "whisperer",
+   930,
+   700
+  ]
+ ]
+}

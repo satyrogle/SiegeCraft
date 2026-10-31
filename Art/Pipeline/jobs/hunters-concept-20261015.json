@@ -1,0 +1,30 @@
+{
+  "name": "hunters-concept-20261015",
+  "out": "Art/Pipeline/runs/hunters-concept-20261015",
+  "_note": "Jacob 15 Oct: get the concept right, then generate. Concept paintings on local Krea 2 Turbo (ComfyUI template graph: 8 steps, cfg 1, euler simple, no LoRA, no prompt enhancer), three readings of his look, one colourway. PixelLab draws the picked concept at game size afterwards. Option 3 rerun: the first came out with a dragon head like 2 (kept as raw/option-3-dragonhead.png).",
+  "size": [
+    896,
+    1152
+  ],
+  "steps": 8,
+  "options": [
+    {
+      "id": 1,
+      "label": "winged dragonkin",
+      "seed": 2026101540,
+      "prompt": "Full body character concept art of a winged dragonkin: a reptilian dragon man with a sleek, handsome dragon head, a short muzzle and glowing eyes, a long graceful neck, dark dragon wings folded on his back and a long tail. He is one of the Sovereign's hunters, their standard bearer, in a dark fantasy game. He is very good looking: proud, elegant and handsome, with a calm cold stare. Goth look: black scales with a silver sheen, two small horns swept back from the brow, and two thin flaps of skin hanging down on either side of his chin like a goatee. He wears fitted, ornate black gothic body armour with silver edges over his scales, and a long black cape with a blood red lining. One hand holds a tall war banner on a pole planted upright beside him, a blood red banner with a black sigil hanging above his head; on his other arm is a black shield with a silver rim. He stands tall in a three quarter view facing left, the whole body from horns to feet and the whole banner in frame. Plain flat grey background. Painted fantasy concept art, clean readable silhouette, crisp detail, no text."
+    },
+    {
+      "id": 2,
+      "label": "dragon knight, no wings",
+      "seed": 2026101540,
+      "prompt": "Full body character concept art of a dragon knight: a tall reptilian knight with a noble, handsome dragon head, a short muzzle and glowing eyes, on a lean humanoid body. No wings. He is one of the Sovereign's hunters, their standard bearer, in a dark fantasy game. He is very good looking: proud, elegant and handsome, with a calm cold stare. Goth look: black scales with a silver sheen, two small horns swept back from the brow, and two thin flaps of skin hanging down on either side of his chin like a goatee. He wears fitted, ornate black gothic body armour with silver edges over his scales, and a long black cape with a blood red lining. One hand holds a tall war banner on a pole planted upright beside him, a blood red banner with a black sigil hanging above his head; on his other arm is a black shield with a silver rim. He stands tall in a three quarter view facing left, the whole body from horns to feet and the whole banner in frame. Plain flat grey background. Painted fantasy concept art, clean readable silhouette, crisp detail, no text."
+    },
+    {
+      "id": 3,
+      "label": "half dragon, human face",
+      "seed": 2026101540,
+      "prompt": "Full body character concept art of a handsome dragon blooded man with a human head and a human face: a strikingly good looking face like an elf prince, high cheekbones, a sharp jaw, a straight nose and slit golden eyes, fine black scales on his cheeks, brow, neck and hands, long black hair swept back between the horns. He is one of the Sovereign's hunters, their standard bearer, in a dark fantasy game. He is very good looking: proud, elegant and handsome, with a calm cold stare. Goth look: black scales with a silver sheen, two small horns swept back from the brow, and two thin flaps of skin hanging down on either side of his chin like a goatee. He wears fitted, ornate black gothic body armour with silver edges over his scales, and a long black cape with a blood red lining. One hand holds a tall war banner on a pole planted upright beside him, a blood red banner with a black sigil hanging above his head; on his other arm is a black shield with a silver rim. He stands tall in a three quarter view facing left, the whole body from horns to feet and the whole banner in frame. Plain flat grey background. Painted fantasy concept art, clean readable silhouette, crisp detail, no text."
+    }
+  ]
+}

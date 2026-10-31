@@ -1,0 +1,37 @@
+[
+  {
+    "name": "leader",
+    "aseprite_frames": 40,
+    "gif_duration_ms": 4800,
+    "colours": 30,
+    "unique_frames": 40
+  },
+  {
+    "name": "butcher",
+    "aseprite_frames": 40,
+    "gif_duration_ms": 4000,
+    "colours": 30,
+    "unique_frames": 40
+  },
+  {
+    "name": "glutton",
+    "aseprite_frames": 40,
+    "gif_duration_ms": 6400,
+    "colours": 32,
+    "unique_frames": 20
+  },
+  {
+    "name": "shade",
+    "aseprite_frames": 40,
+    "gif_duration_ms": 5200,
+    "colours": 32,
+    "unique_frames": 40
+  },
+  {
+    "name": "whisperer",
+    "aseprite_frames": 40,
+    "gif_duration_ms": 4400,
+    "colours": 30,
+    "unique_frames": 40
+  }
+]

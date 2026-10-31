@@ -1,0 +1,33 @@
+{
+  "name": "block_se",
+  "state": "block",
+  "direction": "se",
+  "label": "Block",
+  "loop": false,
+  "count": 15,
+  "durations": [
+    60,
+    60,
+    60,
+    60,
+    260,
+    60,
+    60,
+    130,
+    60,
+    60,
+    60,
+    60,
+    60,
+    60,
+    180
+  ],
+  "ms": 1290,
+  "columns": 8,
+  "width": 256,
+  "height": 256,
+  "sheet": "block_se_repair/sheet.png",
+  "gif": "block_se_repair/preview.gif",
+  "master": "block_se_repair/block.aseprite",
+  "contact": "block_se_repair/contact.png"
+}

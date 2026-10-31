@@ -1,0 +1,65 @@
+{
+  "status": "review_only",
+  "receipt": {
+    "job_id": "0ba340cf-e45b-4e73-b49d-53574dbf2eab",
+    "status": "completed",
+    "frames": 1,
+    "download_url": "https://api.pixellab.ai/mcp/images/0ba340cf-e45b-4e73-b49d-53574dbf2eab/download",
+    "download_urls": [
+      "https://api.pixellab.ai/mcp/images/0ba340cf-e45b-4e73-b49d-53574dbf2eab/download"
+    ],
+    "asset": {
+      "id": "19006203-e74a-51fb-8bc7-9509eb25f319",
+      "type": "image",
+      "status": "saved"
+    },
+    "charged_generations": 6
+  },
+  "balance_before": 2931,
+  "balance_after": 2925,
+  "charged_generations": 6,
+  "uploads": [
+    {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1H1FA2K58K0_EvjWMmlaiRm6uKwFn6RnZ",
+      "title": "05 - Whisperer shared species - phone preview.png",
+      "file_name": "05 - Whisperer shared species - phone preview.png",
+      "mime_type": "image/png",
+      "url": "https://drive.google.com/file/d/1H1FA2K58K0_EvjWMmlaiRm6uKwFn6RnZ/view?usp=drivesdk",
+      "parent_id": "1TBXiNDm7I7IrkrBcFdnXuo2w9rrQ7KYC",
+      "structuredContent": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1H1FA2K58K0_EvjWMmlaiRm6uKwFn6RnZ",
+        "title": "05 - Whisperer shared species - phone preview.png",
+        "file_name": "05 - Whisperer shared species - phone preview.png",
+        "mime_type": "image/png",
+        "url": "https://drive.google.com/file/d/1H1FA2K58K0_EvjWMmlaiRm6uKwFn6RnZ/view?usp=drivesdk",
+        "parent_id": "1TBXiNDm7I7IrkrBcFdnXuo2w9rrQ7KYC"
+      }
+    },
+    {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1KKuvJdTZqg8rMLP2Jt4o2XHKTpVvLj2g",
+      "title": "05 - Whisperer shared species - native 192.png",
+      "file_name": "05 - Whisperer shared species - native 192.png",
+      "mime_type": "image/png",
+      "url": "https://drive.google.com/file/d/1KKuvJdTZqg8rMLP2Jt4o2XHKTpVvLj2g/view?usp=drivesdk",
+      "parent_id": "1TBXiNDm7I7IrkrBcFdnXuo2w9rrQ7KYC",
+      "structuredContent": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1KKuvJdTZqg8rMLP2Jt4o2XHKTpVvLj2g",
+        "title": "05 - Whisperer shared species - native 192.png",
+        "file_name": "05 - Whisperer shared species - native 192.png",
+        "mime_type": "image/png",
+        "url": "https://drive.google.com/file/d/1KKuvJdTZqg8rMLP2Jt4o2XHKTpVvLj2g/view?usp=drivesdk",
+        "parent_id": "1TBXiNDm7I7IrkrBcFdnXuo2w9rrQ7KYC"
+      }
+    }
+  ],
+  "visual_review": "Alien brow, compressed nose and elongated cheek/jaw planes are more pronounced; wild hair and floating fragments retained. Torso remains humanoid and chest regalia still resembles fitted armour. Owner approval pending.",
+  "runtime_integration": false
+}

@@ -1,0 +1,107 @@
+{
+  "name": "hunters-sheet-20261015e",
+  "out": "Art/Pipeline/runs/hunters-sheet-20261015e",
+  "_note": "Jacob 15 Oct on hunters-sheet-20261015d: \"nice right direction but still dracthyr\". Same seed, body, banner, armour and palette; only the head changes: broad flat beaded monitor head (gila style beads with star glints), no crest, spines, ear fins or frills (the Dracthyr look is horns, crest, ears, snout, crest spikes and tail, per Wowhead's list of their options). Head panel shows A beaked, B beaded, C war muzzle.",
+  "size": [
+    1536,
+    1024
+  ],
+  "aspect_ratio": "3:2",
+  "preset": "Default",
+  "negative": "World of Warcraft dracthyr, dragon, dragon head, dragonborn, crest, spines along the back, head spikes, ear fins, frills, long snout, long horns, wings, tail, cartoon, comic, luchador, bright colours, clean, smiling, human face, signature, watermark",
+  "background": "A clean, light warm grey character concept art sheet with a subtle paper texture, laid out in tidy panels with thin pencil guide lines. No signature and no watermark.",
+  "stack_width": 1400,
+  "options": [
+    {
+      "id": 1,
+      "label": "wasteland standard bearer, new head",
+      "seed": 2026101600,
+      "summary": "A professional character concept art sheet for a menacing reptilian mercenary standard bearer from a war torn, lawless space wasteland, with a broad flat beaded lizard head, carrying a huge trophy war banner, with a main painting, a turnaround, head explorations, a banner study and colour swatches, in a gritty, high end video game concept art style.",
+      "elements": [
+        {
+          "type": "text",
+          "bbox": [
+            25,
+            25,
+            75,
+            600
+          ],
+          "text": "HUNT STANDARD BEARER",
+          "desc": "Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            20,
+            975,
+            370
+          ],
+          "desc": "Main concept painting: full body of a menacing reptilian warlord from a war torn, lawless space wasteland, an original alien species with no wings and no tail: a broad, flat, wedge shaped head like a giant monitor lizard, covered in small rounded beaded scales like a gila monster, black with a tiny cold star glint in every bead, heavy jowls, small ember eyes set wide on the sides of the head, thick bony plates over the skull instead of any crest, two small stubby horns, a cybernetic brace bolted along one side of the jaw, old scars, and two leathery flaps of skin hanging down from either side of the chin like a goatee. No crest, no spines, no ear fins, no frills. A thick neck. A top heavy body: an enormous chest, shoulders and arms, a narrower waist and strong, solid legs. Body augmentations: scavenged black alloy implants and cables fused into his shoulders, spine and one forearm, with dim starlight seams. Battle worn salvaged armour of dark iron plates, scratched and scorched, blood red cloth wraps, dust and rust from the wasteland. A grim, menacing snarl, in a three quarter view facing left, standing menacingly and gripping beside him a huge war banner that shows off the hunters' might: a tall, heavy pole of scavenged metal and a long, torn and scorched blood red war banner with a black emblem of a clawed hand, hung with trophies of their hunts: broken helmets and skulls of beaten foes, rows of kill marks, chains and battle honours. Dust in the air, hard dramatic light, painted in gritty, confident brushwork."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            390,
+            540,
+            980
+          ],
+          "desc": "Turnaround of the same character, a menacing reptilian warlord from a war torn, lawless space wasteland, an original alien species with no wings and no tail: a broad, flat, wedge shaped head like a giant monitor lizard, covered in small rounded beaded scales like a gila monster, black with a tiny cold star glint in every bead, heavy jowls, small ember eyes set wide on the sides of the head, thick bony plates over the skull instead of any crest, two small stubby horns, a cybernetic brace bolted along one side of the jaw, old scars, and two leathery flaps of skin hanging down from either side of the chin like a goatee. No crest, no spines, no ear fins, no frills. A thick neck. A top heavy body: an enormous chest, shoulders and arms, a narrower waist and strong, solid legs. Body augmentations: scavenged black alloy implants and cables fused into his shoulders, spine and one forearm, with dim starlight seams. Battle worn salvaged armour of dark iron plates, scratched and scorched, blood red cloth wraps, dust and rust from the wasteland. A grim, menacing snarl: front view, side view and back view standing in a row at the same height, without the banner, flat colour with clean line art. The back of the head and the spine are smooth plates and implants, with no crest and no spines."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            545,
+            400,
+            580,
+            980
+          ],
+          "text": "FRONT          SIDE          BACK",
+          "desc": "Small neat capital labels under the three turnaround views."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            390,
+            925,
+            660
+          ],
+          "desc": "Head explorations: three alternative heads for the same alien species, side by side, each in three quarter view and full colour. Left: a heavy beaked head with a hooked, armoured upper jaw like a snapping turtle, bony skull plates, two small horn nubs and two skin flaps hanging from the chin. Middle: the broad, flat, beaded monitor lizard head with a star glint in every black bead, small stubby horns, the jaw brace and the chin flaps. Right: the same species with a scavenged iron war muzzle bolted over the snout and jaw, only the ember eyes, the small horns and the chin flaps showing."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            930,
+            400,
+            975,
+            660
+          ],
+          "text": "A            B            C",
+          "desc": "Small neat capital letters under the three heads, A on the left, B in the middle, C on the right."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            680,
+            975,
+            840
+          ],
+          "desc": "Design study of the war banner on its own: a huge war banner that shows off the hunters' might: a tall, heavy pole of scavenged metal and a long, torn and scorched blood red war banner with a black emblem of a clawed hand, hung with trophies of their hunts: broken helmets and skulls of beaten foes, rows of kill marks, chains and battle honours."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            860,
+            975,
+            980
+          ],
+          "desc": "A column of colour swatches (black beaded scale, star glint, dark iron, rust, blood red cloth, ember eye) above two small close ups of the beaded astral scales and a scavenged implant."
+        }
+      ]
+    }
+  ]
+}

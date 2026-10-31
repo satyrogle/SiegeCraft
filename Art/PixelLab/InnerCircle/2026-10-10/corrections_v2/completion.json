@@ -1,0 +1,234 @@
+{
+  "status": "review_ready_not_approved",
+  "scope": "Review sprites only. No runtime assets, game code, builds, integration or animations modified. Future selected-Pal task loops await sprite review.",
+  "starting_balance": 2954,
+  "model": "edit_image_pixen",
+  "jobs": [
+    {
+      "name": "leader",
+      "id": "dbde5f3e-4448-484a-95bf-5526f9365fff",
+      "prompt": "Recolour ONLY the clothing, tabard and cloak to deep obsidian BLACK with charcoal highlights and sparse old-gold trim. Remove all purple and mauve from the garments. Keep the pearl-violet living skin, face, three eyes, visible brain, crown, dreads, augmentations, broken sigil and small palm relic unchanged. Preserve exact anatomy, pose, silhouette, crisp pixel style and 192x192 transparent canvas. Clothes must read BLACK at thumbnail size.",
+      "seed": 2026101101,
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: dbde5f3e-4448-484a-95bf-5526f9365fff\njob_id: dbde5f3e-4448-484a-95bf-5526f9365fff\nmodel: pixen\nedit: Recolour ONLY the clothing, tabard and cloak to deep obsidian BLACK with charcoal highlights and sparse old-gold trim. Remove all purple and mauve from the garments. Keep the pearl-violet living skin, face, three eyes, visible brain, crown, dreads, augmentations, broken sigil and small palm relic unchanged. Preserve exact anatomy, pose, silhouette, crisp pixel style and 192x192 transparent canvas. Clothes must read BLACK at thumbnail size.\nsource: 192x192px\nsize: 192x192px\ntransparent: True\nseed: 2026101101\nasset_id: d798486f-c4d5-5a57-b26d-66bc5402030a\nasset_status: pending (saved when generation completes)\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"dbde5f3e-4448-484a-95bf-5526f9365fff\")"
+          }
+        ],
+        "isError": false
+      },
+      "completion": {
+        "job_id": "dbde5f3e-4448-484a-95bf-5526f9365fff",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/dbde5f3e-4448-484a-95bf-5526f9365fff/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/dbde5f3e-4448-484a-95bf-5526f9365fff/download"
+        ],
+        "asset": {
+          "id": "d798486f-c4d5-5a57-b26d-66bc5402030a",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 1
+      },
+      "selection": "PixelLab edit rejected for darkening skin; bounded Aseprite garment recolour of original used instead"
+    },
+    {
+      "name": "butcher",
+      "id": "9e301060-d6fa-4afd-895b-757d60dddf3b",
+      "prompt": "Enlarge ONLY this alien general's head by about 40 percent in width and height and give it a stronger neck connection. It must read as a powerful proportionate head, not a tiny pinhead above massive shoulders. Keep the same stern alien facial design, broad chest, huge hands, long limbs, black one-shoulder regalia, grey-pearl skin, obsidian growths and old-gold details. Preserve pose, feet, character height, pixel style and transparent 192x192 canvas.",
+      "seed": 2026101102,
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: 9e301060-d6fa-4afd-895b-757d60dddf3b\njob_id: 9e301060-d6fa-4afd-895b-757d60dddf3b\nmodel: pixen\nedit: Enlarge ONLY this alien general's head by about 40 percent in width and height and give it a stronger neck connection. It must read as a powerful proportionate head, not a tiny pinhead above massive shoulders. Keep the same stern alien facial design, broad chest, huge hands, long limbs, black one-shoulder regalia, grey-pearl skin, obsidian growths and old-gold details. Preserve pose, feet, character height, pixel style and transparent 192x192 canvas.\nsource: 192x192px\nsize: 192x192px\ntransparent: True\nseed: 2026101102\nasset_id: d14b3739-eaae-54a3-8b46-57466aa497f0\nasset_status: pending (saved when generation completes)\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"9e301060-d6fa-4afd-895b-757d60dddf3b\")"
+          }
+        ],
+        "isError": false
+      },
+      "completion": {
+        "job_id": "9e301060-d6fa-4afd-895b-757d60dddf3b",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/9e301060-d6fa-4afd-895b-757d60dddf3b/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/9e301060-d6fa-4afd-895b-757d60dddf3b/download"
+        ],
+        "asset": {
+          "id": "d14b3739-eaae-54a3-8b46-57466aa497f0",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 1
+      },
+      "selection": "review candidate"
+    },
+    {
+      "name": "glutton",
+      "id": "6561d956-a806-4dd2-9d23-19bf3ac8ed9b",
+      "prompt": "Reduce the giant spherical belly by about 30 percent and blend it naturally into a broad heavy torso. Keep him a stout, powerful, rounded funny uncle with a visible waist transition, not a balloon with limbs. Preserve his amused alien face, head, arms and friendly open-hand pose, sturdy legs, dark pearl skin, black obsidian shoulder armour and ancient-gold trim. Keep all limbs intact and the original pixel-art style, height and 192x192 transparent canvas.",
+      "seed": 2026101103,
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: 6561d956-a806-4dd2-9d23-19bf3ac8ed9b\njob_id: 6561d956-a806-4dd2-9d23-19bf3ac8ed9b\nmodel: pixen\nedit: Reduce the giant spherical belly by about 30 percent and blend it naturally into a broad heavy torso. Keep him a stout, powerful, rounded funny uncle with a visible waist transition, not a balloon with limbs. Preserve his amused alien face, head, arms and friendly open-hand pose, sturdy legs, dark pearl skin, black obsidian shoulder armour and ancient-gold trim. Keep all limbs intact and the original pixel-art style, height and 192x192 transparent canvas.\nsource: 192x192px\nsize: 192x192px\ntransparent: True\nseed: 2026101103\nasset_id: 0e7ebbdf-b911-5a1d-b36e-bba73611eaa5\nasset_status: pending (saved when generation completes)\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"6561d956-a806-4dd2-9d23-19bf3ac8ed9b\")"
+          }
+        ],
+        "isError": false
+      },
+      "completion": {
+        "job_id": "6561d956-a806-4dd2-9d23-19bf3ac8ed9b",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/6561d956-a806-4dd2-9d23-19bf3ac8ed9b/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/6561d956-a806-4dd2-9d23-19bf3ac8ed9b/download"
+        ],
+        "asset": {
+          "id": "0e7ebbdf-b911-5a1d-b36e-bba73611eaa5",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 1
+      },
+      "selection": "First Pixen edit rejected; Pro Flash retry selected as review candidate."
+    },
+    {
+      "name": "shade",
+      "id": "1de1ec16-d3e4-4cf1-a0e6-1d67e68427eb",
+      "prompt": "Repair ONLY the upper-body clothing. Cover BOTH breasts completely with one opaque black obsidian chest garment grown into her regalia, secure from collarbone to waist. No bare breast, cleavage cutout or exposed nipple. Preserve her lavender alien face and skin, slender anatomy, black asymmetric lower membranes, old-gold accents, arm positions and free hands. Keep the same pose, height, crisp pixel style and 192x192 transparent background.",
+      "seed": 2026101104,
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: 1de1ec16-d3e4-4cf1-a0e6-1d67e68427eb\njob_id: 1de1ec16-d3e4-4cf1-a0e6-1d67e68427eb\nmodel: pixen\nedit: Repair ONLY the upper-body clothing. Cover BOTH breasts completely with one opaque black obsidian chest garment grown into her regalia, secure from collarbone to waist. No bare breast, cleavage cutout or exposed nipple. Preserve her lavender alien face and skin, slender anatomy, black asymmetric lower membranes, old-gold accents, arm positions and free hands. Keep the same pose, height, crisp pixel style and 192x192 transparent background.\nsource: 192x192px\nsize: 192x192px\ntransparent: True\nseed: 2026101104\nasset_id: f9bef0e7-9ba2-53ca-be7f-1616842ae78d\nasset_status: pending (saved when generation completes)\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"1de1ec16-d3e4-4cf1-a0e6-1d67e68427eb\")"
+          }
+        ],
+        "isError": false
+      },
+      "completion": {
+        "job_id": "1de1ec16-d3e4-4cf1-a0e6-1d67e68427eb",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/1de1ec16-d3e4-4cf1-a0e6-1d67e68427eb/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/1de1ec16-d3e4-4cf1-a0e6-1d67e68427eb/download"
+        ],
+        "asset": {
+          "id": "f9bef0e7-9ba2-53ca-be7f-1616842ae78d",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 1
+      },
+      "selection": "review candidate"
+    },
+    {
+      "name": "whisperer",
+      "id": "dc5744b5-7eaf-4eae-977f-f5ab794411d4",
+      "prompt": "Replace the nun-like floor-length robe with fitted black obsidian torso regalia, fully opaque chest coverage, asymmetric hip panels ending around the knees, exposed forearms and visible lower legs. No hood, habit, wimple, veil or clerical collar. Preserve her long flowing black hair, inviting smile, distinctive alien face and violet-pearl skin. Elegant and dangerously inhuman, with restrained ancient-gold joins. Keep two arms, open welcoming hand, pose and 192x192 transparent pixel style.",
+      "seed": 2026101105,
+      "submission": {
+        "content": [
+          {
+            "type": "text",
+            "text": "id: dc5744b5-7eaf-4eae-977f-f5ab794411d4\njob_id: dc5744b5-7eaf-4eae-977f-f5ab794411d4\nmodel: pixen\nedit: Replace the nun-like floor-length robe with fitted black obsidian torso regalia, fully opaque chest coverage, asymmetric hip panels ending around the knees, exposed forearms and visible lower legs. No hood, habit, wimple, veil or clerical collar. Preserve her long flowing black hair, inviting smile, distinctive alien face and violet-pearl skin. Elegant and dangerously inhuman, with restrained ancient-gold joins. Keep two arms, open welcoming hand, pose and 192x192 transparent pixel style.\nsource: 192x192px\nsize: 192x192px\ntransparent: True\nseed: 2026101105\nasset_id: dd80550b-665c-53cc-b5da-bc8bc759aa26\nasset_status: pending (saved when generation completes)\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"dc5744b5-7eaf-4eae-977f-f5ab794411d4\")"
+          }
+        ],
+        "isError": false
+      },
+      "completion": {
+        "job_id": "dc5744b5-7eaf-4eae-977f-f5ab794411d4",
+        "status": "completed",
+        "frames": 1,
+        "download_url": "https://api.pixellab.ai/mcp/images/dc5744b5-7eaf-4eae-977f-f5ab794411d4/download",
+        "download_urls": [
+          "https://api.pixellab.ai/mcp/images/dc5744b5-7eaf-4eae-977f-f5ab794411d4/download"
+        ],
+        "asset": {
+          "id": "dd80550b-665c-53cc-b5da-bc8bc759aa26",
+          "type": "image",
+          "status": "saved"
+        },
+        "charged_generations": 1
+      },
+      "selection": "review candidate"
+    }
+  ],
+  "retry": {
+    "name": "glutton",
+    "prompt": "Correct ONLY this character's abdomen. The current stomach is far too large. Redraw it as a MUCH SMALLER, gently rounded heavy-set abdomen, about HALF the current exposed belly area. Strong broad ribcage, visible waist, sturdy hips; no huge spherical protruding balloon belly. Keep him stout and powerful, not skinny. Raise the existing black hip regalia to cover his lower abdomen. Keep the EXACT original amused alien face, head, hands, arms, pose, legs, armour, skin colours and gold trim. Do not redraw his face, add teeth, enlarge his head, or alter his personality. Maintain the original full-body front pixel-art character, unchanged 192x192 transparent canvas. This is a local abdomen-and-waist correction, not a character redesign.",
+    "submission": {
+      "background_job_id": "8ec9894f-3067-420e-bc73-a92363f62072",
+      "image_id": "3556b8a2-d0c0-5758-ad63-7a7bcfeaa281",
+      "status": "processing",
+      "source_image_id": "3556b8a2-d0c0-5758-ad63-7a7bcfeaa281",
+      "job_id": "8ec9894f-3067-420e-bc73-a92363f62072",
+      "image_size": {
+        "width": 192,
+        "height": 192
+      },
+      "output_count": 1,
+      "estimated_generations": 6,
+      "pricing_provisional": true,
+      "poll_tool": "get_image",
+      "download_path": "/mcp/images/8ec9894f-3067-420e-bc73-a92363f62072/download"
+    },
+    "completion": {
+      "job_id": "8ec9894f-3067-420e-bc73-a92363f62072",
+      "status": "completed",
+      "frames": 1,
+      "download_url": "https://api.pixellab.ai/mcp/images/8ec9894f-3067-420e-bc73-a92363f62072/download",
+      "download_urls": [
+        "https://api.pixellab.ai/mcp/images/8ec9894f-3067-420e-bc73-a92363f62072/download"
+      ],
+      "asset": {
+        "id": "3556b8a2-d0c0-5758-ad63-7a7bcfeaa281",
+        "type": "image",
+        "status": "saved"
+      },
+      "charged_generations": 6
+    }
+  },
+  "ending_balance": 2943,
+  "charged_generations": 11,
+  "selectedOutputs": [
+    {
+      "name": "leader",
+      "png": "leader_front.png",
+      "aseprite": "leader_front.aseprite"
+    },
+    {
+      "name": "butcher",
+      "png": "butcher_front.png",
+      "aseprite": "butcher_front.aseprite"
+    },
+    {
+      "name": "glutton",
+      "png": "glutton_front.png",
+      "aseprite": "glutton_front.aseprite"
+    },
+    {
+      "name": "shade",
+      "png": "shade_front.png",
+      "aseprite": "shade_front.aseprite"
+    },
+    {
+      "name": "whisperer",
+      "png": "whisperer_front.png",
+      "aseprite": "whisperer_front.aseprite"
+    }
+  ],
+  "visualInspection": [
+    "Leader: selected bounded Aseprite recolour of original; black clothing and preserved anatomy. AI leader take rejected for darkening skin.",
+    "Butcher: head more legible and larger; facial details also changed during edit, pending owner review.",
+    "Glutton: Pro Flash retry has significantly smaller exposed abdomen, higher waistband and retained original face.",
+    "Shade: both breasts covered with opaque black upper regalia; edit also added gold arm bands.",
+    "Whisperer: shorter fitted black clothing replaces full robe; edit adds boot-like lower-leg shapes. Owner review required."
+  ]
+}

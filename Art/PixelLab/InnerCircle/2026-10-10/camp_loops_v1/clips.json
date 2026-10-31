@@ -1,0 +1,67 @@
+[
+  {
+    "name": "leader",
+    "label": "LEADER - Palm relic",
+    "count": 40,
+    "ms": 120,
+    "columns": 8,
+    "width": 192,
+    "height": 192,
+    "sheet": "leader/sheet.png",
+    "gif": "leader/camp_work.gif",
+    "master": "leader/camp_work.aseprite",
+    "contact": "leader/contact.png"
+  },
+  {
+    "name": "butcher",
+    "label": "BUTCHER - Anvil work",
+    "count": 40,
+    "ms": 100,
+    "columns": 8,
+    "width": 192,
+    "height": 192,
+    "sheet": "butcher/sheet.png",
+    "gif": "butcher/camp_work.gif",
+    "master": "butcher/camp_work.aseprite",
+    "contact": "butcher/contact.png"
+  },
+  {
+    "name": "glutton",
+    "label": "GLUTTON - Sleeping",
+    "count": 40,
+    "ms": 160,
+    "columns": 8,
+    "width": 192,
+    "height": 192,
+    "sheet": "glutton/sheet.png",
+    "gif": "glutton/camp_work.gif",
+    "master": "glutton/camp_work.aseprite",
+    "contact": "glutton/contact.png"
+  },
+  {
+    "name": "shade",
+    "label": "SHADE - Reading orders",
+    "count": 40,
+    "ms": 130,
+    "columns": 8,
+    "width": 192,
+    "height": 192,
+    "sheet": "shade/sheet.png",
+    "gif": "shade/camp_work.gif",
+    "master": "shade/camp_work.aseprite",
+    "contact": "shade/contact.png"
+  },
+  {
+    "name": "whisperer",
+    "label": "WHISPERER - Veil weaving",
+    "count": 40,
+    "ms": 110,
+    "columns": 8,
+    "width": 192,
+    "height": 192,
+    "sheet": "whisperer/sheet.png",
+    "gif": "whisperer/camp_work.gif",
+    "master": "whisperer/camp_work.aseprite",
+    "contact": "whisperer/contact.png"
+  }
+]

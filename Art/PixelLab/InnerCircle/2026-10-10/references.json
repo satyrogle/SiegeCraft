@@ -1,0 +1,62 @@
+[
+  {
+    "name": "leader",
+    "source": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Concepts\\InnerCircle\\2026-10-10\\leader_neural_relic_v17.png",
+    "crop": [
+      54,
+      0,
+      694,
+      1024
+    ],
+    "reference": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\PixelLab\\InnerCircle\\2026-10-10\\leader_reference.png",
+    "referenceOnly": true
+  },
+  {
+    "name": "butcher",
+    "source": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Concepts\\InnerCircle\\2026-10-10\\butcher_v4_commanding_mass.png",
+    "crop": [
+      161,
+      0,
+      906,
+      1024
+    ],
+    "reference": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\PixelLab\\InnerCircle\\2026-10-10\\butcher_reference.png",
+    "referenceOnly": true
+  },
+  {
+    "name": "glutton",
+    "source": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Concepts\\InnerCircle\\2026-10-10\\glutton_v3_carefree_patriarch.png",
+    "crop": [
+      138,
+      0,
+      1104,
+      1024
+    ],
+    "reference": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\PixelLab\\InnerCircle\\2026-10-10\\glutton_reference.png",
+    "referenceOnly": true
+  },
+  {
+    "name": "shade",
+    "source": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Concepts\\InnerCircle\\2026-10-10\\shade_v4_embodied_regalia.png",
+    "crop": [
+      246,
+      0,
+      745,
+      1024
+    ],
+    "reference": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\PixelLab\\InnerCircle\\2026-10-10\\shade_reference.png",
+    "referenceOnly": true
+  },
+  {
+    "name": "whisperer",
+    "source": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Concepts\\InnerCircle\\2026-10-10\\whisperer_v3_inviting_menace.png",
+    "crop": [
+      0,
+      0,
+      483,
+      1536
+    ],
+    "reference": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\PixelLab\\InnerCircle\\2026-10-10\\whisperer_reference.png",
+    "referenceOnly": true
+  }
+]

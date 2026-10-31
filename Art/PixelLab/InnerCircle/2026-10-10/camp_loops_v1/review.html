@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kindred Siege · inner-circle camp loops</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#1d1f24;color:#e6ddd1;font:15px system-ui,sans-serif}header{max-width:1440px;margin:auto;padding:24px 22px 14px}h1{font-size:25px;margin:0 0 8px}p{color:#b6b4ba;margin:6px 0;line-height:1.5}.controls{position:sticky;top:0;z-index:2;background:#1d1f24f5;padding:12px 22px;border-block:1px solid #41414b;display:flex;flex-wrap:wrap;gap:10px;align-items:center}button,select{background:#35333a;color:#ece2d5;border:1px solid #69616b;padding:8px 13px;font:inherit;border-radius:3px;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #bf9d75;outline-offset:3px}a{color:#cfad83;text-underline-offset:3px}.grid{max-width:1440px;margin:auto;padding:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}article{border:1px solid #44414a;background:#27282f;padding:14px;min-width:0}article.selected{border-color:#b18c64}h2{margin:0 0 4px;font-size:19px}article .task{font-size:14px;margin-bottom:10px;color:#c2bac3}canvas{display:block;background:#303138;image-rendering:pixelated;max-width:100%;height:auto;margin:auto}output{display:block;margin:10px 0;font-variant-numeric:tabular-nums;color:#c7bdca}input[type=range]{width:100%;margin:6px 0 10px;accent-color:#b18c64}.links{display:flex;gap:16px;flex-wrap:wrap}.note{font-size:13px;padding-bottom:10px}#status{color:#b8ada0;font-size:14px}
+</style></head><body>
+<header><h1>Inner circle · camp work loops</h1><p>Hover or select a character to play their task. Play all to compare the motions.</p><p class="note">192 px source frames · PixelLab motion · Aseprite palette and timing pass · animation review</p></header>
+<nav class="controls" aria-label="Playback"><button id="play">Pause</button><button id="all">Play all</button><button id="restart">Restart</button><label>Speed <select id="speed"><option value=".5">Half</option><option value="1" selected>Normal</option><option value="1.5">1.5×</option></select></label><span id="status" role="status">Loading sprites…</span></nav>
+<main class="grid" id="grid"></main>
+<script>
+(async()=>{
+const data=await fetch('clips.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Clip list missing');return r.json()});
+let selected='butcher',playing=true,all=false,speed=1,last=performance.now();
+const clips=[];
+const tasks={leader:'Quiet breathing and palm-relic control',butcher:'Measured hammer strike, contact and recovery',glutton:'Slow breathing while asleep',shade:'Tracing and sorting obsidian order tablets',whisperer:'Shaping a drifting dark veil'};
+for(const info of data){
+ const el=document.createElement('article');el.dataset.character=info.name;
+ el.innerHTML='<h2>'+info.name[0].toUpperCase()+info.name.slice(1)+'</h2><div class="task">'+tasks[info.name]+'</div><button class="select">Select '+info.name+'</button><canvas width="192" height="192" role="img" aria-label="'+info.name+' animated camp task"></canvas><output>Loading…</output><input class="scrub" type="range" min="0" max="'+(info.count-1)+'" value="0" aria-label="'+info.name+' frame"><div class="links"><a href="'+info.gif+'" target="_blank">GIF</a><a href="'+info.master+'" download>Aseprite</a><a href="'+info.contact+'" target="_blank">Frames</a></div>';
+ document.querySelector('#grid').append(el);
+ const canvas=el.querySelector('canvas');canvas.style.width='384px';const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;
+ const img=new Image();img.src=info.sheet;await img.decode();el.dataset.loaded='true';
+ const c={...info,el,canvas,ctx,img,elapsed:0,frame:0,loops:0};clips.push(c);
+ const select=()=>{selected=c.name;all=false;updateControls()};
+ el.querySelector('.select').onclick=select;el.onpointerenter=()=>{if(!all)select()};
+ el.querySelector('.scrub').oninput=e=>{selected=c.name;all=false;playing=false;c.frame=Number(e.target.value);c.elapsed=c.frame*c.ms;c.loops=0;updateControls();draw(c)};
+}
+function draw(c){
+ const x=(c.frame%c.columns)*c.width,y=Math.floor(c.frame/c.columns)*c.height;
+ c.ctx.clearRect(0,0,192,192);c.ctx.drawImage(c.img,x,y,c.width,c.height,0,0,192,192);
+ c.el.dataset.frame=String(c.frame);c.el.dataset.loop=String(c.loops);c.el.dataset.playing=String(playing&&(all||selected===c.name));
+ c.el.querySelector('output').textContent=(c.frame+1)+' / '+c.count+' · '+(c.ms*c.count/1000).toFixed(2)+' s · repeats '+c.loops;
+ c.el.querySelector('.scrub').value=String(c.frame);
+}
+function updateControls(){
+ document.querySelector('#play').textContent=playing?'Pause':'Play';
+ document.querySelector('#all').textContent=all?'Selected only':'Play all';
+ document.querySelector('#status').textContent=all?'All five playing':selected[0].toUpperCase()+selected.slice(1)+' selected';
+ for(const c of clips){c.el.classList.toggle('selected',c.name===selected);draw(c)}
+}
+document.querySelector('#play').onclick=()=>{playing=!playing;last=performance.now();updateControls()};
+document.querySelector('#all').onclick=()=>{all=!all;playing=true;last=performance.now();updateControls()};
+document.querySelector('#speed').onchange=e=>speed=Number(e.target.value);
+document.querySelector('#restart').onclick=()=>{for(const c of clips){c.elapsed=0;c.frame=0;c.loops=0}playing=true;last=performance.now();updateControls()};
+updateControls();
+function tick(now){const dt=Math.min(now-last,250);last=now;for(const c of clips){if(playing&&(all||selected===c.name)){c.elapsed+=dt*speed;const n=Math.floor(c.elapsed/c.ms);c.frame=n%c.count;c.loops=Math.floor(n/c.count)}draw(c)}requestAnimationFrame(tick)}
+requestAnimationFrame(tick);
+})().catch(e=>{document.querySelector('#status').textContent='Preview failed: '+e.message;document.querySelector('#status').dataset.error='true'});
+</script></body></html>

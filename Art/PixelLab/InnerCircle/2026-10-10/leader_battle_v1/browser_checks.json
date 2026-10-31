@@ -1,0 +1,21 @@
+{
+  "all_16_loaded": true,
+  "all_16_advanced": true,
+  "nondeath_replay_verified": true,
+  "observed_loops": {
+    "idle": 3,
+    "move": 6,
+    "attack": 4,
+    "hit": 9,
+    "block": 6,
+    "parry": 7,
+    "victory": 4
+  },
+  "both_death_held_at_frame": 14,
+  "both_death_repeats": 0,
+  "screenshots": [
+    "attack-review.jpg",
+    "death-review.jpg"
+  ],
+  "url": "http://127.0.0.1:62556/leader_battle_v1/review.html"
+}

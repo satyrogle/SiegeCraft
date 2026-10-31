@@ -1,0 +1,19 @@
+PixelLab jobs, 11 Oct 2026: the world at 1x (Jacob: "yes go 1x, do it"). Balance went from 2,749 to 2,635 generations: 114 used of the 125 quoted.
+
+Stage ground, pro top-down tilesets, 64 px tiles, transition 0.5, raggedness 0.5, low top-down, 25 generations each:
+- Broken Wastes da785dac-ccc3-49f5-b6aa-e350201f7929: red orange desert sand with wind ripples and dithered streaks / layered red sandstone cliff plateau / sand drifts against the cliff foot with small loose rocks.
+- Bloodridge acaeda58-da24-4b4b-a6d7-51b31d5da799: pale ash grey cracked flagstones of a buried desert temple courtyard with drifted rust red dust / dark blood red basalt ridge plateau with thin glowing lava cracks / ash, cinders and broken stone piled against the ridge foot.
+- Skullpeak a39c556b-90f3-4b35-b05a-d6a33a86442d: wind scoured pale grey slate gravel with patches of frost / dark slate mountain shelf with snow on top / loose scree and snow drifts against the shelf foot.
+- Not used: three standard 32 px tilesets tried first for the Wastes (22b1c833, 6349db68, c8e74efb), too plain.
+- The PixelLab map 5e3f4ee6-6d6d-4ad4-84fb-ee0edbfa7332 was used only to paint the Wastes layout (free).
+
+Props, map objects, 1 generation each (low top-down, high detail, detailed shading):
+- Broken Wastes: sand shark skeleton 666a3760, rock spires 06a46faa, bone totem 49fec96c, basalt boulders 035078ff (also used in Bloodridge and the camp). Not used: bleached bones 4c5f5863 (pale pink, off palette), shark fin 65c149f6 and packed sand patch 14eab574 (came back as flat orange blobs).
+- Camp: forge a3354464, awning and fur bed d65cd4bb, armour table 3cf15203, campfire 5dc4501f, obsidian shrine 72a17900, hide racks and chest 5e2851e0. Not used: shrine 03295dfb (digits on the stones), hide racks 68888558 (a stray person in it).
+- Bloodridge: toppled pharaoh head 1290a020, leaning obelisk 1cd5bd71, bronze brazier c9b98a9e, sarcophagus 998859d1.
+- Skullpeak: steel plated skull 68ffffd3, turquoise lamp post 10420686, snowy slate boulders 9337f569. Not used: skull in a rock face 6f9f15ce (square frame), machine rib skeleton 2067df0a (too close to the Wastes' shark skeleton).
+- Several props came back on a flat background; tools/cut_bg.py clears the background joined to the border (sources/ holds the cut copies under the same names).
+
+Menu looks, pixen 480x300, 1 generation each, for Jacob's pick: living ship with a scanner beam 4f9acb20, orbit with a locked beam 1a76c159, survivor camp with a saucer on the horizon db76c5ff. menu/options_menu.png shows them under the real logo and list.
+
+How the art is built: tools/render_stage.py <config> <tileset and prop folder> <out> draws a 1376 x 768 stage (the fight's stage frame at 1x) tile by tile from each tile's 4x4 pattern, then the props, then a copy with both squads at the BuildBattle formation. tools/render_camp.py does the same for the camp with the four Pals at their stations. Configs: tools/*.json. Game copies: Assets/Resources/CampaignArt/Stages/{broken_wastes,bloodridge,skullpeak}.png and Assets/Resources/CampaignArt/Camp/camp.png.

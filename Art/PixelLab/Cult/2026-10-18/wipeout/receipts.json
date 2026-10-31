@@ -1,0 +1,44 @@
+{
+ "note": "The Wipeout's new art, Jacob 18 Oct ('go with all 3 and start the wipeout'). Trailer art; the Pals' injuries were open in the locks.",
+ "right_hand_man": {
+  "front_image": "5b1dd7f8-c5b4-5d9a-a51f-4404777330e4",
+  "front_job": "886b1f6a-024d-40b5-9777-ec430efc9a75",
+  "size": 160,
+  "seed": 2026101841,
+  "style": "scratch cult/leader-body-style.png (the leader body crop the cult soldiers used)",
+  "character": "415d0ebb-00db-41f1-a198-c56c68ceda0b",
+  "idle_se_animation": "401ba305-5a81-44f7-8b6a-3523f53777ae",
+  "idle_frames": "rhm_idle/NN.png"
+ },
+ "officers_wounded": {
+  "butcher-wounded": {
+   "image": "8747e7aa-793f-5850-8cec-3f787be4f06d",
+   "job": "1bd2dcba-2405-43b1-b59b-c57e13aaa709",
+   "seed": 2026101851,
+   "from": "InnerCircle/2026-10-10/corrections_v2/butcher_front.png",
+   "injury": "on one knee, left forearm gone below the elbow, obsidian stump"
+  },
+  "glutton-wounded": {
+   "image": "1891a2d8-66da-5967-a669-d7df660ebc68",
+   "job": "f8e17f8b-3433-4d04-9fdb-f64f1682bb1a",
+   "seed": 2026101852,
+   "from": "InnerCircle/2026-10-10/corrections_v2/glutton_front.png",
+   "injury": "slumped unconscious, smoking gash across the belly"
+  },
+  "shade-wounded": {
+   "image": "4a08cad2-aeb2-5984-ab42-19e5084778bf",
+   "job": "9e231a06-2eba-42a9-846f-7a4adc48f1c4",
+   "seed": 2026101853,
+   "from": "InnerCircle/2026-10-10/corrections_v2/shade_front.png",
+   "injury": "crawling, right leg gone below the knee"
+  },
+  "whisperer-wounded": {
+   "image": "739460f3-0a83-5fec-b810-9b49ef7a7190",
+   "job": "b1023df9-7cf3-4472-91b9-45ae1919ecc7",
+   "seed": 2026101854,
+   "from": "InnerCircle/2026-10-10/whisperer_species_v2/whisperer_front.png",
+   "injury": "crumpled, astral body cracked and leaking light"
+  }
+ },
+ "spend": "PixelLab 39 generations (fronts 30, turn 4, idle 5); balance 1430.6 after"
+}

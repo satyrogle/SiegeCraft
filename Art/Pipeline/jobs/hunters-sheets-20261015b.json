@@ -1,0 +1,255 @@
+{
+  "name": "hunters-sheets-20261015b",
+  "out": "Art/Pipeline/runs/hunters-sheets-20261015b",
+  "_note": "Jacob 15 Oct on the first sheets: \"they are reptilian from another planet they cant look like buffed up dracthyr ... make them have johnny bravo bodies banner is like a sigil thats always beside you face is shit the skin should be astral scaly not scaly scaly and also beard is off add some body augmentations ... this is copyright violation waiting to happen\". Same Ideogram 4 sheet layout; three faces; no dragon features, no character names in the prompts.",
+  "size": [
+    1536,
+    1024
+  ],
+  "aspect_ratio": "3:2",
+  "preset": "Default",
+  "background": "A clean, light warm grey character concept art sheet with a subtle paper texture, laid out in tidy panels with thin pencil guide lines. No signature and no watermark.",
+  "stack_width": 1400,
+  "options": [
+    {
+      "id": 1,
+      "label": "humanoid face",
+      "seed": 2026101580,
+      "summary": "A professional character concept art sheet for an alien reptilian standard bearer with astral skin, a huge top heavy bodybuilder chest, body augmentations and a floating war sigil, with a main painting, a turnaround, head studies, a sigil study and colour swatches, in a clean, high end video game concept art style.",
+      "elements": [
+        {
+          "type": "text",
+          "bbox": [
+            25,
+            25,
+            75,
+            600
+          ],
+          "text": "HUNT STANDARD BEARER",
+          "desc": "Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            20,
+            975,
+            370
+          ],
+          "desc": "Main concept painting: full body of the same character, an alien reptilian man from another planet, an original species with no dragon features: no snout ridges, no dragon horns crest, no wings, no tail. Two small smooth horns. Where a goatee would be, two smooth flaps of skin hang down from either side of the chin, framing it like a goatee. Astral skin: fine, smooth, iridescent scales that shimmer like the night sky, deep blue black with faint star specks and a nebula sheen, not rough reptile scales. An exaggerated cartoon bodybuilder physique: an enormous puffed out chest and huge shoulders and arms, a tiny waist and slim legs, a top heavy inverted triangle. Very good looking, vain and confident. Body augmentations: sleek black alloy implants fused into the skin at the temples, collarbones, spine and forearms, with thin seams of cold starlight. Fitted black and silver body armour on the chest and shoulders that shows off the huge chest, a blood red sash. Goth look, with a strikingly handsome humanoid face with a square jaw, high cheekbones, no muzzle, a flat nose with slit nostrils and slit silver eyes, in a three quarter view facing left, striking a vain, proud pose. His war banner is not a flag on a pole: it is a large floating sigil, an emblem of black metal and cold starlight with a blood red core, that hovers in the air beside his shoulder and always stays next to him. Painted in full colour with confident brushwork and a cold rim light."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            390,
+            540,
+            980
+          ],
+          "desc": "Turnaround of the same character, an alien reptilian man from another planet, an original species with no dragon features: no snout ridges, no dragon horns crest, no wings, no tail. Two small smooth horns. Where a goatee would be, two smooth flaps of skin hang down from either side of the chin, framing it like a goatee. Astral skin: fine, smooth, iridescent scales that shimmer like the night sky, deep blue black with faint star specks and a nebula sheen, not rough reptile scales. An exaggerated cartoon bodybuilder physique: an enormous puffed out chest and huge shoulders and arms, a tiny waist and slim legs, a top heavy inverted triangle. Very good looking, vain and confident. Body augmentations: sleek black alloy implants fused into the skin at the temples, collarbones, spine and forearms, with thin seams of cold starlight. Fitted black and silver body armour on the chest and shoulders that shows off the huge chest, a blood red sash. Goth look, with a strikingly handsome humanoid face with a square jaw, high cheekbones, no muzzle, a flat nose with slit nostrils and slit silver eyes: front view, side view and back view standing in a row at the same height, flat colour with clean line art."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            545,
+            400,
+            580,
+            980
+          ],
+          "text": "FRONT          SIDE          BACK",
+          "desc": "Small neat capital labels under the three turnaround views."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            390,
+            975,
+            660
+          ],
+          "desc": "Three head studies of the same character, a strikingly handsome humanoid face with a square jaw, high cheekbones, no muzzle, a flat nose with slit nostrils and slit silver eyes: profile, three quarter and front, showing the two flaps of skin hanging from either side of the chin like a goatee, the two small horns, the temple implants and the astral scales."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            680,
+            975,
+            840
+          ],
+          "desc": "Design study of the floating war sigil on its own: an emblem of black metal and cold starlight with a blood red core, hovering, with small arrows showing it stays beside his shoulder."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            860,
+            975,
+            980
+          ],
+          "desc": "A column of five colour swatches (astral blue black skin, starlight, black alloy, silver, blood red) above two small close ups of the astral scales and an implant seam."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "label": "short muzzle",
+      "seed": 2026101580,
+      "summary": "A professional character concept art sheet for an alien reptilian standard bearer with astral skin, a huge top heavy bodybuilder chest, body augmentations and a floating war sigil, with a main painting, a turnaround, head studies, a sigil study and colour swatches, in a clean, high end video game concept art style.",
+      "elements": [
+        {
+          "type": "text",
+          "bbox": [
+            25,
+            25,
+            75,
+            600
+          ],
+          "text": "HUNT STANDARD BEARER",
+          "desc": "Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            20,
+            975,
+            370
+          ],
+          "desc": "Main concept painting: full body of the same character, an alien reptilian man from another planet, an original species with no dragon features: no snout ridges, no dragon horns crest, no wings, no tail. Two small smooth horns. Where a goatee would be, two smooth flaps of skin hang down from either side of the chin, framing it like a goatee. Astral skin: fine, smooth, iridescent scales that shimmer like the night sky, deep blue black with faint star specks and a nebula sheen, not rough reptile scales. An exaggerated cartoon bodybuilder physique: an enormous puffed out chest and huge shoulders and arms, a tiny waist and slim legs, a top heavy inverted triangle. Very good looking, vain and confident. Body augmentations: sleek black alloy implants fused into the skin at the temples, collarbones, spine and forearms, with thin seams of cold starlight. Fitted black and silver body armour on the chest and shoulders that shows off the huge chest, a blood red sash. Goth look, with a short, sleek, refined reptilian muzzle on a smooth skull, a strong jaw and slit silver eyes, elegant rather than beastly, in a three quarter view facing left, striking a vain, proud pose. His war banner is not a flag on a pole: it is a large floating sigil, an emblem of black metal and cold starlight with a blood red core, that hovers in the air beside his shoulder and always stays next to him. Painted in full colour with confident brushwork and a cold rim light."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            390,
+            540,
+            980
+          ],
+          "desc": "Turnaround of the same character, an alien reptilian man from another planet, an original species with no dragon features: no snout ridges, no dragon horns crest, no wings, no tail. Two small smooth horns. Where a goatee would be, two smooth flaps of skin hang down from either side of the chin, framing it like a goatee. Astral skin: fine, smooth, iridescent scales that shimmer like the night sky, deep blue black with faint star specks and a nebula sheen, not rough reptile scales. An exaggerated cartoon bodybuilder physique: an enormous puffed out chest and huge shoulders and arms, a tiny waist and slim legs, a top heavy inverted triangle. Very good looking, vain and confident. Body augmentations: sleek black alloy implants fused into the skin at the temples, collarbones, spine and forearms, with thin seams of cold starlight. Fitted black and silver body armour on the chest and shoulders that shows off the huge chest, a blood red sash. Goth look, with a short, sleek, refined reptilian muzzle on a smooth skull, a strong jaw and slit silver eyes, elegant rather than beastly: front view, side view and back view standing in a row at the same height, flat colour with clean line art."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            545,
+            400,
+            580,
+            980
+          ],
+          "text": "FRONT          SIDE          BACK",
+          "desc": "Small neat capital labels under the three turnaround views."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            390,
+            975,
+            660
+          ],
+          "desc": "Three head studies of the same character, a short, sleek, refined reptilian muzzle on a smooth skull, a strong jaw and slit silver eyes, elegant rather than beastly: profile, three quarter and front, showing the two flaps of skin hanging from either side of the chin like a goatee, the two small horns, the temple implants and the astral scales."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            680,
+            975,
+            840
+          ],
+          "desc": "Design study of the floating war sigil on its own: an emblem of black metal and cold starlight with a blood red core, hovering, with small arrows showing it stays beside his shoulder."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            860,
+            975,
+            980
+          ],
+          "desc": "A column of five colour swatches (astral blue black skin, starlight, black alloy, silver, blood red) above two small close ups of the astral scales and an implant seam."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "label": "hooded face",
+      "seed": 2026101580,
+      "summary": "A professional character concept art sheet for an alien reptilian standard bearer with astral skin, a huge top heavy bodybuilder chest, body augmentations and a floating war sigil, with a main painting, a turnaround, head studies, a sigil study and colour swatches, in a clean, high end video game concept art style.",
+      "elements": [
+        {
+          "type": "text",
+          "bbox": [
+            25,
+            25,
+            75,
+            600
+          ],
+          "text": "HUNT STANDARD BEARER",
+          "desc": "Title in clean, bold, condensed capital letters, dark charcoal ink, top left of the sheet."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            20,
+            975,
+            370
+          ],
+          "desc": "Main concept painting: full body of the same character, an alien reptilian man from another planet, an original species with no dragon features: no snout ridges, no dragon horns crest, no wings, no tail. Two small smooth horns. Where a goatee would be, two smooth flaps of skin hang down from either side of the chin, framing it like a goatee. Astral skin: fine, smooth, iridescent scales that shimmer like the night sky, deep blue black with faint star specks and a nebula sheen, not rough reptile scales. An exaggerated cartoon bodybuilder physique: an enormous puffed out chest and huge shoulders and arms, a tiny waist and slim legs, a top heavy inverted triangle. Very good looking, vain and confident. Body augmentations: sleek black alloy implants fused into the skin at the temples, collarbones, spine and forearms, with thin seams of cold starlight. Fitted black and silver body armour on the chest and shoulders that shows off the huge chest, a blood red sash. Goth look, with a smooth, narrow face with a strong jaw and slit silver eyes, and a hood of skin that fans out behind the head and neck like a cobra's hood, in a three quarter view facing left, striking a vain, proud pose. His war banner is not a flag on a pole: it is a large floating sigil, an emblem of black metal and cold starlight with a blood red core, that hovers in the air beside his shoulder and always stays next to him. Painted in full colour with confident brushwork and a cold rim light."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            95,
+            390,
+            540,
+            980
+          ],
+          "desc": "Turnaround of the same character, an alien reptilian man from another planet, an original species with no dragon features: no snout ridges, no dragon horns crest, no wings, no tail. Two small smooth horns. Where a goatee would be, two smooth flaps of skin hang down from either side of the chin, framing it like a goatee. Astral skin: fine, smooth, iridescent scales that shimmer like the night sky, deep blue black with faint star specks and a nebula sheen, not rough reptile scales. An exaggerated cartoon bodybuilder physique: an enormous puffed out chest and huge shoulders and arms, a tiny waist and slim legs, a top heavy inverted triangle. Very good looking, vain and confident. Body augmentations: sleek black alloy implants fused into the skin at the temples, collarbones, spine and forearms, with thin seams of cold starlight. Fitted black and silver body armour on the chest and shoulders that shows off the huge chest, a blood red sash. Goth look, with a smooth, narrow face with a strong jaw and slit silver eyes, and a hood of skin that fans out behind the head and neck like a cobra's hood: front view, side view and back view standing in a row at the same height, flat colour with clean line art."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            545,
+            400,
+            580,
+            980
+          ],
+          "text": "FRONT          SIDE          BACK",
+          "desc": "Small neat capital labels under the three turnaround views."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            390,
+            975,
+            660
+          ],
+          "desc": "Three head studies of the same character, a smooth, narrow face with a strong jaw and slit silver eyes, and a hood of skin that fans out behind the head and neck like a cobra's hood: profile, three quarter and front, showing the two flaps of skin hanging from either side of the chin like a goatee, the two small horns, the temple implants and the astral scales."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            680,
+            975,
+            840
+          ],
+          "desc": "Design study of the floating war sigil on its own: an emblem of black metal and cold starlight with a blood red core, hovering, with small arrows showing it stays beside his shoulder."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            600,
+            860,
+            975,
+            980
+          ],
+          "desc": "A column of five colour swatches (astral blue black skin, starlight, black alloy, silver, blood red) above two small close ups of the astral scales and an implant seam."
+        }
+      ]
+    }
+  ]
+}

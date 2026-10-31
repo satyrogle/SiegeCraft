@@ -1,0 +1,139 @@
+{
+  "name": "hit_sw",
+  "state": "hit",
+  "direction": "south-west",
+  "canvas": [
+    256,
+    256
+  ],
+  "original_sprite_size": [
+    192,
+    192
+  ],
+  "padding": [
+    32,
+    32
+  ],
+  "pixel_scale": 1,
+  "frames": 13,
+  "raw_frames": 13,
+  "echoed_reference_excluded": false,
+  "unique_frames": 13,
+  "colours": 27,
+  "shared_palette_verified": true,
+  "master_frames": 13,
+  "duration_ms": 680,
+  "durations": [
+    40,
+    40,
+    40,
+    40,
+    40,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    130
+  ],
+  "bounds": [
+    [
+      65,
+      37,
+      176,
+      219
+    ],
+    [
+      69,
+      37,
+      175,
+      219
+    ],
+    [
+      73,
+      36,
+      171,
+      219
+    ],
+    [
+      74,
+      35,
+      171,
+      219
+    ],
+    [
+      74,
+      35,
+      171,
+      219
+    ],
+    [
+      73,
+      36,
+      171,
+      219
+    ],
+    [
+      72,
+      36,
+      175,
+      219
+    ],
+    [
+      71,
+      36,
+      178,
+      219
+    ],
+    [
+      70,
+      37,
+      180,
+      219
+    ],
+    [
+      69,
+      37,
+      174,
+      219
+    ],
+    [
+      68,
+      38,
+      178,
+      219
+    ],
+    [
+      68,
+      38,
+      177,
+      219
+    ],
+    [
+      68,
+      38,
+      175,
+      219
+    ]
+  ],
+  "edge_frames": [],
+  "seam_changed_pixels": 5933,
+  "adjacent_changed_pixels": [
+    6120,
+    6647,
+    5013,
+    2009,
+    4266,
+    4209,
+    4959,
+    4995,
+    5059,
+    4846,
+    2382,
+    1380
+  ],
+  "sha256_sheet": "1ed53f9425fe40c134be9ac438452036624125e930f936b957c3455bc2f95e61",
+  "review_status": "pending_owner"
+}

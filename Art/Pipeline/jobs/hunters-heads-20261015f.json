@@ -1,0 +1,86 @@
+{
+  "name": "hunters-heads-20261015f",
+  "out": "Art/Pipeline/runs/hunters-heads-20261015f",
+  "_note": "Jacob 15 Oct: \"no\" to heads A and B of hunters-sheet-20261015e (C was \"abomination\"). Head study only, on the hunters-sheet-20261015d direction he called right: three non dragon reptile heads to point at.",
+  "size": [
+    1536,
+    768
+  ],
+  "aspect_ratio": "2:1",
+  "preset": "Default",
+  "negative": "World of Warcraft dracthyr, dragon, dragonborn, crest, ear fins, frills, long horns, toad, frog, beads, cartoon, comic, cute, smiling, human face, wings, signature, watermark",
+  "background": "A clean, light warm grey concept art sheet with a subtle paper texture. No signature and no watermark.",
+  "options": [
+    {
+      "id": 1,
+      "label": "three heads",
+      "seed": 2026101610,
+      "summary": "A concept art head study sheet with three different alien reptilian hunter heads side by side, numbered 1, 2 and 3, gritty, high end video game concept art.",
+      "elements": [
+        {
+          "type": "obj",
+          "bbox": [
+            60,
+            20,
+            900,
+            330
+          ],
+          "desc": "Head and shoulders of an alien reptilian hunter from a war torn, lawless space wasteland, an original species, not a dragon. A tyrant lizard head: a deep, boxy skull like a meat eating dinosaur, a short heavy snout, a powerful jaw with rows of teeth, two small horns just above the eyes and bumpy armoured skin. menacing, battle scarred, good looking in a dangerous way, dark black scales with a faint astral sheen of tiny cold star glints, glowing ember eyes, a cybernetic brace bolted along one side of the jaw, two leathery flaps of skin hanging down from either side of the chin like a goatee, a thick neck going into dark scorched iron armour with blood red cloth wraps. Painted bust, three quarter view facing left, gritty dark sci fi fantasy concept art."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            910,
+            140,
+            980,
+            210
+          ],
+          "text": "1",
+          "desc": "One bold dark number centred under the head."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            60,
+            350,
+            900,
+            660
+          ],
+          "desc": "Head and shoulders of an alien reptilian hunter from a war torn, lawless space wasteland, an original species, not a dragon. A long, armoured crocodile snout with rows of bony scutes along the top, heavy jaws with interlocking teeth and two small horns at the back of the skull. menacing, battle scarred, good looking in a dangerous way, dark black scales with a faint astral sheen of tiny cold star glints, glowing ember eyes, a cybernetic brace bolted along one side of the jaw, two leathery flaps of skin hanging down from either side of the chin like a goatee, a thick neck going into dark scorched iron armour with blood red cloth wraps. Painted bust, three quarter view facing left, gritty dark sci fi fantasy concept art."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            910,
+            470,
+            980,
+            540
+          ],
+          "text": "2",
+          "desc": "One bold dark number centred under the head."
+        },
+        {
+          "type": "obj",
+          "bbox": [
+            60,
+            680,
+            900,
+            990
+          ],
+          "desc": "Head and shoulders of an alien reptilian hunter from a war torn, lawless space wasteland, an original species, not a dragon. A flat, triangular viper skull with no snout, wide cheek plates, heat pits under slit eyes, a hard lipless mouth and two small horns above the brow. menacing, battle scarred, good looking in a dangerous way, dark black scales with a faint astral sheen of tiny cold star glints, glowing ember eyes, a cybernetic brace bolted along one side of the jaw, two leathery flaps of skin hanging down from either side of the chin like a goatee, a thick neck going into dark scorched iron armour with blood red cloth wraps. Painted bust, three quarter view facing left, gritty dark sci fi fantasy concept art."
+        },
+        {
+          "type": "text",
+          "bbox": [
+            910,
+            800,
+            980,
+            870
+          ],
+          "text": "3",
+          "desc": "One bold dark number centred under the head."
+        }
+      ]
+    }
+  ]
+}

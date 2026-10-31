@@ -1,0 +1,13 @@
+{
+  "name": "glutton",
+  "label": "GLUTTON - Sleeping",
+  "count": 40,
+  "ms": 160,
+  "columns": 8,
+  "width": 192,
+  "height": 192,
+  "sheet": "glutton/sheet.png",
+  "gif": "glutton/camp_work.gif",
+  "master": "glutton/camp_work.aseprite",
+  "contact": "glutton/contact.png"
+}

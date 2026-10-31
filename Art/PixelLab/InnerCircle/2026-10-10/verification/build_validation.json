@@ -1,0 +1,36 @@
+{
+  "unity": "2022.3.62f3",
+  "branch": "game-one",
+  "workingTree": "dirty, not committed",
+  "build": "C:\\Users\\jacob\\KindredSiege-Clean\\Builds\\CampaignArt-InnerCircle\\KindredSiegeCampaign.exe",
+  "buildResult": "Succeeded errors=0",
+  "checks": {
+    "innercircle-PASS.txt": 21,
+    "PASS.txt": 190,
+    "reopen-PASS.txt": 2
+  },
+  "allProcessExitCodes": 0,
+  "hashes": {
+    "KindredSiegeCampaign.exe": "76a4560e40ec43334f5300f52d45e74f55579709d5ea01eb838f24c7ac9e568b",
+    "KindredSiegeCampaign_Data/Managed/Assembly-CSharp.dll": "8baebaad35d85276262011bb8f82c203ef56b25f2b7410a135070563e65ee547",
+    "KindredSiegeCampaign_Data/Managed/KindredSiege.Sim.dll": "42c6c228f5d54fb08ad2471c716ff728b851f7d6895a6e3e156c463cf414e21d"
+  },
+  "logs": "C:\\Users\\jacob\\.codex\\scratch\\ks-innercircle-20261010",
+  "visualInspection": [
+    "all five final palette-cut sprites",
+    "camp",
+    "title",
+    "leader tutorial battle",
+    "result",
+    "tribe choice",
+    "Skullpeak chief battle",
+    "reopened finished campaign"
+  ],
+  "limitations": [
+    "Five static front sprites only; no new rotations or animation.",
+    "Camp displays Pals and their roles; upgrade transactions need authoritative API work.",
+    "Whisperer retry is more clothed than source concept.",
+    "Other pre-existing shaman/champion/effect placeholders remain.",
+    "Existing coverage log calls null artKey a labelled-placeholder even for the new static leader; dedicated checks and screenshots verify the leader texture."
+  ]
+}

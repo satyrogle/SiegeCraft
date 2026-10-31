@@ -1,0 +1,5 @@
+﻿PixelLab jobs, 11 Oct 2026 sprint (Jacob: "go do 1-4 as a sprint"). 1 generation each, 12 in all.
+Fight type icons, pixflux 48x48 on the game palette strip: war party f498da18, hold the line 01a47673, duel ee1e7bf9, trial 2027b2f2, chief d4275d30.
+Town options, pixen 480x300: 1 jaw gate fdcca629, 2 crater e1ed5add (came back with made up menu text, not used) then 4abe30c4, 3 moon 3653d5b4. A pixflux try at 480 wide was refused for size and not charged.
+Camp options, pixen 688x300: 1 canyon 4f438668, 2 temple hall 350fa233, 3 cave ffa828cb.
+options_town.png and options_camp.png are the comparison sheets sent to Jacob (logo, menu and the four Pals laid over by compose_options.py).

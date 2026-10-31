@@ -1,0 +1,55 @@
+{
+ "note": "The two new tribes (DESIGN_LOCKS, 'The two new tribes'). Jacob, 18 Oct 2026: 'now make the sprites for new tribes'. Round 1: three looks each of one soldier, same gear, pose and seed, only the race look changing. Fronts by create_image_pro_flash, 160x160, no background. Waiting on Jacob's pick; then the squad, turns and clips as for the 57.",
+ "style_image": {
+  "source_image_id": "c2435347-a2a8-5830-b76a-60621174e6f1",
+  "colours": "off",
+  "outline": "on",
+  "detail": "on",
+  "shading": "on",
+  "note": "the approved Skullpeak Warden as a style reference only, the recipe of the hunters' and the 57's first rounds"
+ },
+ "stoneveil": {
+  "brief": "Jacob: a cave species that looks like Shaak Ti and Plo Koon fused, living for blood rituals, like WoW's blood trolls. Mixed into an original race, never a copy.",
+  "seed": 2026101820,
+  "options": {
+   "1-mask": {
+    "job": "09c372b9-eb26-4f34-9527-bf34b3d9ad04",
+    "image": "85223722-2ce6-5f97-bc44-68fb7f72240f",
+    "look": "bone and bronze breathing mask with round red goggles, banded head-tails over the shoulders, small tusks"
+   },
+   "2-horns": {
+    "job": "18711fda-1f58-4506-841d-f2f2705d284a",
+    "image": "041167d6-690a-5228-b358-f5ccdbda0f36",
+    "look": "tall curved hollow horns, red and white striped face, banded head-tails, narrow bone mouth guard"
+   },
+   "3-troll": {
+    "job": "415227b2-ec74-4d8a-bd3a-ead9f39dc7e7",
+    "image": "af6b64d1-dcbc-594c-a2da-0f738f827a78",
+    "look": "feral and hunched, glowing red ritual scars, long ears, big tusks, short head-tails, leather breathing muzzle"
+   }
+  }
+ },
+ "thundercoast": {
+  "brief": "Jacob: an ancient Nautolan tribe under the sea, very clever, made into fishmen with machines and DNA changes, who see everyone above the water as beneath them. Mixed into an original race, never a copy.",
+  "seed": 2026101830,
+  "options": {
+   "1-tentacles": {
+    "job": "b60e0e60-cd27-481e-9f37-95fdc72b1970",
+    "image": "1cf20220-32f8-53b3-ba57-d21de74fb8ad",
+    "look": "teal skin, black eyes, long head tentacles, slim diving harness; closest to a plain Nautolan"
+   },
+   "2-spliced": {
+    "job": "b07993ac-c548-4df3-a45f-612a67367c35",
+    "image": "104438e7-3671-59d6-a256-6a61cbede5d3",
+    "look": "gene-spliced shark fishman: fin crest, gills, scales, webbed claws, forearm fin blades, surgical seams"
+   },
+   "3-diver": {
+    "job": "d4e795e1-c605-46a3-b4f8-0f2e3c3698e4",
+    "image": "28b6ef63-5fa1-57d6-91f0-64d5ced21b02",
+    "look": "tentacled head in a water-filled glass helmet, chest pump, pressure plates, fin thrusters"
+   }
+  }
+ },
+ "sheet": "pick-new-tribes-round1.png (each 160 px look at 3x, numbered 1 to 3 per tribe)",
+ "spend": "6 images, 36 generations; 1304.6 left by the balance before minus the charges"
+}

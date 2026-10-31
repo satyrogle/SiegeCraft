@@ -1,0 +1,55 @@
+{
+ "name": "skullpeak",
+ "tileset": "a39c556b-90f3-4b35-b05a-d6a33a86442d",
+ "fill": "r",
+ "top": 420,
+ "enemy": "CampaignArt/skull",
+ "rows": {
+  "-2": "llllllllllllllllllllllllll",
+  "-1": "llllllllllllllllllllllllll",
+  "0": "llllllllllllllllllllllllll",
+  "1": "llllllleeeeeeeeeeeeeeeeeee",
+  "2": "lllllllrrrrrrrrrrrrrrrrrrr",
+  "3": "lllllllrrrrrrrrrrrrrrrrrrr",
+  "4": "lllllllrrrrrrrrrrrrrrrrrrr",
+  "5": "eeeeeeerrrrrrrrrrrrrrrrrrr"
+ },
+ "props": [
+  [
+   "68ffffd3-d0c4-4e4d-9e8e-bf8ca4d4c0e4",
+   870,
+   70,
+   false
+  ],
+  [
+   "10420686-fd38-4596-a351-253ab5f216d2",
+   690,
+   70,
+   false
+  ],
+  [
+   "10420686-fd38-4596-a351-253ab5f216d2",
+   1140,
+   90,
+   true
+  ],
+  [
+   "10420686-fd38-4596-a351-253ab5f216d2",
+   150,
+   110,
+   false
+  ],
+  [
+   "9337f569-0f6a-490f-9a94-8b953f609c6c",
+   1215,
+   665,
+   false
+  ],
+  [
+   "9337f569-0f6a-490f-9a94-8b953f609c6c",
+   1250,
+   330,
+   true
+  ]
+ ]
+}

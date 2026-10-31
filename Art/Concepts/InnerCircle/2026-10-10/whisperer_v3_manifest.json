@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-10",
+  "subject": "Whisperer",
+  "version": 3,
+  "status": "CONCEPT FOR OWNER REVIEW. The emotional direction is owner-selected; the rendered appearance is not approved or locked.",
+  "tool": "built-in image_gen",
+  "mode": "fresh image generation",
+  "modelVersion": "Not exposed",
+  "imagesThisPass": 1,
+  "remainingPlannedImages": 0,
+  "pixelLabCalls": 0,
+  "accountQuota": "Not exposed",
+  "ownerRequest": "something dangerously inhuman beneath an inviting manner; mesmerising beauty",
+  "previousVersion": "whisperer_v2_dark_astral.png is rejected. Not supplied as an image reference and no part treated as approved.",
+  "inputImages": [],
+  "sourceImage": "C:/Users/jacob/.codex/generated_images/01a0e1e7-0a93-7432-b3df-1dcaab925b3d/exec-bc81a7e0-454f-4fc4-a58b-62c20977814f.png",
+  "savedImage": "C:/Users/jacob/KindredSiege-Clean/Art/Concepts/InnerCircle/2026-10-10/whisperer_v3_inviting_menace.png",
+  "sha256": "0864DE9C22275565F1001D6198B9C4F2F6F06D40F187F2263D7A1FAF7238EAC8",
+  "prompt": "Use case: stylized-concept.\nCreate an original character concept sheet for WHISPERER, an adult dark astral woman in the game Kindred Siege. The owner's exact emotional direction is \"something dangerously inhuman beneath an inviting manner\" and \"mesmerising beauty\". Make that emotional contradiction the whole point of the image: the viewer feels personally welcomed, then notices a deeply alien body. She is a trusted survivor and camp companion, with wit, affection and agency; her camp role is skins and regalia. Do not make a villain pose, robot, mannequin, tailor at work or stock fantasy seductress. No existing franchise character.\n\nComposition: ONE design, shown full body at left and in a large head-and-upper-torso portrait at right, identical anatomy/materials/clothes in both. Neutral warm grey background, no text, no props, no scene. Rich painterly character design with carefully sculpted readable forms, natural anatomical weight and tactile materials. Approximately seven-and-a-half-head heroic proportions. Calm beautiful silhouette with visible strength, not thin, gaunt or exaggerated hourglass.\n\nEXPRESSION AND POSE FIRST:\nShe has just recognised a trusted friend. Her head inclines slightly toward the viewer, shoulders open and at ease, one hand extends palm-up at waist level in a quiet welcoming gesture, the other rests loosely near the ribs. Two arms, two legs, all intact. Her smile is small, genuine-looking, intelligent and conspiratorial, with warmth in the cheeks. Her eyes meet yours with an unsettlingly sustained attention. No snarl, bared fangs, pout, seductive body display or blank expression. The portrait must capture this as a specific PERSON rather than a catalogue model.\n\nFACE:\nMesmerising and finely proportioned yet visibly not human: broad beautifully contoured cheek planes curve uninterrupted into the temples; the bridge of the face is a delicate continuous fold with tiny breathing seams instead of nostrils and a protruding human nose. Two dark almond eyes, each with nested rings of muted gold inside a deep plum-black iris, no white sclera and no glow. A thin translucent secondary eyelid is just visible over one eye, very subtle. Small flexible expressive mouth with a soft inviting upturn, no fashion lipstick. No external ears. Smooth rounded head, no backward skull cone. Long flowing charcoal-black hair made of fine silky mineral filaments falls heavily behind the shoulders, with a few soft strands near her cheek; it looks beautiful and alive, not dreads, tentacles, snakes, a headdress or a hood.\n\nTHE INHUMAN REVEAL:\nHer skin shares the living opalescent material of her ascended people, but her own colouring is rich smoky violet, pewter pearl and warm muted mauve under neutral light, never bright blue or pink. On the throat and side ribs the nacre is subtly translucent: one can discern orderly nested dark lamellae under the intact beautiful surface, an anatomy that does not resemble human muscle, bone or circuitry. These are elegant biological structures, not gore or decay. The skin beside the jaw and wrist has a few nearly closed fine articulation seams; her welcoming fingers are slightly too long with one extra fine articulation, but remain graceful, tactile and non-clawed. These precise anomalies carry the danger. No extra limbs, extra eyes, face splitting open, teeth display, skull imagery or obvious monster additions.\n\nEMBODIED BLACK REGALIA:\nPolished obsidian grows seamlessly through the centre of her upper torso and along the hip crests, giving way to opaque soft black membranes. A continuous dark central chest surface provides full chest coverage and flows into a broad, simple front membrane descending from the pelvis toward mid-calf. Side ribs, arms and much of the legs remain visible. A substantial dark mantle grows directly from the upper-back structure and falls in two broad heavy folds behind her, close to the body. Show clear organic attachment, physical weight and broad clean shapes. No diagonal wrap bands, bra shapes, corset, belt, fitted dress, skirts made of petals, robe sleeves, hems with embroidery, stitched trim or excessive overlapping flaps. Sparse ancient gold only where obsidian meets living tissue. Regalia should feel like cultivated aspects of her own body. No armour suit or jewellery collection. Feet are anatomically grounded, intact and unshod, with subtle grown dark sole surfaces; no webbing, hooves or high heels.\n\nA small amount of intentional black mist seeps from shoulder and wrist seams, curling close to her without concealing the silhouette. Low-key mood but adequately lit face and anatomy; gentle neutral key with a restrained warm bounce makes her welcoming expression legible. Deep void black, smoky purple, pearl and worn ancient gold. No neon or glowing outlines, no starfield texture, no rainbows.\n\nKeep clothing and face consistent in both studies. Make the welcoming beauty persuasive BEFORE the unsettling anatomy becomes apparent. Her distinctive identity comes from expression, material and coherent alien structures. The leader's transparent brain, third eye, crown and dreads are forbidden. No weapons, spellbooks, floating objects, magic effects, wings, giant horns, theatrical masks or literal Warhammer design.",
+  "research": "Uses the existing source research recorded with v2 as background. This pass follows the owner's clarified emotional direction; no new web research or borrowed artwork inputs.",
+  "designProposals": "Welcoming smile and open palm; two-arm anatomy; altered nasal fold, dark ringed irises and throat/rib lamellae; flowing mineral-filament hair; grown obsidian torso and black mantle. Individual features are candidate choices, not canon until owner review.",
+  "inspection": {
+    "reviewed": "Actual complete generated sheet inspected inline.",
+    "visible": [
+      "Two arms and intact full-body view",
+      "Inviting small smile, head tilt and open palm",
+      "Pearlescent violet body, altered nasal fold, dark eyes and visible throat/rib structures",
+      "Black torso surface with gold joins and hanging front/back membranes",
+      "Consistent facial identity across full body and portrait; restrained black haze"
+    ],
+    "limitations": [
+      "Hair reads more as ordinary black hair than mineral filaments",
+      "Central chest surface still resembles a fitted bodice; long mantle reads more as fabric than definitively grown membrane",
+      "Rib lamellae appear as exposed or recessed structures rather than clearly beneath intact translucent skin",
+      "Fingernails are somewhat pointed despite the non-clawed brief",
+      "Figure remains conventionally feminine and slender; impossible-to-place quality relies mainly on face and material"
+    ]
+  },
+  "scope": "Only Whisperer concept work and relevant owner-direction/rejection metadata. No extra injury, combat role, power, mechanics, sprite or game integration. Existing other character art preserved."
+}

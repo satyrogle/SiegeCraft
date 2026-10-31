@@ -1,0 +1,190 @@
+{
+  "status": "review_ready",
+  "owner_request": "Make all battle animations for leader",
+  "output_count": 16,
+  "states": [
+    "idle",
+    "move",
+    "attack",
+    "hit",
+    "block",
+    "parry",
+    "death",
+    "victory"
+  ],
+  "directions": [
+    "south-east",
+    "south-west"
+  ],
+  "balance_start": 2887,
+  "balance_end": 2791,
+  "total_charged_generations": 96,
+  "cost_breakdown": {
+    "rotations": 5,
+    "rejected_pixen_pose_edit": 1,
+    "first_16_pixminimax_clips": 68,
+    "six_skeleton_repairs": 22
+  },
+  "character_id": "ee645644-253a-4ffb-a97b-82955b7a3000",
+  "source": "../corrections_v2/leader_front.png",
+  "source_selection": {
+    "se": "Original SE rotation, with exact approved relic restored using Aseprite; bounded edit take rejected for costume/foot drift",
+    "sw": "PixelLab SW rotation"
+  },
+  "selected_jobs": [
+    {
+      "name": "idle_se",
+      "id": "23013aab-ee4d-438b-af72-618810d597d3",
+      "engine": "pixminimax",
+      "count": 40,
+      "path": "idle_se"
+    },
+    {
+      "name": "idle_sw",
+      "id": "de27e095-904b-4c27-9bec-59fe166adc68",
+      "engine": "pixminimax",
+      "count": 40,
+      "path": "idle_sw"
+    },
+    {
+      "name": "move_se",
+      "id": "d13c558d-d8f2-404c-8259-618e1798bb1c",
+      "engine": "pixminimax",
+      "count": 40,
+      "path": "move_se"
+    },
+    {
+      "name": "move_sw",
+      "id": "574dd322-68dc-4cef-9d43-81310af00120",
+      "engine": "pixminimax",
+      "count": 40,
+      "path": "move_sw"
+    },
+    {
+      "name": "attack_se",
+      "id": "0b134e11-b037-441f-89b7-23424747535e",
+      "engine": "pixminimax",
+      "count": 40,
+      "path": "attack_se"
+    },
+    {
+      "name": "attack_sw",
+      "id": "293953fb-b6a0-406d-8d04-d9e455e79e9d",
+      "engine": "pixminimax",
+      "count": 40,
+      "path": "attack_sw"
+    },
+    {
+      "name": "hit_se",
+      "id": "926316c9-8610-4428-b18e-13055bfa767b",
+      "engine": "skeleton_v3",
+      "count": 13,
+      "path": "hit_se_repair"
+    },
+    {
+      "name": "hit_sw",
+      "id": "2d15be98-8f62-4ee0-ac9b-e8ef3c25d19c",
+      "engine": "skeleton_v3",
+      "count": 13,
+      "path": "hit_sw_repair"
+    },
+    {
+      "name": "block_se",
+      "id": "da5295e8-737e-491c-828a-ba24c9b4e6aa",
+      "engine": "skeleton_v3",
+      "count": 15,
+      "path": "block_se_repair"
+    },
+    {
+      "name": "block_sw",
+      "id": "73afc0a8-bb6d-4760-92d2-069eb72fe73e",
+      "engine": "skeleton_v3",
+      "count": 15,
+      "path": "block_sw_repair"
+    },
+    {
+      "name": "parry_se",
+      "id": "8a1104c9-e30b-4e12-ae7f-27d210c816c4",
+      "engine": "pixminimax",
+      "count": 16,
+      "path": "parry_se"
+    },
+    {
+      "name": "parry_sw",
+      "id": "8fb97094-9896-4f58-8570-166201435531",
+      "engine": "pixminimax",
+      "count": 16,
+      "path": "parry_sw"
+    },
+    {
+      "name": "death_se",
+      "id": "7f3308dc-04fa-4e8e-b7e2-81f6c06df1cb",
+      "engine": "skeleton_v3",
+      "count": 15,
+      "path": "death_se_repair"
+    },
+    {
+      "name": "death_sw",
+      "id": "8bc9780f-9c46-4af0-aebb-efe26c23f9e3",
+      "engine": "skeleton_v3",
+      "count": 15,
+      "path": "death_sw_repair"
+    },
+    {
+      "name": "victory_se",
+      "id": "12e363eb-acd9-48fd-9573-b05669ac7648",
+      "engine": "pixminimax",
+      "count": 24,
+      "path": "victory_se"
+    },
+    {
+      "name": "victory_sw",
+      "id": "60f99926-f076-4932-97cd-79a9a79668e6",
+      "engine": "pixminimax",
+      "count": 24,
+      "path": "victory_sw"
+    }
+  ],
+  "rejected_jobs": [
+    {
+      "name": "hit_se",
+      "id": "455afbf6-8c7e-441e-8abe-1dfe18efcd2d"
+    },
+    {
+      "name": "hit_sw",
+      "id": "f5eebe37-104e-45ae-baac-3757c9b20e76"
+    },
+    {
+      "name": "block_se",
+      "id": "b07b8fea-f702-43b8-b406-ed7fd51d09a6"
+    },
+    {
+      "name": "block_sw",
+      "id": "b83bf4d8-3396-4509-96b3-63fd638d6817"
+    },
+    {
+      "name": "death_se",
+      "id": "f506176b-87ef-4883-ae04-10f1eb68aef9"
+    },
+    {
+      "name": "death_sw",
+      "id": "1b3eafcf-f18a-4fca-b47b-e673a023e908"
+    }
+  ],
+  "pipeline": {
+    "native_sprite": 192,
+    "canvas": 256,
+    "padding": 32,
+    "scale": 1,
+    "shared_palette": "leader_palette.png",
+    "palette_colours": 31,
+    "echoed_input": "Kept in raw folders but excluded from PixMiniMax playback",
+    "death_end": "Final six timeline frames use the same motionless corpse pose"
+  },
+  "browser_url": "http://127.0.0.1:62556/leader_battle_v1/review.html",
+  "pack": "leader-battle-selected.zip",
+  "verification": "final_checks.json",
+  "owner_visual_verdict": "pending",
+  "runtime_integration": false,
+  "jobs_pending": 0
+}
