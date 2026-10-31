@@ -1,0 +1,8 @@
+{
+  "base": "blood_rot_medic_sw",
+  "ref": "bloodridge_chief_sw",
+  "denoise": 1.0,
+  "prompt": "Picture 1 is a fighter of the Bloodridge raiders; picture 2 is their chief. Redraw picture 1 as the raiders' SHAMAN, a sun priest who casts a black eclipse: keep the black hood with the face hidden in deep shadow and two small glowing orange eyes, keep the dark sepia and ash rags and burial bandages, and give him a tall crooked staff topped with a small black sun disc ringed with orange fire, held up in one hand. Same tribe look as both pictures, same darkness, same pixel size, same detail, same palette, same three quarter view facing left. Plain flat dark brown background, nothing else.",
+  "seed": 20261021,
+  "seconds": 60
+}

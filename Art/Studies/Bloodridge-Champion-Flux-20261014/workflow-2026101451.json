@@ -1,0 +1,206 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-base-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "pixel art sprite, game asset, 32-bit pixel art, transparent background. Design ONE Bloodridge duel champion from the same tribe and same game as the supplied approved sprite. Match its sophisticated native pixel craftsmanship, strong anatomical modelling, selective dark outlines, warm earth palette, light direction, hand and head proportions, and slightly elevated three-quarter camera facing southwest (left and toward the viewer). This is a new individual with a NEW POSE, not the identical man in the reference.\n\nA terrifying lean athletic Egyptian burial guardian, broad through the shoulders and tapering at the waist, muscular forearms and convincing thighs, mature human proportions. His own aggressive COILED DUELLING GUARD: torso twists toward the left, forward knee bent over a planted foot, rear leg braced diagonally to the right. His leading hand aims a long Egyptian khopesh horizontally toward the left at chest height. His rear hand holds a second khopesh in a reverse low guard beside his hip, its curved blade clearly outside his body. Exactly two hands, each visibly gripping one blade. Khopesh are broad curved sword blades with a straight lower section and heavy crescent tip, not small farming sickles.\n\nDistinct identity: a close-fitting burial headwrap with a visible grim ashen face and a few narrow ember scars; a stepped corroded bronze gorget and ONE ragged diagonal funerary stole across one shoulder; bare sinewy upper arms with bronze bands, old ash-linen wraps on forearms and calves, dark fitted battle cloth and split rotted waist panels. Three short frayed cloth tails trail behind him. Restrained orange heat inside blade edges. Menacing, grounded and poised to strike. No antlers, crown, staff, shield, heavy plate armour or huge cape.\n\nPrecise dense pixel clusters like the reference, crisp angular cloth folds, sharply readable bronze and linen, high value contrast around the face, hands and blade edges. Strong shadow planes and narrow lit rims. A 112px-tall game fighter enlarged four times with nearest-neighbour pixel edges, detailed but never smooth or blurred. Full body and both sword tips inside the image with clear margins. One character only, centred. Isolated sprite on a perfectly uniform desaturated blue-grey (#56616c) matte for extraction; no floor, cast shadow, text, border, particles or scenery. The reference supplies the STYLE and ANATOMY; use the new pose and individual costume described here."
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "chibi, child, cartoon, stick limbs, stiff upright pose, tiny sickles, oversized head, front view, blurry painting, smooth gradients, photograph, extra arms, extra weapons, fire aura, background scenery, text"
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-champion-flux-20261014/approved-skirmisher.png"
+    }
+  },
+  "8": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "7",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 640,
+      "height": 672,
+      "crop": "disabled"
+    }
+  },
+  "9": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "8",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "5",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "13": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "11",
+        0
+      ],
+      "cfg": 4.0
+    }
+  },
+  "14": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "15": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 28,
+      "width": 768,
+      "height": 768
+    }
+  },
+  "16": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026101451
+    }
+  },
+  "17": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "16",
+        0
+      ],
+      "guider": [
+        "13",
+        0
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ],
+      "filename_prefix": "KS-Champion-Flux-20261014/champion-2026101451"
+    }
+  }
+}

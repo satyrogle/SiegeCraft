@@ -1,0 +1,57 @@
+{
+  "status": "Pending owner appearance approval; isolated static candidate",
+  "model": "PixelLab Pro",
+  "job_id": "18d13fbd-c955-4dce-9410-8ee065a008fe",
+  "charged_subscription_generations": 15,
+  "request": {
+    "width": 160,
+    "height": 168,
+    "max_colors": 25,
+    "no_background": true,
+    "seed": 151053,
+    "style_image_url": "upload:f6d44285-464e-4429-9b7e-33c6a3498152",
+    "style_copy": [
+      "outline",
+      "detail",
+      "shading"
+    ],
+    "reference_images": [
+      {
+        "url": "upload:741ec1e8-bb9c-4754-92ec-c6922257c103",
+        "usage": "Owner selected rough B silhouette: forward hunting lean, wide planted legs, three separate rag streamers trailing right. Refine anatomy; this is NOT final proportions or rendering. No text/background."
+      }
+    ],
+    "palette": [
+      "#130c0a",
+      "#2b1c15",
+      "#3a261c",
+      "#481c13",
+      "#4d3729",
+      "#5b5653",
+      "#654b38",
+      "#6d3a24",
+      "#6e2514",
+      "#7b634e",
+      "#845437",
+      "#866e3c",
+      "#8e2011",
+      "#927357",
+      "#a38c71",
+      "#b02a09",
+      "#b8a085",
+      "#c6b7a6",
+      "#d13a0b",
+      "#d4c6af",
+      "#ddd3c2",
+      "#e6510c",
+      "#f77813",
+      "#fba625",
+      "#fed745"
+    ],
+    "description": "One original BLOODRIDGE DUEL CHAMPION, full body battle sprite facing southwest/left in three-quarter view, elevated game camera. Native body head-to-feet about 112 pixels, centred with generous transparent margins on 160x168. Follow B's forward hunting lean and planted wide feet, not its crude anatomy. Lean muscular heroic adult proportions, powerful long limbs, no bulky armor. DISTINCT DESIGN: exposed ash-grey scarred chest and one bare shoulder crossed by a narrow diagonal corroded bronze harness; short asymmetrical layered burial-linen battle kilt ending above knees; tightly wrapped forearms and calves. His signature is THREE BROAD SHREDDED FUNERARY STRIPS tied to a bronze ring on his rear shoulder, streaming right at unequal lengths, separated by clear air. Not a full cloak, jacket, hooded tunic, breastplate or assassin costume. Low close-fitting burial headwrap leaves a fully visible severe gaunt Egyptian face: brow, nose, lips, angular jaw, molten orange fissures across one cheek and exposed sternum; no skull mask, blank face, beard or bald stone head. Two clearly separate corroded bronze khopesh, one in EACH hand: lead arm extended downward-left with hook blade outside front knee, rear arm bent and holding second sickle blade diagonally behind shoulder. Unambiguous hands gripping handles; clear silhouette gaps around both weapons and limbs. No overhead striking pose. Each blade restrained ember edge, no neon bloom. Menacing rotted Medjay, desiccated burial materials, aged bronze, ash-sepia palette. Upper-left light, rich restrained pixel clusters, visible face at native size, detailed coherent pixel art matching supplied STYLE only. Entirely new anatomy and costume; do not reproduce style reference character's hood, torso clothing, pose or blades. No horns, crown, staff, shield, antlers, scenery, lettering, loose floating accessories."
+  },
+  "integration": false,
+  "selected_candidate": 0,
+  "master": "champion-B.aseprite",
+  "native_resampling": false
+}

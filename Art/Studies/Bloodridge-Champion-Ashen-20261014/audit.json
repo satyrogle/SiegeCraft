@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "native_size": true,
+    "head_only": true,
+    "approved_palette": true,
+    "binary_alpha": true,
+    "reopened_identical": true,
+    "nearest_4x": true
+  },
+  "changed_pixels": 427,
+  "opaque_colours": 20,
+  "visual_review": "Visible gaunt facial planes, ember fissures and linen brow; native comparison inspected. More exposed face is proposed. Owner approval pending; animation and live combat untested."
+}

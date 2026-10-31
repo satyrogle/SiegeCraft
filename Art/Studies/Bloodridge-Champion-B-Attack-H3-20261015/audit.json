@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "native_size": true,
+    "source_start": true,
+    "source_end": true,
+    "palette": true,
+    "binary_alpha": true,
+    "no_edge_clipping": true
+  },
+  "visual": "All retained frames viewed. Distinct overhead anticipation, snap downward cut, forward follow-through, recovery. Rear sword remains visible. Removed three orange smear frames. Fast key-pose transition intentional; no live combat or impact sync proof.",
+  "cost_this_turn": 5
+}

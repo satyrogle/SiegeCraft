@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "scope_exact": true,
+    "silhouette_unchanged": true,
+    "approved_palette": true,
+    "native_canvas": true
+  },
+  "changed_pixels": 582,
+  "visual": "Shoulder brace and chest plate visible at native1x; finger caps subtle. Face, pose, weapons and cloth preserved outside masks."
+}

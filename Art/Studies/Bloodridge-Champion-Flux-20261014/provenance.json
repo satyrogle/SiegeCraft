@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-14",
+  "status": "Owner requested better; superseded for revision. Not approved or integrated.",
+  "localModel": "FLUX.2 Klein base 4B",
+  "pixelLora": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+  "loraStrength": 1,
+  "sourceCard": "https://huggingface.co/Limbicnation/pixel-art-lora",
+  "runtime": "ComfyUI ArtLab localhost:8191",
+  "reference": "../Bloodridge-Champion-Specimen-20261014/approved-skirmisher-native.png",
+  "attempts": [
+    {
+      "seed": 2026101451,
+      "status": "Rejected",
+      "reason": "Bright gold and pale face, second blade not properly held",
+      "loadedPatches": 63
+    },
+    {
+      "seed": 2026101452,
+      "status": "Rejected",
+      "reason": "Three modulation adapters renamed with matching shapes and byte-identical tensors load but corrupt output on installed base model",
+      "loadedPatches": 66
+    },
+    {
+      "seed": 2026101453,
+      "status": "Rejected",
+      "reason": "Front-facing clean bearded human and scimitar blades, not approved tribe",
+      "loadedPatches": 63
+    },
+    {
+      "seed": 2026101454,
+      "status": "Rejected",
+      "loadedPatches": 63,
+      "reason": "Extra fused blade and generic clean hooded warrior; fails tribe and weapon review"
+    }
+  ],
+  "compatibilityNote": "Do not use modulation-compat.safetensors for art. Shape agreement and loading do not establish semantic compatibility. Original installed LoRA preserved; working route uses supported layers only.",
+  "pixelLab": {
+    "model": "Pixflux",
+    "jobId": "9f324e71-0095-4c61-b662-81524affa463",
+    "subscriptionGenerations": 2,
+    "request": {
+      "description": "One terrifying Bloodridge champion duelist, three-quarter game battle view facing southwest. Same dark decayed Egyptian Medjay tribe and detailed pixel rendering as input. Lean sinewy mature human proportions, ash skin, visible lava-scarred face under rotted sepia hood and headwrap, corroded bronze segmented collar, pale burial wraps on arms and calves, asymmetric torn funerary shoulder stole and short split waist cloth. NEW asymmetric guard: deep forward stance, leading knee bent, rear leg braced to the right; left hand holds one broad hooked Egyptian khopesh low forward, right hand grips the second khopesh curving up beside the rear shoulder. Two clearly separate arms, two closed hands around handles, two crescent swords with narrow ember edges. Strong threatening silhouette, grounded separate feet, small head and realistic heroic anatomy, no chibi or bulky bodybuilder. Approximately 112px head-to-feet height with clear transparent margins on the 160x168 canvas. Keep approved earthy palette, shadow depth and crisp tiny material detail. No crown, antlers, shield, staff, gold plate armour, beard, white face paint or background.",
+      "width": 160,
+      "height": 168,
+      "init_image_url": "upload:05cb0cd0-a188-453a-8204-768843a55815",
+      "color_image_url": "upload:05cb0cd0-a188-453a-8204-768843a55815",
+      "init_image_strength": 100,
+      "no_background": true,
+      "direction": "south-west",
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed",
+      "seed": 2026101455,
+      "text_guidance_scale": 8
+    },
+    "secondJobId": "d66c67ac-6313-462c-ae6b-ba8b5e400371",
+    "secondRejectedReason": "Single equipped blade and generic upright stance"
+  },
+  "scope": "Isolated character study, no production art or gameplay integration",
+  "selected_route": "PixelLab Pixflux job 9f324e71-0095-4c61-b662-81524affa463, native Aseprite forward-guard relocation and material corrections",
+  "review": "audit.json",
+  "editableMaster": "champion-review.aseprite",
+  "cleanupEvidence": "native-cleanup.json"
+}

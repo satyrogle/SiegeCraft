@@ -1,0 +1,45 @@
+{
+  "status": "Static owner-review candidate; no production integration",
+  "chosen_generator": "PixelLab Pixflux, followed by native Aseprite guard and material edits; NOT a local FLUX output",
+  "local_FLUX_candidates": "All rejected: anatomy/material drift, malformed weapons or compatibility corruption",
+  "pixelLab_generations_charged": 2,
+  "native_canvas": [
+    160,
+    168
+  ],
+  "opaque_bounds_exclusive": [
+    14,
+    31,
+    137,
+    141
+  ],
+  "opaque_colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "off_approved_frame_colors": [],
+  "connected_components_8_neighbor": [
+    4906
+  ],
+  "source_png_sha256": "4a55489a84ae18391264ad345b97ec96a70022eac38a0b0f7408dfee21bd0210",
+  "source_atlas_sha256": "ad176a6a94541b6c7ec8b670fc05d5ffb83349cbc8ebdd87af0876ac799e7a25",
+  "source_hashes_unchanged": true,
+  "native_lineup_source_pixels_exact": true,
+  "native_lineup_candidate_pixels_exact": true,
+  "exact_4x_nearest": true,
+  "reopened_master_pixel_identical": true,
+  "visual_audit": {
+    "silhouette": "Raised forward parrying blade, low reverse blade, broader chest and asymmetric cowl; clear difference from approved crouching Skirmisher",
+    "tribe": "Native earth palette, corroded bronze, pale wraps and narrow ember weapon accents retained",
+    "anatomy": "Two arms, two gripping hands, two separate feet; no new body resampling",
+    "limitations": [
+      "Forward weapon is shorter in silhouette than rear weapon",
+      "Static guard only; animation and live fight not checked",
+      "Owner judgement pending"
+    ]
+  },
+  "floor_study": "Composited at native pixels onto an unchanged crop of captured KS fight; review contact shadows added. Not runtime integration.",
+  "validation_note": "MCP validate is unavailable. Palette analyze plus independent native PNG checks used.",
+  "mechanical_checks_passed": true
+}

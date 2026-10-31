@@ -1,0 +1,59 @@
+{
+  "status": "Static identity revision awaiting owner approval",
+  "route": "One PixelLab Pixen edit used only for native headwrap guide; Aseprite authored face, shoulder, cloth and weapon edits",
+  "subscription_generations": 1,
+  "native_canvas": [
+    160,
+    168
+  ],
+  "opaque_bounds_exclusive": [
+    24,
+    14,
+    140,
+    141
+  ],
+  "opaque_colors": 22,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "off_approved_frame_colors": [],
+  "components_8_neighbor": [
+    6529
+  ],
+  "changed_pixels_from_previous_candidate": 1006,
+  "changes_outside_named_feature_regions": [],
+  "both_grips_unchanged": true,
+  "front_foot_unchanged": true,
+  "rear_foot_unchanged": true,
+  "source_png_sha256": "4a55489a84ae18391264ad345b97ec96a70022eac38a0b0f7408dfee21bd0210",
+  "source_atlas_sha256": "ad176a6a94541b6c7ec8b670fc05d5ffb83349cbc8ebdd87af0876ac799e7a25",
+  "source_hashes_unchanged": true,
+  "native_lineup_source_pixels_exact": true,
+  "native_lineup_candidate_pixels_exact": true,
+  "floor_candidate_pixels_exact": true,
+  "exact_4x_nearest": true,
+  "reopened_master_pixel_identical": true,
+  "visual_audit": {
+    "cold_read": "A scarred burial-wrapped duel fighter in a high and low khopesh guard, with hanging bronze grave plates and split linen strips.",
+    "identity_changes": [
+      "Pointed assassin-like hood replaced by open burial headwrap",
+      "Ash face with three deliberate diagonal cheek fissures",
+      "Three tethered bronze plates replace generated shoulder spikes",
+      "Pointed tabard end changed into three unequal folded burial strips",
+      "Upper sickle spine thickened in bronze, lower inner edge strengthened"
+    ],
+    "observed": "Headwrap changes the face and head silhouette at 1x; high/low blades remain readable beside approved tribe art and on the captured floor.",
+    "reservation": "The pale headwrap is now the strongest head marker; owner must judge whether that contrast fits the champion.",
+    "not_verified": [
+      "Owner approval",
+      "Animation",
+      "Crowded fight readability",
+      "Runtime binding"
+    ],
+    "legal_scope": "Visual differentiation only; no legal clearance conclusion"
+  },
+  "floor_study": "Static native composition on existing captured KS floor with separate contact shadows. Not a new running fight capture.",
+  "validation_note": "Callable MCP validate remains unavailable; Aseprite palette analyze and independent PNG checks used.",
+  "mechanical_checks_passed": true
+}

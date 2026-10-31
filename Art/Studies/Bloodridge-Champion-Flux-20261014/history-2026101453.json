@@ -1,0 +1,281 @@
+{
+  "prompt": [
+    35,
+    "5104d59d-d5b6-4c3d-89d7-2b1447d3df97",
+    {
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "flux-2-klein-base-4b.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+          "strength_model": 1.0
+        }
+      },
+      "3": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_3_4b.safetensors",
+          "type": "flux2",
+          "device": "default"
+        }
+      },
+      "4": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "flux2-vae.safetensors"
+        }
+      },
+      "5": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "pixel art sprite, game asset, 32-bit pixel art, transparent background. Design ONE Bloodridge duel champion from the same tribe and same game as the supplied approved sprite. Match its sophisticated native pixel craftsmanship, strong anatomical modelling, selective dark outlines, warm earth palette, light direction, hand and head proportions, and slightly elevated three-quarter camera facing southwest (left and toward the viewer). This is a new individual with a NEW POSE, not the identical man in the reference.\n\nA terrifying lean athletic Egyptian burial guardian, sinewy angular shoulders and narrow waist, lean defined forearms and convincing thighs; ash-brown skin, never a bulky bodybuilder, mature human proportions. His own aggressive COILED DUELLING GUARD: torso twists toward the left, forward knee bent over a planted foot, rear leg braced diagonally to the right. His LEFT arm reaches forward toward the left, LEFT fist around the handle of a large deeply curved Egyptian khopesh. His RIGHT arm bends down beside his RIGHT hip, RIGHT fist around the handle of the SECOND khopesh, whose broad crescent blade curls outward to the right. The two hands are far apart: one at chest height on the left, one at waist height on the right. Each sword connects directly to its own closed hand. Exactly two arms and two swords. Both are unmistakable Egyptian KHOPESH: a straight lower blade flaring into a broad heavy crescent upper half with a deeply concave inside edge. No straight katana, no detached sword, no sword hanging from belt, no crossed arms.\n\nDistinct identity: a close-fitting burial headwrap with a visible grim human face of dark ash-brown skin and a few narrow ember scars; a small stepped DARK CORRODED BRONZE gorget with dull worn ochre edges, blackened recesses and no shiny gold and ONE ragged diagonal funerary stole across one shoulder; bare sinewy upper arms with bronze bands, visible pale weathered burial bandages on forearms and calves, dark fitted battle cloth and split rotted waist panels. Three short frayed cloth tails trail behind him. Restrained orange heat inside blade edges. Menacing, grounded and poised to strike. No antlers, crown, staff, shield, heavy plate armour or huge cape.\n\nPrecise dense pixel clusters like the reference, crisp angular cloth folds, sharply readable bronze and linen, high value contrast around the face, hands and blade edges. Strong shadow planes and narrow lit rims. A 112px-tall game fighter enlarged four times with nearest-neighbour pixel edges, detailed but never smooth or blurred. Full body and both sword tips inside the image with clear margins. One character only, centred. Isolated sprite on a perfectly uniform desaturated blue-grey (#56616c) matte for extraction; no floor, cast shadow, text, border, particles or scenery. The reference supplies the STYLE and ANATOMY; use the new pose and individual costume described here.\nThe sprite must retain the deeply decayed brown-on-brown colour relationships of the reference. Dark rotted sepia trousers, no blue fabric, no bright gold armour, no white face paint, no skull mask. Crisp native-scale pixel shapes and intentional highlights; no noisy photographic surface texture."
+        }
+      },
+      "6": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "chibi, child, cartoon, stick limbs, stiff upright pose, tiny sickles, oversized head, front view, blurry painting, smooth gradients, photograph, extra arms, extra weapons, fire aura, background scenery, text"
+        }
+      },
+      "7": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-champion-flux-20261014/approved-skirmisher.png"
+        }
+      },
+      "8": {
+        "class_type": "ImageScale",
+        "inputs": {
+          "image": [
+            "7",
+            0
+          ],
+          "upscale_method": "nearest-exact",
+          "width": 640,
+          "height": 672,
+          "crop": "disabled"
+        }
+      },
+      "9": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "8",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "5",
+            0
+          ],
+          "latent": [
+            "9",
+            0
+          ]
+        }
+      },
+      "11": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "6",
+            0
+          ],
+          "latent": [
+            "9",
+            0
+          ]
+        }
+      },
+      "12": {
+        "class_type": "EmptyFlux2LatentImage",
+        "inputs": {
+          "width": 768,
+          "height": 768,
+          "batch_size": 1
+        }
+      },
+      "13": {
+        "class_type": "CFGGuider",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "positive": [
+            "10",
+            0
+          ],
+          "negative": [
+            "11",
+            0
+          ],
+          "cfg": 4.0
+        }
+      },
+      "14": {
+        "class_type": "KSamplerSelect",
+        "inputs": {
+          "sampler_name": "euler"
+        }
+      },
+      "15": {
+        "class_type": "Flux2Scheduler",
+        "inputs": {
+          "steps": 28,
+          "width": 768,
+          "height": 768
+        }
+      },
+      "16": {
+        "class_type": "RandomNoise",
+        "inputs": {
+          "noise_seed": 2026101453
+        }
+      },
+      "17": {
+        "class_type": "SamplerCustomAdvanced",
+        "inputs": {
+          "noise": [
+            "16",
+            0
+          ],
+          "guider": [
+            "13",
+            0
+          ],
+          "sampler": [
+            "14",
+            0
+          ],
+          "sigmas": [
+            "15",
+            0
+          ],
+          "latent_image": [
+            "12",
+            0
+          ]
+        }
+      },
+      "18": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "17",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "19": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "18",
+            0
+          ],
+          "filename_prefix": "KS-Champion-Flux-20261014/champion-2026101453"
+        }
+      }
+    },
+    {
+      "client_id": "ks-champion-flux-20261014",
+      "create_time": 1792004091209
+    },
+    [
+      "19"
+    ]
+  ],
+  "outputs": {
+    "19": {
+      "images": [
+        {
+          "filename": "champion-2026101453_00001_.png",
+          "subfolder": "KS-Champion-Flux-20261014",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "5104d59d-d5b6-4c3d-89d7-2b1447d3df97",
+          "timestamp": 1792004091210
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "14",
+            "15"
+          ],
+          "prompt_id": "5104d59d-d5b6-4c3d-89d7-2b1447d3df97",
+          "timestamp": 1792004091222
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "5104d59d-d5b6-4c3d-89d7-2b1447d3df97",
+          "timestamp": 1792004177700
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "19": {
+      "node_id": "19",
+      "display_node": "19",
+      "parent_node": null,
+      "real_node_id": "19"
+    }
+  }
+}

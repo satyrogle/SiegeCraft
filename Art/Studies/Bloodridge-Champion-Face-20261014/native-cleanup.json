@@ -1,0 +1,151 @@
+{
+  "region": {
+    "x": 64,
+    "y": 29,
+    "width": 31,
+    "height": 36
+  },
+  "nativeSourceCrop": {
+    "x": 60,
+    "y": 27,
+    "width": 40,
+    "height": 40
+  },
+  "source": "pixen-face-raw.png",
+  "palette": [
+    "#00000000",
+    "#130c0a",
+    "#2b1c15",
+    "#3a261c",
+    "#481c13",
+    "#4d3729",
+    "#5b5653",
+    "#654b38",
+    "#6d3a24",
+    "#6e2514",
+    "#7b634e",
+    "#845437",
+    "#866e3c",
+    "#8e2011",
+    "#927357",
+    "#a38c71",
+    "#b02a09",
+    "#b8a085",
+    "#c6b7a6",
+    "#d13a0b",
+    "#d4c6af",
+    "#ddd3c2",
+    "#e6510c",
+    "#f77813",
+    "#fba625",
+    "#fed745"
+  ],
+  "transfer": "Crop native pixels and map to approved source palette in Aseprite. No head or body resampling.",
+  "weaponProtection": {
+    "note": "Original blade fragment above head restored after transfer.",
+    "points": [
+      {
+        "x": 87,
+        "y": 29,
+        "color": "#130c0a"
+      },
+      {
+        "x": 88,
+        "y": 29,
+        "color": "#654b38"
+      },
+      {
+        "x": 89,
+        "y": 29,
+        "color": "#6d3a24"
+      },
+      {
+        "x": 90,
+        "y": 29,
+        "color": "#3a261c"
+      },
+      {
+        "x": 91,
+        "y": 29,
+        "color": "#3a261c"
+      },
+      {
+        "x": 92,
+        "y": 29,
+        "color": "#654b38"
+      },
+      {
+        "x": 93,
+        "y": 29,
+        "color": "#654b38"
+      },
+      {
+        "x": 94,
+        "y": 29,
+        "color": "#654b38"
+      },
+      {
+        "x": 89,
+        "y": 30,
+        "color": "#4d3729"
+      },
+      {
+        "x": 90,
+        "y": 30,
+        "color": "#f77813"
+      },
+      {
+        "x": 91,
+        "y": 30,
+        "color": "#8e2011"
+      },
+      {
+        "x": 92,
+        "y": 30,
+        "color": "#3a261c"
+      },
+      {
+        "x": 93,
+        "y": 30,
+        "color": "#4d3729"
+      },
+      {
+        "x": 94,
+        "y": 30,
+        "color": "#654b38"
+      },
+      {
+        "x": 91,
+        "y": 31,
+        "color": "#8e2011"
+      },
+      {
+        "x": 92,
+        "y": 31,
+        "color": "#f77813"
+      },
+      {
+        "x": 93,
+        "y": 31,
+        "color": "#6d3a24"
+      },
+      {
+        "x": 94,
+        "y": 31,
+        "color": "#3a261c"
+      },
+      {
+        "x": 93,
+        "y": 32,
+        "color": "#f77813"
+      },
+      {
+        "x": 94,
+        "y": 32,
+        "color": "#b02a09"
+      }
+    ]
+  },
+  "layer": "exposed face correction",
+  "visual": "Visible flesh, brow, nose, lips, cheek and jaw; open linen and small ember cheek scar. No manual facial repaint."
+}

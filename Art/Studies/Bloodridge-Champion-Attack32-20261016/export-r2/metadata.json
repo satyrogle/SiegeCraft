@@ -1,0 +1,145 @@
+{
+  "group_id": "580e4b8c-dbf7-4caa-a40b-ab08b03eaae0",
+  "states": [
+    {
+      "character": {
+        "id": "869e6b10-d5b3-4d8d-b019-ed736db7157a",
+        "name": "Idle",
+        "prompt": "Bloodridge war chief's right-hand champion, ragged sepia and ash-brown burial hood with shadowed gaunt ash face and two ember eyes, long layered ragged funerary mantle and divided burial tabard, bandaged limbs, corroded bronze tendon brace, lean powerful long-limbed heroic anatomy. One massive TWO-HANDED GREAT KHOPESH, a broad heavy bronze executioner blade with squared spine and forward-hooked tip, narrow molten-orange fissure, gripped by BOTH hands diagonally across torso in braced battle guard. Dark oppressive rotted materials, no shield, antlers or crown. Native pixel art at Warden stature.",
+        "size": {
+          "width": 144,
+          "height": 144
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-15T21:18:23.042705+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "Great_Khopesh_Weighted_Attack_32_SW": {
+            "south-west": [
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_000.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_001.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_002.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_003.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_004.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_005.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_006.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_007.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_008.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_009.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_010.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_011.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_012.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_013.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_014.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_015.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_016.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_017.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_018.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_019.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_020.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_021.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_022.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_023.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_024.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_025.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_026.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_027.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_028.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_029.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_030.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_031.png",
+              "Idle/animations/Great_Khopesh_Weighted_Attack_32_SW/south-west/frame_032.png"
+            ]
+          },
+          "Great_Khopesh_Approved_Guard_Idle_SW": {
+            "south-west": [
+              "Idle/animations/Great_Khopesh_Approved_Guard_Idle_SW/south-west/frame_000.png",
+              "Idle/animations/Great_Khopesh_Approved_Guard_Idle_SW/south-west/frame_001.png",
+              "Idle/animations/Great_Khopesh_Approved_Guard_Idle_SW/south-west/frame_002.png",
+              "Idle/animations/Great_Khopesh_Approved_Guard_Idle_SW/south-west/frame_003.png",
+              "Idle/animations/Great_Khopesh_Approved_Guard_Idle_SW/south-west/frame_004.png"
+            ]
+          },
+          "Champion_Great_Khopesh_-_Idle_SW": {
+            "south-west": [
+              "Idle/animations/Champion_Great_Khopesh_-_Idle_SW/south-west/frame_000.png",
+              "Idle/animations/Champion_Great_Khopesh_-_Idle_SW/south-west/frame_001.png",
+              "Idle/animations/Champion_Great_Khopesh_-_Idle_SW/south-west/frame_002.png",
+              "Idle/animations/Champion_Great_Khopesh_-_Idle_SW/south-west/frame_003.png"
+            ]
+          },
+          "Great_Khopesh_Screen_Left_Heavy_Cut_32_SW": {
+            "south-west": [
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_000.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_001.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_002.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_003.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_004.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_005.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_006.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_007.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_008.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_009.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_010.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_011.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_012.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_013.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_014.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_015.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_016.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_017.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_018.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_019.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_020.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_021.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_022.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_023.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_024.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_025.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_026.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_027.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_028.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_029.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_030.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_031.png",
+              "Idle/animations/Great_Khopesh_Screen_Left_Heavy_Cut_32_SW/south-west/frame_032.png"
+            ]
+          },
+          "Great_Khopesh_Heavy_Attack_SW": {
+            "south-west": [
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_000.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_001.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_002.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_003.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_004.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_005.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_006.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_007.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_008.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_009.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_010.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_011.png",
+              "Idle/animations/Great_Khopesh_Heavy_Attack_SW/south-west/frame_012.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-10-15T23:43:41.956738"
+}

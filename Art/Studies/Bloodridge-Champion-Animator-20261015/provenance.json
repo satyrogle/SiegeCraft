@@ -1,0 +1,116 @@
+{
+  "source": "../Bloodridge-Champion-Weapon-20261015/champion-1-1x.png",
+  "approved_hash": "bef37110a19114e14fb9c9ee40abed14e73558cefc5de1f821e834f8d9050927",
+  "scope": "Selected great-khopesh champion SW idle and two-handed attack; no production integration",
+  "actor": "869e6b10-d5b3-4d8d-b019-ed736db7157a",
+  "registration": {
+    "name": "KS Bloodridge Champion Great Khopesh 20261015",
+    "description": "Bloodridge war chief's right-hand champion, ragged sepia and ash-brown burial hood with shadowed gaunt ash face and two ember eyes, long layered ragged funerary mantle and divided burial tabard, bandaged limbs, corroded bronze tendon brace, lean powerful long-limbed heroic anatomy. One massive TWO-HANDED GREAT KHOPESH, a broad heavy bronze executioner blade with squared spine and forward-hooked tip, narrow molten-orange fissure, gripped by BOTH hands diagonally across torso in braced battle guard. Dark oppressive rotted materials, no shield, antlers or crown. Native pixel art at Warden stature.",
+    "body_type": "humanoid",
+    "mode": "v3",
+    "size": 144,
+    "n_directions": 8,
+    "view": "low top-down",
+    "outline": "selective outline",
+    "shading": "detailed shading",
+    "detail": "high detail"
+  },
+  "registration_quote": 4,
+  "source_upload": "upload:19744608-fe9f-4974-a903-b110d04cfba6",
+  "method": "Register new task-owned character, replace SW rotation with exact approved pixels, then animate_character templates. Helper generated rotations unapproved.",
+  "status": "Completed local motion review; owner motion approval pending; no integration.",
+  "actual_setup_quote": 4,
+  "rejected_template_idle": {
+    "job_id": "b43a98db-1994-4df7-9163-cd3df12c7ec4",
+    "group": "8ea94505-5eb2-44b5-b8f4-bab28f2e5059",
+    "cost": 3,
+    "reason": "Stored helper skeleton changed approved stance; not for integration"
+  },
+  "custom_attack": {
+    "job_id": "bcaf9eac-737d-43ce-95fe-b5132b8456bc",
+    "group": "dd1dc9ce-db7c-4bbb-9048-df1cde4c3214",
+    "cost": 8,
+    "request": {
+      "character_id": "869e6b10-d5b3-4d8d-b019-ed736db7157a",
+      "mode": "v3",
+      "directions": [
+        "south-west"
+      ],
+      "animation_name": "Great Khopesh Heavy Attack SW",
+      "frame_count": 12,
+      "keep_first_frame": true,
+      "custom_start_frame_url": "upload:9b48dfec-2e9f-45e4-a1e6-5b6dc4f76857",
+      "end_frame_url": "upload:9b48dfec-2e9f-45e4-a1e6-5b6dc4f76857",
+      "action_description": "One heavy two-handed great-khopesh attack toward southwest. Keep same facing and fixed camera. Both hands stay locked to the SAME hilt. Coil shoulders, draw blade back beside rear shoulder, pause in loaded anticipation. Turn hips and shoulders into ONE decisive diagonal downward-left cut; front foot planted, rear heel pivots. Carry the rigid hooked blade through a low follow-through, then lift its weight back into the original diagonal guard and settle. Burial mantle trails the torso and settles after it. Keep the blade's broad solid hooked shape throughout; no stretched blade, extra weapons, detached grips or full-screen slash arcs. No stepping away, turning away, hopping, particles or camera motion. End exactly in original guard."
+    }
+  },
+  "custom_idle": {
+    "job_id": "b22d8535-fdcb-4a2b-98ed-2b7e049433d6",
+    "group": "50431758-ad3e-42a8-b78e-6b9f37022186",
+    "cost": 2,
+    "request": {
+      "character_id": "869e6b10-d5b3-4d8d-b019-ed736db7157a",
+      "mode": "v3",
+      "directions": [
+        "south-west"
+      ],
+      "animation_name": "Great Khopesh Approved Guard Idle SW",
+      "frame_count": 4,
+      "keep_first_frame": true,
+      "custom_start_frame_url": "upload:5ea55112-7c2b-4cd1-9a91-4921c287440c",
+      "end_frame_url": "upload:5ea55112-7c2b-4cd1-9a91-4921c287440c",
+      "action_description": "Seamless very restrained battle breathing loop in this EXACT braced southwest guard. Feet, knees and pelvis fixed; no stepping or stance change. Small chest breath, shoulders and the heavy two-handed khopesh follow by at most one pixel, then settle. Both hands stay locked to the same hilt and the rigid broad hooked blade retains exact shape and tilt. Only the ragged shoulder mantle and hanging strips sway very slightly with delayed cloth settling. Preserve hood, two ember eyes, shoulder width, proportions, native pixel detail and dark sepia materials. No turn, camera motion, effects or added items. Return exactly to starting guard."
+    }
+  },
+  "total": 17,
+  "final_clips": {
+    "idle": {
+      "frames": 5,
+      "duration_ms": 1000,
+      "master": "idle.aseprite",
+      "gif": "idle.gif",
+      "sheet": "idle-sheet.png",
+      "atlas": "idle-sheet.json"
+    },
+    "attack": {
+      "frames": 13,
+      "duration_ms": 1200,
+      "master": "attack.aseprite",
+      "gif": "attack.gif",
+      "sheet": "attack-sheet.png",
+      "atlas": "attack-sheet.json"
+    }
+  },
+  "review": {
+    "url": "http://127.0.0.1:8777/review.html",
+    "server_pid": 68380,
+    "browser_tab": 5,
+    "checks": "HTTP200 page and GIFs; opened in IAB; all frames examined as native filmstrips."
+  },
+  "cleanup": "All generated action frames retained. Common212x216 canvas via transparent padding only; no resampling. Approved26-entry palette; idle feet restored in two small contact regions. Exact approved guard restored at end of both clips. Per-frame timing added in Aseprite.",
+  "download": "Raw Backblaze links returned403; downloaded tool-provided character-export.zip and extracted within validated study/export root.",
+  "pixelLab_sync": {
+    "saved_cleaned_frames": true,
+    "receipts": {
+      "idle": {
+        "content": [
+          {
+            "type": "text",
+            "text": "saved: character:869e6b10-d5b3-4d8d-b019-ed736db7157a:south-west:50431758-ad3e-42a8-b78e-6b9f37022186 (animation, 5 frames, 160x200)\nchanged: 1346 px\nundo: save_to_asset(image=\"5c366c29-3d89-45da-98a5-0fcac2f57e6e\", target=\"character:869e6b10-d5b3-4d8d-b019-ed736db7157a:south-west:50431758-ad3e-42a8-b78e-6b9f37022186\")\nnext: get_character(\"869e6b10-d5b3-4d8d-b019-ed736db7157a\")"
+          }
+        ],
+        "isError": false
+      },
+      "attack": {
+        "content": [
+          {
+            "type": "text",
+            "text": "saved: character:869e6b10-d5b3-4d8d-b019-ed736db7157a:south-west:dd1dc9ce-db7c-4bbb-9048-df1cde4c3214 (animation, 13 frames, 212x216)\nchanged: 6191 px\nundo: save_to_asset(image=\"1c2d2b99-6c94-4555-bff3-06cf9679511d\", target=\"character:869e6b10-d5b3-4d8d-b019-ed736db7157a:south-west:dd1dc9ce-db7c-4bbb-9048-df1cde4c3214\")\nnext: get_character(\"869e6b10-d5b3-4d8d-b019-ed736db7157a\")"
+          }
+        ],
+        "isError": false
+      }
+    },
+    "timing_limitation": "PixelLab save_to_asset rejects variable durations. Uniform server copies uploaded successfully; readback still reports fixed100ms per frame. Local Aseprite masters/GIFs/JSON preserve reviewed timing and are the integration references."
+  }
+}

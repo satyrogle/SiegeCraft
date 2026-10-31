@@ -1,0 +1,33 @@
+{
+  "status": "Reviewed animation candidates; owner motion approval pending",
+  "source": "../Bloodridge-Champion-B-Augments-20261015/champion-augments-1x.png",
+  "cost": 6,
+  "jobs": {
+    "idle": "40b816f5-a980-467a-8fc8-0d7e18c7e32c",
+    "attack": "38dc876e-8062-4773-842b-4c3fc5964706"
+  },
+  "requests": {
+    "idle": {
+      "first_frame_url": "upload:08a1da58-db5d-4094-b60d-ba813dbb0c9b",
+      "last_frame_url": "upload:08a1da58-db5d-4094-b60d-ba813dbb0c9b",
+      "frame_count": 4,
+      "no_background": true,
+      "seed": 151101,
+      "action": "Seamless restrained battle breathing idle. Remain crouched facing southwest. Both feet planted at the same pixels, no steps, no camera motion. Chest rises slightly and settles, shoulder and blades follow subtly; three burial strips ripple gently behind. Preserve visible face, embedded bronze augments, both khopesh held firmly, proportions and native pixel detail. Return exactly to starting guard."
+    },
+    "attack": {
+      "first_frame_url": "upload:08a1da58-db5d-4094-b60d-ba813dbb0c9b",
+      "last_frame_url": "upload:08a1da58-db5d-4094-b60d-ba813dbb0c9b",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 151102,
+      "action": "One readable paired khopesh attack facing southwest, returning to original crouched guard. Brief shoulder coil, lead hand sweeps low blade outward-left, rear hand follows with a compact diagonal cut forward-left, then controlled recovery to starting pose. Feet planted, no travel, no turn away, no camera motion. Clear separate grips, exactly two swords; preserve face, shoulder brace, sternum implant, kilt and three trailing burial strips. Cloth follows motion. No added particles or screen-filling slash effects. Keep all blades inside canvas."
+    }
+  },
+  "integration": false,
+  "cleanup": "Source start/end restored exactly after palette remap; idle foot rows139..167 pinned. Idle860ms,attack950ms.",
+  "owner_verdict": {
+    "idle": "Accepted: Idle is okay",
+    "attack": "Rejected by owner; do not integrate"
+  }
+}

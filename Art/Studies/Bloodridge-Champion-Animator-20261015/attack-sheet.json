@@ -1,0 +1,137 @@
+{ "frames": [
+   {
+    "filename": "attack 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 100
+   },
+   {
+    "filename": "attack 1.aseprite",
+    "frame": { "x": 212, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 80
+   },
+   {
+    "filename": "attack 2.aseprite",
+    "frame": { "x": 424, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 90
+   },
+   {
+    "filename": "attack 3.aseprite",
+    "frame": { "x": 636, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 110
+   },
+   {
+    "filename": "attack 4.aseprite",
+    "frame": { "x": 848, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 100
+   },
+   {
+    "filename": "attack 5.aseprite",
+    "frame": { "x": 1060, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 80
+   },
+   {
+    "filename": "attack 6.aseprite",
+    "frame": { "x": 1272, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 50
+   },
+   {
+    "filename": "attack 7.aseprite",
+    "frame": { "x": 1484, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 50
+   },
+   {
+    "filename": "attack 8.aseprite",
+    "frame": { "x": 1696, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 80
+   },
+   {
+    "filename": "attack 9.aseprite",
+    "frame": { "x": 1908, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 90
+   },
+   {
+    "filename": "attack 10.aseprite",
+    "frame": { "x": 2120, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 90
+   },
+   {
+    "filename": "attack 11.aseprite",
+    "frame": { "x": 2332, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 100
+   },
+   {
+    "filename": "attack 12.aseprite",
+    "frame": { "x": 2544, "y": 0, "w": 212, "h": 216 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 212, "h": 216 },
+    "sourceSize": { "w": 212, "h": 216 },
+    "duration": 180
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.6-x64",
+  "image": "attack-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 2756, "h": 216 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Heavy_Attack_SW", "from": 0, "to": 12, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" },
+   { "name": "Exact ending guard", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

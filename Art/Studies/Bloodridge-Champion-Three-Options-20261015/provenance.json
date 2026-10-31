@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-15",
+  "model": "PixelLab Pro Flash",
+  "charged_generations": 24,
+  "style_source_image_id": "7564751a-b742-5095-8e0a-b8363c3fdc40",
+  "must_keep": [
+    "Lean heroic adult proportions",
+    "Rotted sepia and ash burial hood/rags",
+    "Shadowed face with ember eyes",
+    "Ash skin and lava fissures",
+    "Corroded bronze",
+    "Native112px melee canvas and SW battle view"
+  ],
+  "requests": [
+    {
+      "description": "One original Bloodridge champion duelist, FULL BODY pixel art game sprite, three quarter southwest facing left, low top-down game view. Match the supplied tribe reference's actual pixel density, dark values, rotted sepia and ash burial cloth, corroded bronze, restrained orange lava light and terrifying mood. Preserve race identity: deep torn burial HOOD, face in shadow with two small ember eyes and a hint of gaunt cheek, ash-grey skin with thin lava cracks, bandaged forearms and calves. Lean toned adult, realistic heroic long-limbed proportions, small head, light battle gear. NEW upright commanding guard, legs apart, torso turned left. Signature: one long, distinctly HOOKED bronze KHOPESH held in BOTH hands diagonally across the body, blade curving out to the left, clear grips and blade silhouette. A grafted bronze tendon brace on one forearm, ember seams at skin join. Short uneven burial apron, ragged shoulder wrap ending above waist, both legs visible. Compact full figure fits within 112x112 with small transparent margins and intact blade. Entirely fresh body and costume, no copied reference pose, no shield, crown, antlers, staff, plate armour or background. Upper left light. Scary decayed guardian, not clean medieval assassin.",
+      "width": 112,
+      "height": 112,
+      "no_background": true,
+      "seed": 151160,
+      "style_image": {
+        "source_image_id": "7564751a-b742-5095-8e0a-b8363c3fdc40",
+        "usage_description": "Approved BLOODRIDGE tribe style reference ONLY: copy the rotted sepia/ash palette, dark hood and ember face, burial wraps, aged bronze, lava cracks and native pixel shading. Make a NEW champion's silhouette, body, pose and costume, not a variant of this Skirmisher."
+      },
+      "style_options": {
+        "color_palette": true,
+        "detail": true,
+        "outline": true,
+        "shading": true
+      }
+    },
+    {
+      "description": "One NEW Bloodridge champion, full-body pixel game sprite in three-quarter southwest/left battle view, low top-down camera. Same race and native rendering as supplied style: deep rotted burial hood, shadowed gaunt face with two ember eyes, ash-grey skin and thin lava cracks, frayed sepia/ash-brown linen, aged corroded bronze and bandaged limbs. Lean sinewy adult heroic anatomy, small head, long limbs, light battle gear. DISTINCT SILHOUETTE: tall SIDE-ON duelist in a wide braced step, one shoulder pulled back. One massive clearly HOOKED bronze khopesh raised behind his rear shoulder in one hand, blade fully visible above and outside shoulder; forward free hand open in a challenge. Signature implanted bronze HALF-RIB CAGE grafted across one exposed side of his chest, with tiny ember fissures at the joins, not a breastplate. A long narrow ragged funerary sash hangs diagonally from one shoulder to opposite knee; uneven short waist wrappings, visible separate legs. Entirely new pose and costume, never copy reference Skirmisher's crouch or twin blades. Fit full figure and weapon within112x112 with small transparent margins. Detailed deliberate pixel clusters, upper-left light, ominous dark tribe values. No staff, shield, antlers, crown, neon or background.",
+      "width": 112,
+      "height": 112,
+      "no_background": true,
+      "seed": 151161,
+      "style_image": {
+        "source_image_id": "7564751a-b742-5095-8e0a-b8363c3fdc40",
+        "usage_description": "Approved BLOODRIDGE tribe style reference ONLY: copy the rotted sepia/ash palette, dark hood and ember face, burial wraps, aged bronze, lava cracks and native pixel shading. Make a NEW champion's silhouette, body, pose and costume, not a variant of this Skirmisher."
+      },
+      "style_options": {
+        "color_palette": true,
+        "detail": true,
+        "outline": true,
+        "shading": true
+      }
+    },
+    {
+      "description": "One original Bloodridge champion duelist, full-body native pixel game sprite, three-quarter southwest facing left, low top-down battle camera. Preserve supplied tribe STYLE and identity: ragged deep hood, a dark face cavity with two clearly separated ember eyes, hints of gaunt ash cheek, lava fissures, sepia burial rags and bandages, ancient corroded bronze. Lean toned adult with heroic long limbs and small head, never bulky. DISTINCT SILHOUETTE: poised forward-leaning guard with bent front knee and straight rear leg, torso high not crouched. One long clearly hooked KHOPESH held low forward in one hand, other hand holds a short reverse-grip hooked parrying blade upright beside ribs. Signature a visibly implanted jointed bronze SHIN replacing one lower leg, dark exposed knee joint and ember seams, not a boot or heavy greave. Broad torn burial shawl across shoulders forming a low triangular mantle, ends stop at elbows, short split linen apron, exposed ash arms and chest, asymmetrical wraps. Fresh body and costume unlike reference Skirmisher's trailing cloak and crouch. Fully visible figure and both hooked blades fit112x112 with transparent margins. Clear grips, clean pixel clusters, upper-left light, scary rotted guardian. No gold plate suit, shield, crown, antlers, staff, neon or scenery.",
+      "width": 112,
+      "height": 112,
+      "no_background": true,
+      "seed": 151162,
+      "style_image": {
+        "source_image_id": "7564751a-b742-5095-8e0a-b8363c3fdc40",
+        "usage_description": "Approved BLOODRIDGE tribe style reference ONLY: copy the rotted sepia/ash palette, dark hood and ember face, burial wraps, aged bronze, lava cracks and native pixel shading. Make a NEW champion's silhouette, body, pose and costume, not a variant of this Skirmisher."
+      },
+      "style_options": {
+        "color_palette": true,
+        "detail": true,
+        "outline": true,
+        "shading": true
+      }
+    }
+  ],
+  "replacement_option2_request": {
+    "description": "Full-body native112x112 pixel-art BLOODRIDGE CHAMPION, three-quarter southwest facing left, low top-down battle camera. Copy supplied tribe reference's detailed pixel shading, sepia/ash burial rags, deep values, aged bronze and restrained molten-orange highlights. Lean sinewy adult heroic proportions, small head. Deep torn HOOD retained, face shadowed with two small ember eyes, ashen cheek and lava cracks; bandaged limbs. Distinct commanding upright SIDE-ON guard, one leg forward, other braced, shoulders turned. ONE khopesh in leading hand at HIP HEIGHT, hooked blade held downward-left beside the front shin. Off hand open at WAIST height. IMPORTANT everything is held LOW, nothing raised above the hood. Signature: three exposed corroded bronze half-ribs fused into one side of chest, tiny ember skin-metal seams, not normal chest armour. One long narrow frayed sash crosses bare ash torso diagonally and hangs to knee, short asymmetrical burial apron, one bare shoulder, long separate legs. NEW anatomy, pose and costume; do not copy reference crouching dual wield body. Full figure INCLUDING entire hooked blade fits INSIDE112x112 with FOUR PIXEL EMPTY MARGIN on all sides, hood below y6, soles above y106; no closeup, no cropped hands, feet or weapons. Upper-left light, clear tiny pixel clusters, oppressive desiccated guardian. No staff, shield, crown, antlers, plate suit, neon or scenery.",
+    "width": 112,
+    "height": 112,
+    "no_background": true,
+    "seed": 151163,
+    "style_image": {
+      "source_image_id": "7564751a-b742-5095-8e0a-b8363c3fdc40",
+      "usage_description": "Approved BLOODRIDGE tribe style reference ONLY: copy the rotted sepia/ash palette, dark hood and ember face, burial wraps, aged bronze, lava cracks and native pixel shading. Make a NEW champion's silhouette, body, pose and costume, not a variant of this Skirmisher."
+    },
+    "style_options": {
+      "color_palette": true,
+      "detail": true,
+      "outline": true,
+      "shading": true
+    }
+  },
+  "jobs": [
+    "e67d8adb-3ce5-4d13-837e-ed7aec4fbcc0",
+    "708b56ce-08cd-4315-8ff5-a72c48f167f8",
+    "6533cf27-86d2-4ad7-80ba-76dc3186c6f6"
+  ],
+  "replacement_job": "462f38c3-2461-45ac-b5af-f618e7941f74",
+  "internally_rejected": {
+    "job": "708b56ce-08cd-4315-8ff5-a72c48f167f8",
+    "reason": "Raised blade clipped by top canvas edge",
+    "file": "raw-2.png"
+  },
+  "selected_raws": [
+    "raw-1.png",
+    "raw-2-replacement.png",
+    "raw-3.png"
+  ],
+  "operations": "Native Aseprite palette mapping only; no source-body borrowing or edits to generated anatomy/pose. Board reference crops from unchanged approved SW squad at1x.",
+  "visual_review": {
+    "option1": "Dark hood and ember eyes retained; upright two-hand cross guard distinct from existing Skirmisher; arm graft subtle; minimal lava detail.",
+    "option2": "Fresh low-weapon guard retains hood/eyes; torso seam glows; rib graft partly concealed by sash.",
+    "option3": "Broader ragged shoulder mantle; twin-hook guard; augmented shin clearest at enlarged scale; neck/skin remains mostly covered."
+  },
+  "status": "Rejected by Jacob: ordinary melee stature and insufficient champion identity. Do not patch, animate or integrate."
+}

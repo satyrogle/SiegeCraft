@@ -1,0 +1,44 @@
+{
+  "status": "Static face correction for owner review",
+  "native_canvas": [
+    160,
+    168
+  ],
+  "opaque_bounds_exclusive": [
+    24,
+    14,
+    140,
+    141
+  ],
+  "opaque_colours": 20,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "off_approved_colours": [],
+  "changed_pixels": 862,
+  "changes_outside_head": [],
+  "components_8_neighbour": [
+    6454
+  ],
+  "source_png_sha256": "4a55489a84ae18391264ad345b97ec96a70022eac38a0b0f7408dfee21bd0210",
+  "source_atlas_sha256": "ad176a6a94541b6c7ec8b670fc05d5ffb83349cbc8ebdd87af0876ac799e7a25",
+  "approved_sources_unchanged": true,
+  "approved_reference_pixels_exact": true,
+  "candidate_pixels_exact_in_native_board": true,
+  "candidate_pixels_exact_on_floor": true,
+  "exact_nearest_4x": true,
+  "reopened_master_identical": true,
+  "visual_audit": {
+    "cold_read": "A stern exposed male face in an open linen headwrap; brow, nose, mouth, cheek, jaw and neck have readable flesh planes.",
+    "native_read": "Personally inspected 1x sprite, comparison and captured-floor composition, plus enlarged head and 4x sprite.",
+    "limits": [
+      "Static only",
+      "Owner approval pending",
+      "Animation and live combat crowding untested"
+    ]
+  },
+  "subscription_generations": 1,
+  "validation_note": "No callable MCP validate is exposed; independent PNG checks used.",
+  "mechanical_checks_passed": true
+}

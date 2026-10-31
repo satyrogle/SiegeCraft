@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-14",
+  "status": "Owner rejected the face read as lacking a face; retained as body/identity base for the Face correction. Not approved or integrated.",
+  "base": "../Bloodridge-Champion-Pro-20261014/champion-review-1x.png",
+  "route": "PixelLab Pixen headwrap guide plus direct Aseprite face, shoulder, garment and weapon edits",
+  "request": {
+    "image_url": "upload:5f120731-654d-410a-b70e-ad27e8bb95ae",
+    "description": "Keep pose, hands, feet, sepia pixel style and native scale. Replace pointed hood with OPEN burial headwrap: low flat linen brow, visible ash face, three diagonal ember fissures from temple across cheek. Signature rear shoulder piece: three offset corroded bronze grave-plates threaded onto frayed linen, asymmetric, no spikes. Broaden both khopesh into hooked bronze sickles with angular heels. No assassin hood, crown, antlers or extra weapons.",
+    "width": 160,
+    "height": 168,
+    "no_background": true,
+    "seed": 2026101481
+  },
+  "scope": "Static review only. Preserve approved source and game files. No legal clearance claim.",
+  "subscription_generations": 1,
+  "job_id": "13cf95a7-88d8-4906-abcd-da50be03ddb7",
+  "artifact": "champion-review.aseprite",
+  "cleanup": "native-cleanup.json",
+  "audit": "audit.json",
+  "not_verified": [
+    "Owner approval",
+    "Animation",
+    "Crowded combat",
+    "Runtime integration"
+  ],
+  "legal_note": "Visual differentiation study; no legal clearance conclusion."
+}

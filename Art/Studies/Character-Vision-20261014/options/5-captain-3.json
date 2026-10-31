@@ -1,0 +1,8 @@
+{
+  "base": "skull_marksman_sw",
+  "ref": "skull_marksman_sw",
+  "denoise": 1.0,
+  "prompt": "Use picture 1 only for the pixel-art style, the size and the pose. Draw a different faction: the CAPTAIN of the Sovereign's hunters, faceless, not a tribal warrior and no bare skin: a blank mask with a small iron crown, a long red cape, holding a tall black greatbow. Same pixel size, same detail, same three quarter view facing left. Plain flat dark brown background, nothing else.",
+  "seed": 20261023,
+  "seconds": 90
+}

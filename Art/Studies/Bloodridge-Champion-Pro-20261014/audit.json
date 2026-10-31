@@ -1,0 +1,53 @@
+{
+  "status": "Static candidate awaiting owner review",
+  "route": "PixelLab Pro candidate 2 plus native Aseprite southwest flip, leg posing and four displaced-pixel cleanup",
+  "pixelLab_generations_charged": 15,
+  "native_canvas": [
+    160,
+    168
+  ],
+  "opaque_bounds_exclusive": [
+    24,
+    14,
+    140,
+    141
+  ],
+  "opaque_colors": 18,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "off_approved_frame_colors": [],
+  "components_8_neighbor": [
+    6363
+  ],
+  "source_png_sha256": "4a55489a84ae18391264ad345b97ec96a70022eac38a0b0f7408dfee21bd0210",
+  "source_atlas_sha256": "ad176a6a94541b6c7ec8b670fc05d5ffb83349cbc8ebdd87af0876ac799e7a25",
+  "source_hashes_unchanged": true,
+  "native_lineup_source_pixels_exact": true,
+  "native_lineup_candidate_pixels_exact": true,
+  "floor_candidate_pixels_exact": true,
+  "exact_4x_nearest": true,
+  "reopened_master_pixel_identical": true,
+  "visual_audit": {
+    "cold_read": "A hooded grave-duelist holding one substantial khopesh overhead and another low, coiled over a bent front leg with a torn mantle trailing behind.",
+    "first_reads": [
+      "High blade and raised hand",
+      "Ember-scarred face",
+      "Low crescent blade and separate feet"
+    ],
+    "observed_improvements": [
+      "Two substantial equipped blades; former tiny raised weapon removed by new generation",
+      "Distinct high/low silhouette and more compressed active stance",
+      "Same native body category and matching earthy rendering beside approved Skirmisher"
+    ],
+    "remaining_limits": [
+      "High striking guard is more expressive than a relaxed idle; animation production needs its own anticipation and recovery poses",
+      "Chest rendered as close-fitting layered battle gear rather than the brief's bare chest",
+      "Owner approval pending; movement, combat crowding and runtime binding untested"
+    ]
+  },
+  "floor_study": "Static native composition on unchanged captured KS floor crop; separate review contact shadows. Not a running fight capture.",
+  "validation_note": "No callable MCP validate tool is exposed; Aseprite palette analyze and independent PNG checks used.",
+  "mechanical_checks_passed": true
+}

@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-14",
+  "status": "Owner requested clearer individual features; retained as pose base for the Identity revision. No final appearance approval or integration.",
+  "route": "PixelLab Pro native generation with approved style reference; Aseprite review and cleanup",
+  "job_id": "4eb09590-3a3a-4ab5-89d2-aab04b80e7b3",
+  "subscription_generations": 15,
+  "reference": "../Bloodridge-Champion-Specimen-20261014/approved-skirmisher-native.png",
+  "requested_canvas": [
+    160,
+    168
+  ],
+  "requested_body_height": 112,
+  "request": {
+    "description": "BLOODRIDGE CHAMPION: one terrifying Egyptian Medjay grave-duelist, same race and detailed native pixel style as reference, NEW individual and pose. Lean sinewy adult, heroic proportions, small head and long athletic limbs, light battle gear. Low-top-down three-quarter game view facing SOUTHWEST, viewer-left. Coiled contrapposto: chest leans forward above deeply bent leading knee, rear leg braced to right, torso twisted, chin low. TWO clearly gripped substantial bronze KHOPESH, similar length. Lead forearm crosses upper chest; hooked crescent blade projects up-left OUTSIDE face. Rear elbow lifts sideways/back, second blade sweeps down-right OUTSIDE shoulder. Clear negative space between head, swords and arms; two closed hands on short handles, correct wrists, exactly two weapons. SIGNATURE: long asymmetric torn funerary mantle swept behind one shoulder, split pointed linen ends, crescent collar, narrow bare ash-skin chest with sparse ember scars. Low weathered hood/headwrap; visible menacing lava-scarred face and eyes. Wrapped forearms/shins, corroded bronze armbands, short burial sash, exposed toned arms. Rotted sepia/ash rags, stained pale linen and DULL bronze. Orange only in eyes, sparse cracks and sword cutting edges. Dense deliberate tiny pixels and sculpted clusters like reference, strong upper-left light, deep selective outline, varied material values. Body HEAD-TO-FEET 110-112px on 160x168 transparent canvas: head near y28, separate grounded feet at y140. Weapon tips/mantle inside margins. NOT bulky, chibi, clean gold armour, generic bandit, skeleton, beard, mask, chief, antlers, crown, horns, shield or staff. No extra limb/weapon, scene, particles, text, ground, shadow or rescaling. Native game sprite.",
+    "width": 160,
+    "height": 168,
+    "max_colors": 26,
+    "no_background": true,
+    "palette": [
+      "#130c0a",
+      "#2b1c15",
+      "#3a261c",
+      "#3b3636",
+      "#481c13",
+      "#6e2514",
+      "#4d3729",
+      "#6d3a24",
+      "#654b38",
+      "#5b5653",
+      "#7b634e",
+      "#8e2011",
+      "#b02a09",
+      "#d13a0b",
+      "#845437",
+      "#866e3c",
+      "#e6510c",
+      "#f77813",
+      "#927357",
+      "#fba625",
+      "#a38c71",
+      "#fed745",
+      "#b8a085",
+      "#c6b7a6",
+      "#d4c6af",
+      "#ddd3c2"
+    ],
+    "palette_name": "Approved Bloodridge rotted sepia ash linen bronze with ember accents",
+    "style_image_url": "upload:2da0ef26-c866-43ba-a40d-2a472f2c08b7",
+    "style_copy": [
+      "outline",
+      "detail",
+      "shading"
+    ],
+    "reference_images": [
+      {
+        "url": "upload:2da0ef26-c866-43ba-a40d-2a472f2c08b7",
+        "usage": "Approved Bloodridge race, material rendering, native pixel density and height only. Design a different individual with own strong asymmetric silhouette and distinct active twin-khopesh guard. Do not copy the original crouch or weapons positions."
+      }
+    ],
+    "seed": 2026101471
+  },
+  "scope": "Static isolated candidate only; no production integration",
+  "selected_candidate": 2,
+  "candidate_review": {
+    "1": "Rejected: only one clearly equipped visible blade",
+    "2": "Selected: clear high and low twin blades and stronger coiled pose; raw facing and long legs corrected in native pixels",
+    "3": "Rejected: rear weapon grip not convincingly visible",
+    "4": "Rejected: pose and silhouette too close to the ordinary approved Skirmisher"
+  },
+  "cleanup": "native-cleanup.json",
+  "audit": "audit.json",
+  "native_canvas": [160, 168],
+  "opaque_bounds_exclusive": [24, 14, 140, 141],
+  "proposed_ground_anchor": [75, 140],
+  "route_note": "PixelLab Pro followed by Aseprite integer pixel posing and cleanup. No local FLUX or whole-body downscaling in this pass.",
+  "editable_master": "champion-review.aseprite",
+  "preflight": "READY headless Aseprite 1.3.18.6 / extension 0.8.2; no live editor switch",
+  "not_verified": ["Owner approval", "Animation", "Live combat crowding", "Runtime binding"]
+}

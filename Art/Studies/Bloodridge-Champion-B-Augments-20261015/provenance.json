@@ -1,0 +1,112 @@
+{
+  "status": "Owner review pending",
+  "model": "PixelLab Pixen",
+  "job": "4fc55ba2-5140-4f6a-b86a-c9d380ce89b3",
+  "cost_subscription_generations": 1,
+  "request": {
+    "image_url": "upload:0c38d9d5-f02d-4bb5-b100-5fbd98702580",
+    "width": 160,
+    "height": 168,
+    "no_background": true,
+    "seed": 151077,
+    "description": "Add restrained ancient body augments: corroded bronze brace embedded along the rear/right shoulder and upper arm, with tiny ember fissures at flesh joins; small split bronze sternum plate stapled into chest, orange lava visible in split; uneven bronze finger caps on forward/left sword hand. These are burial relic implants, NOT modern machinery or bulky armor. Preserve EXACT face, anatomy, pose, weapons, headwrap, kilt, trailing strips, feet and pixel style. Same muted bronze palette."
+  },
+  "masks": [
+    [
+      [
+        78,
+        61
+      ],
+      [
+        94,
+        62
+      ],
+      [
+        104,
+        67
+      ],
+      [
+        111,
+        69
+      ],
+      [
+        111,
+        76
+      ],
+      [
+        103,
+        77
+      ],
+      [
+        94,
+        73
+      ],
+      [
+        80,
+        75
+      ]
+    ],
+    [
+      [
+        67,
+        76
+      ],
+      [
+        75,
+        73
+      ],
+      [
+        81,
+        76
+      ],
+      [
+        86,
+        82
+      ],
+      [
+        87,
+        88
+      ],
+      [
+        78,
+        91
+      ],
+      [
+        69,
+        88
+      ],
+      [
+        65,
+        83
+      ]
+    ],
+    [
+      [
+        43,
+        123
+      ],
+      [
+        50,
+        124
+      ],
+      [
+        53,
+        128
+      ],
+      [
+        51,
+        133
+      ],
+      [
+        44,
+        133
+      ],
+      [
+        41,
+        129
+      ]
+    ]
+  ],
+  "method": "Palette mapped then opaque pixels transferred only within three implant polygons on separate Aseprite layer; original base retained. Rejected generated hand pose and extra cloth.",
+  "visual_limits": "Shoulder and chest read at 1x; finger caps are subtle texture at this scale. Static review only."
+}

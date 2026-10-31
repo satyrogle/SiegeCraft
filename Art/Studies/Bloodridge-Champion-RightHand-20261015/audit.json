@@ -1,0 +1,70 @@
+{
+  "warden_height": 125,
+  "options": {
+    "1": {
+      "canvas": [
+        128,
+        128
+      ],
+      "bounds": [
+        16,
+        1,
+        119,
+        126
+      ],
+      "content_height": 125,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 15,
+      "nearest4x": true
+    },
+    "2": {
+      "canvas": [
+        128,
+        128
+      ],
+      "bounds": [
+        5,
+        1,
+        115,
+        125
+      ],
+      "content_height": 124,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 16,
+      "nearest4x": true
+    },
+    "3": {
+      "canvas": [
+        128,
+        128
+      ],
+      "bounds": [
+        3,
+        1,
+        117,
+        126
+      ],
+      "content_height": 125,
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 17,
+      "nearest4x": true
+    }
+  },
+  "paired_warden_pixels_unchanged": {
+    "1": true,
+    "2": true,
+    "3": true
+  },
+  "owner_review": "pending",
+  "integration": false,
+  "board2x_exact": true
+}

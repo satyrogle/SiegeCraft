@@ -1,0 +1,8 @@
+{
+  "base": "blood_rot_skirmisher_sw",
+  "ref": "bloodridge_chief_sw",
+  "denoise": 1.0,
+  "prompt": "Picture 1 is a fighter of the Bloodridge raiders; picture 2 is their chief. Redraw picture 1 as the raiders' CHAMPION duelist, a huge executioner: keep the black hood with the face hidden in deep shadow and two small glowing orange eyes, keep the dark sepia and ash rags and burial bandages, and give him one enormous crescent greatsword with a glowing orange edge, raised back for a big swing. Same tribe look as both pictures, same darkness, same pixel size, same detail, same palette, same three quarter view facing left. Plain flat dark brown background, nothing else.",
+  "seed": 20261021,
+  "seconds": 75
+}

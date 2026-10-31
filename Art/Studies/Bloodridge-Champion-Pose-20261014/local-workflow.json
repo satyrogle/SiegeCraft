@@ -1,0 +1,158 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "shift": 3.0
+    }
+  },
+  "4": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-champion-pose-20261014/pose-input.png"
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-champion-pose-20261014/style-input.png"
+    }
+  },
+  "8": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "Picture 1 is the exact NEW pose and silhouette of one Bloodridge champion. Picture 2 is the APPROVED pixel-art rendering of his tribe. Finish picture 1 using the craftsmanship of picture 2. Preserve picture 1's upright asymmetrical duel stance: his face looks down-left in three-quarter battle view, lead hand extends a short hooked khopesh forward and downward, rear elbow is raised with the second short khopesh held above and behind his shoulder, two separate planted feet, lean torso, clear negative spaces. Keep this exact pose, weapon arrangement, size, location and 768-square framing. Do not copy the crouching stance from picture 2.\n\nRepaint the flat simple modelling of picture 1 with picture 2's deliberate square pixel clusters, selective dark outlines, small worn-material shapes, anatomically convincing lean limbs and coherent upper-left lighting. This is a native small game sprite enlarged four times, NOT a high resolution painting. Keep approximately the same pixel detail density and tightly limited palette as picture 2. Rotted sepia and ash brown burial rags, irregular old linen bandages at wrists and calves, corroded dark bronze collar and armbands, an ashen human face with narrow ember-orange lava cracks beneath the headwrap. He is an eerie Egyptian desert guardian, an individual dangerous duelist. The head remains small and human-proportioned. Threadbare short split cloth at the waist leaves both legs readable; no big cape. Both blades have aged bronze bodies and a very narrow ember cutting edge, like picture 2. Keep the clothing dark and decayed, not shiny new armour.\n\nOne full body fighter only. Same uniform flat blue-grey background as picture 1, no floor, no cast shadow, no text, no new objects. No crown, antlers, horns, skull ornament, shield, staff, giant scythe, bulky muscles, plate armour, chibi, aura, smoke, sparks, bloom, blur, smooth gradients or photorealistic rendering. Render all existing body parts, both hands gripping their separate blades, and both feet completely inside the canvas.",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "6",
+        0
+      ],
+      "image2": [
+        "7",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "6",
+        0
+      ],
+      "image2": [
+        "7",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "11": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "8",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "10",
+        0
+      ],
+      "seed": 2026101441,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.85
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "KS-Champion-Pose-20261014/material-refinement"
+    }
+  }
+}

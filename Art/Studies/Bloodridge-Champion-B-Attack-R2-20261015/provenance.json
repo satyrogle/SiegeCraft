@@ -1,0 +1,15 @@
+{
+  "status": "REJECTED by Codex visual audit: giant glowing blade crescent, second weapon obscured; not delivered or integrated",
+  "model": "PixelLab animate_image",
+  "job": "5827f0ae-f5a3-4c4e-a190-3e137bf72f21",
+  "cost": 4,
+  "request": {
+    "first_frame_url": "upload:346055b2-abc8-43f8-a8a8-bb0e7f3c83b5",
+    "last_frame_url": "upload:346055b2-abc8-43f8-a8a8-bb0e7f3c83b5",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 151109,
+    "action": "ONE powerful sweeping sword SLASH, not a stab or a push. Crouched warrior faces LEFT throughout. First coil torso right and lift the FRONT/LEFT-HAND khopesh back across his chest. Then rotate shoulders sharply left and swing that sword in a LARGE curved arc outward to the LEFT, cutting horizontally through an enemy in front of him. Fully extend sword arm during the strike; blade travels a long arc, not straight forward. Follow through past the left knee, then recover original low guard. Rear/right sword stays held back in guard and does NOT attack. Exactly two swords remain attached to their original hands. Feet planted, hips turn; no walking, camera movement, facing reversal or morphing. Cloth whips after torso. No added slash graphics. Keep every weapon inside canvas. Strong anticipation, fast cut, clear follow-through, controlled recovery."
+  },
+  "integration": false
+}

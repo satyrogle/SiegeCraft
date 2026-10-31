@@ -1,0 +1,34 @@
+{
+  "checks": {
+    "native_canvas": true,
+    "source_palette": true,
+    "binary_alpha": true,
+    "reopen_exact": true,
+    "nearest4x": true,
+    "comparison_exact": true,
+    "reference_exact": true,
+    "floor_exact": true,
+    "runtime_source_unchanged": true
+  },
+  "opaque_bounds": [
+    25,
+    18,
+    144,
+    149
+  ],
+  "opaque_colors": 15,
+  "selected_candidate": 0,
+  "visual_audit": {
+    "cold_read": "Crouched bare-chested burial duellist with exposed face, short linen kilt, shoulder ring and three trailing strips; paired curved bronze blades.",
+    "native_review": "Inspected 1x against approved class and captured floor. Head, leading hand and low blade remain visible. Deep crouch is lower than reference; no rescaling applied.",
+    "differences": "Fresh body and exposed torso instead of hooded tunic; short kilt, ring fastening, forward low guard.",
+    "limits": [
+      "Strips are narrower and rise more steeply than B sketch.",
+      "Head-to-ground crouch is about 94px, not a standing 112px size proof.",
+      "Skin highlights and shin wraps remain subdued against warm floor.",
+      "Static study only; movement, crowded combat, final rig and owner approval untested."
+    ]
+  },
+  "cost": 15,
+  "validation": "No callable MCP validate; independent pixel checks."
+}

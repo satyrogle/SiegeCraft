@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-15",
+  "model": "PixelLab Pro Flash",
+  "charged_generations": 18,
+  "owner_direction": "War chief's right hand; nearly Warden size; visually capable of beating a Warden; distinctive champion trait. Rejected prior112px options are not reused.",
+  "must_keep": [
+    "Lean heroic proportions",
+    "Rotted sepia/ash burial hood and rags",
+    "Shadowed ember face",
+    "Ash/lava skin",
+    "Corroded bronze",
+    "Near approved Warden stature"
+  ],
+  "style_source_image_id": "41a3510d-933e-5cc2-81a7-f755053ccd81",
+  "requests": [
+    {
+      "description": "Full-body pixel-art BLOODRIDGE CHAMPION, the war chief's feared RIGHT HAND and elite Warden-killer, not a common Skirmisher. Native128x128, full figure about120px tall, same stature as the supplied WARDEN reference. Low top-down three-quarter southwest battle view facing left. Use the reference's exact rotted sepia/ash cloth, aged bronze, dark values and deliberate pixel detail; do not copy its body, pose, shield or costume. Keep the BLOODRIDGE RACE: deep ragged burial hood, face in shadow with clear ember eyes and gaunt ashen cheek, desiccated ash skin with thin molten fissures, bandaged limbs, torn funerary linen. Lean powerful long-limbed heroic adult, small head, commanding shoulders, threatening high-status silhouette. Not bulky or chibi. CHAMPION IDENTITY1: a visibly MASSIVE CORRODED BRONZE RIGHT FOREARM graft, shoulder to fist crossed by exposed tension ribs and ember skin-metal seams, substantially larger than ordinary forearm and readable at game size. That augmented arm grips a heavy broad HOOKED executioner's KHOPESH, one unmistakable C-hook blade, held LOW across his front at hip level with the other hand steadying the hilt. Upright planted legs, broad but light torn shoulder mantle on opposite shoulder, exposed scarred ribcage, long divided burial tabard ending below knees. Power concentrated in grafted arm and heavy blade, not whole-body armour. Entire body, both feet and entire weapon inside128x128 with3px transparent margins, no cropped tips, no background. Hood remains present. Upper-left light. Corroded desiccated materials, restrained ember seams, no neon. No shield, staff, crown, antlers, skull shoulder trophies, full plate suit or clean assassin outfit.",
+      "width": 128,
+      "height": 128,
+      "no_background": true,
+      "seed": 151170,
+      "style_image": {
+        "source_image_id": "41a3510d-933e-5cc2-81a7-f755053ccd81",
+        "usage_description": "APPROVED BLOODRIDGE WARDEN: match native128px class size, tribe identity, hood and shadowed ember face, rotted sepia/ash linen, corroded bronze and lava detail. This is style and rank/scale comparison only; create an original chief's right-hand champion with no shield, new silhouette, body, costume and pose."
+      },
+      "style_options": {
+        "color_palette": true,
+        "detail": true,
+        "outline": true,
+        "shading": true
+      }
+    },
+    {
+      "description": "Full-body pixel-art BLOODRIDGE CHAMPION, the war chief's feared RIGHT HAND and elite Warden-killer, not a common Skirmisher. Native128x128, full figure about120px tall, same stature as the supplied WARDEN reference. Low top-down three-quarter southwest battle view facing left. Use the reference's exact rotted sepia/ash cloth, aged bronze, dark values and deliberate pixel detail; do not copy its body, pose, shield or costume. Keep the BLOODRIDGE RACE: deep ragged burial hood, face in shadow with clear ember eyes and gaunt ashen cheek, desiccated ash skin with thin molten fissures, bandaged limbs, torn funerary linen. Lean powerful long-limbed heroic adult, small head, commanding shoulders, threatening high-status silhouette. Not bulky or chibi. CHAMPION IDENTITY2: a broad ASYMMETRIC MANTLE of THREE LARGE BROKEN SARCOPHAGUS BRONZE PLATES chained across one shoulder and hanging to mid-back, big enough to transform his outline and clearly mark rank. Other shoulder and arm exposed and ash-scarred. A grafted bronze elbow/tendon brace visible on the exposed arm. Tall, side-on commanding duelist with forward leg straight and rear knee flexed, one long HOOKED KHOPESH carried down-forward in lead hand, short hooked parrying knife held close beside rear ribs. Wide torn layered burial apron, individual bandaged legs. Mantle is battered funerary relic, not a crown, horns or regular pauldron. Entire body, both feet and entire weapon inside128x128 with3px transparent margins, no cropped tips, no background. Hood remains present. Upper-left light. Corroded desiccated materials, restrained ember seams, no neon. No shield, staff, crown, antlers, skull shoulder trophies, full plate suit or clean assassin outfit.",
+      "width": 128,
+      "height": 128,
+      "no_background": true,
+      "seed": 151171,
+      "style_image": {
+        "source_image_id": "41a3510d-933e-5cc2-81a7-f755053ccd81",
+        "usage_description": "APPROVED BLOODRIDGE WARDEN: match native128px class size, tribe identity, hood and shadowed ember face, rotted sepia/ash linen, corroded bronze and lava detail. This is style and rank/scale comparison only; create an original chief's right-hand champion with no shield, new silhouette, body, costume and pose."
+      },
+      "style_options": {
+        "color_palette": true,
+        "detail": true,
+        "outline": true,
+        "shading": true
+      }
+    },
+    {
+      "description": "Full-body pixel-art BLOODRIDGE CHAMPION, the war chief's feared RIGHT HAND and elite Warden-killer, not a common Skirmisher. Native128x128, full figure about120px tall, same stature as the supplied WARDEN reference. Low top-down three-quarter southwest battle view facing left. Use the reference's exact rotted sepia/ash cloth, aged bronze, dark values and deliberate pixel detail; do not copy its body, pose, shield or costume. Keep the BLOODRIDGE RACE: deep ragged burial hood, face in shadow with clear ember eyes and gaunt ashen cheek, desiccated ash skin with thin molten fissures, bandaged limbs, torn funerary linen. Lean powerful long-limbed heroic adult, small head, commanding shoulders, threatening high-status silhouette. Not bulky or chibi. CHAMPION IDENTITY3: a clearly EXPOSED FURNACE-RIB BODY GRAFT, five heavy corroded bronze ribs framing a dark hollow sternum with thin molten-orange fissures, large readable graft across one half of his bare ash chest and abdomen, other half living scarred skin. Short hooded burial shroud thrown backward off shoulders, long divided waist wraps, one arm and one shin mechanically braced. High authoritative torso above a wide forward-braced stance; one hand holds a large broad HOOKED KHOPESH down-left outside the front knee, the other hand held open at waist as a threat. Tall elite executioner, ominous hollow anatomy; graft is his defining feature, not decorative chest armour. Entire body, both feet and entire weapon inside128x128 with3px transparent margins, no cropped tips, no background. Hood remains present. Upper-left light. Corroded desiccated materials, restrained ember seams, no neon. No shield, staff, crown, antlers, skull shoulder trophies, full plate suit or clean assassin outfit.",
+      "width": 128,
+      "height": 128,
+      "no_background": true,
+      "seed": 151172,
+      "style_image": {
+        "source_image_id": "41a3510d-933e-5cc2-81a7-f755053ccd81",
+        "usage_description": "APPROVED BLOODRIDGE WARDEN: match native128px class size, tribe identity, hood and shadowed ember face, rotted sepia/ash linen, corroded bronze and lava detail. This is style and rank/scale comparison only; create an original chief's right-hand champion with no shield, new silhouette, body, costume and pose."
+      },
+      "style_options": {
+        "color_palette": true,
+        "detail": true,
+        "outline": true,
+        "shading": true
+      }
+    }
+  ],
+  "jobs": [
+    "f39abc88-2023-42e0-b25f-3f93b435f22a",
+    "84ee40ab-878a-4660-a964-b25c4df0cc3a",
+    "f5545693-446c-4e1a-9512-2a4ed7c0fdbe"
+  ],
+  "source_pngs": [
+    "source-1.png",
+    "source-2.png",
+    "source-3.png"
+  ],
+  "source_note": "Native PNG image-content bytes returned by PixelLab get_image. Independent curl downloads raw-1.png/raw-2.png timed out and are not masters or used for artwork; raw-3.png downloaded successfully.",
+  "native_operations": "Imported exact source pixels into new Aseprite documents; mapped to26-entry approved Warden palette; no shape, body, pose or rejected-source patching. Original Warden/SW squad pixels untouched in comparisons.",
+  "visual_review": {
+    "option1": "125px visible height; enlarged ribbed sword arm and upright guard; body/torso partly armour-like. Frontal design, not battle-facing ready.",
+    "option2": "124px visible height; broad shoulder grave plate clearly changes silhouette. Mantle reads as one large layered slab rather than three separated plates. Oblique front.",
+    "option3": "125px visible height; bright exposed half-rib graft and strong shoulder silhouette. Lesser limb braces subtle. Front design."
+  },
+  "scale_reference": {
+    "approved_warden_visible_height": 125,
+    "champions_visible_height": [
+      125,
+      124,
+      125
+    ]
+  },
+  "status": "REJECTED by Jacob: Warden still more powerful; champion needs stronger silhouette and proper signature weapon. Do not patch or integrate."
+}

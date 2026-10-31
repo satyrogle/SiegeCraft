@@ -1,0 +1,16 @@
+{
+  "model": "PixelLab Pixen",
+  "job_id": "91e5dcf5-84ba-42cb-8c02-9d89fa6f73d4",
+  "charged_generations": 1,
+  "request": {
+    "description": "Refine this same upright champion. Preserve face, hood, pose, sword, hands, feet and proportions. Add BODY AUGMENTS: corroded bronze half-ribs grafted into exposed left chest, mechanical tendon brace from right shoulder to elbow, and articulated bronze left shin replacing flesh with dark joints. Tiny ember fissures at skin-metal seams. Asymmetric, visibly implanted, rotted Medjay sepia/ash palette, restrained light. Clear pixel clusters, no neon or bulky armour. Transparent.",
+    "image_url": "upload:d6cdd803-e093-4424-8813-e019ee15fc4a",
+    "width": 160,
+    "height": 168,
+    "no_background": true,
+    "seed": 151152
+  },
+  "source": "../Bloodridge-Champion-Placeholder-20261015/placeholder-1x.png",
+  "edits": "Palette mapped; original source regions overlaid in Aseprite for face/hood, sword/hand, cloth, unaugmented leg, exposed shoulder and planted foot.",
+  "review": "Pending Jacob; isolated static placeholder"
+}

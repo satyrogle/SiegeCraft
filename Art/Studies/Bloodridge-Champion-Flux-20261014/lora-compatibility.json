@@ -1,0 +1,63 @@
+{
+  "source": "C:\\Users\\jacob\\ComfyUI-Shared\\models\\loras\\flux2klein_pixel_art_sprite_limbicnation.safetensors",
+  "source_sha256": "24e938f510f5dd0c890ac8b1078f4abb87a50c9c053b2e85c44821c0f30011ad",
+  "target": "C:\\Users\\jacob\\ComfyUI-Shared\\models\\loras\\ks-champion-flux-20261014\\modulation-compat.safetensors",
+  "tensor_count": 6,
+  "tensor_bytes_identical": true,
+  "records": [
+    {
+      "source_key": "double_stream_modulation_img.linear.lora_A.weight",
+      "compatible_key": "diffusion_model.double_stream_modulation_img.lin.lora_A.weight",
+      "shape": [
+        64,
+        3072
+      ],
+      "tensor_bytes_sha256": "1f71bb766dc61ca609f7424d57179d0d72fd6b70c5b8564f2d5eb0721fb7a16b"
+    },
+    {
+      "source_key": "double_stream_modulation_img.linear.lora_B.weight",
+      "compatible_key": "diffusion_model.double_stream_modulation_img.lin.lora_B.weight",
+      "shape": [
+        18432,
+        64
+      ],
+      "tensor_bytes_sha256": "a0d36ae5183c366fb32c3aac0e01303f13cc7781bb0c022e354dda87a0c17c0f"
+    },
+    {
+      "source_key": "double_stream_modulation_txt.linear.lora_A.weight",
+      "compatible_key": "diffusion_model.double_stream_modulation_txt.lin.lora_A.weight",
+      "shape": [
+        64,
+        3072
+      ],
+      "tensor_bytes_sha256": "f30fd4a79abd74f4d6f0b9cd5ffb454f5295ed0d259ef6313f6378a35c9cd215"
+    },
+    {
+      "source_key": "double_stream_modulation_txt.linear.lora_B.weight",
+      "compatible_key": "diffusion_model.double_stream_modulation_txt.lin.lora_B.weight",
+      "shape": [
+        18432,
+        64
+      ],
+      "tensor_bytes_sha256": "a376f707f0e2267b2c4a2053d0a641a5642164221bdd6f740a492b6146a63db6"
+    },
+    {
+      "source_key": "single_stream_modulation.linear.lora_A.weight",
+      "compatible_key": "diffusion_model.single_stream_modulation.lin.lora_A.weight",
+      "shape": [
+        64,
+        3072
+      ],
+      "tensor_bytes_sha256": "e3348d4ca249c5c3e443d77b813ab2543004a8f6edba379d669e5e0e0fcc3fa8"
+    },
+    {
+      "source_key": "single_stream_modulation.linear.lora_B.weight",
+      "compatible_key": "diffusion_model.single_stream_modulation.lin.lora_B.weight",
+      "shape": [
+        9216,
+        64
+      ],
+      "tensor_bytes_sha256": "256d8cef76cca1658a9c2f78cb15ccfc3acc1a9c7dea32d3bcd141ef2d54e049"
+    }
+  ]
+}

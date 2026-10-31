@@ -1,0 +1,67 @@
+{
+  "warden_height": 125,
+  "options": {
+    "1": {
+      "canvas": [
+        144,
+        144
+      ],
+      "bounds": [
+        26,
+        1,
+        122,
+        135
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 22,
+      "nearest4x": true
+    },
+    "2": {
+      "canvas": [
+        144,
+        144
+      ],
+      "bounds": [
+        14,
+        10,
+        122,
+        134
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 17,
+      "nearest4x": true
+    },
+    "3": {
+      "canvas": [
+        144,
+        144
+      ],
+      "bounds": [
+        11,
+        10,
+        129,
+        134
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 16,
+      "nearest4x": true
+    }
+  },
+  "wardens_preserved": {
+    "1": true,
+    "2": true,
+    "3": true
+  },
+  "owner_review": "Option1 selected by Jacob on2026-10-15",
+  "integration": false,
+  "board2x_exact": true
+}

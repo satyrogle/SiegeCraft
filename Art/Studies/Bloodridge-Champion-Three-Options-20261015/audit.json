@@ -1,0 +1,72 @@
+{
+  "candidates": {
+    "1": {
+      "size": [
+        112,
+        112
+      ],
+      "bounds": [
+        5,
+        1,
+        103,
+        110
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 19,
+      "nearest_4x": true
+    },
+    "2": {
+      "size": [
+        112,
+        112
+      ],
+      "bounds": [
+        4,
+        0,
+        102,
+        110
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 10,
+      "nearest_4x": true
+    },
+    "3": {
+      "size": [
+        112,
+        112
+      ],
+      "bounds": [
+        4,
+        1,
+        104,
+        111
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "opaque_colours": 12,
+      "nearest_4x": true
+    }
+  },
+  "approved_squad_opaque_pixels_unchanged_in_board": {
+    "warden": true,
+    "skirmisher": true,
+    "trapper": true,
+    "marksman": true,
+    "medic": true
+  },
+  "board_size": [
+    660,
+    420
+  ],
+  "board_2x_exact": true,
+  "owner_approval": "pending",
+  "integration": false
+}

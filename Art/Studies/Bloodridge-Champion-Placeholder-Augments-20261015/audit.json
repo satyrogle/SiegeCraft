@@ -1,0 +1,34 @@
+{
+  "size": [
+    160,
+    168
+  ],
+  "bounds": [
+    13,
+    10,
+    113,
+    158
+  ],
+  "alpha": [
+    0,
+    255
+  ],
+  "opaque_colours": 23,
+  "changed_pixels": 1306,
+  "source_regions_identical": {
+    "face": false,
+    "sword": true,
+    "cloth": true,
+    "foot": true
+  },
+  "game_integration": "not performed",
+  "owner_review": "pending",
+  "source_face_opaque_pixels_preserved": true,
+  "visual_review": {
+    "viewed_scales": [
+      1,
+      4
+    ],
+    "observed": "Visible original face and sword retained; asymmetric bronze chest graft, dark exposed upper-arm mechanism and articulated shin. Chest graft still partly reads as armour; small source-transparent gaps at face edge filled by generated underlayer. Native body remains about148px tall; game scale fitting not performed."
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "polygons": [
+    {
+      "name": "leading bent leg",
+      "dy": -9,
+      "polygon": [
+        [
+          49,
+          98
+        ],
+        [
+          67,
+          102
+        ],
+        [
+          74,
+          114
+        ],
+        [
+          76,
+          131
+        ],
+        [
+          65,
+          140
+        ],
+        [
+          44,
+          140
+        ],
+        [
+          41,
+          128
+        ],
+        [
+          43,
+          113
+        ],
+        [
+          40,
+          108
+        ]
+      ]
+    },
+    {
+      "name": "rear braced leg",
+      "dy": -12,
+      "polygon": [
+        [
+          108,
+          113
+        ],
+        [
+          119,
+          115
+        ],
+        [
+          127,
+          126
+        ],
+        [
+          135,
+          150
+        ],
+        [
+          137,
+          155
+        ],
+        [
+          116,
+          155
+        ],
+        [
+          117,
+          140
+        ],
+        [
+          110,
+          134
+        ],
+        [
+          107,
+          129
+        ],
+        [
+          104,
+          121
+        ]
+      ]
+    }
+  ],
+  "counts": [
+    712,
+    521
+  ],
+  "flip": "horizontal to face southwest",
+  "cleanup": {
+    "cleared_region": {
+      "x": 86,
+      "y": 123,
+      "width": 4,
+      "height": 3
+    },
+    "reason": "four displaced cloth pixels removed from native leg layer; first upper-body clear did not remove them",
+    "source_pixel_count": 4
+  },
+  "note": "All geometry changes are integer pixel relocations. No whole-body resampling. Facing is mirrored with all pixels together; champion handedness is newly proposed."
+}

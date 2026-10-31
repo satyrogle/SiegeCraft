@@ -1,0 +1,8 @@
+{
+  "base": "skull_warden_sw",
+  "ref": "skullpeak_chief_sw",
+  "denoise": 1.0,
+  "prompt": "Picture 1 is a Warden of the Skullpeak tribe; picture 2 is their chief. Redraw picture 1 as the tribe's CHAMPION, a duelling knight: warm human skin, polished steel bones showing through the chest and ribs, a steel crest that stops at the hairline so her human face shows, a long torn dark slate tabard, a thin turquoise glow in the seams, one bionic arm holding a long steel lance with a turquoise tip, and a small round steel shield. Human, never alien, no skeleton. Same tribe look as both pictures, same pixel size, same detail, same palette, same three quarter view facing left. Plain flat dark brown background, nothing else.",
+  "seed": 20261022,
+  "seconds": 57
+}

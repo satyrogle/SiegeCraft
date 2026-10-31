@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "native_size": true,
+    "source_start": true,
+    "source_end": true,
+    "palette": true,
+    "binary_alpha": true,
+    "no_edge_clipping": true
+  },
+  "visual": "Eight frames viewed at1x and2x. Joint path follows windup, extended strike, low follow-through and recovery. Rear weapon remains visible. Early wind-up attacking blade and moving cloth have weak/dithered definition; not production-ready or owner-approved. No action frames deleted.",
+  "cost": 3
+}

@@ -1,0 +1,206 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-base-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": "pixel art sprite, game asset, 32-bit pixel art. Redraw the supplied approved Bloodridge fighter as his tribe's elite champion. Preserve this exact rendering style, limited sepia and ash-brown colours, glowing ember cracks, burial wraps, deep corroded bronze and lean anatomy. Keep the hood and visible human face under it, clean shaven, the same three-quarter view facing down-left and the same native pixel cluster size. Change his pose: a deep forward duelling stance with separated planted feet, lead knee bent, rear leg braced to the right. One twin khopesh is held forward low and the other blade curls upward beside the rear shoulder in a protective guard. Two separate hands gripping two thick crescent Egyptian khopesh, each blade curved like those in the reference. Add an asymmetric ragged shoulder stole and a segmented tarnished bronze collar. Keep the threatening dark decayed Medjay identity. Native 112px fighter enlarged with nearest pixels. Single isolated whole-body sprite, all blades and feet inside the canvas, plain uniform blue-grey background. No extra weapons, shiny gold, beard, white face paint, blue trousers, muscular bodybuilder, realistic skin texture, bright backdrop or text."
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-champion-flux-20261014/approved-skirmisher.png"
+    }
+  },
+  "8": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "7",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 640,
+      "height": 672,
+      "crop": "disabled"
+    }
+  },
+  "9": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "8",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "5",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "latent": [
+        "9",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "13": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "11",
+        0
+      ],
+      "cfg": 4.0
+    }
+  },
+  "14": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "15": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 28,
+      "width": 768,
+      "height": 768
+    }
+  },
+  "16": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026101454
+    }
+  },
+  "17": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "16",
+        0
+      ],
+      "guider": [
+        "13",
+        0
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "17",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "18",
+        0
+      ],
+      "filename_prefix": "KS-Champion-Flux-20261014/champion-2026101454"
+    }
+  }
+}

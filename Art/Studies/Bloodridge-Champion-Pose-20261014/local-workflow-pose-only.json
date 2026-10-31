@@ -1,0 +1,144 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "shift": 3.0
+    }
+  },
+  "4": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-champion-pose-20261014/pose-input.png"
+    }
+  },
+  "8": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "Refine this exact pixel-art character drawing into a finished detailed small game sprite. This picture is the mandatory pose and silhouette. Keep his body, hands, blades and feet in exactly their current positions. An upright lean duelist, facing lower left in three quarter battle view, with his leading arm extended low to the left and rear arm bent up high to the right. Each hand grips its own short Egyptian khopesh. Keep both separated feet planted exactly as drawn, all the empty spaces between his limbs, and the short torn waist cloth. Preserve the upright stance and the high/low blade arrangement. DO NOT CROUCH or put both hands at the waist.\n\nImprove only the painting and anatomical modelling inside this outline. The character is a frightening, lean Egyptian burial guardian with rotted sepia and ash-brown headwrap and rags, ashen human skin with tiny orange lava scars, weathered corroded bronze collar and arm bands, old irregular burial bandages on wrists and calves. The face is visible and human, recessed inside the headwrap. Two aged bronze khopesh with extremely narrow ember-orange cutting edges. Thin limbs with convincing elbows, wrists, fingers, knees and ankles. Dark brown shadows, warm dusty taupe highlights, muted ochre bronze; orange is restricted to the blade edges and a few facial cracks. Increase depth with one upper-left light, selective deep dark outlines, broken cloth folds, frayed hems, worn linen and tiny bronze edge chips. No shiny armour and no bright new gold.\n\nCRISP NATIVE PIXEL ART enlarged four times, with deliberately chunky 4x4 pixel blocks, controlled square clusters, hard colour boundaries and clean stair-step diagonals. Limited 27-colour earthy palette. Match the detail density of an excellent 112px-tall game fighter. No small subpixel detail, no blur, no soft lighting, no oil painting, no high-resolution illustration, no cartoon or chibi proportions, no aura, sparks or smoke. Keep the same flat blue-grey background and the same margins. One character, same exact composition and silhouette, no other object or text.",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "6",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "6",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "11": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "8",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "10",
+        0
+      ],
+      "seed": 2026101442,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "KS-Champion-Pose-20261014/pose-only-refinement"
+    }
+  }
+}

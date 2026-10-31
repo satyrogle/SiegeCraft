@@ -1,0 +1,8 @@
+{
+  "base": "blood_rot_medic_sw",
+  "ref": "bloodridge_chief_sw",
+  "denoise": 1.0,
+  "prompt": "Picture 1 is a fighter of the Bloodridge raiders; picture 2 is their chief. Redraw picture 1 as the raiders' SHAMAN, a veiled oracle: a tall black hood falling into a veil that hides the face, rotten linen ribbons hanging from the arms, both hands raised holding a black orb with a burning orange rim between them. Same tribe look as both pictures, same darkness, same pixel size, same detail, same palette, same three quarter view facing left. Plain flat dark brown background, nothing else.",
+  "seed": 20261023,
+  "seconds": 87
+}

@@ -1,0 +1,16 @@
+{
+  "status": "Owner review pending; not integrated",
+  "model": "PixelLab Pixen",
+  "cost_subscription_generations": 1,
+  "job": "5df468c8-42f9-44ca-88b8-f077bdfcbe3b",
+  "request": {
+    "description": "Change only the face inside the linen hood: a terrifying gaunt Egyptian burial warrior, ashen ochre skin, strong visible hooked nose, clenched lips and angular jaw, sunken cheeks, stern brow, ember eyes. Three branching orange lava fissures split one cheek and forehead. Three-quarter face looking left. Face must read as flesh with anatomy, NOT a blank mask or skull. Keep burial linen, no hair or bandana. Preserve head size, pose, all clothing and both swords. Crisp detailed native pixel art.",
+    "image_url": "upload:7d396be2-c374-4f60-a6c5-456a8010e222",
+    "width": 160,
+    "height": 168,
+    "no_background": true,
+    "seed": 381704
+  },
+  "edit": "Only native head x64..92 y31..62 transferred. Original linen brow retained at x69..88 y31..40. All other pixels preserved. Palette mapped to approved Skirmisher first frame.",
+  "visual_review": "Gaunt visible nose, lips and angular jaw; ember eyes and split cheek. Restored linen brow after generator removed headwrap. Static review only; face is more exposed than approved class sprite."
+}

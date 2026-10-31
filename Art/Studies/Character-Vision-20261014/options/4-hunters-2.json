@@ -1,0 +1,8 @@
+{
+  "base": "skull_warden_sw",
+  "ref": "skull_warden_sw",
+  "denoise": 1.0,
+  "prompt": "Use picture 1 only for the pixel-art style, the size and the pose. Draw a different faction: one of the Sovereign's HUNTERS, a faceless mercenary, not a tribal warrior and no bare skin: a long dark grey coat, a hound skull helm that hides the whole face, chains wrapped around the arms, a heavy shield. Same pixel size, same detail, same three quarter view facing left. Plain flat dark brown background, nothing else.",
+  "seed": 20261022,
+  "seconds": 69
+}

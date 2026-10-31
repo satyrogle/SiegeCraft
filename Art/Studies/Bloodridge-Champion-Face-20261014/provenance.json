@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-14",
+  "status": "REJECTED by owner. Generic bandana/action-hero face loses Bloodridge identity. Do not integrate, animate or use as an approved reference.",
+  "editable_master": "champion-review.aseprite",
+  "audit": "audit.json",
+  "cleanup": "native-cleanup.json",
+  "route": "PixelLab Pixen native head crop, Aseprite palette mapping and local head transfer",
+  "job_id": "e8a7d134-c88b-4eb7-8c91-d4439a6a691a",
+  "subscription_generations": 1,
+  "base": "../Bloodridge-Champion-Identity-20261014/champion-review-1x.png",
+  "native_crop": {
+    "x": 60,
+    "y": 27,
+    "width": 40,
+    "height": 40
+  },
+  "request": {
+    "image_url": "upload:d7deb62e-06d6-43e9-a935-c97147ba0ba9",
+    "description": "Replace the grey mask-like area with a FULLY VISIBLE handsome grim adult male face in three-quarter view facing LEFT. Clearly draw stern brow, two narrow human eyes, projecting nose, lips, cheekbones and a strong jaw. Sun-dried ash-brown SKIN lit from upper left, not a metal mask, skull or shadow void. Sparse ember scars only on one cheek. Open linen away from mouth, jaw and neck. Keep headwrap, head size, placement and native detailed pixel style. No beard.",
+    "width": 40,
+    "height": 40,
+    "no_background": true,
+    "seed": 2026101491
+  },
+  "scope": "Face only, preserve original stance, body, costume and weapons outside the head. No production integration."
+}

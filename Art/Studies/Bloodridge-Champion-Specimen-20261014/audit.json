@@ -1,0 +1,24 @@
+{
+  "mechanical_checks": {
+    "source_files_unchanged": true,
+    "reference_exact_first_frame": true,
+    "candidate_native_160x168": true,
+    "binary_alpha": true,
+    "no_new_opaque_colors": true,
+    "exact_4x_export": true,
+    "changes_scoped_to_cloth": true
+  },
+  "mechanical_pass": true,
+  "changed_pixels": 822,
+  "changed_bounds": [
+    61,
+    28,
+    106,
+    114
+  ],
+  "visual_verdict": "FAIL: costume variation does not establish a distinct champion.",
+  "source_hashes": {
+    "C:\\Users\\jacob\\KindredSiege-Clean\\Assets\\Resources\\ClarthStudy\\blood_rot_skirmisher_sw_idle.png": "4a55489a84ae18391264ad345b97ec96a70022eac38a0b0f7408dfee21bd0210",
+    "C:\\Users\\jacob\\KindredSiege-Clean\\Assets\\Resources\\ClarthStudy\\blood_rot_skirmisher_sw_idle.json": "ad176a6a94541b6c7ec8b670fc05d5ffb83349cbc8ebdd87af0876ac799e7a25"
+  }
+}

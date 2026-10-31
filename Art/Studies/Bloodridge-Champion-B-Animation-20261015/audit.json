@@ -1,0 +1,18 @@
+{
+  "idle": {
+    "native_cells": true,
+    "source_start": true,
+    "source_end": true,
+    "palette": true,
+    "binary_alpha": true,
+    "fixed_contact_pixels": true
+  },
+  "attack": {
+    "native_cells": true,
+    "source_start": true,
+    "source_end": true,
+    "palette": true,
+    "binary_alpha": true
+  },
+  "visual": "All frames viewed at native and enlarged scale; compact forward-cut attack remains a study, not full requested broad paired slash or runtime proof."
+}

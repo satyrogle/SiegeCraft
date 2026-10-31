@@ -1,0 +1,73 @@
+{
+  "source": "../Bloodridge-Champion-Weapon-20261015/champion-1-1x.png",
+  "source_sha256": "bef37110a19114e14fb9c9ee40abed14e73558cefc5de1f821e834f8d9050927",
+  "request": {
+    "character_id": "869e6b10-d5b3-4d8d-b019-ed736db7157a",
+    "mode": "pixminimax",
+    "directions": [
+      "south-west"
+    ],
+    "animation_name": "Great Khopesh Weighted Attack 32 SW",
+    "frame_count": 32,
+    "keep_first_frame": true,
+    "custom_start_frame_url": "upload:9b48dfec-2e9f-45e4-a1e6-5b6dc4f76857",
+    "end_frame_url": "upload:9b48dfec-2e9f-45e4-a1e6-5b6dc4f76857",
+    "action_description": "One powerful two-handed great-khopesh executioner cut toward SOUTHWEST, one attack only, fixed low top-down camera. The movement is driven by a grounded whole-body power chain. First slowly sink at the knees and coil the hips and shoulders AWAY from the southwest target, drawing the heavy hooked blade BACK and UP beside the right rear shoulder, visibly clear of the hood. The front southwest foot stays planted; the rear heel pivots. Hold a strongly loaded, tense silhouette briefly. Then drive the hips toward southwest, turn the torso and extend BOTH arms and the sword together in one fast, continuous diagonal downward-southwest arc. A clear extended cutting pose crosses the target space in front-left, followed by the weight carrying the blade down and forward into a LOW follow-through. Keep that committed low stance briefly. Recover more slowly by bending the elbows and lifting the heavy weapon back through a compact close-to-body arc into the exact original braced guard. The torso settles first, the ragged shoulder mantle trails and settles LAST. Allocate roughly the first quarter to loading, the middle quarter to acceleration and cut, and the last half to weighted follow-through and recovery. Preserve constant body size and limb lengths; both hands grasp the same hilt throughout; ONE rigid broad hooked bronze sword retains its blade width, length and hooked tip. Keep his selected hood, ember eyes, bandaged lean anatomy, layered rotted sepia mantle and corroded bronze identity. Feet stay in their small original ground area. End in the exact starting guard. No hop, spin, camera change, extra weapons, giant effects or sword flourishing."
+  },
+  "receipt": {
+    "content": [
+      {
+        "type": "text",
+        "text": "character: 869e6b10-d5b3-4d8d-b019-ed736db7157a\nanimation: pixminimax custom (One powerful two-handed great-khopesh executioner cut toward SOUTHWEST, one attack only, fixed low top-down camera. The movement is driven by a grounded whole-body power chain. First slowly sink at the knees and coil the hips and shoulders AWAY from the southwest target, drawing the heavy hooked blade BACK and UP beside the right rear shoulder, visibly clear of the hood. The front southwest foot stays planted; the rear heel pivots. Hold a strongly loaded, tense silhouette briefly. Then drive the hips toward southwest, turn the torso and extend BOTH arms and the sword together in one fast, continuous diagonal downward-southwest arc. A clear extended cutting pose crosses the target space in front-left, followed by the weight carrying the blade down and forward into a LOW follow-through. Keep that committed low stance briefly. Recover more slowly by bending the elbows and lifting the heavy weapon back through a compact close-to-body arc into the exact original braced guard. The torso settles first, the ragged shoulder mantle trails and settles LAST. Allocate roughly the first quarter to loading, the middle quarter to acceleration and cut, and the last half to weighted follow-through and recovery. Preserve constant body size and limb lengths; both hands grasp the same hilt throughout; ONE rigid broad hooked bronze sword retains its blade width, length and hooked tip. Keep his selected hood, ember eyes, bandaged lean anatomy, layered rotted sepia mantle and corroded bronze identity. Feet stay in their small original ground area. End in the exact starting guard. No hop, spin, camera change, extra weapons, giant effects or sword flourishing.)\ndirections: south-west (1 jobs)\njob_ids: south-west=768aff92-be66-49a5-9049-2c55e4f532db\ngroup: 105de70f-d7d6-48e7-97bb-ddbddbe1ad80\nframes: 33 (1 reference + 32 animated)\ncost: 3 generations (3/dir x 1)\neta: ~4 min/direction\n\nhint: get_character(character_id=\"869e6b10-d5b3-4d8d-b019-ed736db7157a\")\nadd more directions to this group: animate_character(character_id=\"869e6b10-d5b3-4d8d-b019-ed736db7157a\", action_description=\"One powerful two-handed great-khopesh executioner cut toward SOUTHWEST, one attack only, fixed low top-down camera. The movement is driven by a grounded whole-body power chain. First slowly sink at the knees and coil the hips and shoulders AWAY from the southwest target, drawing the heavy hooked blade BACK and UP beside the right rear shoulder, visibly clear of the hood. The front southwest foot stays planted; the rear heel pivots. Hold a strongly loaded, tense silhouette briefly. Then drive the hips toward southwest, turn the torso and extend BOTH arms and the sword together in one fast, continuous diagonal downward-southwest arc. A clear extended cutting pose crosses the target space in front-left, followed by the weight carrying the blade down and forward into a LOW follow-through. Keep that committed low stance briefly. Recover more slowly by bending the elbows and lifting the heavy weapon back through a compact close-to-body arc into the exact original braced guard. The torso settles first, the ragged shoulder mantle trails and settles LAST. Allocate roughly the first quarter to loading, the middle quarter to acceleration and cut, and the last half to weighted follow-through and recovery. Preserve constant body size and limb lengths; both hands grasp the same hilt throughout; ONE rigid broad hooked bronze sword retains its blade width, length and hooked tip. Keep his selected hood, ember eyes, bandaged lean anatomy, layered rotted sepia mantle and corroded bronze identity. Feet stay in their small original ground area. End in the exact starting guard. No hop, spin, camera change, extra weapons, giant effects or sword flourishing.\", mode=\"pixminimax\", animation_group_id=\"105de70f-d7d6-48e7-97bb-ddbddbe1ad80\", directions=[...])"
+      }
+    ],
+    "isError": false
+  },
+  "job_id": "768aff92-be66-49a5-9049-2c55e4f532db",
+  "group_id": "105de70f-d7d6-48e7-97bb-ddbddbe1ad80",
+  "model": "PixelLab PixMiniMax / MiniMax H3",
+  "subscription_generations": 3,
+  "status": "Attempt1 rejected. Attempt2 finished as local review candidate after native timeline, VFX, palette and endpoint cleanup; owner approval pending. See audit.json.",
+  "integration": false,
+  "total_subscription_generations": 6,
+  "pixelLab_sync": {
+    "saved_cleaned_frames": true,
+    "receipt": {
+      "content": [
+        {
+          "type": "text",
+          "text": "saved: character:869e6b10-d5b3-4d8d-b019-ed736db7157a:south-west:aff1aa1f-e58a-4afe-9506-371b83d41b35 (animation, 33 frames, 256x256)\nchanged: 118855 px\nundo: save_to_asset(image=\"5156fca5-a294-4b53-8159-717761ac2752\", target=\"character:869e6b10-d5b3-4d8d-b019-ed736db7157a:south-west:aff1aa1f-e58a-4afe-9506-371b83d41b35\")\nnext: get_character(\"869e6b10-d5b3-4d8d-b019-ed736db7157a\")"
+        }
+      ],
+      "isError": false
+    },
+    "timing_limitation": "PixelLab server accepts uniform timing only; attack-server.gif is100ms/frame. LOCAL attack.aseprite, attack.gif, sheet JSON and phone video preserve the reviewed1430ms variable timing. Raw cloud playback is not the timing reference."
+  },
+  "retry": {
+    "request": {
+      "character_id": "869e6b10-d5b3-4d8d-b019-ed736db7157a",
+      "mode": "pixminimax",
+      "directions": [
+        "south-west"
+      ],
+      "animation_name": "Great Khopesh Screen Left Heavy Cut 32 SW",
+      "frame_count": 32,
+      "keep_first_frame": true,
+      "custom_start_frame_url": "upload:9b48dfec-2e9f-45e4-a1e6-5b6dc4f76857",
+      "end_frame_url": "upload:9b48dfec-2e9f-45e4-a1e6-5b6dc4f76857",
+      "action_description": "A single heavy sword cut aimed at an enemy standing DOWN AND TO THE LEFT OF THE IMAGE. Screen coordinates are decisive: the blade tip starts at UPPER RIGHT, loads a little farther UPPER RIGHT, then sweeps across the front of the body to finish fully extended at LOWER LEFT. The hit and low follow-through point toward the BOTTOM-LEFT corner of the picture, never toward screen-right. Keep the hood and ember eyes looking down-left throughout. This is a heavy leftward diagonal CHOP, not a horizontal rightward sweep. In the first quarter, bend knees and coil torso back toward upper-right with both hands raising the same great khopesh clear beside the right edge of the head. Front foot at screen-left remains planted. Brief loaded hold. In the second quarter, rotate hips and shoulders forcefully down-left, extend both arms into ONE fast diagonal cut toward lower-left, and finish with the sword low on the LEFT of both legs. Sink into a strong low stance and let the shoulders follow through. Last half: keep the blade low-left briefly, then lift it close to the body back to the starting upper-right diagonal guard. Cloth trails opposite the cut and settles after the torso. Constant character size, fixed camera, same bandaged lean anatomy and rotted sepia hooded mantle, both hands attached to the hilt of ONE rigid broad bronze hooked sword throughout. The sword itself shows the attack: absolutely no orange arc, slash VFX, sparks, particles, glow trail or added effects. End exactly in the original guard."
+    },
+    "receipt": {
+      "content": [
+        {
+          "type": "text",
+          "text": "character: 869e6b10-d5b3-4d8d-b019-ed736db7157a\nanimation: pixminimax custom (A single heavy sword cut aimed at an enemy standing DOWN AND TO THE LEFT OF THE IMAGE. Screen coordinates are decisive: the blade tip starts at UPPER RIGHT, loads a little farther UPPER RIGHT, then sweeps across the front of the body to finish fully extended at LOWER LEFT. The hit and low follow-through point toward the BOTTOM-LEFT corner of the picture, never toward screen-right. Keep the hood and ember eyes looking down-left throughout. This is a heavy leftward diagonal CHOP, not a horizontal rightward sweep. In the first quarter, bend knees and coil torso back toward upper-right with both hands raising the same great khopesh clear beside the right edge of the head. Front foot at screen-left remains planted. Brief loaded hold. In the second quarter, rotate hips and shoulders forcefully down-left, extend both arms into ONE fast diagonal cut toward lower-left, and finish with the sword low on the LEFT of both legs. Sink into a strong low stance and let the shoulders follow through. Last half: keep the blade low-left briefly, then lift it close to the body back to the starting upper-right diagonal guard. Cloth trails opposite the cut and settles after the torso. Constant character size, fixed camera, same bandaged lean anatomy and rotted sepia hooded mantle, both hands attached to the hilt of ONE rigid broad bronze hooked sword throughout. The sword itself shows the attack: absolutely no orange arc, slash VFX, sparks, particles, glow trail or added effects. End exactly in the original guard.)\ndirections: south-west (1 jobs)\njob_ids: south-west=0db8c771-90c2-424a-b637-73cf3848e862\ngroup: aff1aa1f-e58a-4afe-9506-371b83d41b35\nframes: 33 (1 reference + 32 animated)\ncost: 3 generations (3/dir x 1)\neta: ~4 min/direction\n\nhint: get_character(character_id=\"869e6b10-d5b3-4d8d-b019-ed736db7157a\")\nadd more directions to this group: animate_character(character_id=\"869e6b10-d5b3-4d8d-b019-ed736db7157a\", action_description=\"A single heavy sword cut aimed at an enemy standing DOWN AND TO THE LEFT OF THE IMAGE. Screen coordinates are decisive: the blade tip starts at UPPER RIGHT, loads a little farther UPPER RIGHT, then sweeps across the front of the body to finish fully extended at LOWER LEFT. The hit and low follow-through point toward the BOTTOM-LEFT corner of the picture, never toward screen-right. Keep the hood and ember eyes looking down-left throughout. This is a heavy leftward diagonal CHOP, not a horizontal rightward sweep. In the first quarter, bend knees and coil torso back toward upper-right with both hands raising the same great khopesh clear beside the right edge of the head. Front foot at screen-left remains planted. Brief loaded hold. In the second quarter, rotate hips and shoulders forcefully down-left, extend both arms into ONE fast diagonal cut toward lower-left, and finish with the sword low on the LEFT of both legs. Sink into a strong low stance and let the shoulders follow through. Last half: keep the blade low-left briefly, then lift it close to the body back to the starting upper-right diagonal guard. Cloth trails opposite the cut and settles after the torso. Constant character size, fixed camera, same bandaged lean anatomy and rotted sepia hooded mantle, both hands attached to the hilt of ONE rigid broad bronze hooked sword throughout. The sword itself shows the attack: absolutely no orange arc, slash VFX, sparks, particles, glow trail or added effects. End exactly in the original guard.\", mode=\"pixminimax\", animation_group_id=\"aff1aa1f-e58a-4afe-9506-371b83d41b35\", directions=[...])"
+        }
+      ],
+      "isError": false
+    },
+    "job_id": "0db8c771-90c2-424a-b637-73cf3848e862",
+    "group_id": "aff1aa1f-e58a-4afe-9506-371b83d41b35",
+    "subscription_generations": 3
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "native_canvas": [
+    160,
+    168
+  ],
+  "opaque_bounds_exclusive": [
+    25,
+    10,
+    116,
+    141
+  ],
+  "intended_body_height_px": 112,
+  "body_head_y": 29,
+  "ground_y": 140,
+  "opaque_colors": 24,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "off_approved_palette": [],
+  "source_png_sha256": "4a55489a84ae18391264ad345b97ec96a70022eac38a0b0f7408dfee21bd0210",
+  "source_atlas_sha256": "ad176a6a94541b6c7ec8b670fc05d5ffb83349cbc8ebdd87af0876ac799e7a25",
+  "source_hash_unchanged": true,
+  "approved_reference_equals_runtime_frame": true,
+  "chief_reference_equals_runtime_frame": true,
+  "four_x_exact_nearest": true,
+  "reopened_master_pixel_identical": true,
+  "comparison_board_opaque_pixels_exact": {
+    "approved_skirmisher": true,
+    "champion": true,
+    "approved_chief": true
+  },
+  "enclosed_transparent_pixel_count": 0,
+  "floor_review": "Native static composition on a crop of a captured KS fight. Added review contact shadow. Not a new game capture.",
+  "mechanical_validator": "Aseprite MCP validate unavailable. Palette analysis and this independent read-only PNG audit.",
+  "visual_verdict": "Distinct pose and clear native silhouette; wraps, collar, face and twin khopesh retain tribe cues. Leaner and less ornate than approved Skirmisher. Owner review pending; not animated or integrated.",
+  "mechanical_checks_passed": true
+}

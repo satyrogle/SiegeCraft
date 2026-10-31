@@ -1,0 +1,20 @@
+{
+  "status": "Replacement attack for owner review; not integrated",
+  "model": "PixelLab PixMiniMax / MiniMax H3",
+  "job": "787ca741-70e9-4417-883c-31838bd10225",
+  "charged_generations": 1,
+  "request": {
+    "first_frame_url": "upload:346055b2-abc8-43f8-a8a8-bb0e7f3c83b5",
+    "description": "The warrior performs one fast overhead chopping slash with the sword in his forward hand, then recovers into his initial low crouched stance. He first draws that arm up beside his head, holds a brief wind-up, chops diagonally downward and outward toward the lower left, follows through, and settles back. The other sword stays behind him in the rear hand as a guard throughout. The blades keep their original length and curved shape, no glowing trails, no energy arcs. Feet stay planted; upper body twists with the chop. Burial cloth follows the turn. Camera fixed. Keep full figure inside frame.",
+    "subject_description": "A crouched lean burial warrior with two separate bronze khopesh swords, visible wrapped face, bronze shoulder and chest implants, short linen kilt and three trailing cloth strips",
+    "initial_pose": "Deep crouch facing southwest, front sword held low across knees, rear sword held up behind shoulder, feet spread and grounded",
+    "view": "low top-down",
+    "direction": "south-west",
+    "frame_count": 16,
+    "no_background": true,
+    "enhance_prompt": false,
+    "seed": 151117
+  },
+  "integration": false,
+  "editing": "Removed raw frames4,5,10 (1-based) containing large orange effects. Retained14 frames,1110ms. Palette normalized, exact source guard at endpoints."
+}

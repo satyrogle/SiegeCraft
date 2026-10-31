@@ -1,0 +1,8 @@
+{
+  "base": "blood_rot_skirmisher_sw",
+  "ref": "bloodridge_chief_sw",
+  "denoise": 1.0,
+  "prompt": "Picture 1 is a Skirmisher of the Bloodridge raiders; picture 2 is their chief. Redraw picture 1 as the raiders' CHAMPION duelist, tall and upright, standing, not crouching: an ashen face with glowing lava tattoos under a ragged headwrap, lava glowing through cracks in the skin, a corroded bronze collar and armbands, rotted sepia and ash rags, burial bandages on the arms and legs, a long torn cape, one long bronze khopesh held low and a small hooked bronze buckler. Same tribe look as both pictures, same darkness, same pixel size, same detail, same palette, same three quarter view facing left. Plain flat dark brown background, nothing else.",
+  "seed": 20261021,
+  "seconds": 63
+}
