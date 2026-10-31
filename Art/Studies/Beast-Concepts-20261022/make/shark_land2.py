@@ -4,9 +4,11 @@ Every land frame sits with canvas row 148 on the sand line and is cut below it, 
 front fins and lower tail are under. A rim moves along the cut every tick: a rippling lip over the cut, a bow wave
 of piled sand on whichever side is pushing forward (bigger the faster it goes), a furrow behind that fills back in,
 and grains pouring off the body above the line. The haul still bursts out and flies; on landing it sinks to half
-depth with a splash along its length. The fin walk becomes a plow. The bite is shark_bite2: gape 8 to 10, clamp at
-11 (the hit, held, the front column takes it), thrash 12 to 33, open by 40. The tail sweep's blast through all five
-and the head first dive stay. Clips are 40 frames (41 with the loop frame); beast and effects are drawn on the half
+depth with a splash along its length. The approach is a plow: the fin walk clip twists and rolls the whole body
+on every step, which with the fins under the sand reads as the shark wobbling in place, so the plow uses the steady
+breathing frames pushed forward through the sand in three tail kick surges. The bite is shark_bite2: gape 8 to 10,
+clamp at 11 (the hit, held, the front column takes it), thrash 12 to 33, open by 40. The tail sweep's blast through
+all five and the head first dive stay. Clips are 40 frames (41 with the loop frame); beast and effects are drawn on the half
 layer (2x pixels), squad and stage stay 1x.
 
 python -I shark_land2.py   (python with pillow, numpy, scipy, av)
@@ -158,8 +160,7 @@ def scene():
     stage = Image.open(D / "fight" / "alphahunt-empty.png").convert("RGBA")
     team = bs.the_squad()
     still = bs.strip_base(Image.open(A / "shark-land-256.png"), floor=256)
-    haul, breathe, walk, bite, sweep = (clip(n) for n in ("shark_haul", "shark_breathe", "shark_walk", "shark_bite2",
-                                                          "shark_sweep"))
+    haul, breathe, bite, sweep = (clip(n) for n in ("shark_haul", "shark_breathe", "shark_bite2", "shark_sweep"))
     bb = still.getbbox()
     BELLY = bs.feet_row(still)
     SINK = BELLY - CUT_ROW
@@ -211,24 +212,15 @@ def scene():
             u -= m
         return len(durs) - 1
 
-    def mass_x(im):
-        """Middle of the shark above the sand line, along x."""
-        return float(np.nonzero(np.asarray(im)[:CUT_ROW, :, 3] > 0)[1].mean())
-    # The fin walk clip rocks the whole body forward on each step and back on the recovery. With the fins under
-    # the sand that reads as sliding backward, so the plow keeps each forward push from the clip, swaps the
-    # backward slide for a slow creep, and is scaled to cover WALK_SHIFT. The clip's own rocking is cancelled by
-    # placing every frame from where its body sits in the canvas.
-    WALK_MX = [mass_x(w) for w in walk]
-    MX0, MX1 = WALK_MX[0], mass_x(bite[0])
-    push = [0.0] + [max(0.4, WALK_MX[i - 1] - WALK_MX[i]) for i in range(1, 41)]
-    # body middle runs from X0 + MX0 (walk frame 0 at X0) to X0 - WALK_SHIFT + MX1 (bite frame 0 where it bites)
-    PLOW = list(np.cumsum(push) * (WALK_SHIFT + MX0 - MX1) / sum(push))
+    KICKS = (0, 680, 1360)
+
+    def far(x):
+        """Tail kick surges: each kick adds speed that dies away, a slow drift between (as in the fin patrol)."""
+        return 0.2 * x + sum(350 * (1 - math.exp(-(x - k) / 350)) for k in KICKS if x >= k)
 
     def plow(t):
         """How far the body has travelled into the plow, half size pixels, at time t."""
-        f = min(40.0, max(0.0, (t - T_WALK) / 50))
-        i = int(f)
-        return PLOW[i] + (PLOW[min(40, i + 1)] - PLOW[i]) * (f - i)
+        return WALK_SHIFT * far(min(max(0.0, t - T_WALK), WALK_MS)) / far(WALK_MS)
 
     def shift(t):
         if t < T_WALK:
@@ -334,9 +326,8 @@ def scene():
         elif t < T_WALK:
             frame_img = breathe[min(40, (t - T_BREATHE) // 60)]
         elif t < T_BITE:
-            wi = min(40, (t - T_WALK) // 50)
-            frame_img = walk[wi]
-            fx0 = X0 + MX0 - plow(t) - WALK_MX[wi]
+            frame_img = breathe[min(40, (t - T_WALK) // 50)]
+            fx0 = X0 - plow(t)
         elif t < T_SWEEP:
             frame_img = bite[at(T_BITE, BITE_MS, t)]
         elif t < T_DIVE:
