@@ -1,0 +1,36 @@
+{
+  "owner_feedback": "Jacob said the Qwen images are great and requested one FLUX comparison before more variants. This supersedes treating Qwen visual direction as owner-rejected; the prior semantic observations remain technical review notes.",
+  "model": "flux-2-klein-base-4b.safetensors",
+  "lora": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+  "lora_strength": 1.0,
+  "lora_loading": "63 patches attached; 6 weight entries skipped: lora_A and lora_B on double_stream_modulation_img.linear, double_stream_modulation_txt.linear, single_stream_modulation.linear. Not full LoRA compatibility proof.",
+  "settings": {
+    "steps": 20,
+    "cfg": 5.0,
+    "sampler": "euler",
+    "scheduler": "Flux2Scheduler",
+    "width": 768,
+    "height": 768,
+    "seed": 2026101402
+  },
+  "prompt_id": "44794f2c-d870-4a8d-9ac1-cdff0c281811",
+  "generation_count": 1,
+  "elapsed_seconds": 100,
+  "reference": "leader_neural_relic_v17.png, local, scaled in workflow to768x512",
+  "visual_audit": [
+    "Visually inspected full768px output",
+    "Sharper separated gold glyphs than Qwen, but split into two groups rather than three converging hooks",
+    "Very bright violet/cyan centre and purple frame drift from restrained non-neon brief",
+    "Tall card-like silhouette; not a square production command button",
+    "Pixel sizes remain inconsistent; still raw concept art",
+    "No new variants or automatic state expansion"
+  ],
+  "comparison": "qwen-vs-flux.png contains both original768px outputs without rescaling or retouching",
+  "paid_api_calls": 0,
+  "new_downloads": 0,
+  "production_changes": false,
+  "sources": [
+    "https://huggingface.co/Limbicnation/pixel-art-lora",
+    "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4B"
+  ]
+}

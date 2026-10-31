@@ -1,0 +1,32 @@
+[
+  {
+    "file": "fire-emblem.png",
+    "url": "https://www.nintendo.com/eu/media/images/06_screenshots/games_5/game_boy_advance_2/gba_fireemblemthesacredstones/GBA_FireEmblemTheSacredStones_04.png",
+    "page": "https://www.nintendo.com/en-gb/Games/Game-Boy-Advance/Fire-Emblem-The-Sacred-Stones-266749.html",
+    "size": [
+      640,
+      420
+    ],
+    "bytes": 339304
+  },
+  {
+    "file": "one-piece.webp",
+    "url": "https://images.igdb.com/igdb/image/upload/t_1080p_2x/sccr3d.webp",
+    "page": "https://backloggd.com/games/shonen-jumps-one-piece/",
+    "size": [
+      3240,
+      2160
+    ],
+    "bytes": 208100
+  },
+  {
+    "file": "aria-of-sorrow.jpg",
+    "url": "https://www.rpgfan.com/wp-content/uploads/2020/07/Castlevania-Aria-of-Sorrow-Screenshot-026.jpg",
+    "page": "https://www.rpgfan.com/gallery/castlevania-aria-of-sorrow-screenshots/",
+    "size": [
+      240,
+      160
+    ],
+    "bytes": 23604
+  }
+]

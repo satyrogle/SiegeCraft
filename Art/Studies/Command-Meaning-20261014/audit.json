@@ -1,0 +1,37 @@
+{
+  "scope": "Four meaning-first icons only, not a finished cult UI or a state expansion",
+  "alpha": [
+    0,
+    255
+  ],
+  "colours": 3,
+  "exact_nearest_2x": true,
+  "native_icon": [
+    64,
+    64
+  ],
+  "source_chief": "Assets/Resources/RivalSlice/Chiefs/bloodridge_chief.png",
+  "source_sha256": "4938f1838cf65d3a9fb28b1c7e96f9ca16d123dd15e4c867e79c039e59b08905",
+  "chief_crop": [
+    64,
+    0,
+    64,
+    64
+  ],
+  "chief_processing": "Review-only three-tone mapping without resizing. Source asset untouched. Eclipse badge added in isolated master.",
+  "ability_evidence": "CampaignRules.cs CampaignTribes.Bloodridge AssistName = Eclipse",
+  "visual_audit": [
+    "Retreat arrow points left while formation faces right",
+    "Focus uses three attack paths and exactly one bracketed target",
+    "Unleash uses forward-leaning armed formation and right arrow",
+    "Chief uses existing identity instead of invented relic",
+    "Inspected rendered icons enlarged; meaning remains owner-review question"
+  ],
+  "limitations": [
+    "Not an independent blind recognition test",
+    "Unleash motion is metaphor for aggression, not new simulation movement",
+    "Chief crop is intentionally an identity specimen, not a matching finished silhouette",
+    "No battle/runtime tests"
+  ],
+  "spend": 0
+}

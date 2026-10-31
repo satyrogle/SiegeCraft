@@ -1,0 +1,324 @@
+{
+  "prompt": [
+    4,
+    "edeccac3-075c-44fa-816d-d1e1600ebff4",
+    {
+      "7": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-rune-batch-20261014/blank-A.png"
+        }
+      },
+      "8": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-rune-batch-20261014/leader.png"
+        }
+      },
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "flux-2-klein-base-4b.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "flux2klein_pixel_art_sprite_limbicnation.safetensors",
+          "strength_model": 1.0
+        }
+      },
+      "3": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_3_4b.safetensors",
+          "type": "flux2",
+          "device": "default"
+        }
+      },
+      "4": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "flux2-vae.safetensors"
+        }
+      },
+      "5": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": "pixel art sprite, game asset, 16-bit pixel art. Using the supplied alien leader as a MATERIAL AND CULTURE reference only, design one beautiful original dark alien cult command-button HOUSING for a pixel-art roguelike. The output is a UI artefact, not a character, portrait, medallion or jewellery. Interpret the leader's carved black volcanic-glass regalia, ancient gold, bruised violet and opalescent material in a fresh graphic design. Hewn volcanic-glass tablet. Squat monumental silhouette, broad chipped bevels, warm worn-gold bindings, dark muted violet facets. A severe ancient military cult artefact.\n\nOne imposing square broken obsidian tablet, flat front view, bevelled irregular corners and a small split at the top and bottom. It is a neural command interface built by a cunning flesh-and-machine cult who worship old gods. A large EMPTY dark central recess occupies the middle sixty percent of the image. It is blank near-black, smooth and quiet, ready to receive the ECLIPSE rune later. Keep material detail at the surrounding rim and corners. The housing occupies eighty percent of the canvas, centred with wide clear margins. Square proportions. Black is dominant; old gold is sparse. Deep muted violet facets. Draw crisp pixel art: a small 128 by 128 sprite enlarged with nearest-neighbour pixels. Broad deliberate square clusters, clean stair-step diagonals, limited colours, hard shadow shapes, selective one-pixel highlights and very little texture. One upper-left light. Centred single isolated object on flat dark charcoal. No face, eyes, crown, horns, letters, words, filigree, photorealism, blurry edges, sparkling stars, smoke, neon or aura. One ready-state housing only."
+        }
+      },
+      "6": {
+        "class_type": "CLIPTextEncode",
+        "inputs": {
+          "clip": [
+            "3",
+            0
+          ],
+          "text": ""
+        }
+      },
+      "9": {
+        "class_type": "ImageScale",
+        "inputs": {
+          "image": [
+            "8",
+            0
+          ],
+          "upscale_method": "lanczos",
+          "width": 768,
+          "height": 512,
+          "crop": "disabled"
+        }
+      },
+      "10": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "7",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "11": {
+        "class_type": "VAEEncode",
+        "inputs": {
+          "pixels": [
+            "9",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "12": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "5",
+            0
+          ],
+          "latent": [
+            "10",
+            0
+          ]
+        }
+      },
+      "13": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "6",
+            0
+          ],
+          "latent": [
+            "10",
+            0
+          ]
+        }
+      },
+      "14": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "5",
+            0
+          ],
+          "latent": [
+            "11",
+            0
+          ]
+        }
+      },
+      "15": {
+        "class_type": "ReferenceLatent",
+        "inputs": {
+          "conditioning": [
+            "6",
+            0
+          ],
+          "latent": [
+            "11",
+            0
+          ]
+        }
+      },
+      "16": {
+        "class_type": "EmptyFlux2LatentImage",
+        "inputs": {
+          "width": 768,
+          "height": 768,
+          "batch_size": 1
+        }
+      },
+      "17": {
+        "class_type": "CFGGuider",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "positive": [
+            "14",
+            0
+          ],
+          "negative": [
+            "15",
+            0
+          ],
+          "cfg": 5.0
+        }
+      },
+      "18": {
+        "class_type": "KSamplerSelect",
+        "inputs": {
+          "sampler_name": "euler"
+        }
+      },
+      "19": {
+        "class_type": "Flux2Scheduler",
+        "inputs": {
+          "steps": 20,
+          "width": 768,
+          "height": 768
+        }
+      },
+      "20": {
+        "class_type": "RandomNoise",
+        "inputs": {
+          "noise_seed": 2026101504
+        }
+      },
+      "21": {
+        "class_type": "SamplerCustomAdvanced",
+        "inputs": {
+          "noise": [
+            "20",
+            0
+          ],
+          "guider": [
+            "17",
+            0
+          ],
+          "sampler": [
+            "18",
+            0
+          ],
+          "sigmas": [
+            "19",
+            0
+          ],
+          "latent_image": [
+            "16",
+            0
+          ]
+        }
+      },
+      "22": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "21",
+            0
+          ],
+          "vae": [
+            "4",
+            0
+          ]
+        }
+      },
+      "23": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "22",
+            0
+          ],
+          "filename_prefix": "KS-Rune-Batch-20261014/F05-eclipse"
+        }
+      }
+    },
+    {
+      "client_id": "ks-coherent-runes-20261014",
+      "create_time": 1791967445420
+    },
+    [
+      "23"
+    ]
+  ],
+  "outputs": {
+    "23": {
+      "images": [
+        {
+          "filename": "F05-eclipse_00001_.png",
+          "subfolder": "KS-Rune-Batch-20261014",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "edeccac3-075c-44fa-816d-d1e1600ebff4",
+          "timestamp": 1791967445421
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "8",
+            "1",
+            "2",
+            "3",
+            "4",
+            "6",
+            "9",
+            "11",
+            "15",
+            "16",
+            "18",
+            "19"
+          ],
+          "prompt_id": "edeccac3-075c-44fa-816d-d1e1600ebff4",
+          "timestamp": 1791967445431
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "edeccac3-075c-44fa-816d-d1e1600ebff4",
+          "timestamp": 1791967560842
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "23": {
+      "node_id": "23",
+      "display_node": "23",
+      "parent_node": null,
+      "real_node_id": "23"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "scope": "Isolated cult command state study. Not integrated or approved.",
+  "native_sheet": [
+    640,
+    320
+  ],
+  "cell": [
+    128,
+    64
+  ],
+  "state_count": 22,
+  "opaque_colours": 11,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "exact_nearest_2x": true,
+  "references": [
+    {
+      "source": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Concepts\\InnerCircle\\2026-10-10\\leader_neural_relic_v17.png",
+      "copy_sha256": "25907b34bfb978704da7e4c8ea685db15002f66d06a7256fa8e2565ce19495ad",
+      "source_sha256": "25907b34bfb978704da7e4c8ea685db15002f66d06a7256fa8e2565ce19495ad",
+      "identical": true
+    },
+    {
+      "source": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Hold-Command-Specimen-20261013\\fight-reference.png",
+      "copy_sha256": "4edbcb66daf5bc4cdb08255692002b3591069620235750cdab0dc89d9aa36f42",
+      "source_sha256": "4edbcb66daf5bc4cdb08255692002b3591069620235750cdab0dc89d9aa36f42",
+      "identical": true
+    }
+  ],
+  "visual_audit": {
+    "viewed_native_and_2x": true,
+    "viewed_4x_unleash_and_chief": true,
+    "corrected": "Unleash silhouette resembled chief relic; replaced with diagonal fracture and outward shards.",
+    "readability": "Distinct silhouettes, readable labels and explicit active/unavailable wording; focus uses external brackets.",
+    "limit": "Cult attribution is a proposal based on leader reference; owner verdict pending. Small glyphs simplify the concept material. No battle-motion or Unity proof."
+  },
+  "states": [
+    "ready",
+    "hover_keyboard_focus",
+    "pressed",
+    "active_or_called",
+    "unavailable",
+    "focus_armed_extra",
+    "chief_used_extra"
+  ],
+  "semantics": "Costs 1/1/2/3 from Directives.Cost. Chief is generic slot with acquired-name substitution still needed in production. Effect bars illustrative; not cooldowns.",
+  "browser_checks": [
+    "Focus armed then confirmed active",
+    "Chief called then used/disabled",
+    "Enter activates Unleash",
+    "Unavailable examples",
+    "Reset restores ready",
+    "No browser warnings or errors",
+    "Complete board captured before delivery"
+  ],
+  "generation_spend": 0,
+  "tools": "Installed Aseprite headless + existing KS bitmap font. No image generator.",
+  "mcp_validate": "Not exposed; used palette analyze plus exact local pixel checks."
+}

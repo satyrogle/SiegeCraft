@@ -1,0 +1,321 @@
+{
+  "2445e544-d167-460f-b6f4-e56265a419b6": {
+    "prompt": [
+      4,
+      "2445e544-d167-460f-b6f4-e56265a419b6",
+      {
+        "7": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "ks-rune-batch-20261014/blank-A.png"
+          }
+        },
+        "8": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "ks-rune-batch-20261014/leader.png"
+          }
+        },
+        "1": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "unet_name": "flux-2-klein-base-4b.safetensors",
+            "weight_dtype": "default"
+          }
+        },
+        "2": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "model": [
+              "1",
+              0
+            ],
+            "lora_name": "ks-rune-batch-20261014\\pixel-art-modulation-keymap.safetensors",
+            "strength_model": 1.0
+          }
+        },
+        "3": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen_3_4b.safetensors",
+            "type": "flux2",
+            "device": "default"
+          }
+        },
+        "4": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "flux2-vae.safetensors"
+          }
+        },
+        "5": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "3",
+              0
+            ],
+            "text": "pixel art sprite, game asset, 16-bit pixel art. Create a beautiful dark alien cult UI command-button HOUSING, to receive a separately authored command rune. Picture 1 is the square composition guide. Picture 2 is this cult's leader: borrow his volcanic black, ancient gold, deep violet, broken angular geometry and small opalescent material accents; do not draw the character. Hewn volcanic-glass tablet. Squat monumental silhouette, broad chipped bevels, warm worn-gold bindings, dark muted violet facets. A severe ancient military cult artefact.\n\nOne single upright square button viewed exactly from the front. Preserve the composition guide's large EMPTY dark central recess, which occupies the middle sixty percent of the image. The recess is blank near-black, smooth and quiet, with no symbol, crystal, gem, letters, arrows, painting, face or decoration inside it. We will place the exact HOLD rune there ourselves. Keep all beautiful material detail at the surrounding rim and corners. The housing occupies about eighty percent of the canvas, centred with wide margins. Square proportions, clean silhouette, a small split at the top and bottom, restrained angular bevels. Black is the dominant material; old gold is a sparse structural accent, not a bright frame around the whole object. Deep desaturated violet, never neon. No blue/cyan light. No luminous halo or particles. Single upper-left light. Crisp stepped pixel clusters, broad shadow planes, sparse edge highlights, clean negative spaces, readable at small size. Aim for a native128px game sprite enlarged by nearest-neighbour. Uniform charcoal background. No text, numbers, logo, eyes, horns, skull, filigree, background scene or perspective tilt. One ready-state housing only, not a sheet."
+          }
+        },
+        "6": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "3",
+              0
+            ],
+            "text": ""
+          }
+        },
+        "9": {
+          "class_type": "ImageScale",
+          "inputs": {
+            "image": [
+              "8",
+              0
+            ],
+            "upscale_method": "lanczos",
+            "width": 768,
+            "height": 512,
+            "crop": "disabled"
+          }
+        },
+        "10": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "7",
+              0
+            ],
+            "vae": [
+              "4",
+              0
+            ]
+          }
+        },
+        "11": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "9",
+              0
+            ],
+            "vae": [
+              "4",
+              0
+            ]
+          }
+        },
+        "12": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "conditioning": [
+              "5",
+              0
+            ],
+            "latent": [
+              "10",
+              0
+            ]
+          }
+        },
+        "13": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "conditioning": [
+              "6",
+              0
+            ],
+            "latent": [
+              "10",
+              0
+            ]
+          }
+        },
+        "14": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "conditioning": [
+              "12",
+              0
+            ],
+            "latent": [
+              "11",
+              0
+            ]
+          }
+        },
+        "15": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "conditioning": [
+              "13",
+              0
+            ],
+            "latent": [
+              "11",
+              0
+            ]
+          }
+        },
+        "16": {
+          "class_type": "EmptyFlux2LatentImage",
+          "inputs": {
+            "width": 768,
+            "height": 768,
+            "batch_size": 1
+          }
+        },
+        "17": {
+          "class_type": "CFGGuider",
+          "inputs": {
+            "model": [
+              "2",
+              0
+            ],
+            "positive": [
+              "14",
+              0
+            ],
+            "negative": [
+              "15",
+              0
+            ],
+            "cfg": 5.0
+          }
+        },
+        "18": {
+          "class_type": "KSamplerSelect",
+          "inputs": {
+            "sampler_name": "euler"
+          }
+        },
+        "19": {
+          "class_type": "Flux2Scheduler",
+          "inputs": {
+            "steps": 20,
+            "width": 768,
+            "height": 768
+          }
+        },
+        "20": {
+          "class_type": "RandomNoise",
+          "inputs": {
+            "noise_seed": 2026101500
+          }
+        },
+        "21": {
+          "class_type": "SamplerCustomAdvanced",
+          "inputs": {
+            "noise": [
+              "20",
+              0
+            ],
+            "guider": [
+              "17",
+              0
+            ],
+            "sampler": [
+              "18",
+              0
+            ],
+            "sigmas": [
+              "19",
+              0
+            ],
+            "latent_image": [
+              "16",
+              0
+            ]
+          }
+        },
+        "22": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "21",
+              0
+            ],
+            "vae": [
+              "4",
+              0
+            ]
+          }
+        },
+        "23": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "22",
+              0
+            ],
+            "filename_prefix": "KS-Rune-Batch-20261014/F01-hold"
+          }
+        }
+      },
+      {
+        "client_id": "ks-coherent-runes-20261014",
+        "create_time": 1791966324148
+      },
+      [
+        "23"
+      ]
+    ],
+    "outputs": {
+      "23": {
+        "images": [
+          {
+            "filename": "F01-hold_00001_.png",
+            "subfolder": "KS-Rune-Batch-20261014",
+            "type": "output"
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "2445e544-d167-460f-b6f4-e56265a419b6",
+            "timestamp": 1791966324149
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1",
+              "3",
+              "4",
+              "6",
+              "16",
+              "18",
+              "19"
+            ],
+            "prompt_id": "2445e544-d167-460f-b6f4-e56265a419b6",
+            "timestamp": 1791966324170
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "2445e544-d167-460f-b6f4-e56265a419b6",
+            "timestamp": 1791966509353
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "23": {
+        "node_id": "23",
+        "display_node": "23",
+        "parent_node": null,
+        "real_node_id": "23"
+      }
+    }
+  }
+}

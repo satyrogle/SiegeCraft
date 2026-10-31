@@ -1,0 +1,210 @@
+{
+  "prompt": [
+    6,
+    "4bf679ba-fbc6-42b7-9cf7-ffe588ee8248",
+    {
+      "7": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-rune-batch-20261014/blank-A.png"
+        }
+      },
+      "8": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "ks-rune-batch-20261014/leader.png"
+        }
+      },
+      "1": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "2": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "1",
+            0
+          ],
+          "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+          "strength_model": 1.0
+        }
+      },
+      "3": {
+        "class_type": "ModelSamplingAuraFlow",
+        "inputs": {
+          "model": [
+            "2",
+            0
+          ],
+          "shift": 3.0
+        }
+      },
+      "4": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "type": "qwen_image",
+          "device": "default"
+        }
+      },
+      "5": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "qwen_image_vae.safetensors"
+        }
+      },
+      "9": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "pixel art sprite, game asset, 16-bit pixel art. Using the supplied alien leader as a MATERIAL AND CULTURE reference only, design one beautiful original dark alien cult command-button HOUSING for a pixel-art roguelike. The output is a UI artefact, not a character, portrait, medallion or jewellery. Interpret the leader's carved black volcanic-glass regalia, ancient gold, bruised violet and opalescent material in a fresh graphic design. Hewn volcanic-glass tablet. Squat monumental silhouette, broad chipped bevels, warm worn-gold bindings, dark muted violet facets. A severe ancient military cult artefact.\n\nOne imposing square broken obsidian tablet, flat front view, bevelled irregular corners and a small split at the top and bottom. It is a neural command interface built by a cunning flesh-and-machine cult who worship old gods. A large EMPTY dark central recess occupies the middle sixty percent of the image. It is blank near-black, smooth and quiet, ready to receive the FALL BACK rune later. Keep material detail at the surrounding rim and corners. The housing occupies eighty percent of the canvas, centred with wide clear margins. Square proportions. Black is dominant; old gold is sparse. Deep muted violet facets. Draw crisp pixel art: a small 128 by 128 sprite enlarged with nearest-neighbour pixels. Broad deliberate square clusters, clean stair-step diagonals, limited colours, hard shadow shapes, selective one-pixel highlights and very little texture. One upper-left light. Centred single isolated object on flat dark charcoal. No face, eyes, crown, horns, letters, words, filigree, photorealism, blurry edges, sparkling stars, smoke, neon or aura. One ready-state housing only.",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "8",
+            0
+          ]
+        }
+      },
+      "10": {
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "inputs": {
+          "clip": [
+            "4",
+            0
+          ],
+          "prompt": "",
+          "vae": [
+            "5",
+            0
+          ],
+          "image1": [
+            "8",
+            0
+          ]
+        }
+      },
+      "11": {
+        "class_type": "EmptySD3LatentImage",
+        "inputs": {
+          "width": 768,
+          "height": 768,
+          "batch_size": 1
+        }
+      },
+      "12": {
+        "class_type": "KSampler",
+        "inputs": {
+          "model": [
+            "3",
+            0
+          ],
+          "positive": [
+            "9",
+            0
+          ],
+          "negative": [
+            "10",
+            0
+          ],
+          "latent_image": [
+            "11",
+            0
+          ],
+          "seed": 2026101601,
+          "steps": 4,
+          "cfg": 1.0,
+          "sampler_name": "euler",
+          "scheduler": "simple",
+          "denoise": 1.0
+        }
+      },
+      "13": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "12",
+            0
+          ],
+          "vae": [
+            "5",
+            0
+          ]
+        }
+      },
+      "14": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "13",
+            0
+          ],
+          "filename_prefix": "KS-Rune-Batch-20261014/Q02-fall-back"
+        }
+      }
+    },
+    {
+      "client_id": "ks-coherent-runes-20261014",
+      "create_time": 1791968999881
+    },
+    [
+      "14"
+    ]
+  ],
+  "outputs": {
+    "14": {
+      "images": [
+        {
+          "filename": "Q02-fall-back_00001_.png",
+          "subfolder": "KS-Rune-Batch-20261014",
+          "type": "output"
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "4bf679ba-fbc6-42b7-9cf7-ffe588ee8248",
+          "timestamp": 1791968999885
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "4bf679ba-fbc6-42b7-9cf7-ffe588ee8248",
+          "timestamp": 1791968999904
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "4bf679ba-fbc6-42b7-9cf7-ffe588ee8248",
+          "timestamp": 1791969262550
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "14": {
+      "node_id": "14",
+      "display_node": "14",
+      "parent_node": null,
+      "real_node_id": "14"
+    }
+  }
+}

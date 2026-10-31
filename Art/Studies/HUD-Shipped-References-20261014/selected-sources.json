@@ -1,0 +1,116 @@
+[
+  {
+    "number": "01",
+    "title": "FIRE EMBLEM",
+    "subtitle": "The Blazing Blade / GBA",
+    "file": "fire-emblem-forecast.png",
+    "page": "https://fireemblemwiki.org/wiki/File:Ss_fe07_strategic_combat_forecast.png",
+    "source": "https://fireemblemwiki.org/w/images/f/f5/Ss_fe07_strategic_combat_forecast.png",
+    "label": "STRUCTURED INFORMATION",
+    "crops": [
+      [
+        [
+          4,
+          4,
+          79,
+          56
+        ],
+        5
+      ]
+    ],
+    "observations": [
+      "Small icons sit beside clear words.",
+      "Thin borders separate values and ownership."
+    ],
+    "transfer": "Study the spacing and hierarchy.",
+    "avoid": "KS keeps damage / MISS, not hit percentages.",
+    "sha256": "5e7907c77152374b17caab3bcd6d9df858dae40720cc5949089f3f551918be32",
+    "source_dimensions": [
+      240,
+      160
+    ],
+    "status": "reference only; no UI design selected or game assets copied"
+  },
+  {
+    "number": "02",
+    "title": "ONE PIECE",
+    "subtitle": "Shonen Jump's One Piece / GBA",
+    "file": "one-3.png",
+    "page": "https://lospec.com/screenshots/Game%20Boy%20Advance/One%20Piece",
+    "source": "https://cdn.lospec.com/screenshots/Game Boy Advance/One Piece/One Piece (Eng) 003.png",
+    "label": "FACTION IDENTITY",
+    "crops": [
+      [
+        [
+          0,
+          0,
+          110,
+          31
+        ],
+        4
+      ],
+      [
+        [
+          0,
+          136,
+          172,
+          160
+        ],
+        3
+      ]
+    ],
+    "observations": [
+      "A single emblem gives the HUD its identity.",
+      "Long, simple bars leave room for the action."
+    ],
+    "transfer": "Study the emblem-to-bar relationship.",
+    "avoid": "KS keeps its cult identity and dark palette.",
+    "sha256": "98c7bd118c3d955e04e973c3e3d1822ee3cbe2e1ef0814e9b2215954d680cb4f",
+    "source_dimensions": [
+      240,
+      160
+    ],
+    "status": "reference only; no UI design selected or game assets copied"
+  },
+  {
+    "number": "03",
+    "title": "CASTLEVANIA",
+    "subtitle": "Aria of Sorrow / GBA",
+    "file": "aria-2.png",
+    "page": "https://lospec.com/screenshots/Game%20Boy%20Advance/Castlevania%20-%20Aria%20of%20Sorrow",
+    "source": "https://cdn.lospec.com/screenshots/Game Boy Advance/Castlevania - Aria of Sorrow/Castlevania - Aria of Sorrow (2018) (Eng) 002.png",
+    "label": "RESTRAINED GOTHIC DETAIL",
+    "crops": [
+      [
+        [
+          0,
+          0,
+          110,
+          27
+        ],
+        4
+      ],
+      [
+        [
+          168,
+          138,
+          240,
+          160
+        ],
+        5
+      ]
+    ],
+    "observations": [
+      "Small gold corners frame dark information.",
+      "Bright type and distinct bars carry the signal."
+    ],
+    "transfer": "Study the small trim and dark/light contrast.",
+    "avoid": "KS symbols and controls will be original.",
+    "sha256": "3a808d86fbcc843e58b8e0aba68add5054ddd892badc7757169c431a66205a17",
+    "source_dimensions": [
+      240,
+      160
+    ],
+    "status": "reference only; no UI design selected or game assets copied"
+  }
+]

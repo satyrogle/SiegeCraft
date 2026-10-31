@@ -1,0 +1,43 @@
+{
+  "native_size": [
+    560,
+    104
+  ],
+  "export_2x_size": [
+    1120,
+    208
+  ],
+  "nearest_2x_exact": true,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "opaque_colour_count": 16,
+  "fighter_copy_exact": true,
+  "fighter_sha256": "2a5c5dd540e0479d45d1ee77e50175c489c2aea01478d1c29aa3d56118b5a620",
+  "states": [
+    "ready",
+    "hover_focus",
+    "pressed",
+    "active",
+    "unavailable"
+  ],
+  "source_layers": [
+    "Obsidian housing",
+    "Converging rune",
+    "Label and state"
+  ],
+  "visual_audit": [
+    "Inspected native grid, UI 2x and enlarged 4x",
+    "Enlarged rune after first review because housing dominated",
+    "Hover uses open brackets; active has connected strokes and lower seal; unavailable has lock",
+    "16-colour palette analysis clean, no off-palette pixels",
+    "Browser click and Enter activation, unavailable guard and reset checked; no warning/error logs"
+  ],
+  "limitations": [
+    "Rune meaning and cult identity await owner review",
+    "No Unity integration or moving-battle readability evidence",
+    "Mechanical validate tool not exposed; used palette analysis, export checks and source-pixel comparison"
+  ],
+  "paid_generation": false
+}

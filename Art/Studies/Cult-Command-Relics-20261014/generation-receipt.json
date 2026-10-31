@@ -1,0 +1,62 @@
+{
+  "service": "PixelLab",
+  "model": "Pro Flash",
+  "jobs": [
+    {
+      "name": "fallback",
+      "job": "1d12ed26-742f-4f08-bab8-95c9409b6b5d"
+    },
+    {
+      "name": "focus",
+      "job": "c0ea20ae-fe02-41d1-b01b-b183af29f5f6"
+    },
+    {
+      "name": "unleash",
+      "job": "6c1a37f2-6714-401e-94fd-37bba87d8644"
+    },
+    {
+      "name": "chief",
+      "job": "4a3dcf26-6713-4359-a2f1-ebbdd36dc9c3"
+    }
+  ],
+  "generations_before": 2539,
+  "generations_after": 2519,
+  "total_charged": 20,
+  "prompts_shared": "A single physical alien cult command relic for a dark fantasy tactical game's pixel-art UI. Front view, isolated transparent background. Exquisite deliberate pixel clusters, tangible volume, selective dark outline, upper-left lighting. Grown polished OBSIDIAN BLACK exoskeletal housing, sparse aged gold nerve filaments, pearlescent ivory/lilac nacre inlay, deep aubergine shadows. Restrained palette, crisp 1-pixel detail, broad facets. Eerie off-world ceremonial technology, not medieval human gear, not neon, no text, no square frame, no interface panel, no backdrop. Fits inside 52x52 area on 64x64 canvas. ",
+  "source_images": "*-source.png; unchanged PixelLab bytes",
+  "master": "cult-relics.aseprite",
+  "palette": {
+    "0": "#0b0a10",
+    "1": "#15121d",
+    "2": "#211b2a",
+    "3": "#302638",
+    "4": "#453445",
+    "5": "#604854",
+    "6": "#7c626e",
+    "7": "#a1838e",
+    "8": "#bfa5ad",
+    "9": "#d8c2c4",
+    "A": "#eadcda",
+    "B": "#faf1e5",
+    "C": "#25212c",
+    "D": "#3d3642",
+    "E": "#595260",
+    "F": "#797582",
+    "G": "#9b96a2",
+    "H": "#bdb8bf",
+    "I": "#dbd7d8",
+    "J": "#2a201b",
+    "K": "#493622",
+    "L": "#695035",
+    "M": "#92704c",
+    "N": "#b49569",
+    "O": "#d5ba89",
+    "P": "#eadaaf",
+    "Q": "#42404c",
+    "R": "#646576",
+    "S": "#8993a0",
+    "T": "#adbfc5",
+    "U": "#ccdcda",
+    "V": "#f0e8d2"
+  }
+}

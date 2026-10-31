@@ -1,0 +1,15 @@
+{
+  "source": "C:\\Users\\jacob\\ComfyUI-Shared\\models\\loras\\flux2klein_pixel_art_sprite_limbicnation.safetensors",
+  "adapted_copy": "C:\\Users\\jacob\\ComfyUI-Shared\\models\\loras\\ks-rune-batch-20261014\\pixel-art-modulation-keymap.safetensors.rejected",
+  "mapped_keys": {
+    "double_stream_modulation_img.linear.lora_A.weight": "diffusion_model.double_stream_modulation_img.lin.lora_A.weight",
+    "double_stream_modulation_img.linear.lora_B.weight": "diffusion_model.double_stream_modulation_img.lin.lora_B.weight",
+    "double_stream_modulation_txt.linear.lora_A.weight": "diffusion_model.double_stream_modulation_txt.lin.lora_A.weight",
+    "double_stream_modulation_txt.linear.lora_B.weight": "diffusion_model.double_stream_modulation_txt.lin.lora_B.weight",
+    "single_stream_modulation.linear.lora_A.weight": "diffusion_model.single_stream_modulation.lin.lora_A.weight",
+    "single_stream_modulation.linear.lora_B.weight": "diffusion_model.single_stream_modulation.lin.lora_B.weight"
+  },
+  "tensor_payload_sha256": "98e26d6aec6c137420be7be906df9c4ae62677382c5462e5374d08531fe9309e",
+  "tensor_bytes_identical": true,
+  "final_route": "Rejected visual result; disabled copy. Final FLUX uses original LoRA with 63 patches and six skipped entries."
+}

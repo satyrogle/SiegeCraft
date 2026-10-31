@@ -1,0 +1,30 @@
+{
+  "nativeSize": [
+    640,
+    64
+  ],
+  "displaySize": [
+    1280,
+    128
+  ],
+  "stateCell": [
+    128,
+    64
+  ],
+  "opaqueColors": 11,
+  "alpha": [
+    0,
+    255
+  ],
+  "nearest2xExact": true,
+  "layers": [
+    "Shell",
+    "Shield",
+    "Type and states"
+  ],
+  "skillValidation": "quick_validate passed; relative links resolve",
+  "interaction": "mouse and Enter activation, unavailable and reset checked in browser; no console errors",
+  "paidGeneration": "none",
+  "visualReview": "Viewed native and enlarged sheet and game-scale comparison; corrected stray highlight placement and cost grouping. Owner approval pending.",
+  "limits": "Proposed art; 2.4s illustrative; no Unity runtime or full HUD. MCP validate tool not exposed; palette analysis and lossless export checks used."
+}

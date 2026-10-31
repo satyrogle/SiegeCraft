@@ -1,0 +1,28 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Clean (1 style note(s)).\n[warning] palette: 541 colour(s) in the art are not in the palette; the most used is #9e9184 (282880px). Run recolor op 'snap' to bring them in line.\n[note] palette: 256 palette entries. Most sprites read better under 32 — a large palette usually means ramps that were never merged."
+    }
+  ],
+  "structuredContent": {
+    "sprite": "bloodridge-battle-screen.aseprite",
+    "findings": [
+      {
+        "count": 541,
+        "message": "541 colour(s) in the art are not in the palette; the most used is #9e9184 (282880px). Run recolor op 'snap' to bring them in line.",
+        "check": "palette",
+        "severity": "warning"
+      },
+      {
+        "count": 256,
+        "message": "256 palette entries. Most sprites read better under 32 — a large palette usually means ramps that were never merged.",
+        "check": "palette",
+        "severity": "note"
+      }
+    ],
+    "passed": true,
+    "score": 95,
+    "summary": "Clean (1 style note(s))."
+  }
+}

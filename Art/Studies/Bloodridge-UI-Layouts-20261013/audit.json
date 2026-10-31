@@ -1,0 +1,35 @@
+{
+  "source": "Bloodridge-Moving-Fight-20261013/candidate/frame-0180.png",
+  "protectedRectangle": [
+    180,
+    280,
+    1268,
+    750
+  ],
+  "protectedPixelsPerLayout": 511360,
+  "checks": {
+    "A": {
+      "size": [
+        1440,
+        900
+      ],
+      "fighterAreaUnchanged": true
+    },
+    "B": {
+      "size": [
+        1440,
+        900
+      ],
+      "fighterAreaUnchanged": true
+    },
+    "C": {
+      "size": [
+        1440,
+        900
+      ],
+      "fighterAreaUnchanged": true
+    }
+  },
+  "review": "Native exports and comparison board visually inspected. Browser compare, enlargement and native-size controls checked. No console warnings or errors.",
+  "limits": "Static layout sketches. Existing combat overlays retained. Not implemented or approved UI art."
+}

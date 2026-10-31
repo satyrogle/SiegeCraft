@@ -1,0 +1,518 @@
+{
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-rune-batch-20261014/blank-A.png"
+    }
+  },
+  "8": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ks-rune-batch-20261014/leader.png"
+    }
+  },
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "shift": 3.0
+    }
+  },
+  "4": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "pixel art sprite, game asset, 16-bit pixel art. Using the supplied alien leader as a MATERIAL AND CULTURE reference only, design one beautiful original dark alien cult command-button HOUSING for a pixel-art roguelike. The output is a UI artefact, not a character, portrait, medallion or jewellery. Interpret the leader's carved black volcanic-glass regalia, ancient gold, bruised violet and opalescent material in a fresh graphic design. Hewn volcanic-glass tablet. Squat monumental silhouette, broad chipped bevels, warm worn-gold bindings, dark muted violet facets. A severe ancient military cult artefact.\n\nOne imposing square broken obsidian tablet, flat front view, bevelled irregular corners and a small split at the top and bottom. It is a neural command interface built by a cunning flesh-and-machine cult who worship old gods. A large EMPTY dark central recess occupies the middle sixty percent of the image. It is blank near-black, smooth and quiet, ready to receive the authored command rune later. Keep material detail at the surrounding rim and corners. The housing occupies eighty percent of the canvas, centred with wide clear margins. Square proportions. Black is dominant; old gold is sparse. Deep muted violet facets. Draw crisp pixel art: a small 128 by 128 sprite enlarged with nearest-neighbour pixels. Broad deliberate square clusters, clean stair-step diagonals, limited colours, hard shadow shapes, selective one-pixel highlights and very little texture. One upper-left light. Centred single isolated object on flat dark charcoal. No face, eyes, crown, horns, letters, words, filigree, photorealism, blurry edges, sparkling stars, smoke, neon or aura. One ready-state housing only.",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "8",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "15": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "4",
+        0
+      ],
+      "prompt": "pixel art sprite, game asset, 16-bit pixel art. Using the supplied alien leader as a MATERIAL AND CULTURE reference only, design one beautiful original dark alien cult command-button HOUSING for a pixel-art roguelike. The output is a UI artefact, not a character, portrait, medallion or jewellery. Interpret the leader's carved black volcanic-glass regalia, ancient gold, bruised violet and opalescent material in a fresh graphic design. Layered neural reliquary. Two interlocking black obsidian plates, fine opalescent edge slivers, restrained old-gold clasps, black membrane seams and deep bruised-violet reflections. Alien biomechanical authority, graphic and imposing.\n\nOne imposing square broken obsidian tablet, flat front view, bevelled irregular corners and a small split at the top and bottom. It is a neural command interface built by a cunning flesh-and-machine cult who worship old gods. A large EMPTY dark central recess occupies the middle sixty percent of the image. It is blank near-black, smooth and quiet, ready to receive the authored command rune later. Keep material detail at the surrounding rim and corners. The housing occupies eighty percent of the canvas, centred with wide clear margins. Square proportions. Black is dominant; old gold is sparse. Deep muted violet facets. Draw crisp pixel art: a small 128 by 128 sprite enlarged with nearest-neighbour pixels. Broad deliberate square clusters, clean stair-step diagonals, limited colours, hard shadow shapes, selective one-pixel highlights and very little texture. One upper-left light. Centred single isolated object on flat dark charcoal. No face, eyes, crown, horns, letters, words, filigree, photorealism, blurry edges, sparkling stars, smoke, neon or aura. One ready-state housing only.",
+      "vae": [
+        "5",
+        0
+      ],
+      "image1": [
+        "8",
+        0
+      ]
+    }
+  },
+  "106": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 2026101602,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "107": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "106",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "108": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "107",
+        0
+      ],
+      "filename_prefix": "KS-Rune-Batch-20261014/shared-Q03-focus-fire"
+    }
+  },
+  "109": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 2026101603,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "110": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "109",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "111": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "110",
+        0
+      ],
+      "filename_prefix": "KS-Rune-Batch-20261014/shared-Q04-unleash"
+    }
+  },
+  "112": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 2026101604,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "113": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "112",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "114": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "113",
+        0
+      ],
+      "filename_prefix": "KS-Rune-Batch-20261014/shared-Q05-eclipse"
+    }
+  },
+  "115": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "15",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 2026101605,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "116": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "115",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "117": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "116",
+        0
+      ],
+      "filename_prefix": "KS-Rune-Batch-20261014/shared-Q06-hold"
+    }
+  },
+  "118": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "15",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 2026101606,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "119": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "118",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "120": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "119",
+        0
+      ],
+      "filename_prefix": "KS-Rune-Batch-20261014/shared-Q07-fall-back"
+    }
+  },
+  "121": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "15",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 2026101607,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "122": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "121",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "123": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "122",
+        0
+      ],
+      "filename_prefix": "KS-Rune-Batch-20261014/shared-Q08-focus-fire"
+    }
+  },
+  "124": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "15",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 2026101608,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "125": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "124",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "126": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "125",
+        0
+      ],
+      "filename_prefix": "KS-Rune-Batch-20261014/shared-Q09-unleash"
+    }
+  },
+  "127": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "15",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 2026101609,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "128": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "127",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    }
+  },
+  "129": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "128",
+        0
+      ],
+      "filename_prefix": "KS-Rune-Batch-20261014/shared-Q10-eclipse"
+    }
+  }
+}

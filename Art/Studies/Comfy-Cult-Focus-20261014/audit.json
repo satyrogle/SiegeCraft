@@ -1,0 +1,19 @@
+{
+  "status": "local_generation_verified_art_candidates_rejected_by_self_review",
+  "runtime": "Existing ComfyUI ArtLab at 127.0.0.1:8191",
+  "hardware": "NVIDIA RTX 3060 12GB VRAM; 32GB RAM",
+  "model": "qwen_image_edit_2511_int8_convrot.safetensors",
+  "adapter": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+  "text_encoder": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+  "vae": "qwen_image_vae.safetensors",
+  "settings": {"steps": 4, "cfg": 1.0, "sampler": "euler", "scheduler": "simple", "width": 768, "height": 768},
+  "trials": [
+    {"prompt_id": "d812b1af-600c-47ee-a523-b061bcd68807", "seed": 2026101401, "elapsed_seconds": 120, "file": "qwen-local-reference-trial_00001_.png", "references": ["Previous rune button, cropped in ComfyUI", "Leader neural relic v17"], "audit": "Visually inspected. Over-repeats previous button and adds an unwanted outer ring. Material treatment more saturated; not a useful art-direction improvement."},
+    {"prompt_id": "b1ef18ed-80aa-4b2e-a87a-427da4edaeae", "seed": 2026101402, "elapsed_seconds": 60, "file": "qwen-material-only_00001_.png", "references": ["Leader neural relic v17"], "audit": "Visually inspected. Black-violet-gold material transfer is clearer. Fails three inward-hook brief: creates six outward ends. Too tall for the square footprint; stray purple pixels and inconsistent pixel widths. Rejected as a Focus Fire design."}
+  ],
+  "limits": ["Raw 768px concepts, not native production pixel assets", "No state expansion or production integration", "User has not reviewed these generated candidates", "FLUX.2 Klein 4B and its pixel LoRA were found on disk, not tested in this pass"],
+  "paid_api_calls": 0,
+  "new_model_downloads": 0,
+  "reinstallation": false,
+  "cloud_nodes": false
+}

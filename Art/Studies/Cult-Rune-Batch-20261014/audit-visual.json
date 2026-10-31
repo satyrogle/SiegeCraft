@@ -1,0 +1,30 @@
+{
+  "status": "reviewed_all_20_and_both_complete_sheets",
+  "method": "Inspect every assembled 4x image and both complete comparison sheets; retain all raw model outputs locally.",
+  "semantics": {
+    "HOLD": "Diamond unit enclosed by unbroken boundary.",
+    "FALL BACK": "Diamond unit moves left toward the boundary.",
+    "FOCUS FIRE": "Three tips converge on one diamond target.",
+    "UNLEASH": "Two tips point outward through split containment.",
+    "ECLIPSE": "Occluded disc/crescent for the existing Bloodridge acquired order."
+  },
+  "inspected": ["F01", "F02", "F03", "F04", "F05", "F06", "F07", "F08", "F09", "F10", "Q01", "Q02", "Q03", "Q04", "Q05", "Q06", "Q07", "Q08", "Q09", "Q10"],
+  "observations": [
+    "FLUX B housings are darker, quieter and give the pale rune clearer priority; F08 and F09 are the strongest readability candidates so far.",
+    "FLUX A is coherent but more conventional fantasy framing, especially F05. These remain alternatives for owner comparison, not equally strong recommendations.",
+    "Qwen uses larger fractured and segmented planes. Nine outputs produced unwanted external light markers or beams; bounded cleanup recorded in review_corrections.py removed them before upload. Q10 needed no exterior cleanup.",
+    "Q06 and Q08 are the clearest Qwen candidates for restrained dark housings. Q09 has stronger faceting but more edge detail competing with the rune. Q02 and Q05 are more stone-like than neural.",
+    "The glyph layer is authored and fixed. The housing comes from each local model generation; these are hybrid candidates rather than raw model outputs.",
+    "Pixel processing reduces each housing to 128x128 and the shared 25-colour study palette, including black silhouette outlines. Fine hand cleanup and in-game scale review are still separate from these concepts."
+  ],
+  "failed_attempts": [
+    "Initial dual-reference FLUX plus fully remapped modulation LoRA produced all-over texture, not a housing. Rejected and preserved under rejected-dual-reference.",
+    "Two dynamic-VRAM jobs stalled at initialization and were stopped without an output. Only this task's jobs were affected.",
+    "The final FLUX route uses the previously successful original LoRA: 63 patches load, six key entries are skipped. The attempted compatibility copy is not the final route."
+  ],
+  "limitations": [
+    "No blind recognition test, owner approval of the new glyph system, button-state expansion or in-battle readability test.",
+    "No Unity, production asset, gameplay-state, save, commit or push changes. No paid API generation.",
+    "Some housings are still conventional frame shapes; this is a bounded comparison of alternatives, not a claim that all 20 resolve the cult identity equally well."
+  ]
+}

@@ -1,0 +1,6 @@
+127.0.0.1 - - [13/Oct/2026 13:45:47] "GET /review.html HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 13:45:47] "GET /battle-screen.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 13:45:48] code 404, message File not found
+127.0.0.1 - - [13/Oct/2026 13:45:48] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 13:46:22] "GET /actual-game-before.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 13:48:51] "GET /battle-screen.png HTTP/1.1" 304 -

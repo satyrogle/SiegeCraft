@@ -1,0 +1,56 @@
+{
+  "sheet": [
+    480,
+    480
+  ],
+  "cell": [
+    96,
+    96
+  ],
+  "icon_native": [
+    64,
+    64
+  ],
+  "state_cells": 22,
+  "exact_nearest_2x": true,
+  "alpha": [
+    0,
+    255
+  ],
+  "used_colours": 31,
+  "fighter_reference_copy_identical": true,
+  "palette_analyze": "clean; no off-palette colours",
+  "visual_review": [
+    "Native1x, intendedUI2x, enlarged4x and actual fighter comparison inspected",
+    "Replaced rejected long purple plates with compact dark settings and four volumetric relics",
+    "Boxed shortcut keys and added point diamonds after first visual inspection",
+    "Labels fit; disabled labels retained; focus and active have distinct wording and marks"
+  ],
+  "limitations": [
+    "Fall Back is an abstract folding-shell metaphor and still relies on its label for initial recognition",
+    "Proposed cult art; not owner approval",
+    "Not tested in moving battle; no Unity integration",
+    "The physical-icon style is more detailed; battlefield competition requires a later authorised context trial",
+    "Chief Order remains a generic slot, not a new gameplay order"
+  ],
+  "browser_checks": [
+    "Focus armed and target confirmed",
+    "Enter calls Chief Order; used state persists",
+    "Unleash click activation",
+    "Unavailable controls disabled",
+    "Reset restores ready",
+    "No warning/error console entries"
+  ],
+  "generation_spend": {
+    "service": "PixelLab",
+    "model": "Pro Flash",
+    "subscription_generations": 20,
+    "new_subscription_or_topup": false
+  },
+  "source_sha256": {
+    "chief-source.png": "6440e6c1db82acb0ff73fabc081ec15403d721b661c993a84f9f34ef6bd5c786",
+    "fallback-source.png": "eba3d3b367f9c25ef58796381c3d0035a8687413f38ab9962df3e35ed4785006",
+    "focus-source.png": "65687fd38bd653bb4fcfe38643e943c2d6c5cc99a97f443ea7014b77a5a01e7f",
+    "unleash-source.png": "e09a72e62f546b25c7e4b04ba348282ef70a1fe36d8a140b035cafd4a2b22442"
+  }
+}

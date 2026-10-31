@@ -1,0 +1,35 @@
+[
+  {
+    "id": "F01",
+    "model": "flux",
+    "command": "HOLD",
+    "command_index": 0,
+    "style": "A",
+    "meaning": "The unit mark is enclosed by an unbroken barrier.",
+    "seed": 2026101500,
+    "prompt_id": "2445e544-d167-460f-b6f4-e56265a419b6",
+    "status": "rejected_visual_texture_instead_of_housing",
+    "native_size": [
+      128,
+      128
+    ],
+    "glyph_source": "command-runes.png",
+    "glyph_index": 0,
+    "fixed_glyph": true,
+    "palette_size": 24,
+    "raw": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Cult-Rune-Batch-20261014\\raw\\F01-hold.png",
+    "native": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Cult-Rune-Batch-20261014\\native\\F01-hold.png",
+    "elapsed_seconds": 186
+  },
+  {
+    "id": "F02",
+    "model": "flux",
+    "command": "FALL BACK",
+    "command_index": 1,
+    "style": "A",
+    "meaning": "The unit mark returns left behind the boundary.",
+    "seed": 2026101501,
+    "prompt_id": "53e0f8a3-3fb9-40a6-bdf0-9640164d6194",
+    "status": "aborted_initialization_stall"
+  }
+]

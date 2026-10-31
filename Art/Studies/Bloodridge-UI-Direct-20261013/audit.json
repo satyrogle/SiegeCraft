@@ -1,0 +1,16 @@
+{
+  "normalSize": [
+    1440,
+    900
+  ],
+  "protectedRectangle": [
+    0,
+    80,
+    1440,
+    768
+  ],
+  "protectedPixels": 990720,
+  "normalBattlefieldIdentical": true,
+  "method": "Direct Canvas pixel masks; existing bitmap font; UI pixel grid 2x",
+  "limits": "Illustrative states, static fight, one target demo, no runtime integration; not final visual approval"
+}

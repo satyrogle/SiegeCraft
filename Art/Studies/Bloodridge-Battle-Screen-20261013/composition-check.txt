@@ -1,0 +1,4 @@
+1440x900 screenshot composite
+Source: C:/Users/jacob/.codex/scratch/ks-sprint-20261012/r4-full/coverage-raiders-Chief.png
+Retained non-background combat pixels: 101145
+World sections native 1x. UI from actual game capture, unchanged.

@@ -1,0 +1,36 @@
+async page => {
+  const errors=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+  await page.reload();
+  const checks=[];
+  const check=(name,ok)=>{if(!ok)throw new Error(name);checks.push(name)};
+  check('Two initial enhancements',await page.locator('.choice[aria-pressed="true"]').count()===2);
+  await page.getByRole('button',{name:/^FALL BACK: Purge/}).click();
+  check('Third distinct button blocked',await page.locator('.choice[aria-pressed="true"]').count()===2 && (await page.locator('#message').innerText()).includes('Both slots are occupied'));
+  await page.getByRole('button',{name:/^PARRY \/ HOLD: Reprisal/}).click();
+  check('Alternative replaces original',await page.getByRole('button',{name:/^PARRY \/ HOLD: Reprisal/}).getAttribute('aria-pressed')==='true' && await page.getByRole('button',{name:/^PARRY \/ HOLD: Ward/}).getAttribute('aria-pressed')==='false');
+  check('Swap does not consume extra slot',await page.locator('#count').innerText()==='2 / 2');
+  await page.getByRole('button',{name:/^UNLEASH: Overdrive/}).click();
+  check('Remove frees slot',await page.locator('#count').innerText()==='1 / 2');
+  await page.getByRole('button',{name:/^FALL BACK: Slipstream/}).click();
+  check('Later alternative occupies freed slot',await page.locator('#count').innerText()==='2 / 2' && await page.locator('.slot.enhanced').count()===2);
+  check('Four commands always displayed',await page.locator('.slot').count()===4);
+  await page.getByRole('button',{name:/^FALL BACK: Slipstream/}).focus();
+  await page.keyboard.press('Enter');
+  check('Keyboard activation works',await page.locator('#count').innerText()==='1 / 2');
+  await page.getByRole('button',{name:'Reset example'}).click();
+  check('Reset restores example',await page.locator('#count').innerText()==='2 / 2' && (await page.locator('#loadout').innerText()).includes('Ward'));
+  await page.setViewportSize({width:1600,height:1000});
+  check('Desktop no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  await page.screenshot({path:'Art/Studies/Shade-Commands-20261027/layout-check.png',fullPage:true});
+  await page.setViewportSize({width:390,height:844});
+  check('Narrow preview no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  await page.setViewportSize({width:1600,height:1000});
+  await page.getByRole('button',{name:'Reset example'}).blur();
+  await page.waitForFunction(()=>[...document.images].every(i=>i.complete && i.naturalWidth>0) && document.querySelector('h1 canvas'));
+  check('All art loaded',await page.evaluate(()=>[...document.images].every(i=>i.complete && i.naturalWidth>0)));
+  check('No browser errors during final check',errors.length===0);
+  await page.screenshot({path:'Art/Studies/Shade-Commands-20261027/shade-enhancements.png',fullPage:true});
+  return {result:'PASS',checks};
+}

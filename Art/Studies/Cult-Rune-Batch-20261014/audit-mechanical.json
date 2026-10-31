@@ -1,0 +1,271 @@
+{
+  "scope": "Twenty isolated ready-state command studies; model housings plus exact authored glyphs.",
+  "glyph_source_sha256": "8df3ba1373e9cf5ef111ecd7947b5d87d02132143977884dda276e7844464e35",
+  "files": [
+    {
+      "id": "F01",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "2b341e67a383186192fee9e3e1fa7741e0b18fb840223c7dacae1a0bfddf32d8",
+      "raw_sha256": "af3e69dd42b4f78a6d64bd05eb3c618cf2d7946a06220e5f425cdb9b2264cae7"
+    },
+    {
+      "id": "F02",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 24,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "784383e2ec54784c6661977adc6b303183e6b1251812a87d25f4354ca3cdc168",
+      "raw_sha256": "055f553aab08f2758b92686aa4d1c94b50cc28c26ef566a8330cb812952059b9"
+    },
+    {
+      "id": "F03",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 20,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "1ef0437bc1c927c859de9997680a4da1e2aeda4f20c0a609849ee570211c8161",
+      "raw_sha256": "630924a6a92458338075cfa248a26a1f351e74d2f78e16cf289f4146c07f3f80"
+    },
+    {
+      "id": "F04",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 23,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "bdf10a4811b944cc97d1c4f18a40c235b28907ef2417532a2b6d48d5820d73b6",
+      "raw_sha256": "332f63302b63f5ca695de4031461d16a3ba67a1a7a6884646d4d8382a7d70313"
+    },
+    {
+      "id": "F05",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 21,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "1550b7f75cd6a291bc8717b58d677e49a49fbd9744de18ab8a9a7f727066ff90",
+      "raw_sha256": "f571e207b8719d7473b6f7d6f1975f8b4c7827a060d4c392cab1079f893656c6"
+    },
+    {
+      "id": "F06",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "f396e1e865c6cfa5fe6c245430a13cb9be7d31294cff80d46901534293fe2f47",
+      "raw_sha256": "6e4be0ea6a97fdd499af81b2ef5a2441e04abbe98e41dead5e2bf359e90b3ecd"
+    },
+    {
+      "id": "F07",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 23,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "4517e765f31940281dd71956bb4e4d7c0dc7b795f63f2d7aa86c90a4ae9b0db3",
+      "raw_sha256": "18c47d975e3435e549b2920a678c5a1607518a1149b880dcb7eeb19c539d167e"
+    },
+    {
+      "id": "F08",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "ee909ba3b7b41dfe9e3ee248c42da54e889b9432a4ba1697855cd6fe42d9664e",
+      "raw_sha256": "692b36614d0a24a4f58d4e2988d6de4fa2f53afeb7ddc99481ebe3c977eb3091"
+    },
+    {
+      "id": "F09",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "c496df2766d61ecd7c0991858446974b9fc2d5f499e573014bff201ee4c94af9",
+      "raw_sha256": "25fe0dcc80edfaeeea2dfc2d3427e7e277b45df3b6b423599ba6b101b72b281d"
+    },
+    {
+      "id": "F10",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "e190d5a4307506749a6bebbbbd28b8cf223da77726dfe2ef487ef8fe57aa125b",
+      "raw_sha256": "e83cebdbd3cbc5d0402784116150fb6f4e1df8e500ddd514a74c771dfa216d87"
+    },
+    {
+      "id": "Q01",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 22,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "1340a9311f961f6e22c7e319b15fb89ece2acc51d58f4ca6ebee928c59a73ef0",
+      "raw_sha256": "1e721d985b57090c22a70532152644b69069f1ae8beab9f8dbf94478e4baadcd"
+    },
+    {
+      "id": "Q02",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 23,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "47f235a234210c32d11698626e4acc4e0a7e4ac318cdb314cb375722a72f6f85",
+      "raw_sha256": "db3bd46c8981515702c190cb2e136c81b1a8ae4ebb8dfd94a2491908f1f9ef0f"
+    },
+    {
+      "id": "Q03",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 21,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "e2f6bdedce74560c76ae32fd93f38f6a84d883a65d6c0b6e2d97cbf5ac237c7a",
+      "raw_sha256": "0e6f3376faebc4afb99f380f3a80cf631bc647211552609716b754f944d9b665"
+    },
+    {
+      "id": "Q04",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "b07e3df76ba00a3a3496fb56baae9169ecddd17d6e57706ae52698fa9005172f",
+      "raw_sha256": "5109398995498deb6d58dc1491818b2535658cedb4c773d75cbb0cf90cd038ab"
+    },
+    {
+      "id": "Q05",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "f09ea7454145a702595af792f68c53f66bb9157b2aa0c2c7ea723095b347bffe",
+      "raw_sha256": "6223b4f26efe2ea700bd46969c5ffc35fbe3f5dd9add10d16adf1f96af698ae5"
+    },
+    {
+      "id": "Q06",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 24,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "7ee10df270d344afedfb259594c561826b06a6a156cff99ee681a740f7699047",
+      "raw_sha256": "f470e38b6a2c7bbbab96b7b1d7f1ddf1691ca8e94062b0f06aa8b87b272bd7df"
+    },
+    {
+      "id": "Q07",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "f5a1cd5f834ffeb2183291c58856a80184fd59bbf521d23711f9ad21bbc1b541",
+      "raw_sha256": "2467d040b8db8e1ae1fc3cecfe6ec31039cd23613784ff8a4e6cab98d57217b6"
+    },
+    {
+      "id": "Q08",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "fb01ae033bb633803d1a87bc14b155fc7b48c24686401f05ef8b9867cc3ae65d",
+      "raw_sha256": "92923e76470a97b3df9f5e0d5f3c7b6a296b904f02dfd92051fcee1a47626e55"
+    },
+    {
+      "id": "Q09",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "fd196ff2e4de0eb9285045919b094dd61dd3df3a95603110e15dab66a3312a14",
+      "raw_sha256": "ec89a7f7304e8c4870c704a1269af2ece1d96de6f8b2a3e2eff81e2259101265"
+    },
+    {
+      "id": "Q10",
+      "size": [
+        128,
+        128
+      ],
+      "colours": 25,
+      "palette_clean": true,
+      "upscale_exact": true,
+      "glyph_foreground_preserved": true,
+      "sha256": "65755257a8aacfbdba019f72a02b749d9115ff3cef20f5533b57dc207248c4a5",
+      "raw_sha256": "93bd35893f132d169ef61582f1a0eea7527ea8e2a2e59dc4c5572e1aa0c00b8b"
+    }
+  ],
+  "count": 20,
+  "unique_raws": 20,
+  "unique_candidates": 20,
+  "mechanical_pass": true,
+  "limits": "No Unity integration or in-battle/state readability test. Visual audit is recorded separately. Review backgrounds remain opaque."
+}

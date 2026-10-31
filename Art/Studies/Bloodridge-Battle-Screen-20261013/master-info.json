@@ -1,0 +1,86 @@
+{
+  "tags": [],
+  "name": "bloodridge-battle-screen.aseprite",
+  "colorMode": "rgb",
+  "layers": [
+    {
+      "index": 1,
+      "visible": true,
+      "name": "01 ash stone fighting terrace",
+      "editable": true,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "blendMode": "3",
+      "isGroup": false
+    },
+    {
+      "index": 2,
+      "visible": true,
+      "name": "02 retained burial architecture at 1x",
+      "editable": true,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "blendMode": "3",
+      "isGroup": false
+    },
+    {
+      "index": 3,
+      "visible": true,
+      "name": "03 near edge framing at 1x",
+      "editable": true,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "blendMode": "3",
+      "isGroup": false
+    },
+    {
+      "index": 4,
+      "visible": true,
+      "name": "04 actual captured combat unchanged",
+      "editable": true,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "blendMode": "3",
+      "isGroup": false
+    },
+    {
+      "index": 5,
+      "visible": true,
+      "name": "05 actual captured HUD unchanged at 2x",
+      "editable": true,
+      "isTilemap": false,
+      "cels": [
+        1
+      ],
+      "opacity": 255,
+      "blendMode": "3",
+      "isGroup": false
+    }
+  ],
+  "activeFrame": 1,
+  "width": 1440,
+  "activeLayer": "01 ash stone fighting terrace",
+  "modified": false,
+  "frames": [
+    {
+      "number": 1,
+      "durationMs": 100
+    }
+  ],
+  "height": 900,
+  "id": 3,
+  "filename": "C:\\Users\\jacob\\KindredSiege-Clean\\Art\\Studies\\Bloodridge-Battle-Screen-20261013\\bloodridge-battle-screen.aseprite",
+  "frameCount": 1
+}
