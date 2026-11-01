@@ -605,9 +605,11 @@ namespace KindredSiege.Sim.Learning
         /// 25 those and the beasts as their approved scenes show them (1 Nov 2026, "Sim follows scenes", then "Go as written";
         /// Battle.FightRules.BeastScenes; BeastSceneRules): the shark's Bite on a whole row and its Sweep on all of them, and the
         /// cage bear's Slam and Grab.
-        /// 26 those and the beasts as raid bosses (1 Nov 2026, "Full plan", then "Go as written"; Battle.FightRules.BeastRaid;
+        /// 26 those and the tight parry (1 Nov 2026, "Go, build it"; Battle.FightRules.Tight; TightParryRules): a 0.2 s window, a
+        /// Hold out of it that lands in full and opens your side for a second, and a counter on every parry.
+        /// 27 those and the beasts as raid bosses (1 Nov 2026, "Full plan", then "Go as written"; Battle.FightRules.BeastRaid;
         /// BeastRaidRules): the shark's Feeding frenzy and its sand pups, the cage bear's Overload and its climbing Pulse.
-        public const int RulesVersion = 26;
+        public const int RulesVersion = 27;
         public const int SquadScreenRules = 14;
         public const int ClearRoadRules = 13;
 
@@ -668,11 +670,16 @@ namespace KindredSiege.Sim.Learning
         /// and Grab, an ice wave on all of them and then the claw. Every number is a starting value.
         public const int BeastSceneRules = 25;
 
+        /// The campaign rules version from which every fight plays the tight parry (DESIGN_LOCKS, "The parry: tight window, big
+        /// payoff, a gold flash on the attacker"; Battle.BattleSimulation.Tight.cs): the 0.2 s window, the whiff and the counter.
+        public const int TightParryRules = 26;
+
         /// The campaign rules version from which a beast fight plays its beast as a raid boss (Jacob, 1 Nov 2026: "can we finish
         /// the bear and shark just like a wow boss", then "Full plan" and "Go as written"; Battle.FightRules.BeastRaid,
         /// Battle.BattleSimulation.BeastRaid.cs): the shark's Feeding frenzy at its second broken part and then its two sand pups
         /// (after its parts on its side), the cage bear's Overload when its ribcage breaks, and its Last stand Pulse climbing.
-        public const int BeastRaidRules = 26;
+        /// Built as 26 and renumbered to 27 the same day, after the tight parry took 26.
+        public const int BeastRaidRules = 27;
 
         /// Whether this run's roads carry a Pal on every fight (fix 5): set when the run starts under PalRoadRules, and kept
         /// with the run, so its roads come back the same when it loads.
@@ -3135,7 +3142,11 @@ namespace KindredSiege.Sim.Learning
             // From rules 25 a beast fight plays its moves as the approved scenes show them (Jacob, 1 Nov 2026). Last, after the
             // Whisperer.
             if (rules >= BeastSceneRules && beasts) fightRules = fightRules.WithBeastScenes();
-            // From rules 26 the beast is a raid boss, and the shark brings its two sand pups, after its parts. Last.
+            // From rules 26 the tight parry (DESIGN_LOCKS, "The parry: tight window, big payoff, a gold flash on the attacker").
+            // Last, after the beasts.
+            if (rules >= TightParryRules) fightRules = fightRules.WithTight();
+            // From rules 27 the beast is a raid boss, and the shark brings its two sand pups, after its parts. Last, after the
+            // tight parry.
             if (rules >= BeastRaidRules && beasts)
             {
                 fightRules = fightRules.WithBeastRaid();
@@ -3536,7 +3547,7 @@ namespace KindredSiege.Sim.Learning
             }
         }
 
-        // The shark's sand pups (rules 26, Battle.BeastKits): after its parts, each BeastKits.PupHealthPercent of their average
+        // The shark's sand pups (rules 27, Battle.BeastKits): after its parts, each BeastKits.PupHealthPercent of their average
         // health, at their power.
         private static void AddPups(List<UnitSpec> side1, string fightId)
         {

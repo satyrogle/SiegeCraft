@@ -190,7 +190,7 @@ namespace KindredSiege.Sim.Battle
         /// A scarred fighter's own spell works this percent as well against a beast.
         public const int ScarPercent = 125;
 
-        // ------------------------------------------------------------ rules 26, the beasts as raid bosses
+        // ------------------------------------------------------------ rules 27, the beasts as raid bosses
 
         /// The shark's Feeding frenzy: at its second broken part it is under the sand this long, its moves stopped and its parts
         /// beyond reach; for the last ChurnTicks the sand churns under all of you; then it bursts up through all of you for
@@ -219,7 +219,7 @@ namespace KindredSiege.Sim.Battle
         /// In its Last stand each Pulse hits this many percent harder than the last.
         public const int PulseRampPercent = 20;
 
-        /// Whether a beast's side of this many units fits it: its parts, and from rules 26 the shark's parts and its pups.
+        /// Whether a beast's side of this many units fits it: its parts, and from rules 27 the shark's parts and its pups.
         public static bool SideFits(BeastKit kit, int count, bool raid)
         {
             return count == PartCount || (raid && kit == BeastKit.SandShark && count == PartCount + PupCount);
@@ -243,14 +243,14 @@ namespace KindredSiege.Sim.Battle
         /// the Grab's.
         public const string SlamName = "Slam";
 
-        /// Rules 26: the shark's intermission (its Phase, Tell and Land events, "Feeding frenzy.full" and the rest), its sand pups
+        /// Rules 27: the shark's intermission (its Phase, Tell and Land events, "Feeding frenzy.full" and the rest), its sand pups
         /// (their Join events), the cage bear's intermission (its Phase event) and its frost (Tell and Land, "Frost cracks.full").
         public const string FeedingName = "Feeding frenzy";
         public const string PupName = "Sand pup";
         public const string OverloadName = "Overload";
         public const string FrostName = "Frost cracks";
 
-        /// Rules 26: the warning lines while the burst and the frost tell.
+        /// Rules 27: the warning lines while the burst and the frost tell.
         public const string ChurnWarning = "THE SAND CHURNS: FALL BACK";
         public const string FrostWarning = "FROST CRACKS: FALL BACK";
         public const string RoarName = "Roar";

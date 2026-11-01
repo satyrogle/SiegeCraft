@@ -4,8 +4,8 @@ using System.Globalization;
 
 namespace KindredSiege.Sim.Battle
 {
-    /// The beasts as raid bosses, campaign rules 26 (Jacob, 1 Nov 2026: "can we finish the bear and shark just like a wow boss",
-    /// then "Full plan" and "Go as written"; FightRules.BeastRaid; DESIGN_LOCKS, "The beasts as raid bosses (rules 26)"). Every
+    /// The beasts as raid bosses, campaign rules 27 (Jacob, 1 Nov 2026: "can we finish the bear and shark just like a wow boss",
+    /// then "Full plan" and "Go as written"; FightRules.BeastRaid; DESIGN_LOCKS, "The beasts as raid bosses (rules 27)"). Every
     /// number is a starting value (BeastKits).
     ///
     /// The sand shark's Feeding frenzy: at its second broken part it dives for BeastKits.FeedingTicks. Its moves stop and its
@@ -31,7 +31,7 @@ namespace KindredSiege.Sim.Battle
         private readonly string[] _pupTarget = new string[BeastKits.PupCount];
         private readonly long[] _pupNext = new long[BeastKits.PupCount];
 
-        /// Whether this beast fight plays the beasts as raid bosses: campaign rules 26.
+        /// Whether this beast fight plays the beasts as raid bosses: campaign rules 27.
         public bool BeastRaidOn => _beastRaidOn;
 
         /// The intermission running now, BeastKits.FeedingName or BeastKits.OverloadName, else empty.

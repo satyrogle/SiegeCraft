@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace KindredSiege.Sim.Tests
 {
-    /// The beasts as raid bosses, campaign rules 26 (Jacob, 1 Nov 2026: "can we finish the bear and shark just like a wow boss",
+    /// The beasts as raid bosses, campaign rules 27 (Jacob, 1 Nov 2026: "can we finish the bear and shark just like a wow boss",
     /// then "Full plan" and "Go as written"; FightRules.BeastRaid, BattleSimulation.BeastRaid.cs): the shark's Feeding frenzy
     /// and its sand pups, the cage bear's Overload and its climbing Pulse. One quick test per piece, with the old rules beside
     /// it where they differ. Nothing here is tuning.
@@ -303,7 +303,7 @@ namespace KindredSiege.Sim.Tests
         }
 
         [Test]
-        public void ACampaignSharkFightBringsItsPupsFromRules26AndPlaysBack()
+        public void ACampaignSharkFightBringsItsPupsFromRules27AndPlaysBack()
         {
             foreach (int cap in new[] { Campaign.BeastSceneRules, Campaign.BeastRaidRules })
             {

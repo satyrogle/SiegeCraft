@@ -141,7 +141,7 @@ namespace KindredSiege.Sim.Battle
         {
             if (!BeastKits.SideFits(_beastKit, _setup.Side(_beastSide).Count, _beastRaidOn))
                 throw new ArgumentException("A beast fight needs the beast's " + BeastKits.PartCount.ToString(CultureInfo.InvariantCulture) +
-                    " parts, and nobody else, on its side (from rules 26 the shark's pups after them).");
+                    " parts, and nobody else, on its side (from rules 27 the shark's pups after them).");
             for (int p = 0; p < BeastKits.PartCount; p++) _partNext[p] = BeastKits.EveryTicks(BeastKits.PartAt(_beastKit, p));
             if (_beastRaidOn) StartBeastRaid();
         }
@@ -264,7 +264,7 @@ namespace KindredSiege.Sim.Battle
         // holds someone.
         private void StartBeastMoves()
         {
-            // Rules 26: in its Feeding frenzy its clocks stand still.
+            // Rules 27: in its Feeding frenzy its clocks stand still.
             if (Feeding)
             {
                 for (int p = 0; p < BeastKits.PartCount; p++) _partNext[p]++;
@@ -445,7 +445,7 @@ namespace KindredSiege.Sim.Battle
                 return;
             }
             if (!_parryOn && _fight.PerfectHold && theirs.HoldTicks > 0 && theirs.LastHoldTick >= 0 &&
-                _tick - theirs.LastHoldTick <= FightRules.PerfectHoldTicks)
+                _tick - theirs.LastHoldTick <= ParryWindowTicks)
             {
                 Emit(EventFor(BattleEventKind.Land, jaw, target, 0, name + BeastKits.Parried));
                 Emit(new BattleEvent(_tick, BattleEventKind.Parry, foe, string.Empty, -1, jaw.Id, (int)jaw.Class,
@@ -1050,7 +1050,7 @@ namespace KindredSiege.Sim.Battle
                 b.Field(key + "tell", _partTell[p]);
                 b.Field(key + "target", _partTarget[p]);
             }
-            // Written only under rules 26, so every older beast fight keeps its checksum.
+            // Written only under rules 27, so every older beast fight keeps its checksum.
             if (_beastRaidOn) AppendBeastRaid(b);
             // Written only for the cage bear, so every shark fight keeps its checksum.
             if (_beastKit != BeastKit.CageBear) return;

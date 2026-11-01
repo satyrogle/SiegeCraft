@@ -23,6 +23,8 @@ namespace KindredSiege.Sim.Battle
             bool foe = sourceSide == 1 - victim.Side;
             // From rules 22 held parry bars make your payoffs stronger (BattleSimulation.Meter.cs).
             if (foe) MeterBoost(sourceSide, hit);
+            // From rules 26 a side that whiffed a parry takes more for a second (BattleSimulation.Tight.cs).
+            if (_tightOn) WhiffHit(victim, foe, hit);
             if (_spellsOn && _sides[victim.Side].WallTicks > 0 && foe) hit.Add(HitLayer.Guard, WallPercentOf(victim.Side) - 100);
             else if (_kitsTwoOn && foe && LockdownHolds(victim.Side)) hit.Add(HitLayer.Guard, ChiefSpells.WallDamagePercent - 100);
             if (_beastOn && victim.Side == _beastSide && foe && !CageHit(victim, sourceSide, hit)) return;

@@ -129,6 +129,19 @@ namespace KindredSiege.Sim.Learning
             return true;
         }
 
+        /// Takes the piece off this fighter's second slot, back to the run's gear, as TryUnequip does the first. Not in the
+        /// middle of a fight. A fighter with nothing there stays as he is.
+        public bool TryUnequipSecond(string fighterId, out string why)
+        {
+            why = string.Empty;
+            CampaignFighter f = FindFighter(fighterId);
+            if (_active != null) why = "Not in the middle of a fight.";
+            else if (f == null) why = (fighterId ?? string.Empty) + " is not one of your fighters.";
+            if (why.Length > 0) return false;
+            f.GearId2 = string.Empty;
+            return true;
+        }
+
         // What your side brings into a fight from the stores: the Shade's routes at their forms, and from rules 24 the habits,
         // upgraded or not, and the pair. No talent sets the cheaper hook yet.
         private PalKit RunPalKit(int rules)
