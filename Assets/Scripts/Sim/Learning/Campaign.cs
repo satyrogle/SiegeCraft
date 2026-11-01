@@ -605,7 +605,9 @@ namespace KindredSiege.Sim.Learning
         /// 25 those and the beasts as their approved scenes show them (1 Nov 2026, "Sim follows scenes", then "Go as written";
         /// Battle.FightRules.BeastScenes; BeastSceneRules): the shark's Bite on a whole row and its Sweep on all of them, and the
         /// cage bear's Slam and Grab.
-        public const int RulesVersion = 25;
+        /// 26 those and the tight parry (1 Nov 2026, "Go, build it"; Battle.FightRules.Tight; TightParryRules): a 0.2 s window, a
+        /// Hold out of it that lands in full and opens your side for a second, and a counter on every parry.
+        public const int RulesVersion = 26;
         public const int SquadScreenRules = 14;
         public const int ClearRoadRules = 13;
 
@@ -665,6 +667,10 @@ namespace KindredSiege.Sim.Learning
         /// sand shark's Bite takes the marked one's whole row and its tail's Sweep all of them, and the cage bear's Grab is a Slam
         /// and Grab, an ice wave on all of them and then the claw. Every number is a starting value.
         public const int BeastSceneRules = 25;
+
+        /// The campaign rules version from which every fight plays the tight parry (DESIGN_LOCKS, "The parry: tight window, big
+        /// payoff, a gold flash on the attacker"; Battle.BattleSimulation.Tight.cs): the 0.2 s window, the whiff and the counter.
+        public const int TightParryRules = 26;
 
         /// Whether this run's roads carry a Pal on every fight (fix 5): set when the run starts under PalRoadRules, and kept
         /// with the run, so its roads come back the same when it loads.
@@ -3127,6 +3133,9 @@ namespace KindredSiege.Sim.Learning
             // From rules 25 a beast fight plays its moves as the approved scenes show them (Jacob, 1 Nov 2026). Last, after the
             // Whisperer.
             if (rules >= BeastSceneRules && beasts) fightRules = fightRules.WithBeastScenes();
+            // From rules 26 the tight parry (DESIGN_LOCKS, "The parry: tight window, big payoff, a gold flash on the attacker").
+            // Last, after the beasts.
+            if (rules >= TightParryRules) fightRules = fightRules.WithTight();
             bool raidChief = IsRaidChief(tribe, encounter.Kind, rules);
             if (raidChief) MakeRaidChief(side1);
             // His second phase brings his reserves into the fight (Battle.ChiefFight).

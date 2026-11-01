@@ -310,8 +310,16 @@ namespace KindredSiege.Sim.Battle
         {
             SideState s = _sides[facing];
             if (s.HoldTicks <= 0) return BeatMet.Open;
-            bool fresh = _fight.PerfectHold && s.LastHoldTick >= 0 && _tick - s.LastHoldTick <= FightRules.PerfectHoldTicks;
-            return fresh ? BeatMet.Parry : BeatMet.Block;
+            bool fresh = _fight.PerfectHold && s.LastHoldTick >= 0 && _tick - s.LastHoldTick <= ParryWindowTicks;
+            if (fresh) return BeatMet.Parry;
+            // From rules 26 a Hold out of the window is a whiff: it ends, soaks nothing, and the blow lands in full
+            // (BattleSimulation.Tight.cs).
+            if (_tightOn)
+            {
+                Whiff(facing);
+                return BeatMet.Open;
+            }
+            return BeatMet.Block;
         }
 
         // The side facing the doer parried his beat, after the move's own "parried" event. He staggers and reels, he is left
@@ -328,7 +336,7 @@ namespace KindredSiege.Sim.Battle
         // The parry's first half: everything but the crack, which it returns (chained, and doubled for a weak band). A small
         // beat's parry (duel false) steps no chain and returns no crack. Under the squad first every parry gives back only
         // the Hold's point.
-        private int ParryLands(int side, BattleUnit doer, string move, int crack, int points, bool duel = true)
+        private int ParryLands(int side, BattleUnit doer, string move, int crack, int points, bool duel = true, int counter = 0)
         {
             if (_squadOn) points = ParryRules.SquadParryPoints;
             int facing = 1 - side;
@@ -337,6 +345,9 @@ namespace KindredSiege.Sim.Battle
                 FightRules.StaggerTicks, move));
             doer.Cooldown += FightRules.StaggerTicks;
             doer.ReelTicks = FightRules.StaggerTicks;
+            // From rules 26 every parry hits him back for the move's damage, once the tick's moves are done; counter is it
+            // when the caller knows it, else his heavy blow (BattleSimulation.Tight.cs).
+            if (_tightOn) OweCounter(doer, counter);
             theirs.HoldTicks = 0;
             theirs.LastParryTick = _tick;
             theirs.ParriedCasterId = doer.Id;
@@ -558,7 +569,7 @@ namespace KindredSiege.Sim.Battle
                 _sides[side].LockSnared = false;
                 if (Kit(side) == ChiefKit.Skullpeak) _sides[1 - side].Chain++;
             }
-            int cracked = ParryLands(side, caster, name, crack, FightRules.ParryPoints);
+            int cracked = ParryLands(side, caster, name, crack, FightRules.ParryPoints, true, _tightOn ? CastCounter(side, percent) : 0);
             if (kit && Kit(side) == ChiefKit.Bloodridge) KitEclipseParried(side, caster, percent, cracked);
             else ParryCracks(side, caster, cracked, FightRules.ParryPoints, kit);
         }

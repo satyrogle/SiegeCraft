@@ -173,6 +173,9 @@ namespace KindredSiege.Sim.Battle
             public bool SwungLast;
             // From rules 22 (BattleSimulation.Meter.cs): the bars your parries have filled.
             public int ParryBars;
+            // From rules 26 (BattleSimulation.Tight.cs): ticks left open after a whiff, and the tick it came.
+            public int WhiffTicks;
+            public long WhiffTick;
             public long BrandNext;
             public int SunEclipses;
             public bool SaidParry;
@@ -369,6 +372,8 @@ namespace KindredSiege.Sim.Battle
             _dangerOn = _fight.Danger;
             // The parry meter (BattleSimulation.Meter.cs, campaign rules 22).
             _meterOn = _fight.Meter;
+            // The tight parry (BattleSimulation.Tight.cs, campaign rules 26), on the parry at the center.
+            _tightOn = _parryOn && _fight.Tight;
             // The chief rules (BattleSimulation.Chief.cs, 20 Oct 2026): his reserves wait out of the fight.
             _chiefOn = _fight.ChiefRules;
             if (_chiefOn) BenchReserves();
@@ -785,6 +790,9 @@ namespace KindredSiege.Sim.Battle
                 if (_bandOn)
                     for (int s = 0; s < 2 && !Stopped; s++) TryMend(s);
 
+                // The tick's parries hit back (rules 26, BattleSimulation.Tight.cs).
+                if (_tightOn && _counters.Count > 0) DealCounters();
+
                 // Counted down after the tick's actions, so an order given on tick t is in force
                 // for exactly its length: ticks t to t + length - 1.
                 for (int s = 0; s < 2; s++) CountDownEffects(_sides[s]);
@@ -797,6 +805,11 @@ namespace KindredSiege.Sim.Battle
                 if (_marksOn) CountDownTheme();
                 if (_floorOn) CountDownFloor();
                 if (_kitsOn) CountDownKit();
+                if (_tightOn)
+                {
+                    CountDownWhiff();
+                    if (_counters.Count > 0) DealCounters();
+                }
 
                 if (!_finished && _tick + 1 >= _setup.TickLimit)
                 {
@@ -1022,6 +1035,8 @@ namespace KindredSiege.Sim.Battle
                     }
                     // Written only under the parry meter (rules 22), so every older fight keeps its checksum.
                     if (_meterOn) b.Field("parryBars", state.ParryBars);
+                    // Written only under the tight parry (rules 26), so every older fight keeps its checksum.
+                    if (_tightOn) AppendTight(b, state);
                     // Written only in fights with the chief kits, so every older fight keeps its checksum.
                     if (_kitsOn)
                     {
@@ -2328,6 +2343,9 @@ namespace KindredSiege.Sim.Battle
 
             // Turned Hunt: your blows on the hunt captain land double (BattleSimulation.Hunt.cs).
             if (_huntOn && Turned(victim) && sourceSide == 1 - victim.Side) amount = amount * ChiefKits.TurnedPercent / 100;
+
+            // After a whiff the side lands open for a second (rules 26, BattleSimulation.Tight.cs).
+            if (_tightOn) amount = WhiffDamage(victim, sourceSide, amount);
 
             // Gear that guards against big hits takes a share off an Eclipse (Learning.CampaignGear).
             int guard = SpecOf(victim).BigHitArmorPercent;
