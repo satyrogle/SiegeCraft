@@ -390,6 +390,8 @@ namespace KindredSiege.Sim.Battle
             _beastSide = !_fight.Beasts ? -1 : _rules[1].Beast != BeastKit.None ? 1 : _rules[0].Beast != BeastKit.None ? 0 : -1;
             _beastOn = _beastSide >= 0;
             _beastKit = _beastOn ? _rules[_beastSide].Beast : BeastKit.None;
+            // The beasts as their approved scenes show them (BattleSimulation.Beast.cs, campaign rules 25).
+            _beastScenesOn = _beastOn && _fight.BeastScenes;
 
             _sides[0].Points = setup.StartingDirectivePoints;
             _sides[1].Points = setup.StartingDirectivePoints;

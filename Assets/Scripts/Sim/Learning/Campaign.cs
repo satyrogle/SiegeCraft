@@ -602,7 +602,10 @@ namespace KindredSiege.Sim.Learning
         /// 23 those and the floor under the three Pals (31 Oct 2026, "Go, sprint it"; Battle.FightRules.Floor; FloorRules).
         /// 24 those and the Whisperer (31 Oct 2026, "Go, build her"; Battle.FightRules.Whisper; WhispererRules): habits set at
         /// camp and kept, her road card, the habits, pairs and rank 2 in the fight, and a fallen fighter's rank.
-        public const int RulesVersion = 24;
+        /// 25 those and the beasts as their approved scenes show them (1 Nov 2026, "Sim follows scenes", then "Go as written";
+        /// Battle.FightRules.BeastScenes; BeastSceneRules): the shark's Bite on a whole row and its Sweep on all of them, and the
+        /// cage bear's Slam and Grab.
+        public const int RulesVersion = 25;
         public const int SquadScreenRules = 14;
         public const int ClearRoadRules = 13;
 
@@ -656,6 +659,12 @@ namespace KindredSiege.Sim.Learning
         /// kept, her road card (a rank up, a pair or a habit upgrade for the run), the habits, their upgrades, the pairs and rank 2
         /// in the fight, and a fighter who falls in a lost fight losing his top rank.
         public const int WhispererRules = 24;
+
+        /// The campaign rules version from which a beast fight plays its moves as the approved scenes show them (Jacob, 1 Nov
+        /// 2026: "Sim follows scenes", then "Go as written"; Battle.FightRules.BeastScenes, Battle.BattleSimulation.Beast.cs): the
+        /// sand shark's Bite takes the marked one's whole row and its tail's Sweep all of them, and the cage bear's Grab is a Slam
+        /// and Grab, an ice wave on all of them and then the claw. Every number is a starting value.
+        public const int BeastSceneRules = 25;
 
         /// Whether this run's roads carry a Pal on every fight (fix 5): set when the run starts under PalRoadRules, and kept
         /// with the run, so its roads come back the same when it loads.
@@ -3115,6 +3124,9 @@ namespace KindredSiege.Sim.Learning
                     if (encounter.Kind != EncounterKind.Tutorial) RankSpecs(side0);
                 }
             }
+            // From rules 25 a beast fight plays its moves as the approved scenes show them (Jacob, 1 Nov 2026). Last, after the
+            // Whisperer.
+            if (rules >= BeastSceneRules && beasts) fightRules = fightRules.WithBeastScenes();
             bool raidChief = IsRaidChief(tribe, encounter.Kind, rules);
             if (raidChief) MakeRaidChief(side1);
             // His second phase brings his reserves into the fight (Battle.ChiefFight).

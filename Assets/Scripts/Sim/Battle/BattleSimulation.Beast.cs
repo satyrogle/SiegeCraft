@@ -15,6 +15,13 @@ namespace KindredSiege.Sim.Battle
     {
         // A beast fight, the side that is the beast (-1 without one) and which beast it is. Set in the constructor.
         private readonly bool _beastOn;
+
+        // Rules 25 (FightRules.BeastScenes; Jacob, 1 Nov 2026: "Sim follows scenes", then "Go as written"): the shark's Bite takes
+        // the marked one's whole row, its tail's Sweep all of them, and the cage bear's Grab is a Slam and Grab.
+        private readonly bool _beastScenesOn;
+
+        /// Whether this beast fight plays its moves as the approved scenes show them: campaign rules 25.
+        public bool BeastScenesOn => _beastScenesOn;
         private readonly int _beastSide = -1;
         private readonly BeastKit _beastKit;
 
@@ -322,7 +329,8 @@ namespace KindredSiege.Sim.Battle
                     case BeastPart.Jaw: LandBite(unit); break;
                     case BeastPart.Fin: LandDive(unit); break;
                     case BeastPart.Spine: LandRow(unit, Row.Back, BeastKits.VolleyPercent, BeastKits.VolleyName, BeastKits.VolleyDetail, false); break;
-                    case BeastPart.Tail: LandRow(unit, Row.Front, BeastKits.SweepPercent, BeastKits.SweepName, BeastKits.SweepDetail, true); break;
+                    case BeastPart.Tail: LandRow(unit, Row.Front, BeastKits.SweepPercent, BeastKits.SweepName, BeastKits.SweepDetail, true,
+                        _beastScenesOn); break;
                     case BeastPart.Claw: LandGrab(unit); break;
                     case BeastPart.Maw: LandRoar(unit); break;
                     case BeastPart.Heart: LandPulse(unit); break;
@@ -438,6 +446,12 @@ namespace KindredSiege.Sim.Battle
                 return;
             }
 
+            if (_beastScenesOn)
+            {
+                BiteRow(jaw, target, met);
+                return;
+            }
+
             int damage = Share(target, BeastKits.BitePercent, jaw);
             BattleUnit warden = target.Class == UnitClass.Warden ? target : BeastGuard(target);
             if (warden != null)
@@ -459,6 +473,67 @@ namespace KindredSiege.Sim.Battle
             Emit(EventFor(BattleEventKind.Land, jaw, target, damage, name + (soaked ? BeastKits.Soaked : BeastKits.Full)));
             ApplyDamage(jaw, jaw.Side, target, Armored(target, damage), BeastKits.BiteDetail);
             FrenzyWound(jaw, target);
+        }
+
+        // Rules 25: the Bite takes everyone in the marked one's row, each answered as the one bite is. A Warden takes the share of
+        // whoever he covers on his shield (his own as well), less his Guard, and the jaw takes BiteBackPercent of each share back
+        // once every share has landed; any other Hold soaks the front row; or full. Each share is its own Land event on its
+        // fighter.
+        private void BiteRow(BattleUnit jaw, BattleUnit marked, BeatMet met)
+        {
+            int foe = 1 - jaw.Side;
+            SideState theirs = _sides[foe];
+            string name = BeastKits.BiteName + ".";
+            List<BattleUnit> hit = MarksIn(foe, marked.Row);
+            var open = new List<BattleUnit>();
+            var backs = new List<(BattleUnit warden, int amount)>();
+            for (int k = 0; k < hit.Count && !Stopped; k++)
+            {
+                BattleUnit target = hit[k];
+                if (!target.Alive) continue;
+                int damage = Share(target, BeastKits.BitePercent, jaw);
+                BattleUnit warden = target.Class == UnitClass.Warden ? target : BeastGuard(target);
+                if (warden == null || !warden.Alive)
+                {
+                    open.Add(target);
+                    continue;
+                }
+                int taken = Scarred(warden, damage * (100 - BeastGuardCut(warden)) / 100);
+                Emit(EventFor(BattleEventKind.Land, jaw, target, taken, name + BeastKits.Guarded));
+                Emit(EventFor(BattleEventKind.Guard, warden, target, damage - taken, string.Empty));
+                ApplyDamage(jaw, jaw.Side, warden, Armored(warden, taken), BeastKits.BiteDetail);
+                FrenzyWound(jaw, warden);
+                backs.Add((warden, Math.Max(1, damage * BeastKits.BiteBackPercent / 100)));
+            }
+            if (Stopped) return;
+            if (open.Count > 0 && (!_parryOn || BeastBeatLands(jaw, met)))
+            {
+                bool holding = theirs.HoldTicks > 0;
+                for (int k = 0; k < open.Count && !Stopped; k++)
+                {
+                    BattleUnit target = open[k];
+                    if (!target.Alive) continue;
+                    int damage = Share(target, BeastKits.BitePercent, jaw);
+                    bool soaked = holding && target.Row == Row.Front;
+                    if (soaked) damage = Math.Max(1, damage * HoldSoak(foe) / 100);
+                    Emit(EventFor(BattleEventKind.Land, jaw, target, damage, name + (soaked ? BeastKits.Soaked : BeastKits.Full)));
+                    ApplyDamage(jaw, jaw.Side, target, Armored(target, damage), BeastKits.BiteDetail);
+                    FrenzyWound(jaw, target);
+                }
+            }
+            for (int k = 0; k < backs.Count && !Stopped; k++)
+                if (backs[k].warden.Alive && jaw.Alive)
+                    ApplyDamage(backs[k].warden, foe, jaw, backs[k].amount, BeastKits.BiteBackDetail);
+            if (!Stopped && backs.Count > 0) Earn(foe, ChiefKits.GuardPoints, ChiefKits.Name(ChiefAnswer.Guard));
+        }
+
+        // Who a move on all of them falls on: every one of their fighters it can mark, both rows.
+        private List<BattleUnit> AllMarks(int side)
+        {
+            var list = new List<BattleUnit>();
+            for (int i = 0; i < _units.Count; i++)
+                if (Markable(_units[i], side)) list.Add(_units[i]);
+            return list;
         }
 
         // A part's move parried under the parry at the center, after its Land: it staggers (its next move comes
@@ -543,7 +618,8 @@ namespace KindredSiege.Sim.Battle
         // everyone clear; a Warden covering one of them takes their share at WardPercent while he still stands; and against the
         // Sweep, with their Medic standing and nobody falling to it, she heals through it. Planned in full before it lands, so
         // a Warden who would fall partway leaves the later shares to whoever he covered, and the Land event says what landed.
-        private void LandRow(BattleUnit part, Row first, int percent, string move, string detail, bool heals)
+        // Rules 25 (everyone): the Sweep falls on all of them, both rows.
+        private void LandRow(BattleUnit part, Row first, int percent, string move, string detail, bool heals, bool everyone = false)
         {
             int foe = 1 - part.Side;
             SideState theirs = _sides[foe];
@@ -556,7 +632,7 @@ namespace KindredSiege.Sim.Battle
             }
 
             Row row = AnyMarkIn(foe, first) ? first : first == Row.Front ? Row.Back : Row.Front;
-            List<BattleUnit> hit = MarksIn(foe, row);
+            List<BattleUnit> hit = everyone ? AllMarks(foe) : MarksIn(foe, row);
             if (hit.Count == 0) return;
             BeatMet met = _parryOn ? MeetBeat(foe) : BeatMet.Open;
             if (met == BeatMet.Parry && TryPartOf(part, out BeastPart which))
@@ -565,6 +641,18 @@ namespace KindredSiege.Sim.Battle
                 BeastParried(part, which, move);
                 return;
             }
+            RowHit(part, hit, percent, move, detail, heals, met, out _);
+        }
+
+        // The hit of a move on many (LandRow's, and rules 25's Slam): each share at percent, a Warden covering one of them taking
+        // it at WardPercent while he still stands, the Medic healing through when heals. beat says whether its beat was settled
+        // here (it landed full under the parry at the center). False when the fight stopped.
+        private bool RowHit(BattleUnit part, List<BattleUnit> hit, int percent, string move, string detail, bool heals, BeatMet met,
+            out bool beat)
+        {
+            beat = false;
+            int foe = 1 - part.Side;
+            string name = move + ".";
             var left = new int[_units.Count];
             for (int i = 0; i < _units.Count; i++) left[i] = _units[i].Hp;
             var takers = new BattleUnit[hit.Count];
@@ -594,7 +682,11 @@ namespace KindredSiege.Sim.Battle
             }
             bool medic = heals && MedicStands(foe);
             string how = guarded ? BeastKits.Guarded : heals && medic && !falls ? BeastKits.Healed : BeastKits.Full;
-            if (_parryOn && how == BeastKits.Full && !BeastBeatLands(part, met)) return;
+            if (_parryOn && how == BeastKits.Full)
+            {
+                beat = true;
+                if (!BeastBeatLands(part, met)) return false;
+            }
             Emit(EventFor(BattleEventKind.Land, part, null, total, name + how));
             for (int k = 0; k < hit.Count && !Stopped; k++)
             {
@@ -603,9 +695,10 @@ namespace KindredSiege.Sim.Battle
                 ApplyDamage(part, part.Side, takers[k], Armored(takers[k], shares[k]), detail);
                 FrenzyWound(part, takers[k]);
             }
-            if (Stopped) return;
+            if (Stopped) return false;
             if (how == BeastKits.Guarded) Earn(foe, ChiefKits.GuardPoints, ChiefKits.Name(ChiefAnswer.Guard));
             else if (how == BeastKits.Healed) Earn(foe, ChiefKits.HealPoints, ChiefKits.Name(ChiefAnswer.Heal));
+            return !Stopped;
         }
 
         // The cage bear's Grab on whoever it reached for (or whoever stands across from the claw now): Fall Back gets clear; a
@@ -632,6 +725,15 @@ namespace KindredSiege.Sim.Battle
                 BeastParried(claw, BeastPart.Claw, BeastKits.GrabName);
                 return;
             }
+            // Rules 25, the Slam and Grab: first the ice wave on all of them, then the claw on the one it marked.
+            bool beatDone = false;
+            if (_beastScenesOn)
+            {
+                List<BattleUnit> all = AllMarks(foe);
+                if (all.Count > 0 && !RowHit(claw, all, BeastKits.SlamPercent, BeastKits.SlamName, BeastKits.SlamDetail, false, met,
+                    out beatDone)) return;
+                if (!target.Alive || !Markable(target, foe)) return;
+            }
             int damage = Share(target, BeastKits.GrabPercent, claw);
             BattleUnit warden = BeastGuard(target);
             if (warden != null)
@@ -644,7 +746,7 @@ namespace KindredSiege.Sim.Battle
                 return;
             }
 
-            if (_parryOn && !BeastBeatLands(claw, met)) return;
+            if (_parryOn && !beatDone && !BeastBeatLands(claw, met)) return;
             if (met == BeatMet.Block && target.Row == Row.Front) damage = Math.Max(1, damage * HoldSoak(foe) / 100);
             Emit(EventFor(BattleEventKind.Land, claw, target, damage, name + (met == BeatMet.Block ? BeastKits.Soaked : BeastKits.Full)));
             ApplyDamage(claw, claw.Side, target, Armored(target, damage), BeastKits.GrabDetail);

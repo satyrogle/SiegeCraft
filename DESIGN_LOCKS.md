@@ -1188,3 +1188,12 @@ Jacob on 24 Oct picked PixelLab's shark 2 ("bear 1 and refine shark 2"), then as
 - Files: Art/Studies/Beast-Concepts-20261022/directions/anim2 (shark-land-256.png and the shark_haul, shark_breathe, shark_bite2 and shark_sweep clips of 40 frames), the scene in make/shark_land2.py and the video shark-land2.mp4, on the branch art/beast-bosses. The video is not on GitHub yet.
 - Open: in the sim the Bite hits whoever stands in front and the Sweep hits the front row; in this scene the bite takes the whole front row and the tail blast all five. The scene has no Volley. Whether the scene's hits become sim moves is not decided.
 - Not built: anything in Unity. Its pixels are twice the size of your fighters' pixels.
+
+## The beasts hit as their scenes show (rules 25), owner decision, 1 Nov 2026
+
+Jacob picked "Sim follows scenes" for the open lines in "The cage bear's look and boss scene" and "The sand shark's look and land boss scene", then "Go as written" to Claude's three rules. Built in the sim as campaign rules version 25 (HANDOFF_LOG has the details). This answers both open lines. Every number is a starting value.
+- The sand shark's Bite takes everyone in the marked fighter's row (your front row, your back row once the front has fallen), 18% of each one's health, instead of one fighter. The answers stay: a Hold as it lands parries the whole Bite; a Warden takes the share of whoever he covers on his shield, his own too, and the jaw takes half of each share back; any other Hold soaks the front row.
+- Its tail's Sweep hits all five, both rows, 10% each, instead of your front row. Fall Back dodges it, a covering Warden halves a share, and the Medic heals through it.
+- The cage bear's Grab becomes Slam and Grab: an ice wave on all five, 10% each, then the claw grabs the one it marked, as before. Fall Back dodges the whole move; a covering Warden halves the wave and blocks the grab.
+- Dive, Volley, Roar, Crush and Pulse do not change. Older fights, saves and replays keep the old rules.
+- Not done: the fight screen's move guide still describes the old hits, and nobody has played it.

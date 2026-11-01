@@ -156,6 +156,9 @@ namespace KindredSiege.Sim.Battle
         /// The claw closing on whoever it grabs, or on the shield of a Warden who blocks it.
         public const int GrabPercent = 10;
 
+        /// Rules 25: the ice wave of the Slam and Grab on each of your fighters, before the claw.
+        public const int SlamPercent = 10;
+
         /// Each second in the claw; in its Overdrive this percent of that.
         public const int CrushPercent = 4;
         public const int OverdriveCrushPercent = 200;
@@ -194,6 +197,10 @@ namespace KindredSiege.Sim.Battle
         public const string VolleyName = "Volley";
         public const string SweepName = "Sweep";
         public const string GrabName = "Grab";
+
+        /// Rules 25: the ice wave of the cage bear's Slam and Grab, landed as its own move ("Slam.full" and the rest) just before
+        /// the Grab's.
+        public const string SlamName = "Slam";
         public const string RoarName = "Roar";
         public const string PulseName = "Pulse";
 
@@ -208,6 +215,7 @@ namespace KindredSiege.Sim.Battle
         public const string VolleyDetail = "volley";
         public const string SweepDetail = "sweep";
         public const string GrabDetail = "grab";
+        public const string SlamDetail = "slam";
         public const string CrushDetail = "crush";
         public const string PulseDetail = "pulse";
 
