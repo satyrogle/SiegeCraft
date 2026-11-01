@@ -1176,3 +1176,15 @@ Claude's Whisperer proposal kept the 28 Oct road flip's habit card. Jacob: "aren
 - The Whisperer section's rule that nothing she gives changes a number or adds an effect no longer holds for habit upgrades.
 
 Still open: whether a habit can be upgraded more than once; what counts as a heavy blow for Ambusher; the rest of Claude's 31 Oct Whisperer proposal (a rank up for a fighter already ranked weighing 2 in her offer, and building her behind campaign rules 24) waits for his go. Nothing here is built or played.
+
+## The sand shark's look and land boss scene, owner decision, 1 Nov 2026
+
+Jacob on 24 Oct picked PixelLab's shark 2 ("bear 1 and refine shark 2"), then asked "if i told you the shark can breathe out of water", so it hauls out and fights on land. Later he asked for the bite to be redone and to "put half fish in ground half on top". On 31 Oct he rejected it walking on land ("its walking is weird as fuck") and said "make it behave the same way it would underwater", then "sweet" to the result, and on 1 Nov picked "Lock the shark". This look replaces the 23 Oct brief's look where they differ. The fight rules stay as built.
+- Look, drawn in PixelLab: a huge dusty red shark with cracked, scaly hide, a row of bone spines down its back, old harpoons and spears with red rags stuck in it from generations of Clarth hunts, a cream belly and jaw, and rows of yellow teeth.
+- Size: drawn at 256 px and shown at 2x, so it is as big as your whole squad. It stands alone on its side.
+- On land it sits half in the sand. The sand line cuts it just under the jaw, so its jaws, back and spines show and its belly, front fins and lower tail are under. A rim of sand moves along the cut all the time: a rippling lip, a wave of sand piled ahead of whatever part pushes forward, a furrow behind that fills back in, and sand pouring off its back.
+- It never walks. Anywhere it moves, it moves the way it does under the sand.
+- What it does on screen: its fin and shadow patrol under the sand, gliding and kicking; it bursts out, flies, and lands with a splash along its whole length, sinking to half depth; it breathes, gills working; it dives head first, swims under the sand to your squad as a fin and shadow, and bursts up half in the sand in front of them; it bites, its jaws clamping shut on your front row, then thrashes; it spins and its tail sweeps a blast of sand spikes through all five of your fighters; it dives head first and its fin patrols again.
+- Files: Art/Studies/Beast-Concepts-20261022/directions/anim2 (shark-land-256.png and the shark_haul, shark_breathe, shark_bite2 and shark_sweep clips of 40 frames), the scene in make/shark_land2.py and the video shark-land2.mp4, on the branch art/beast-bosses. The video is not on GitHub yet.
+- Open: in the sim the Bite hits whoever stands in front and the Sweep hits the front row; in this scene the bite takes the whole front row and the tail blast all five. The scene has no Volley. Whether the scene's hits become sim moves is not decided.
+- Not built: anything in Unity. Its pixels are twice the size of your fighters' pixels.
