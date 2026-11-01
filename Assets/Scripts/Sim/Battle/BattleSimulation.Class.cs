@@ -274,7 +274,8 @@ namespace KindredSiege.Sim.Battle
         // Whoever sprang a barbed snare is held and bleeds. side is the trap's side: its Trapper may have fallen.
         private void Snare(BattleUnit trapper, int side, BattleUnit victim)
         {
-            int hold = ClassSpells.SnareTicks;
+            // Time Lock (rules 26, BattleSimulation.Glutton.cs) holds it longer.
+            int hold = Locked(side, ClassSpells.SnareTicks);
             if (trapper != null && HasBend(trapper, ClassBend.LongSnare)) hold = hold * ClassSpells.LongSnarePercent / 100;
             // A Trapper with a road scar holds a beast longer (BeastKits, 21 Oct 2026).
             if (trapper != null && IsPart(victim) && SpecOf(trapper).BeastScars > 0) hold = hold * BeastKits.ScarPercent / 100;
@@ -332,7 +333,7 @@ namespace KindredSiege.Sim.Battle
             if (HabitUp(medic, WhispererHabit.Triage)) amount = amount * WhisperRules.TriageUpPercent / 100;
             if (GuardingWarden(medic) != null)
             {
-                int more = amount * ClassSpells.GuardedTreatPercent / 100 - amount;
+                int more = amount * (ClassSpells.GuardedTreatPercent + SynthBonus(medic)) / 100 - amount;
                 Emit(EventFor(BattleEventKind.Cash, medic, patient, more, ClassSpells.CoveredDetail));
                 amount += more;
             }
@@ -354,7 +355,8 @@ namespace KindredSiege.Sim.Battle
             if (GuardingWarden(medic) != null)
             {
                 int before = heal.Points;
-                heal.Add(HitLayer.Spell, ClassSpells.GuardedTreatPercent - 100);
+                // Synth Armour (rules 26) makes it bigger.
+                heal.Add(HitLayer.Spell, ClassSpells.GuardedTreatPercent - 100 + SynthBonus(medic));
                 Emit(EventFor(BattleEventKind.Cash, medic, patient, heal.Points - before, ClassSpells.CoveredDetail));
             }
             if (HasBend(medic, ClassBend.MercyWell)) MercyBloodHit(medic, patient, heal);
@@ -505,7 +507,8 @@ namespace KindredSiege.Sim.Battle
             // A chief whose band still stands shrugs it off (ChiefFight).
             if (ShrugsMarks(victim)) return;
             // An upgraded Spotter's stays until it is cashed (rules 24, BattleSimulation.Whisperer.cs).
-            int ticks = _whisperOn ? OpeningTicksBy(by) : ClassSpells.OpeningTicks;
+            // Strip (rules 26) makes it last longer.
+            int ticks = Stripped(by.Side, _whisperOn ? OpeningTicksBy(by) : ClassSpells.OpeningTicks);
             victim.Statuses.Apply(StatusKind.Opening, ticks);
             MarkEvent(by.Side, by, victim, ticks, ClassSpells.OpeningMark);
         }

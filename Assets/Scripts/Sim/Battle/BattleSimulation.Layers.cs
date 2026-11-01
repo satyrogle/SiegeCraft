@@ -23,9 +23,11 @@ namespace KindredSiege.Sim.Battle
             bool foe = sourceSide == 1 - victim.Side;
             // From rules 22 held parry bars make your payoffs stronger (BattleSimulation.Meter.cs).
             if (foe) MeterBoost(sourceSide, hit);
+            // From rules 26 Dark Matter Plating and Deep Node (BattleSimulation.Glutton.cs).
+            if (foe && _gluttonOn) GluttonHit(sourceSide, victim, hit, detail);
             if (_spellsOn && _sides[victim.Side].WallTicks > 0 && foe) hit.Add(HitLayer.Guard, WallPercentOf(victim.Side) - 100);
             // Breach's price (rules 25): a side that breaches takes more while it is exposed (BattleSimulation.Shade.cs).
-            if (_shadeOn && foe && _sides[victim.Side].ExposedTicks > 0) hit.Add(HitLayer.Guard, ShadeRules.ExposedPercent);
+            if (_shadeOn && foe && _sides[victim.Side].ExposedTicks > 0) hit.Add(HitLayer.Guard, ShadeRules.ExposedPercent * PriceLeft(victim.Side) / 100);
             else if (_kitsTwoOn && foe && LockdownHolds(victim.Side)) hit.Add(HitLayer.Guard, ChiefSpells.WallDamagePercent - 100);
             if (_beastOn && victim.Side == _beastSide && foe && !CageHit(victim, sourceSide, hit)) return;
             if (victim.Role == UnitRole.Chief && WornOutTicksLeft(victim.Side) > 0) hit.Add(HitLayer.Kit, Moves.WornOutDamagePercent - 100);
@@ -60,6 +62,8 @@ namespace KindredSiege.Sim.Battle
                 RiteTreated(healer, patient);
                 if (Stopped) return;
             }
+            // From rules 26 Matter Printer and Recompile (BattleSimulation.Glutton.cs).
+            if (_gluttonOn) GluttonHeal(healer, patient, heal);
             long left = patient.HealLeftover;
             int amount = heal.ResolveHeal(ref left);
             patient.HealLeftover = left;
@@ -90,6 +94,8 @@ namespace KindredSiege.Sim.Battle
             if (kind == BlowKind.AimedShot && _shotsAtOnce > 1) hit.Times(_shotsAtOnce);
             if (_beastOn && kind != BlowKind.Auto && IsPart(target) && SpecOf(attacker).BeastScars > 0)
                 hit.Add(HitLayer.Increased, BeastKits.ScarPercent - 100);
+            // From rules 26 the strikers' and shooters' talents (BattleSimulation.Glutton.cs).
+            if (_gluttonOn) GluttonBlow(attacker, target, hit);
             return hit;
         }
 
@@ -103,10 +109,11 @@ namespace KindredSiege.Sim.Battle
             ApplyHit(attacker, attacker.Side, warden, Armor(warden, hit), GuardedDetail);
         }
 
-        // A unit's armour as a cut on the hit (Armored, before rules 17).
-        private Hit Armor(BattleUnit victim, Hit hit)
+        // A unit's armour as a cut on the hit (Armored, before rules 17): thinner when Cracked (rules 25), and against a Marksman
+        // with Dark Matter Rounds (rules 26).
+        private Hit Armor(BattleUnit victim, Hit hit, BattleUnit attacker = null)
         {
-            int armor = Cracked(victim, SpecOf(victim).ArmorPercent);
+            int armor = ArmorAgainst(attacker, Cracked(victim, SpecOf(victim).ArmorPercent));
             return armor > 0 ? hit.Add(HitLayer.Armor, -armor) : hit;
         }
 

@@ -38,18 +38,35 @@ namespace KindredSiege.Sim.Learning
         /// Whether this campaign plays the Shade's forms and her road card (rules 25): its rules version, under the tuning's cap.
         public bool ShadeFormsRun => Math.Min(RulesVersion, _tuning.RulesCap) >= ShadeFormsRules;
 
-        /// The Glutton lends this talent for the run. False when the run holds it already, or plays rules below 23.
+        /// Whether this campaign plays the Glutton's tree (rules 26): its rules version, under the tuning's cap.
+        public bool GluttonRun => Math.Min(RulesVersion, _tuning.RulesCap) >= GluttonTreeRules;
+
+        /// The Glutton lends this talent for the run. False when the run holds it already, or plays rules below 23; from rules 26
+        /// also when you own it at camp.
         public bool TryLendTalent(GluttonTalent talent)
         {
             if (!FloorRun || talent <= GluttonTalent.None || (int)talent > PalStoreRules.TalentCount || FindTalent(talent) != null)
                 return false;
+            if (GluttonRun && _owned.Contains(talent)) return false;
             _talents.Add(new HeldTalent(talent, false));
             return true;
         }
 
-        /// Feed doubles one talent the run holds, once a run.
+        /// Feed doubles one talent the run holds, once a run. From rules 26 he eats another of the same limb for it: the first
+        /// you hold, by its place in the limb (TryFeed lets you pick which), or nothing when you hold no other there.
         public bool TryFeedTalent(GluttonTalent talent)
         {
+            if (GluttonRun)
+            {
+                if (!GluttonRules.Valid(talent)) return false;
+                int limb = GluttonRules.LimbOf(talent);
+                for (int slot = 0; slot < GluttonRules.PerLimb; slot++)
+                {
+                    GluttonTalent other = GluttonRules.At(limb, slot);
+                    if (other != talent && HoldsTalent(other)) return TryFeed(talent, other, out _);
+                }
+                return TryFeed(talent, GluttonTalent.None, out _);
+            }
             HeldTalent held = FindTalent(talent);
             if (held == null) return false;
             for (int i = 0; i < _talents.Count; i++) if (_talents[i].Fed) return false;
@@ -133,7 +150,8 @@ namespace KindredSiege.Sim.Learning
         }
 
         // What your side brings into a fight from the stores: the Shade's routes at their forms, and from rules 24 the habits,
-        // upgraded or not, and the pair. No talent sets the cheaper hook yet.
+        // upgraded or not, and the pair; from rules 26 the Glutton's talents, owned or lent, fed or not, less the one he ate. No
+        // talent sets the cheaper hook.
         private PalKit RunPalKit(int rules)
         {
             var routes = new List<KeyValuePair<ShadeRoute, int>>();
@@ -142,7 +160,269 @@ namespace KindredSiege.Sim.Learning
             if (rules < WhispererRules) return kit;
             var habits = new int[PalStoreRules.HabitCount + 1];
             for (int i = 0; i < _habits.Count; i++) habits[(int)_habits[i].Habit] = _habits[i].Upgraded ? 2 : 1;
-            return kit.WithWhisper(habits, Pair);
+            kit = kit.WithWhisper(habits, Pair);
+            if (rules < GluttonTreeRules) return kit;
+            var levels = new int[GluttonRules.TalentCount + 1];
+            for (int t = 1; t <= GluttonRules.TalentCount; t++) levels[t] = TalentLevel((GluttonTalent)t);
+            return kit.WithTalents(levels);
+        }
+
+        // ------------------------------------------------------------ the Glutton's tree (rules 26)
+
+        private readonly List<GluttonTalent> _owned = new List<GluttonTalent>();
+
+        /// The talents bought at camp (rules 26), kept between runs, in the order bought.
+        public IReadOnlyList<GluttonTalent> OwnedTalents => _owned;
+
+        /// This run's Feed: the talent it doubles and the one he ate for it; None before it.
+        public GluttonTalent FedTalent { get; private set; }
+        public GluttonTalent EatenTalent { get; private set; }
+
+        /// The lost fights Branch Hedge has kept the streak through this run.
+        public int HedgesUsed { get; private set; }
+
+        // The codex entries that pay a talent point, one each: a tribe met, a tribe won over, a chief met, a chief's hidden
+        // chain, a beast slain. Repeat fights write nothing new, so they pay nothing.
+        private static readonly string[] PointEntries = { "Tribe: ", "Joined: ", "Chief met: ", "Hidden chain of ", "Beast: " };
+
+        /// The talent points the codex has paid: one for each first it records (PointEntries).
+        public int TalentPointsEarned
+        {
+            get
+            {
+                int points = 0;
+                for (int i = 0; i < _codex.Count; i++)
+                    for (int k = 0; k < PointEntries.Length; k++)
+                        if (_codex[i].StartsWith(PointEntries[k], StringComparison.Ordinal))
+                        {
+                            points++;
+                            break;
+                        }
+                return points;
+            }
+        }
+
+        /// What the owned talents cost, and what is left to spend.
+        public int TalentPointsSpent
+        {
+            get
+            {
+                int spent = 0;
+                for (int i = 0; i < _owned.Count; i++) spent += GluttonRules.Cost(_owned[i]);
+                return spent;
+            }
+        }
+
+        public int TalentPoints => TalentPointsEarned - TalentPointsSpent;
+
+        /// The campaign tier you have reached: the highest tier of a tribe you have met, 1 before any.
+        public int ReachedTier
+        {
+            get
+            {
+                int tier = 1;
+                IReadOnlyList<CampaignTribe> all = CampaignTribes.All;
+                for (int i = 0; i < all.Count; i++)
+                    if (all[i].Tier > tier && _codex.Contains("Tribe: " + all[i].Name)) tier = all[i].Tier;
+                return tier;
+            }
+        }
+
+        /// Whether the run holds this talent (owned at camp, or lent for the run), and he has not eaten it.
+        public bool HoldsTalent(GluttonTalent talent)
+        {
+            if (!GluttonRules.Valid(talent) || talent == EatenTalent) return false;
+            return _owned.Contains(talent) || FindTalent(talent) != null;
+        }
+
+        /// This talent's level in your next fight: 0, GluttonRules.Held, or GluttonRules.Fed.
+        public int TalentLevel(GluttonTalent talent)
+        {
+            if (!GluttonRun || !HoldsTalent(talent)) return 0;
+            return talent == FedTalent ? GluttonRules.Fed : GluttonRules.Held;
+        }
+
+        /// Buys a talent in the camp tree with talent points, kept between runs. At camp only, in its limb's order (tier 1, tier
+        /// 2, one of the tier 3 pair, then the keystone), and from the campaign tier that opens it.
+        public bool TryBuyTalent(GluttonTalent talent, out string why)
+        {
+            why = string.Empty;
+            if (!GluttonRun) why = "The tree comes with campaign rules " + GluttonTreeRules + ".";
+            else if (!GluttonRules.Valid(talent)) why = "No such talent.";
+            else if (Stage == CampaignStage.InRun) why = "Only at camp.";
+            else if (_owned.Contains(talent)) why = "You own it already.";
+            else if (!TreeOpen(talent, out why)) { }
+            else if (ReachedTier < GluttonRules.OpensAtTier(talent)) why = "Opens at campaign tier " + GluttonRules.OpensAtTier(talent) + ".";
+            else if (TalentPoints < GluttonRules.Cost(talent))
+                why = "Needs " + GluttonRules.Cost(talent) + " points, you have " + TalentPoints + ".";
+            if (why.Length > 0) return false;
+            _owned.Add(talent);
+            return true;
+        }
+
+        /// Gives every point back, at camp. Free.
+        public bool TryResetTree()
+        {
+            if (!GluttonRun || Stage == CampaignStage.InRun || _owned.Count == 0) return false;
+            _owned.Clear();
+            return true;
+        }
+
+        // Whether the camp tree has its limb open below it: tier 2 needs tier 1, tier 3 needs tier 2 and not its partner, a
+        // keystone needs one of the tier 3 pair.
+        private bool TreeOpen(GluttonTalent talent, out string why)
+        {
+            why = string.Empty;
+            int limb = GluttonRules.LimbOf(talent);
+            switch (GluttonRules.SlotOf(talent))
+            {
+                case 0: return true;
+                case 1:
+                    if (!_owned.Contains(GluttonRules.At(limb, 0))) why = "Needs " + GluttonRules.Name(GluttonRules.At(limb, 0)) + " first.";
+                    break;
+                case 2:
+                case 3:
+                    if (!_owned.Contains(GluttonRules.At(limb, 1))) why = "Needs " + GluttonRules.Name(GluttonRules.At(limb, 1)) + " first.";
+                    else if (_owned.Contains(GluttonRules.PartnerOf(talent)))
+                        why = "You took " + GluttonRules.Name(GluttonRules.PartnerOf(talent)) + "; reset to switch.";
+                    break;
+                default:
+                    if (!_owned.Contains(GluttonRules.At(limb, 2)) && !_owned.Contains(GluttonRules.At(limb, 3)))
+                        why = "Needs a tier 3 talent of " + GluttonRules.Limbs[limb] + " first.";
+                    break;
+            }
+            return why.Length == 0;
+        }
+
+        /// Feed (rules 26): once a run, this talent you hold doubles for the run, and he eats another you hold in the same limb
+        /// for it. Eaten None only when you hold no other talent in that limb: then he eats nothing.
+        public bool TryFeed(GluttonTalent fed, GluttonTalent eaten, out string why)
+        {
+            why = string.Empty;
+            if (!GluttonRun) why = "Feed eats a talent from campaign rules " + GluttonTreeRules + ".";
+            else if (Stage != CampaignStage.InRun) why = "Feed is for a run.";
+            else if (_active != null) why = "Not in the middle of a fight.";
+            else if (FedTalent != GluttonTalent.None) why = "He has fed once this run.";
+            else if (!HoldsTalent(fed)) why = "You don't hold that talent.";
+            else if (eaten == GluttonTalent.None && OtherInLimb(fed)) why = "He eats another talent of the same limb: pick which.";
+            else if (eaten != GluttonTalent.None && !HoldsTalent(eaten)) why = "You don't hold the one he would eat.";
+            else if (fed == eaten) why = "He eats another talent, not the one he feeds.";
+            else if (eaten != GluttonTalent.None && GluttonRules.LimbOf(fed) != GluttonRules.LimbOf(eaten)) why = "He eats one of the same limb.";
+            if (why.Length > 0) return false;
+            FedTalent = fed;
+            EatenTalent = eaten;
+            HeldTalent lent = FindTalent(fed);
+            if (lent != null) lent.Fed = true;
+            return true;
+        }
+
+        // Whether the run holds a talent of this one's limb other than it.
+        private bool OtherInLimb(GluttonTalent talent)
+        {
+            int limb = GluttonRules.LimbOf(talent);
+            for (int slot = 0; slot < GluttonRules.PerLimb; slot++)
+            {
+                GluttonTalent other = GluttonRules.At(limb, slot);
+                if (other != talent && HoldsTalent(other)) return true;
+            }
+            return false;
+        }
+
+        // ------------------------------------------------------------ the Glutton's road card (rules 26)
+
+        // The road node's own dice for his picks: a stream of its seed nothing else draws from.
+        private const ulong GluttonOfferStream = 18UL;
+
+        /// What a pick weighs in his offer: the next talent of a limb the run has picked from weighs this, any other 1, so a
+        /// run climbs one limb (the Butcher's ComboRankUpWeight). A starting value.
+        public const int ClimbWeight = 2;
+
+        /// How many picks a Pal card shows: FavourRules.Offered, more with Node Cache (rules 26).
+        public int OfferSize => FavourRules.Offered + (GluttonRun ? GluttonRules.Bonus(TalentLevel(GluttonTalent.NodeCache), GluttonRules.CacheMore) : 0);
+
+        // His card: the next talent of each limb you don't hold yet (tier 1, tier 2, both of the tier 3 pair, then the keystone),
+        // weighing ClimbWeight in a limb he has lent from this run, drawn by weight from the node's own dice, in his order.
+        private FavourOffer GluttonOffer(RoadNode node)
+        {
+            var pool = new List<Favour>();
+            var weights = new List<int>();
+            for (int limb = 0; limb < GluttonRules.LimbCount; limb++)
+            {
+                bool climbing = false;
+                for (int i = 0; i < _talents.Count; i++) if (GluttonRules.LimbOf(_talents[i].Talent) == limb) climbing = true;
+                List<GluttonTalent> next = NextInLimb(limb);
+                for (int k = 0; k < next.Count; k++)
+                {
+                    pool.Add(FavourRules.TalentPick(next[k]));
+                    weights.Add(climbing ? ClimbWeight : 1);
+                }
+            }
+            var dice = new DeterministicRng(node.Seed, GluttonOfferStream);
+            var taken = new bool[pool.Count];
+            for (int n = 0; n < OfferSize && n < pool.Count; n++)
+            {
+                int total = 0;
+                for (int i = 0; i < pool.Count; i++) if (!taken[i]) total += weights[i];
+                int roll = dice.Next(total);
+                for (int i = 0; i < pool.Count; i++)
+                {
+                    if (taken[i]) continue;
+                    if (roll < weights[i])
+                    {
+                        taken[i] = true;
+                        break;
+                    }
+                    roll -= weights[i];
+                }
+            }
+            var choices = new List<Favour>();
+            for (int i = 0; i < pool.Count; i++) if (taken[i]) choices.Add(pool[i]);
+            return choices.Count == 0 ? null : new FavourOffer(Pal.Glutton, choices);
+        }
+
+        // A limb's next talents for the road: its lowest tier you hold nothing of; both of the tier 3 pair while you hold
+        // neither; none once it is full.
+        private List<GluttonTalent> NextInLimb(int limb)
+        {
+            var next = new List<GluttonTalent>();
+            if (!Holds(GluttonRules.At(limb, 0))) next.Add(GluttonRules.At(limb, 0));
+            else if (!Holds(GluttonRules.At(limb, 1))) next.Add(GluttonRules.At(limb, 1));
+            else if (!Holds(GluttonRules.At(limb, 2)) && !Holds(GluttonRules.At(limb, 3)))
+            {
+                next.Add(GluttonRules.At(limb, 2));
+                next.Add(GluttonRules.At(limb, 3));
+            }
+            else if (!Holds(GluttonRules.At(limb, 4))) next.Add(GluttonRules.At(limb, 4));
+            return next;
+        }
+
+        // Held for the road's climb: owned or lent, eaten or not.
+        private bool Holds(GluttonTalent talent) => _owned.Contains(talent) || FindTalent(talent) != null;
+
+        // Takes one of his picks; its name for the codex. A tier 3 talent brings its limb's keystone with it.
+        private string TakeGlutton(Favour favour)
+        {
+            GluttonTalent talent = FavourRules.TalentOf(favour);
+            TryLendTalent(talent);
+            string name = GluttonRules.Name(talent);
+            GluttonTalent keystone = GluttonRules.KeystoneOf(talent);
+            if (GluttonRules.TierOf(talent) == 3 && !Holds(keystone) && TryLendTalent(keystone)) name += " and " + GluttonRules.Name(keystone);
+            return name;
+        }
+
+        // Branch Hedge (rules 26): a lost fight keeps the streak while the run has hedges left. True when it kept it.
+        private bool Hedged()
+        {
+            if (!GluttonRun || HedgesUsed >= GluttonRules.Bonus(TalentLevel(GluttonTalent.BranchHedge), GluttonRules.HedgeLosses)) return false;
+            HedgesUsed++;
+            return true;
+        }
+
+        // Rogue Planet Prospecting (rules 26): what a won fight sends home, more.
+        private int Prospected(int materials)
+        {
+            if (!GluttonRun) return materials;
+            return materials * (100 + GluttonRules.Bonus(TalentLevel(GluttonTalent.RoguePlanetProspecting), GluttonRules.ProspectingPercent)) / 100;
         }
 
         // Each of yours in the fight brings his rank (rules 24).
@@ -193,7 +473,7 @@ namespace KindredSiege.Sim.Learning
             }
             var dice = new DeterministicRng(node.Seed, WhisperOfferStream);
             var taken = new bool[pool.Count];
-            for (int n = 0; n < FavourRules.Offered && n < pool.Count; n++)
+            for (int n = 0; n < OfferSize && n < pool.Count; n++)
             {
                 int total = 0;
                 for (int i = 0; i < pool.Count; i++) if (!taken[i]) total += weights[i];
@@ -296,7 +576,7 @@ namespace KindredSiege.Sim.Learning
             }
             var dice = new DeterministicRng(node.Seed, ShadeOfferStream);
             var taken = new bool[pool.Count];
-            for (int n = 0; n < FavourRules.Offered && n < pool.Count; n++)
+            for (int n = 0; n < OfferSize && n < pool.Count; n++)
             {
                 int total = 0;
                 for (int i = 0; i < pool.Count; i++) if (!taken[i]) total += weights[i];
@@ -350,6 +630,9 @@ namespace KindredSiege.Sim.Learning
         private void ClearPalStores()
         {
             _talents.Clear();
+            FedTalent = GluttonTalent.None;
+            EatenTalent = GluttonTalent.None;
+            HedgesUsed = 0;
             _routes.Clear();
             if (WhispererRun)
                 for (int i = 0; i < _habits.Count; i++) _habits[i].Upgraded = false;
@@ -369,6 +652,32 @@ namespace KindredSiege.Sim.Learning
             if (talent <= GluttonTalent.None || (int)talent > PalStoreRules.TalentCount || FindTalent(talent) != null) return false;
             if (fed) for (int i = 0; i < _talents.Count; i++) if (_talents[i].Fed) return false;
             _talents.Add(new HeldTalent(talent, fed));
+            return true;
+        }
+
+        // A talent bought at camp (version 29): in the order bought, so its limb is open below it.
+        internal bool RestoreOwned(GluttonTalent talent)
+        {
+            if (!GluttonRules.Valid(talent) || _owned.Contains(talent) || !TreeOpen(talent, out _)) return false;
+            _owned.Add(talent);
+            return true;
+        }
+
+        // The run's Feed (version 29): both held, of one limb.
+        internal bool RestoreFeed(GluttonTalent fed, GluttonTalent eaten)
+        {
+            if (FedTalent != GluttonTalent.None || !GluttonRules.Valid(fed) || fed == eaten || !Holds(fed)) return false;
+            if (eaten != GluttonTalent.None && (!GluttonRules.Valid(eaten) || GluttonRules.LimbOf(fed) != GluttonRules.LimbOf(eaten) || !Holds(eaten)))
+                return false;
+            FedTalent = fed;
+            EatenTalent = eaten;
+            return true;
+        }
+
+        internal bool RestoreHedges(int used)
+        {
+            if (used < 1 || used > GluttonRules.HedgeLosses * 2 || HedgesUsed != 0) return false;
+            HedgesUsed = used;
             return true;
         }
 

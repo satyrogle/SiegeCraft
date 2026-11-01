@@ -21,7 +21,9 @@ namespace KindredSiege.Sim.Tests
         [Test]
         public void AFavourFightOffersItsPalsFavoursAndTheTakenOneBendsYourNextFight()
         {
-            var easy = new CampaignTuning { EnemyScaleTier1 = 40 };
+            // From rules 25 the Shade and from rules 26 the Glutton offer their road cards too (ShadeFormsTests, GluttonTests), so
+            // the old button favours play only below them.
+            var easy = new CampaignTuning { EnemyScaleTier1 = 40, RulesCap = Campaign.WhispererRules };
             for (ulong seed = 5100; seed < 5140; seed++)
             {
                 Campaign c = Ready(seed, easy);

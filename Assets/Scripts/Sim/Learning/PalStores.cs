@@ -3,21 +3,7 @@ using KindredSiege.Sim.Battle;
 
 namespace KindredSiege.Sim.Learning
 {
-    /// The Glutton's 35 talents, his seven limbs of five as locked on 28 Oct 2026 (DESIGN_LOCKS, "The Butcher, Glutton and Shade
-    /// locked" and its later fixes): tier 1, tier 2, the tier 3 pair, then the keystone. What each one does is designed later;
-    /// the store keeps them (DESIGN_LOCKS, "The floor under the three Pals"). Saves keep the numbers; never reorder.
-    public enum GluttonTalent
-    {
-        None = 0,
-        DarkMatterPlating = 1, EntropySink = 2, FoldShield = 3, NeutronMass = 4, BranchAnchor = 5,
-        NucleusEdge = 6, Strip = 7, FoldStep = 8, EchoStrike = 9, AnswerTheParry = 10,
-        SlowLightRounds = 11, DarkMatterRounds = 12, LightStake = 13, ProbabilityLock = 14, NothingWasted = 15,
-        GravityMesh = 16, TimeLock = 17, CrawlField = 18, FoldTrap = 19, StasisWindUp = 20,
-        MatterPrinter = 21, RewindWound = 22, SynthArmour = 23, EntropyPurge = 24, Recompile = 25,
-        Precognition = 26, GlancingBlow = 27, DeepNode = 28, ChargedBranches = 29, CommandRelay = 30,
-        RoguePlanetProspecting = 31, BranchHedge = 32, SynthesisDiscount = 33, GeneLibrary = 34, NodeCache = 35
-    }
-
+    // GluttonTalent lives in Battle (PalKit.cs) from rules 26, with the same names and numbers, where the fight reads it.
     // WhispererHabit and SquadPair live in Battle (PalKit.cs), where the fight reads them (rules 24).
 
     /// A talent the Glutton lent this run, and whether Feed doubled it.

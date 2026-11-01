@@ -117,7 +117,7 @@ namespace KindredSiege.Sim.Battle
                 if (u.Side != p.Side || u.Class != cashes || u.Id == p.OriginId || !CanReact(u, target, p.Chain)) continue;
                 // From rules 24 the squad's pair bonds its two classes too (BattleSimulation.Whisperer.cs).
                 if (bonded == null && (IsBonded(p.OriginId, u.Id) || PairBonded(p.OriginId, u)) &&
-                    (u.LastBondedTick < 0 || _tick - u.LastBondedTick >= ChainRules.BondGapTicks))
+                    (u.LastBondedTick < 0 || _tick - u.LastBondedTick >= BondGap(u.Side)))
                     bonded = u;
                 if (ready == null && HalfReady(u)) ready = u;
             }

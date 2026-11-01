@@ -82,7 +82,46 @@ namespace KindredSiege.Sim.Learning
         ShadeRupture = 35,
         ShadeFear = 36,
         ShadeBreach = 37,
-        ShadeEcho = 38
+        ShadeEcho = 38,
+
+        // The Glutton's road card (campaign rules 26; Jacob in chat, 1 Nov 2026: "go"): one a talent, in Battle.GluttonTalent's
+        // order. From rules 26 his road fights offer three of these in place of his three favours above. Taking one lends that
+        // talent for the run, and a tier 3 talent brings its limb's keystone with it (Campaign.PalStores.cs).
+        GluttonDarkMatterPlating = 39,
+        GluttonEntropySink = 40,
+        GluttonFoldShield = 41,
+        GluttonNeutronMass = 42,
+        GluttonBranchAnchor = 43,
+        GluttonNucleusEdge = 44,
+        GluttonStrip = 45,
+        GluttonFoldStep = 46,
+        GluttonEchoStrike = 47,
+        GluttonAnswerTheParry = 48,
+        GluttonSlowLightRounds = 49,
+        GluttonDarkMatterRounds = 50,
+        GluttonLightStake = 51,
+        GluttonProbabilityLock = 52,
+        GluttonNothingWasted = 53,
+        GluttonGravityMesh = 54,
+        GluttonTimeLock = 55,
+        GluttonCrawlField = 56,
+        GluttonFoldTrap = 57,
+        GluttonStasisWindUp = 58,
+        GluttonMatterPrinter = 59,
+        GluttonRewindWound = 60,
+        GluttonSynthArmour = 61,
+        GluttonEntropyPurge = 62,
+        GluttonRecompile = 63,
+        GluttonPrecognition = 64,
+        GluttonGlancingBlow = 65,
+        GluttonDeepNode = 66,
+        GluttonChargedBranches = 67,
+        GluttonCommandRelay = 68,
+        GluttonRoguePlanetProspecting = 69,
+        GluttonBranchHedge = 70,
+        GluttonSynthesisDiscount = 71,
+        GluttonGeneLibrary = 72,
+        GluttonNodeCache = 73
     }
 
     /// One of the Whisperer's picks on offer (rules 24): its kind, and the fighter it ranks up, the pair it sets or the habit it
@@ -239,6 +278,27 @@ namespace KindredSiege.Sim.Learning
             return favour >= Favour.WhisperRankUp && favour <= Favour.WhisperHabitUp;
         }
 
+        /// True for one of the Glutton's road card picks (rules 26): a talent lent for the run.
+        public static bool IsGlutton(Favour favour)
+        {
+            return favour >= Favour.GluttonDarkMatterPlating && favour <= Favour.GluttonNodeCache;
+        }
+
+        /// The talent a Glutton pick lends; None for any other favour.
+        public static GluttonTalent TalentOf(Favour favour)
+        {
+            return IsGlutton(favour) ? (GluttonTalent)((int)favour - (int)Favour.GluttonDarkMatterPlating + 1) : GluttonTalent.None;
+        }
+
+        /// The Glutton pick for a talent.
+        public static Favour TalentPick(GluttonTalent talent)
+        {
+            return GluttonRules.Valid(talent) ? (Favour)((int)talent - 1 + (int)Favour.GluttonDarkMatterPlating) : Favour.None;
+        }
+
+        /// The most picks a card can show: FavourRules.Offered, and more with Node Cache (rules 26).
+        public const int MaxOffered = Offered + 2 * GluttonRules.CacheMore;
+
         /// True for one of the Shade's road card picks (rules 25): a route, its form in the run's store.
         public static bool IsShade(Favour favour)
         {
@@ -313,6 +373,7 @@ namespace KindredSiege.Sim.Learning
             if (IsCombo(favour)) return Pal.Butcher;
             if (IsWhisper(favour)) return Pal.Whisperer;
             if (IsShade(favour)) return Pal.Shade;
+            if (IsGlutton(favour)) return Pal.Glutton;
             if (favour <= Favour.None || (int)favour > Count) return Pal.None;
             return (Pal)(((int)favour - 1) / 3 + 1);
         }
@@ -348,6 +409,7 @@ namespace KindredSiege.Sim.Learning
             if (favour == Favour.WhisperPair) return "Pair";
             if (favour == Favour.WhisperHabitUp) return "Habit upgrade";
             if (IsShade(favour)) return ShadeRules.Name(RouteOf(favour));
+            if (IsGlutton(favour)) return GluttonRules.Name(TalentOf(favour));
             switch (favour)
             {
                 case Favour.LongRage: return "Long Rage";
@@ -378,6 +440,14 @@ namespace KindredSiege.Sim.Learning
             rank = Math.Max(1, Math.Min(MaxRank, rank));
             // A Shade pick's rank is its route's form (Campaign.FavourRank): what that form adds.
             if (IsShade(favour)) return ShadeRules.FormName(RouteOf(favour), rank) + ": " + ShadeRules.Describe(RouteOf(favour), rank);
+            // A Glutton pick: its line, and a tier 3 one says it brings the keystone.
+            if (IsGlutton(favour))
+            {
+                GluttonTalent t = TalentOf(favour);
+                string line = GluttonRules.Limbs[GluttonRules.LimbOf(t)] + ": " + GluttonRules.Describe(t);
+                return GluttonRules.TierOf(t) == 3 ? line + " With it, " + GluttonRules.Name(GluttonRules.KeystoneOf(t)) + ": " +
+                    GluttonRules.Describe(GluttonRules.KeystoneOf(t)) : line;
+            }
             switch (favour)
             {
                 case Favour.LongRage: return "Unleash lasts " + LongerPercent * rank + "% longer.";

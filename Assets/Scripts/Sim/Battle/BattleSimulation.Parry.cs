@@ -310,7 +310,8 @@ namespace KindredSiege.Sim.Battle
         {
             SideState s = _sides[facing];
             if (s.HoldTicks <= 0) return BeatMet.Open;
-            bool fresh = _fight.PerfectHold && s.LastHoldTick >= 0 && _tick - s.LastHoldTick <= FightRules.PerfectHoldTicks;
+            // Precognition (rules 26) widens the window.
+            bool fresh = _fight.PerfectHold && s.LastHoldTick >= 0 && _tick - s.LastHoldTick <= ParryWindow(facing);
             return fresh ? BeatMet.Parry : BeatMet.Block;
         }
 
@@ -334,7 +335,14 @@ namespace KindredSiege.Sim.Battle
             int facing = 1 - side;
             SideState theirs = _sides[facing];
             // Sanctuary's price (rules 25): the parrying side's parries do not stagger (BattleSimulation.Shade.cs).
-            int stagger = SanctuaryPriced(facing) ? 0 : FightRules.StaggerTicks;
+            // Command Relay (rules 26) gives part of it back.
+            int stagger = SanctuaryPriced(facing) ? FightRules.StaggerTicks * (100 - PriceLeft(facing)) / 100 : FightRules.StaggerTicks;
+            // Answer the Parry (rules 26) remembers who was parried, and by whom.
+            if (_gluttonOn)
+            {
+                doer.ParriedAtTick = _tick;
+                doer.ParriedBySide = facing;
+            }
             Emit(new BattleEvent(_tick, BattleEventKind.Parry, facing, string.Empty, -1, doer.Id, (int)doer.Class,
                 stagger, move));
             if (stagger > 0)
@@ -349,8 +357,10 @@ namespace KindredSiege.Sim.Battle
             if (_floorOn) Sanctuary(facing);
             if (_classOn && doer.Alive)
             {
-                doer.Statuses.Apply(StatusKind.Opening, ClassSpells.OpeningTicks);
-                MarkEvent(facing, null, doer, ClassSpells.OpeningTicks, ClassSpells.OpeningMark);
+                // Strip (rules 26) makes it last longer.
+                int opening = Stripped(facing, ClassSpells.OpeningTicks);
+                doer.Statuses.Apply(StatusKind.Opening, opening);
+                MarkEvent(facing, null, doer, opening, ClassSpells.OpeningMark);
             }
             if (!duel)
             {

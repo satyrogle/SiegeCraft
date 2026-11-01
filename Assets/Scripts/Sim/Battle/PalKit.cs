@@ -248,6 +248,235 @@ namespace KindredSiege.Sim.Battle
         }
     }
 
+    /// The Glutton's 35 talents, his seven limbs of five as locked on 28 Oct 2026 (DESIGN_LOCKS, "The Butcher, Glutton and Shade
+    /// locked" and its later fixes): tier 1, tier 2, the tier 3 pair, then the keystone. From rules 26 each does what
+    /// GluttonRules.Describe says (Jacob in chat, 1 Nov 2026: "go" on Claude's calls for the open ones). Saves keep the numbers; never reorder.
+    public enum GluttonTalent
+    {
+        None = 0,
+        DarkMatterPlating = 1, EntropySink = 2, FoldShield = 3, NeutronMass = 4, BranchAnchor = 5,
+        NucleusEdge = 6, Strip = 7, FoldStep = 8, EchoStrike = 9, AnswerTheParry = 10,
+        SlowLightRounds = 11, DarkMatterRounds = 12, LightStake = 13, ProbabilityLock = 14, NothingWasted = 15,
+        GravityMesh = 16, TimeLock = 17, CrawlField = 18, FoldTrap = 19, StasisWindUp = 20,
+        MatterPrinter = 21, RewindWound = 22, SynthArmour = 23, EntropyPurge = 24, Recompile = 25,
+        Precognition = 26, GlancingBlow = 27, DeepNode = 28, ChargedBranches = 29, CommandRelay = 30,
+        RoguePlanetProspecting = 31, BranchHedge = 32, SynthesisDiscount = 33, GeneLibrary = 34, NodeCache = 35
+    }
+
+    /// The Glutton's tree in the fight and at camp (campaign rules 26; Jacob in chat, 1 Nov 2026: "go" on Claude's calls;
+    /// DESIGN_LOCKS, "The Butcher, Glutton and Shade locked" and "The Glutton's theme: one limb"). Seven limbs of five, each
+    /// tier 1, tier 2, a tier 3 pair you pick one of, and a keystone, in GluttonTalent's order. Every talent makes something you
+    /// already have bigger, longer, faster or cheaper; fed (Feed, once a run) its bonus doubles. Every number is a starting value.
+    public static class GluttonRules
+    {
+        public const int TalentCount = 35;
+        public const int LimbCount = 7;
+        public const int PerLimb = 5;
+
+        /// A kit's level for a talent: none, held (owned at camp or lent for the run), or fed.
+        public const int Held = 1;
+        public const int Fed = 2;
+
+        /// The limbs, in GluttonTalent's order.
+        public static readonly string[] Limbs = { "Front line", "Strikers", "Shooters", "Control", "Healers", "Command", "War chest" };
+
+        /// Its limb, 0 to 6.
+        public static int LimbOf(GluttonTalent t) => ((int)t - 1) / PerLimb;
+
+        /// Its place in its limb: 0 tier 1, 1 tier 2, 2 and 3 the tier 3 pair, 4 the keystone.
+        public static int SlotOf(GluttonTalent t) => ((int)t - 1) % PerLimb;
+
+        /// Its tier, 1 to 3, and 4 for a keystone.
+        public static int TierOf(GluttonTalent t)
+        {
+            int slot = SlotOf(t);
+            return slot == 4 ? 4 : slot >= 2 ? 3 : slot + 1;
+        }
+
+        public static bool IsKeystone(GluttonTalent t) => SlotOf(t) == 4;
+
+        /// What it costs at camp: 1, 2 or 3 points by tier, a keystone 5, so a limb is 11 and the tree 77.
+        public static int Cost(GluttonTalent t)
+        {
+            switch (TierOf(t))
+            {
+                case 1: return 1;
+                case 2: return 2;
+                case 3: return 3;
+                default: return 5;
+            }
+        }
+
+        /// The talent at this place of this limb.
+        public static GluttonTalent At(int limb, int slot) => (GluttonTalent)(limb * PerLimb + slot + 1);
+
+        /// The other one of a tier 3 pair; None for any other talent.
+        public static GluttonTalent PartnerOf(GluttonTalent t)
+        {
+            int slot = SlotOf(t);
+            if (slot == 2) return t + 1;
+            if (slot == 3) return t - 1;
+            return GluttonTalent.None;
+        }
+
+        /// Its limb's keystone.
+        public static GluttonTalent KeystoneOf(GluttonTalent t) => At(LimbOf(t), 4);
+
+        /// The campaign tier (the highest tier of a tribe you have met) that opens it in the camp tree, in the 8 Dec slice:
+        /// tiers 1 and 2 from the start, tier 3 at campaign tier 2, keystones at campaign tier 3. The road lends any of them.
+        public static int OpensAtTier(GluttonTalent t)
+        {
+            int tier = TierOf(t);
+            return tier == 4 ? 3 : tier == 3 ? 2 : 1;
+        }
+
+        public static bool Valid(GluttonTalent t) => t > GluttonTalent.None && (int)t <= TalentCount;
+
+        // ------------------------------------------------------------ what each one does (the fight's numbers)
+
+        /// Dark Matter Plating: your front row takes this percent less from each hit.
+        public const int PlatingPercent = 10;
+        /// Entropy Sink: your front row's clocks run this percent faster.
+        public const int SinkPercent = 15;
+        /// Fold Shield (front row) and Entropy Purge (Medics): Fold Door's Unnerving takes half the nerve.
+        public const int PortalNervePercent = 50;
+        /// Neutron Mass: Event Horizon reaches this many places either side of its mark, not one.
+        public const int NeutronReach = 2;
+        /// Branch Anchor: Sanctuary's shields on your front row are this percent thicker.
+        public const int AnchorPercent = 100;
+        /// Nucleus Edge: Skirmishers' blows hit this percent harder.
+        public const int EdgePercent = 15;
+        /// Strip: the Openings your side leaves last this percent longer.
+        public const int StripPercent = 100;
+        /// Fold Step: Execution Corridor's blow hits this percent harder.
+        public const int FoldStepPercent = 50;
+        /// Echo Strike: a Skirmisher's echo keeps this many more percent of each blow, on top of Echo's own share.
+        public const int EchoStrikePercent = 65;
+        /// Answer the Parry: Skirmishers hit one your side parried in the last AnswerTicks this percent harder.
+        public const int AnswerPercent = 100;
+        public const int AnswerTicks = 2 * SimClock.TicksPerSecond;
+        /// Slow Light Rounds: Stopped Bullets' freeze lasts this much longer.
+        public const int SlowLightTicks = SimClock.TicksPerSecond;
+        /// Dark Matter Rounds: Marksmen's blows pass through this percent of armour.
+        public const int DarkRoundsPercent = 50;
+        /// Light Stake: Black Hole Round crushes this percent harder.
+        public const int StakePercent = 100;
+        /// Probability Lock: Marksmen's blows on a snared enemy hit this percent harder.
+        public const int LockPercent = 25;
+        /// Nothing Wasted: Marksmen's blows on your Focus Fire target hit this percent harder.
+        public const int WastedPercent = 100;
+        // Gravity Mesh: a snared enemy cannot Step Back (all or nothing: Feed adds nothing).
+
+        /// Time Lock: snares hold this percent longer.
+        public const int TimeLockPercent = 50;
+        /// Crawl Field: Time Snare's wind ups slow by this many more percent.
+        public const int CrawlPercent = 100;
+        /// Fold Trap: Doorway catches this many more chargers.
+        public const int FoldTrapMore = 1;
+        /// Stasis Wind Up: Singularity Net holds this many more either side of the snared one.
+        public const int StasisReach = 1;
+        /// Matter Printer: heals land this percent bigger.
+        public const int PrinterPercent = 20;
+        /// Rewind Wound: Rewind undoes this many more seconds.
+        public const int RewindMoreSeconds = 2;
+        /// Synth Armour: a treatment on a Guarded ally lands this many more percent bigger.
+        public const int SynthPercent = 50;
+        /// Recompile: heals on anyone under RecompileBelowPermille of his health land this percent bigger.
+        public const int RecompilePercent = 100;
+        public const int RecompileBelowPermille = 250;
+        /// Precognition: the parry window is this percent wider.
+        public const int PrecognitionPercent = 50;
+        /// Glancing Blow (Glancing Fold): a Hold that soaks instead of parrying soaks this percent more of the hit's share it
+        /// soaks.
+        public const int GlancingPercent = 50;
+        /// Deep Node: the Shade's tricks hit this percent harder.
+        public const int DeepNodePercent = 33;
+        /// Charged Branches: each held parry bar adds this many more percent to your combos and cash ins.
+        public const int ChargedPercent = 5;
+        /// Command Relay: the Shade's route prices are this percent smaller.
+        public const int RelayPricePercent = 50;
+        /// Rogue Planet Prospecting: a won fight sends home this percent more.
+        public const int ProspectingPercent = 20;
+        /// Branch Hedge: the streak survives this many lost fights a run.
+        public const int HedgeLosses = 1;
+        /// Synthesis Discount: the Butcher's pacts cost this percent less.
+        public const int DiscountPercent = 33;
+        /// Gene Library: a pair's free answer waits this percent less between answers.
+        public const int LibraryPercent = 50;
+        /// Node Cache: every Pal card shows this many more picks.
+        public const int CacheMore = 1;
+
+        /// A bonus at a kit's level: none, held, or fed and doubled.
+        public static int Bonus(int level, int bonus) => level <= 0 ? 0 : level >= Fed ? bonus * 2 : bonus;
+
+        /// Its name, as the tree and the road card show it.
+        public static string Name(GluttonTalent t)
+        {
+            switch (t)
+            {
+                case GluttonTalent.None: return string.Empty;
+                case GluttonTalent.GlancingBlow: return "Glancing Fold";
+                default:
+                    // "DarkMatterPlating" to "Dark Matter Plating".
+                    string s = t.ToString();
+                    var b = new System.Text.StringBuilder();
+                    for (int i = 0; i < s.Length; i++)
+                    {
+                        if (i > 0 && char.IsUpper(s[i])) b.Append(' ');
+                        b.Append(s[i]);
+                    }
+                    return b.ToString();
+            }
+        }
+
+        /// What it does, in one line.
+        public static string Describe(GluttonTalent t)
+        {
+            switch (t)
+            {
+                case GluttonTalent.DarkMatterPlating: return "Your front row takes " + PlatingPercent + "% less from each hit.";
+                case GluttonTalent.EntropySink: return "Your front row acts " + SinkPercent + "% faster.";
+                case GluttonTalent.FoldShield: return "Fold Door takes half the nerve from your front row.";
+                case GluttonTalent.NeutronMass: return "Event Horizon pulls from " + NeutronReach + " places either side, not 1.";
+                case GluttonTalent.BranchAnchor: return "Sanctuary's shields on your front row are twice as thick.";
+                case GluttonTalent.NucleusEdge: return "Skirmishers hit " + EdgePercent + "% harder.";
+                case GluttonTalent.Strip: return "Your Openings last twice as long.";
+                case GluttonTalent.FoldStep: return "Execution Corridor hits " + FoldStepPercent + "% harder.";
+                case GluttonTalent.EchoStrike: return "Echo replays Skirmishers' hits at full strength.";
+                case GluttonTalent.AnswerTheParry: return "Skirmishers hit twice as hard on one you parried in the last 2 s.";
+                case GluttonTalent.SlowLightRounds: return "Stopped Bullets' freeze lasts 1 s longer.";
+                case GluttonTalent.DarkMatterRounds: return "Marksmen's shots pass through half of armour.";
+                case GluttonTalent.LightStake: return "Black Hole Round crushes twice as hard.";
+                case GluttonTalent.ProbabilityLock: return "Marksmen hit a snared enemy " + LockPercent + "% harder.";
+                case GluttonTalent.NothingWasted: return "Marksmen hit your Focus Fire target twice as hard.";
+                case GluttonTalent.GravityMesh: return "A snared enemy can't Step Back.";
+                case GluttonTalent.TimeLock: return "Snares hold " + TimeLockPercent + "% longer.";
+                case GluttonTalent.CrawlField: return "Time Snare slows wind ups three times, not twice.";
+                case GluttonTalent.FoldTrap: return "Doorway catches two chargers, not one.";
+                case GluttonTalent.StasisWindUp: return "Singularity Net drags in twice as many.";
+                case GluttonTalent.MatterPrinter: return "Heals land " + PrinterPercent + "% bigger.";
+                case GluttonTalent.RewindWound: return "Rewind undoes 5 s, not 3.";
+                case GluttonTalent.SynthArmour: return "Treatment on a Guarded ally lands twice as big.";
+                case GluttonTalent.EntropyPurge: return "Fold Door takes half the nerve from your Medics.";
+                case GluttonTalent.Recompile: return "Heals on anyone under a quarter health land twice as big.";
+                case GluttonTalent.Precognition: return "The parry window is " + PrecognitionPercent + "% wider.";
+                case GluttonTalent.GlancingBlow: return "A Hold that soaks instead of parrying soaks half as much again.";
+                case GluttonTalent.DeepNode: return "The Shade's tricks hit a third harder.";
+                case GluttonTalent.ChargedBranches: return "Each held parry bar adds " + (MeterRules.PercentPerBar + ChargedPercent) + "%, not " + MeterRules.PercentPerBar + "%.";
+                case GluttonTalent.CommandRelay: return "The Shade's route prices are halved.";
+                case GluttonTalent.RoguePlanetProspecting: return "Won fights send home " + ProspectingPercent + "% more.";
+                case GluttonTalent.BranchHedge: return "Your streak survives one lost fight a run.";
+                case GluttonTalent.SynthesisDiscount: return "The Butcher's pacts cost a third less.";
+                case GluttonTalent.GeneLibrary: return "Pairs answer twice as often.";
+                case GluttonTalent.NodeCache: return "Every Pal card shows " + (FavourRulesOffered + CacheMore) + " picks, not " + FavourRulesOffered + ".";
+                default: return string.Empty;
+            }
+        }
+
+        // The road card's size, as Learning.FavourRules.Offered (Battle cannot see Learning).
+        private const int FavourRulesOffered = 3;
+    }
+
     /// The Whisperer's habits, two a class, with the 28 Oct audit's names (campaign rules 24; DESIGN_LOCKS, "Habits come with
     /// the game, the Whisperer upgrades them"). Saves and replays keep the numbers; never reorder.
     public enum WhispererHabit
@@ -356,9 +585,13 @@ namespace KindredSiege.Sim.Battle
         // Each habit: 0 not set, 1 set, 2 set and upgraded, at most one a class.
         private readonly int[] _habits = new int[WhisperRules.HabitCount + 1];
 
+        // From rules 26 each of the Glutton's talents: 0 none, GluttonRules.Held, or GluttonRules.Fed.
+        private readonly int[] _talents = new int[GluttonRules.TalentCount + 1];
+
         private PalKit(PalKit routes, int[] habits, SquadPair pair)
         {
             Array.Copy(routes._forms, _forms, _forms.Length);
+            Array.Copy(routes._talents, _talents, _talents.Length);
             OrderCostPercent = routes.OrderCostPercent;
             var taken = new bool[(int)UnitClass.Medic + 1];
             for (int h = 1; habits != null && h < habits.Length && h <= WhisperRules.HabitCount; h++)
@@ -378,6 +611,25 @@ namespace KindredSiege.Sim.Battle
             int[] copy = new int[WhisperRules.HabitCount + 1];
             for (int h = 1; habits != null && h < habits.Count && h <= WhisperRules.HabitCount; h++) copy[h] = habits[h];
             return new PalKit(this, copy, pair);
+        }
+
+        /// The same kit with the Glutton's talents (rules 26): each at 0, GluttonRules.Held or GluttonRules.Fed, in GluttonTalent's
+        /// order from index 1.
+        public PalKit WithTalents(IReadOnlyList<int> levels)
+        {
+            var kit = new PalKit(this, _habits, Pair);
+            for (int t = 1; levels != null && t < levels.Count && t <= GluttonRules.TalentCount; t++)
+                kit._talents[t] = Math.Max(0, Math.Min(GluttonRules.Fed, levels[t]));
+            return kit;
+        }
+
+        /// This talent's level on this side: 0, GluttonRules.Held or GluttonRules.Fed.
+        public int TalentLevel(GluttonTalent talent) => GluttonRules.Valid(talent) ? _talents[(int)talent] : 0;
+
+        /// Every talent's level, in GluttonTalent's order, for the replay evidence.
+        public int[] Talents()
+        {
+            return (int[])_talents.Clone();
         }
 
         /// The squad's pair, None for none.
@@ -445,6 +697,7 @@ namespace KindredSiege.Sim.Battle
                 if (OrderCostPercent != 0 || Pair != SquadPair.None) return false;
                 for (int r = 1; r < ShadeRules.RouteCount; r++) if (_forms[r] > 0) return false;
                 for (int h = 1; h <= WhisperRules.HabitCount; h++) if (_habits[h] > 0) return false;
+                for (int t = 1; t <= GluttonRules.TalentCount; t++) if (_talents[t] > 0) return false;
                 return true;
             }
         }
@@ -473,6 +726,9 @@ namespace KindredSiege.Sim.Battle
             for (int h = 1; h <= WhisperRules.HabitCount; h++)
                 if (_habits[h] > 0) b.Field(prefix + "habit." + ((WhispererHabit)h).ToString().ToLowerInvariant(), _habits[h]);
             if (Pair != SquadPair.None) b.Field(prefix + "pair", (int)Pair);
+            // The Glutton's (rules 26), the same way.
+            for (int t = 1; t <= GluttonRules.TalentCount; t++)
+                if (_talents[t] > 0) b.Field(prefix + "talent." + ((GluttonTalent)t).ToString().ToLowerInvariant(), _talents[t]);
         }
     }
 }

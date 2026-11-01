@@ -42,7 +42,7 @@ namespace KindredSiege.Sim.Battle
         // Heavy, the Gravity Well's pact: his spell's own clock runs a quarter longer.
         private int Heavy(BattleUnit unit, int ticks)
         {
-            return HasAugment(unit, Augment.GravityWell) ? ticks * ClassSpells.HeavyPactPercent / 100 : ticks;
+            return HasAugment(unit, Augment.GravityWell) ? ticks * HeavyPactPercent(unit) / 100 : ticks;
         }
 
         // The Warden's Guard and the Medic's treatment come every turn, so for them Heavy slows the turn.
@@ -62,7 +62,7 @@ namespace KindredSiege.Sim.Battle
         private int RearmActions(BattleUnit unit)
         {
             int actions = SliceClasses.TrapRearmActions;
-            return HasAugment(unit, Augment.GravityWell) ? (actions * ClassSpells.HeavyPactPercent + 99) / 100 : actions;
+            return HasAugment(unit, Augment.GravityWell) ? (actions * HeavyPactPercent(unit) + 99) / 100 : actions;
         }
 
         // Borrowed time, the Time Stop's pact: an eighth less health, before the sides count their health.
@@ -72,7 +72,7 @@ namespace KindredSiege.Sim.Battle
             {
                 BattleUnit u = _units[i];
                 if (!HasAugment(u, Augment.TimeStop)) continue;
-                u.MaxHp = Math.Max(1, u.MaxHp * ClassSpells.BorrowedTimePermille / 1000);
+                u.MaxHp = Math.Max(1, u.MaxHp * BorrowedPermille(u) / 1000);
                 u.Hp = Math.Min(u.Hp, u.MaxHp);
             }
         }
@@ -91,8 +91,10 @@ namespace KindredSiege.Sim.Battle
                 {
                     BattleUnit u = _units[i];
                     if (u.Side != s || !HasAugment(u, Augment.FoldDoor)) continue;
-                    if (_unitNerveOn) u.UnitNerve -= u.UnitNerve / ClassSpells.UnnervingEighths;
-                    else _sides[s].Nerve = Math.Max(1, _sides[s].Nerve - share / ClassSpells.UnnervingEighths);
+                    // Synthesis Discount, Fold Shield and Entropy Purge (rules 26) cut it.
+                    int percent = UnnervingPercent(u);
+                    if (_unitNerveOn) u.UnitNerve -= u.UnitNerve * percent / (100 * ClassSpells.UnnervingEighths);
+                    else _sides[s].Nerve = Math.Max(1, _sides[s].Nerve - share * percent / (100 * ClassSpells.UnnervingEighths));
                 }
             }
             for (int i = 0; i < _units.Count; i++)
@@ -120,9 +122,10 @@ namespace KindredSiege.Sim.Battle
 
         // The enemies beside this one in its row (the audit's "nearby": the same row and the next lane, as the Brand's
         // BrandedAndBeside), standing and not spared.
-        private List<BattleUnit> PulledIn(BattleUnit by, BattleUnit mark)
+        private List<BattleUnit> PulledIn(BattleUnit by, BattleUnit mark, int reach = 1)
         {
-            List<BattleUnit> beside = BrandedAndBeside(mark);
+            // Neutron Mass and Stasis Wind Up (rules 26) reach further.
+            List<BattleUnit> beside = Beside(mark, reach);
             var pulled = new List<BattleUnit>();
             for (int k = 1; k < beside.Count; k++)
                 if (beside[k].Alive && !Spared(by, beside[k]) && beside[k].EvacTicks <= 0) pulled.Add(beside[k]);
@@ -176,14 +179,14 @@ namespace KindredSiege.Sim.Battle
             {
                 var crushed = new Hit(marksman.Power);
                 SpellHit(marksman, BlowKind.AimedShot, crushed);
-                crushed.Add(HitLayer.Combo, ClassSpells.BlackHoleCrushPercent - 100);
+                crushed.Add(HitLayer.Combo, StakePercent(marksman) - 100);
                 if (snared) crushed.Add(HitLayer.Cash, ClassSpells.PinCritPercent - 100);
                 for (int k = 0; k < pulled.Count && !_finished; k++)
                     ApplyHit(marksman, marksman.Side, pulled[k], Armor(pulled[k], crushed.Copy()), ClassSpells.BlackHoleDetail);
             }
             else
             {
-                int crush = Math.Max(1, SpellWeight(marksman, BlowKind.AimedShot, marksman.Power) * ClassSpells.BlackHoleCrushPercent / 100);
+                int crush = Math.Max(1, SpellWeight(marksman, BlowKind.AimedShot, marksman.Power) * StakePercent(marksman) / 100);
                 if (snared) crush = crush * ClassSpells.PinCritPercent / 100;
                 for (int k = 0; k < pulled.Count && !_finished; k++)
                     ApplyDamage(marksman, marksman.Side, pulled[k], Armored(pulled[k], crush), ClassSpells.BlackHoleDetail);
@@ -214,7 +217,7 @@ namespace KindredSiege.Sim.Battle
             if (warden.ComboCount % ClassSpells.EventHorizonEvery != 0) return false;
             BattleUnit mark = ChooseTarget(warden);
             if (mark == null) return false;
-            List<BattleUnit> pulled = PulledIn(warden, mark);
+            List<BattleUnit> pulled = PulledIn(warden, mark, Reach(warden, ClassBend.EventHorizon));
             Emit(EventFor(BattleEventKind.Pull, warden, mark, pulled.Count, ClassSpells.Name(ClassBend.EventHorizon)));
             int power = Math.Max(1, warden.Power * ClassSpells.EventHorizonPercent / 100);
             int markHp = mark.Hp;
@@ -242,7 +245,7 @@ namespace KindredSiege.Sim.Battle
         {
             if (Wears(trapper, ClassBend.SingularityNet))
             {
-                List<BattleUnit> pulled = PulledIn(trapper, caught);
+                List<BattleUnit> pulled = PulledIn(trapper, caught, Reach(trapper, ClassBend.SingularityNet));
                 Emit(EventFor(BattleEventKind.Pull, trapper, caught, pulled.Count, ClassSpells.Name(ClassBend.SingularityNet)));
                 for (int k = 0; k < pulled.Count; k++)
                 {
@@ -360,12 +363,12 @@ namespace KindredSiege.Sim.Battle
             {
                 var again = new Hit(skirmisher.Power);
                 SpellHit(skirmisher, BlowKind.Strike, again);
-                again.Add(HitLayer.Combo, ClassSpells.CorridorPercent - 100);
+                again.Add(HitLayer.Combo, CorridorPercent(skirmisher) - 100);
                 ApplyHit(skirmisher, skirmisher.Side, mark, Armor(mark, again), ClassSpells.CorridorDetail);
             }
             else
             {
-                int hit = Math.Max(1, SpellWeight(skirmisher, BlowKind.Strike, skirmisher.Power) * ClassSpells.CorridorPercent / 100);
+                int hit = Math.Max(1, SpellWeight(skirmisher, BlowKind.Strike, skirmisher.Power) * CorridorPercent(skirmisher) / 100);
                 ApplyDamage(skirmisher, skirmisher.Side, mark, Armored(mark, hit), ClassSpells.CorridorDetail);
             }
             Lay(skirmisher, mark, ClassBend.ExecutionCorridor);
@@ -446,7 +449,7 @@ namespace KindredSiege.Sim.Battle
                 if (!_finished && mark.Alive)
                 {
                     Open(marksman, mark);
-                    Pin(mark, ClassSpells.StoppedFreezeTicks);
+                    Pin(mark, FreezeTicks(marksman));
                     Lay(marksman, mark, ClassBend.StoppedBullets);
                 }
                 return 0;
@@ -517,7 +520,7 @@ namespace KindredSiege.Sim.Battle
         private int Slowed(BattleUnit unit, int ticks)
         {
             if (!_comboOn || unit == null || unit.SlowTicks <= 0) return ticks;
-            return ticks * ClassSpells.TimeSnarePercent / 100;
+            return ticks * CrawlPercent(unit) / 100;
         }
 
         // A Time Snare's half speed: on every other tick his turn does not come closer.
@@ -540,6 +543,15 @@ namespace KindredSiege.Sim.Battle
                 victim.HurtLost[slot] = 0;
             }
             victim.HurtLost[slot] += hpLost;
+            // Rewind Wound's longer memory (rules 26, BattleSimulation.Glutton.cs).
+            if (_gluttonOn) HurtLonger(victim, hpLost);
+        }
+
+        // What a Medic's Rewind gives back: the last RewindSeconds, or with Rewind Wound (rules 26) the longer memory.
+        private int RewindLost(BattleUnit medic, BattleUnit unit)
+        {
+            int seconds = RewindSecondsOf(medic);
+            return seconds <= ClassSpells.RewindSeconds ? Lost(unit) : LostOver(unit, seconds);
         }
 
         // What he lost in the last RewindSeconds seconds, this one counted.
@@ -561,14 +573,15 @@ namespace KindredSiege.Sim.Battle
             for (int i = 0; i < _units.Count; i++)
             {
                 BattleUnit u = _units[i];
-                if (!u.Alive || u.Side != medic.Side || u.Hp >= u.MaxHp || u.EvacTicks > 0 || Lost(u) <= 0) continue;
+                if (!u.Alive || u.Side != medic.Side || u.Hp >= u.MaxHp || u.EvacTicks > 0 || RewindLost(medic, u) <= 0) continue;
                 if (_beastOn && IsHeld(u)) continue; // in the cage bear's claw (BattleSimulation.Beast.cs)
                 if (ally == null || u.HpPermille < ally.HpPermille) ally = u;
             }
             if (ally == null) return;
-            int back = Math.Min(Lost(ally), ally.MaxHp - ally.Hp);
+            int back = Math.Min(RewindLost(medic, ally), ally.MaxHp - ally.Hp);
             Emit(EventFor(BattleEventKind.Freeze, medic, ally, back, ClassSpells.Name(ClassBend.Rewind)));
             for (int k = 0; k < ClassSpells.RewindSeconds; k++) ally.HurtLost[k] = 0;
+            if (_gluttonOn) for (int k = 0; k < ally.HurtLongLost.Length; k++) ally.HurtLongLost[k] = 0;
             Heal(medic, ally, back, ClassSpells.RewindDetail);
             BattleUnit foe = FindById(ally.HurtById);
             if (!_finished && foe != null && foe.Alive && foe.Side != ally.Side)

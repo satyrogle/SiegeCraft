@@ -86,7 +86,7 @@ namespace KindredSiege.Sim.Battle
             bool chiefRules = false, bool chiefKits = false, bool beasts = false, bool chiefTactics = false, bool parryCenter = false,
             bool squadFirst = false, bool raidChief = false, bool roadCombat = false, bool roadKit = false, int clearRoadStage = 0, bool squadScreen = false,
             bool championDuel = false, bool layers = false, bool marks = false, bool payoffs = false, bool danger = false,
-            bool meter = false, bool floor = false, bool whisper = false, bool shadeForms = false)
+            bool meter = false, bool floor = false, bool whisper = false, bool shadeForms = false, bool glutton = false)
         {
             ChampionDuel = championDuel;
             Layers = layers;
@@ -97,6 +97,7 @@ namespace KindredSiege.Sim.Battle
             Floor = floor;
             Whisper = whisper;
             ShadeForms = shadeForms;
+            Glutton = glutton;
             Misses = misses;
             EarnedPoints = earnedPoints;
             PerfectHold = perfectHold;
@@ -157,7 +158,7 @@ namespace KindredSiege.Sim.Battle
         /// These rules for a champion duel: what a duel plays from campaign rules version 16.
         public FightRules WithChampionDuel() => ChampionDuel ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, true, Layers, Marks, Payoffs, Danger, Meter, Floor, Whisper, ShadeForms);
+            ClearRoadStage, SquadScreen, true, Layers, Marks, Payoffs, Danger, Meter, Floor, Whisper, ShadeForms, Glutton);
 
         /// Rules 17: the damage layers (BattleSimulation.Layers.cs; DESIGN_LOCKS, "Builds: one theme per Pal", step 2). Every hit
         /// and heal goes through one pipeline: bonuses of one layer add, the layers multiply, and it rounds once.
@@ -167,7 +168,7 @@ namespace KindredSiege.Sim.Battle
         /// drop it, so it comes last, as the champion duel does.
         public FightRules WithLayers() => Layers ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, ChampionDuel, true, Marks, Payoffs, Danger, Meter, Floor, Whisper, ShadeForms);
+            ClearRoadStage, SquadScreen, ChampionDuel, true, Marks, Payoffs, Danger, Meter, Floor, Whisper, ShadeForms, Glutton);
 
         /// Rules 18: the Butcher's theme (BattleSimulation.Marks.cs; DESIGN_LOCKS, "The Butcher's theme", builds step 3). His
         /// combos lay Crush, Exposed and Stasis, which stack to 3 and burst.
@@ -176,7 +177,7 @@ namespace KindredSiege.Sim.Battle
         /// These rules with the Butcher's marks: what every fight plays from campaign rules version 18. Last, after the layers.
         public FightRules WithMarks() => Marks ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, ChampionDuel, Layers, true, Payoffs, Danger, Meter, Floor, Whisper, ShadeForms);
+            ClearRoadStage, SquadScreen, ChampionDuel, Layers, true, Payoffs, Danger, Meter, Floor, Whisper, ShadeForms, Glutton);
 
         /// Rules 20: payoffs that spread (BattleSimulation.Payoffs.cs; Jacob's playtest, HANDOFF_LOG 12797, fix 1). A snare pays
         /// one Aimed Shot crit and breaks, and bleeding counts at most PayoffRules.PercentHealthCap of a big target's health.
@@ -185,7 +186,7 @@ namespace KindredSiege.Sim.Battle
         /// These rules with payoffs that spread: what every fight plays from campaign rules version 20. Last, after the marks.
         public FightRules WithPayoffs() => Payoffs ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, true, Danger, Meter, Floor, Whisper, ShadeForms);
+            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, true, Danger, Meter, Floor, Whisper, ShadeForms, Glutton);
 
         /// Rules 21: danger (BattleSimulation.Danger.cs; DESIGN_LOCKS, "Jacob's playtest fixes 3, 7 and 9"). A Hold that is not a
         /// parry soaks nothing from a blast, Bloodridge's road bands carry their chief's moves from the first fight and hit for a
@@ -195,7 +196,7 @@ namespace KindredSiege.Sim.Battle
         /// These rules with danger: what every fight plays from campaign rules version 21. Last, after payoffs.
         public FightRules WithDanger() => Danger ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, true, Meter, Floor, Whisper, ShadeForms);
+            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, true, Meter, Floor, Whisper, ShadeForms, Glutton);
 
         /// Rules 22: the parry meter (BattleSimulation.Meter.cs; DESIGN_LOCKS, "The parry meter"). Your parries fill 3 bars, your
         /// chief spell is cast with all 3, and each held bar makes your combos and cash ins 10% stronger.
@@ -204,7 +205,7 @@ namespace KindredSiege.Sim.Battle
         /// These rules with the parry meter: what every fight plays from campaign rules version 22. Last, after danger.
         public FightRules WithMeter() => Meter ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, true, Floor, Whisper, ShadeForms);
+            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, true, Floor, Whisper, ShadeForms, Glutton);
 
         /// Rules 23: the floor under the three Pals (BattleSimulation.Shade.cs; DESIGN_LOCKS, "The floor under the three Pals"): a
         /// fighter's second piece, the faster and cheaper hooks and the Shade's tricks.
@@ -213,7 +214,7 @@ namespace KindredSiege.Sim.Battle
         /// These rules with the floor: what every fight plays from campaign rules version 23. Last, after the meter.
         public FightRules WithFloor() => Floor ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, Meter, true, Whisper, ShadeForms);
+            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, Meter, true, Whisper, ShadeForms, Glutton);
 
         /// Rules 24: the Whisperer (BattleSimulation.Whisperer.cs; DESIGN_LOCKS, "Habits come with the game, the Whisperer upgrades
         /// them"): each class's habit and its upgrade, the squad's pair on the bonds, and a fighter's rank 2.
@@ -222,7 +223,7 @@ namespace KindredSiege.Sim.Battle
         /// These rules with the Whisperer: what every fight plays from campaign rules version 24. Last, after the floor.
         public FightRules WithWhisper() => Whisper ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, Meter, Floor, true, ShadeForms);
+            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, Meter, Floor, true, ShadeForms, Glutton);
         /// Rules 25: the Shade's forms (BattleSimulation.Shade.cs; Jacob in chat, 31 Oct 2026: "go" on Claude's Shade design):
         /// Sanctuary's Relay and Last Refuge, Backstab's Twin Knives and Shadow Strike, Fear's Spreading Dread and Turncoat, and
         /// each route's price.
@@ -231,7 +232,15 @@ namespace KindredSiege.Sim.Battle
         /// These rules with the Shade's forms: what every fight plays from campaign rules version 25. Last, after the Whisperer.
         public FightRules WithShadeForms() => ShadeForms ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
-            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, Meter, Floor, Whisper, true);
+            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, Meter, Floor, Whisper, true, Glutton);
+        /// Rules 26: the Glutton's tree (BattleSimulation.Glutton.cs; Jacob in chat, 1 Nov 2026: "go" on Claude's calls): each
+        /// side's talents make what it has bigger, longer, faster or cheaper.
+        public bool Glutton { get; }
+
+        /// These rules with the Glutton: what every fight plays from campaign rules version 26. Last, after the Shade's forms.
+        public FightRules WithGlutton() => Glutton ? this : new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
+            ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, ParryCenter, SquadFirst, RaidChief, RoadCombat, RoadKit,
+            ClearRoadStage, SquadScreen, ChampionDuel, Layers, Marks, Payoffs, Danger, Meter, Floor, Whisper, ShadeForms, true);
         public FightRules WithSquadScreen() => new FightRules(Misses, EarnedPoints, PerfectHold, NerveSnaps,
             ClassSpells, ChiefRules, ChiefKits, Beasts, ChiefTactics, true, true, true, true, true,
             ClearRoadStage > 0 ? ClearRoadStage : 4, true);
@@ -381,6 +390,7 @@ namespace KindredSiege.Sim.Battle
             if (Floor) b.Field("rules.floor", true);
             if (Whisper) b.Field("rules.whisper", true);
             if (ShadeForms) b.Field("rules.shadeForms", true);
+            if (Glutton) b.Field("rules.glutton", true);
         }
     }
 

@@ -59,7 +59,8 @@ namespace KindredSiege.Sim.Battle
         private int Clock(BattleUnit unit, int ticks)
         {
             if (!_floorOn || unit == null) return ticks;
-            int percent = SpecOf(unit).ClockPercent;
+            // Entropy Sink (rules 26, BattleSimulation.Glutton.cs) on the same percent.
+            int percent = SpecOf(unit).ClockPercent - SinkPercent(unit);
             return percent == 0 ? ticks : Math.Max(1, ticks * (100 + percent) / 100);
         }
 
@@ -83,7 +84,8 @@ namespace KindredSiege.Sim.Battle
             {
                 BattleUnit u = _units[i];
                 if (!u.Alive || u.Side != side || u.Benched) continue;
-                int size = Math.Max(1, u.MaxHp * ShadeRules.ShieldPercent / 100);
+                // Branch Anchor (rules 26) thickens it on the front row.
+                int size = Anchored(u, Math.Max(1, u.MaxHp * ShadeRules.ShieldPercent / 100));
                 u.Statuses.Apply(StatusKind.Shield, ShadeRules.ShieldTicks, size);
                 shielded++;
                 given += size;
@@ -198,7 +200,8 @@ namespace KindredSiege.Sim.Battle
         private int FearPriced(int side, int ticks)
         {
             if (!_shadeOn || side < 0 || side > 1 || !KitOf(side).Has(ShadeRoute.Fear)) return ticks;
-            return Math.Max(1, ticks * ShadeRules.FearFocusPercent / 100);
+            // Command Relay (rules 26) shrinks the price.
+            return Math.Max(1, ticks * (100 - (100 - ShadeRules.FearFocusPercent) * PriceLeft(side) / 100) / 100);
         }
 
         // "2.0 s": what a rejection shows for a clock, rounded up to a tenth.
@@ -442,7 +445,8 @@ namespace KindredSiege.Sim.Battle
             }
             if (state.EchoRecording && state.UnleashTicks > 0)
             {
-                int kept = hpLost * ShadeRules.EchoPercent / 100;
+                // Echo Strike (rules 26) keeps more of a Skirmisher's.
+                int kept = hpLost * EchoShare(source) / 100;
                 if (kept <= 0) return;
                 source.EchoStored += kept;
                 if (source.EchoTargetId.Length == 0) source.EchoTargetId = victim.Id;
@@ -485,7 +489,7 @@ namespace KindredSiege.Sim.Battle
         {
             if (!KitOf(side).Has(ShadeRoute.RiftMine)) return;
             state.MineTicks = ShadeRules.MineTicks;
-            state.ReturnTicks = state.FallBackTicks * ShadeRules.ReturnPercent / 100;
+            state.ReturnTicks = state.FallBackTicks * (100 + (ShadeRules.ReturnPercent - 100) * PriceLeft(side) / 100) / 100;
         }
 
         // attacker is about to strike target: if target's side has a mine armed, it blasts him (and at Wide Blast the ones beside
@@ -644,7 +648,8 @@ namespace KindredSiege.Sim.Battle
         private int UnleashPercent(int side)
         {
             if (!_shadeOn || side < 0 || side > 1 || !KitOf(side).Has(ShadeRoute.Echo)) return UnleashDamagePercent;
-            return 100 + (UnleashDamagePercent - 100) / 2;
+            // Half the bonus, less of a cut with Command Relay (rules 26).
+            return 100 + (UnleashDamagePercent - 100) * (100 - 50 * PriceLeft(side) / 100) / 100;
         }
 
         private bool AnyEcho(int side)

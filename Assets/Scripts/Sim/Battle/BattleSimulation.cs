@@ -374,6 +374,8 @@ namespace KindredSiege.Sim.Battle
             _whisperOn = _floorOn && _fight.Whisper;
             // The Shade's forms (BattleSimulation.Shade.cs, campaign rules 25) ride on the floor too.
             _shadeOn = _floorOn && _fight.ShadeForms;
+            // The Glutton's talents (BattleSimulation.Glutton.cs, campaign rules 26) ride on the floor too.
+            _gluttonOn = _floorOn && _fight.Glutton;
             // The Butcher's combos (BattleSimulation.Combos.cs, 29 Oct 2026): only a fight where someone wears one plays them.
             _comboOn = _classOn && AnyCombo();
             // The damage layers (BattleSimulation.Layers.cs, campaign rules 17): every hit and heal through one pipeline.
@@ -1237,6 +1239,7 @@ namespace KindredSiege.Sim.Battle
                         if (_whisperOn) AppendWhisperUnit(b, u);
                         // And the Shade's forms, only where they play (rules 25).
                         if (_shadeOn) AppendShadeUnit(b, u);
+                        if (_gluttonOn) AppendGluttonUnit(b, u);
                     }
                 }
                 b.Section("events");
@@ -1281,7 +1284,8 @@ namespace KindredSiege.Sim.Battle
                 case Directive.FallBack:
                     state.FallBackTicks = Longer(FallBackTicks * percent / 100, _rules[side].Favours.FallBackLongerPercent);
                     // Backstab's price (rules 25): the next Fall Back waits until a while after this one runs out.
-                    if (_shadeOn && KitOf(side).Has(ShadeRoute.Backstab)) state.FallBackLockTicks = state.FallBackTicks + ShadeRules.BackstabLockTicks;
+                    if (_shadeOn && KitOf(side).Has(ShadeRoute.Backstab))
+                        state.FallBackLockTicks = state.FallBackTicks + ShadeRules.BackstabLockTicks * PriceLeft(side) / 100;
                     if (ordered) state.LastFallBackTick = _tick;
                     ReflexPressOnFallBack(1 - side);
                     // Backstab, the Shade's Fall Back trick (rules 23, BattleSimulation.Shade.cs).
@@ -1436,7 +1440,8 @@ namespace KindredSiege.Sim.Battle
         // What a holding front row takes from a blow or a heavy swing, in percent; the Glutton's favour lowers it.
         private int HoldSoak(int side)
         {
-            return HoldDamagePercent - _rules[side].Favours.HoldSoakCut;
+            // Glancing Fold (rules 26, BattleSimulation.Glutton.cs) soaks more.
+            return Glanced(side, HoldDamagePercent - _rules[side].Favours.HoldSoakCut);
         }
 
         // The Shade's favours when a side dodges a cast or a heavy swing with Fall Back (SideFavours, 18 Oct 2026): the
@@ -1836,7 +1841,7 @@ namespace KindredSiege.Sim.Battle
                 own.TrapArmed = true;
                 own.TrapOwnerId = unit.Id;
                 // A rank 2 Trapper's trap springs twice before she rearms it (rules 24, BattleSimulation.Whisperer.cs).
-                if (_whisperOn) own.TrapSprings = SpringsOf(unit);
+                if (_whisperOn) own.TrapSprings = SpringsOf(unit) + FoldTrapSprings(unit);
                 _trapReadyIn[unit.Index] = RearmActions(unit);
                 Emit(EventFor(BattleEventKind.TrapArmed, unit, null, 0, string.Empty));
                 return true;
@@ -2058,7 +2063,7 @@ namespace KindredSiege.Sim.Battle
                 if (hit != null) CashInHit(attacker, target, kind, hit, out detail);
                 else damage = CashIn(attacker, target, kind, damage, out detail);
             }
-            if (hit != null) ApplyHit(attacker, attacker.Side, target, Armor(target, hit), detail);
+            if (hit != null) ApplyHit(attacker, attacker.Side, target, Armor(target, hit, attacker), detail);
             else ApplyDamage(attacker, attacker.Side, target, Armored(target, damage), detail);
             if (_roadKitOn) Burned(attacker, target);
             // Under road combat a Trapper's Snap Trap snares the melee enemy who hit her (BattleSimulation.Defence.cs).

@@ -117,7 +117,7 @@ namespace KindredSiege.Sim.Battle
                     own.TrapArmed = true;
                     own.TrapOwnerId = unit.Id;
                     // Twice for a rank 2 Trapper (rules 24, BattleSimulation.Whisperer.cs).
-                    if (_whisperOn) own.TrapSprings = SpringsOf(unit);
+                    if (_whisperOn) own.TrapSprings = SpringsOf(unit) + FoldTrapSprings(unit);
                     _trapReadyIn[unit.Index] = SliceClasses.TrapRearmActions;
                     Emit(EventFor(BattleEventKind.TrapArmed, unit, null, 0, string.Empty));
                     return true;

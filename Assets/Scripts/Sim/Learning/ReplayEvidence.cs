@@ -64,7 +64,9 @@ namespace KindredSiege.Sim.Learning
         private const string PreSkillRulesIdentity = "ks-battle-20261011-3";
         // Format 30 (31 Oct 2026, the Shade's forms, campaign rules 25) adds that switch after format 29's; the forms themselves
         // were already in each side's Pal kit (format 28). Older evidence reads it as off.
-        private const int FormatVersion = 30;
+        // Format 31 (1 Nov 2026, the Glutton, campaign rules 26) adds that switch and each side's talent levels after format
+        // 30's; older evidence reads them as off and none.
+        private const int FormatVersion = 31;
 
         // The longest move name a learned wait out or feint can sit on, read back.
         private const int MaxMoveName = 64;
@@ -104,6 +106,7 @@ namespace KindredSiege.Sim.Learning
         // piece, else 9.
         private static int FormatUsed(BattleSetup setup)
         {
+            if (setup.Fight.Glutton) return 31;
             if (setup.Fight.ShadeForms) return 30;
             if (setup.Fight.Whisper) return 29;
             if (setup.Fight.Floor) return 28;
@@ -443,6 +446,15 @@ namespace KindredSiege.Sim.Learning
             if (format < 30) return;
             // Format 30: the Shade's forms (rules 25): the switch.
             w.Write(fight.ShadeForms);
+            if (format < 31) return;
+            // Format 31: the Glutton (rules 26): the switch, then each side's talent levels in GluttonTalent's order.
+            w.Write(fight.Glutton);
+            for (int side = 0; side < 2; side++)
+            {
+                int[] talents = s.Rules(side).Pals.Talents();
+                w.Write(talents.Length);
+                for (int i = 0; i < talents.Length; i++) w.Write(talents[i]);
+            }
         }
 
         private static BattleSetup ReadSetup(BinaryReader r, int version)
@@ -657,9 +669,21 @@ namespace KindredSiege.Sim.Learning
                     }
                 }
                 bool shadeForms = version >= 30 && r.ReadBoolean();
+                bool glutton = false;
+                if (version >= 31)
+                {
+                    glutton = r.ReadBoolean();
+                    for (int side = 0; side < 2; side++)
+                    {
+                        int count = Range(r.ReadInt32(), 0, GluttonRules.TalentCount + 1);
+                        var levels = new int[count];
+                        for (int k = 0; k < count; k++) levels[k] = Range(r.ReadInt32(), 0, GluttonRules.Fed);
+                        rules[side] = rules[side].WithPals(rules[side].Pals.WithTalents(levels));
+                    }
+                }
                 fight = new FightRules(misses, earned, perfectHold, snaps, classSpells, chiefRules, chiefKits, beasts, chiefTactics,
                     parryCenter, squadFirst, raidChief, roadCombat, roadKit, clearRoad, squadScreen, duel, layers, marks, payoffs, danger,
-                    meter, floor, whisper, shadeForms);
+                    meter, floor, whisper, shadeForms, glutton);
                 // A beast's side is exactly its parts, or the fight cannot be played back (the audit, 22 Oct 2026).
                 for (int side = 0; side < 2 && beasts; side++)
                     if (rules[side].Beast != BeastKit.None && units[side].Count != BeastKits.PartCount)

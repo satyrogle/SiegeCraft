@@ -75,6 +75,8 @@ namespace KindredSiege.Sim.Battle
         private bool SteppedBack(BattleUnit attacker, BattleUnit target)
         {
             if (attacker.Stats.Ranged || attacker.Side == target.Side || !DefenceReady(target, UnitClass.Marksman)) return false;
+            // Gravity Mesh (rules 26): too heavy to step back while snared.
+            if (Meshed(attacker, target)) return false;
             Defended(target, attacker, 0, DefenceRules.StepBack);
             return true;
         }

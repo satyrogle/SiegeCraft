@@ -6,7 +6,10 @@ using KindredSiege.Sim.Battle;
 
 namespace KindredSiege.Sim.Learning
 {
-    /// Writes a campaign down and reads it back. Version 28 (31 Oct 2026, the Shade's forms, campaign rules 25) can hold her road
+    /// Writes a campaign down and reads it back. Version 29 (1 Nov 2026, the Glutton, campaign rules 26) keeps the talents bought
+    /// at camp (owned, a camp record, in the order bought), the run's Feed (feed: the talent fed and the one eaten, 0 for none)
+    /// and the losses Branch Hedge kept the streak through (hedge), and can hold his road card on offer (Favour.GluttonDarkMatterPlating
+    /// to Favour.GluttonNodeCache) and a card of up to FavourRules.MaxOffered picks. Version 28 (31 Oct 2026, the Shade's forms, campaign rules 25) can hold her road
     /// card on offer: favour offer choices from Favour.ShadeMirror to Favour.ShadeEcho, one a route; an older game refuses it by
     /// its version. Version 27 (31 Oct 2026, the Whisperer, campaign rules 24) reads the habits
     /// as camp records, kept between runs, and keeps the run's habit upgrades (habitup) and her picks on offer (whisperpick,
@@ -64,7 +67,7 @@ namespace KindredSiege.Sim.Learning
     public static partial class CampaignSave
     {
         public const string Header = "kindred-siege-campaign";
-        public const int Version = 28;
+        public const int Version = 29;
 
         public const string OldSaveNote =
             "This save is from the old respect campaign, so you are back at camp. What the tribes learned about you and your codex are kept.";
@@ -80,7 +83,7 @@ namespace KindredSiege.Sim.Learning
         {
             "joined", "fighter", "assist", "gear", "piece", "spoils", "grudge", "run", "road", "feat", "offer", "fight", "proof", "squad", "order",
             "bounty", "beaten", "promoted", "favour", "favouroffer", "routepick", "beast", "lives", "bond", "streak", "clearroad",
-            "roadpals", "palroad", "talent", "route", "pair", "rank", "slot2", "habitup", "whisperpick"
+            "roadpals", "palroad", "talent", "route", "pair", "rank", "slot2", "habitup", "whisperpick", "feed", "hedge"
         };
 
         public static string Write(Campaign c)
@@ -160,6 +163,10 @@ namespace KindredSiege.Sim.Learning
             // The Pals' stores (version 26, rules 23): the Glutton's talents, the Shade's routes, the Whisperer's habits and
             // pair, each fighter's rank above 1 and his second slot.
             for (int i = 0; i < c.Talents.Count; i++) Line(b, "talent", N((int)c.Talents[i].Talent), c.Talents[i].Fed ? "1" : "0");
+            // The Glutton's (version 29, rules 26): the talents bought at camp, the run's Feed and its Branch Hedge.
+            for (int i = 0; i < c.OwnedTalents.Count; i++) Line(b, "owned", N((int)c.OwnedTalents[i]));
+            if (c.FedTalent != GluttonTalent.None) Line(b, "feed", N((int)c.FedTalent), N((int)c.EatenTalent));
+            if (c.HedgesUsed > 0) Line(b, "hedge", N(c.HedgesUsed));
             for (int i = 0; i < c.ShadeRoutes.Count; i++) Line(b, "route", N((int)c.ShadeRoutes[i].Route), N(c.ShadeRoutes[i].Form));
             for (int i = 0; i < c.Habits.Count; i++) Line(b, "palhabit", N((int)c.Habits[i].Habit));
             // The habits the run upgraded (version 27, rules 24).
@@ -477,6 +484,11 @@ namespace KindredSiege.Sim.Learning
                         if (c == null || f.Length != 2) return Fail(where + "bad codex record.", out failure);
                         c.Discover(f[1]);
                         break;
+                    case "owned":
+                        // A talent bought at camp (version 29), a camp record.
+                        if (c == null || f.Length != 2 || !TryInt(f[1], out int ownedId) || !c.RestoreOwned((GluttonTalent)ownedId))
+                            return Fail(where + "bad or repeated owned talent record.", out failure);
+                        break;
                     case "palhabit":
                         // A class's habit (version 26). From version 27 a camp record: habits come with the game, kept between runs.
                         if (c == null || f.Length != 2 || !TryInt(f[1], out int habitId) || !c.RestoreHabit((WhispererHabit)habitId))
@@ -672,6 +684,15 @@ namespace KindredSiege.Sim.Learning
                             !c.RestoreTalent((GluttonTalent)talentId, f[2] == "1"))
                             return Fail(where + "bad or repeated talent record.", out failure);
                         break;
+                    case "feed":
+                        if (version < 29 || f.Length != 3 || !TryInt(f[1], out int fedId) || !TryInt(f[2], out int eatenId) ||
+                            !c.RestoreFeed((GluttonTalent)fedId, (GluttonTalent)eatenId))
+                            return Fail(where + "bad feed record.", out failure);
+                        break;
+                    case "hedge":
+                        if (version < 29 || f.Length != 2 || !TryInt(f[1], out int hedges) || !c.RestoreHedges(hedges))
+                            return Fail(where + "bad hedge record.", out failure);
+                        break;
                     case "route":
                         if (version < 26 || f.Length != 3 || !TryInt(f[1], out int routeId) || !TryInt(f[2], out int routeForm) ||
                             !c.RestoreRoute((ShadeRoute)routeId, routeForm))
@@ -712,7 +733,7 @@ namespace KindredSiege.Sim.Learning
                     case "favouroffer":
                         // The favours a won favour fight still offers: the Pal, the materials taking one gives back, then
                         // one to FavourRules.Offered favours (version 13).
-                        if (favourOfferSeen || f.Length < 4 || f.Length > 3 + FavourRules.Offered || !TryInt(f[1], out favourPal) ||
+                        if (favourOfferSeen || f.Length < 4 || f.Length > 3 + FavourRules.MaxOffered || !TryInt(f[1], out favourPal) ||
                             !TryInt(f[2], out favourMaterials) || favourMaterials < 0)
                             return Fail(where + "bad favour offer record.", out failure);
                         for (int i = 3; i < f.Length; i++)

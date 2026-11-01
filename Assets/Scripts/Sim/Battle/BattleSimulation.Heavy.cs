@@ -206,7 +206,7 @@ namespace KindredSiege.Sim.Battle
             if (target == null) return;
 
             if (_fight.PerfectHold && !Unparryable(side) && theirs.HoldTicks > 0 && theirs.LastHoldTick >= 0 &&
-                _tick - theirs.LastHoldTick <= FightRules.PerfectHoldTicks)
+                _tick - theirs.LastHoldTick <= ParryWindow(1 - side))
             {
                 Emit(new BattleEvent(_tick, BattleEventKind.Release, side, swinger.Id, (int)swinger.Class, target.Id,
                     (int)target.Class, 0, FightRules.Parried));
@@ -290,9 +290,9 @@ namespace KindredSiege.Sim.Battle
         {
             SideState theirs = _sides[holdingSide];
             if (theirs.FallBackTicks > 0 || theirs.HoldTicks <= 0 || theirs.LastHoldTick < 0 ||
-                _tick - theirs.LastHoldTick > FightRules.PerfectHoldTicks)
+                _tick - theirs.LastHoldTick > ParryWindow(holdingSide))
                 return 0;
-            return (int)(FightRules.PerfectHoldTicks + 1 - (_tick - theirs.LastHoldTick));
+            return (int)(ParryWindow(holdingSide) + 1 - (_tick - theirs.LastHoldTick));
         }
 
         private static void ClearHeavy(SideState state)

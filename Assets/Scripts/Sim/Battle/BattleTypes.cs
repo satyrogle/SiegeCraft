@@ -754,6 +754,20 @@ namespace KindredSiege.Sim.Battle
         public bool FreeSpent { get; internal set; }
         public bool TreatmentInHand { get; internal set; }
 
+        /// From rules 26 (BattleSimulation.Glutton.cs): when, and by which side, he was last parried (Answer the Parry), and
+        /// Rewind Wound's longer memory of what he lost each second.
+        public long ParriedAtTick { get; internal set; } = -1;
+        public int ParriedBySide { get; internal set; } = -1;
+        internal int[] HurtLongLost { get; } = new int[ClassSpells.RewindSeconds + 2 * GluttonRules.RewindMoreSeconds];
+        internal long[] HurtLongSecond { get; } = LongSeconds();
+
+        private static long[] LongSeconds()
+        {
+            var seconds = new long[ClassSpells.RewindSeconds + 2 * GluttonRules.RewindMoreSeconds];
+            for (int i = 0; i < seconds.Length; i++) seconds[i] = -1;
+            return seconds;
+        }
+
         /// From rules 25 (BattleSimulation.Shade.cs), Echo: what his echo holds this Unleash, and the first one he recorded.
         public int EchoStored { get; internal set; }
         public string EchoTargetId { get; internal set; } = string.Empty;

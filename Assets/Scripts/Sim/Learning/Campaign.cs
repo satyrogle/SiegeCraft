@@ -604,7 +604,9 @@ namespace KindredSiege.Sim.Learning
         /// camp and kept, her road card, the habits, pairs and rank 2 in the fight, and a fallen fighter's rank.
         /// 25 those and the Shade's forms (Jacob in chat, 31 Oct 2026: "go" on Claude's Shade design; Battle.FightRules.ShadeForms;
         /// ShadeFormsRules): her road card, and Sanctuary, Backstab and Fear at their second and third forms, each with its price.
-        public const int RulesVersion = 25;
+        /// 26 those and the Glutton (Jacob in chat, 1 Nov 2026: "go" on Claude's calls; Battle.FightRules.Glutton; GluttonTreeRules):
+        /// his camp tree paid with codex points, his road card lending a limb's next talent, Feed, and the 35 talents.
+        public const int RulesVersion = 26;
         public const int SquadScreenRules = 14;
         public const int ClearRoadRules = 13;
 
@@ -665,6 +667,12 @@ namespace KindredSiege.Sim.Learning
         /// Spreading Dread and Turncoat, and each route's price: Sanctuary's parries do not stagger, Backstab's Fall Back waits
         /// longer, and Fear's Focus Fire is shorter.
         public const int ShadeFormsRules = 25;
+
+        /// The campaign rules version from which the Glutton plays (Jacob in chat, 1 Nov 2026: "go" on Claude's calls;
+        /// Campaign.PalStores.cs and Battle.BattleSimulation.Glutton.cs): his tree at camp, bought with talent points the codex
+        /// pays, kept between runs; his road card, lending the next talent of a limb for the run (a tier 3 one with its keystone);
+        /// Feed doubling one talent and eating another of its limb; and every talent's effect.
+        public const int GluttonTreeRules = 26;
 
         /// Whether this run's roads carry a Pal on every fight (fix 5): set when the run starts under PalRoadRules, and kept
         /// with the run, so its roads come back the same when it loads.
@@ -898,6 +906,8 @@ namespace KindredSiege.Sim.Learning
                 CampaignGear piece = ComboPiece(FavourRules.ComboBend(favour));
                 return piece == null ? 0 : piece.Rank;
             }
+            // A Glutton pick's rank is 1 once the run holds that talent (rules 26).
+            if (FavourRules.IsGlutton(favour)) return Holds(FavourRules.TalentOf(favour)) ? 1 : 0;
             // A Shade pick's rank is its route's form (rules 25).
             if (FavourRules.IsShade(favour))
             {
@@ -1448,6 +1458,8 @@ namespace KindredSiege.Sim.Learning
             else if (FavourRules.IsWhisper(favour)) name = TakeWhisper(_favourOffer.Picks[choice]);
             // Hers (rules 25, Campaign.PalStores.cs).
             else if (FavourRules.IsShade(favour)) name = TakeShade(favour);
+            // His (rules 26).
+            else if (FavourRules.IsGlutton(favour)) name = TakeGlutton(favour);
             else
             {
                 HeldFavour held = FindFavour(favour);
@@ -1482,6 +1494,8 @@ namespace KindredSiege.Sim.Learning
             if (pal == Pal.Whisperer && rules >= WhispererRules) return WhisperOffer(node);
             // From rules 25 the Shade offers her road card (Campaign.PalStores.cs).
             if (pal == Pal.Shade && rules >= ShadeFormsRules) return ShadeOffer(node);
+            // From rules 26 the Glutton offers his road card (Campaign.PalStores.cs).
+            if (pal == Pal.Glutton && rules >= GluttonTreeRules) return GluttonOffer(node);
             var choices = new List<Favour>();
             if (pal == Pal.Butcher && rules >= ButcherComboRules)
             {
@@ -1493,11 +1507,11 @@ namespace KindredSiege.Sim.Learning
                     if (!HoldsCombo(bend) && SquadHas(ClassSpells.ClassOf(bend))) choices.Add(combos[i]);
                 }
                 var dice = new DeterministicRng(node.Seed, ComboOfferStream);
-                while (choices.Count > FavourRules.Offered) choices.RemoveAt(dice.Next(choices.Count));
+                while (choices.Count > OfferSize) choices.RemoveAt(dice.Next(choices.Count));
                 return choices.Count == 0 ? null : new FavourOffer(pal, choices);
             }
             IReadOnlyList<Favour> all = FavourRules.Of(pal);
-            for (int i = 0; i < all.Count && choices.Count < FavourRules.Offered; i++)
+            for (int i = 0; i < all.Count && choices.Count < OfferSize; i++)
                 if (FavourRank(all[i]) < FavourRules.MaxRank) choices.Add(all[i]);
             return choices.Count == 0 ? null : new FavourOffer(pal, choices);
         }
@@ -1521,7 +1535,7 @@ namespace KindredSiege.Sim.Learning
             }
             var dice = new DeterministicRng(node.Seed, ComboOfferStream);
             var taken = new bool[pool.Count];
-            for (int n = 0; n < FavourRules.Offered && n < pool.Count; n++)
+            for (int n = 0; n < OfferSize && n < pool.Count; n++)
             {
                 int total = 0;
                 for (int i = 0; i < pool.Count; i++) if (!taken[i]) total += weights[i];
@@ -1589,6 +1603,8 @@ namespace KindredSiege.Sim.Learning
             for (int i = 0; i < _favours.Count; i++) held |= 1 << (int)FavourRules.PalOf(_favours[i].Favour);
             // From rules 25 a route she gave counts as a pick of hers.
             if (ShadeFormsRun && _routes.Count > 0) held |= 1 << (int)Pal.Shade;
+            // From rules 26 a talent he lent counts as a pick of his.
+            if (GluttonRun && _talents.Count > 0) held |= 1 << (int)Pal.Glutton;
             return held;
         }
 
@@ -2090,7 +2106,8 @@ namespace KindredSiege.Sim.Learning
                 // From rules 24 each of yours who fell loses his top rank (DESIGN_LOCKS, "The Whisperer's core").
                 if (fight.RulesVersion >= WhispererRules) result.RanksLost = DropRanks(fallen);
                 // The streak is lost with the life (rules 12).
-                if (fight.RulesVersion >= RoadKitRules) Streak = 0;
+                // From rules 26 Branch Hedge keeps it through a loss a run (Campaign.PalStores.cs).
+                if (fight.RulesVersion >= RoadKitRules && !(fight.RulesVersion >= GluttonTreeRules && Hedged())) Streak = 0;
                 string taker = hunt || ambush ? AlphaHunt.Id : tribe.Id;
                 if (!_grudges.Contains(taker)) _grudges.Add(taker);
                 if (hunter != null) PromoteHunter(hunter, record, result);
@@ -2161,6 +2178,8 @@ namespace KindredSiege.Sim.Learning
             if (hunter != null) materials += HunterRules.Reward(_company.Rank(hunter));
             // Each omen picked adds to what the run earns (Jacob, 13 Oct 2026).
             materials = materials * (100 + OmenRules.MaterialsPercentEach * _omens.Count) / 100;
+            // From rules 26 Rogue Planet Prospecting sends home more (Campaign.PalStores.cs).
+            if (fight.RulesVersion >= GluttonTreeRules) materials = Prospected(materials);
             // A chief with his own kit, and from rules 6 the hunt, sends home more for a better grade (Battle.ChiefKits).
             bool graded = (encounter.Kind == EncounterKind.Chief || hunt) && fight.Sim.GloryOn(0);
             if (graded) materials = materials * (100 + ChiefKits.GradeMaterialsPercent * (int)fight.Sim.GloryRankOf(0)) / 100;
@@ -2420,7 +2439,7 @@ namespace KindredSiege.Sim.Learning
         /// beside them (besideSpoils, fix 5).
         internal bool RestoreFavourOffer(Pal pal, IReadOnlyList<Favour> choices, int materials, bool besideSpoils = false)
         {
-            if (pal == Pal.None || choices == null || choices.Count == 0 || choices.Count > FavourRules.Offered || materials < 0 ||
+            if (pal == Pal.None || choices == null || choices.Count == 0 || choices.Count > FavourRules.MaxOffered || materials < 0 ||
                 _favourOffer != null || (_spoils.Count > 0 && !(besideSpoils && materials == _spoilsMaterials))) return false;
             for (int i = 0; i < choices.Count; i++)
                 if (FavourRules.PalOf(choices[i]) != pal) return false;
@@ -3137,6 +3156,8 @@ namespace KindredSiege.Sim.Learning
                 }
                 // From rules 25 the Shade's forms and prices play. Last, after the Whisperer.
                 if (rules >= ShadeFormsRules) fightRules = fightRules.WithShadeForms();
+                // From rules 26 the Glutton's talents play. Last, after the Shade's forms.
+                if (rules >= GluttonTreeRules) fightRules = fightRules.WithGlutton();
             }
             bool raidChief = IsRaidChief(tribe, encounter.Kind, rules);
             if (raidChief) MakeRaidChief(side1);
