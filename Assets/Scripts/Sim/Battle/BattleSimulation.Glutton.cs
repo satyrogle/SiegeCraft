@@ -25,7 +25,8 @@ namespace KindredSiege.Sim.Battle
         // A talent's bonus on this side.
         private int Bonus(int side, GluttonTalent talent, int bonus)
         {
-            return GluttonRules.Bonus(TalentLevelOf(side, talent), bonus);
+            // Sized from rules 28 (BattleSimulation.Sized.cs).
+            return GluttonRules.Bonus(TalentLevelOf(side, talent), _sizedOn ? GluttonSized(side, talent, bonus) : bonus);
         }
 
         private bool HasTalent(int side, GluttonTalent talent) => TalentLevelOf(side, talent) > 0;
@@ -205,7 +206,9 @@ namespace KindredSiege.Sim.Battle
         private int PactLeft(int side)
         {
             if (!_gluttonOn || side < 0 || side > 1) return 100;
-            return Math.Max(0, 100 - Bonus(side, GluttonTalent.SynthesisDiscount, GluttonRules.DiscountPercent));
+            int left = Math.Max(0, 100 - Bonus(side, GluttonTalent.SynthesisDiscount, GluttonRules.DiscountPercent));
+            // The sizing pass (rules 28, BattleSimulation.Sized.cs).
+            return _sizedOn ? left * SizeRules.PactPercent / 100 : left;
         }
 
         // Heavy's percent, Unnerving's share of nerve (in percent of an eighth: Fold Shield and Entropy Purge halve it for the
@@ -263,8 +266,9 @@ namespace KindredSiege.Sim.Battle
         {
             if (side < 0 || side > 1) return 100;
             int left = _gluttonOn ? Math.Max(0, 100 - Bonus(side, GluttonTalent.CommandRelay, GluttonRules.RelayPricePercent)) : 100;
-            // Gorged Tricks (rules 27, BattleSimulation.Duos.cs) halves what is left.
-            return _duosOn ? GorgedPrice(side, left) : left;
+            // Gorged Tricks (rules 27, BattleSimulation.Duos.cs) halves what is left, and the sizing pass (rules 28) sizes it.
+            if (_duosOn) left = GorgedPrice(side, left);
+            return _sizedOn ? PriceSized(left) : left;
         }
 
         // Precognition: how many ticks before a beat a live Hold parries it.

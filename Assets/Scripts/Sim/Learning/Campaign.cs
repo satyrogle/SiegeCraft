@@ -608,7 +608,9 @@ namespace KindredSiege.Sim.Learning
         /// his camp tree paid with codex points, his road card lending a limb's next talent, Feed, and the 35 talents.
         /// 27 those and the Pals' duos (Jacob in chat, 1 Nov 2026: "go write them"; Battle.FightRules.Duos; PalDuoRules): a duo on
         /// a card once the run holds a pick from both of its Pals, and the six in the fight.
-        public const int RulesVersion = 27;
+        /// 28 those and the sizing pass (Jacob in chat, 1 Nov 2026: "okay go"; Battle.FightRules.Sized; SizedRules): the Pals'
+        /// picks sized with the builds test to decide fights.
+        public const int RulesVersion = 28;
         public const int SquadScreenRules = 14;
         public const int ClearRoadRules = 13;
 
@@ -680,6 +682,10 @@ namespace KindredSiege.Sim.Learning
         /// and Battle.BattleSimulation.Duos.cs): a pick joining two Pals' themes, shown on a card once the run holds a pick from
         /// both.
         public const int PalDuoRules = 27;
+
+        /// The campaign rules version from which the Pals' picks play sized (Jacob in chat, 1 Nov 2026: "okay go";
+        /// Battle.BattleSimulation.Sized.cs, Battle.SizeRules): big enough that leaning into one Pal decides runs.
+        public const int SizedRules = 28;
 
         /// Whether this run's roads carry a Pal on every fight (fix 5): set when the run starts under PalRoadRules, and kept
         /// with the run, so its roads come back the same when it loads.
@@ -3187,6 +3193,8 @@ namespace KindredSiege.Sim.Learning
                 if (rules >= GluttonTreeRules) fightRules = fightRules.WithGlutton();
                 // From rules 27 the duos play. Last, after the Glutton.
                 if (rules >= PalDuoRules) fightRules = fightRules.WithDuos();
+                // From rules 28 the sized picks. Last, after the duos.
+                if (rules >= SizedRules) fightRules = fightRules.WithSized();
             }
             bool raidChief = IsRaidChief(tribe, encounter.Kind, rules);
             if (raidChief) MakeRaidChief(side1);

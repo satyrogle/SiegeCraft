@@ -68,7 +68,9 @@ namespace KindredSiege.Sim.Learning
         // 30's; older evidence reads them as off and none.
         // Format 32 (1 Nov 2026, the Pals' duos, campaign rules 27) adds that switch and each side's duos held after format 31's;
         // older evidence reads them as off and none.
-        private const int FormatVersion = 32;
+        // Format 33 (1 Nov 2026, the sizing pass, campaign rules 28) adds that switch after format 32's; older evidence reads it
+        // as off.
+        private const int FormatVersion = 33;
 
         // The longest move name a learned wait out or feint can sit on, read back.
         private const int MaxMoveName = 64;
@@ -108,6 +110,7 @@ namespace KindredSiege.Sim.Learning
         // piece, else 9.
         private static int FormatUsed(BattleSetup setup)
         {
+            if (setup.Fight.Sized) return 33;
             if (setup.Fight.Duos) return 32;
             if (setup.Fight.Glutton) return 31;
             if (setup.Fight.ShadeForms) return 30;
@@ -462,6 +465,9 @@ namespace KindredSiege.Sim.Learning
             // Format 32: the duos (rules 27): the switch, then each side's duos, one bit a Battle.PalDuo.
             w.Write(fight.Duos);
             for (int side = 0; side < 2; side++) w.Write(s.Rules(side).Pals.DuoMask);
+            if (format < 33) return;
+            // Format 33: the sizing pass (rules 28): the switch.
+            w.Write(fight.Sized);
         }
 
         private static BattleSetup ReadSetup(BinaryReader r, int version)
@@ -697,7 +703,7 @@ namespace KindredSiege.Sim.Learning
                 }
                 fight = new FightRules(misses, earned, perfectHold, snaps, classSpells, chiefRules, chiefKits, beasts, chiefTactics,
                     parryCenter, squadFirst, raidChief, roadCombat, roadKit, clearRoad, squadScreen, duel, layers, marks, payoffs, danger,
-                    meter, floor, whisper, shadeForms, glutton, duos);
+                    meter, floor, whisper, shadeForms, glutton, duos, version >= 33 && r.ReadBoolean());
                 // A beast's side is exactly its parts, or the fight cannot be played back (the audit, 22 Oct 2026).
                 for (int side = 0; side < 2 && beasts; side++)
                     if (rules[side].Beast != BeastKit.None && units[side].Count != BeastKits.PartCount)

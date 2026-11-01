@@ -382,6 +382,8 @@ namespace KindredSiege.Sim.Battle
             _gluttonOn = _floorOn && _fight.Glutton;
             // The Pals' duos (BattleSimulation.Duos.cs, campaign rules 27) too.
             _duosOn = _floorOn && _fight.Duos;
+            // The sizing pass (BattleSimulation.Sized.cs, campaign rules 28) too.
+            _sizedOn = _floorOn && _fight.Sized;
             // The Butcher's combos (BattleSimulation.Combos.cs, 29 Oct 2026): only a fight where someone wears one plays them.
             _comboOn = _classOn && AnyCombo();
             // The damage layers (BattleSimulation.Layers.cs, campaign rules 17): every hit and heal through one pipeline.
@@ -2005,7 +2007,7 @@ namespace KindredSiege.Sim.Battle
             // An Exposed burst left him wide open: this blow from the other side spends it, can't miss and can't be Guarded,
             // and its crit doubles, in the Cash layer (BattleSimulation.Marks.cs).
             // Gorged Bursts (rules 27) left the burst's own percent more on it.
-            int wideMore = _duosOn ? target.Statuses[StatusKind.WideOpen].Size : 0;
+            int wideMore = _duosOn || _sizedOn ? target.Statuses[StatusKind.WideOpen].Size : 0;
             bool wideOpen = SpendWideOpen(attacker, target);
             if (wideOpen)
             {
@@ -2018,7 +2020,8 @@ namespace KindredSiege.Sim.Battle
             if (SpendBackstab(attacker, target))
             {
                 int before = hit != null ? hit.Points : damage;
-                damage = More(damage, hit, HitLayer.Cash, ShadeRules.BackstabCashPercent);
+                // Sized (rules 28) at Backstab's form.
+                damage = More(damage, hit, HitLayer.Cash, ShadeSized(attacker.Side, ShadeRoute.Backstab, ShadeRules.BackstabCashPercent));
                 Emit(EventFor(BattleEventKind.Cash, attacker, target, (hit != null ? hit.Points : damage) - before, ShadeRules.BackstabDetail));
             }
             if (_fight.Misses && !wideOpen && !(_classOn && (target.SnareTicks > 0 || target.PinTicks > 0)) && target.HookTicks <= 0 && !_timeShot &&

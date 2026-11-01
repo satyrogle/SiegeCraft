@@ -85,7 +85,8 @@ namespace KindredSiege.Sim.Battle
                 BattleUnit u = _units[i];
                 if (!u.Alive || u.Side != side || u.Benched) continue;
                 // Branch Anchor (rules 26) thickens it on the front row.
-                int size = Anchored(u, Math.Max(1, u.MaxHp * ShadeRules.ShieldPercent / 100));
+                // Sized (rules 28) at Sanctuary's form.
+                int size = Anchored(u, Math.Max(1, ShadeSized(side, ShadeRoute.Sanctuary, u.MaxHp * ShadeRules.ShieldPercent / 100)));
                 u.Statuses.Apply(StatusKind.Shield, ShadeRules.ShieldTicks, size);
                 shielded++;
                 given += size;
@@ -240,14 +241,14 @@ namespace KindredSiege.Sim.Battle
                 if (!u.Alive || u.Side == side) continue;
                 shaken++;
                 bool snapped = u.NerveSnapped;
-                UnitDrain(u, ShadeRules.FearNerve, side);
+                UnitDrain(u, ShadeSized(side, ShadeRoute.Fear, ShadeRules.FearNerve), side);
                 if (broke != null && !snapped && u.NerveSnapped) broke.Add(u);
                 if (u.Alive && (weakest == null || u.UnitNerve < weakest.UnitNerve)) weakest = u;
             }
             Emit(new BattleEvent(_tick, BattleEventKind.Trick, side, string.Empty, -1, center.Id, (int)center.Class, shaken, detail));
             if (!_finished && weakest != null && weakest.Alive)
             {
-                weakest.Statuses.Apply(StatusKind.Panic, ShadeRules.FearPanicTicks);
+                weakest.Statuses.Apply(StatusKind.Panic, ShadeSized(side, ShadeRoute.Fear, ShadeRules.FearPanicTicks));
                 if (form >= 3) Turncoat(side, weakest);
             }
             for (int i = 0; broke != null && i < broke.Count && spreads > 0 && !_finished; i++)

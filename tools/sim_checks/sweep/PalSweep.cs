@@ -11,8 +11,8 @@ using KindredSiege.Sim.Learning;
 // (CampaignPilot.ThemeLine). Every run routes to his fight whenever one is on offer and takes his picks and nothing else (no
 // spoils, no other Pal); the themed Glutton also feeds. The fight pilot is the same for all and presses the Shade's follow ups.
 // One CSV line a run: seed, lean, mode, scale, style, run won, fights won, fights, picks, his fights, chief fights, chief wins,
-// follow up tricks, fed, depth, error, health margin. Build it against Assets/Scripts/Sim as Sweep.cs is.
-//   args: lean seedStart seedCount enemyScale style
+// follow up tricks, fed, depth, error, health margin, bursts. Build it against Assets/Scripts/Sim as Sweep.cs is.
+//   args: lean seedStart seedCount enemyScale style [lines: 0 for none]
 public static class PalSweep
 {
     private static CampaignTuning Tuning(int scale) => new CampaignTuning { EnemyScaleTier1 = scale, EnemyScaleTier2 = scale * 86 / 95 };
@@ -68,6 +68,8 @@ public static class PalSweep
         int count = int.Parse(args[2]);
         int scale = int.Parse(args[3]);
         PilotStyle style = (PilotStyle)Enum.Parse(typeof(PilotStyle), args[4]);
+        // A 6th arg of 0 plays only none, random and themed, leaving out the lines.
+        bool lines = args.Length <= 5 || args[5] != "0";
         CampaignTuning t = Tuning(scale);
         TextWriter o = Console.Out;
         for (ulong seed = seed0; seed < seed0 + (ulong)count; seed++)
@@ -77,13 +79,13 @@ public static class PalSweep
             start.StartRun();
             string save = CampaignSave.Write(start);
             var modes = new List<int> { -3, -2, -1 };
-            modes.AddRange(Lines(lean));
+            if (lines) modes.AddRange(Lines(lean));
             foreach (int line in modes)
             {
                 bool themed = line >= -1;
                 Campaign c = CampaignSave.Read(save, t);
                 var picker = new CampaignPilot(PilotStyle.Reference, seed) { ThemeLine = line };
-                long share = 0; int depth = 0, won = 0, fights = 0, picks = 0, chiefs = 0, chiefWins = 0, presses = 0, fed = 0, palFights = 0;
+                long share = 0; int bursts = 0, depth = 0, won = 0, fights = 0, picks = 0, chiefs = 0, chiefWins = 0, presses = 0, fed = 0, palFights = 0;
                 bool runWon = false;
                 string error = "";
                 try
@@ -98,6 +100,7 @@ public static class PalSweep
                         fights++;
                         if (r.Won) won++;
                         share += Share(f.Sim, 0) - Share(f.Sim, 1);
+                        bursts += f.Sim.Events.Count(ev => ev.Kind == BattleEventKind.Burst && ev.ActorSide == 0);
                         if (e.Kind == EncounterKind.Chief)
                         {
                             chiefs++;
@@ -124,7 +127,7 @@ public static class PalSweep
                     error = ex.GetType().Name + ":" + ex.Message.Replace(',', ';').Replace('\n', ' ');
                 }
                 o.WriteLine(string.Join(",", seed, lean, line == -3 ? "none" : themed ? "themed" + line : "random", scale, style, runWon ? 1 : 0, won, fights,
-                    picks, palFights, chiefs, chiefWins, presses, fed, depth, error, share));
+                    picks, palFights, chiefs, chiefWins, presses, fed, depth, error, share, bursts));
             }
             o.Flush();
         }

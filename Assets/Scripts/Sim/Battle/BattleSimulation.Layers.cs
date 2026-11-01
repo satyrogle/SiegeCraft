@@ -25,6 +25,14 @@ namespace KindredSiege.Sim.Battle
             if (foe) MeterBoost(sourceSide, hit);
             // From rules 26 Dark Matter Plating and Deep Node (BattleSimulation.Glutton.cs).
             if (foe && _gluttonOn) GluttonHit(sourceSide, victim, hit, detail);
+            // From rules 28 the sized picks (BattleSimulation.Sized.cs): her trick at its route's form, a ranked fighter's hit.
+            if (foe && _sizedOn)
+            {
+                int form = ShadeRules.IsTrickDetail(detail) ? ShadeSized(sourceSide, RouteOfTrick(detail)) : 0;
+                if (form > 0) hit.Add(HitLayer.Pal, form);
+                int rank = source != null && source.Side == sourceSide ? RankSized(source) : 0;
+                if (rank > 0) hit.Add(HitLayer.Pal, rank);
+            }
             // From rules 27 Gorged Tricks on one of her tricks (BattleSimulation.Duos.cs).
             if (foe && _duosOn && ShadeRules.IsTrickDetail(detail))
             {
@@ -70,6 +78,12 @@ namespace KindredSiege.Sim.Battle
             }
             // From rules 26 Matter Printer and Recompile (BattleSimulation.Glutton.cs).
             if (_gluttonOn) GluttonHeal(healer, patient, heal);
+            // From rules 28 a ranked healer heals more (BattleSimulation.Sized.cs).
+            if (_sizedOn && healer != null)
+            {
+                int rank = RankSized(healer);
+                if (rank > 0) heal.Add(HitLayer.Pal, rank);
+            }
             long left = patient.HealLeftover;
             int amount = heal.ResolveHeal(ref left);
             patient.HealLeftover = left;

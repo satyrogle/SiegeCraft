@@ -351,8 +351,9 @@ namespace KindredSiege.Sim.Learning
 
         /// Which of the standing Pal card's picks to take: at random from the pilot's own dice, or themed, leaning into his
         /// theme. Themed: a duo first; then the Butcher's leading flavour, else a rank up; the Whisperer's star, the fighter ranked
-        /// highest; the Shade's route at the highest form; the Glutton's limb climbed furthest. -1 with no card standing.
-        public int PickFavour(Campaign c, bool themed)
+        /// highest; the Shade's route at the highest form; the Glutton's limb climbed furthest. -1 with no card standing. With
+        /// duos false a themed pilot never takes a duo.
+        public int PickFavour(Campaign c, bool themed, bool duos = true)
         {
             FavourOffer offer = c.FavourOffer;
             if (offer == null || offer.Choices.Count == 0) return -1;
@@ -360,7 +361,9 @@ namespace KindredSiege.Sim.Learning
             int best = 0, bestScore = int.MinValue;
             for (int i = 0; i < offer.Choices.Count; i++)
             {
-                int score = Themed(c, offer, i) * 2 + (InLine(c, offer, i) ? 1 : 0);
+                // duos false: never a duo (rules 27), for measuring what one adds.
+                if (!duos && FavourRules.IsDuo(offer.Choices[i])) continue;
+                int score = Themed(c, offer, i) * 100 + (InLine(c, offer, i) ? 50 : 0) + Prefer(offer, i);
                 if (score > bestScore)
                 {
                     best = i;
@@ -399,7 +402,28 @@ namespace KindredSiege.Sim.Learning
             return (UnitClass)(-1);
         }
 
-        // How well a pick leans into its Pal's theme; the highest is taken, then the one in ThemeLine, then the first.
+        // Among picks that lean as well and are in no ThemeLine, which the pilot starts on, 0 to 40: the Shade's route on the
+        // button it presses most (Focus Fire, then Unleash, then Fall Back, then Hold). 0 for every other pick, so the first of a
+        // tie is taken.
+        private static int Prefer(FavourOffer offer, int i)
+        {
+            if (offer.Pal != Pal.Shade) return 0;
+            switch (FavourRules.RouteOf(offer.Choices[i]))
+            {
+                case ShadeRoute.Rupture: return 40;
+                case ShadeRoute.Fear: return 35;
+                case ShadeRoute.Breach: return 30;
+                case ShadeRoute.Echo: return 25;
+                case ShadeRoute.RiftMine: return 20;
+                case ShadeRoute.Backstab: return 15;
+                case ShadeRoute.Sanctuary: return 10;
+                case ShadeRoute.Mirror: return 5;
+                default: return 0;
+            }
+        }
+
+        // How well a pick leans into its Pal's theme; the highest is taken, then the one in ThemeLine, then Prefer's, then the
+        // first.
         private static int Themed(Campaign c, FavourOffer offer, int i)
         {
             Favour f = offer.Choices[i];

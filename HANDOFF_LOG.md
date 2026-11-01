@@ -13205,3 +13205,38 @@ Jacob, in the same cloud chat: "go write them", on the six duos Claude proposed 
 **For Codex.** New files need .meta: Assets/Scripts/Sim/Battle/BattleSimulation.Duos.cs, Assets/Scripts/Sim/Learning/Campaign.Duos.cs, Assets/Tests/EditMode/DuoTests.cs. A card can now show up to 8 picks, the duo last; FavourRules.Name and Describe(favour, rank) name both Pals. In a fight: the "star" trick event, BattleSimulation.StarOf for whom to mark as the star.
 
 Files: Assets/Scripts/Sim/Battle/PalKit.cs, FightRules.cs, BattleSimulation.cs, BattleSimulation.Duos.cs (new), BattleSimulation.Marks.cs, BattleSimulation.Layers.cs, BattleSimulation.Glutton.cs; Assets/Scripts/Sim/Learning/Campaign.cs, Campaign.Duos.cs (new), Campaign.PalStores.cs, CampaignFavours.cs, CampaignSave.cs, ReplayEvidence.cs, CampaignPilot.cs; Assets/Tests/EditMode/DuoTests.cs (new); tools/sim_checks/sweep/PairSweep.cs; HANDOFF_LOG.md.
+
+## 2026-11-01 - Claude (cloud session) to Codex / Jacob / local Claude - Hand back: the sizing pass (campaign rules 28)
+
+Jacob, in the same cloud chat, after "i dont want to play until everything is wired": "okay go" on a sizing pass, lifting his 12 Oct no tuning rule for the Pals' picks and duos only. Built behind campaign rules 28 (Campaign.SizedRules, Battle.FightRules.Sized). Save version stays 30; evidence format 33. Every number is a starting value, sized with the builds test, for Jacob's play to change.
+
+**What is in** (Battle.SizeRules, BattleSimulation.Sized.cs; a new damage layer, HitLayer.Pal, so these multiply the rest).
+- Shade: her trick is 50% bigger at form 1, 200% at form 2 and 400% at form 3: its damage, Sanctuary's shields, Backstab's crit and Fear's nerve and panic. Her route prices keep half.
+- Glutton: every fight talent's bonus is 100% bigger, and 300% more for each other talent held in its limb. A bonus under 10 (a place of reach, a spring, a second of Rewind) stays as it is.
+- Whisperer: a rank 3 fighter's blows and heals are 600% bigger. Rank 2 is unchanged.
+- Butcher: each combo lays 1 more stack, and its bursts are 500% bigger, for each rank past the first of combos of its flavour the side wears; his pacts cost half.
+- Duos: Crowned Marks 3 times the stacks, Marked Tricks 2 stacks a trick hit, Gorged Bursts 100% a talent level, Gorged Tricks 60% a level and prices to a quarter, Shadow Star every 1.5 s, Fattened Star 200% more on the star's talents.
+- The bot (CampaignPilot.PickFavour): a themed Shade starts on the route of the button it presses most (Focus Fire, Unleash, Fall Back, Hold); a duos argument lets it skip duos. Without the first, the themed bot leaned into Hold routes it barely presses.
+
+**The builds test**, 300 seeds from 7000, run in my scratchpad: themed against random picks, runs won in 100, with orders at 110 and without at 70. The bar is +10.
+
+| Pal | With orders | Without | Was |
+|---|---|---|---|
+| Shade | +13.7 (44.7 against 31.0) | 0.0 | +0.7 / 0.0 |
+| Glutton | +13.0 (43.7 against 30.7) | +14.3 | -0.3 / 0.0 |
+| Whisperer | +7.3 (41.3 against 34.0) | +13.3 | 0.0 / +2.7 |
+| Butcher | +2.7 (35.7 against 33.0) | +2.0 | +1.3 / -0.3 |
+
+- The Shade's tricks need orders, so without them she can't pass. The Whisperer plateaus near +9 with orders even at 1500%. The Butcher stays near +3 at any size: his card already leans random picks into one flavour, and bursts rarely decide a run.
+- Chief fights won, themed against random: Shade 89 against 87%, Glutton 92 against 88, Whisperer 95 against 89, Butcher 91 against 88 with orders. No counter shows against the leaning runs.
+- How much easier: a themed run with orders wins 36 to 45% of runs, against 25 to 32% with no picks.
+
+**The duo check** at rules 28, the same 300 seeds, every pair: taking a duo costs 0.3 to 5.3 runs in 100 against the same bot skipping it with orders, and 1.3 to 6.3 without. Even 3 to 6 times these duo numbers changed it by under 1. A duo takes the place of a pick, the sized pick is worth more, and a duo only fires when its conditions are met (a star, a worn combo, her tricks).
+
+**Checked** (the Linux harness): 573 passed, 1 failed, 7 skipped; the failure is still only the Windows file locking test. 4 new SizedTests: her form 1 mine 50% bigger, form 2 bigger again, Rift Mine's price cut; a second Strikers talent grows Nucleus Edge; a rank 3 Skirmisher hits about 7 times as hard and an unranked one the same; a second Crush combo makes the burst bigger. Old against new, against my duo commit (4951e1c0): a copy with RulesVersion 27 and format 32 matches it byte for byte on every probe output and all 32 saves; this build plays every capped run (14 to 27) fight for fight the same, its saves differing only in the rules a fight in progress began under; rules 28 probe runs play with no exceptions.
+
+**Not checked:** nothing in Unity, nothing by hand.
+
+**For Codex.** New files need .meta: Assets/Scripts/Sim/Battle/BattleSimulation.Sized.cs, Assets/Tests/EditMode/SizedTests.cs. HitLayer.Pal is new, after Parry. Pal card and tooltip text from ShadeRules.Describe, GluttonRules.Describe and DuoRules.Describe does not show the sized numbers yet: BattleSimulation.SizedOn says when they play.
+
+Files: Assets/Scripts/Sim/Battle/BattleSimulation.Sized.cs (new), Hits.cs, FightRules.cs, BattleSimulation.cs, BattleSimulation.Layers.cs, BattleSimulation.Shade.cs, BattleSimulation.Glutton.cs, BattleSimulation.Duos.cs, BattleSimulation.Marks.cs; Assets/Scripts/Sim/Learning/Campaign.cs, ReplayEvidence.cs, CampaignPilot.cs; Assets/Tests/EditMode/SizedTests.cs (new); tools/sim_checks/sweep/PalSweep.cs, PairSweep.cs; HANDOFF_LOG.md.

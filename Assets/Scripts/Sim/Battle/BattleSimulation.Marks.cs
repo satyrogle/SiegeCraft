@@ -81,6 +81,8 @@ namespace KindredSiege.Sim.Battle
             StatusKind mark = MarkRules.Of(combo);
             // Crowned Marks (rules 27, BattleSimulation.Duos.cs): the star lays more.
             int stacks = _duosOn ? CrownedStacks(wearer, RankOf(wearer, combo)) : RankOf(wearer, combo);
+            // The sizing pass (rules 28): more for a side leaning into the flavour.
+            if (_sizedOn) stacks = StacksSized(wearer, mark, stacks);
             target.Statuses.Apply(mark, MarkRules.Ticks, sourceId: wearer.Id, stacks: stacks);
             Emit(new BattleEvent(_tick, BattleEventKind.Mark, wearer.Side, wearer.Id, (int)wearer.Class, target.Id, (int)target.Class,
                 MarkRules.Ticks, MarkRules.Name(mark)));
@@ -93,6 +95,8 @@ namespace KindredSiege.Sim.Battle
             target.Statuses.Clear(mark);
             // Gorged Bursts (rules 27, BattleSimulation.Duos.cs): each burst this percent bigger.
             int gorged = _duosOn ? GorgedPercent(by) : 0;
+            // The sizing pass (rules 28, BattleSimulation.Sized.cs): every burst bigger, more for its flavour's combos.
+            if (_sizedOn) gorged += BurstSized(by, mark);
             switch (mark)
             {
                 case StatusKind.Crush:

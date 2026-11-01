@@ -46,7 +46,7 @@ namespace KindredSiege.Sim.Battle
         // Crowned Marks: the stacks the star lays, times CrownStacks.
         private int CrownedStacks(BattleUnit wearer, int stacks)
         {
-            return HasDuo(wearer.Side, PalDuo.CrownedMarks) && IsStar(wearer) ? stacks * DuoRules.CrownStacks : stacks;
+            return HasDuo(wearer.Side, PalDuo.CrownedMarks) && IsStar(wearer) ? stacks * (_sizedOn ? SizeRules.CrownStacks : DuoRules.CrownStacks) : stacks;
         }
 
         // A burst went off (Burst): Crowned Marks gives the star who set it off his spell again.
@@ -61,7 +61,7 @@ namespace KindredSiege.Sim.Battle
             if (by == null || !HasDuo(by.Side, PalDuo.GorgedBursts)) return 0;
             int limb = DuoRules.LimbOf(by.Class), levels = 0;
             for (int slot = 0; slot < GluttonRules.PerLimb; slot++) levels += KitOf(by.Side).TalentLevel(GluttonRules.At(limb, slot));
-            return levels * DuoRules.GorgedBurstPercent;
+            return levels * (_sizedOn ? SizeRules.GorgedBurstPercent : DuoRules.GorgedBurstPercent);
         }
 
         // ------------------------------------------------------------ her tricks: Marked Tricks, Shadow Star, Gorged Tricks
@@ -77,7 +77,7 @@ namespace KindredSiege.Sim.Battle
                 if (star != null && star.Alive)
                 {
                     state.StarCastDue = 1;
-                    state.ShadowStarAt = _tick + DuoRules.ShadowStarTicks;
+                    state.ShadowStarAt = _tick + (_sizedOn ? SizeRules.ShadowStarTicks : DuoRules.ShadowStarTicks);
                 }
             }
             if (HasDuo(sourceSide, PalDuo.MarkedTricks) && !_finished && victim.Alive) TrickMark(sourceSide, victim);
@@ -103,7 +103,7 @@ namespace KindredSiege.Sim.Battle
             }
             if (by == null) return;
             StatusKind mark = MarkRules.Of(combo);
-            victim.Statuses.Apply(mark, MarkRules.Ticks, sourceId: by.Id, stacks: 1);
+            victim.Statuses.Apply(mark, MarkRules.Ticks, sourceId: by.Id, stacks: _sizedOn ? SizeRules.MarkedStacks : 1);
             Emit(new BattleEvent(_tick, BattleEventKind.Mark, side, by.Id, (int)by.Class, victim.Id, (int)victim.Class,
                 MarkRules.Ticks, MarkRules.Name(mark)));
             if (victim.Statuses[mark].Stacks >= MarkRules.MaxStacks) Burst(by, victim, mark);
@@ -134,13 +134,13 @@ namespace KindredSiege.Sim.Battle
             if (!HasDuo(side, PalDuo.GorgedTricks)) return 0;
             int levels = 0;
             for (int t = 1; t <= GluttonRules.TalentCount; t++) levels += KitOf(side).TalentLevel((GluttonTalent)t);
-            return levels * DuoRules.GorgedTrickPercent;
+            return levels * (_sizedOn ? SizeRules.GorgedTrickPercent : DuoRules.GorgedTrickPercent);
         }
 
         // Gorged Tricks: what is left of her route prices, in percent of what Command Relay left.
         private int GorgedPrice(int side, int left)
         {
-            return HasDuo(side, PalDuo.GorgedTricks) ? left * DuoRules.GorgedPricePercent / 100 : left;
+            return HasDuo(side, PalDuo.GorgedTricks) ? left * (_sizedOn ? SizeRules.GorgedPricePercent : DuoRules.GorgedPricePercent) / 100 : left;
         }
 
         // ------------------------------------------------------------ Fattened Star (the Glutton's)
@@ -155,7 +155,12 @@ namespace KindredSiege.Sim.Battle
 
         private int Bonus(BattleUnit unit, GluttonTalent talent, int bonus)
         {
-            return GluttonRules.Bonus(TalentLevelOf(unit, talent), bonus);
+            // Sized from rules 28 (BattleSimulation.Sized.cs), and more again on a Fattened Star.
+            if (!_sizedOn) return GluttonRules.Bonus(TalentLevelOf(unit, talent), bonus);
+            int sized = GluttonSized(unit.Side, talent, bonus);
+            if (SizeRules.FattenedPercent > 0 && sized >= SizeRules.GluttonMinBonus && HasDuo(unit.Side, PalDuo.FattenedStar) && IsStar(unit))
+                sized = sized * (100 + SizeRules.FattenedPercent) / 100;
+            return GluttonRules.Bonus(TalentLevelOf(unit, talent), sized);
         }
 
         // ------------------------------------------------------------ the star's spell, once the tick's turns are done
