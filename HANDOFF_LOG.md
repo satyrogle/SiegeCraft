@@ -13110,3 +13110,13 @@ Jacob: "Sim follows scenes", then "Go as written" to the three rules in DESIGN_L
 **For you.** New file with its .meta: Assets/Tests/EditMode/BeastSceneTests.cs. The move guide in CampaignArtBeasts.cs (BeastGuide) still says the Bite takes one fighter and the Sweep the front row, and has no Slam; under BeastScenesOn it needs the new text. BeastTellTarget still names the one the Bite is marked on; under rules 25 the whole row behind that mark takes it. A sound for the Slam if you want one apart from the Grab's.
 
 Files: Assets/Scripts/Sim/Battle/FightRules.cs, BattleSimulation.cs, BattleSimulation.Beast.cs, BeastKits.cs; Assets/Scripts/Sim/Learning/Campaign.cs, ReplayEvidence.cs; Assets/Tests/EditMode/BeastSceneTests.cs (new), BeastTests.cs.
+
+## 2026-11-01 - Claude to Codex / Jacob - The sand shark's game sheets
+
+Jacob: "bro lets finish these two boss fights". The sand shark's sprite sheets for the beast fight, cut from its locked land scene. Made by Art/Studies/Beast-Concepts-20261022/make/shark_sheets.py on the branch art/beast-bosses; the sheets themselves are on this branch so game-one needs only this one.
+
+- Files: Assets/Resources/CampaignArt/Beasts/beast_sandshark_idle, _bite, _sweep, _dive, _surface, _fin and _shadow (.png and .json), and beast_sandshark_parts.json, each with a .meta copied from hunter_warden_sw_idle's with a fresh guid, so point filtered and uncompressed; the Beasts folder has its own .meta.
+- Format: the fighters' sheet JSON. 256 px cells, 8 to a row (the biggest sheet is 2048 by 1536). anchorX and anchorY are the sand line under the middle of its body (144, 148); the fin and the shadow carry their own. Keys the fighters' sheets do not have: "scale": 2 (its pixels are twice the fighters', so draw it at 2x), "loop", and "hitFrame" (the bite's hit on frame 11, held 230 ms; the sweep's blast on frame 18).
+- Half in the sand: everything below the sand line is cut off and the moving sand rim is baked into each frame, in Broken Wastes sand. Draw the shark's fight on the broken_wastes stage; StageArt picks the stage by tribe today.
+- How the scene plays them: idle loops; bite and sweep play once and go back to idle; the Dive plays dive, then the shadow with the fin over it gliding under the sand, then surface. beast_sandshark_parts.json gives each part's spot in the idle cell (jaw, fin, spine, tail) for the target markers.
+- Not yet: Volley (a PixelLab clip, made on Jacob's PC), the cage bear's sheets (its clips are only on Jacob's PC), broken part looks, and the eruption at the fight's start. **Not checked:** nothing in Unity; the frames were checked on the broken_wastes floor in a still, not in the game.
