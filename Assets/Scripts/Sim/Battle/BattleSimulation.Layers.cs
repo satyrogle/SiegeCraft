@@ -24,6 +24,8 @@ namespace KindredSiege.Sim.Battle
             // From rules 22 held parry bars make your payoffs stronger (BattleSimulation.Meter.cs).
             if (foe) MeterBoost(sourceSide, hit);
             if (_spellsOn && _sides[victim.Side].WallTicks > 0 && foe) hit.Add(HitLayer.Guard, WallPercentOf(victim.Side) - 100);
+            // Breach's price (rules 25): a side that breaches takes more while it is exposed (BattleSimulation.Shade.cs).
+            if (_shadeOn && foe && _sides[victim.Side].ExposedTicks > 0) hit.Add(HitLayer.Guard, ShadeRules.ExposedPercent);
             else if (_kitsTwoOn && foe && LockdownHolds(victim.Side)) hit.Add(HitLayer.Guard, ChiefSpells.WallDamagePercent - 100);
             if (_beastOn && victim.Side == _beastSide && foe && !CageHit(victim, sourceSide, hit)) return;
             if (victim.Role == UnitRole.Chief && WornOutTicksLeft(victim.Side) > 0) hit.Add(HitLayer.Kit, Moves.WornOutDamagePercent - 100);
@@ -72,7 +74,7 @@ namespace KindredSiege.Sim.Battle
             if (hit.Base < Hit.Unit) hit = new Hit(1);
             SideState mine = _sides[attacker.Side];
             SideState theirs = _sides[target.Side];
-            if (mine.UnleashTicks > 0) hit.Add(HitLayer.Orders, UnleashDamagePercent - 100);
+            if (mine.UnleashTicks > 0) hit.Add(HitLayer.Orders, UnleashPercent(attacker.Side) - 100);
             if (mine.FrenzyTicks > 0)
                 hit.Add(HitLayer.Orders, (attacker.Role == UnitRole.Pal ? Moves.FrenzyPalPowerPercent : Moves.FrenzyAllyPowerPercent) - 100);
             if (mine.RallyTicks > 0) hit.Add(HitLayer.Orders, RallyDamagePercent - 100);
@@ -104,7 +106,7 @@ namespace KindredSiege.Sim.Battle
         // A unit's armour as a cut on the hit (Armored, before rules 17).
         private Hit Armor(BattleUnit victim, Hit hit)
         {
-            int armor = SpecOf(victim).ArmorPercent;
+            int armor = Cracked(victim, SpecOf(victim).ArmorPercent);
             return armor > 0 ? hit.Add(HitLayer.Armor, -armor) : hit;
         }
 

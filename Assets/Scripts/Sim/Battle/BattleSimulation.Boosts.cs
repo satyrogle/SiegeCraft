@@ -66,7 +66,10 @@ namespace KindredSiege.Sim.Battle
         // While a side falls back nobody of it attacks (the road kit), unless it plays Shadow Strike (rules 25).
         private bool FallingBack(int side)
         {
-            return _roadKitOn && side >= 0 && side <= 1 && _sides[side].FallBackTicks > 0 && !ShadowStrike(side);
+            if (!_roadKitOn || side < 0 || side > 1) return false;
+            // Rift Mine's price (rules 25): the side's attacks wait out its return as well.
+            if (_shadeOn && _sides[side].ReturnTicks > 0) return true;
+            return _sides[side].FallBackTicks > 0 && !ShadowStrike(side);
         }
 
         private void Boosted(BattleUnit by, BattleUnit on, int amount, string move)

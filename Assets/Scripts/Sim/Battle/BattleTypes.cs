@@ -754,6 +754,10 @@ namespace KindredSiege.Sim.Battle
         public bool FreeSpent { get; internal set; }
         public bool TreatmentInHand { get; internal set; }
 
+        /// From rules 25 (BattleSimulation.Shade.cs), Echo: what his echo holds this Unleash, and the first one he recorded.
+        public int EchoStored { get; internal set; }
+        public string EchoTargetId { get; internal set; } = string.Empty;
+
         /// Every status on this fighter (Statuses.cs; DESIGN_LOCKS, "Builds: one theme per Pal", step 1, 30 Oct 2026): panic,
         /// bleed, snare, Opening, stun, burn, pin, flurry and slow, with who left each mark and its chain. The old names below
         /// read it.

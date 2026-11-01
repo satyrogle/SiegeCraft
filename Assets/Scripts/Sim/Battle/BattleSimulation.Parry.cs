@@ -355,12 +355,15 @@ namespace KindredSiege.Sim.Battle
             if (!duel)
             {
                 Earn(facing, points, FightRules.ParryReason);
+                // Mirror, the Shade's other Hold route (rules 25, BattleSimulation.Shade.cs): a small beat counts one.
+                if (_shadeOn) Mirror(facing, doer, 1);
                 return 0;
             }
             int percent = NextParryPercent(facing);
             int weak = HasBand(side, BandTrait.WeakToParry) ? BandRules.WeakParryPercent : 100;
             theirs.ParryChain++;
             Earn(facing, points, FightRules.ParryReason);
+            if (_shadeOn) Mirror(facing, doer, theirs.ParryChain);
             return crack * percent / 100 * weak / 100;
         }
 

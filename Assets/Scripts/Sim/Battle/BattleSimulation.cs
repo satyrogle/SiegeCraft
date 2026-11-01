@@ -115,6 +115,15 @@ namespace KindredSiege.Sim.Battle
             public int RelaySize;
             public bool RefugeUsed;
             public int FallBackLockTicks;
+            // And the other five routes: Rupture's target and its steps, Echo recording, Rift Mine's mine and its return, and
+            // Breach's exposure.
+            public string RuptureTargetId = string.Empty;
+            public int RuptureSteps;
+            public bool EchoRecording;
+            public int MineTicks;
+            public int ReturnTicks;
+            public int ExposedTicks;
+            public int BreachTicks;
             public int Nerve;
             public int StartHp;
             public int NerveRemainder;
@@ -866,6 +875,14 @@ namespace KindredSiege.Sim.Battle
             if (_halted)
                 return TryVerdict(side, directive, command.TargetId, "side" + side.ToString(CultureInfo.InvariantCulture), out failure);
 
+            // The Shade's follow up presses (rules 25, BattleSimulation.Shade.cs): free, and never the plain order.
+            if (_shadeOn)
+            {
+                int followed = FollowUp(side, directive, command.TargetId, out failure);
+                if (followed > 0) return true;
+                if (followed < 0) return false;
+            }
+
             if (!CanUse(side, directive, out failure)) return false;
 
             BattleUnit target = null;
@@ -1219,7 +1236,7 @@ namespace KindredSiege.Sim.Battle
                         // And the Whisperer's, only where she plays (BattleSimulation.Whisperer.cs).
                         if (_whisperOn) AppendWhisperUnit(b, u);
                         // And the Shade's forms, only where they play (rules 25).
-                        if (_shadeOn) b.Field(u.Id + ".backstabHits", u.Statuses[StatusKind.Backstab].Store);
+                        if (_shadeOn) AppendShadeUnit(b, u);
                     }
                 }
                 b.Section("events");
@@ -1269,12 +1286,16 @@ namespace KindredSiege.Sim.Battle
                     ReflexPressOnFallBack(1 - side);
                     // Backstab, the Shade's Fall Back trick (rules 23, BattleSimulation.Shade.cs).
                     if (_floorOn) Backstab(side);
+                    // Rift Mine, her other Fall Back route (rules 25).
+                    if (_shadeOn) RiftMine(side, state);
                     break;
                 case Directive.FocusFire:
                     // A Thick Hide hunter braces the moment you focus him, under the parry at the center (BattleSimulation.Band.cs).
                     if (_parryOn && HasBand(target.Side, BandTrait.ThickHide)) Fired(target.Side, LessonFiring.ThickHide, target, null);
                     state.FocusTargetId = target.Id;
                     state.FocusTicks = FearPriced(side, Longer(FocusTicks * percent / 100, _rules[side].Favours.FocusLongerPercent));
+                    // Rupture (rules 25): a new Focus Fire starts its weak point over (BattleSimulation.Shade.cs).
+                    if (_shadeOn) RuptureOn(side, state, target);
                     if (ordered)
                     {
                         state.LastFocusTick = _tick;
@@ -1303,6 +1324,8 @@ namespace KindredSiege.Sim.Battle
                     ReflexHoldOnUnleash(1 - side);
                     ReflexKite(1 - side);
                     if (_nerveOn) UnleashScare(side);
+                    // Echo and Breach, the Shade's Unleash routes (rules 25, BattleSimulation.Shade.cs).
+                    if (_shadeOn) ShadeUnleash(side, state);
                     break;
                 case Directive.Sacrifice:
                     Sacrifice(target, percent);
@@ -1917,6 +1940,8 @@ namespace KindredSiege.Sim.Battle
         {
             // Under the road kit Fall Back is a pure dodge: nobody of the falling side attacks (BattleSimulation.Boosts.cs).
             if (FallingBack(attacker.Side)) return;
+            // Rift Mine (rules 25): striking one of a side with a mine sets it off, and a blast that drops him stops the blow.
+            if (_shadeOn && MineGoesOff(attacker, target)) return;
             int roll = 85 + _rng.Next(31);
             int damage = power * roll / 100;
             if (damage < 1) damage = 1;
@@ -2050,7 +2075,7 @@ namespace KindredSiege.Sim.Battle
         {
             SideState mine = _sides[attacker.Side];
             SideState theirs = _sides[target.Side];
-            if (mine.UnleashTicks > 0) damage = damage * UnleashDamagePercent / 100;
+            if (mine.UnleashTicks > 0) damage = damage * UnleashPercent(attacker.Side) / 100;
             if (mine.FrenzyTicks > 0)
                 damage = damage * (attacker.Role == UnitRole.Pal ? Moves.FrenzyPalPowerPercent : Moves.FrenzyAllyPowerPercent) / 100;
             if (mine.RallyTicks > 0) damage = damage * RallyDamagePercent / 100;
@@ -2087,7 +2112,7 @@ namespace KindredSiege.Sim.Battle
         /// What a unit's armour (Learning.TribeTraits) leaves of a hit, never below 1.
         private int Armored(BattleUnit victim, int damage)
         {
-            int armor = SpecOf(victim).ArmorPercent;
+            int armor = Cracked(victim, SpecOf(victim).ArmorPercent);
             return armor > 0 ? Math.Max(1, damage * (100 - armor) / 100) : damage;
         }
 
@@ -2203,7 +2228,8 @@ namespace KindredSiege.Sim.Battle
             // A band with Long Reach still reaches you through your Fall Back (BandTrait.LongReach), not through its own.
             // Shadow Strike, Backstab's last form (rules 25): your side keeps striking while it falls back, and they still can't
             // reach you (BattleSimulation.Shade.cs).
-            if ((mine.FallBackTicks > 0 && !ShadowStrike(attacker.Side)) ||
+            // Rift Mine's price (rules 25): your attacks wait out its return too.
+            if ((mine.FallBackTicks > 0 && !ShadowStrike(attacker.Side)) || (_shadeOn && mine.ReturnTicks > 0) ||
                 (theirs.FallBackTicks > 0 && !HasBand(attacker.Side, BandTrait.LongReach)))
                 return StrikeBlock.FallBack;
             // Never on an Ambusher's trap, which no light blow springs (rules 24).
@@ -2302,7 +2328,8 @@ namespace KindredSiege.Sim.Battle
                 BattleUnit u = _units[i];
                 // From rules 24 his second ward too, and an upgraded Bodyguard's back row (BattleSimulation.Whisperer.cs).
                 if (u.Alive && u.Side == target.Side && u.Class == UnitClass.Warden && !ReferenceEquals(u, target) &&
-                    (string.Equals(u.GuardTargetId, target.Id, StringComparison.Ordinal) || (_whisperOn && AlsoGuards(u, target))))
+                    (string.Equals(u.GuardTargetId, target.Id, StringComparison.Ordinal) || (_whisperOn && AlsoGuards(u, target))) &&
+                    !(_shadeOn && u.Statuses[StatusKind.NoCover].On))
                     return u;
             }
             return null;
@@ -2368,6 +2395,8 @@ namespace KindredSiege.Sim.Battle
                 source == null ? string.Empty : source.Id, source == null ? -1 : (int)source.Class,
                 victim.Id, (int)victim.Class, amount, detail));
             ConfirmTeamwork(source, victim, detail);
+            // Rupture's steps and Echo's record (rules 25, BattleSimulation.Shade.cs).
+            if (_shadeOn) ShadeLanded(source, sourceSide, victim, hpLost, detail);
             // What he lost and who struck him, for a Rewind; and a Medic's Evac pulls a falling fighter out alive
             // (BattleSimulation.Combos.cs).
             if (_comboOn)

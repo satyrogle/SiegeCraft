@@ -36,7 +36,11 @@ namespace KindredSiege.Sim.Battle
         /// The floor under the three Pals (campaign rules 23; BattleSimulation.Shade.cs): Sanctuary's shield, its size the
         /// hit points it still soaks, and Backstab, a Fall Back's next hit from behind.
         Shield,
-        Backstab
+        Backstab,
+        /// The Shade's other routes (campaign rules 25; BattleSimulation.Shade.cs): Rupture's Crack thins his armour, and
+        /// Breach's Gap stops him covering anyone.
+        Crack,
+        NoCover
     }
 
     /// How a new one lands on a status already on: its clock starts again from the new length, or keeps the longer.
@@ -91,7 +95,9 @@ namespace KindredSiege.Sim.Battle
             new StatusRule(StatusKind.Stasis, MarkRules.MaxStacks, 0, 0, StatusClock.Reset),
             new StatusRule(StatusKind.WideOpen, 1, 0, 0, StatusClock.Reset),
             new StatusRule(StatusKind.Shield, 1, ShieldMaxSize, 0, StatusClock.Reset),
-            new StatusRule(StatusKind.Backstab, 1, 0, 0, StatusClock.Reset)
+            new StatusRule(StatusKind.Backstab, 1, 0, 0, StatusClock.Reset),
+            new StatusRule(StatusKind.Crack, 1, 0, 0, StatusClock.Reset),
+            new StatusRule(StatusKind.NoCover, 1, 0, 0, StatusClock.Reset)
         };
 
         /// The most hit points one shield can soak.

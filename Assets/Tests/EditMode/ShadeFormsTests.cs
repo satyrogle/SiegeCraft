@@ -330,7 +330,7 @@ namespace KindredSiege.Sim.Tests
         }
 
         [Test]
-        public void HerFirstCardOffersEachBuiltRoute()
+        public void HerFirstCardOffersThreeNewRoutes()
         {
             var easy = new CampaignTuning { EnemyScaleTier1 = 40 };
             bool seen = false;
@@ -344,9 +344,16 @@ namespace KindredSiege.Sim.Tests
                 EncounterResult r = CampaignPilot.PlayFight(c, c.StartEncounter(index), new CampaignPilot(PilotStyle.Reference, seed));
                 if (!r.Won || c.FavourOffer == null) continue;
                 seen = true;
-                CollectionAssert.AreEqual(new[] { Favour.ShadeSanctuary, Favour.ShadeBackstab, Favour.ShadeFear }, c.FavourOffer.Choices);
+                // From all eight (1 Nov 2026, "finish shade"), three different routes, none held yet, in her order.
+                IReadOnlyList<Favour> choices = c.FavourOffer.Choices;
+                Assert.AreEqual(FavourRules.Offered, choices.Count);
+                Assert.IsTrue(choices.All(FavourRules.IsShade));
+                Assert.AreEqual(choices.Count, choices.Distinct().Count());
+                Assert.IsTrue(choices.All(f => c.FavourRank(f) == 0));
+                CollectionAssert.IsOrdered(choices.Select(f => (int)f).ToList());
+                ShadeRoute taken = FavourRules.RouteOf(choices[2]);
                 Assert.IsTrue(c.TryTakeFavour(2, out string why), why);
-                Assert.AreEqual(1, c.ShadeRoutes.Single(h => h.Route == ShadeRoute.Fear).Form, "a new route comes at form 1");
+                Assert.AreEqual(1, c.ShadeRoutes.Single(h => h.Route == taken).Form, "a new route comes at form 1");
             }
             Assert.IsTrue(seen, "no Shade fight was won");
         }

@@ -265,7 +265,7 @@ namespace KindredSiege.Sim.Battle
             int damage = power * (85 + _rng.Next(31)) / 100 * HeavyPercent(swinger) / 100;
             SideState mine = _sides[swinger.Side];
             SideState theirs = _sides[target.Side];
-            if (mine.UnleashTicks > 0) damage = damage * UnleashDamagePercent / 100;
+            if (mine.UnleashTicks > 0) damage = damage * UnleashPercent(swinger.Side) / 100;
             if (mine.FrenzyTicks > 0)
                 damage = damage * (swinger.Role == UnitRole.Pal ? Moves.FrenzyPalPowerPercent : Moves.FrenzyAllyPowerPercent) / 100;
             if (mine.RallyTicks > 0) damage = damage * RallyDamagePercent / 100;
