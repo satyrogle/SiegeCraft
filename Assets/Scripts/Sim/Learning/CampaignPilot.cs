@@ -42,6 +42,8 @@ namespace KindredSiege.Sim.Learning
         private readonly DeterministicRng _rng;
         // Its own dice for a duel's parries, so a pilot set to parry draws nothing else differently.
         private readonly DeterministicRng _parryRng;
+        // And its own for a random Pal pick, so picking draws nothing else differently.
+        private readonly DeterministicRng _pickRng;
         private bool _answered;
         private bool _breaking;
         private bool _broke;
@@ -58,6 +60,7 @@ namespace KindredSiege.Sim.Learning
             _style = style;
             _rng = new DeterministicRng(seed, 77);
             _parryRng = new DeterministicRng(seed, 78);
+            _pickRng = new DeterministicRng(seed, 79);
         }
 
         public PilotStyle Style => _style;
@@ -216,6 +219,7 @@ namespace KindredSiege.Sim.Learning
             IReadOnlyList<BattleEvent> ev = sim.Events;
             for (; _scanned < ev.Count; _scanned++)
                 if (ev[_scanned].Kind == BattleEventKind.Interrupt && ev[_scanned].ActorSide == 0) _broke = true;
+            if (FollowUps(fight, sim)) return;
 
             bool noHold = tribe.Hates == Feat.Hid;
             bool noUnleash = tribe.Hates == Feat.Loud;
@@ -329,6 +333,163 @@ namespace KindredSiege.Sim.Learning
         {
             for (int i = 0; i < feats.Count; i++) if (feats[i] == feat) return true;
             return false;
+        }
+
+        // ------------------------------------------------------------ the Pals' picks (the builds test, 1 Nov 2026)
+
+        /// Which offer to take for a run leaning into one Pal: the first of his fights whose win would offer his picks, else
+        /// PickOffer's own.
+        public int PickOffer(Campaign c, Pal lean)
+        {
+            for (int i = 0; lean != Pal.None && i < c.Offers.Count; i++)
+            {
+                Encounter e = c.Offers[i];
+                if (e.Node != null && e.Node.Pal == lean && c.PalPickOffered(e.Node)) return i;
+            }
+            return PickOffer(c);
+        }
+
+        /// Which of the standing Pal card's picks to take: at random from the pilot's own dice, or themed, leaning into his
+        /// theme. Themed: the Butcher's leading flavour, else a rank up; the Whisperer's star, the fighter ranked highest; the
+        /// Shade's route at the highest form; the Glutton's limb climbed furthest. -1 with no card standing.
+        public int PickFavour(Campaign c, bool themed)
+        {
+            FavourOffer offer = c.FavourOffer;
+            if (offer == null || offer.Choices.Count == 0) return -1;
+            if (!themed) return _pickRng.Next(offer.Choices.Count);
+            int best = 0, bestScore = int.MinValue;
+            for (int i = 0; i < offer.Choices.Count; i++)
+            {
+                int score = Themed(c, offer, i) * 2 + (InLine(c, offer, i) ? 1 : 0);
+                if (score > bestScore)
+                {
+                    best = i;
+                    bestScore = score;
+                }
+            }
+            return best;
+        }
+
+        /// The line a themed pilot leans into, among picks that lean as well: the Butcher's flavour (an Augment), the
+        /// Whisperer's star (a UnitClass), the Shade's route (a ShadeRoute) or the Glutton's limb (0 to 6). -1, the default,
+        /// for none: the first of a tie.
+        public int ThemeLine { get; set; } = -1;
+
+        private bool InLine(Campaign c, FavourOffer offer, int i)
+        {
+            if (ThemeLine < 0) return false;
+            Favour f = offer.Choices[i];
+            switch (offer.Pal)
+            {
+                case Pal.Butcher: return FavourRules.IsCombo(f) && (int)ClassSpells.AugmentOf(FavourRules.ComboBend(f)) == ThemeLine;
+                case Pal.Whisperer:
+                {
+                    WhisperPick pick = i < offer.Picks.Count ? offer.Picks[i] : null;
+                    return pick != null && pick.Kind == Favour.WhisperRankUp && (int)FighterClass(c, pick.FighterId) == ThemeLine;
+                }
+                case Pal.Shade: return (int)FavourRules.RouteOf(f) == ThemeLine;
+                case Pal.Glutton: return GluttonRules.LimbOf(FavourRules.TalentOf(f)) == ThemeLine;
+                default: return false;
+            }
+        }
+
+        private static UnitClass FighterClass(Campaign c, string id)
+        {
+            for (int k = 0; k < c.Reserve.Count; k++) if (c.Reserve[k].Id == id) return c.Reserve[k].Class;
+            return (UnitClass)(-1);
+        }
+
+        // How well a pick leans into its Pal's theme; the highest is taken, then the one in ThemeLine, then the first.
+        private static int Themed(Campaign c, FavourOffer offer, int i)
+        {
+            Favour f = offer.Choices[i];
+            switch (offer.Pal)
+            {
+                case Pal.Butcher:
+                {
+                    if (!FavourRules.IsCombo(f)) return 0;
+                    ClassBend bend = FavourRules.ComboBend(f);
+                    Augment flavour = ClassSpells.AugmentOf(bend);
+                    int mine = 0, lead = 0;
+                    bool held = false;
+                    var counts = new int[4];
+                    for (int g = 0; g < c.Gear.Count; g++)
+                    {
+                        if (!ClassSpells.IsCombo(c.Gear[g].Bend)) continue;
+                        Augment a = ClassSpells.AugmentOf(c.Gear[g].Bend);
+                        if ((int)a >= 0 && (int)a < counts.Length) counts[(int)a]++;
+                        if (a == flavour) mine++;
+                        if (c.Gear[g].Bend == bend) held = true;
+                    }
+                    for (int k = 0; k < counts.Length; k++) lead = System.Math.Max(lead, counts[k]);
+                    return (mine > 0 && mine == lead ? 2 : 0) + (held ? 1 : 0);
+                }
+                case Pal.Whisperer:
+                {
+                    WhisperPick pick = i < offer.Picks.Count ? offer.Picks[i] : null;
+                    if (pick == null) return 0;
+                    if (pick.Kind == Favour.WhisperPair) return 1;
+                    if (pick.Kind != Favour.WhisperRankUp) return 0;
+                    int top = 0, rank = 0;
+                    for (int k = 0; k < c.Reserve.Count; k++)
+                    {
+                        if (c.Reserve[k].Rank > top) top = c.Reserve[k].Rank;
+                        if (c.Reserve[k].Id == pick.FighterId) rank = c.Reserve[k].Rank;
+                    }
+                    return 2 + (rank == top ? 1 : 0);
+                }
+                case Pal.Shade:
+                {
+                    ShadeRoute route = FavourRules.RouteOf(f);
+                    for (int k = 0; k < c.ShadeRoutes.Count; k++)
+                        if (c.ShadeRoutes[k].Route == route) return 1 + c.ShadeRoutes[k].Form;
+                    return 0;
+                }
+                case Pal.Glutton:
+                {
+                    int limb = GluttonRules.LimbOf(FavourRules.TalentOf(f));
+                    int held = 0;
+                    for (int slot = 0; slot < GluttonRules.PerLimb; slot++) if (c.HoldsTalent(GluttonRules.At(limb, slot))) held++;
+                    return held;
+                }
+                default:
+                    return 0;
+            }
+        }
+
+        /// The themed Glutton's Feed, once a run: when a limb holds its tier 3 talent, that talent doubles and he eats the
+        /// limb's tier 1. False when it fed nothing.
+        public static bool TryFeed(Campaign c)
+        {
+            if (!c.GluttonRun || c.FedTalent != GluttonTalent.None) return false;
+            for (int limb = 0; limb < GluttonRules.LimbCount; limb++)
+                for (int slot = 2; slot <= 3; slot++)
+                {
+                    GluttonTalent fed = GluttonRules.At(limb, slot);
+                    if (!c.HoldsTalent(fed)) continue;
+                    GluttonTalent eaten = GluttonRules.At(limb, 0);
+                    if (!c.HoldsTalent(eaten)) eaten = GluttonRules.At(limb, 1);
+                    if (!c.HoldsTalent(eaten)) eaten = GluttonTalent.None;
+                    if (c.TryFeed(fed, eaten, out _)) return true;
+                }
+            return false;
+        }
+
+        // The Shade's follow up presses (rules 25), free: Rupture once its weak point is full, Ram at half the Unleash, and
+        // Release (Converge with a target) in the Unleash's last half second. True when one went.
+        private static bool FollowUps(CampaignFight fight, BattleSimulation sim)
+        {
+            if (!sim.ShadeFormsOn) return false;
+            string ruptured = sim.RuptureTargetOf(0);
+            if (ruptured.Length > 0 && sim.RuptureStepsOf(0) >= ShadeRules.RuptureSteps &&
+                sim.FollowUpOf(0, Directive.FocusFire, ruptured).Length > 0 && fight.TryOrder(Directive.FocusFire, ruptured, out _))
+                return true;
+            string unleash = sim.FollowUpOf(0, Directive.Unleash);
+            if (unleash.Length == 0) return false;
+            int left = sim.UnleashTicksLeft(0);
+            if (unleash == ShadeRules.FormName(ShadeRoute.Breach, 3))
+                return left <= BattleSimulation.UnleashTicks / 2 && left >= ShadeRules.RamMinTicks && fight.TryOrder(Directive.Unleash, null, out _);
+            return left <= SimClock.TicksPerSecond / 2 && sim.FocusTicksLeft(0) > 0 && fight.TryOrder(Directive.Unleash, null, out _);
         }
 
         private BattleUnit RandomEnemy(BattleSimulation sim)

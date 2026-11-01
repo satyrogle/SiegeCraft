@@ -313,6 +313,40 @@ namespace KindredSiege.Sim.Tests
         // ------------------------------------------------------------ whole runs
 
         [Test]
+        public void TheBotPressesRuptureAndItsThemedPickClimbsTheRouteItHolds()
+        {
+            var easy = new CampaignTuning { EnemyScaleTier1 = 40 };
+            int presses = 0, offered = 0;
+            for (ulong seed = 6200; seed < 6230 && (presses == 0 || offered == 0); seed++)
+            {
+                Campaign c = Campaign.New(seed, easy);
+                if (!CampaignPilot.PlayTutorial(c, PilotStyle.Reference, seed, 10)) continue;
+                c.StartRun();
+                Assert.IsTrue(c.TryTakeRoute(ShadeRoute.Rupture));
+                var picker = new CampaignPilot(PilotStyle.Reference, seed);
+                for (int n = 0; c.Stage == CampaignStage.InRun && n < 12; n++)
+                {
+                    CampaignFight fight = c.StartEncounter(picker.PickOffer(c, Pal.Shade));
+                    CampaignPilot.PlayFight(c, fight, new CampaignPilot(PilotStyle.Reference, seed * 31UL + (ulong)n));
+                    presses += fight.Sim.Events.Count(e => e.Kind == BattleEventKind.Trick && e.ActorSide == 0 && e.Detail == ShadeRules.RuptureDetail);
+                    if (c.FavourOffer == null || c.FavourOffer.Pal != Pal.Shade) continue;
+                    // The held route at the highest form on the card is the one the themed bot climbs.
+                    int Form(Favour f) => c.ShadeRoutes.Where(h => h.Route == FavourRules.RouteOf(f)).Select(h => h.Form).DefaultIfEmpty(0).First();
+                    int top = c.FavourOffer.Choices.Max(Form);
+                    int pick = picker.PickFavour(c, true);
+                    if (top > 0)
+                    {
+                        offered++;
+                        Assert.AreEqual(top, Form(c.FavourOffer.Choices[pick]), "the themed bot climbs the route it holds");
+                    }
+                    Assert.IsTrue(c.TryTakeFavour(pick, out string why), why);
+                }
+            }
+            Assert.Greater(presses, 0, "the bot never popped a full weak point");
+            Assert.Greater(offered, 0, "no card offered a held route's next form");
+        }
+
+        [Test]
         public void WholeRunsPlayWithEveryRouteAtItsLastForm()
         {
             // Two routes a run, on two buttons, each at form 3: all eight across four runs. The pilot plays the run through.

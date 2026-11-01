@@ -13151,3 +13151,30 @@ Jacob, in the same cloud chat: "lets move onto glutton", then "go" on Claude's p
 **For Codex.** New files need .meta: Assets/Scripts/Sim/Battle/BattleSimulation.Glutton.cs and Assets/Tests/EditMode/GluttonTests.cs. Screens to draw: the camp tree (OwnedTalents, TalentPoints, TryBuyTalent's why, TryResetTree, GluttonRules.Name, Describe, Cost, OpensAtTier, ReachedTier), his card (FavourOffer.Choices of his picks; FavourRules.Describe names the keystone a tier 3 brings), Feed (TryFeed with both talents), and Pal cards of 4 or 5 picks. Read in a fight: BattleSimulation.GluttonOn, TalentLevelOf.
 
 Files: Assets/Scripts/Sim/Battle/PalKit.cs, FightRules.cs, BattleTypes.cs, BattleSimulation.cs, BattleSimulation.Glutton.cs (new), BattleSimulation.Shade.cs, BattleSimulation.Parry.cs, BattleSimulation.Layers.cs, BattleSimulation.Boosts.cs, BattleSimulation.Heavy.cs, BattleSimulation.Class.cs, BattleSimulation.Combos.cs, BattleSimulation.Chains.cs, BattleSimulation.Meter.cs, BattleSimulation.Defence.cs; Assets/Scripts/Sim/Learning/PalStores.cs, Campaign.cs, Campaign.PalStores.cs, CampaignFavours.cs, CampaignSave.cs, ReplayEvidence.cs; Assets/Tests/EditMode/GluttonTests.cs (new), RoguelikeRunTests.cs; HANDOFF_LOG.md.
+
+## 2026-11-01 - Claude (cloud session) to Codex / Jacob / local Claude - Hand back: the bot takes Pal picks, and the builds test
+
+Jacob, in the same cloud chat: "sprint 2 and 3". Sprint 2 is teaching the bot the Pals and running the builds test (DESIGN_LOCKS line 999 and 1025); sprint 3 is designing the six duos, proposed to Jacob in chat and not built. No rules, save or evidence version changed. Nothing tuned.
+
+**What is in.**
+- Learning/CampaignPilot.cs. PickOffer(c, lean): the first offer whose win would give that Pal's picks (PalPickOffered), else PickOffer(c). PickFavour(c, themed): at random from the pilot's own new dice (stream 79), or themed: the Butcher's leading flavour, else a rank up; the Whisperer's star (the fighter ranked highest), else a pair; the Shade's route at the highest form; the Glutton's limb climbed furthest. ThemeLine breaks ties toward one flavour, class, route or limb (default -1, the first). CampaignPilot.TryFeed(c): once a limb holds its tier 3, it doubles it and eats the tier 1.
+- The Reference pilot presses the Shade's follow ups from rules 25: Rupture once the weak point is full, Ram at half the Unleash, Release in the Unleash's last half second while a Focus runs. Only when the sim's ShadeFormsOn and FollowUpOf says so, so no fight below rules 25, and no fight without her routes, plays differently.
+- tools/sim_checks/sweep/PalSweep.cs (the builds test) and PairSweep.cs (when a two-Pal run first holds both). Built against Assets/Scripts/Sim as Sweep.cs is.
+
+**Checked** (the Linux harness): 559 passed, 1 failed, 7 skipped; the failure is still only the Windows file locking test. New ShadeRoutesTests: the bot pops a full weak point, and its themed pick climbs the held route at the highest form. Old against new, against my last commit (944d6155): the 114 probe fights, combo and mixed fights, whole runs capped at 14, 15, 16, 17, 23, 24, 25 and 26, combo runs at 16 and 24, and all 32 saves, byte for byte.
+
+**The builds test**, the lock's own sweep, run once in my scratchpad, nothing tuned from it: each Pal alone, 300 seeds from 7000, scale 110 with orders and 70 without, every run going to his fight when one is on offer and taking his picks and nothing else. It fails for all four. Themed against random, in runs won out of 100:
+- Butcher +1.3 with orders, -0.3 without. Whisperer 0.0 and +2.7. Shade +0.7 and 0.0. Glutton -0.3 and 0.0. The bar is +10 at both.
+- Leaning into each line instead (3 flavours, 5 star classes, 8 routes, 7 limbs) does not change it: the best is a Trapper star at +3.3 without orders, the worst Breach at -3.7 with.
+- Runs that reach the payoff (a final form, a keystone, a rank 3 star) win about the same as random on the same seed: Shade 48 of 95 against 45, Glutton 42 of 97 against 44, Whisperer 70 of 140 against 70.
+- Why: a run takes about 2 of his picks (8 fights, about 3.8 of his, and losses end runs), and a pick moves a fight's health margin by 1 to 3 points. Across all 62 variants a run wins about 2.1 more in 100 per point of margin over its fights (r 0.93), so +10 needs about +5 points over a whole run.
+- Against taking none of his picks: the Whisperer's ranks are worth +6.7 runs with orders and +2.7 without. The Shade's picks cost runs: 24 to 25 with orders against 32 with none, and 9.3 against 12.3 without, where all eight routes play the same because none fires without orders. Part of that is the road: holding his picks brings more of his fights (3.9 a run against 3.3 for her), except the Whisperer's, which HeldPals still does not count.
+- The chief counter can't be read on edges this small: chief fights won stay within a few of random for every Pal.
+
+**For sprint 3** (PairSweep, a run leaning into two Pals, every themed pick of both): it holds picks from both in 153 to 184 runs of 300, by fight 3 on average, and then sees 1.4 (without orders) to 2.2 (with) more cards from those two.
+
+**Not checked:** nothing in Unity. The bot's play is not a player's: it rarely parries, so the Hold routes barely fire for it.
+
+**For Codex.** No new .meta: the two new files are under tools/, outside Assets. Your scripted runs that use CampaignPilot at rules 25 or later with Shade routes held will now press her follow ups.
+
+Files: Assets/Scripts/Sim/Learning/CampaignPilot.cs; Assets/Tests/EditMode/ShadeRoutesTests.cs; tools/sim_checks/sweep/PalSweep.cs and PairSweep.cs (new); HANDOFF_LOG.md.
