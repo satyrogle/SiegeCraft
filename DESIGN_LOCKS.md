@@ -1197,3 +1197,17 @@ Jacob picked "Sim follows scenes" for the open lines in "The cage bear's look an
 - The cage bear's Grab becomes Slam and Grab: an ice wave on all five, 10% each, then the claw grabs the one it marked, as before. Fall Back dodges the whole move; a covering Warden halves the wave and blocks the grab.
 - Dive, Volley, Roar, Crush and Pulse do not change. Older fights, saves and replays keep the old rules.
 - Not done: the fight screen's move guide still describes the old hits, and nobody has played it.
+
+## The parry: tight window, big payoff, a gold flash on the attacker, owner decisions, 1 Nov 2026
+
+After his rules 19 playtest ("parry idk what im parrying or why or when"), Jacob set the bar: "it should be risky with a lot of reward and parry window should be very less", like Expedition 33, Sekiro, Ghost of Tsushima and Nioh 2, "parry is very imporatnt but its not everywhere"; the cue must work "irrespective of units and act like a universal visual cue"; and every fight keeps parry chances ("then by your proposal all other fights will be boring since no parry"). Claude mocked three cues on the attacker as clips on his fight with the chief's own sprites and the game's sounds (a glint on the weapon, a gold flash of the whole body, a floor ring closing to the feet). Jacob picked "2", then "Go, lock it". Where this differs from the sections above, this wins. Every number is a starting value.
+
+- **The window is 0.2 s.** Hold in the last 0.2 s before a parryable blow lands and it is parried. This replaces Perfect Hold's last half second.
+- **Parry chances in every fight, but not on every blow.** Band heavies, chief moves and carried moves are parryable; normal blows never are. The 24 Oct line stays: nothing big is unparryable.
+- **Reward.** A parry cancels the move, staggers the attacker for 2 s, fills one bar of the parry meter, and counters for the move's damage.
+- **Risk.** A Hold that misses the window lets the blow land in full, and your squad takes 50% more for 1 s.
+- **The cue: the attacker flashes gold.** During the 0.2 s window the whole body of whoever is swinging flashes gold, twice, with a normal frame between. The same flash on every unit, so it reads the same on a band heavy, a carrier or a chief. Nothing on the HUD carries the cue. The landed parry gets a flat white frame on the attacker, a clash spark where the blow is stopped, a short freeze and shake, the game's parry sound, then he reels on his hit frames and a meter bar lights.
+
+**What gets built, when Jacob says go (this lock is not a build order).** Claude: the window, the parryable blows, the reward and the risk behind a new campaign rules version, with the sim telling the screen when each window opens and closes and on whom, one quick test per piece, and the old against new proof. The final flash, spark and white frame are drawn with the PixelLab workbench, not taken from the ComfyUI mock. Codex: the flash on the attacker, the landed parry stack and the meter on screen.
+
+Still open: every number; whether tribes that learned your parry (14 Oct) keep holding their casts against a 0.2 s window; the colour of the flash for a blow you must not parry, if one is ever added.
