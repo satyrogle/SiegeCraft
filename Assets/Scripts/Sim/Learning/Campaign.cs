@@ -605,7 +605,9 @@ namespace KindredSiege.Sim.Learning
         /// 25 those and the beasts as their approved scenes show them (1 Nov 2026, "Sim follows scenes", then "Go as written";
         /// Battle.FightRules.BeastScenes; BeastSceneRules): the shark's Bite on a whole row and its Sweep on all of them, and the
         /// cage bear's Slam and Grab.
-        public const int RulesVersion = 25;
+        /// 26 those and the beasts as raid bosses (1 Nov 2026, "Full plan", then "Go as written"; Battle.FightRules.BeastRaid;
+        /// BeastRaidRules): the shark's Feeding frenzy and its sand pups, the cage bear's Overload and its climbing Pulse.
+        public const int RulesVersion = 26;
         public const int SquadScreenRules = 14;
         public const int ClearRoadRules = 13;
 
@@ -665,6 +667,12 @@ namespace KindredSiege.Sim.Learning
         /// sand shark's Bite takes the marked one's whole row and its tail's Sweep all of them, and the cage bear's Grab is a Slam
         /// and Grab, an ice wave on all of them and then the claw. Every number is a starting value.
         public const int BeastSceneRules = 25;
+
+        /// The campaign rules version from which a beast fight plays its beast as a raid boss (Jacob, 1 Nov 2026: "can we finish
+        /// the bear and shark just like a wow boss", then "Full plan" and "Go as written"; Battle.FightRules.BeastRaid,
+        /// Battle.BattleSimulation.BeastRaid.cs): the shark's Feeding frenzy at its second broken part and then its two sand pups
+        /// (after its parts on its side), the cage bear's Overload when its ribcage breaks, and its Last stand Pulse climbing.
+        public const int BeastRaidRules = 26;
 
         /// Whether this run's roads carry a Pal on every fight (fix 5): set when the run starts under PalRoadRules, and kept
         /// with the run, so its roads come back the same when it loads.
@@ -3127,6 +3135,12 @@ namespace KindredSiege.Sim.Learning
             // From rules 25 a beast fight plays its moves as the approved scenes show them (Jacob, 1 Nov 2026). Last, after the
             // Whisperer.
             if (rules >= BeastSceneRules && beasts) fightRules = fightRules.WithBeastScenes();
+            // From rules 26 the beast is a raid boss, and the shark brings its two sand pups, after its parts. Last.
+            if (rules >= BeastRaidRules && beasts)
+            {
+                fightRules = fightRules.WithBeastRaid();
+                if (encounter.Beast == BeastKit.SandShark) AddPups(side1, fightId);
+            }
             bool raidChief = IsRaidChief(tribe, encounter.Kind, rules);
             if (raidChief) MakeRaidChief(side1);
             // His second phase brings his reserves into the fight (Battle.ChiefFight).
@@ -3520,6 +3534,18 @@ namespace KindredSiege.Sim.Learning
                 if (HasOmen(Omen.BloodMoon)) s = WithPower(s, 100 + OmenRules.BloodMoonPercent, keepBleed);
                 specs.Add(s.AsReserve());
             }
+        }
+
+        // The shark's sand pups (rules 26, Battle.BeastKits): after its parts, each BeastKits.PupHealthPercent of their average
+        // health, at their power.
+        private static void AddPups(List<UnitSpec> side1, string fightId)
+        {
+            int health = 0;
+            for (int p = 0; p < BeastKits.PartCount; p++) health += side1[p].HealthPercent;
+            health /= BeastKits.PartCount;
+            for (int n = 1; n <= BeastKits.PupCount; n++)
+                side1.Add(new UnitSpec(BeastKits.PupId(fightId, n), UnitClass.Skirmisher, Row.Front, UnitRole.Fighter, side1[0].PowerPercent,
+                    Math.Max(1, health * BeastKits.PupHealthPercent / 100)));
         }
 
         private List<UnitSpec> EnemySpecs(Encounter encounter, string fightId, bool keepBleed)

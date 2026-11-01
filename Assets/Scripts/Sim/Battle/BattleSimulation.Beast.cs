@@ -105,7 +105,7 @@ namespace KindredSiege.Sim.Battle
         }
 
         /// True while the shark is under the sand (its Dive): blows on it mostly miss.
-        public bool BeastUnder => _beastKit == BeastKit.SandShark && _partTell[BeastKits.Slot(BeastPart.Fin)] > 0;
+        public bool BeastUnder => _beastKit == BeastKit.SandShark && (_partTell[BeastKits.Slot(BeastPart.Fin)] > 0 || Feeding);
 
         /// True while a live Hold timed to the Bite's last FightRules.PerfectHoldTicks would parry it.
         public bool BiteParryable => BeastTellTicks(BeastPart.Jaw) > 0 && _fight.PerfectHold;
@@ -139,10 +139,11 @@ namespace KindredSiege.Sim.Battle
 
         private void StartBeast()
         {
-            if (_setup.Side(_beastSide).Count != BeastKits.PartCount)
+            if (!BeastKits.SideFits(_beastKit, _setup.Side(_beastSide).Count, _beastRaidOn))
                 throw new ArgumentException("A beast fight needs the beast's " + BeastKits.PartCount.ToString(CultureInfo.InvariantCulture) +
-                    " parts, and nobody else, on its side.");
+                    " parts, and nobody else, on its side (from rules 26 the shark's pups after them).");
             for (int p = 0; p < BeastKits.PartCount; p++) _partNext[p] = BeastKits.EveryTicks(BeastKits.PartAt(_beastKit, p));
+            if (_beastRaidOn) StartBeastRaid();
         }
 
         private bool IsPart(BattleUnit unit)
@@ -263,6 +264,12 @@ namespace KindredSiege.Sim.Battle
         // holds someone.
         private void StartBeastMoves()
         {
+            // Rules 26: in its Feeding frenzy its clocks stand still.
+            if (Feeding)
+            {
+                for (int p = 0; p < BeastKits.PartCount; p++) _partNext[p]++;
+                return;
+            }
             for (int p = 0; p < BeastKits.PartCount && !Stopped; p++)
             {
                 BeastPart part = BeastKits.PartAt(_beastKit, p);
@@ -289,6 +296,11 @@ namespace KindredSiege.Sim.Battle
         // move lands. A snared part's tell waits; a broken part's is gone; Focus Fire on the roaring maw cuts its Roar off.
         private void AdvanceBeast()
         {
+            if (_beastRaidOn)
+            {
+                TickBeastRaid();
+                if (Stopped) return;
+            }
             if (_beastKit == BeastKit.SandShark && _beastPhase >= 3 && _tick >= _escapeAt)
             {
                 Flee(BeastKits.EscapeDetail);
@@ -883,13 +895,14 @@ namespace KindredSiege.Sim.Battle
             var hit = new List<BattleUnit>();
             for (int i = 0; i < _units.Count; i++) if (Markable(_units[i], foe)) hit.Add(_units[i]);
             if (hit.Count == 0) return;
+            int percent = PulseNow();
             bool soaked = _sides[foe].HoldTicks > 0;
             var shares = new int[hit.Count];
             bool falls = false;
             int total = 0;
             for (int k = 0; k < hit.Count; k++)
             {
-                int share = Share(hit[k], BeastKits.PulsePercent, heart);
+                int share = Share(hit[k], percent, heart);
                 if (soaked) share = Math.Max(1, share * HoldSoak(foe) / 100);
                 shares[k] = share;
                 total += share;
@@ -909,7 +922,8 @@ namespace KindredSiege.Sim.Battle
         // CagePercent, and the ribcage itself CageUnleashPercent of that while the striker's side Unleashes.
         private int BeastTakes(BattleUnit part, int sourceSide, int amount)
         {
-            if (!BeastCaged) return amount;
+            amount = RaidTakes(part, amount);
+            if (amount <= 0 || !BeastCaged) return amount;
             if (ReferenceEquals(part, Part(BeastPart.Heart))) return 0;
             int percent = BeastKits.CagePercent;
             if (ReferenceEquals(part, Part(BeastPart.Ribcage)) && _sides[sourceSide].UnleashTicks > 0)
@@ -921,6 +935,7 @@ namespace KindredSiege.Sim.Battle
         // through it in the orders layer. False for a blow on its heart, which takes none.
         private bool CageHit(BattleUnit part, int sourceSide, Hit hit)
         {
+            if (!RaidHit(part, hit)) return false;
             if (!BeastCaged) return true;
             if (ReferenceEquals(part, Part(BeastPart.Heart))) return false;
             hit.Add(HitLayer.Guard, BeastKits.CagePercent - 100);
@@ -948,6 +963,7 @@ namespace KindredSiege.Sim.Battle
                 return;
             }
             int broken = PartsBroken();
+            if (_beastRaidOn && RaidSevered(which, broken, source, sourceSide)) return;
             if (broken >= 2) EnterPhase(2);
             if (broken >= 3) EnterPhase(3);
         }
@@ -1034,6 +1050,8 @@ namespace KindredSiege.Sim.Battle
                 b.Field(key + "tell", _partTell[p]);
                 b.Field(key + "target", _partTarget[p]);
             }
+            // Written only under rules 26, so every older beast fight keeps its checksum.
+            if (_beastRaidOn) AppendBeastRaid(b);
             // Written only for the cage bear, so every shark fight keeps its checksum.
             if (_beastKit != BeastKit.CageBear) return;
             b.Field("beast.held", _heldId);

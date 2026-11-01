@@ -62,7 +62,7 @@ namespace KindredSiege.Sim.Learning
         // The rules just before 13 Oct. Each 13 Oct rule and doctrine is a switch that stays off unless a fight
         // turns it on, so a fight recorded under these that turned none on plays the same in this build.
         private const string PreSkillRulesIdentity = "ks-battle-20261011-3";
-        private const int FormatVersion = 30;
+        private const int FormatVersion = 31;
 
         // The longest move name a learned wait out or feint can sit on, read back.
         private const int MaxMoveName = 64;
@@ -88,7 +88,8 @@ namespace KindredSiege.Sim.Learning
             }
         }
 
-        // The oldest format that holds everything this setup uses: 30 for the beasts as their scenes show them (rules 25), 29 for
+        // The oldest format that holds everything this setup uses: 31 for the beasts as raid bosses (rules 26), 30 for the beasts
+        // as their scenes show them (rules 25), 29 for
         // the Whisperer (rules 24), 28 for the floor (rules 23), 27 for the parry meter (rules 22), 26 for danger (rules 21,
         // Jacob's playtest fixes 3, 7 and 9),
         // 25 for payoffs that spread (rules 20, Jacob's playtest fix 1),
@@ -103,6 +104,7 @@ namespace KindredSiege.Sim.Learning
         // piece, else 9.
         private static int FormatUsed(BattleSetup setup)
         {
+            if (setup.Fight.BeastRaid) return 31;
             if (setup.Fight.BeastScenes) return 30;
             if (setup.Fight.Whisper) return 29;
             if (setup.Fight.Floor) return 28;
@@ -442,6 +444,9 @@ namespace KindredSiege.Sim.Learning
             if (format < 30) return;
             // Format 30: the beasts as their scenes show them (rules 25): the switch.
             w.Write(fight.BeastScenes);
+            if (format < 31) return;
+            // Format 31: the beasts as raid bosses (rules 26): the switch.
+            w.Write(fight.BeastRaid);
         }
 
         private static BattleSetup ReadSetup(BinaryReader r, int version)
@@ -657,12 +662,15 @@ namespace KindredSiege.Sim.Learning
                 }
                 // Format 30: the beasts as their scenes show them (rules 25); older evidence reads it as off.
                 bool beastScenes = version >= 30 && r.ReadBoolean();
+                // Format 31: the beasts as raid bosses (rules 26); older evidence reads it as off.
+                bool beastRaid = version >= 31 && r.ReadBoolean();
                 fight = new FightRules(misses, earned, perfectHold, snaps, classSpells, chiefRules, chiefKits, beasts, chiefTactics,
                     parryCenter, squadFirst, raidChief, roadCombat, roadKit, clearRoad, squadScreen, duel, layers, marks, payoffs, danger,
-                    meter, floor, whisper, beastScenes);
-                // A beast's side is exactly its parts, or the fight cannot be played back (the audit, 22 Oct 2026).
+                    meter, floor, whisper, beastScenes, beastRaid);
+                // A beast's side is exactly its parts, or the fight cannot be played back (the audit, 22 Oct 2026); from rules 26 the
+                // shark's sand pups come after them.
                 for (int side = 0; side < 2 && beasts; side++)
-                    if (rules[side].Beast != BeastKit.None && units[side].Count != BeastKits.PartCount)
+                    if (rules[side].Beast != BeastKit.None && !BeastKits.SideFits(rules[side].Beast, units[side].Count, beastRaid))
                         throw new FormatException("A beast fight's beast side is not its parts.");
             }
             return new BattleSetup(id, seed, units[0], units[1], tactics[0], tactics[1], limit, points,

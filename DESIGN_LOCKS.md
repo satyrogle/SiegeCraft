@@ -1197,3 +1197,13 @@ Jacob picked "Sim follows scenes" for the open lines in "The cage bear's look an
 - The cage bear's Grab becomes Slam and Grab: an ice wave on all five, 10% each, then the claw grabs the one it marked, as before. Fall Back dodges the whole move; a covering Warden halves the wave and blocks the grab.
 - Dive, Volley, Roar, Crush and Pulse do not change. Older fights, saves and replays keep the old rules.
 - Not done: the fight screen's move guide still describes the old hits, and nobody has played it.
+
+## The beasts as raid bosses (rules 26), owner decision, 1 Nov 2026
+
+Jacob: "can we finish the bear and shark just like a wow boss", then "Full plan" to Claude's plan and "Go as written" to its rules. Built in the sim as campaign rules version 26 (HANDOFF_LOG has the details). Every number is a starting value.
+- Sand shark, Feeding frenzy: when its second part breaks it dives for 4 s; its moves stop and nothing reaches its parts. For the last 3 s the sand churns under all five, then it bursts up through all five for 20% of each one's health. Fall Back dodges it; an armed Trapper's trap snares it on top instead, nobody is hit and its parts take double damage for 4 s; a covering Warden halves a share; the Medic heals through it. Then its Blood frenzy, as built.
+- Sand pups: as it bursts, 2 small sand sharks come up and latch onto your back row, one each, biting whoever they hold for 2% of their health every second with a bleed until you kill them. Each has a quarter of its parts' average health; they can be targeted and Focus Fired, give no trophies, and die with the shark.
+- Cage bear, Overload: when its ribcage breaks the skull bolts it and it roars (its Roar's nerve hit, which nothing blocks or cuts off), then frost cracks race across the floor for 4 s. Anyone of yours not in Fall Back as they land is frozen for 3 s and does nothing.
+- Its Last stand: each Pulse hits 20% harder than the last.
+- The screens: the sim gives each intermission's name and time left, the warning lines ("THE SAND CHURNS: FALL BACK", "FROST CRACKS: FALL BACK"), the pups and whom they hold, and who is frozen, for the boss bar, cast bars, warnings and phase banners.
+- Not built: those screens and the pups' art (a PixelLab clip). Nobody has played it.

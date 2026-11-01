@@ -392,6 +392,8 @@ namespace KindredSiege.Sim.Battle
             _beastKit = _beastOn ? _rules[_beastSide].Beast : BeastKit.None;
             // The beasts as their approved scenes show them (BattleSimulation.Beast.cs, campaign rules 25).
             _beastScenesOn = _beastOn && _fight.BeastScenes;
+            // The beasts as raid bosses (BattleSimulation.BeastRaid.cs, campaign rules 26).
+            _beastRaidOn = _beastOn && _fight.BeastRaid;
 
             _sides[0].Points = setup.StartingDirectivePoints;
             _sides[1].Points = setup.StartingDirectivePoints;
@@ -694,6 +696,7 @@ namespace KindredSiege.Sim.Battle
                     if (!unit.Alive) continue;
                     if (_beastOn && unit.Side == _beastSide) continue; // a beast's parts only move by their clocks
                     if (_beastOn && IsHeld(unit)) continue; // in the cage bear's claw, out of the fight
+                    if (_beastRaidOn && Frozen(unit)) continue; // frozen by the cage bear's frost (BattleSimulation.BeastRaid.cs)
                     if (unit.PanicTicks > 0) continue; // a panicking fighter does nothing (FightRules.NerveSnaps)
                     if (_heavyOn && IsSwingingHeavy(unit)) continue; // winding up a heavy swing, nothing else
                     if (_chiefOn && unit.Yielded) continue; // a chief who yielded does nothing more (BattleSimulation.Chief.cs)
