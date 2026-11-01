@@ -223,13 +223,14 @@ def result(pid):
         time.sleep(4)
 
 
-def run(tag, init, pos, seed, step=2):
-    """barren_paint.run into this stage folder, with the plan and the result sent over the painter's API."""
+def run(tag, init, pos, seed, step=2, neg=None):
+    """barren_paint.run into this stage folder, with the plan and the result sent over the painter's API. neg replaces
+    the stage negative (stage_life.py's sprite sheets have their own)."""
     OUT.mkdir(parents=True, exist_ok=True)
     name = upload(init, tag + "-init.png")
     g = {n: v for n, v in json.loads(RG.L3.BASE.read_text()).items() if n != "8"}
     g["4"]["inputs"]["text"] = pos
-    g["5"]["inputs"]["text"] = negative()
+    g["5"]["inputs"]["text"] = negative() if neg is None else neg
     g["10"]["inputs"].update(width=W, height=H)
     g["11"]["inputs"]["noise_seed"] = seed
     g["15"] = {"class_type": "LoadImage", "inputs": {"image": name}}
