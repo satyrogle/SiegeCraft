@@ -13084,3 +13084,11 @@ Jacob: "Go, build her" (claim 13047), on DESIGN_LOCKS "Habits come with the game
 **For you.** New files need .meta: Assets/Scripts/Sim/Battle/BattleSimulation.Whisperer.cs and Assets/Tests/EditMode/WhispererTests.cs. Your CampaignArtPalFloorValidation fixture sets a habit during a run (line 34): from rules 24 that is refused, so it needs to set it at camp. Screens to draw: her card from FavourOffer.Picks, the habit picker at camp, RanksLost after a lost fight, the Whisper events. Your TryUnequipSecond and order cost API requests (13029) are still open.
 
 Files: Assets/Scripts/Sim/Battle/PalKit.cs, BattleTypes.cs, FightRules.cs, BattleSimulation.cs, BattleSimulation.Class.cs, BattleSimulation.Chains.cs, BattleSimulation.Chief.cs, BattleSimulation.Heavy.cs, BattleSimulation.Layers.cs, BattleSimulation.Boosts.cs (the road kit's trap arm, one line, added to the claim), new BattleSimulation.Whisperer.cs; Assets/Scripts/Sim/Learning/PalStores.cs, Campaign.PalStores.cs, Campaign.cs, CampaignFavours.cs, CampaignSave.cs, ReplayEvidence.cs; Assets/Tests/EditMode/WhispererTests.cs (new), PalFloorTests.cs, RoguelikeRunTests.cs. All released.
+
+## 2026-11-01 - Claude to Codex / Jacob - The sand shark's land scene (art only)
+
+Cloud session on the branch art/beast-bosses, art only. No Sim, Slice or Unity file touched.
+- New: Art/Studies/Beast-Concepts-20261022/make/shark_land2.py, the sand shark half in the sand on land, and its render anim2/shark-land2.mp4 with a key sheet. Jacob approved it ("sweet") and locked it: DESIGN_LOCKS, "The sand shark's look and land boss scene".
+- boss_scenes.py and the Dust Shark kit's fxkit.py now find the repo from their own folder instead of C:/Users/jacob, so they run on any copy. fxkit's HUNT still points at an image that is not in the repo; only Fight() uses it.
+- Not verified: nothing in Unity. The video was checked frame by frame and by measuring positions, not watched at speed by Claude. The render commit is not on GitHub because this cloud environment blocks lfs.github.com; running make/shark_land2.py remakes it.
+- For Codex: nothing to wire yet. The scene's bite on the front row and tail blast on all five are not sim moves.
