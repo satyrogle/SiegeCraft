@@ -1176,3 +1176,36 @@ Claude's Whisperer proposal kept the 28 Oct road flip's habit card. Jacob: "aren
 - The Whisperer section's rule that nothing she gives changes a number or adds an effect no longer holds for habit upgrades.
 
 Still open: whether a habit can be upgraded more than once; what counts as a heavy blow for Ambusher; the rest of Claude's 31 Oct Whisperer proposal (a rank up for a fighter already ranked weighing 2 in her offer, and building her behind campaign rules 24) waits for his go. Nothing here is built or played.
+
+## The Shade's forms and road card, owner decisions, 31 Oct 2026 (cloud chat)
+
+After research on kit upgrade systems (Outriders, World of Warcraft, Ori, Hollow Knight, Vampire Survivors, Hades), Jacob in a cloud chat picked "Finish her routes" over replacing them, said "go" on Claude's forms for the three routes built in rules 23, and on 1 Nov said "lock it". Where this differs from the sections above, this wins. Every number is a starting value. Built behind campaign rules 25 (HANDOFF_LOG, "Hand back: the Shade's forms").
+
+- Sanctuary (Hold): 1 Shelter, a clean parry shields every fighter; 2 Relay, the field also makes one shared pool that soaks what a broken shield could not; 3 Last Refuge, once a fight a killing blow on one of yours under the field leaves him at 1 health and shatters the field. Price: your parries no longer stagger.
+- Backstab (Fall Back): 1 Backstab, each fighter's next hit lands double; 2 Twin Knives, the next 2 hits; 3 Shadow Strike, Fall Back no longer stops your attacks (this sets aside fix 7's pause for her side). Price: the next Fall Back waits 2 s longer.
+- Fear (Focus Fire): 1 Fear; 2 Spreading Dread, an enemy Fear breaks sets Fear off again around him, up to 2 more times; 3 Turncoat, the enemy Fear panics hits the enemy beside him once. Price: Focus Fire lasts a quarter shorter.
+- Her road card: three picks from the node's seed, a new route on a plain button or the next form of a route you hold; held routes weigh 2, new ones 1; with both buttons taken only next forms show. No tier gates or camp unlocks for now (the paper's 150 and 250 can come back later).
+
+## The Shade finished: her other five routes, owner decisions, 1 Nov 2026
+
+Jacob: "finish shade", then "lock it". Built to the forms already locked (31 Oct, "as in Codex's paper and the 28 Oct names") in the sim's timing versions (finding F4: a push is a delay, nearby is the one beside him). Where this differs from the sections above, this wins. Every number is a starting value inside the paper's ranges. Built behind campaign rules 25 (HANDOFF_LOG, "Hand back: the Shade finished").
+
+- Mirror (Hold): Return, a clean parry sends a share of the parried one's health back at him; Catch, times the parries in a row, up to 3; Pierce, half of it also goes through him into the first of his side behind him. Price: only a clean parry returns.
+- Rift Mine (Fall Back): Mine, the first enemy who strikes one of yours within 5 s is blasted; Shock, his next turn waits 1 s; Wide Blast, the ones beside him too. Price: your attacks wait 150% of the Fall Back.
+- Rupture (Focus Fire): Weak point, your hits on the target open up to 3 steps, and a second Focus Fire on him ruptures it; Crack, a full one thins his armour; Finish, your fighters about to act act now and wait that much longer after. Price: changing target, or the Focus running out, loses the steps.
+- Breach (Unleash): Impact, it hits up to 3 of their front row and makes them wait; Gap, those it hit cannot cover anyone; Ram, a second Unleash ends it and rams them, harder the more is left. Price: your side takes 20% more damage while it runs and 1.5 s after.
+- Echo (Unleash): Record, your fighters keep 35% of their hits and replay them when it ends; Release, a second Unleash lets them go at once; Converge, that release sends them all at your Focus Fire target. Price: Unleash's own bonus is halved.
+- The second presses (rupture, ram, release) are free, never fire the plain order (finding F3), and are refused with nothing to cash.
+- Her road card offers all eight routes.
+- Claude's calls, his to change: Mirror returns on every clean parry, not only after a move's last beat; Rift Mine is set off by blows only, not a chief's moves; Finish skips Medics; Echo aims at the first one each fighter recorded.
+
+## The Glutton built: his tree, road card, Feed and talents, owner decisions, 1 Nov 2026
+
+Jacob: "lets move onto glutton", "go" on Claude's plan and nine calls for the open points of "The Glutton's theme: one limb" and the tree locked on 28 Oct, then "lock it". Where this differs from the sections above, this wins. Every number is a starting value. Built behind campaign rules 26 (HANDOFF_LOG, "Hand back: the Glutton").
+
+- His calls: 1, a limb's third road pick lends its tier 3 talent and its keystone together, so three picks climb a limb. 2, the road can lend a keystone before its campaign tier; only the camp tree keeps the gate. 3, Nothing Wasted: Marksmen hit your Focus Fire target twice as hard. 4, Command Relay: the Shade's route prices are halved. 5, Deep Node: the Shade's tricks hit a third harder. 6, Synthesis Discount: the Butcher's pacts cost a third less; Gene Library: pairs answer twice as often. 7, Node Cache: every Pal card shows 4 picks. 8, Glancing Fold: a Hold that soaks instead of parrying soaks half as much again. 9, talent points: one for each codex first (a tribe met, a tribe won over, a chief met, a chief's hidden chain, a beast slain).
+- The camp tree: talents cost 1, 2 or 3 points by tier and a keystone 5, bought at camp in each limb's order, one of the tier 3 pair, tier 3 from campaign tier 2 and keystones from campaign tier 3 in the slice; reset is free; owned talents stay between runs and ride into every run. The slice pays about 22 points, about two limbs.
+- His road card lends the next talent of each limb you don't hold, for the run; a limb he lent from this run weighs 2. Feed, once a run, doubles one talent's bonus and eats another of its limb for the run (nothing, when you hold no other there).
+- The limbs are roles: front line your front row, strikers your Skirmishers, shooters your Marksmen, control your Trappers, healers your Medics, command your side, war chest the run. Each talent makes something you have bigger, longer, faster or cheaper, as written in GluttonRules.Describe.
+- Claude's calls, his to change: Probability Lock adds 25% damage on a snared enemy (its old "can't miss" already held); Fold Step makes Execution Corridor hit 50% harder (no wait was found to cut); Gravity Mesh is all or nothing; a talent you own is never lent again.
+- Still open: beast parts broken and chief moves seen are not codex entries yet, so they pay no points; how many points the whole codex gives past the slice.
