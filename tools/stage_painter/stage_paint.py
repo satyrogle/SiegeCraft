@@ -231,7 +231,7 @@ def run(tag, init, pos, seed, step=2, neg=None):
     g = {n: v for n, v in json.loads(RG.L3.BASE.read_text()).items() if n != "8"}
     g["4"]["inputs"]["text"] = pos
     g["5"]["inputs"]["text"] = negative() if neg is None else neg
-    g["10"]["inputs"].update(width=W, height=H)
+    g["10"]["inputs"].update(width=init.size[0], height=init.size[1])  # a patch paints at its own size
     g["11"]["inputs"]["noise_seed"] = seed
     g["15"] = {"class_type": "LoadImage", "inputs": {"image": name}}
     g["16"] = {"class_type": "VAEEncode", "inputs": {"pixels": ["15", 0], "vae": ["3", 0]}}

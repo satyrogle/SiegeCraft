@@ -14,7 +14,7 @@ import stage_region as SR
 
 SP, RG = SR.SP, SR.RG
 
-# stage_life.py [STAGE ...] | repaint NAME ...
+# stage_life.py [repaint] [STAGE ...]
 # Jacob, 1 Nov 2026, on the five Bloodridge stills (stage_region.py region): "Move on to the moving layer now (flyers,
 # other tribes, catapult shots, sun boats) and fix the stills after." Earlier the same night he asked for stages "like
 # camp scene ... with layers cool things happening in the back like camp animated stuff and much more and fucking draw
@@ -22,8 +22,9 @@ SP, RG = SR.SP, SR.RG
 # background", and for the hybrid of Claude's three region plans. What moves in each stage is that plan's "moves".
 # Built the way camp 5's war loop was (town_anim.py, town_fix.py): the tribes' own fighter sheets shrunk to the
 # distance, the camp's PixelLab bursts, flames and smoke, the camp's sun boats; nothing paid. New here: six flying
-# species and three foreign tribes, painted on Jacob's GPU as pose sheets (Ideogram 4, like town_paint.py's ships)
-# and cut by the flat grey around them. Everything that moves stays above row 285, the game's atmosphere clip
+# species and three foreign tribes, painted on Jacob's GPU into each stage's own 1x patch (PATCHES below; the first
+# try painted them big on blank sheets and shrank them, and they looked like another game, 1 Nov) and cut out with
+# BiRefNet. Everything that moves stays above row 285, the game's atmosphere clip
 # (CampaignArtRegionalStage.cs). Positions were read off the five stills Jacob pasted on 1 Nov (half size), so they are
 # good to a few pixels. A loop is 12 s at 12 fps and every schedule repeats inside it, so it loops without a seam.
 W, H = SP.W, SP.H
@@ -36,61 +37,97 @@ LIFE = OUT / "life"
 SHEETS = HERE.parents[1] / "Assets/Resources/CampaignArt"  # the fighters' sheets, in this checkout
 CAMP = RG.REPO / "Art/Studies/Camp-War-20261028"  # camp 5's effects and sun boats, in Jacob's main folder
 FF = getattr(SR.BL, "FF", "ffmpeg")
-GREY = (200, 200, 204)
-SLATE = (44, 48, 58)  # pale creatures (bones, the whale, gold moths) go on dark slate, so the cut can find them
-BG = {"moth": SLATE, "kite": SLATE, "whale": SLATE}
-
-UP = "seen from the side flying to the left, its wings raised high above its back"
-MID = "seen from the side flying to the left, its wings spread out level"
-DOWN = "seen from the side flying to the left, its wings pushed down below its body"
-CREATURES = {
-    "vulture": dict(seed=2026110101, poses=[UP, MID, DOWN],
-                    desc="an ash vulture: a big carrion bird with ragged ash grey and black feathers, a bald pale "
-                         "head, a long neck wrapped in burial bandages and two small ember eyes"),
-    "scarab": dict(seed=2026110102, poses=["seen from the side flying to the left, its thin wings raised",
-                                           "seen from the side flying to the left, its thin wings lowered"],
-                   desc="a flying scarab: a big beetle with a corroded bronze shell split open, thin amber wings "
-                        "and its legs tucked under it"),
-    "moth": dict(seed=2026110103, poses=[UP, MID, DOWN],
-                 desc="a sun moth: a big moth with broad pale gold wings, each marked with a dark red sun disc, and "
-                      "a furry ash grey body"),
-    "bat": dict(seed=2026110104, poses=[UP, MID, DOWN],
-                desc="an ember bat: a small black bat with ragged leathery wings and two glowing ember eyes"),
-    "kite": dict(seed=2026110105, poses=[UP, MID, DOWN],
-                 desc="a bone kite: a long thin flying creature made of pale bones bound with strips of sepia rag, "
-                      "long rag strips trailing from its wings and tail"),
-    "whale": dict(seed=2026110106, poses=["seen from the side swimming to the left through the air"],
-                  desc="a sky whale: a huge pale grey whale floating in the air, long trailing fins, a long tail and "
-                       "patches of corroded bronze barnacles on its back"),
+# What gets painted in place, the camp's way (camp_v4_paint.py: props painted on a 1x patch of the camp itself, so they
+# share its style, light and pixel size). Jacob, 1 Nov, after the sheet creatures: "why dont you use something else camp
+# we used same artsyle for both props and layers", then "go". Each stage gets one 512 x 320 patch of its own still;
+# the painter adds the creatures and people into the boxes (stage pixels), BiRefNet on his GPU cuts each one out, and
+# they move at the size they were painted. One box is one pose, in order; creatures face left unless FACE says.
+VULTURE = ("an ash vulture: a big carrion bird with ragged ash grey and black feathers, a bald pale head and a long neck "
+           "wrapped in burial bandages, flying to the left")
+SCARAB = ("a flying scarab: a big beetle seen from above, its corroded bronze shell split open and thin amber wings, "
+          "flying")
+MOTH = "a sun moth: a big moth seen from above with broad pale gold wings, each marked with a dark red sun disc"
+BAT = "an ember bat: a black bat with ragged leathery wings and two glowing ember eyes, flying to the left"
+BONE = ("a bone bird: a long thin bird skeleton of pale bones bound with strips of sepia rag, rag strips trailing from "
+        "its wings and tail, flying to the left")
+WHALE = ("a sky whale: a huge whale floating in the air, swimming to the left, pale grey skin, long trailing fins and "
+         "patches of corroded bronze barnacles on its back")
+SAILOR = ("a traveller of the Thundercoast, a foreign tribe: a long oiled dark blue sea coat and a brass helmet, "
+          "walking to the right beside the caravan")
+PILGRIMS = [("a pilgrim of Stoneveil, a foreign tribe: a dark violet hooded robe with red crystal shards on the "
+             "shoulders"), "a pilgrim of the Echo Reed, a foreign tribe: a woven reed mask and a cloak of long green reeds",
+            "a pilgrim of the Thundercoast, a foreign tribe: a long oiled dark blue sea coat and a brass helmet"]
+KNEEL, STAND = ", kneeling in prayer facing right, head bowed", ", standing facing right"
+TRADER = "a trader wrapped in burial bandages under a hood, standing at the stall"
+BLOB = {"vulture": (52, 46, 50), "scarab": (120, 90, 50), "moth": (210, 180, 110), "bat": (24, 20, 26),
+        "bonebird": (210, 200, 180), "whale": (170, 170, 176), "sailor": (40, 52, 90), "pilgrim": (90, 70, 80),
+        "trader": (150, 130, 110)}
+FACE = {"sailor": 1, "pilgrim": 1, "trader": 1, "moth": 0, "scarab": 0}  # 1 painted facing right, 0 seen from above
+PATCHES = {
+    "1": dict(rect=(0, 0, 512, 320), seed=2026110111,
+              scene="the dawn sky over blood red hills, a caravan of covered wagons and shaggy pack beasts on a rise, "
+                    "a low dark stone wall in front",
+              adds="three ash vultures flying in the sky and three travellers walking beside the caravan",
+              els=[("vulture", (40, 18, 104, 58), VULTURE + ", its wings raised high above its back"),
+                   ("vulture", (180, 48, 244, 88), VULTURE + ", its wings spread out level"),
+                   ("vulture", (300, 14, 364, 54), VULTURE + ", its wings pushed down below its body"),
+                   ("sailor", (118, 214, 136, 246), SAILOR),
+                   ("sailor", (208, 216, 226, 246), SAILOR),
+                   ("sailor", (330, 214, 348, 246), SAILOR)]),
+    "2": dict(rect=(560, 0, 1072, 320), seed=2026110112,
+              scene="a bright morning sky over a grey stone fortress far away, black smoke rising, a big bronze "
+                    "catapult and dark obelisks in front",
+              adds="three flying scarabs in the sky",
+              els=[("scarab", (660, 10, 700, 36), SCARAB + ", its wings spread wide"),
+                   ("scarab", (760, 60, 800, 86), SCARAB + ", its wings raised"),
+                   ("scarab", (860, 25, 900, 51), SCARAB + ", its wings half folded")]),
+    "3": dict(rect=(0, 0, 512, 320), seed=2026110113,
+              scene="a warm afternoon sky over jagged red mountains, a camp of patched tents on a terrace, black "
+                    "obelisks and pillars with ram skulls in front",
+              adds="three sun moths in the sky and seven pilgrims of foreign tribes on the terrace",
+              els=[("moth", (60, 20, 88, 42), MOTH + ", its wings spread wide open"),
+                   ("moth", (150, 30, 178, 52), MOTH + ", its wings raised up"),
+                   ("moth", (250, 15, 278, 37), MOTH + ", its wings folded up"),
+                   ("pilgrim", (86, 230, 102, 249), PILGRIMS[0] + KNEEL),
+                   ("pilgrim", (110, 230, 126, 249), PILGRIMS[1] + KNEEL),
+                   ("pilgrim", (134, 230, 150, 249), PILGRIMS[2] + KNEEL),
+                   ("pilgrim", (158, 222, 172, 249), PILGRIMS[0] + STAND),
+                   ("pilgrim", (270, 230, 286, 249), PILGRIMS[1] + KNEEL),
+                   ("pilgrim", (292, 230, 308, 249), PILGRIMS[2] + KNEEL),
+                   ("pilgrim", (314, 222, 328, 249), PILGRIMS[1] + STAND)]),
+    "4": dict(rect=(300, 0, 812, 320), seed=2026110114,
+              scene="a night sky with a big pale moon and stars over a red cliff city of tombs, a market stall with "
+                    "caged mummified animals between two hooded statues",
+              adds="four ember bats and three bone birds in the sky and two traders at the stall",
+              els=[("bat", (330, 20, 356, 38), BAT + ", its wings raised"),
+                   ("bat", (600, 25, 626, 43), BAT + ", its wings spread out"),
+                   ("bat", (420, 110, 446, 128), BAT + ", its wings pushed down"),
+                   ("bonebird", (330, 50, 390, 76), BONE + ", its wings raised"),
+                   ("bonebird", (640, 30, 700, 56), BONE + ", its wings spread out level"),
+                   ("bonebird", (700, 95, 760, 121), BONE + ", its wings pushed down"),
+                   ("trader", (612, 234, 632, 264), TRADER),
+                   ("trader", (744, 234, 764, 264), TRADER)]),
+    "5": dict(rect=(864, 0, 1376, 320), seed=2026110115,
+              scene="a crimson eclipse sky with red light beams over a dark cliff with ragged banners and ram skulls",
+              adds="one sky whale far off in the sky",
+              els=[("whale", (960, 15, 1240, 105), WHALE)]),
 }
-# Three tribes nobody has met yet, seen small and far off. Placeholder looks; their real design is Jacob's call.
-SAILOR = ("a storm sailor of the Thundercoast, a foreign tribe: a long oiled dark blue sea coat, a brass helmet with a "
-          "thin lightning rod on top")
-REED = "a marsh walker of the Echo Reed, a foreign tribe: a woven reed mask and a cloak of long green reeds"
-PRIEST = ("a blood priest of Stoneveil, a foreign tribe: a dark violet hooded robe with shards of glowing red crystal "
-          "on the shoulders")
-STAND = "one person standing, seen from the side facing left"
-KNEEL = "one person kneeling in prayer with the head bowed, seen from the side facing left"
-FOLK = dict(seed=2026110107, desc="six people of three foreign tribes",
-            names=["sailor_stand", "sailor_kneel", "reed_stand", "reed_kneel", "priest_stand", "priest_kneel"],
-            poses=[SAILOR + ", " + STAND, SAILOR + ", " + KNEEL, REED + ", " + STAND, REED + ", " + KNEEL,
-                   PRIEST + ", " + STAND, PRIEST + ", " + KNEEL])
 FLAP = {1: [0], 2: [0, 1], 3: [0, 1, 2, 1]}
 
-# What moves in each stage. Flyers fly an orbit (cx, cy, rx, ry) or a closed path; boats cross, orbit or follow
-# keys (t, x, y); fighters stand at (x, feet) and fight, or walk keys over a span of frames starting at offset; folk
-# are the foreign tribes, kneeling ones bow; shots fly from a catapult to a fort and burst; glow boxes flicker their
-# ember pixels; eyes blink.
+# What moves in each stage. Flyers fly an orbit (cx, cy, rx, ry), a closed path or a drift; boats cross, orbit or
+# follow keys (t, x, y); fighters stand at (x, feet) and fight, or walk keys over a span of frames from an offset;
+# painted people stay where they were painted (kneeling ones bow) or walk; shots fly from a catapult to a fort and
+# burst; glow boxes flicker their ember pixels; eyes blink.
 STAGE_FX = {
     "1": dict(
         tint=(1.0, 0.92, 0.92),
-        flyers=[dict(kind="vulture", orbit=(700, 92, 150, 22), laps=1, w=30, phase=0.0),
-                dict(kind="vulture", orbit=(700, 92, 150, 22), laps=1, w=26, phase=2.8),
-                dict(kind="vulture", orbit=(300, 66, 90, 14), laps=-1, w=22, phase=1.0)],
+        flyers=[dict(kind="vulture", orbit=(700, 92, 150, 22), laps=1, phase=0.0),
+                dict(kind="vulture", orbit=(700, 92, 150, 22), laps=1, phase=2.8),
+                dict(kind="vulture", orbit=(300, 66, 90, 14), laps=-1, phase=1.0)],
         boats=[dict(sprite="barque_mid", cross=(78, -1)),
                dict(sprite="barque_far", orbit=(1050, 116, 200, 8), laps=1, phase=1.0)],
-        folk=[dict(name="sailor_stand", h=18, walk=[(0, -20, 244), (N, 420, 244)], span=N, offset=o)
-              for o in (0, 48, 96)],
+        people=[dict(name="sailor-%d" % i, walk=[(0, -20, 246), (N, 400, 246)], span=N, offset=o)
+                for i, o in ((0, 0), (1, 48), (2, 96))],
         fighters=[dict(base="clarth_skirmisher_sw", at=(1238, 171), h=15, face=1),
                   dict(base="clarth_trapper_sw", at=(1256, 170), h=15, face=1),
                   dict(base="blood_rot_warden_se", at=(1278, 169), h=16, face=-1),
@@ -108,7 +145,7 @@ STAGE_FX = {
         flashes=[(485, 140, 610, 200), (905, 135, 1075, 195)],
         burning=[(88, 214), (150, 228), (335, 212)],
         flyers=[dict(kind="scarab", path=[(380, 60), (520, 30), (680, 80), (840, 40), (1100, 70), (880, 110),
-                                          (640, 60), (450, 105)], laps=1, w=16, phase=p) for p in (0.0, 0.33, 0.66)],
+                                          (640, 60), (450, 105)], laps=1, phase=p) for p in (0.0, 0.33, 0.66)],
         flies=[(505, 236, 16, 10), (980, 240, 14, 8)],
         fighters=[dict(base="clarth_warden_sw", h=26, walk=[(0, 1400, 268), (60, 1236, 268)], span=60, offset=o,
                        face=-1) for o in (0, 18)] +
@@ -123,10 +160,7 @@ STAGE_FX = {
         boats=[dict(sprite="barque_far", orbit=(850, 110, 260, 8), laps=-1, phase=0.5),
                dict(sprite="barque_mid", keys=[(0, W + 80, 100), (40, 1255, 176), (90, 1255, 176), (130, 600, 30),
                                                (143, 420, -60), (N, W + 80, 100)])],
-        folk=[dict(name=n, h=16, at=at, bow=b) for n, at, b in
-              (("priest_kneel", (100, 246), 0), ("reed_kneel", (128, 248), 9), ("sailor_kneel", (156, 246), 18),
-               ("priest_stand", (200, 247), None), ("reed_kneel", (262, 250), 27), ("sailor_kneel", (292, 248), 36),
-               ("sailor_stand", (334, 248), None))],
+        people=[dict(name="pilgrim-%d" % i, bow=None if i in (3, 6) else 9 * i) for i in range(7)],
         fighters=[dict(base="clarth_warden_sw", h=34, walk=[(0, 590, 284), (24, 688, 284), (48, 690, 248)], span=48,
                        offset=o, face=1) for o in (0, 72)] +
                  [dict(base="clarth_skirmisher_sw", h=32, walk=[(0, 590, 284), (24, 688, 284), (48, 690, 248)],
@@ -134,10 +168,10 @@ STAGE_FX = {
                  [dict(base="blood_rot_warden_se", h=36, walk=[(0, 590, 284), (24, 688, 284), (48, 690, 248)],
                        span=48, offset=o, face=1) for o in (32, 104)],
         fires=[(312, 268, 0.55), (563, 226, 0.5), (690, 220, 0.6), (820, 224, 0.5), (1062, 268, 0.55)],
-        flyers=[dict(kind="moth", orbit=(312, 254, 16, 8), laps=3, w=10, phase=0.0, jitter=3),
-                dict(kind="moth", orbit=(1062, 254, 18, 9), laps=-3, w=10, phase=1.0, jitter=3),
-                dict(kind="moth", orbit=(690, 204, 22, 10), laps=2, w=11, phase=2.0, jitter=3),
-                dict(kind="moth", orbit=(563, 212, 14, 7), laps=-4, w=9, phase=3.0, jitter=2)],
+        flyers=[dict(kind="moth", orbit=(312, 250, 18, 9), laps=3, phase=0.0, jitter=3),
+                dict(kind="moth", orbit=(1062, 250, 20, 10), laps=-3, phase=1.0, jitter=3),
+                dict(kind="moth", orbit=(690, 200, 26, 12), laps=2, phase=2.0, jitter=3),
+                dict(kind="moth", orbit=(563, 208, 16, 8), laps=-4, phase=3.0, jitter=2)],
         glow=[(600, 60, 790, 235), (470, 60, 510, 290), (560, 60, 600, 230), (780, 60, 820, 230),
               (870, 60, 910, 290), (920, 100, 970, 290), (1015, 140, 1055, 290)]),
     "4": dict(
@@ -150,13 +184,13 @@ STAGE_FX = {
         boats=[dict(sprite="barque_mid", cross=(104, 1), lanterns=True)],
         lanterns=(0, 130, W, 285),
         glow=[(0, 215, W, 262)],
-        flyers=[dict(kind="bat", path=[(420, 40), (520, 15), (640, 60), (560, 95), (460, 80)], laps=2, w=11,
-                     phase=p, jitter=2) for p in (0.0, 0.25, 0.5, 0.75)] +
-               [dict(kind="bat", path=[(900, 40), (1050, 70), (1200, 30), (1100, 90)], laps=-2, w=10, phase=p,
-                     jitter=2) for p in (0.1, 0.6)] +
-               [dict(kind="kite", orbit=(1000, 70, 200, 18), laps=1, w=26, phase=0.0),
-                dict(kind="kite", orbit=(250, 60, 150, 14), laps=-1, w=22, phase=2.0)],
-        folk=[dict(name="reed_stand", h=22, at=(628, 262)), dict(name="priest_stand", h=22, at=(752, 262))]),
+        flyers=[dict(kind="bat", path=[(420, 40), (520, 15), (640, 60), (560, 95), (460, 80)], laps=2, phase=p,
+                     jitter=2) for p in (0.0, 0.25, 0.5, 0.75)] +
+               [dict(kind="bat", path=[(900, 40), (1050, 70), (1200, 30), (1100, 90)], laps=-2, phase=p, jitter=2)
+                for p in (0.1, 0.6)] +
+               [dict(kind="bonebird", orbit=(1000, 70, 200, 18), laps=1, phase=0.0),
+                dict(kind="bonebird", orbit=(250, 60, 150, 14), laps=-1, phase=2.0)],
+        people=[dict(name="trader-0"), dict(name="trader-1")]),
     "5": dict(
         tint=(1.0, 0.62, 0.55),
         ring=(295, 10, 400, 112),
@@ -169,58 +203,69 @@ STAGE_FX = {
                    ("blood_rot_trapper_se", 912))] +
                  [dict(base=b, at=(x, 133), h=16, face=-1) for b, x in
                   (("hunter_warden_sw", 1070), ("hunter_captain_sw", 1094), ("hunter_skirmisher_sw", 1120))],
-        flyers=[dict(kind="whale", drift=(1120, 62, 30, 3), w=170)],
+        flyers=[dict(kind="whale", drift=(1100, 60, 30, 3))],
         fires=[(335, 248, 0.55), (583, 250, 0.55), (808, 252, 0.55), (1055, 248, 0.55)],
         glow=[(670, 170, 730, 255), (430, 160, 470, 285), (570, 120, 610, 285), (790, 120, 830, 285),
               (930, 160, 970, 285)]),
 }
 
 
-# ------------------------------------------------------------------ painting and cutting the new sprites
+# ------------------------------------------------------------------ painting in place and cutting out
 
-def neg_sheet(people):
-    base = json.loads(RG.L3.BASE.read_text())["5"]["inputs"]["text"].replace(" creatures,", "").replace(" letters,", "")
-    if people:
-        base = base.replace(" people,", "").replace(" guards,", "").replace(" human figures,", "")
-    return base + (", sky, clouds, ground, grass, scenery, landscape, buildings, shadow on the ground, text, letters, "
-                   "numbers, labels, frames, borders, grid, watermark, signature, blurry, photo, 3d render, different "
-                   "creatures, a crowd")
-
-
-def slots(n):
-    """The sheet's columns: one pose each, with grey around it."""
-    return [(int(i * W / n) + 6, 40, int((i + 1) * W / n) - 6, H - 40) for i in range(n)]
+def neg_patch():
+    base = json.loads(RG.L3.BASE.read_text())["5"]["inputs"]["text"]
+    for w in (" creatures,", " letters,", " people,", " guards,", " human figures,"):
+        base = base.replace(w, "")
+    return base + (", vector art, flat cartoon, smooth shapes, blurry, text, letters, user interface, HUD, frames, "
+                   "borders, watermark, signature, giant, colossal, huge figures, close up, cropped, split screen")
 
 
-def paint_sheet(name, desc, poses, seed, people=False):
-    LIFE.mkdir(parents=True, exist_ok=True)
-    SP.OUT = LIFE
-    bg = BG.get(name, GREY)
-    bgname = "dark slate grey" if bg == SLATE else "pale grey"
-    boxes = [(x0 + 18, 150, x1 - 18, 620) for x0, _, x1, _ in slots(len(poses))]
-    init = Image.new("RGB", (W, H), bg)
+def pbb(b, rect):
+    x0, y0, x1, y1 = b
+    px, py, qx, qy = rect
+    w, h = qx - px, qy - py
+    return [int((y0 - py) / h * 1000), int((x0 - px) / w * 1000), int((y1 - py) / h * 1000), int((x1 - px) / w * 1000)]
+
+
+def paint_patch(k):
+    """The stage's own 1x patch, soft blobs where each new thing goes, painted from step 3 like camp_v4_paint's
+    patches, with the stage's light and palette."""
+    P, o = PATCHES[k], SR.STAGES[k]
+    px, py, qx, qy = P["rect"]
+    init = Image.open(OUT / ("stage-%s.png" % k)).convert("RGB").crop(P["rect"])
     d = ImageDraw.Draw(init)
-    for x0, y0, x1, y1 in boxes:
-        d.ellipse((x0 + 30, y0 + 70, x1 - 30, y1 - 70), fill=(150, 146, 150) if bg == GREY else (170, 160, 140))
-    same = "the same person every time" if people else "the same creature every time, the same size"
+    for kind, (x0, y0, x1, y1), _ in P["els"]:
+        d.ellipse((x0 - px + 2, y0 - py + 2, x1 - px - 2, y1 - py - 2), fill=BLOB[kind])
     pos = json.dumps({
-        "high_level_description": "A pixel art sprite sheet for a game: " + desc + ", drawn %d times side by side, %s, "
-                                  "each one whole and separate with empty space around it, on a plain flat %s "
-                                  "background. " % (len(poses), same, bgname) + SP.STYLE,
+        "high_level_description": "A piece of a pixel art battle stage background at its own pixel size: " +
+                                  P["scene"] + ". In it: " + P["adds"] + ", small, in the same pixel art, colours and "
+                                  "light as everything around them. " + SP.STYLE,
         "style_description": {"medium": "pixel_art", "art_style": RG.L3.ART,
-                              "aesthetics": "clean readable silhouettes, coherent pixel clusters, one design in every "
-                                            "pose",
-                              "lighting": "Clear daylight from the upper left, flat pixel colour planes.",
-                              "color_palette": ["#3e302c", "#7a6250", "#96703e", "#f07828", "#e2d6ba", "#a89880",
-                                                "#5a443a", "#c8c8cc"]},
-        "compositional_deconstruction": {
-            "background": "A plain flat %s background and nothing else: no sky, no clouds, no ground, no "
-                          "shadows." % bgname,
-            "elements": [{"type": "obj", "bbox": SP.bb(b), "desc": (p if people else desc + ", " + p)}
-                         for b, p in zip(boxes, poses)]}})
-    raw = SP.run("life-" + name, init, pos, seed, neg=neg_sheet(people))
-    raw.save(LIFE / ("sheet-%s-raw.png" % name))
+                              "aesthetics": "one coherent pixel art scene, coherent pixel clusters, small readable "
+                                            "silhouettes, everything lit by the same light",
+                              "lighting": o["light"], "color_palette": o["pal"]},
+        "compositional_deconstruction": {"background": P["scene"],
+                                         "elements": [{"type": "obj", "bbox": pbb(b, P["rect"]), "desc": desc}
+                                                      for _, b, desc in P["els"]]}})
+    SP.OUT = LIFE
+    raw = SP.run("life-patch-%s" % k, init, pos, P["seed"], step=3, neg=neg_patch())
     SP.OUT = OUT
+    raw.save(LIFE / ("patch-%s-raw.png" % k))
+
+
+def cutout(tag, im):
+    """BiRefNet on Jacob's GPU (the core RemoveBackground node, as town_fix.cutout), sent and fetched over the API."""
+    name = SP.upload(im, tag + ".png", sub="ks-bloodridge-life")
+    g = {"1": {"class_type": "LoadImage", "inputs": {"image": name}},
+         "2": {"class_type": "LoadBackgroundRemovalModel", "inputs": {"bg_removal_name": "birefnet-general.safetensors"}},
+         "3": {"class_type": "RemoveBackground", "inputs": {"bg_removal_model": ["2", 0], "image": ["1", 0]}},
+         "4": {"class_type": "MaskToImage", "inputs": {"mask": ["3", 0]}},
+         "5": {"class_type": "SaveImage", "inputs": {"images": ["4", 0], "filename_prefix": "KS-Bloodridge-Life/" + tag}}}
+    try:
+        pid = SP.G.api("/prompt", {"prompt": g, "front": True})["prompt_id"]
+    except SP.urllib.error.HTTPError as e:
+        raise SystemExit("The painter refused %s: %s" % (tag, e.read().decode("utf-8", "replace")[:4000]))
+    return np.asarray(SP.result(pid).convert("L").resize(im.size, Image.BOX)).astype(np.float64) / 255
 
 
 def components(m):
@@ -244,74 +289,83 @@ def components(m):
     return lab, n
 
 
-def cut_sheet(name, n):
-    """Each pose cut off the flat grey: pixels that differ from the column's border colour, the biggest group only
-    (a stray shadow or speck is dropped), cropped tight. Saved as name-i.png, full size."""
-    a = np.asarray(Image.open(LIFE / ("sheet-%s-raw.png" % name)).convert("RGB")).astype(np.float64)
-    out = []
-    for i, (x0, y0, x1, y1) in enumerate(slots(n)):
-        reg = a[y0:y1, x0:x1]
-        edge = np.concatenate([reg[:8].reshape(-1, 3), reg[-8:].reshape(-1, 3), reg[:, :8].reshape(-1, 3),
-                               reg[:, -8:].reshape(-1, 3)])
-        m = np.abs(reg - np.median(edge, 0)).sum(2) > 54
-        m = np.asarray(Image.fromarray(m.astype(np.uint8) * 255).filter(ImageFilter.MedianFilter(3))) > 127
-        small = np.asarray(Image.fromarray(m.astype(np.uint8) * 255).resize((m.shape[1] // 3, m.shape[0] // 3),
-                                                                             Image.BOX)) > 40
-        lab, k = components(small)
-        if k == 0:
-            out.append(None)
+def cut_patch(k):
+    """Each new thing cut out of the painted patch at the size it was painted: BiRefNet's mask of its box (grown 6 px,
+    shown to BiRefNet 4x big), the group nearest the box centre; if BiRefNet finds nothing there, the pixels that
+    differ from the box's border. Saved as kind-i.png with where it was painted in cuts.json."""
+    P = PATCHES[k]
+    px, py, qx, qy = P["rect"]
+    raw = Image.open(LIFE / ("patch-%s-raw.png" % k)).convert("RGB")
+    a = np.asarray(raw).astype(np.float64)
+    cuts = json.loads((LIFE / "cuts.json").read_text()) if (LIFE / "cuts.json").exists() else {}
+    count = {}
+    for j, (kind, (x0, y0, x1, y1), _) in enumerate(P["els"]):
+        i = count.get(kind, 0)
+        count[kind] = i + 1
+        bx0, by0 = max(0, x0 - px - 6), max(0, y0 - py - 6)
+        bx1, by1 = min(qx - px, x1 - px + 6), min(qy - py, y1 - py + 6)
+        reg = a[by0:by1, bx0:bx1]
+        crop = raw.crop((bx0, by0, bx1, by1))
+        big = cutout("life-%s-%d" % (k, j), crop.resize((crop.width * 4, crop.height * 4), Image.NEAREST))
+        m = np.asarray(Image.fromarray((big * 255).astype(np.uint8)).resize(crop.size, Image.BOX)) > 127
+        if m.sum() < 0.08 * m.size:
+            edge = np.concatenate([reg[:3].reshape(-1, 3), reg[-3:].reshape(-1, 3), reg[:, :3].reshape(-1, 3),
+                                   reg[:, -3:].reshape(-1, 3)])
+            m = np.abs(reg - np.median(edge, 0)).sum(2) > 60
+        (LIFE / ("%s-%d.png" % (kind, i))).unlink(missing_ok=True)
+        cuts.pop("%s-%d" % (kind, i), None)
+        lab, n = components(m)
+        if n == 0:
+            print("nothing cut for", kind, i, flush=True)
             continue
-        big = lab == 1 + np.bincount(lab.ravel())[1:].argmax()
-        big = np.asarray(Image.fromarray(big.astype(np.uint8) * 255).resize((m.shape[1], m.shape[0]), Image.NEAREST)
-                         .filter(ImageFilter.MaxFilter(7))) > 127
-        keep = m & big
+        cy, cx = (by1 - by0) / 2, (bx1 - bx0) / 2
+        best = min(range(1, n + 1), key=lambda L: np.hypot(*(np.argwhere(lab == L).mean(0) - (cy, cx))) -
+                   0.05 * (lab == L).sum())
+        keep = lab == best
         ys, xs = np.nonzero(keep)
-        crop = (slice(ys.min(), ys.max() + 1), slice(xs.min(), xs.max() + 1))
-        rgba = np.dstack([reg[crop], keep[crop] * 255.0]).astype(np.uint8)
-        Image.fromarray(rgba, "RGBA").save(LIFE / ("%s-%d.png" % (name, i)))
-        out.append(rgba)
-    return out
+        sl = (slice(ys.min(), ys.max() + 1), slice(xs.min(), xs.max() + 1))
+        Image.fromarray(np.dstack([reg[sl], keep[sl] * 255.0]).astype(np.uint8), "RGBA").save(
+            LIFE / ("%s-%d.png" % (kind, i)))
+        cuts["%s-%d" % (kind, i)] = [int(px + bx0 + xs.min()), int(py + by0 + ys.min())]
+    (LIFE / "cuts.json").write_text(json.dumps(cuts, indent=1))
 
 
-def creatures(repaint=()):
-    """Paints any sheet not painted yet (or named in repaint), then cuts every sheet."""
-    jobs = [(k, v["desc"], v["poses"], v["seed"], False) for k, v in CREATURES.items()]
-    jobs.append(("folk", FOLK["desc"], FOLK["poses"], FOLK["seed"], True))
-    for name, desc, poses, seed, people in jobs:
-        if name in repaint or not (LIFE / ("sheet-%s-raw.png" % name)).exists():
-            paint_sheet(name, desc, poses, seed, people)
-        cut_sheet(name, len(poses))
+def creatures(ks, repaint=False):
+    LIFE.mkdir(parents=True, exist_ok=True)
+    for k in ks:
+        if repaint or not (LIFE / ("patch-%s-raw.png" % k)).exists():
+            paint_patch(k)
+        cut_patch(k)
     look_creatures()
 
 
 def look_creatures():
-    """Every cut pose at the size it flies in the loops and at 4x, one row a species: look-creatures.png."""
-    rows = [(k, CREATURES[k]["poses"], None) for k in CREATURES] + [("folk", FOLK["poses"], FOLK["names"])]
-    tiles = []
-    for name, poses, names in rows:
-        row = []
-        for i in range(len(poses)):
-            p = LIFE / ("%s-%d.png" % (name, i))
+    """Every cut at its own size and at 4x, one row a stage's patch: look-creatures.png."""
+    rows = []
+    for k, P in sorted(PATCHES.items()):
+        seen, row = {}, []
+        for kind, _, _ in P["els"]:
+            i = seen.get(kind, 0)
+            seen[kind] = i + 1
+            p = LIFE / ("%s-%d.png" % (kind, i))
             if p.exists():
-                rgb, al = shrink(np.asarray(Image.open(p).convert("RGBA")), width=USE_W.get(name, 22))
-                im = Image.fromarray(np.dstack([rgb, al * 255]).clip(0, 255).astype(np.uint8), "RGBA")
+                im = Image.open(p).convert("RGBA")
                 row.append(im.resize((im.width * 4, im.height * 4), Image.NEAREST))
-        tiles.append((name, row))
-    hgt = sum(max([t.height for t in r] + [20]) + 30 for _, r in tiles)
+        rows.append(("%s  %s" % (k, ", ".join(sorted(set(e[0] for e in P["els"])))), row))
+    hgt = sum(max([t.height for t in r] + [20]) + 34 for _, r in rows)
     s = Image.new("RGB", (1376, hgt), (40, 36, 44))
     d = ImageDraw.Draw(s)
     y = 0
-    for name, row in tiles:
+    for name, row in rows:
         d.text((8, y + 6), name, fill=(239, 223, 190), font=font(18))
         x = 8
         for t in row:
+            if x + t.width > 1376:
+                break
             s.paste(t, (x, y + 30), t)
-            x += t.width + 24
-        y += max([t.height for t in row] + [20]) + 30
+            x += t.width + 16
+        y += max([t.height for t in row] + [20]) + 34
     s.save(OUT / "look-creatures.png")
-
-
-USE_W = {"vulture": 30, "scarab": 16, "moth": 11, "bat": 11, "kite": 26, "whale": 170, "folk": 12}
 
 
 def font(size):
@@ -326,7 +380,7 @@ def font(size):
 
 # ------------------------------------------------------------------ shrinking sprites to the distance
 
-def shrink(rgba, width=None, scale=None, ncol=12, outline=True):
+def shrink(rgba, width=None, scale=None, ncol=12, outline=True, ember=False):
     """Box shrink with the colours cut to a few, ember and bone accents kept, and a dark one pixel outline, the way
     town_anim.shrink_fixed shrinks the camp's fighters."""
     a = rgba.astype(np.float64)
@@ -350,8 +404,10 @@ def shrink(rgba, width=None, scale=None, ncol=12, outline=True):
         qp = np.array([[30.0, 24, 28]])
     r, g, b = src[..., 0], src[..., 1], src[..., 2]
     lu = r * 0.299 + g * 0.587 + b * 0.114
-    for acc, need in ((al & (lu > 190) & (np.abs(r - b) < 40), 0.3),
-                      (al & (r > 180) & (g > 50) & (g < 175) & (b < 100) & (lu > 105), 0.07)):
+    accents = [(al & (lu > 190) & (np.abs(r - b) < 40), 0.3)]
+    if ember:  # only Bloodridge sprites: on anything else it painted every orange-ish patch bright orange (1 Nov)
+        accents.append((al & (r > 180) & (g > 50) & (g < 175) & (b < 100) & (lu > 105), 0.07))
+    for acc, need in accents:
         frac = down(acc)
         mean = np.dstack([down(src[..., c] * acc) for c in range(3)]) / np.maximum(frac[..., None], 1e-6)
         use = (frac >= need) & m
@@ -370,41 +426,41 @@ def shrink(rgba, width=None, scale=None, ncol=12, outline=True):
 CACHE = {}
 
 
-def species(kind, w):
-    """A species' poses shrunk to one width, all on one canvas size so it does not jump between wing beats."""
-    key = ("sp", kind, w)
+def species(kind):
+    """A species' painted poses at the size they were painted, centred on one canvas so it does not jump between
+    wing beats."""
+    key = ("sp", kind)
     if key not in CACHE:
-        n = len(CREATURES[kind]["poses"])
-        raw = [LIFE / ("%s-%d.png" % (kind, i)) for i in range(n)]
-        raw = [np.asarray(Image.open(p).convert("RGBA")) for p in raw if p.exists()]
+        files = sorted(LIFE.glob(kind + "-*.png"), key=lambda q: int(q.stem.split("-")[-1]))
+        raw = [np.asarray(Image.open(q).convert("RGBA")).astype(np.float64) for q in files]
         if not raw:
+            print("no", kind, "cut yet", flush=True)
             CACHE[key] = None
             return None
-        s = w / max(r.shape[1] for r in raw)
-        fr = [shrink(r, scale=s) for r in raw]
-        hh, ww = max(f[1].shape[0] for f in fr), max(f[1].shape[1] for f in fr)
+        hh, ww = max(r.shape[0] for r in raw), max(r.shape[1] for r in raw)
         out = []
-        for rgb, al in fr:
+        for r in raw:
             c, m = np.zeros((hh, ww, 3)), np.zeros((hh, ww), bool)
-            y0, x0 = (hh - al.shape[0]) // 2, (ww - al.shape[1]) // 2
-            c[y0:y0 + al.shape[0], x0:x0 + al.shape[1]] = rgb
-            m[y0:y0 + al.shape[0], x0:x0 + al.shape[1]] = al
+            y0, x0 = (hh - r.shape[0]) // 2, (ww - r.shape[1]) // 2
+            c[y0:y0 + r.shape[0], x0:x0 + r.shape[1]] = r[..., :3]
+            m[y0:y0 + r.shape[0], x0:x0 + r.shape[1]] = r[..., 3] > 127
             out.append((c, m))
         CACHE[key] = out
     return CACHE[key]
 
 
-def folk(name, h):
-    """One of the foreign tribe sprites; h is the standing height, so a kneeling one comes out lower."""
-    key = ("folk", name, h)
+def person(name):
+    """One painted person, with the spot it was painted at."""
+    key = ("person", name)
     if key not in CACHE:
-        p = LIFE / ("folk-%d.png" % FOLK["names"].index(name))
-        ref = LIFE / ("folk-%d.png" % FOLK["names"].index(name.replace("_kneel", "_stand")))
-        if not p.exists() or not ref.exists():
+        p = LIFE / (name + ".png")
+        cuts = json.loads((LIFE / "cuts.json").read_text()) if (LIFE / "cuts.json").exists() else {}
+        if not p.exists() or name not in cuts:
+            print("no", name, "cut yet", flush=True)
             CACHE[key] = None
             return None
-        a = np.asarray(Image.open(p).convert("RGBA"))
-        CACHE[key] = shrink(a, scale=h / Image.open(ref).height, ncol=8)
+        r = np.asarray(Image.open(p).convert("RGBA")).astype(np.float64)
+        CACHE[key] = (r[..., :3], r[..., 3] > 127, cuts[name])
     return CACHE[key]
 
 
@@ -428,7 +484,8 @@ def fighter(base, anim, h):
         fy, fx = np.nonzero(frames[0][..., 3] > 127)
         uy, ux = np.nonzero(np.any([f[..., 3] > 127 for f in frames], axis=0))
         y0, y1, x0, x1 = uy.min(), uy.max() + 1, ux.min(), ux.max() + 1
-        CACHE[key] = dict(frames=[shrink(f[y0:y1, x0:x1], scale=s, ncol=10) for f in frames], cum=np.cumsum(durs),
+        CACHE[key] = dict(frames=[shrink(f[y0:y1, x0:x1], scale=s, ncol=10, ember=base.startswith("blood"))
+                                  for f in frames], cum=np.cumsum(durs),
                           total=float(durs.sum()), ground=round((fy.max() + 1 - y0) * s) + 1,
                           cx=round(((fx.min() + fx.max()) / 2 - x0) * s) + 1)
     return CACHE[key]
@@ -646,7 +703,7 @@ def render(k):
     burst = fxload("ks-camp-war-explosion-20", 1.2)
     puff = fxload("ks-camp-smoke-puff", 0.6, SMOKE)
     fire = fxload("ks-camp-building-fire", 0.5)
-    column = fxload("ks-camp-smoke-column", 0.5, SMOKE)
+    big = fxload("ks-camp-smoke-puff-big", 0.5, SMOKE)
     emb = [dict(x=float(rng.uniform(0, W)), y0=float(rng.uniform(0, TOP)), k=int(rng.integers(1, 3)),
                 sw=float(rng.uniform(2, 6)), ph=float(rng.uniform(0, 6.3)),
                 c=[(255, 170, 60), (255, 220, 120), (230, 90, 40)][int(rng.integers(0, 3))])
@@ -684,14 +741,15 @@ def render(k):
                 dot(cv, x - al.shape[1] * 0.3, y, (255, 214, 120))
                 dot(cv, x + al.shape[1] * 0.3, y - 1, (255, 190, 90))
         for f in o.get("flyers", ()):
-            fr = species(f["kind"], f["w"])
+            fr = species(f["kind"])
             if fr is None:
                 continue
             x, y, face = flyer_at(f, t)
-            seq = FLAP[len(fr)]
-            i = seq[(t // (2 if f["w"] < 14 else 3) + int(f.get("phase", 0) * 5)) % len(seq)]
+            seq = FLAP[min(3, len(fr))]
+            i = seq[(t // (2 if fr[0][1].shape[1] < 30 else 3) + int(f.get("phase", 0) * 5)) % len(seq)]
             rgb, al = fr[i]
-            blit(cv, rgb, al, x - al.shape[1] / 2, y - al.shape[0] / 2, face > 0, tint)
+            native = FACE.get(f["kind"], -1)
+            blit(cv, rgb, al, x - al.shape[1] / 2, y - al.shape[0] / 2, native != 0 and face != native)
         for s in o.get("shots", ()):
             u = (t - s["at"]) % N
             (x0, y0), (x1, y1) = s["src"], s["dst"]
@@ -730,8 +788,11 @@ def render(k):
             rgb, al = fl["frames"][(t // 2 + int(x)) % len(fl["frames"])]
             blit(cv, rgb, al, x - fl["ox"], y - fl["oy"])
         for x, y in o.get("burning", ()):
-            rgb, al = column["frames"][(t // 2 + int(x)) % len(column["frames"])]
-            blit(cv, rgb, al, x - column["ox"], y - 10 - column["oy"])
+            for j in range(4):  # town_fix: smoke breaks up instead of fading
+                v = (t + j * N // 4 + int(x)) % (N // 4 * 4)
+                if v < 4 * len(big["frames"]):
+                    rgb, al = big["frames"][v // 4]
+                    blit(cv, rgb, al, x - big["ox"] + 3 * math.sin(v / 7 + j), y - 14 - big["oy"] - v * 0.8)
             rgb, al = fire["frames"][(t // 2 + int(x)) % len(fire["frames"])]
             blit(cv, rgb, al, x - fire["ox"], y - fire["oy"])
         for cx, cy, r, ph, sp in flies:
@@ -740,22 +801,21 @@ def render(k):
         for e in emb:
             y = (e["y0"] + TOP * e["k"] * t / N) % TOP
             dot(cv, e["x"] + e["sw"] * math.sin(2 * math.pi * 2 * t / N + e["ph"]), y, e["c"])
-        for f in o.get("folk", ()):
-            sp = folk(f["name"], f["h"])
+        for f in o.get("people", ()):
+            sp = person(f["name"])
             if sp is None:
                 continue
-            rgb, al = sp
+            rgb, al, (px, py) = sp
             if "walk" in f:
                 u = (t - f["offset"]) % N
                 if u >= f["span"]:
                     continue
                 x, y, d = keys_at(f["walk"], u)
-                y -= (u // 3) % 2
-            else:
-                (x, y), d = f["at"], -1
-                if f.get("bow") is not None and (t + f["bow"]) % 45 < 8:
-                    y += 1
-            blit(cv, rgb, al, x - al.shape[1] / 2, y - al.shape[0], d > 0, tint)
+                native = FACE.get(f["name"].split("-")[0], -1)
+                blit(cv, rgb, al, x - al.shape[1] / 2, y - al.shape[0] - (u // 3) % 2, native != 0 and d != native)
+            else:  # where it was painted; kneeling ones bow a pixel now and then
+                bow = f.get("bow") is not None and (t + f["bow"]) % 45 < 8
+                blit(cv, rgb, al, px, py + (1 if bow else 0))
         for f in o.get("fighters", ()):
             draw_fighter(cv, f, t, tint)
         frames.append(cv.clip(0, 255).astype(np.uint8))
@@ -787,10 +847,8 @@ def look(shots):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    if args[:1] == ["repaint"]:
-        creatures(repaint=args[1:])
-        sys.exit()
-    creatures()
-    ks = args or sorted(STAGE_FX)
+    repaint = args[:1] == ["repaint"]
+    ks = [a for a in args if a in STAGE_FX] or sorted(STAGE_FX)
+    creatures(ks, repaint)
     look([(k, render(k)) for k in ks])
     print("look-life.png and look-creatures.png", flush=True)
