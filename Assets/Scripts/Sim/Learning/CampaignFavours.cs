@@ -121,7 +121,17 @@ namespace KindredSiege.Sim.Learning
         GluttonBranchHedge = 70,
         GluttonSynthesisDiscount = 71,
         GluttonGeneLibrary = 72,
-        GluttonNodeCache = 73
+        GluttonNodeCache = 73,
+
+        // The Pals' duos (campaign rules 27; Jacob in chat, 1 Nov 2026: "go write them"): one a duo, in Battle.PalDuo's order.
+        // Once a run holds a pick from both Pals of a pair, a card of either can show their duo as one more pick
+        // (Campaign.Duos.cs). Taking it holds it for the run.
+        DuoCrownedMarks = 74,
+        DuoMarkedTricks = 75,
+        DuoGorgedBursts = 76,
+        DuoShadowStar = 77,
+        DuoFattenedStar = 78,
+        DuoGorgedTricks = 79
     }
 
     /// One of the Whisperer's picks on offer (rules 24): its kind, and the fighter it ranks up, the pair it sets or the habit it
@@ -296,8 +306,58 @@ namespace KindredSiege.Sim.Learning
             return GluttonRules.Valid(talent) ? (Favour)((int)talent - 1 + (int)Favour.GluttonDarkMatterPlating) : Favour.None;
         }
 
-        /// The most picks a card can show: FavourRules.Offered, and more with Node Cache (rules 26).
-        public const int MaxOffered = Offered + 2 * GluttonRules.CacheMore;
+        /// The most picks a card can show: FavourRules.Offered, more with Node Cache (rules 26), and a Pal's three duos (rules 27).
+        public const int MaxOffered = Offered + 2 * GluttonRules.CacheMore + 3;
+
+        /// True for a duo pick (rules 27).
+        public static bool IsDuo(Favour favour)
+        {
+            return favour >= Favour.DuoCrownedMarks && favour <= Favour.DuoGorgedTricks;
+        }
+
+        /// The duo a duo pick holds; None for any other favour.
+        public static PalDuo DuoOf(Favour favour)
+        {
+            return IsDuo(favour) ? (PalDuo)((int)favour - (int)Favour.DuoCrownedMarks + 1) : PalDuo.None;
+        }
+
+        /// The pick for a duo.
+        public static Favour DuoPick(PalDuo duo)
+        {
+            return DuoRules.Valid(duo) ? (Favour)((int)duo - 1 + (int)Favour.DuoCrownedMarks) : Favour.None;
+        }
+
+        /// A duo's two Pals, in FavourRules.Pals' order of the pair as PalDuo names it.
+        public static Pal FirstOf(PalDuo duo)
+        {
+            switch (duo)
+            {
+                case PalDuo.CrownedMarks:
+                case PalDuo.MarkedTricks:
+                case PalDuo.GorgedBursts: return Pal.Butcher;
+                case PalDuo.ShadowStar:
+                case PalDuo.FattenedStar: return Pal.Whisperer;
+                case PalDuo.GorgedTricks: return Pal.Shade;
+                default: return Pal.None;
+            }
+        }
+
+        public static Pal SecondOf(PalDuo duo)
+        {
+            switch (duo)
+            {
+                case PalDuo.CrownedMarks: return Pal.Whisperer;
+                case PalDuo.MarkedTricks:
+                case PalDuo.ShadowStar: return Pal.Shade;
+                case PalDuo.GorgedBursts:
+                case PalDuo.FattenedStar:
+                case PalDuo.GorgedTricks: return Pal.Glutton;
+                default: return Pal.None;
+            }
+        }
+
+        /// Whether this Pal is one of the duo's two.
+        public static bool DuoHas(PalDuo duo, Pal pal) => pal != Pal.None && (FirstOf(duo) == pal || SecondOf(duo) == pal);
 
         /// True for one of the Shade's road card picks (rules 25): a route, its form in the run's store.
         public static bool IsShade(Favour favour)
@@ -370,6 +430,8 @@ namespace KindredSiege.Sim.Learning
 
         public static Pal PalOf(Favour favour)
         {
+            // A duo is its first Pal's, and shows on a card of either (DuoHas).
+            if (IsDuo(favour)) return FirstOf(DuoOf(favour));
             if (IsCombo(favour)) return Pal.Butcher;
             if (IsWhisper(favour)) return Pal.Whisperer;
             if (IsShade(favour)) return Pal.Shade;
@@ -410,6 +472,7 @@ namespace KindredSiege.Sim.Learning
             if (favour == Favour.WhisperHabitUp) return "Habit upgrade";
             if (IsShade(favour)) return ShadeRules.Name(RouteOf(favour));
             if (IsGlutton(favour)) return GluttonRules.Name(TalentOf(favour));
+            if (IsDuo(favour)) return DuoRules.Name(DuoOf(favour));
             switch (favour)
             {
                 case Favour.LongRage: return "Long Rage";
@@ -436,6 +499,12 @@ namespace KindredSiege.Sim.Learning
             {
                 ClassBend bend = ComboBend(favour);
                 return "For a " + SliceClasses.Name(ClassSpells.ClassOf(bend)) + "'s gear slot. " + ClassSpells.Describe(bend);
+            }
+            // A duo: both Pals, and what it does.
+            if (IsDuo(favour))
+            {
+                PalDuo duo = DuoOf(favour);
+                return "A duo of " + PalName(FirstOf(duo)) + " and " + PalName(SecondOf(duo)) + ". " + DuoRules.Describe(duo);
             }
             rank = Math.Max(1, Math.Min(MaxRank, rank));
             // A Shade pick's rank is its route's form (Campaign.FavourRank): what that form adds.

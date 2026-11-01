@@ -606,7 +606,9 @@ namespace KindredSiege.Sim.Learning
         /// ShadeFormsRules): her road card, and Sanctuary, Backstab and Fear at their second and third forms, each with its price.
         /// 26 those and the Glutton (Jacob in chat, 1 Nov 2026: "go" on Claude's calls; Battle.FightRules.Glutton; GluttonTreeRules):
         /// his camp tree paid with codex points, his road card lending a limb's next talent, Feed, and the 35 talents.
-        public const int RulesVersion = 26;
+        /// 27 those and the Pals' duos (Jacob in chat, 1 Nov 2026: "go write them"; Battle.FightRules.Duos; PalDuoRules): a duo on
+        /// a card once the run holds a pick from both of its Pals, and the six in the fight.
+        public const int RulesVersion = 27;
         public const int SquadScreenRules = 14;
         public const int ClearRoadRules = 13;
 
@@ -673,6 +675,11 @@ namespace KindredSiege.Sim.Learning
         /// pays, kept between runs; his road card, lending the next talent of a limb for the run (a tier 3 one with its keystone);
         /// Feed doubling one talent and eating another of its limb; and every talent's effect.
         public const int GluttonTreeRules = 26;
+
+        /// The campaign rules version from which the Pals' duos play (Jacob in chat, 1 Nov 2026: "go write them"; Campaign.Duos.cs
+        /// and Battle.BattleSimulation.Duos.cs): a pick joining two Pals' themes, shown on a card once the run holds a pick from
+        /// both.
+        public const int PalDuoRules = 27;
 
         /// Whether this run's roads carry a Pal on every fight (fix 5): set when the run starts under PalRoadRules, and kept
         /// with the run, so its roads come back the same when it loads.
@@ -906,6 +913,8 @@ namespace KindredSiege.Sim.Learning
                 CampaignGear piece = ComboPiece(FavourRules.ComboBend(favour));
                 return piece == null ? 0 : piece.Rank;
             }
+            // A duo's rank is 1 once the run holds it (rules 27).
+            if (FavourRules.IsDuo(favour)) return HoldsDuo(FavourRules.DuoOf(favour)) ? 1 : 0;
             // A Glutton pick's rank is 1 once the run holds that talent (rules 26).
             if (FavourRules.IsGlutton(favour)) return Holds(FavourRules.TalentOf(favour)) ? 1 : 0;
             // A Shade pick's rank is its route's form (rules 25).
@@ -1453,7 +1462,15 @@ namespace KindredSiege.Sim.Learning
             Favour favour = _favourOffer.Choices[choice];
             _materials -= _spoilsMaterials;
             string name = FavourRules.Name(favour);
-            if (FavourRules.IsCombo(favour)) TakeCombo(favour);
+            string pals = FavourRules.PalName(FavourRules.PalOf(favour));
+            // A duo (rules 27, Campaign.Duos.cs).
+            if (FavourRules.IsDuo(favour))
+            {
+                name = TakeDuo(favour);
+                PalDuo duo = FavourRules.DuoOf(favour);
+                pals = FavourRules.PalName(FavourRules.FirstOf(duo)) + " and " + FavourRules.PalName(FavourRules.SecondOf(duo));
+            }
+            else if (FavourRules.IsCombo(favour)) TakeCombo(favour);
             // Her road card (rules 24, Campaign.PalStores.cs).
             else if (FavourRules.IsWhisper(favour)) name = TakeWhisper(_favourOffer.Picks[choice]);
             // Hers (rules 25, Campaign.PalStores.cs).
@@ -1470,7 +1487,7 @@ namespace KindredSiege.Sim.Learning
             // From rules 19 the tribe's gear was on the same card: taking a pick clears it too (fix 5).
             _spoils.Clear();
             _spoilsMaterials = 0;
-            Discover("Favour: " + name + " (" + FavourRules.PalName(FavourRules.PalOf(favour)) + ")");
+            Discover("Favour: " + name + " (" + pals + ")");
             return true;
         }
 
@@ -1487,6 +1504,14 @@ namespace KindredSiege.Sim.Learning
         // "a random three from the bigger pool drawn from the node's own seed"), in his order. Null when there are none, and
         // then the fight drops gear as usual.
         private FavourOffer MakeFavourOffer(RoadNode node, int rules)
+        {
+            FavourOffer offer = MakePalOffer(node, rules);
+            // From rules 27 a card can show a duo of its Pal as one more pick (Campaign.Duos.cs).
+            return rules >= PalDuoRules ? WithDuos(node, offer) : offer;
+        }
+
+        // The Pal's own picks on that card.
+        private FavourOffer MakePalOffer(RoadNode node, int rules)
         {
             Pal pal = node.Pal;
             if (pal == Pal.None) return null;
@@ -2334,6 +2359,7 @@ namespace KindredSiege.Sim.Learning
             if (favours != null)
             {
                 _favourOffer = favours;
+                if (fight.RulesVersion >= PalDuoRules) MarkDuosShown(favours);
                 _spoilsMaterials = materials;
                 result.FavourOffered = favours;
             }
@@ -2442,7 +2468,8 @@ namespace KindredSiege.Sim.Learning
             if (pal == Pal.None || choices == null || choices.Count == 0 || choices.Count > FavourRules.MaxOffered || materials < 0 ||
                 _favourOffer != null || (_spoils.Count > 0 && !(besideSpoils && materials == _spoilsMaterials))) return false;
             for (int i = 0; i < choices.Count; i++)
-                if (FavourRules.PalOf(choices[i]) != pal) return false;
+                if (FavourRules.PalOf(choices[i]) != pal && !(FavourRules.IsDuo(choices[i]) && FavourRules.DuoHas(FavourRules.DuoOf(choices[i]), pal)))
+                    return false;
             _favourOffer = new FavourOffer(pal, new List<Favour>(choices));
             _spoilsMaterials = materials;
             return true;
@@ -3158,6 +3185,8 @@ namespace KindredSiege.Sim.Learning
                 if (rules >= ShadeFormsRules) fightRules = fightRules.WithShadeForms();
                 // From rules 26 the Glutton's talents play. Last, after the Shade's forms.
                 if (rules >= GluttonTreeRules) fightRules = fightRules.WithGlutton();
+                // From rules 27 the duos play. Last, after the Glutton.
+                if (rules >= PalDuoRules) fightRules = fightRules.WithDuos();
             }
             bool raidChief = IsRaidChief(tribe, encounter.Kind, rules);
             if (raidChief) MakeRaidChief(side1);

@@ -25,6 +25,12 @@ namespace KindredSiege.Sim.Battle
             if (foe) MeterBoost(sourceSide, hit);
             // From rules 26 Dark Matter Plating and Deep Node (BattleSimulation.Glutton.cs).
             if (foe && _gluttonOn) GluttonHit(sourceSide, victim, hit, detail);
+            // From rules 27 Gorged Tricks on one of her tricks (BattleSimulation.Duos.cs).
+            if (foe && _duosOn && ShadeRules.IsTrickDetail(detail))
+            {
+                int gorged = GorgedTrickPercent(sourceSide);
+                if (gorged > 0) hit.Add(HitLayer.Kit, gorged);
+            }
             if (_spellsOn && _sides[victim.Side].WallTicks > 0 && foe) hit.Add(HitLayer.Guard, WallPercentOf(victim.Side) - 100);
             // Breach's price (rules 25): a side that breaches takes more while it is exposed (BattleSimulation.Shade.cs).
             if (_shadeOn && foe && _sides[victim.Side].ExposedTicks > 0) hit.Add(HitLayer.Guard, ShadeRules.ExposedPercent * PriceLeft(victim.Side) / 100);

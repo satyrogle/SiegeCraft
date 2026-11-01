@@ -350,8 +350,8 @@ namespace KindredSiege.Sim.Learning
         }
 
         /// Which of the standing Pal card's picks to take: at random from the pilot's own dice, or themed, leaning into his
-        /// theme. Themed: the Butcher's leading flavour, else a rank up; the Whisperer's star, the fighter ranked highest; the
-        /// Shade's route at the highest form; the Glutton's limb climbed furthest. -1 with no card standing.
+        /// theme. Themed: a duo first; then the Butcher's leading flavour, else a rank up; the Whisperer's star, the fighter ranked
+        /// highest; the Shade's route at the highest form; the Glutton's limb climbed furthest. -1 with no card standing.
         public int PickFavour(Campaign c, bool themed)
         {
             FavourOffer offer = c.FavourOffer;
@@ -403,6 +403,8 @@ namespace KindredSiege.Sim.Learning
         private static int Themed(Campaign c, FavourOffer offer, int i)
         {
             Favour f = offer.Choices[i];
+            // A duo (rules 27) joins two themes: always first.
+            if (FavourRules.IsDuo(f)) return 1000;
             switch (offer.Pal)
             {
                 case Pal.Butcher:

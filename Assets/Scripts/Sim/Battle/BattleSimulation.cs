@@ -124,6 +124,10 @@ namespace KindredSiege.Sim.Battle
             public int ReturnTicks;
             public int ExposedTicks;
             public int BreachTicks;
+            // The duos (rules 27, BattleSimulation.Duos.cs): a free cast of the star's spell called this tick (1 Shadow Star,
+            // 2 Crowned Marks, 0 none), and when Shadow Star can call the next.
+            public int StarCastDue;
+            public long ShadowStarAt;
             public int Nerve;
             public int StartHp;
             public int NerveRemainder;
@@ -376,6 +380,8 @@ namespace KindredSiege.Sim.Battle
             _shadeOn = _floorOn && _fight.ShadeForms;
             // The Glutton's talents (BattleSimulation.Glutton.cs, campaign rules 26) ride on the floor too.
             _gluttonOn = _floorOn && _fight.Glutton;
+            // The Pals' duos (BattleSimulation.Duos.cs, campaign rules 27) too.
+            _duosOn = _floorOn && _fight.Duos;
             // The Butcher's combos (BattleSimulation.Combos.cs, 29 Oct 2026): only a fight where someone wears one plays them.
             _comboOn = _classOn && AnyCombo();
             // The damage layers (BattleSimulation.Layers.cs, campaign rules 17): every hit and heal through one pipeline.
@@ -735,6 +741,8 @@ namespace KindredSiege.Sim.Battle
 
                 // The Whisperer's upgraded Rescuers and Avengers (BattleSimulation.Whisperer.cs, rules 24).
                 if (_whisperOn && !Stopped) TickWhisper();
+                // A star's spell a duo called (BattleSimulation.Duos.cs, rules 27).
+                if (_duosOn && !Stopped) TickDuos();
 
                 // Class spells (BattleSimulation.Class.cs, 20 Oct 2026): aims run on, and a finished one fires.
                 if (_classOn && !Stopped) AdvanceAims();
@@ -991,6 +999,7 @@ namespace KindredSiege.Sim.Battle
                     b.Field("wardId", state.ForcedWardId);
                     if (_whisperOn) AppendWhisperSide(b, state);
                     if (_shadeOn) AppendShadeSide(b, state);
+                    if (_duosOn) AppendDuoSide(b, state);
                     if (_nerveOn)
                     {
                         b.Field("nerve", state.Nerve);
@@ -1995,11 +2004,13 @@ namespace KindredSiege.Sim.Battle
             // (BattleSimulation.Combos.cs).
             // An Exposed burst left him wide open: this blow from the other side spends it, can't miss and can't be Guarded,
             // and its crit doubles, in the Cash layer (BattleSimulation.Marks.cs).
+            // Gorged Bursts (rules 27) left the burst's own percent more on it.
+            int wideMore = _duosOn ? target.Statuses[StatusKind.WideOpen].Size : 0;
             bool wideOpen = SpendWideOpen(attacker, target);
             if (wideOpen)
             {
                 int before = hit != null ? hit.Points : damage;
-                damage = More(damage, hit, HitLayer.Cash, MarkRules.WideOpenCashPercent);
+                damage = More(damage, hit, HitLayer.Cash, MarkRules.WideOpenCashPercent * (100 + wideMore) / 100);
                 Emit(EventFor(BattleEventKind.Cash, attacker, target, (hit != null ? hit.Points : damage) - before, MarkRules.WideOpenDetail));
             }
             // Backstab, the Shade's Fall Back trick (rules 23): stepping out behind them, this blow doubles, in the Cash layer
@@ -2497,6 +2508,9 @@ namespace KindredSiege.Sim.Battle
 
             // A side whose Pal or Chief drops breaks on the spot.
             if (killed && victim.IsLeader) LeaderDown(victim.Side);
+
+            // Her tricks under the duos: Marked Tricks and Shadow Star (rules 27, BattleSimulation.Duos.cs).
+            if (_duosOn && !_finished) DuoLanded(sourceSide, victim, detail);
         }
 
         // Damage that is no blow: a wound bleeding, and the Stoneveil chief's Leeches drinking or Transfusion drawing.

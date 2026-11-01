@@ -66,7 +66,9 @@ namespace KindredSiege.Sim.Learning
         // were already in each side's Pal kit (format 28). Older evidence reads it as off.
         // Format 31 (1 Nov 2026, the Glutton, campaign rules 26) adds that switch and each side's talent levels after format
         // 30's; older evidence reads them as off and none.
-        private const int FormatVersion = 31;
+        // Format 32 (1 Nov 2026, the Pals' duos, campaign rules 27) adds that switch and each side's duos held after format 31's;
+        // older evidence reads them as off and none.
+        private const int FormatVersion = 32;
 
         // The longest move name a learned wait out or feint can sit on, read back.
         private const int MaxMoveName = 64;
@@ -106,6 +108,7 @@ namespace KindredSiege.Sim.Learning
         // piece, else 9.
         private static int FormatUsed(BattleSetup setup)
         {
+            if (setup.Fight.Duos) return 32;
             if (setup.Fight.Glutton) return 31;
             if (setup.Fight.ShadeForms) return 30;
             if (setup.Fight.Whisper) return 29;
@@ -455,6 +458,10 @@ namespace KindredSiege.Sim.Learning
                 w.Write(talents.Length);
                 for (int i = 0; i < talents.Length; i++) w.Write(talents[i]);
             }
+            if (format < 32) return;
+            // Format 32: the duos (rules 27): the switch, then each side's duos, one bit a Battle.PalDuo.
+            w.Write(fight.Duos);
+            for (int side = 0; side < 2; side++) w.Write(s.Rules(side).Pals.DuoMask);
         }
 
         private static BattleSetup ReadSetup(BinaryReader r, int version)
@@ -681,9 +688,16 @@ namespace KindredSiege.Sim.Learning
                         rules[side] = rules[side].WithPals(rules[side].Pals.WithTalents(levels));
                     }
                 }
+                bool duos = false;
+                if (version >= 32)
+                {
+                    duos = r.ReadBoolean();
+                    for (int side = 0; side < 2; side++)
+                        rules[side] = rules[side].WithPals(rules[side].Pals.WithDuos(Range(r.ReadInt32(), 0, (1 << DuoRules.Count) - 1)));
+                }
                 fight = new FightRules(misses, earned, perfectHold, snaps, classSpells, chiefRules, chiefKits, beasts, chiefTactics,
                     parryCenter, squadFirst, raidChief, roadCombat, roadKit, clearRoad, squadScreen, duel, layers, marks, payoffs, danger,
-                    meter, floor, whisper, shadeForms, glutton);
+                    meter, floor, whisper, shadeForms, glutton, duos);
                 // A beast's side is exactly its parts, or the fight cannot be played back (the audit, 22 Oct 2026).
                 for (int side = 0; side < 2 && beasts; side++)
                     if (rules[side].Beast != BeastKit.None && units[side].Count != BeastKits.PartCount)

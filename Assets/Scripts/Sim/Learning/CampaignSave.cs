@@ -6,7 +6,9 @@ using KindredSiege.Sim.Battle;
 
 namespace KindredSiege.Sim.Learning
 {
-    /// Writes a campaign down and reads it back. Version 29 (1 Nov 2026, the Glutton, campaign rules 26) keeps the talents bought
+    /// Writes a campaign down and reads it back. Version 30 (1 Nov 2026, the Pals' duos, campaign rules 27) keeps the run's duos
+    /// held and the ones a card has shown (duo: two masks, one bit a Battle.PalDuo), and can hold a duo on a card
+    /// (Favour.DuoCrownedMarks to Favour.DuoGorgedTricks). Version 29 (1 Nov 2026, the Glutton, campaign rules 26) keeps the talents bought
     /// at camp (owned, a camp record, in the order bought), the run's Feed (feed: the talent fed and the one eaten, 0 for none)
     /// and the losses Branch Hedge kept the streak through (hedge), and can hold his road card on offer (Favour.GluttonDarkMatterPlating
     /// to Favour.GluttonNodeCache) and a card of up to FavourRules.MaxOffered picks. Version 28 (31 Oct 2026, the Shade's forms, campaign rules 25) can hold her road
@@ -67,7 +69,7 @@ namespace KindredSiege.Sim.Learning
     public static partial class CampaignSave
     {
         public const string Header = "kindred-siege-campaign";
-        public const int Version = 29;
+        public const int Version = 30;
 
         public const string OldSaveNote =
             "This save is from the old respect campaign, so you are back at camp. What the tribes learned about you and your codex are kept.";
@@ -83,7 +85,7 @@ namespace KindredSiege.Sim.Learning
         {
             "joined", "fighter", "assist", "gear", "piece", "spoils", "grudge", "run", "road", "feat", "offer", "fight", "proof", "squad", "order",
             "bounty", "beaten", "promoted", "favour", "favouroffer", "routepick", "beast", "lives", "bond", "streak", "clearroad",
-            "roadpals", "palroad", "talent", "route", "pair", "rank", "slot2", "habitup", "whisperpick", "feed", "hedge"
+            "roadpals", "palroad", "talent", "route", "pair", "rank", "slot2", "habitup", "whisperpick", "feed", "hedge", "duo"
         };
 
         public static string Write(Campaign c)
@@ -167,6 +169,8 @@ namespace KindredSiege.Sim.Learning
             for (int i = 0; i < c.OwnedTalents.Count; i++) Line(b, "owned", N((int)c.OwnedTalents[i]));
             if (c.FedTalent != GluttonTalent.None) Line(b, "feed", N((int)c.FedTalent), N((int)c.EatenTalent));
             if (c.HedgesUsed > 0) Line(b, "hedge", N(c.HedgesUsed));
+            // The duos (version 30, rules 27): held, and shown.
+            if (c.DuoMask != 0 || c.DuosShownMask != 0) Line(b, "duo", N(c.DuoMask), N(c.DuosShownMask));
             for (int i = 0; i < c.ShadeRoutes.Count; i++) Line(b, "route", N((int)c.ShadeRoutes[i].Route), N(c.ShadeRoutes[i].Form));
             for (int i = 0; i < c.Habits.Count; i++) Line(b, "palhabit", N((int)c.Habits[i].Habit));
             // The habits the run upgraded (version 27, rules 24).
@@ -692,6 +696,11 @@ namespace KindredSiege.Sim.Learning
                     case "hedge":
                         if (version < 29 || f.Length != 2 || !TryInt(f[1], out int hedges) || !c.RestoreHedges(hedges))
                             return Fail(where + "bad hedge record.", out failure);
+                        break;
+                    case "duo":
+                        if (version < 30 || f.Length != 3 || !TryInt(f[1], out int duoMask) || !TryInt(f[2], out int duoShown) ||
+                            !c.RestoreDuos(duoMask, duoShown))
+                            return Fail(where + "bad duo record.", out failure);
                         break;
                     case "route":
                         if (version < 26 || f.Length != 3 || !TryInt(f[1], out int routeId) || !TryInt(f[2], out int routeForm) ||

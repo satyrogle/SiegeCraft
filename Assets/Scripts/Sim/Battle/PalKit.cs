@@ -569,6 +569,101 @@ namespace KindredSiege.Sim.Battle
         }
     }
 
+    /// The Pals' duos (campaign rules 27; Jacob in chat, 1 Nov 2026: "go write them"; BattleSimulation.Duos.cs): one pick that
+    /// joins two Pals' themes, offered once a run holds a pick from both. One for each pair of the four.
+    public enum PalDuo
+    {
+        None = 0,
+
+        /// The Butcher and the Whisperer: the star lays twice his combo's stacks, and a burst he sets off gives him his spell
+        /// again at once.
+        CrownedMarks = 1,
+
+        /// The Butcher and the Shade: each of her tricks lays a stack of the side's leading flavour on everyone it hits.
+        MarkedTricks = 2,
+
+        /// The Butcher and the Glutton: a burst is bigger for each talent held in the limb of the class that set it off.
+        GorgedBursts = 3,
+
+        /// The Whisperer and the Shade: each of her tricks also gives the star his spell at once, at most once every few seconds.
+        ShadowStar = 4,
+
+        /// The Whisperer and the Glutton: every talent held counts as fed on the star.
+        FattenedStar = 5,
+
+        /// The Shade and the Glutton: her tricks hit harder for each talent held, and her route prices are halved.
+        GorgedTricks = 6
+    }
+
+    /// The duos' numbers. Every number is a starting value, sized to the builds test (HANDOFF_LOG, 1 Nov 2026): a duo should add
+    /// about 10 points of health margin to a fight it plays, where one pick added 1 to 3.
+    public static class DuoRules
+    {
+        /// One past the last duo.
+        public const int Count = 7;
+
+        /// Crowned Marks: the star lays this many times his combo's stacks.
+        public const int CrownStacks = 2;
+
+        /// Gorged Bursts: a burst's hit, wide open crit and freeze, this many percent bigger for each level of a talent held in the
+        /// limb of the class that set it off (fed counts twice).
+        public const int GorgedBurstPercent = 25;
+
+        /// Shadow Star: the star casts from her tricks at most once in this long.
+        public const int ShadowStarTicks = 3 * SimClock.TicksPerSecond;
+
+        /// Gorged Tricks: her tricks hit this many percent harder for each level of a talent held, and her route prices keep
+        /// this percent.
+        public const int GorgedTrickPercent = 15;
+        public const int GorgedPricePercent = 50;
+
+        /// The Trick detail of the star casting from a duo, amount 1 for Shadow Star and 2 for Crowned Marks.
+        public const string StarDetail = "star";
+
+        public static bool Valid(PalDuo duo) => duo > PalDuo.None && (int)duo < Count;
+
+        /// The limb of the Glutton's tree a class plays: the Warden the front line, then strikers, shooters, control and healers.
+        public static int LimbOf(UnitClass cls)
+        {
+            switch (cls)
+            {
+                case UnitClass.Warden: return 0;
+                case UnitClass.Skirmisher: return 1;
+                case UnitClass.Marksman: return 2;
+                case UnitClass.Trapper: return 3;
+                default: return 4;
+            }
+        }
+
+        public static string Name(PalDuo duo)
+        {
+            switch (duo)
+            {
+                case PalDuo.CrownedMarks: return "Crowned Marks";
+                case PalDuo.MarkedTricks: return "Marked Tricks";
+                case PalDuo.GorgedBursts: return "Gorged Bursts";
+                case PalDuo.ShadowStar: return "Shadow Star";
+                case PalDuo.FattenedStar: return "Fattened Star";
+                case PalDuo.GorgedTricks: return "Gorged Tricks";
+                default: return "None";
+            }
+        }
+
+        public static string Describe(PalDuo duo)
+        {
+            switch (duo)
+            {
+                case PalDuo.CrownedMarks: return "Your star lays twice his combo's stacks, and a burst he sets off gives him his spell again at once.";
+                case PalDuo.MarkedTricks: return "Each of the Shade's tricks lays a stack of your leading flavour's mark on everyone it hits.";
+                case PalDuo.GorgedBursts: return "A burst is 25% bigger for each talent you hold in the limb of the class that set it off.";
+                case PalDuo.ShadowStar: return "Each of the Shade's tricks also gives your star his spell at once, at most once every 3 s.";
+                case PalDuo.FattenedStar: return "Every talent you hold counts as fed on your star.";
+                case PalDuo.GorgedTricks: return "The Shade's tricks hit 15% harder for each talent you hold, and her route prices are halved.";
+                default: return string.Empty;
+            }
+        }
+    }
+
     /// What a side brings into a fight from the Pals' stores (campaign rules 23; DESIGN_LOCKS, "The floor under the three
     /// Pals"): the Shade's routes on its buttons, each at its form, and one percent on its order costs, the cheaper hook (a
     /// talent that makes orders cheaper sets it, below 0). From rules 24 the Whisperer's too: each class's habit, upgraded or
@@ -588,10 +683,14 @@ namespace KindredSiege.Sim.Battle
         // From rules 26 each of the Glutton's talents: 0 none, GluttonRules.Held, or GluttonRules.Fed.
         private readonly int[] _talents = new int[GluttonRules.TalentCount + 1];
 
+        // From rules 27 the duos held, one bit a duo (1 << (int)PalDuo).
+        private int _duos;
+
         private PalKit(PalKit routes, int[] habits, SquadPair pair)
         {
             Array.Copy(routes._forms, _forms, _forms.Length);
             Array.Copy(routes._talents, _talents, _talents.Length);
+            _duos = routes._duos;
             OrderCostPercent = routes.OrderCostPercent;
             var taken = new bool[(int)UnitClass.Medic + 1];
             for (int h = 1; habits != null && h < habits.Length && h <= WhisperRules.HabitCount; h++)
@@ -631,6 +730,21 @@ namespace KindredSiege.Sim.Battle
         {
             return (int[])_talents.Clone();
         }
+
+        /// The same kit with these duos (rules 27), one bit a duo (1 << (int)PalDuo); bits for no duo are dropped.
+        public PalKit WithDuos(int mask)
+        {
+            var kit = new PalKit(this, _habits, Pair);
+            int valid = 0;
+            for (int d = 1; d < DuoRules.Count; d++) valid |= 1 << d;
+            kit._duos = mask & valid;
+            return kit;
+        }
+
+        /// The duos held, one bit a duo, for the replay evidence.
+        public int DuoMask => _duos;
+
+        public bool HasDuo(PalDuo duo) => DuoRules.Valid(duo) && (_duos & (1 << (int)duo)) != 0;
 
         /// The squad's pair, None for none.
         public SquadPair Pair { get; }
@@ -694,7 +808,7 @@ namespace KindredSiege.Sim.Battle
         {
             get
             {
-                if (OrderCostPercent != 0 || Pair != SquadPair.None) return false;
+                if (OrderCostPercent != 0 || Pair != SquadPair.None || _duos != 0) return false;
                 for (int r = 1; r < ShadeRules.RouteCount; r++) if (_forms[r] > 0) return false;
                 for (int h = 1; h <= WhisperRules.HabitCount; h++) if (_habits[h] > 0) return false;
                 for (int t = 1; t <= GluttonRules.TalentCount; t++) if (_talents[t] > 0) return false;
@@ -729,6 +843,9 @@ namespace KindredSiege.Sim.Battle
             // The Glutton's (rules 26), the same way.
             for (int t = 1; t <= GluttonRules.TalentCount; t++)
                 if (_talents[t] > 0) b.Field(prefix + "talent." + ((GluttonTalent)t).ToString().ToLowerInvariant(), _talents[t]);
+            // The duos (rules 27), the same way.
+            for (int d = 1; d < DuoRules.Count; d++)
+                if ((_duos & (1 << d)) != 0) b.Field(prefix + "duo." + ((PalDuo)d).ToString().ToLowerInvariant(), true);
         }
     }
 }

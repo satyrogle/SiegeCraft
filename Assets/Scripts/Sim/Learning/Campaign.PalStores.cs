@@ -164,7 +164,9 @@ namespace KindredSiege.Sim.Learning
             if (rules < GluttonTreeRules) return kit;
             var levels = new int[GluttonRules.TalentCount + 1];
             for (int t = 1; t <= GluttonRules.TalentCount; t++) levels[t] = TalentLevel((GluttonTalent)t);
-            return kit.WithTalents(levels);
+            kit = kit.WithTalents(levels);
+            // From rules 27 the duos held (Campaign.Duos.cs).
+            return rules < PalDuoRules ? kit : kit.WithDuos(_duos);
         }
 
         // ------------------------------------------------------------ the Glutton's tree (rules 26)
@@ -629,6 +631,7 @@ namespace KindredSiege.Sim.Learning
         // upgrades go.
         private void ClearPalStores()
         {
+            ClearDuos();
             _talents.Clear();
             FedTalent = GluttonTalent.None;
             EatenTalent = GluttonTalent.None;

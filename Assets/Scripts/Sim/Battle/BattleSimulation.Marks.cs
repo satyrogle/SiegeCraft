@@ -79,7 +79,9 @@ namespace KindredSiege.Sim.Battle
             if (!_marksOn || _finished || wearer == null || target == null || !target.Alive || target.Side == wearer.Side) return;
             if (!ClassSpells.IsCombo(combo) || !HasBend(wearer, combo) || ShrugsMarks(target)) return;
             StatusKind mark = MarkRules.Of(combo);
-            target.Statuses.Apply(mark, MarkRules.Ticks, sourceId: wearer.Id, stacks: RankOf(wearer, combo));
+            // Crowned Marks (rules 27, BattleSimulation.Duos.cs): the star lays more.
+            int stacks = _duosOn ? CrownedStacks(wearer, RankOf(wearer, combo)) : RankOf(wearer, combo);
+            target.Statuses.Apply(mark, MarkRules.Ticks, sourceId: wearer.Id, stacks: stacks);
             Emit(new BattleEvent(_tick, BattleEventKind.Mark, wearer.Side, wearer.Id, (int)wearer.Class, target.Id, (int)target.Class,
                 MarkRules.Ticks, MarkRules.Name(mark)));
             if (target.Statuses[mark].Stacks >= MarkRules.MaxStacks) Burst(wearer, target, mark);
@@ -89,27 +91,37 @@ namespace KindredSiege.Sim.Battle
         private void Burst(BattleUnit by, BattleUnit target, StatusKind mark)
         {
             target.Statuses.Clear(mark);
+            // Gorged Bursts (rules 27, BattleSimulation.Duos.cs): each burst this percent bigger.
+            int gorged = _duosOn ? GorgedPercent(by) : 0;
             switch (mark)
             {
                 case StatusKind.Crush:
                     // A hit for the power of whoever laid the last stack, through the damage layers; it is a combo's payoff,
                     // so whatever raises the Combo layer will raise it. Then he is pinned.
                     Emit(EventFor(BattleEventKind.Burst, by, target, by.Power, MarkRules.Crush));
-                    if (_layersOn) ApplyHit(by, by.Side, target, new Hit(by.Power), MarkRules.CrushedDetail);
-                    else ApplyDamage(by, by.Side, target, by.Power, MarkRules.CrushedDetail);
+                    if (_layersOn)
+                    {
+                        var crush = new Hit(by.Power);
+                        if (gorged > 0) crush.Add(HitLayer.Combo, gorged);
+                        ApplyHit(by, by.Side, target, crush, MarkRules.CrushedDetail);
+                    }
+                    else ApplyDamage(by, by.Side, target, by.Power * (100 + gorged) / 100, MarkRules.CrushedDetail);
                     if (!_finished && target.Alive) Pin(target, MarkRules.CrushPinTicks);
                     break;
                 case StatusKind.Exposed:
-                    target.Statuses.Apply(StatusKind.WideOpen, MarkRules.WideOpenTicks, sourceId: by.Id);
+                    target.Statuses.Apply(StatusKind.WideOpen, MarkRules.WideOpenTicks, size: gorged, sourceId: by.Id);
                     Emit(EventFor(BattleEventKind.Burst, by, target, MarkRules.WideOpenTicks, MarkRules.Exposed));
                     break;
                 case StatusKind.Stasis:
                     // Frozen as a time combo freezes (a pin), and his wind up starts over.
-                    Emit(EventFor(BattleEventKind.Burst, by, target, MarkRules.StasisFreezeTicks, MarkRules.Stasis));
-                    Pin(target, MarkRules.StasisFreezeTicks);
+                    int freeze = MarkRules.StasisFreezeTicks * (100 + gorged) / 100;
+                    Emit(EventFor(BattleEventKind.Burst, by, target, freeze, MarkRules.Stasis));
+                    Pin(target, freeze);
                     RestartWindUp(target);
                     break;
             }
+            // Crowned Marks (rules 27): the star who set it off casts again.
+            if (_duosOn) DuoBurst(by);
         }
 
         // A Stasis burst: a big move he was winding up starts over, from its whole wind up, as if he had only begun it: his
